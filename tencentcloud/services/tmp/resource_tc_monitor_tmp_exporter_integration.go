@@ -28,31 +28,31 @@ func ResourceTencentCloudMonitorTmpExporterIntegration() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"kind": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Type.",
+				Description: "类型",
 			},
 
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Integration config.",
+				Description: "Integration 配置",
 			},
 
 			"kube_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Integration config.",
+				Description: "Integration 配置",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 		},
 	}

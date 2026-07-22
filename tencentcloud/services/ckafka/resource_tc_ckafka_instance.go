@@ -32,12 +32,12 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 			"instance_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance name.",
+				Description: "实例名称",
 			},
 			"zone_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Available zone id.",
+				Description: "Available 可用区 ID",
 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
 					multiZone := d.Get("multi_zone_flag").(bool)
 					zoneId := d.Get("zone_id").(int)
@@ -56,7 +56,7 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				Optional:     true,
 				Default:      "profession",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"standard", "profession", "premium"}),
-				Description:  "Specifications type of instance. Allowed values are `profession`, `premium`. Default is `profession`.",
+				Description:  "Specifications 类型 instance. Allowed values are `profession`，`premium`. 默认为 `profession`。",
 			},
 			"charge_type": {
 				Type:         schema.TypeString,
@@ -64,19 +64,19 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				ForceNew:     true,
 				Default:      CKAFKA_CHARGE_TYPE_PREPAID,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{CKAFKA_CHARGE_TYPE_POSTPAID, CKAFKA_CHARGE_TYPE_PREPAID}),
-				Description:  "The charge type of instance. Valid values are `PREPAID` and `POSTPAID_BY_HOUR`. Default value is `PREPAID`.",
+				Description:  "The charge 类型 instance. Valid values are `PREPAID` and `POSTPAID_BY_HOUR`. 默认值为 `PREPAID`。",
 			},
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Prepaid purchase time, such as 1, is one month.",
+				Description: "Prepaid purchase time，such as 1，is one month。",
 			},
 			"instance_type": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2, 3, 4, 5, 6, 7, 8, 9}),
-				Description:  "Description of instance type. `profession`: 1, `standard`:  1(general), 2(standard), 3(advanced), 4(capacity), 5(specialized-1), 6(specialized-2), 7(specialized-3), 8(specialized-4), 9(exclusive).",
+				Description:  "描述 实例类型 `profession`: 1，`standard`:  1(general)，2(standard)，3(advanced)，4(capacity)，5(specialized-1)，6(specialized-2)，7(specialized-3)，8(specialized-4)，9(exclusive)。",
 			},
 			"upgrade_strategy": {
 				Type:     schema.TypeInt,
@@ -89,12 +89,12 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Vpc id, it will be basic network if not set.",
+				Description: "私有网络 ID，it will be basic network if not set。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Subnet id, it will be basic network if not set.",
+				Description: "子网 ID，it will be basic network if not set。",
 			},
 			"msg_retention_time": {
 				Type:     schema.TypeInt,
@@ -115,13 +115,13 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Kafka version (0.10.2/1.1.1/2.4.1).",
+				Description: "Kafka 版本 (0.10.2/1.1.1/2.4.1)。",
 			},
 			"band_width": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Instance bandwidth in MBps.",
+				Description: "Instance bandwidth in MBps。",
 			},
 			"disk_size": {
 				Type:     schema.TypeInt,
@@ -140,12 +140,12 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 			"multi_zone_flag": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Indicates whether the instance is multi zones. NOTE: if set to `true`, `zone_ids` must set together.",
+				Description: "表示是否instance is multi zones. NOTE: if set to `true`，`zone_ids` must set together。",
 			},
 			"zone_ids": {
 				Type:         schema.TypeSet,
 				Optional:     true,
-				Description:  "List of available zone id. NOTE: this argument must set together with `multi_zone_flag`.",
+				Description:  "列表 available 可用区 ID NOTE: this argument must set together with `multi_zone_flag`。",
 				RequiredWith: []string{"multi_zone_flag"},
 				Elem:         &schema.Schema{Type: schema.TypeInt},
 			},
@@ -155,18 +155,18 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				Computed:      true,
 				Deprecated:    "It has been deprecated from version 1.78.5, because it do not support change. Use `tag_set` instead.",
 				ConflictsWith: []string{"tag_set"},
-				Description:   "Tags of instance. Partition size, the professional version does not need tag.",
+				Description:   "标签 of instance. Partition size，the professional 版本 does not need 标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -175,14 +175,14 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				Type:          schema.TypeMap,
 				Optional:      true,
 				Computed:      true,
-				Description:   "Tag set of instance.",
+				Description:   "标签 set of instance。",
 				ConflictsWith: []string{"tags"},
 			},
 			"disk_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Type of disk.",
+				Description: "类型 disk。",
 			},
 			"config": {
 				Type:     schema.TypeList,
@@ -193,7 +193,7 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 						"auto_create_topic_enable": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Automatic creation. true: enabled, false: not enabled.",
+							Description: "Automatic creation. true: 已启用，false: not 已启用",
 						},
 						"default_num_partitions": {
 							Type:     schema.TypeInt,
@@ -209,7 +209,7 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 						},
 					},
 				},
-				Description: "Instance configuration.",
+				Description: "Instance configuration。",
 			},
 			"dynamic_retention_config": {
 				Type:     schema.TypeList,
@@ -243,51 +243,51 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Minimum retention time, in minutes.",
+							Description: "Minimum retention time，in minutes。",
 						},
 					},
 				},
-				Description: "Dynamic message retention policy configuration.",
+				Description: "Dynamic 消息 retention policy configuration。",
 			},
 			"rebalance_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Deprecated:  "It has been deprecated from version 1.82.37.",
-				Description: "Modification of the rebalancing time after upgrade.",
+				Description: "Modification of the rebalancing time after upgrade。",
 			},
 			"public_network": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateIntegerMin(3),
-				Description:  "Bandwidth of the public network.",
+				Description:  "Bandwidth of the public network。",
 			},
 			"max_message_byte": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1024, 12*1024*1024),
-				Description:  "The size of a single message in bytes at the instance level. Value range: `1024 - 12*1024*1024 bytes (i.e., 1KB-12MB).",
+				Description:  "The size of a single 消息 in bytes at the instance 级别 取值范围：`1024 - 12*1024*1024 bytes (i.e.，1KB-12MB)。",
 			},
 			"elastic_bandwidth_switch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Elastic bandwidth switch 0 not turned on 1 turned on (0 default). This takes effect only when the instance is created.",
+				Description: "Elastic bandwidth switch 0 not turned on 1 turned on (0 default). This takes effect only when the instance is created。",
 			},
 			"custom_ssl_cert_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom certificate ID, only effective when `specifications_type` is set to `profession`, supports custom certificate capabilities.",
+				Description: "Custom 证书 ID，only effective when `specifications_type` is set to `profession`，supports custom certificate capabilities。",
 			},
 			"vip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Vip of instance.",
+				Description: "Vip of instance。",
 			},
 			"vport": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Type of instance.",
+				Description: "类型 instance。",
 			},
 		},
 	}

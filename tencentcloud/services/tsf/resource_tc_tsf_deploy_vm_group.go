@@ -25,14 +25,14 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "group id.",
+				Description: "group id。",
 			},
 
 			"pkg_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "program package ID.",
+				Description: "program package ID。",
 			},
 
 			"startup_parameters": {
@@ -40,7 +40,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "start args of group.",
+				Description: "start args of group。",
 			},
 
 			"deploy_desc": {
@@ -48,7 +48,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "group description.",
+				Description: "group 描述",
 			},
 
 			"force_start": {
@@ -56,7 +56,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to allow forced start.",
+				Description: "是否allow forced start。",
 			},
 
 			"enable_health_check": {
@@ -64,7 +64,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable health check.",
+				Description: "是否enable health check。",
 			},
 
 			"health_check_settings": {
@@ -73,7 +73,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "When enabling health check, configure the health check settings.",
+				Description: "When enabling health check，configure the health check settings。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"liveness_probe": {
@@ -81,61 +81,61 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Survival health check. Note: This field may return null, indicating that no valid value was found.",
+							Description: "Survival health check. 注意：此字段可能返回 null，表示未找到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Health check method. HTTP: check through HTTP interface; CMD: check through executing command; TCP: check through establishing TCP connection. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Health check method. HTTP: check through HTTP interface; CMD: check through executing command; TCP: check through establishing TCP connection. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"initial_delay_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The time delay for the container to start the health check. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The time 延迟 for the container to start the health check. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"timeout_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The maximum timeout period for each health check response. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The maximum timeout 周期 for each health check response. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"period_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The time interval for performing health checks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 时间间隔 for performing health checks. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"success_threshold": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The number of consecutive successful health checks required for the backend container to transition from failure to success. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 数量 consecutive successful health checks 必填 for the backend container to transition from failure to success. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"failure_threshold": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The number of consecutive successful health checks required for the backend container to transition from success to failure. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 数量 consecutive successful health checks 必填 for the backend container to transition from success to failure. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"scheme": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "The protocol used for HTTP health checks. HTTP and HTTPS are supported. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 协议 用于HTTP health checks. HTTP and HTTPS are supported. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The port used for health checks, ranging from 1 to 65535. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 端口 用于health checks，ranging from 1 to 65535. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"path": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "The request path for HTTP health checks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The request 路径 for HTTP health checks. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"command": {
 										Type: schema.TypeSet,
@@ -144,13 +144,13 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 										},
 										Optional:    true,
 										Computed:    true,
-										Description: "The command to be executed for command health checks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The command to be executed for command health checks. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "The type of readiness probe. TSF_DEFAULT represents the default readiness probe of TSF, while K8S_NATIVE represents the native readiness probe of Kubernetes. If this field is not specified, the native readiness probe of Kubernetes is used by default. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "类型 readiness probe. TSF_DEFAULT represents the default readiness probe of TSF，while K8S_NATIVE represents the native readiness probe of Kubernetes. If this field is not specified，the native readiness probe of Kubernetes is used by default. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -160,61 +160,61 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Readiness health check. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Readiness health check. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The health check method. HTTP indicates checking through an HTTP interface, CMD indicates checking through executing a command, and TCP indicates checking through establishing a TCP connection. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The health check method. HTTP 表示checking through an HTTP interface，CMD 表示checking through executing a command，and TCP 表示checking through establishing a TCP connection. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"initial_delay_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The time to delay the start of the container health check. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The time to 延迟 the start of the container health check. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"timeout_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The maximum timeout period for each health check response. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The maximum timeout 周期 for each health check response. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"period_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The time interval for performing health checks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 时间间隔 for performing health checks. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"success_threshold": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The number of consecutive successful health checks required for the backend container to transition from failure to success. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 数量 consecutive successful health checks 必填 for the backend container to transition from failure to success. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"failure_threshold": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The number of consecutive successful health checks required for the backend container to transition from success to failure. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 数量 consecutive successful health checks 必填 for the backend container to transition from success to failure. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"scheme": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "The protocol used for HTTP health checks. HTTP and HTTPS are supported. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 协议 用于HTTP health checks. HTTP and HTTPS are supported. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The port used for health checks, ranging from 1 to 65535. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 端口 用于health checks，ranging from 1 to 65535. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"path": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "The request path for HTTP health checks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The request 路径 for HTTP health checks. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"command": {
 										Type: schema.TypeSet,
@@ -223,13 +223,13 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 										},
 										Optional:    true,
 										Computed:    true,
-										Description: "The command to be executed for command check. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The command to be executed for command check. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "The type of readiness probe. TSF_DEFAULT represents the default readiness probe of TSF, while K8S_NATIVE represents the native readiness probe of Kubernetes. If this field is not specified, the native readiness probe of Kubernetes is used by default. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "类型 readiness probe. TSF_DEFAULT represents the default readiness probe of TSF，while K8S_NATIVE represents the native readiness probe of Kubernetes. If this field is not specified，the native readiness probe of Kubernetes is used by default. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -243,7 +243,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Update method: 0 for fast update, 1 for rolling update.",
+				Description: "Update method: 0 for fast update，1 for rolling update。",
 			},
 
 			"deploy_beta_enable": {
@@ -251,7 +251,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable beta batch.",
+				Description: "是否enable beta batch。",
 			},
 
 			"deploy_batch": {
@@ -262,7 +262,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeFloat,
 				},
-				Description: "The ratio of instances participating in each batch during rolling release.",
+				Description: "The ratio of instances participating in each batch during rolling release。",
 			},
 
 			"deploy_exe_mode": {
@@ -270,7 +270,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The execution method of rolling release.",
+				Description: "The execution method of rolling release。",
 			},
 
 			"deploy_wait_time": {
@@ -278,7 +278,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The time interval for each batch during rolling release.",
+				Description: "The 时间间隔 for each batch during rolling release。",
 			},
 
 			"start_script": {
@@ -286,7 +286,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The base64-encoded startup script.",
+				Description: "The base64-encoded startup script。",
 			},
 
 			"stop_script": {
@@ -294,7 +294,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The base64-encoded stop script.",
+				Description: "The base64-encoded stop script。",
 			},
 
 			"incremental_deployment": {
@@ -302,7 +302,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to perform incremental deployment. The default value is false, which means full update.",
+				Description: "是否perform incremental deployment. The 默认值为 false，which means full update。",
 			},
 
 			"jdk_name": {
@@ -310,7 +310,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "JDK name: konaJDK or openJDK.",
+				Description: "JDK 名称: konaJDK or openJDK。",
 			},
 
 			"jdk_version": {
@@ -318,7 +318,7 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "JDK version: 8 or 11(openJDK only support 8).",
+				Description: "JDK 版本: 8 or 11(openJDK only support 8)。",
 			},
 
 			"agent_profile_list": {
@@ -326,20 +326,20 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "javaagent info: SERVICE_AGENT/OT_AGENT.",
+				Description: "javaagent info: SERVICE_AGENT/OT_AGENT。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"agent_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Agent type.",
+							Description: "Agent 类型",
 						},
 						"agent_version": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Agent version.",
+							Description: "Agent 版本",
 						},
 					},
 				},
@@ -351,32 +351,32 @@ func ResourceTencentCloudTsfDeployVmGroup() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "warmup setting.",
+				Description: "warmup setting。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to enable preheating.",
+							Description: "是否enable preheating。",
 						},
 						"warmup_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "warmup time.",
+							Description: "warmup time。",
 						},
 						"curvature": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Preheating curvature, with a value between 1 and 5.",
+							Description: "Preheating curvature，with a 值 between 1 and 5。",
 						},
 						"enabled_protection": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to enable preheating protection. If protection is enabled and more than 50% of nodes are in preheating state, preheating will be aborted.",
+							Description: "是否enable preheating protection. If protection is 已启用 and more than 50% of nodes are in preheating state，preheating will be aborted。",
 						},
 					},
 				},

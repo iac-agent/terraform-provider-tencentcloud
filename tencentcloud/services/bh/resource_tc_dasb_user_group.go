@@ -27,12 +27,12 @@ func ResourceTencentCloudDasbUserGroup() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "User group name, maximum length 32 characters.",
+				Description: "用户 组名称，maximum length 32 characters。",
 			},
 			"department_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the department to which the user group belongs, such as: 1.2.3.",
+				Description: "ID department to which the 用户 group belongs，such as: 1.2.3。",
 			},
 		},
 	}

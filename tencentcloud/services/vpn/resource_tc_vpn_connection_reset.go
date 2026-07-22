@@ -22,14 +22,14 @@ func ResourceTencentCloudVpnConnectionReset() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "VPN GATEWAY INSTANCE ID.",
+				Description: "VPN GATEWAY INSTANCE ID。",
 			},
 
 			"vpn_connection_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "VPN CONNECTION INSTANCE ID.",
+				Description: "VPN CONNECTION INSTANCE ID。",
 			},
 		},
 	}

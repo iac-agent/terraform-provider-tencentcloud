@@ -26,28 +26,28 @@ func ResourceTencentCloudAsSchedule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of a scaling group.",
+				Description: "ID scaling group。",
 			},
 			"schedule_action_name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "The name of this scaling action.",
+				Description:  "名称 this scaling 操作",
 			},
 			"max_size": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The maximum size for the Auto Scaling group.",
+				Description: "The maximum size for the Auto Scaling group。",
 			},
 			"min_size": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The minimum size for the Auto Scaling group.",
+				Description: "The minimum size for the Auto Scaling group。",
 			},
 			"desired_capacity": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The desired number of CVM instances that should be running in the group.",
+				Description: "The desired 数量 CVM instances that should be running in the group。",
 			},
 			"start_time": {
 				Type:         schema.TypeString,
@@ -64,13 +64,13 @@ func ResourceTencentCloudAsSchedule() *schema.Resource {
 			"recurrence": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The time when recurring future actions will start. Start time is specified by the user following the Unix cron syntax format. And this argument should be set with end_time together.",
+				Description: "The time when recurring future actions will start. 开始时间 is specified by the 用户 following the Unix cron syntax 格式 And this argument should be set with end_time together。",
 			},
 			"disable_update_desired_capacity": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "This flag disables the normal update of the DesiredCapacityproperty that would otherwise occur when a scheduled scaling task is triggered.\nSpecifies whether the scheduled task triggers proactive modification of the DesiredCapacity when the value is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered, the original DesiredCapacity is 5. The scheduled task changes the minSize to 10, the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 5 is less than minSize 10, so the final new DesiredCapacity is 10.\n- When scheduled task triggered, the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 25 is greater than the maxSize 20, so the final new DesiredCapacity is 20.\n- When scheduled task triggered, the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect, and the DesiredCapacity is still 13.",
+				Description: "This flag disables the normal update of the DesiredCapacityproperty that would otherwise occur when a scheduled scaling task is triggered.\n指定是否scheduled task triggers proactive modification of the DesiredCapacity when the 值 is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered，the original DesiredCapacity is 5. The scheduled task changes the minSize to 10，the maxSize to 20，and the DesiredCapacity to 15. Since the DesiredCapacity update is 已禁用，15 does not take effect. However，the original DesiredCapacity 5 is less than minSize 10，so the final new DesiredCapacity is 10.\n- When scheduled task triggered，the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20，and the DesiredCapacity to 15. Since the DesiredCapacity update is 已禁用，15 does not take effect. However，the original DesiredCapacity 25 is greater than the maxSize 20，so the final new DesiredCapacity is 20.\n- When scheduled task triggered，the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20，and the DesiredCapacity to 15. Since the DesiredCapacity update is 已禁用，15 does not take effect，and the DesiredCapacity is still 13。",
 			},
 		},
 	}

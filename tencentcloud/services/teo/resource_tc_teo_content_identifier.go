@@ -26,30 +26,30 @@ func ResourceTencentCloudTeoContentIdentifier() *schema.Resource {
 			"description": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Description of the content identifier, length limit of up to 20 characters.",
+				Description: "描述 内容 identifier，length 限制 of up to 20 characters。",
 			},
 
 			"plan_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Target plan id to be bound, available only for the enterprise edition. <li>if there is already a plan under your account, go to [plan management](https://console.cloud.tencent.com/edgeone/package) to get the plan id and directly bind the content identifier to the plan;</li><li>if you do not have a plan to bind, please purchase an enterprise edition plan first.</li>.",
+				Description: "Target plan id to be bound，available only for the enterprise edition. <li>if there is already a plan under your 账号，go to [plan management](https://console.cloud.tencent.com/edgeone/package) to get the plan id and directly bind the 内容 identifier to the plan;</li><li>if you do not have a plan to bind，please purchase an enterprise edition plan first.</li>。",
 			},
 
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Tags of the content identifier. this parameter is used for authority control. to create tags, go to the [tag console](https://console.cloud.tencent.com/tag/taglist).",
+				Description: "标签 of the 内容 identifier. this parameter is 用于authority control. to create 标签，go to the [标签 console](https://console.cloud.tencent.com/标签/taglist)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The tag key.\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The 标签键\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The tag value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The 标签值\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -59,19 +59,19 @@ func ResourceTencentCloudTeoContentIdentifier() *schema.Resource {
 			"content_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Content identifier ID.",
+				Description: "内容 identifier ID。",
 			},
 
 			"created_on": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time, which is in Coordinated Universal Time (UTC) and follows the ISO 8601 date and time format..",
+				Description: "创建时间，which is in Coordinated Universal Time (UTC) and follows the ISO 8601 date and 时间格式.。",
 			},
 
 			"modified_on": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The time of the latest update, in Coordinated Universal Time (UTC), following the ISO 8601 date and time format..",
+				Description: "The time of the latest update，in Coordinated Universal Time (UTC)，following the ISO 8601 date and 时间格式.。",
 			},
 		},
 	}

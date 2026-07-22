@@ -24,13 +24,13 @@ func ResourceTencentCloudDcInternetAddressConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "internet public address id.",
+				Description: "internet public 地址 id。",
 			},
 
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "whether enable internet address.",
+				Description: "whether enable internet 地址",
 			},
 		},
 	}

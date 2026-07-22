@@ -28,21 +28,21 @@ func ResourceTencentCloudMqttCaCertificate() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"ca_certificate": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "CA certificate.",
+				Description: "CA certificate。",
 			},
 
 			"verification_certificate": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Verification certificate.",
+				Description: "Verification certificate。",
 			},
 
 			"format": {
@@ -50,7 +50,7 @@ func ResourceTencentCloudMqttCaCertificate() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "Certificate format, Default is PEM.",
+				Description: "Certificate 格式，默认为 PEM。",
 			},
 
 			"status": {
@@ -58,43 +58,43 @@ func ResourceTencentCloudMqttCaCertificate() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ACTIVE", "INACTIVE"}),
-				Description:  "Certificate status, Default is ACTIVE.\n  ACTIVE activation;\n  INACTIVE not active.",
+				Description:  "Certificate 状态，默认为 ACTIVE.\n  ACTIVE activation;\n  INACTIVE not 活跃",
 			},
 
 			"ca_sn": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate serial number.",
+				Description: "Certificate serial number。",
 			},
 
 			"ca_cn": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate common name.",
+				Description: "Certificate common 名称",
 			},
 
 			"created_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Certificate create time.",
+				Description: "Certificate 创建时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Certificate update time.",
+				Description: "Certificate 更新时间。",
 			},
 
 			"not_before_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Certificate effective start date.",
+				Description: "Certificate effective start date。",
 			},
 
 			"not_after_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Certificate expiring date.",
+				Description: "Certificate expiring date。",
 			},
 		},
 	}

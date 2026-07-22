@@ -28,20 +28,20 @@ func ResourceTencentCloudPostgresqlSecurityGroupConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Information of security groups in array.",
+				Description: "Information of security groups in array。",
 			},
 
 			"db_instance_id": {
 				Optional:      true,
 				Type:          schema.TypeString,
 				ConflictsWith: []string{"read_only_group_id"},
-				Description:   "Instance ID. Either this parameter or ReadOnlyGroupId must be passed in. If both parameters are passed in, ReadOnlyGroupId will be ignored.",
+				Description:   "实例 ID Either this parameter or ReadOnlyGroupId must be passed in. If both parameters are passed in，ReadOnlyGroupId will be ignored。",
 			},
 
 			"read_only_group_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "RO group ID. Either this parameter or DBInstanceId must be passed in. To query the security groups associated with the RO groups, only pass in ReadOnlyGroupId.",
+				Description: "RO 组 ID Either this parameter or DBInstanceId must be passed in. To query the security groups associated with the RO groups，only pass in ReadOnlyGroupId。",
 			},
 		},
 	}

@@ -18,38 +18,38 @@ func DataSourceTencentCloudSubnet() *schema.Resource {
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The VPC ID.",
+				Description: "The 私有网络 ID",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The ID of the Subnet.",
+				Description: "The ID Subnet。",
 			},
 			"cdc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "ID of CDC instance.",
+				Description: "ID CDC instance。",
 			},
 			"cidr_block": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The CIDR block of the Subnet.",
+				Description: "The CIDR block of the Subnet。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The AZ for the subnet.",
+				Description: "The AZ for the subnet。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The name for the Subnet.",
+				Description: "The 名称 for the Subnet。",
 			},
 			"route_table_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The Route Table ID.",
+				Description: "The Route Table ID。",
 			},
 		},
 	}

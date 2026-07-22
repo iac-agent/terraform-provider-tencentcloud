@@ -28,31 +28,31 @@ func ResourceTencentCloudMysqlBackupDownloadRestriction() *schema.Resource {
 			"limit_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "NoLimit No limit, both internal and external networks can be downloaded; LimitOnlyIntranet Only intranet can be downloaded; Customize user-defined vpc:ip can be downloaded. LimitVpc and LimitIp can be set only when the value is Customize.",
+				Description: "NoLimit 无限制，内外网均可下载； LimitOnlyIntranet 只能内网下载；自定义用户自定义vpc:ip可下载。 LimitVpc和LimitIp只有当值为Customize时才可以设置。",
 			},
 
 			"vpc_comparison_symbol": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "This parameter only supports In, which means that the vpc specified by LimitVpc can be downloaded. The default is In.",
+				Description: "该参数仅支持In，即LimitVpc指定的vpc可以下载。默认为输入。",
 			},
 
 			"ip_comparison_symbol": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "In: The specified ip can be downloaded; NotIn: The specified ip cannot be downloaded. The default is In.",
+				Description: "in：指定ip可以下载； NotIn：指定ip无法下载。默认为输入。",
 			},
 
 			"limit_vpc": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "vpc settings to limit downloads.",
+				Description: "vpc 设置来限制下载。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Restrict downloads from regions. Currently only the current region is supported.",
+							Description: "限制区域下载。目前仅支持当前区域。",
 						},
 						"vpc_list": {
 							Type: schema.TypeSet,
@@ -60,7 +60,7 @@ func ResourceTencentCloudMysqlBackupDownloadRestriction() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "List of vpcs to limit downloads.",
+							Description: "限制下载的 vpc 列表。",
 						},
 					},
 				},
@@ -72,7 +72,7 @@ func ResourceTencentCloudMysqlBackupDownloadRestriction() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "ip settings to limit downloads.",
+				Description: "ip 设置限制下载。",
 			},
 		},
 	}

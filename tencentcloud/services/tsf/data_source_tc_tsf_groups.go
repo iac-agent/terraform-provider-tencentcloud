@@ -19,37 +19,37 @@ func DataSourceTencentCloudTsfGroups() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "searchWord, support groupName.",
+				Description: "searchWord，support groupName。",
 			},
 
 			"application_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "applicationId.",
+				Description: "applicationId。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "sort term.",
+				Description: "sort term。",
 			},
 
 			"order_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "order type, 0 desc, 1 asc.",
+				Description: "顺序 类型，0 desc，1 asc。",
 			},
 
 			"namespace_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "namespace Id.",
+				Description: "namespace Id。",
 			},
 
 			"cluster_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "clusterId.",
+				Description: "clusterId。",
 			},
 
 			"group_resource_type_list": {
@@ -58,13 +58,13 @@ func DataSourceTencentCloudTsfGroups() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Group resourceType list.",
+				Description: "Group resourceType list。",
 			},
 
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "group status filter, `Running`: running, `Unknown`: unknown.",
+				Description: "group 状态 filter，`Running`: running，`Unknown`: unknown。",
 			},
 
 			"group_id_list": {
@@ -73,115 +73,115 @@ func DataSourceTencentCloudTsfGroups() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "group Id list.",
+				Description: "group Id list。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Pagination information of the virtual machine deployment group.Note: This field may return null, indicating that no valid value was found.",
+				Description: "Pagination information of the virtual machine deployment group.注意：此字段可能返回 null，表示未找到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total count virtual machine deployment group. Note: This field may return null, indicating that no valid value was found.",
+							Description: "总数 virtual machine deployment group. 注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Virtual machine deployment group list. Note: This field may return null, indicating that no valid value was found.",
+							Description: "Virtual machine deployment group list. 注意：此字段可能返回 null，表示未找到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group ID. Note: This field may return null, indicating that no valid value was found.",
+										Description: "组 ID 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group ID. Note: This field may return null, indicating that no valid value was found.",
+										Description: "组 ID 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application type. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Application 类型 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group description. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Group 描述 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group update time. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Group 更新时间. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster ID. Note: This field may return null, indicating that no valid value was found.",
+										Description: "集群 ID 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"startup_parameters": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group start up Parameters. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Group start up Parameters. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace ID. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Namespace ID. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Create Time. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Create Time. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster name. Note: This field may return null, indicating that no valid value was found.",
+										Description: "集群名称 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application ID. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Application ID. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application name. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Application 名称 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace name. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Namespace 名称 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"microservice_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Microservice type. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Microservice 类型 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_resource_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group resource type. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Group 资源类型 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"updated_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Update time. Note: This field may return null, indicating that no valid value was found.",
+										Description: "更新时间. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"deploy_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group description. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Group 描述 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"alias": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group alias. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Group alias. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},
@@ -193,7 +193,7 @@ func DataSourceTencentCloudTsfGroups() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

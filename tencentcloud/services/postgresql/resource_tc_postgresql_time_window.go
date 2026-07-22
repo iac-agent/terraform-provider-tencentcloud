@@ -26,25 +26,25 @@ func ResourceTencentCloudPostgresqlTimeWindow() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"maintain_start_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Maintenance start time. Time zone is UTC+8.",
+				Description: "Maintenance 开始时间. 时区 is UTC+8。",
 			},
 
 			"maintain_duration": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Maintenance duration, Unit: hours.",
+				Description: "Maintenance duration，单位：hours。",
 			},
 
 			"maintain_week_days": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Maintenance cycle.",
+				Description: "Maintenance cycle。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},

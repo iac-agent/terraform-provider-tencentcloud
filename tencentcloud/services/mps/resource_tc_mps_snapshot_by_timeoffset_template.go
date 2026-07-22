@@ -26,43 +26,43 @@ func ResourceTencentCloudMpsSnapshotByTimeoffsetTemplate() *schema.Resource {
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot by timeoffset template name, length limit: 64 characters.",
+				Description: "Snapshot by timeoffset 模板名称，length 限制: 64 characters。",
 			},
 
 			"width": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum value of the snapshot width (or long side), value range: 0 and [128, 4096], unit: px.When Width and Height are both 0, the resolution is the same.When Width is 0 and Height is not 0, Width is scaled proportionally.When Width is not 0 and Height is 0, Height is scaled proportionally.When both Width and Height are not 0, the resolution is specified by the user.Default value: 0.",
+				Description: "The maximum 值 of the snapshot width (or long side)，取值范围：0 and [128，4096]，unit: px.When Width and Height are both 0，the resolution is the same.When Width is 0 and Height is not 0，Width is scaled proportionally.When Width is not 0 and Height is 0，Height is scaled proportionally.When both Width and Height are not 0，the resolution is specified by the 用户默认值：0。",
 			},
 
 			"height": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum value of the snapshot height (or short side), value range: 0 and [128, 4096], unit: px.When Width and Height are both 0, the resolution is the same.When Width is 0 and Height is not 0, Width is scaled proportionally.When Width is not 0 and Height is 0, Height is scaled proportionally.When both Width and Height are not 0, the resolution is specified by the user.Default value: 0.",
+				Description: "The maximum 值 of the snapshot height (or short side)，取值范围：0 and [128，4096]，unit: px.When Width and Height are both 0，the resolution is the same.When Width is 0 and Height is not 0，Width is scaled proportionally.When Width is not 0 and Height is 0，Height is scaled proportionally.When both Width and Height are not 0，the resolution is specified by the 用户默认值：0。",
 			},
 
 			"resolution_adaptive": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Adaptive resolution, optional value:open: At this time, Width represents the long side of the video, Height represents the short side of the video.close: At this point, Width represents the width of the video, and Height represents the height of the video.Default value: open.",
+				Description: "Adaptive resolution，可选 值:open: At this time，Width represents the long side of the video，Height represents the short side of the video.close: At this point，Width represents the width of the video，and Height represents the height of the video.默认值：open。",
 			},
 
 			"format": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Image format, the value can be jpg, png, webp. Default is jpg.",
+				Description: "Image 格式，the 值 can be jpg，png，webp. 默认为 jpg。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Template description information, length limit: 256 characters.",
+				Description: "模板描述 information，length 限制: 256 characters。",
 			},
 
 			"fill_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filling type, when the aspect ratio of the video stream configuration is inconsistent with the aspect ratio of the original video, the processing method for transcoding is filling. Optional filling type:stretch: Stretching, stretching each frame to fill the entire screen, which may cause the transcoded video to be squashed or stretched.black: Leave black, keep the video aspect ratio unchanged, and fill the rest of the edge with black.white: Leave blank, keep the aspect ratio of the video, and fill the rest of the edge with white.gauss: Gaussian blur, keep the aspect ratio of the video unchanged, and use Gaussian blur for the rest of the edge.Default value: black.",
+				Description: "Filling 类型，when the aspect ratio of the video stream configuration is inconsistent with the aspect ratio of the original video，the processing method for transcoding is filling. 可选 filling 类型:stretch: Stretching，stretching each frame to fill the entire screen，which may cause the transcoded video to be squashed or stretched.black: Leave black，keep the video aspect ratio unchanged，and fill the rest of the edge with black.white: Leave blank，keep the aspect ratio of the video，and fill the rest of the edge with white.gauss: Gaussian blur，keep the aspect ratio of the video unchanged，and use Gaussian blur for the rest of the edge.默认值：black。",
 			},
 		},
 	}

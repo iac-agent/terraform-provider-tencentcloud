@@ -20,97 +20,97 @@ func DataSourceTencentCloudSesSendTasks() *schema.Resource {
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent. To query tasks in all states, do not pass in this parameter.",
+				Description: "Task 状态 `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending 错误; `10`: sent. To query tasks in all states，do not pass in this parameter。",
 			},
 
 			"receiver_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Recipient group ID.",
+				Description: "Recipient 组 ID",
 			},
 
 			"task_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Task type. `1`: immediate; `2`: scheduled; `3`: recurring. To query tasks of all types, do not pass in this parameter.",
+				Description: "Task 类型 `1`: immediate; `2`: scheduled; `3`: recurring. To query tasks of all types，do not pass in this parameter。",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Data record.",
+				Description: "Data record。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Task ID.",
+							Description: "任务 ID",
 						},
 						"from_email_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sender address.",
+							Description: "Sender 地址",
 						},
 						"receiver_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Recipient group ID.",
+							Description: "Recipient 组 ID",
 						},
 						"task_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent.",
+							Description: "Task 状态 `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending 错误; `10`: sent。",
 						},
 						"task_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Task type. `1`: immediate; `2`: scheduled; `3`: recurring.",
+							Description: "Task 类型 `1`: immediate; `2`: scheduled; `3`: recurring。",
 						},
 						"request_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of emails requested to be sent.",
+							Description: "数量 emails requested to be sent。",
 						},
 						"send_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of emails sent.",
+							Description: "数量 emails sent。",
 						},
 						"cache_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of emails cached.",
+							Description: "数量 emails cached。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task creation time.",
+							Description: "Task 创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task update time.",
+							Description: "Task 更新时间。",
 						},
 						"subject": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Email subject.",
+							Description: "Email subject。",
 						},
 						"template": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Template and template dataNote: This field may return `null`, indicating that no valid value can be found.",
+							Description: "Template and template dataNote: This field may return `null`，indicating that no valid 值 can be found。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"template_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Template ID. If you do not have any template, please create one.",
+										Description: "模板 ID If you do not have any template，please create one。",
 									},
 									"template_data": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.Note: The parameter value cannot be data of a complex type such as HTML.Example: {name:xxx,age:xx}.",
+										Description: "Variable parameters in the template. Please use `json.dump` to 格式 the JSON object into a string 类型 The object is a set of 键-值 pairs. Each 键 denotes a variable，which is represented by {{键}}. The 键 will be replaced with the corresponding 值 (represented by {{值}}) when sending the email.Note: The parameter 值 cannot be data of a complex 类型 such as HTML.Example: {名称:xxx,age:xx}。",
 									},
 								},
 							},
@@ -118,23 +118,23 @@ func DataSourceTencentCloudSesSendTasks() *schema.Resource {
 						"cycle_param": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Parameters of a recurring taskNote: This field may return `null`, indicating that no valid value can be found.",
+							Description: "Parameters of a recurring taskNote: This field may return `null`，indicating that no valid 值 can be found。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"begin_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Start time of the task.",
+										Description: "开始时间 of the task。",
 									},
 									"interval_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Task recurrence in hours.",
+										Description: "Task recurrence in hours。",
 									},
 									"term_cycle": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Specifies whether to end the cycle. This parameter is used to update the task. Valid values: 0: No; 1: Yes.",
+										Description: "指定是否end the cycle. This parameter is 用于update the task. 有效值：0: No; 1: Yes。",
 									},
 								},
 							},
@@ -142,13 +142,13 @@ func DataSourceTencentCloudSesSendTasks() *schema.Resource {
 						"timed_param": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Parameters of a scheduled taskNote: This field may return `null`, indicating that no valid value can be found.",
+							Description: "Parameters of a scheduled taskNote: This field may return `null`，indicating that no valid 值 can be found。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"begin_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Start time of a scheduled sending task.",
+										Description: "开始时间 of a scheduled sending task。",
 									},
 								},
 							},
@@ -156,12 +156,12 @@ func DataSourceTencentCloudSesSendTasks() *schema.Resource {
 						"err_msg": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task exception informationNote: This field may return `null`, indicating that no valid value can be found.",
+							Description: "Task exception informationNote: This field may return `null`，indicating that no valid 值 can be found。",
 						},
 						"receivers_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Recipient group name.",
+							Description: "Recipient 组名称",
 						},
 					},
 				},
@@ -170,7 +170,7 @@ func DataSourceTencentCloudSesSendTasks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

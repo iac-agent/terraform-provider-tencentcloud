@@ -27,19 +27,19 @@ func ResourceTencentCloudMysqlLocalBinlogConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+				Description: "实例ID，格式为cdb-c1nl9rpv。与腾讯数据库控制台显示的实例ID相同。",
 			},
 
 			"save_hours": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Retention period of local binlog. Valid range: 72-168 hours. When there is disaster recovery instance, the valid range will be 120-168 hours.",
+				Description: "本地binlog的保留期限。有效范围：72-168小时。当有灾难恢复实例时，有效范围为120-168小时。",
 			},
 
 			"max_usage": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Space utilization of local binlog. Value range: [30,50].",
+				Description: "本地binlog的空间利用率。值范围：[30,50]。",
 			},
 		},
 	}

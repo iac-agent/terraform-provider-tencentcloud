@@ -19,44 +19,44 @@ func DataSourceTencentCloudMysqlInstanceParamRecord() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cdb-c1nl9rpv, which is the same as the instance ID displayed on the cloud database console page, and you can use the [query instance list] (https://cloud.tencent.com/document/api/236/15872) interface Gets the value of the field InstanceId in the output parameter.",
+				Description: "实例ID，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同，可以通过【查询实例列表】（https://cloud.tencent.com/document/api/236/15872）接口获取输出参数中InstanceId字段的值。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Parameter modification record.",
+				Description: "参数修改记录。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance id.",
+							Description: "实例 ID。",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "parameter name.",
+							Description: "参数名称。",
 						},
 						"old_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The value of the parameter before modification.",
+							Description: "修改前的参数值。",
 						},
 						"new_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The modified value of the parameter.",
+							Description: "参数的修改值。",
 						},
 						"is_success": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the parameter is modified successfully.",
+							Description: "参数是否修改成功。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Change the time.",
+							Description: "改变时间。",
 						},
 					},
 				},
@@ -65,7 +65,7 @@ func DataSourceTencentCloudMysqlInstanceParamRecord() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

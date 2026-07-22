@@ -26,52 +26,52 @@ func ResourceTencentCloudCynosdbParamTemplate() *schema.Resource {
 			"template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Template Name.",
+				Description: "模板名称。",
 			},
 
 			"engine_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "MySQL version number.",
+				Description: "MySQL 版本号。",
 			},
 
 			"template_description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Template Description.",
+				Description: "模板描述。",
 			},
 
 			"template_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Optional parameter, template ID to be copied.",
+				Description: "可选参数，要复制的模板ID。",
 			},
 
 			"db_mode": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Database type, optional values: NORMAL (default), SERVERLESS.",
+				Description: "数据库类型，可选值：NORMAL（默认）、SERVERLESS。",
 			},
 
 			"param_list": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeSet,
-				Description: "parameter list.",
+				Description: "参数列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Parameter Name.",
+							Description: "参数名称。",
 						},
 						"current_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Current value.",
+							Description: "当前值。",
 						},
 					},
 				},

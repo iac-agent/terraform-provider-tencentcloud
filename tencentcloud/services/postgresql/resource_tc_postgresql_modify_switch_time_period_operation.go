@@ -25,14 +25,14 @@ func ResourceTencentCloudPostgresqlModifySwitchTimePeriodOperation() *schema.Res
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of the instance waiting for a switch.",
+				Description: "The ID instance waiting for a switch。",
 			},
 
 			"switch_tag": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Valid value: `0` (switch immediately).",
+				Description: "Valid 值: `0` (switch immediately)。",
 			},
 		},
 	}

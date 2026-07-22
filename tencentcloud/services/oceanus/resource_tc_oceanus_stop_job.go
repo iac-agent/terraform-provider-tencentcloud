@@ -24,18 +24,18 @@ func ResourceTencentCloudOceanusStopJob() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "The description information for batch job stop.",
+				Description: "The 描述 information for batch job stop。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Job Id.",
+							Description: "Job Id。",
 						},
 						"stop_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Stop type,1 stopped 2 paused.",
+							Description: "Stop 类型,1 stopped 2 paused。",
 						},
 					},
 				},
@@ -44,7 +44,7 @@ func ResourceTencentCloudOceanusStopJob() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace SerialId.",
+				Description: "Workspace SerialId。",
 			},
 		},
 	}

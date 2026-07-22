@@ -19,51 +19,51 @@ func DataSourceTencentCloudMonitorAlarmMetric() *schema.Resource {
 			"module": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Fixed value, as `monitor`.",
+				Description: "Fixed 值，as `monitor`。",
 			},
 
 			"monitor_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Monitoring Type Filter MT_QCE=Cloud Product Monitoring.",
+				Description: "Monitoring 类型 Filter MT_QCE=Cloud Product Monitoring。",
 			},
 
 			"namespace": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Alarm policy type, obtained from DescribeAllNamespaces, such as cvm_device.",
+				Description: "Alarm policy 类型，obtained from DescribeAllNamespaces，such as cvm_device。",
 			},
 
 			"metrics": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Alarm indicator list.",
+				Description: "Alarm indicator list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm strategy type.",
+							Description: "Alarm strategy 类型",
 						},
 						"metric_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Indicator Name.",
+							Description: "Indicator 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Indicator display name.",
+							Description: "Indicator display 名称",
 						},
 						"min": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Minimum value.",
+							Description: "Minimum 值",
 						},
 						"max": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Maximum value.",
+							Description: "Maximum 值",
 						},
 						"dimensions": {
 							Type: schema.TypeSet,
@@ -71,17 +71,17 @@ func DataSourceTencentCloudMonitorAlarmMetric() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Dimension List.",
+							Description: "Dimension List。",
 						},
 						"unit": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Unit.",
+							Description: "Unit。",
 						},
 						"metric_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Indicator configuration.",
+							Description: "Indicator configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"operator": {
@@ -90,7 +90,7 @@ func DataSourceTencentCloudMonitorAlarmMetric() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Allowed Operators.",
+										Description: "Allowed Operators。",
 									},
 									"period": {
 										Type: schema.TypeSet,
@@ -98,7 +98,7 @@ func DataSourceTencentCloudMonitorAlarmMetric() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Computed:    true,
-										Description: "The data period allowed for configuration, in seconds.",
+										Description: "The data 周期 allowed for configuration，（秒）。",
 									},
 									"continue_period": {
 										Type: schema.TypeSet,
@@ -106,7 +106,7 @@ func DataSourceTencentCloudMonitorAlarmMetric() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Computed:    true,
-										Description: "Number of allowed duration cycles for configuration.",
+										Description: "数量 allowed duration cycles for configuration。",
 									},
 								},
 							},
@@ -114,33 +114,33 @@ func DataSourceTencentCloudMonitorAlarmMetric() *schema.Resource {
 						"is_advanced": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Is it a high-level indicator. 1 Yes 0 No.",
+							Description: "Is it a high-级别 indicator. 1 Yes 0 No。",
 						},
 						"is_open": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Is the advanced indicator activated. 1 Yes 0 No.",
+							Description: "Is the advanced indicator activated. 1 Yes 0 No。",
 						},
 						"product_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Integration Center Product ID.",
+							Description: "Integration Center Product ID。",
 						},
 						"operators": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Matching operator.",
+							Description: "Matching 操作者",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Operator identification.",
+										Description: "操作者 identification。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Operator Display Name.",
+										Description: "操作者 Display 名称",
 									},
 								},
 							},
@@ -151,7 +151,7 @@ func DataSourceTencentCloudMonitorAlarmMetric() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "Indicator trigger.",
+							Description: "Indicator trigger。",
 						},
 					},
 				},
@@ -160,7 +160,7 @@ func DataSourceTencentCloudMonitorAlarmMetric() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -29,96 +29,96 @@ func ResourceTencentCloudTemScaleRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "environment ID.",
+				Description: "environment ID。",
 			},
 
 			"application_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "application ID.",
+				Description: "application ID。",
 			},
 
 			"workload_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "application ID, which is combined by environment ID and application ID, like `en-o5edaepv#app-3j29aa2p`.",
+				Description: "application ID，which is combined by environment ID and application ID，like `en-o5edaepv#app-3j29aa2p`。",
 			},
 
 			"autoscaler": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: ".",
+				Description: "。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"autoscaler_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "name.",
+							Description: "名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "description.",
+							Description: "描述",
 						},
 						"enabled": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "enable AutoScaler.",
+							Description: "enable AutoScaler。",
 						},
 						"min_replicas": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "minimal replica number.",
+							Description: "minimal replica number。",
 						},
 						"max_replicas": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "maximal replica number.",
+							Description: "maximal replica number。",
 						},
 						"cron_horizontal_autoscaler": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "scaler based on cron configuration.",
+							Description: "scaler based on cron configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "name.",
+										Description: "名称",
 									},
 									"period": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "period.",
+										Description: "周期",
 									},
 									"priority": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "priority.",
+										Description: "优先级",
 									},
 									"enabled": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "enable scaler.",
+										Description: "enable scaler。",
 									},
 									"schedules": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "schedule payload.",
+										Description: "schedule payload。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"start_at": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "start time.",
+													Description: "开始时间。",
 												},
 												"target_replicas": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "target replica number.",
+													Description: "target replica number。",
 												},
 											},
 										},
@@ -129,33 +129,33 @@ func ResourceTencentCloudTemScaleRule() *schema.Resource {
 						"horizontal_autoscaler": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "scaler based on metrics.",
+							Description: "scaler based on metrics。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"metrics": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "metric name.",
+										Description: "指标名称",
 									},
 									"enabled": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "enable scaler.",
+										Description: "enable scaler。",
 									},
 									"max_replicas": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "maximal replica number.",
+										Description: "maximal replica number。",
 									},
 									"min_replicas": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "minimal replica number.",
+										Description: "minimal replica number。",
 									},
 									"threshold": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "metric threshold.",
+										Description: "metric threshold。",
 									},
 								},
 							},

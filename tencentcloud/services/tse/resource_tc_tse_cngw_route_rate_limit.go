@@ -28,42 +28,42 @@ func ResourceTencentCloudTseCngwRouteRateLimit() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID.",
+				Description: "gateway ID。",
 			},
 
 			"route_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Route id, or route name.",
+				Description: "Route id，or route 名称",
 			},
 
 			"limit_detail": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "rate limit configuration.",
+				Description: "rate 限制 configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "status of service rate limit.",
+							Description: "状态 service rate 限制",
 						},
 						"qps_thresholds": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "qps threshold.",
+							Description: "qps threshold。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"unit": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "qps threshold unit.Reference value:`second`,`minute`,`hour`,`day`,`month`,`year`.",
+										Description: "qps threshold unit.Reference 值:`second`,`minute`,`hour`,`day`,`month`,`year`。",
 									},
 									"max": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "the max threshold.",
+										Description: "the max threshold。",
 									},
 								},
 							},
@@ -71,59 +71,59 @@ func ResourceTencentCloudTseCngwRouteRateLimit() *schema.Resource {
 						"limit_by": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "basis for service rate limit.Reference value:`ip`,`service`,`consumer`,`credential`,`path`,`header`.",
+							Description: "basis for service rate 限制Reference 值:`ip`,`service`,`consumer`,`credential`,`路径`,`header`。",
 						},
 						"response_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "response strategy.Reference value:`url`: forward request according to url,`text`: response configuration,`default`: return directly.",
+							Description: "response strategy.Reference 值:`URL`: forward request according to URL,`text`: response configuration,`default`: return directly。",
 						},
 						"hide_client_headers": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "whether to hide the headers of client.",
+							Description: "是否hide the headers of client。",
 						},
 						"is_delay": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "whether to enable request queuing.",
+							Description: "是否enable request queuing。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "request paths that require rate limit.",
+							Description: "request paths that require rate 限制",
 						},
 						"header": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "request headers that require rate limit.",
+							Description: "request headers that require rate 限制",
 						},
 						"external_redis": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "external redis information, maybe null.",
+							Description: "external redis information，maybe null。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"redis_host": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "redis ip, maybe null.",
+										Description: "redis ip，maybe null。",
 									},
 									"redis_password": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "redis password, maybe null.",
+										Description: "redis 密码，maybe null。",
 									},
 									"redis_port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "redis port, maybe null.",
+										Description: "redis 端口，maybe null。",
 									},
 									"redis_timeout": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "redis timeout, unit: `ms`, maybe null.",
+										Description: "redis timeout，unit: `ms`，maybe null。",
 									},
 								},
 							},
@@ -131,35 +131,35 @@ func ResourceTencentCloudTseCngwRouteRateLimit() *schema.Resource {
 						"policy": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "counter policy.Reference value:`local`,`redis`,`external_redis`.",
+							Description: "counter policy.Reference 值:`local`,`redis`,`external_redis`。",
 						},
 						"rate_limit_response": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "response configuration, the response strategy is text, maybe null.",
+							Description: "response configuration，the response strategy is text，maybe null。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"body": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "custom response body, maybe bull.",
+										Description: "custom response body，maybe bull。",
 									},
 									"headers": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "headrs.",
+										Description: "headrs。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "key of header.",
+													Description: "键 of header。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "value of header.",
+													Description: "值 of header。",
 												},
 											},
 										},
@@ -167,7 +167,7 @@ func ResourceTencentCloudTseCngwRouteRateLimit() *schema.Resource {
 									"http_status": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "http status code.",
+										Description: "http 状态 代码",
 									},
 								},
 							},
@@ -175,12 +175,12 @@ func ResourceTencentCloudTseCngwRouteRateLimit() *schema.Resource {
 						"rate_limit_response_url": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "request forwarding address, maybe null.",
+							Description: "request forwarding 地址，maybe null。",
 						},
 						"line_up_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "queue time.",
+							Description: "queue time。",
 						},
 					},
 				},

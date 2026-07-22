@@ -28,31 +28,31 @@ func ResourceTencentCloudKubernetesServerlessNodePool() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "cluster id of serverless node pool.",
+				Description: "集群 ID serverless node pool。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "serverless node pool name.",
+				Description: "serverless node pool 名称",
 			},
 
 			"serverless_nodes": {
 				Type:        schema.TypeList,
 				Required:    true,
 				ForceNew:    true,
-				Description: "node list of serverless node pool.",
+				Description: "node 列表 serverless node pool。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"display_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "display name of serverless node.",
+							Description: "display 名称 serverless node。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "subnet id of serverless node.",
+							Description: "子网 ID serverless node。",
 						},
 					},
 				},
@@ -62,7 +62,7 @@ func ResourceTencentCloudKubernetesServerlessNodePool() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "security groups of serverless node pool.",
+				Description: "security groups of serverless node pool。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -71,29 +71,29 @@ func ResourceTencentCloudKubernetesServerlessNodePool() *schema.Resource {
 			"labels": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "labels of serverless node.",
+				Description: "labels of serverless node。",
 			},
 
 			"taints": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "taints of serverless node.",
+				Description: "taints of serverless node。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Key of the taint. The taint key name does not exceed 63 characters, only supports English, numbers,'/','-', and does not allow beginning with ('/').",
+							Description: "键 of the taint. The taint 键 名称 does not exceed 63 characters，only supports English，numbers,'/','-'，and does not allow beginning with ('/')。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Value of the taint.",
+							Description: "值 of the taint。",
 						},
 						"effect": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Effect of the taint. Valid values are: `NoSchedule`, `PreferNoSchedule`, `NoExecute`.",
+							Description: "Effect of the taint. 有效值：`NoSchedule`，`PreferNoSchedule`，`NoExecute`。",
 						},
 					},
 				},
@@ -102,7 +102,7 @@ func ResourceTencentCloudKubernetesServerlessNodePool() *schema.Resource {
 			"life_state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "life state of serverless node pool.",
+				Description: "life state of serverless node pool。",
 			},
 		},
 	}

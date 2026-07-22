@@ -21,52 +21,52 @@ func DataSourceTencentCloudCosBucketObject() *schema.Resource {
 			"bucket": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of the bucket that contains the objects to query.",
+				Description: "名称 存储桶 that 包含objects to query。",
 			},
 			"key": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The full path to the object inside the bucket.",
+				Description: "The full 路径 to the object inside the 存储桶",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"cache_control": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Specifies caching behavior along the request/reply chain.",
+				Description: "指定caching behavior along the request/reply chain。",
 			},
 			"content_disposition": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Specifies presentational information for the object.",
+				Description: "指定presentational information for the object。",
 			},
 			"content_encoding": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.",
+				Description: "指定what 内容 encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-类型 referenced by the 内容-类型 header field。",
 			},
 			"content_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "A standard MIME type describing the format of the object data.",
+				Description: "A standard MIME 类型 describing the 格式 of the object data。",
 			},
 			"etag": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ETag generated for the object, which is may not equal to MD5 value.",
+				Description: "ETag generated for the object，which is may not equal to MD5 值",
 			},
 			"last_modified": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last modified date of the object.",
+				Description: "Last modified date of the object。",
 			},
 			"storage_class": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Object storage type such as STANDARD.",
+				Description: "Object storage 类型 such as STANDARD。",
 			},
 		},
 	}

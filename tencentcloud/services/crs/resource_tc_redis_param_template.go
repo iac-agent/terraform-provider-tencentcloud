@@ -26,40 +26,40 @@ func ResourceTencentCloudRedisParamTemplate() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Parameter template name.",
+				Description: "Parameter 模板名称",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Parameter template description.",
+				Description: "Parameter 模板描述",
 			},
 			"product_type": {
 				Type:          schema.TypeInt,
 				Optional:      true,
 				ConflictsWith: []string{"template_id"},
-				Description:   "Specify product type. Valid values: 1 (Redis 2.8 Memory Edition in cluster architecture), 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 5 (Redis 2.8 Memory Edition in standalone architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture). If `template_id` is specified, this parameter can be left blank; otherwise, it is required.",
+				Description:   "指定product 类型 有效值：1 (Redis 2.8 Memory Edition in cluster architecture)，2 (Redis 2.8 Memory Edition in standard architecture)，3 (CKV 3.2 Memory Edition in standard architecture)，4 (CKV 3.2 Memory Edition in cluster architecture)，5 (Redis 2.8 Memory Edition in standalone architecture)，6 (Redis 4.0 Memory Edition in standard architecture)，7 (Redis 4.0 Memory Edition in cluster architecture)，8 (Redis 5.0 Memory Edition in standard architecture)，9 (Redis 5.0 Memory Edition in cluster architecture). If `template_id` is specified，this parameter can be left blank; otherwise，it 为必填项。",
 			},
 			"template_id": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"product_type"},
-				Description:   "Specify which existed template import from.",
+				Description:   "指定which existed template import from。",
 			},
 			"params_override": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Specify override parameter list, NOTE: Do not remove override params once set, removing will not take effects to current value.",
+				Description: "指定override parameter list，NOTE: Do not remove override params once set，removing will not take effects to 当前值",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter key e.g. `timeout`, check https://www.tencentcloud.com/document/product/239/39796 for more reference.",
+							Description: "Parameter 键 e.g. `timeout`，check https://www.tencentcloud.com/document/product/239/39796 for more reference。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter value, check https://www.tencentcloud.com/document/product/239/39796 for more reference.",
+							Description: "Parameter 值，check https://www.tencentcloud.com/document/product/239/39796 for more reference。",
 						},
 					},
 				},
@@ -67,53 +67,53 @@ func ResourceTencentCloudRedisParamTemplate() *schema.Resource {
 			"param_details": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Readonly full parameter list details.",
+				Description: "Readonly full parameter list details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter key name.",
+							Description: "Parameter 键 名称",
 						},
 						"param_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter type.",
+							Description: "Parameter 类型",
 						},
 						"default": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Default value.",
+							Description: "默认值",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter description.",
+							Description: "Parameter 描述",
 						},
 						"current_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current value.",
+							Description: "当前值",
 						},
 						"need_reboot": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Indicates whether to reboot redis instance if modified.",
+							Description: "表示是否reboot redis instance if modified。",
 						},
 						"max": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Maximum value.",
+							Description: "Maximum 值",
 						},
 						"min": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Minimum value.",
+							Description: "Minimum 值",
 						},
 						"enum_value": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Enum values.",
+							Description: "Enum values。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 					},

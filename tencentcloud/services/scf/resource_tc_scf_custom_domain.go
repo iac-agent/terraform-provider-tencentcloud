@@ -26,61 +26,61 @@ func ResourceTencentCloudScfCustomDomain() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Domain names, pan-domain names are not supported.",
+				Description: "域名 names，pan-域名 names are not supported。",
 			},
 
 			"protocol": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Protocol, value range: HTTP, HTTPS, HTTP&HTTPS.",
+				Description: "协议，取值范围：HTTP，HTTPS，HTTP&HTTPS。",
 			},
 
 			"endpoints_config": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Routing configuration.",
+				Description: "Routing configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespace": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Function namespace.",
+							Description: "Function namespace。",
 						},
 						"function_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Function name.",
+							Description: "Function 名称",
 						},
 						"qualifier": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Function alias or version.",
+							Description: "Function alias or 版本",
 						},
 						"path_match": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Path, value specification: /,/*,/xxx,/xxx/a,/xxx/*.",
+							Description: "路径，值 specification: /,/*,/xxx,/xxx/a,/xxx/*。",
 						},
 						"path_rewrite": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Path rewriting policy.",
+							Description: "路径 rewriting policy。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"path": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Path that needs to be rerouted, value specification: /,/*,/xxx,/xxx/a,/xxx/*.",
+										Description: "路径 that needs to be rerouted，值 specification: /,/*,/xxx,/xxx/a,/xxx/*。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Matching rules, value range: WildcardRules wildcard matching, ExactRules exact matching.",
+										Description: "Matching rules，取值范围：WildcardRules wildcard matching，ExactRules exact matching。",
 									},
 									"rewrite": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Replacement values: such as/, /$.",
+										Description: "Replacement values: such as/，/$。",
 									},
 								},
 							},
@@ -94,13 +94,13 @@ func ResourceTencentCloudScfCustomDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Certificate configuration information, required for HTTPS protocol.",
+				Description: "Certificate configuration information，必填 for HTTPS 协议",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"certificate_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "SSL Certificates ID.",
+							Description: "SSL Certificates ID。",
 						},
 					},
 				},
@@ -111,18 +111,18 @@ func ResourceTencentCloudScfCustomDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Web Application Firewall Configuration.",
+				Description: "Web Application Firewall Configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"waf_open": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether the Web Application Firewall is turned on, value range:OPEN, CLOSE.",
+							Description: "是否Web Application Firewall is turned on，值 range:OPEN，CLOSE。",
 						},
 						"waf_instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Web Application Firewall Instance ID.",
+							Description: "Web Application Firewall 实例 ID",
 						},
 					},
 				},

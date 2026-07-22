@@ -16,63 +16,63 @@ func DataSourceTencentCloudPostgresqlSpecinfos() *schema.Resource {
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The zone of the postgresql instance to query.",
+				Description: "The 可用区 of the postgresql instance to query。",
 			},
 			"storage_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Storage type filter. Valid values: `PHYSICAL_LOCAL_SSD` (local SSD), `CLOUD_PREMIUM` (premium cloud disk), `CLOUD_SSD` (cloud SSD), `CLOUD_HSSD` (enhanced cloud SSD).",
+				Description: "Storage 类型 filter. 有效值：`PHYSICAL_LOCAL_SSD` (local SSD)，`CLOUD_PREMIUM` (premium cloud disk)，`CLOUD_SSD` (cloud SSD)，`CLOUD_HSSD` (enhanced cloud SSD)。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of zones will be exported and its every element contains the following attributes:",
+				Description: "A 列表 zones will be exported and its every element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the postgresql instance speccode.",
+							Description: "ID postgresql instance speccode。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size(in GB).",
+							Description: "Memory size(in GB)。",
 						},
 						"storage_min": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The minimum volume size(in GB).",
+							Description: "The minimum volume size(in GB)。",
 						},
 						"storage_max": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The maximum volume size(in GB).",
+							Description: "The maximum volume size(in GB)。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The CPU number of the postgresql instance.",
+							Description: "The CPU 数量 the postgresql instance。",
 						},
 						"qps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The QPS of the postgresql instance.",
+							Description: "The QPS of the postgresql instance。",
 						},
 						"engine_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version of the postgresql database engine.",
+							Description: "版本 of the postgresql database engine。",
 						},
 						"engine_version_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version name of the postgresql database engine.",
+							Description: "版本 名称 postgresql database engine。",
 						},
 					},
 				},

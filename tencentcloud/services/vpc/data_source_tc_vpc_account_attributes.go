@@ -19,13 +19,13 @@ func DataSourceTencentCloudVpcAccountAttributes() *schema.Resource {
 			"account_attribute_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "User account attribute object.",
+				Description: "用户 账号 attribute object。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"attribute_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Attribute name.",
+							Description: "Attribute 名称",
 						},
 						"attribute_values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudVpcAccountAttributes() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Attribute values.",
+							Description: "Attribute values。",
 						},
 					},
 				},
@@ -42,7 +42,7 @@ func DataSourceTencentCloudVpcAccountAttributes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

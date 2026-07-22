@@ -28,58 +28,58 @@ func ResourceTencentCloudTeoDeployConfigGroupVersion() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 
 			"env_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Environment ID. Please specify the environment ID to which the version should be released.",
+				Description: "Environment ID. Please 指定environment ID to which the 版本 should be released。",
 			},
 
 			"config_group_version_infos": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Version information required for release. Multiple versions of different configuration groups can be modified simultaneously, while each group allows modifying only one version at a time.",
+				Description: "版本 information 必填 for release. Multiple versions of different configuration groups can be modified simultaneously，while each group allows modifying only one 版本 at a time。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Version ID.",
+							Description: "版本 ID。",
 						},
 						"version_number": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version No.",
+							Description: "版本 No。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Configuraration group ID.",
+							Description: "Configuraration 组 ID",
 						},
 						"group_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Configuration group type. Valid values: l7_acceleration (L7 acceleration configuration group), edge_functions (Edge function configuration group).",
+							Description: "Configuration group 类型 有效值：l7_acceleration (L7 acceleration configuration group)，edge_functions (Edge function configuration group)。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version description.",
+							Description: "版本 描述",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version status. Valid values: creating (Being created), inactive (Not effective), active (Effective).",
+							Description: "版本 状态 有效值：creating (Being created)，inactive (Not effective)，活跃 (Effective)。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+							Description: "版本 创建时间. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
 						},
 					},
 				},
@@ -89,31 +89,31 @@ func ResourceTencentCloudTeoDeployConfigGroupVersion() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Change description. It is used to describe the content and reasons for this change. A maximum of 100 characters are supported.",
+				Description: "Change 描述 It is 用于describe the 内容 and reasons for this change. A maximum of 100 characters are supported。",
 			},
 
 			"record_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Deploy record ID.",
+				Description: "Deploy record ID。",
 			},
 
 			"deploy_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Deploy time. The time follows the ISO 8601 standard in the date and time format.",
+				Description: "Deploy time. The time follows the ISO 8601 standard in the date and 时间格式。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Deploy status. Valid values: deploying (Deploying), failure (Deploy failed), success (Deploy successful).",
+				Description: "Deploy 状态 有效值：deploying (Deploying)，failure (Deploy failed)，success (Deploy successful)。",
 			},
 
 			"message": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Deploy result message.",
+				Description: "Deploy 结果 消息",
 			},
 		},
 	}

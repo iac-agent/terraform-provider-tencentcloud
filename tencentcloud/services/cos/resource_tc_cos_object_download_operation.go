@@ -25,19 +25,19 @@ func ResourceTencentCloudCosObjectDownloadOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket.",
+				Description: "存储桶",
 			},
 			"key": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Object key.",
+				Description: "Object 键",
 			},
 			"download_path": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Download path.",
+				Description: "Download 路径",
 			},
 		},
 	}

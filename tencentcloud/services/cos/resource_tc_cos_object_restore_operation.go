@@ -21,13 +21,13 @@ func ResourceTencentCloudCosObjectRestoreOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket.",
+				Description: "存储桶",
 			},
 			"key": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Object key.",
+				Description: "Object 键",
 			},
 			"tier": {
 				Required: true,
@@ -46,7 +46,7 @@ func ResourceTencentCloudCosObjectRestoreOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Specifies the valid duration of the restored temporary copy in days.",
+				Description: "指定valid duration of the restored temporary copy in days。",
 			},
 		},
 	}

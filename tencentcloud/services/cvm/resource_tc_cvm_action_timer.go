@@ -26,27 +26,27 @@ func ResourceTencentCloudCvmActionTimer() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 			"action_timer": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Scheduled tasks. This parameter can be used to specify scheduled tasks for instances, and currently only supports scheduled destruction.",
+				Description: "Scheduled tasks. This parameter can be 用于指定scheduled tasks for instances，and currently only supports scheduled destruction。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timer_action": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Timer action, currently only supports destroying one value: TerminateInstances.",
+							Description: "Timer 操作，currently only supports destroying one 值: TerminateInstances。",
 						},
 						"action_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Execution time, expressed according to ISO8601 standard and using UTC time. The format is YYYY-MM-DDThh:mm:ssZ. For example, 2018-05-29T11:26:40Z, the execution time must be 5 minutes longer than the current time.",
+							Description: "执行时间，expressed according to ISO8601 standard and using UTC time. The 格式 is YYYY-MM-DDThh:mm:ssZ. For example，2018-05-29T11:26:40Z，the 执行时间 must be 5 minutes longer than the current time。",
 						},
 					},
 				},

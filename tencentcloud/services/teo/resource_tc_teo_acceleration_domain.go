@@ -35,58 +35,58 @@ func ResourceTencentCloudTeoAccelerationDomain() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the site related with the accelerated domain name.",
+				Description: "ID site related with the accelerated 域名 名称",
 			},
 
 			"domain_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Accelerated domain name.",
+				Description: "Accelerated 域名 名称",
 			},
 
 			"origin_info": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Details of the origin.",
+				Description: "Details of the origin。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"origin_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Origin server type, with values: IP_DOMAIN: IPv4, IPv6, or domain name type origin server; COS: Tencent Cloud COS origin server; AWS_S3: AWS S3 origin server; ORIGIN_GROUP: origin server group type origin server; VOD: Video on Demand; SPACE: origin server uninstallation. Currently only available to the allowlist; LB: load balancing. Currently only available to the allowlist.",
+							Description: "Origin server 类型，with values: IP_DOMAIN: IPv4，IPv6，or 域名 名称 类型 origin server; COS: Tencent Cloud COS origin server; AWS_S3: AWS S3 origin server; ORIGIN_GROUP: origin server group 类型 origin server; VOD: Video on Demand; SPACE: origin server uninstallation. Currently only available to the allowlist; LB: load balancing. Currently only available to the allowlist。",
 						},
 						"origin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Origin server address, which varies according to the value of OriginType: When OriginType = IP_DOMAIN, fill in an IPv4 address, an IPv6 address, or a domain name; When OriginType = COS, fill in the access domain name of the COS bucket; When OriginType = AWS_S3, fill in the access domain name of the S3 bucket; When OriginType = ORIGIN_GROUP, fill in the origin server group ID; When OriginType = VOD, fill in the VOD application ID; When OriginType = LB, fill in the Cloud Load Balancer instance ID. This feature is currently only available to the allowlist; When OriginType = SPACE, fill in the origin server uninstallation space ID. This feature is currently only available to the allowlist.",
+							Description: "Origin server 地址，which varies according to the 值 of OriginType: When OriginType = IP_DOMAIN，fill in an IPv4 地址，an IPv6 地址，or a 域名 名称; When OriginType = COS，fill in the access 域名 名称 COS 存储桶; When OriginType = AWS_S3，fill in the access 域名 名称 S3 存储桶; When OriginType = ORIGIN_GROUP，fill in the origin server 组 ID; When OriginType = VOD，fill in the VOD application ID; When OriginType = LB，fill in the Cloud Load Balancer instance ID. This feature is currently only available to the allowlist; When OriginType = SPACE，fill in the origin server uninstallation space ID. This feature is currently only available to the allowlist。",
 						},
 						"backup_origin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The ID of the secondary origin group. This parameter is valid only when OriginType is ORIGIN_GROUP. This field indicates the old version capability, which cannot be configured or modified on the control panel after being called. Please submit a ticket if required.",
+							Description: "The ID secondary origin group. This parameter is valid only when OriginType is ORIGIN_GROUP. This field 表示old 版本 capability，which cannot be configured or modified on the control panel after being called. Please 提交 a ticket if 必填",
 						},
 						"private_access": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether access to the private Cloud Object Storage origin server is allowed. This parameter is valid only when OriginType is COS or AWS_S3. Valid values: on: Enable private authentication; off: Disable private authentication. If it is not specified, the default value is off.",
+							Description: "Whether access to the private Cloud Object Storage origin server is allowed. This parameter is valid only when OriginType is COS or AWS_S3. 有效值：on: Enable private authentication; off: Disable private authentication. If it is not specified，the 默认值为 off。",
 						},
 						"private_parameters": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Private authentication parameter. This parameter is valid only when `private_access` is on.",
+							Description: "Private authentication parameter. This parameter is valid only when `private_access` is on。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The parameter name. Valid values: `AccessKeyId`: Access Key ID; `SecretAccessKey`: Secret Access Key; `SignatureVersion`: authentication version, v2 or v4; `Region`: bucket region.",
+										Description: "The parameter 名称 有效值：`AccessKeyId`: Access 键 ID; `SecretAccessKey`: Secret Access 键; `SignatureVersion`: authentication 版本，v2 or v4; `地域`: 存储桶 地域",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The parameter value.",
+										Description: "The parameter 值",
 									},
 								},
 							},
@@ -95,17 +95,17 @@ func ResourceTencentCloudTeoAccelerationDomain() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Custom origin server HOST header. this parameter is valid only when OriginType=IP_DOMAIN.If the OriginType is another type of origin, this parameter does not need to be passed in, otherwise an error will be reported. If OriginType is COS or AWS_S3, the HOST header for origin-pull will remain consistent with the origin server domain name. If OriginType is ORIGIN_GROUP, the HOST header follows the ORIGIN site GROUP configuration. if not configured, it defaults to the acceleration domain name. If OriginType is VOD or SPACE, no configuration is required for this header, and the domain name takes effect based on the corresponding origin.",
+							Description: "Custom origin server HOST header. this parameter is valid only when OriginType=IP_DOMAIN.If the OriginType is another 类型 origin，this parameter does not need to be passed in，otherwise an 错误 will be reported. If OriginType is COS or AWS_S3，the HOST header for origin-pull will remain consistent with the origin server 域名 名称 If OriginType is ORIGIN_GROUP，the HOST header follows the ORIGIN site GROUP configuration. if not configured，it 默认为 the acceleration 域名 名称 If OriginType is VOD or SPACE，no configuration 为必填项 for this header，and the 域名 名称 takes effect based on the corresponding origin。",
 						},
 						"vod_origin_scope": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The scope of cloud on-demand back-to-source. This parameter is effective when OriginType = VOD. The possible values are: all: all files in the cloud on-demand application corresponding to the current origin station. The default value is all; bucket: files in a specified bucket under the cloud on-demand application corresponding to the current origin station. The bucket is specified by the parameter VodBucketId.",
+							Description: "The 范围 of cloud on-demand back-to-来源 This parameter is effective when OriginType = VOD. The possible values are: all: all files in the cloud on-demand application corresponding to the current origin station. The 默认值为 all; 存储桶: files in a specified 存储桶 under the cloud on-demand application corresponding to the current origin station. The 存储桶 is specified by the parameter VodBucketId。",
 						},
 						"vod_bucket_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "VOD bucket ID. This parameter is required when OriginType = VOD and VodOriginScope = bucket. Data source: the storage ID of the bucket in the Cloud VOD Professional Edition application.",
+							Description: "VOD 存储桶 ID. This parameter 为必填项 when OriginType = VOD and VodOriginScope = 存储桶 Data 来源: the storage ID 存储桶 in the Cloud VOD Professional Edition application。",
 						},
 					},
 				},
@@ -116,41 +116,41 @@ func ResourceTencentCloudTeoAccelerationDomain() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"online", "offline"}),
-				Description:  "Accelerated domain name status, the values are: `online`: enabled; `offline`: disabled. Default is `online`.",
+				Description:  "Accelerated 域名 名称 状态，the values are: `online`: 已启用; `offline`: 已禁用 默认为 `online`。",
 			},
 
 			"origin_protocol": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Origin return protocol, possible values are: `FOLLOW`: protocol follow; `HTTP`: HTTP protocol back to source; `HTTPS`: HTTPS protocol back to source. If not filled in, the default is: `FOLLOW`.",
+				Description: "Origin return 协议，possible values are: `FOLLOW`: 协议 follow; `HTTP`: HTTP 协议 back to 来源; `HTTPS`: HTTPS 协议 back to 来源 如果未填写 in，the default is: `FOLLOW`。",
 			},
 
 			"http_origin_port": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "HTTP back-to-origin port, the value is 1-65535, effective when OriginProtocol=FOLLOW/HTTP, if not filled in, the default value is 80.",
+				Description: "HTTP back-to-origin 端口，the 值 is 1-65535，effective when OriginProtocol=FOLLOW/HTTP，如果未填写 in，the 默认值为 80。",
 			},
 
 			"https_origin_port": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "HTTPS back-to-origin port. The value range is 1-65535. It takes effect when OriginProtocol=FOLLOW/HTTPS. If it is not filled in, the default value is 443.",
+				Description: "HTTPS back-to-origin 端口 The 值 range is 1-65535. It takes effect when OriginProtocol=FOLLOW/HTTPS. If it is not filled in，the 默认值为 443。",
 			},
 
 			"ipv6_status": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "IPv6 status, the value is: `follow`: follow the site IPv6 configuration; `on`: on; `off`: off. If not filled in, the default is: `follow`.",
+				Description: "IPv6 状态，the 值 is: `follow`: follow the site IPv6 configuration; `on`: on; `off`: off. 如果未填写 in，the default is: `follow`。",
 			},
 
 			"cname": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "CNAME address.",
+				Description: "CNAME 地址",
 			},
 		},
 	}

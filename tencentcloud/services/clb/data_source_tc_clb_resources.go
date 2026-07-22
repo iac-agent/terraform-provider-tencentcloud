@@ -19,13 +19,13 @@ func DataSourceTencentCloudClbResources() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter to query the list of AZ resources as detailed below: zone - String - Optional - Filter by AZ, such as ap-guangzhou-1. isp -- String - Optional - Filter by the ISP. Values: BGP, CMCC, CUCC and CTCC.",
+				Description: "过滤查询可用区资源列表，具体如下：可用区 - 字符串 - 可选 - 按可用区过滤，如 ap-guangzhou-1。 isp -- 字符串 - 可选 - 按 ISP 过滤。值：BGP、CMCC、CUCC 和 CTCC。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter name.",
+							Description: "过滤器名称。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudClbResources() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter value array.",
+							Description: "过滤值数组。",
 						},
 					},
 				},
@@ -42,18 +42,18 @@ func DataSourceTencentCloudClbResources() *schema.Resource {
 			"zone_resource_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of resources supported by the AZ.",
+				Description: "可用区支持的资源列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"master_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Primary AZ, such as ap-guangzhou-1.",
+							Description: "主AZ，如ap-guangzhou-1。",
 						},
 						"resource_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of resources. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "资源列表。注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
@@ -62,28 +62,28 @@ func DataSourceTencentCloudClbResources() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Specific ISP resource information, Vaules: CMCC, CUCC, CTCC, BGP, and INTERNAL.",
+										Description: "具体ISP资源信息，取值：CMCC、CUCC、CTCC、BGP、INTERNAL。",
 									},
 									"isp": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ISP information, such as CMCC, CUCC, CTCC, BGP, and INTERNAL.",
+										Description: "ISP信息，如CMCC、CUCC、CTCC、BGP、INTERNAL等。",
 									},
 									"availability_set": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Available resources. Note: This field may return null, indicating that no valid values can be obtaine.",
+										Description: "可用资源。注意：该字段可能返回null，表示取不到有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Specific ISP resource information. Values: CMCC, CUCC, CTCC, BGP.",
+													Description: "具体ISP资源信息。值：CMCC、CUCC、CTCC、BGP。",
 												},
 												"availability": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Whether the resource is available. Values: Available, Unavailable.",
+													Description: "资源是否可用。值：可用、不可用。",
 												},
 											},
 										},
@@ -94,32 +94,32 @@ func DataSourceTencentCloudClbResources() *schema.Resource {
 						"slave_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Secondary AZ, such as ap-guangzhou-2. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "辅助AZ，例如ap-guangzhou-2。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"ip_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP version. Values: IPv4, IPv6, and IPv6_Nat.",
+							Description: "IP版本。值：IPv4、IPv6 和 IPv6_Nat。",
 						},
 						"zone_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region of the AZ, such as ap-guangzhou.",
+							Description: "AZ区域，如ap-广州。",
 						},
 						"local_zone": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the AZ is a LocalZone. Values: true, false.",
+							Description: "该AZ是否为LocalZone。值：真、假。",
 						},
 						"zone_resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of resources in the zone. Values: SHARED, EXCLUSIVE.",
+							Description: "区域内的资源类型。价值观：共享、独占。",
 						},
 						"edge_zone": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the AZ is an edge zone. Values: true, false.",
+							Description: "该AZ是否为边缘区域。值：真、假。",
 						},
 					},
 				},
@@ -128,7 +128,7 @@ func DataSourceTencentCloudClbResources() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

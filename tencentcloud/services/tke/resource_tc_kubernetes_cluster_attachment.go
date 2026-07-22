@@ -29,14 +29,14 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the cluster.",
+				Description: "ID cluster。",
 			},
 
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the CVM instance, this cvm will reinstall the system.",
+				Description: "ID CVM instance，this cvm will reinstall the system。",
 			},
 
 			"image_id": {
@@ -44,7 +44,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "ID of Node image.",
+				Description: "ID Node image。",
 			},
 
 			"password": {
@@ -52,7 +52,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:     true,
 				ForceNew:     true,
 				Sensitive:    true,
-				Description:  "Password to access, should be set if `key_ids` not set.",
+				Description:  "密码 to access，should be set if `key_ids` not set。",
 				ValidateFunc: tccommon.ValidateAsConfigPassword,
 			},
 
@@ -61,7 +61,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "The key pair to use for the instance, it looks like skey-16jig7tx, it should be set if `password` not set.",
+				Description: "The 键 pair to use for the instance，it looks like skey-16jig7tx，it should be set if `密码` not set。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -71,7 +71,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The host name of the attached instance. Dot (.) and dash (-) cannot be used as the first and last characters of HostName and cannot be used consecutively. Windows example: The length of the name character is [2, 15], letters (capitalization is not restricted), numbers and dashes (-) are allowed, dots (.) are not supported, and not all numbers are allowed. Examples of other types (Linux, etc.): The character length is [2, 60], and multiple dots are allowed. There is a segment between the dots. Each segment allows letters (with no limitation on capitalization), numbers and dashes (-).",
+				Description: "The 主机 名称 attached instance. Dot (.) and dash (-) cannot be used as the first and last characters of HostName and cannot be used consecutively. Windows example: The length of the 名称 character is [2，15]，letters (capitalization is not restricted)，numbers and dashes (-) are allowed，dots (.) are not supported，and not all numbers are allowed. Examples of other types (Linux，etc.): The character length is [2，60]，and multiple dots are allowed. There is a segment between the dots. Each segment allows letters (with no limitation on capitalization)，numbers and dashes (-)。",
 			},
 
 			"worker_config": {
@@ -79,28 +79,28 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Deploy the machine configuration information of the 'WORKER', commonly used to attach existing instances.",
+				Description: "Deploy the machine configuration information of the 'WORKER'，commonly 用于attach existing instances。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mount_target": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Mount target. Default is not mounting.",
+							Description: "挂载目标 默认为 not mounting。",
 						},
 						"docker_graph_path": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "Docker graph path. Default is determined by the platform (currently /var/lib/containerd for containerd-based nodes).",
+							Description: "Docker graph 路径 默认为 determined by the platform (currently /var/lib/containerd for containerd-based nodes)。",
 						},
 						"data_disk": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    11,
-							Description: "Configurations of data disk.",
+							Description: "数据盘配置",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
@@ -108,7 +108,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Optional:     true,
 										ForceNew:     true,
 										Default:      "CLOUD_PREMIUM",
-										Description:  "Types of disk. Valid value: `LOCAL_BASIC`, `LOCAL_SSD`, `CLOUD_BASIC`, `CLOUD_PREMIUM`, `CLOUD_SSD`, `CLOUD_HSSD`, `CLOUD_TSSD` and `CLOUD_BSSD`.",
+										Description:  "Types of disk. Valid 值: `LOCAL_BASIC`，`LOCAL_SSD`，`CLOUD_BASIC`，`CLOUD_PREMIUM`，`CLOUD_SSD`，`CLOUD_HSSD`，`CLOUD_TSSD` and `CLOUD_BSSD`。",
 										ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.SYSTEM_DISK_ALLOW_TYPE),
 									},
 									"disk_size": {
@@ -116,34 +116,34 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										Default:     0,
-										Description: "Volume of disk in GB. Default is `0`.",
+										Description: "Volume of disk （GB）。 默认为 `0`。",
 									},
 									"file_system": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     "",
-										Description: "File system, e.g. `ext3/ext4/xfs`.",
+										Description: "File system，e.g. `ext3/ext4/xfs`。",
 									},
 									"auto_format_and_mount": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     false,
-										Description: "Indicate whether to auto format and mount or not. Default is `false`.",
+										Description: "Indicate 是否auto 格式 and mount or not. 默认为 `false`。",
 									},
 									"mount_target": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     "",
-										Description: "Mount target.",
+										Description: "挂载目标",
 									},
 									"disk_partition": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "The name of the device or partition to mount. NOTE: this argument doesn't support setting in node pool, or will leads to mount error.",
+										Description: "The 名称 device or partition to mount. NOTE: this argument doesn't support setting in node pool，or will leads to mount 错误",
 									},
 								},
 							},
@@ -152,7 +152,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Custom parameter information related to the node. This is a white-list parameter.",
+							Description: "Custom parameter information related to the node. This is a white-list parameter。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -161,38 +161,38 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Base64-encoded User Data text, the length limit is 16KB.",
+							Description: "Base64-encoded 用户 Data text，the length 限制 is 16KB。",
 						},
 						"pre_start_user_script": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Base64-encoded user script, executed before initializing the node, currently only effective for adding existing nodes.",
+							Description: "Base64-encoded 用户 script，executed before initializing the node，currently only effective for adding existing nodes。",
 						},
 						"taints": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Node taint.",
+							Description: "Node taint。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Key of the taint.",
+										Description: "键 of the taint。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Value of the taint.",
+										Description: "值 of the taint。",
 									},
 									"effect": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Effect of the taint.",
+										Description: "Effect of the taint。",
 									},
 								},
 							},
@@ -203,50 +203,50 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							ForceNew:    true,
 							Default:     true,
 							Deprecated:  "This argument was deprecated, use `unschedulable` instead.",
-							Description: "Indicate to schedule the adding node or not. Default is true.",
+							Description: "Indicate to schedule the adding node or not. 默认为 true。",
 						},
 						"desired_pod_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Indicate to set desired pod number in node. valid when the cluster is podCIDR.",
+							Description: "Indicate to set desired pod number in node. valid when the cluster is podCIDR。",
 						},
 						"gpu_args": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "GPU driver parameters.",
+							Description: "GPU driver parameters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"mig_enable": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										Default:     false,
-										Description: "Whether to enable MIG.",
+										Description: "是否enable MIG。",
 									},
 									"driver": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "GPU driver version. Format like: `{ version: String, name: String }`. `version`: Version of GPU driver or CUDA; `name`: Name of GPU driver or CUDA.",
+										Description:  "GPU driver 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 of GPU driver or CUDA; `名称`: 名称 GPU driver or CUDA。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"cuda": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "CUDA  version. Format like: `{ version: String, name: String }`. `version`: Version of GPU driver or CUDA; `name`: Name of GPU driver or CUDA.",
+										Description:  "CUDA  版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 of GPU driver or CUDA; `名称`: 名称 GPU driver or CUDA。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"cudnn": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "cuDNN version. Format like: `{ version: String, name: String, doc_name: String, dev_name: String }`. `version`: cuDNN version; `name`: cuDNN name; `doc_name`: Doc name of cuDNN; `dev_name`: Dev name of cuDNN.",
+										Description:  "cuDNN 版本 格式 like: `{ 版本: String，名称: String，doc_name: String，dev_name: String }`. `版本`: cuDNN 版本; `名称`: cuDNN 名称; `doc_name`: Doc 名称 cuDNN; `dev_name`: Dev 名称 cuDNN。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"custom_driver": {
 										Type:        schema.TypeMap,
 										Optional:    true,
-										Description: "Custom GPU driver. Format like: `{address: String}`. `address`: URL of custom GPU driver address.",
+										Description: "Custom GPU driver. 格式 like: `{地址: String}`. `地址`: URL of custom GPU driver 地址",
 									},
 								},
 							},
@@ -260,7 +260,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Override variable worker_config, commonly used to attach existing instances.",
+				Description: "Override variable worker_config，commonly 用于attach existing instances。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mount_target": {
@@ -268,7 +268,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Deprecated:  "This argument was no longer supported by TencentCloud TKE.",
-							Description: "Mount target. Default is not mounting.",
+							Description: "挂载目标 默认为 not mounting。",
 						},
 						"docker_graph_path": {
 							Type:        schema.TypeString,
@@ -276,14 +276,14 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							ForceNew:    true,
 							Computed:    true,
 							Deprecated:  "This argument was no longer supported by TencentCloud TKE.",
-							Description: "Docker graph path. Default is determined by the platform (currently /var/lib/containerd for containerd-based nodes).",
+							Description: "Docker graph 路径 默认为 determined by the platform (currently /var/lib/containerd for containerd-based nodes)。",
 						},
 						"data_disk": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    11,
-							Description: "Configurations of data disk.",
+							Description: "数据盘配置",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
@@ -291,7 +291,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Optional:     true,
 										ForceNew:     true,
 										Default:      "CLOUD_PREMIUM",
-										Description:  "Types of disk. Valid value: `LOCAL_BASIC`, `LOCAL_SSD`, `CLOUD_BASIC`, `CLOUD_PREMIUM`, `CLOUD_SSD`, `CLOUD_HSSD`, `CLOUD_TSSD` and `CLOUD_BSSD`.",
+										Description:  "Types of disk. Valid 值: `LOCAL_BASIC`，`LOCAL_SSD`，`CLOUD_BASIC`，`CLOUD_PREMIUM`，`CLOUD_SSD`，`CLOUD_HSSD`，`CLOUD_TSSD` and `CLOUD_BSSD`。",
 										ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.SYSTEM_DISK_ALLOW_TYPE),
 									},
 									"disk_size": {
@@ -299,34 +299,34 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										Default:     0,
-										Description: "Volume of disk in GB. Default is `0`.",
+										Description: "Volume of disk （GB）。 默认为 `0`。",
 									},
 									"file_system": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     "",
-										Description: "File system, e.g. `ext3/ext4/xfs`.",
+										Description: "File system，e.g. `ext3/ext4/xfs`。",
 									},
 									"auto_format_and_mount": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     false,
-										Description: "Indicate whether to auto format and mount or not. Default is `false`.",
+										Description: "Indicate 是否auto 格式 and mount or not. 默认为 `false`。",
 									},
 									"mount_target": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     "",
-										Description: "Mount target.",
+										Description: "挂载目标",
 									},
 									"disk_partition": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "The name of the device or partition to mount. NOTE: this argument doesn't support setting in node pool, or will leads to mount error.",
+										Description: "The 名称 device or partition to mount. NOTE: this argument doesn't support setting in node pool，or will leads to mount 错误",
 									},
 								},
 							},
@@ -336,7 +336,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Deprecated:  "This argument was no longer supported by TencentCloud TKE.",
-							Description: "Custom parameter information related to the node. This is a white-list parameter.",
+							Description: "Custom parameter information related to the node. This is a white-list parameter。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -346,14 +346,14 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Deprecated:  "This argument was no longer supported by TencentCloud TKE.",
-							Description: "Base64-encoded User Data text, the length limit is 16KB.",
+							Description: "Base64-encoded 用户 Data text，the length 限制 is 16KB。",
 						},
 						"pre_start_user_script": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Deprecated:  "This argument was no longer supported by TencentCloud TKE.",
-							Description: "Base64-encoded user script, executed before initializing the node, currently only effective for adding existing nodes.",
+							Description: "Base64-encoded 用户 script，executed before initializing the node，currently only effective for adding existing nodes。",
 						},
 						"is_schedule": {
 							Type:        schema.TypeBool,
@@ -361,50 +361,50 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							ForceNew:    true,
 							Default:     true,
 							Deprecated:  "This argument was deprecated, use `unschedulable` instead.",
-							Description: "Indicate to schedule the adding node or not. Default is true.",
+							Description: "Indicate to schedule the adding node or not. 默认为 true。",
 						},
 						"desired_pod_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Indicate to set desired pod number in node. valid when the cluster is podCIDR.",
+							Description: "Indicate to set desired pod number in node. valid when the cluster is podCIDR。",
 						},
 						"gpu_args": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "GPU driver parameters.",
+							Description: "GPU driver parameters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"mig_enable": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										Default:     false,
-										Description: "Whether to enable MIG.",
+										Description: "是否enable MIG。",
 									},
 									"driver": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "GPU driver version. Format like: `{ version: String, name: String }`. `version`: Version of GPU driver or CUDA; `name`: Name of GPU driver or CUDA.",
+										Description:  "GPU driver 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 of GPU driver or CUDA; `名称`: 名称 GPU driver or CUDA。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"cuda": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "CUDA  version. Format like: `{ version: String, name: String }`. `version`: Version of GPU driver or CUDA; `name`: Name of GPU driver or CUDA.",
+										Description:  "CUDA  版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 of GPU driver or CUDA; `名称`: 名称 GPU driver or CUDA。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"cudnn": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "cuDNN version. Format like: `{ version: String, name: String, doc_name: String, dev_name: String }`. `version`: cuDNN version; `name`: cuDNN name; `doc_name`: Doc name of cuDNN; `dev_name`: Dev name of cuDNN.",
+										Description:  "cuDNN 版本 格式 like: `{ 版本: String，名称: String，doc_name: String，dev_name: String }`. `版本`: cuDNN 版本; `名称`: cuDNN 名称; `doc_name`: Doc 名称 cuDNN; `dev_name`: Dev 名称 cuDNN。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"custom_driver": {
 										Type:        schema.TypeMap,
 										Optional:    true,
-										Description: "Custom GPU driver. Format like: `{address: String}`. `address`: URL of custom GPU driver address.",
+										Description: "Custom GPU driver. 格式 like: `{地址: String}`. `地址`: URL of custom GPU driver 地址",
 									},
 								},
 							},
@@ -417,7 +417,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Labels of tke attachment exits CVM.",
+				Description: "Labels of tke attachment exits CVM。",
 			},
 
 			"unschedulable": {
@@ -425,7 +425,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Default:     0,
-				Description: "Sets whether the joining node participates in the schedule. Default is `0`, which means it participates in scheduling. Non-zero(eg: `1`) number means it does not participate in scheduling.",
+				Description: "Sets 是否joining node participates in the schedule. 默认为 `0`，which means it participates in scheduling. Non-zero(eg: `1`) number means it does not participate in scheduling。",
 			},
 
 			"security_groups": {
@@ -433,7 +433,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Computed:    true,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "A list of security group IDs after attach to cluster.",
+				Description: "A 列表 security group IDs after attach to cluster。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -442,7 +442,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 			"state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "State of the node.",
+				Description: "State of the node。",
 			},
 		},
 	}

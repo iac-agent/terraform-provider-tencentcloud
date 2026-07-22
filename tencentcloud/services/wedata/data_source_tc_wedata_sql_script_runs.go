@@ -18,151 +18,151 @@ func DataSourceTencentCloudWedataSqlScriptRuns() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"script_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Script ID.",
+				Description: "Script ID。",
 			},
 
 			"job_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Job ID.",
+				Description: "作业 ID",
 			},
 
 			"search_word": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search keyword.",
+				Description: "Search keyword。",
 			},
 
 			"execute_user_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Execute user UIN.",
+				Description: "Execute 用户 UIN。",
 			},
 
 			"start_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Start time.",
+				Description: "开始时间。",
 			},
 
 			"end_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "End time.",
+				Description: "结束时间。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Data exploration tasks.",
+				Description: "Data exploration tasks。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data exploration task ID.",
+							Description: "Data exploration task ID。",
 						},
 						"job_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data exploration task name.",
+							Description: "Data exploration task 名称",
 						},
 						"job_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Job type.",
+							Description: "Job 类型",
 						},
 						"script_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Script ID.",
+							Description: "Script ID。",
 						},
 						"job_execution_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Subtask list.",
+							Description: "Subtask list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"job_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data exploration task ID.",
+										Description: "Data exploration task ID。",
 									},
 									"job_execution_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Subquery task ID.",
+										Description: "Subquery task ID。",
 									},
 									"job_execution_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Subquery name.",
+										Description: "Subquery 名称",
 									},
 									"script_content": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Subquery SQL content.",
+										Description: "Subquery SQL 内容",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Subquery status.",
+										Description: "Subquery 状态",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Create time.",
+										Description: "创建时间。",
 									},
 									"execute_stage_info": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Execution phase.",
+										Description: "Execution phase。",
 									},
 									"log_file_path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Log file path.",
+										Description: "Log file 路径",
 									},
 									"result_file_path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Result file path.",
+										Description: "结果 file 路径",
 									},
 									"result_preview_file_path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Preview result file path.",
+										Description: "Preview 结果 file 路径",
 									},
 									"result_total_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Total number of rows in the task execution result.",
+										Description: "Total 数量 rows in the task execution 结果",
 									},
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Update time.",
+										Description: "更新时间。",
 									},
 									"end_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "End time.",
+										Description: "结束时间。",
 									},
 									"time_cost": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Time consumed.",
+										Description: "Time consumed。",
 									},
 									"context_script_content": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Context SQL content.",
+										Description: "Context SQL 内容",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -170,22 +170,22 @@ func DataSourceTencentCloudWedataSqlScriptRuns() *schema.Resource {
 									"result_preview_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of rows for previewing the task execution results.",
+										Description: "数量 rows for previewing the task execution results。",
 									},
 									"result_effect_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of rows affected by the task execution result.",
+										Description: "数量 rows affected by the task execution 结果",
 									},
 									"collecting_total_result": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether collecting full results: default false, true means collecting full results, used for frontend polling.",
+										Description: "Whether collecting full results: default false，true means collecting full results，用于frontend polling。",
 									},
 									"script_content_truncate": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether the script content is truncated.",
+										Description: "是否script 内容 is truncated。",
 									},
 								},
 							},
@@ -193,47 +193,47 @@ func DataSourceTencentCloudWedataSqlScriptRuns() *schema.Resource {
 						"script_content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Script content.",
+							Description: "Script 内容",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task status.",
+							Description: "Task 状态",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task creation time.",
+							Description: "Task 创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End time.",
+							Description: "结束时间。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud owner account UIN.",
+							Description: "Cloud 所有者 账号 UIN。",
 						},
 						"user_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Account UIN.",
+							Description: "账号 UIN。",
 						},
 						"time_cost": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Time consumed.",
+							Description: "Time consumed。",
 						},
 						"script_content_truncate": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the script content is truncated.",
+							Description: "是否script 内容 is truncated。",
 						},
 					},
 				},
@@ -242,7 +242,7 @@ func DataSourceTencentCloudWedataSqlScriptRuns() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

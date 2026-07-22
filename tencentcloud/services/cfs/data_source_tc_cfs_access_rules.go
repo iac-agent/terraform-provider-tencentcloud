@@ -21,49 +21,49 @@ func DataSourceTencentCloudCfsAccessRules() *schema.Resource {
 			"access_group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "A specified access group ID used to query.",
+				Description: "A specified access 组 ID 用于query。",
 			},
 			"access_rule_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "A specified access rule ID used to query.",
+				Description: "A specified access rule ID 用于query。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			"access_rule_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of CFS access rule. Each element contains the following attributes:",
+				Description: "An information 列表 CFS access rule. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"access_rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the access rule.",
+							Description: "ID access rule。",
 						},
 						"auth_client_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Allowed IP of the access rule.",
+							Description: "Allowed IP of the access rule。",
 						},
 						"rw_permission": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Read and write permissions.",
+							Description: "Read and write permissions。",
 						},
 						"user_permission": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The permissions of accessing users.",
+							Description: "The permissions of accessing users。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The priority level of access rule.",
+							Description: "The 优先级 级别 of access rule。",
 						},
 					},
 				},

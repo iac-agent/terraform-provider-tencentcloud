@@ -19,37 +19,37 @@ func DataSourceTencentCloudKmsGetParametersForImport() *schema.Resource {
 			"key_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "CMK unique identifier.",
+				Description: "CMK unique identifier。",
 			},
 			"wrapping_algorithm": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Specifies the algorithm for encrypting key material, currently supports RSAES_PKCS1_V1_5, RSAES_OAEP_SHA_1, RSAES_OAEP_SHA_256.",
+				Description: "指定algorithm for encrypting 键 material，currently supports RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。",
 			},
 			"wrapping_key_spec": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Specifies the type of encryption key material, currently only supports RSA_2048.",
+				Description: "指定type of encryption 键 material，currently only supports RSA_2048。",
 			},
 			"public_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Base64-encoded public key content.",
+				Description: "Base64-encoded public 键 内容",
 			},
 			"import_token": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The token required for importing key material is used as the parameter of ImportKeyMaterial.",
+				Description: "The 令牌 必填 for importing 键 material is used as the parameter of ImportKeyMaterial。",
 			},
 			"parameters_valid_to": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The validity period of the exported token and public key cannot be imported after this period, and you need to call GetParametersForImport again to obtain it.",
+				Description: "The validity 周期 of the exported 令牌 and public 键 cannot be imported after this 周期，and you need to call GetParametersForImport again to obtain it。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

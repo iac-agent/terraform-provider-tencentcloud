@@ -20,50 +20,50 @@ func DataSourceTencentCloudTdmqRocketmqNamespace() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"name_keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search by name.",
+				Description: "Search by 名称",
 			},
 
 			"namespaces": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of namespaces.",
+				Description: "列表 namespaces。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespace_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace name, which can contain 3-64 letters, digits, hyphens, and underscores.",
+							Description: "Namespace 名称，which can contain 3-64 letters，digits，hyphens，and underscores。",
 						},
 						"ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Retention time of unconsumed messages in milliseconds. Value range: 60 seconds-15 days.",
+							Description: "Retention time of unconsumed messages （毫秒）。 取值范围：60 seconds-15 days。",
 						},
 						"retention_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Retention time of persisted messages in milliseconds.",
+							Description: "Retention time of persisted messages （毫秒）。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remarks (up to 128 characters).",
+							Description: "备注 (up to 128 characters)。",
 						},
 						"public_endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public network access point address.",
+							Description: "Public network access point 地址",
 						},
 						"vpc_endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC access point address.",
+							Description: "VPC access point 地址",
 						},
 					},
 				},
@@ -72,7 +72,7 @@ func DataSourceTencentCloudTdmqRocketmqNamespace() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

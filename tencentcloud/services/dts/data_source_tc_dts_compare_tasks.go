@@ -20,82 +20,82 @@ func DataSourceTencentCloudDtsCompareTasks() *schema.Resource {
 			"job_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "job id.",
+				Description: "作业 ID",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "compare task list.",
+				Description: "compare task list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "job id.",
+							Description: "作业 ID",
 						},
 						"compare_task_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "compare task id.",
+							Description: "compare 任务 ID",
 						},
 						"task_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "compare task name.",
+							Description: "compare task 名称",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "compare task status, optional value is created/readyRun/running/success/stopping/failed/canceled.",
+							Description: "compare task 状态，可选 值 is created/readyRun/running/success/stopping/failed/canceled。",
 						},
 						"config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "config.",
+							Description: "配置",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"object_mode": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "object mode.",
+										Description: "object 模式",
 									},
 									"object_items": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "object items.",
+										Description: "object items。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"db_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "database name.",
+													Description: "database 名称",
 												},
 												"db_mode": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "database mode.",
+													Description: "database 模式",
 												},
 												"schema_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "schema name.",
+													Description: "schema 名称",
 												},
 												"table_mode": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "table mode.",
+													Description: "table 模式",
 												},
 												"tables": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "table list.",
+													Description: "table list。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"table_name": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "table name.",
+																Description: "table 名称",
 															},
 														},
 													},
@@ -103,18 +103,18 @@ func DataSourceTencentCloudDtsCompareTasks() *schema.Resource {
 												"view_mode": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "view mode.",
+													Description: "view 模式",
 												},
 												"views": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "view list.",
+													Description: "view list。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"view_name": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "view name.",
+																Description: "view 名称",
 															},
 														},
 													},
@@ -128,95 +128,95 @@ func DataSourceTencentCloudDtsCompareTasks() *schema.Resource {
 						"check_process": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "compare check info.",
+							Description: "compare check info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "status.",
+										Description: "状态",
 									},
 									"percent": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "progress info.",
+										Description: "progress info。",
 									},
 									"step_all": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "all step counts.",
+										Description: "all step counts。",
 									},
 									"step_now": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "current step number.",
+										Description: "current step number。",
 									},
 									"message": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "message.",
+										Description: "消息",
 									},
 									"step": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "step info.",
+										Description: "step info。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"step_no": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "step number.",
+													Description: "step number。",
 												},
 												"step_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "step name.",
+													Description: "step 名称",
 												},
 												"step_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "step id.",
+													Description: "step id。",
 												},
 												"status": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "status.",
+													Description: "状态",
 												},
 												"start_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "start time.",
+													Description: "开始时间。",
 												},
 												"step_message": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "step message.",
+													Description: "step 消息",
 												},
 												"percent": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "step progress.",
+													Description: "step progress。",
 												},
 												"errors": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "errors info.",
+													Description: "errors info。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"message": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "message.",
+																Description: "消息",
 															},
 															"solution": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "solution.",
+																Description: "解决方案",
 															},
 															"help_doc": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "help document.",
+																Description: "帮助文档",
 															},
 														},
 													},
@@ -224,23 +224,23 @@ func DataSourceTencentCloudDtsCompareTasks() *schema.Resource {
 												"warnings": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "warnings info.",
+													Description: "warnings info。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"message": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "message.",
+																Description: "消息",
 															},
 															"solution": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "solution.",
+																Description: "解决方案",
 															},
 															"help_doc": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "help document.",
+																Description: "帮助文档",
 															},
 														},
 													},
@@ -254,95 +254,95 @@ func DataSourceTencentCloudDtsCompareTasks() *schema.Resource {
 						"compare_process": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "compare processing info.",
+							Description: "compare processing info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "status.",
+										Description: "状态",
 									},
 									"percent": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "progress info.",
+										Description: "progress info。",
 									},
 									"step_all": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "all step counts.",
+										Description: "all step counts。",
 									},
 									"step_now": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "current step number.",
+										Description: "current step number。",
 									},
 									"message": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "message.",
+										Description: "消息",
 									},
 									"step": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "step info.",
+										Description: "step info。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"step_no": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "step number.",
+													Description: "step number。",
 												},
 												"step_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "step name.",
+													Description: "step 名称",
 												},
 												"step_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "step id.",
+													Description: "step id。",
 												},
 												"status": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "status.",
+													Description: "状态",
 												},
 												"start_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "start time.",
+													Description: "开始时间。",
 												},
 												"step_message": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "step message.",
+													Description: "step 消息",
 												},
 												"percent": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "step progress.",
+													Description: "step progress。",
 												},
 												"errors": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "errors info.",
+													Description: "errors info。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"message": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "message.",
+																Description: "消息",
 															},
 															"solution": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "solution.",
+																Description: "解决方案",
 															},
 															"help_doc": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "help document.",
+																Description: "帮助文档",
 															},
 														},
 													},
@@ -350,23 +350,23 @@ func DataSourceTencentCloudDtsCompareTasks() *schema.Resource {
 												"warnings": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "warnings info.",
+													Description: "warnings info。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"message": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "message.",
+																Description: "消息",
 															},
 															"solution": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "solution.",
+																Description: "解决方案",
 															},
 															"help_doc": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "help document.",
+																Description: "帮助文档",
 															},
 														},
 													},
@@ -380,22 +380,22 @@ func DataSourceTencentCloudDtsCompareTasks() *schema.Resource {
 						"conclusion": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "conclusion.",
+							Description: "结论",
 						},
 						"created_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 						"started_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "start time.",
+							Description: "开始时间。",
 						},
 						"finished_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "finished time.",
+							Description: "finished time。",
 						},
 					},
 				},
@@ -404,7 +404,7 @@ func DataSourceTencentCloudDtsCompareTasks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

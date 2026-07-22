@@ -28,35 +28,35 @@ func ResourceTencentCloudTcmqTopic() *schema.Resource {
 			"topic_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Topic name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
+				Description: "Topic 名称，which must be unique in the same topic under the same 账号 in the same 地域 It can contain up to 64 letters，digits，and hyphens and must begin with a letter。",
 			},
 
 			"max_msg_size": {
 				Default:     65536,
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Maximum message length. Value range: 1024-65536 bytes (i.e., 1-64 KB). Default value: 65536.",
+				Description: "Maximum 消息 length. 取值范围：1024-65536 bytes (i.e.，1-64 KB). 默认值：65536。",
 			},
 
 			"filter_type": {
 				Default:     1,
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Used to specify the message match policy for the topic. `1`: tag match policy (default value); `2`: routing match policy.",
+				Description: "用于指定message match policy for the topic. `1`: 标签 match policy (默认值); `2`: routing match policy。",
 			},
 
 			"msg_retention_seconds": {
 				Default:     86400,
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Message retention period. Value range: 60-86400 seconds (i.e., 1 minute-1 day). Default value: 86400.",
+				Description: "消息 retention 周期 取值范围：60-86400 seconds (i.e.，1 minute-1 day). 默认值：86400。",
 			},
 
 			"trace": {
 				Default:     true,
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable message trace. true: yes; false: no. If this field is left empty, the feature will not be enabled.",
+				Description: "是否enable 消息 trace. true: yes; false: no. If this field is left empty，the feature will not be 已启用",
 			},
 		},
 	}

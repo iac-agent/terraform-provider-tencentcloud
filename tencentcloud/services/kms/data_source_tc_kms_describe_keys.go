@@ -20,78 +20,78 @@ func DataSourceTencentCloudKmsDescribeKeys() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Query the ID list of CMK, batch query supports up to 100 KeyIds at a time.",
+				Description: "Query the ID 列表 CMK，batch query supports up to 100 KeyIds at a time。",
 			},
 			"key_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of KMS keys.",
+				Description: "A 列表 KMS keys。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of CMK.",
+							Description: "ID CMK。",
 						},
 						"alias": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of CMK.",
+							Description: "名称 CMK。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Create time of CMK.",
+							Description: "创建时间 of CMK。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of CMK.",
+							Description: "描述 CMK。",
 						},
 						"key_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State of CMK.",
+							Description: "State of CMK。",
 						},
 						"key_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Usage of CMK.",
+							Description: "Usage of CMK。",
 						},
 						"creator_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Uin of CMK Creator.",
+							Description: "Uin of CMK 创建者",
 						},
 						"key_rotation_enabled": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Specify whether to enable key rotation.",
+							Description: "指定是否enable 键 rotation。",
 						},
 						"owner": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creator of CMK.",
+							Description: "创建者 of CMK。",
 						},
 						"next_rotate_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Next rotate time of CMK when key_rotation_enabled is true.",
+							Description: "Next rotate time of CMK when key_rotation_enabled is true。",
 						},
 						"deletion_date": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Delete time of CMK.",
+							Description: "Delete time of CMK。",
 						},
 						"origin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Origin of CMK. `TENCENT_KMS` - CMK created by KMS, `EXTERNAL` - CMK imported by user.",
+							Description: "Origin of CMK. `TENCENT_KMS` - CMK created by KMS，`EXTERNAL` - CMK imported by 用户",
 						},
 						"valid_to": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Valid when origin is `EXTERNAL`, it means the effective date of the key material.",
+							Description: "Valid when origin is `EXTERNAL`，it means the effective date of the 键 material。",
 						},
 					},
 				},
@@ -99,7 +99,7 @@ func DataSourceTencentCloudKmsDescribeKeys() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

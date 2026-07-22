@@ -27,50 +27,50 @@ func ResourceTencentCloudConfigRemediation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Config rule ID to bind the remediation setting to.",
+				Description: "配置 rule ID to bind the remediation setting to。",
 			},
 
 			"remediation_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Remediation type. Valid value: SCF (cloud function, custom remediation).",
+				Description: "Remediation 类型 Valid 值: SCF (cloud function，custom remediation)。",
 			},
 
 			"remediation_template_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Remediation template ID (e.g. SCF function resource path: qcs::scf:ap-guangzhou:uin/functions/xxx).",
+				Description: "Remediation 模板 ID (e.g. SCF function resource 路径: qcs::scf:ap-guangzhou:uin/functions/xxx)。",
 			},
 
 			"invoke_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Remediation execution mode. Valid values: MANUAL_EXECUTION (manual), AUTO_EXECUTION (automatic), NON_EXECUTION (disabled), NOT_CONFIG (not configured).",
+				Description: "Remediation execution 模式 有效值：MANUAL_EXECUTION (manual)，AUTO_EXECUTION (automatic)，NON_EXECUTION (已禁用)，NOT_CONFIG (not configured)。",
 			},
 
 			"source_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Template source. Valid value: CUSTOM (custom template).",
+				Description: "Template 来源 Valid 值: CUSTOM (custom template)。",
 			},
 
 			// Computed
 			"remediation_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Remediation setting ID.",
+				Description: "Remediation setting ID。",
 			},
 
 			"owner_uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Owner account UIN.",
+				Description: "所有者 账号 UIN。",
 			},
 
 			"remediation_source_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Remediation source type returned from API.",
+				Description: "Remediation 来源 类型 returned from API。",
 			},
 		},
 	}

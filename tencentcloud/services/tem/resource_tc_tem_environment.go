@@ -28,19 +28,19 @@ func ResourceTencentCloudTemEnvironment() *schema.Resource {
 			"environment_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "environment name.",
+				Description: "environment 名称",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "environment description.",
+				Description: "environment 描述",
 			},
 
 			"vpc": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "vpc ID.",
+				Description: "vpc ID。",
 			},
 
 			"subnet_ids": {
@@ -49,12 +49,12 @@ func ResourceTencentCloudTemEnvironment() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "subnet IDs.",
+				Description: "subnet IDs。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "environment tag list.",
+				Description: "environment 标签列表",
 			},
 		},
 	}

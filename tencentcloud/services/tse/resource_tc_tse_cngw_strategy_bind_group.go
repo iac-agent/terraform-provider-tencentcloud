@@ -35,32 +35,32 @@ func ResourceTencentCloudTseCngwStrategyBindGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID.",
+				Description: "gateway ID。",
 			},
 
 			"strategy_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "strategy ID.",
+				Description: "strategy ID。",
 			},
 
 			"group_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "group ID.",
+				Description: "组 ID",
 			},
 			"option": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "`bind` or `unbind`.",
+				Description: "`bind` or `unbind`。",
 			},
 
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Binding status.",
+				Description: "Binding 状态",
 			},
 		},
 	}

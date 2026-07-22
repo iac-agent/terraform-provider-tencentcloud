@@ -27,7 +27,7 @@ func ResourceTencentCloudClbSecurityGroupAttachment() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Security group ID, such as esg-12345678.",
+				Description: "安全组 ID，例如 esg-12345678。",
 			},
 
 			"load_balancer_ids": {
@@ -38,7 +38,7 @@ func ResourceTencentCloudClbSecurityGroupAttachment() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Array of CLB instance IDs. Only support set one security group now.",
+				Description: "CLB 实例 ID 数组。目前仅支持设置1个安全组。",
 			},
 		},
 	}

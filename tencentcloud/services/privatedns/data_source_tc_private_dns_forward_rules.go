@@ -18,18 +18,18 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter parameters.",
+				Description: "Filter parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter name.",
+							Description: "Parameter 名称",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Array of parameter values.",
+							Description: "数组 parameter values。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -41,53 +41,53 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 			"forward_rule_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Private domain list.",
+				Description: "Private 域名 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Private domain name.",
+							Description: "Private 域名 名称",
 						},
 						"rule_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Forwarding rule name.",
+							Description: "Forwarding rule 名称",
 						},
 						"rule_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Rule ID.",
+							Description: "Rule ID。",
 						},
 						"rule_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Forwarding rule type. DOWN: From cloud to off-cloud; UP: From off-cloud to cloud.",
+							Description: "Forwarding rule 类型 DOWN: From cloud to off-cloud; UP: From off-cloud to cloud。",
 						},
 						"created_at": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"end_point_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Endpoint name.",
+							Description: "Endpoint 名称",
 						},
 						"end_point_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Endpoint ID.",
+							Description: "Endpoint ID。",
 						},
 						"forward_address": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Forwarding address.",
+							Description: "Forwarding 地址",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -95,18 +95,18 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 						"vpc_set": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "List of VPCs bound to the private domain.\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "列表 VPCs bound to the private 域名\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"uniq_vpc_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "VpcId: vpc-xadsafsdasd.",
+										Description: "VpcId: vpc-xadsafsdasd。",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "VPC region: ap-guangzhou, ap-shanghai.",
+										Description: "VPC 地域: ap-guangzhou，ap-shanghai。",
 									},
 								},
 							},
@@ -114,23 +114,23 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 						"zone_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ID of the bound private domain.",
+							Description: "ID bound private 域名",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Tag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "标签\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -142,7 +142,7 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

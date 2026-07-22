@@ -105,54 +105,54 @@ func resourceEksCiProbeConfig() map[string]*schema.Schema {
 		"init_delay_seconds": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "Number of seconds after the container has started before probes are initiated.",
+			Description: "数量 seconds after the container has started before probes are initiated。",
 		},
 		"timeout_seconds": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Default:     1,
-			Description: "Number of seconds after which the probe times out.\nDefaults to 1 second. Minimum value is `1`.",
+			Description: "数量 seconds after which the probe times out.\n默认为 1 second. Minimum 值 is `1`。",
 		},
 		"period_seconds": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is `1`.",
+			Description: "How often (in seconds) to perform the probe. 默认为 10 seconds. Minimum 值 is `1`。",
 		},
 		"success_threshold": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "Minimum consecutive successes for the probe to be considered successful after having failed. Default: `1`. Must be 1 for liveness. Minimum value is `1`.",
+			Description: "Minimum consecutive successes for the probe to be considered successful after having failed. 默认值：`1`. Must be 1 for liveness. Minimum 值 is `1`。",
 		},
 		"failure_threshold": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "Minimum consecutive failures for the probe to be considered failed after having succeeded.Default: `3`. Minimum value is `1`.",
+			Description: "Minimum consecutive failures for the probe to be considered failed after having succeeded.默认值：`3`. Minimum 值 is `1`。",
 		},
 		"http_get_path": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "HttpGet detection path.",
+			Description: "HttpGet detection 路径",
 		},
 		"http_get_port": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "HttpGet detection port.",
+			Description: "HttpGet detection 端口",
 		},
 		"http_get_scheme": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "HttpGet detection scheme. Available values: `HTTP`, `HTTPS`.",
+			Description: "HttpGet detection scheme. 可用值：`HTTP`，`HTTPS`。",
 		},
 		"exec_commands": {
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "List of execution commands.",
+			Description: "列表 execution commands。",
 			Elem:        &schema.Schema{Type: schema.TypeString},
 		},
 		"tcp_socket_port": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "TCP Socket detection port.",
+			Description: "TCP Socket detection 端口",
 		},
 	}
 }
@@ -608,80 +608,80 @@ func resourceEksCiContainerSchema(isInitContainer bool) map[string]*schema.Schem
 		"name": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "Name of Container.",
+			Description: "名称 Container。",
 		},
 		"image": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "Image of Container.",
+			Description: "Image of Container。",
 		},
 		"commands": {
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "Container launch command list.",
+			Description: "Container launch command list。",
 			Elem:        &schema.Schema{Type: schema.TypeString},
 		},
 		"args": {
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "Container launch argument list.",
+			Description: "Container launch argument list。",
 			Elem:        &schema.Schema{Type: schema.TypeString},
 		},
 		"env_vars": {
 			Type:        schema.TypeMap,
 			Optional:    true,
-			Description: "Map of environment variables of container OS.",
+			Description: "Map of environment variables of container OS。",
 		},
 		"cpu": {
 			Type:        schema.TypeFloat,
 			Optional:    true,
-			Description: "Number of cpu core of container.",
+			Description: "数量 cpu core of container。",
 		},
 		"memory": {
 			Type:        schema.TypeFloat,
 			Optional:    true,
-			Description: "Memory size of container.",
+			Description: "Memory size of container。",
 		},
 		"working_dir": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "Container working directory.",
+			Description: "Container working directory。",
 		},
 		"volume_mount": {
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "List of volume mount informations.",
+			Description: "列表 volume mount informations。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"name": {
 						Type:        schema.TypeString,
 						Required:    true,
-						Description: "Volume name.",
+						Description: "Volume 名称",
 					},
 					"path": {
 						Type:        schema.TypeString,
 						Required:    true,
-						Description: "Volume mount path.",
+						Description: "Volume mount 路径",
 					},
 					"read_only": {
 						Type:        schema.TypeBool,
 						Optional:    true,
-						Description: "Whether the volume is read-only.",
+						Description: "是否volume is read-only。",
 					},
 					"sub_path": {
 						Type:        schema.TypeString,
 						Optional:    true,
-						Description: "Volume mount sub-path.",
+						Description: "Volume mount sub-路径",
 					},
 					"sub_path_expr": {
 						Type:        schema.TypeString,
 						Optional:    true,
-						Description: "Volume mount sub-path expression.",
+						Description: "Volume mount sub-路径 expression。",
 					},
 					"mount_propagation": {
 						Type:        schema.TypeString,
 						Optional:    true,
-						Description: "Volume mount propagation.",
+						Description: "Volume mount propagation。",
 					},
 				},
 			},
@@ -692,7 +692,7 @@ func resourceEksCiContainerSchema(isInitContainer bool) map[string]*schema.Schem
 			Type:        schema.TypeList,
 			MaxItems:    1,
 			Optional:    true,
-			Description: "Configuration block of LivenessProbe.",
+			Description: "Configuration block of LivenessProbe。",
 			Elem: &schema.Resource{
 				Schema: resourceEksCiProbeConfig(),
 			},
@@ -701,7 +701,7 @@ func resourceEksCiContainerSchema(isInitContainer bool) map[string]*schema.Schem
 			Type:        schema.TypeList,
 			MaxItems:    1,
 			Optional:    true,
-			Description: "Configuration block of ReadinessProbe.",
+			Description: "Configuration block of ReadinessProbe。",
 			Elem: &schema.Resource{
 				Schema: resourceEksCiProbeConfig(),
 			},
@@ -726,12 +726,12 @@ func ResourceTencentCloudEksContainerInstance() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of EKS container instance.",
+				Description: "名称 EKS container instance。",
 			},
 			"container": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "List of container.",
+				Description: "列表 container。",
 				Elem: &schema.Resource{
 					Schema: resourceEksCiContainerSchema(false),
 				},
@@ -739,76 +739,76 @@ func ResourceTencentCloudEksContainerInstance() *schema.Resource {
 			"security_groups": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "List of security group id.",
+				Description: "列表 安全组 ID",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Subnet ID of container instance.",
+				Description: "子网 ID container instance。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "VPC ID.",
+				Description: "私有网络 ID",
 			},
 			"memory": {
 				Type:        schema.TypeFloat,
 				Required:    true,
-				Description: "Memory size. Check https://intl.cloud.tencent.com/document/product/457/34057 for specification references.",
+				Description: "Memory size. Check https://intl.cloud.tencent.com/document/product/457/34057 for specification references。",
 			},
 			"cpu": {
 				Type:        schema.TypeFloat,
 				Required:    true,
-				Description: "The number of CPU cores. Check https://intl.cloud.tencent.com/document/product/457/34057 for specification references.",
+				Description: "The 数量 CPU 核数 Check https://intl.cloud.tencent.com/document/product/457/34057 for specification references。",
 			},
 			// optional
 			"cpu_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Type of cpu, which can set to `intel` or `amd`. It also support backup list like `amd,intel` which indicates using `intel` when `amd` sold out.",
+				Description: "类型 cpu，which can set to `intel` or `amd`. It also support backup list like `amd,intel` which 表示using `intel` when `amd` sold out。",
 			},
 			"gpu_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Type of GPU. Check https://intl.cloud.tencent.com/document/product/457/34057 for specification references.",
+				Description: "类型 GPU. Check https://intl.cloud.tencent.com/document/product/457/34057 for specification references。",
 			},
 			"gpu_count": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Count of GPU. Check https://intl.cloud.tencent.com/document/product/457/34057 for specification references.",
+				Description: "Count of GPU. Check https://intl.cloud.tencent.com/document/product/457/34057 for specification references。",
 			},
 			"restart_policy": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"Always", "Never", "OnFailure"}),
-				Description:  "Container instance restart policy. Available values: `Always`, `Never`, `OnFailure`.",
+				Description:  "Container instance restart policy. 可用值：`Always`，`Never`，`OnFailure`。",
 			},
 			"image_registry_credential": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List of credentials which pull from image registry.",
+				Description: "列表 credentials which pull from image registry。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"server": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Address of image registry.",
+							Description: "地址 of image registry。",
 						},
 						"username": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Username.",
+							Description: "用户名",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Password.",
+							Description: "密码",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Name of credential.",
+							Description: "名称 credential。",
 						},
 					},
 				},
@@ -816,18 +816,18 @@ func ResourceTencentCloudEksContainerInstance() *schema.Resource {
 			"cbs_volume": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List of CBS volume.",
+				Description: "列表 CBS volume。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name of CBS volume.",
+							Description: "名称 CBS volume。",
 						},
 						"disk_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ID of CBS.",
+							Description: "ID CBS。",
 						},
 					},
 				},
@@ -835,29 +835,29 @@ func ResourceTencentCloudEksContainerInstance() *schema.Resource {
 			"nfs_volume": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List of NFS volume.",
+				Description: "列表 NFS volume。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name of NFS volume.",
+							Description: "名称 NFS volume。",
 						},
 						"server": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "NFS server address.",
+							Description: "NFS server 地址",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "NFS volume path.",
+							Description: "NFS volume 路径",
 						},
 						"read_only": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "Indicates whether the volume is read only. Default is `false`.",
+							Description: "表示是否volume is read only. 默认为 `false`。",
 						},
 					},
 				},
@@ -865,7 +865,7 @@ func ResourceTencentCloudEksContainerInstance() *schema.Resource {
 			"init_container": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List of initialized container.",
+				Description: "列表 initialized container。",
 				Elem: &schema.Resource{
 					Schema: resourceEksCiContainerSchema(true),
 				},
@@ -875,27 +875,27 @@ func ResourceTencentCloudEksContainerInstance() *schema.Resource {
 				Type:        schema.TypeList,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "IP Addresses of DNS Servers.",
+				Description: "IP Addresses of DNS Servers。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"dns_searches": {
 				Type:        schema.TypeList,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "List of DNS Search Domain.",
+				Description: "列表 DNS Search 域名",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"dns_config_options": {
 				Type:        schema.TypeMap,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "Map of DNS config options.",
+				Description: "Map of DNS 配置 options。",
 			},
 			// End of DNSConfig
 			"existed_eip_ids": {
 				Type:          schema.TypeList,
 				Optional:      true,
-				Description:   "Existed EIP ID List which used to bind container instance. Conflict with `auto_create_eip` and auto create EIP options.",
+				Description:   "Existed EIP ID List which 用于bind container instance. Conflict with `auto_create_eip` and auto create EIP options。",
 				Elem:          &schema.Schema{Type: schema.TypeString},
 				ConflictsWith: []string{"auto_create_eip"},
 			},
@@ -903,58 +903,58 @@ func ResourceTencentCloudEksContainerInstance() *schema.Resource {
 				Type:          schema.TypeBool,
 				Optional:      true,
 				Default:       false,
-				Description:   "Indicates whether to create EIP instead of specify existing EIPs. Conflict with `existed_eip_ids`.",
+				Description:   "表示是否create EIP instead of 指定existing EIPs. Conflict with `existed_eip_ids`。",
 				ConflictsWith: []string{"existed_eip_ids"},
 			},
 			"eip_delete_policy": {
 				Type: schema.TypeBool,
 				// flatten field must not be required
 				Optional:      true,
-				Description:   "Indicates weather the EIP release or not after instance deleted. Conflict with `existed_eip_ids`.",
+				Description:   "表示weather the EIP release or not after instance deleted. Conflict with `existed_eip_ids`。",
 				ConflictsWith: []string{"existed_eip_ids"},
 			},
 			"eip_service_provider": {
 				Type:          schema.TypeString,
 				Optional:      true,
-				Description:   "EIP service provider. Default is `BGP`, values `CMCC`,`CTCC`,`CUCC` are available for whitelist customer. Conflict with `existed_eip_ids`.",
+				Description:   "EIP service provider. 默认为 `BGP`，values `CMCC`,`CTCC`,`CUCC` are available for whitelist customer. Conflict with `existed_eip_ids`。",
 				ConflictsWith: []string{"existed_eip_ids"},
 			},
 			"eip_max_bandwidth_out": {
 				Type:          schema.TypeInt,
 				Optional:      true,
-				Description:   "Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bits per second). Conflict with `existed_eip_ids`.",
+				Description:   "Maximum outgoing bandwidth to the public network，measured in Mbps (Mega bits per second). Conflict with `existed_eip_ids`。",
 				ConflictsWith: []string{"existed_eip_ids"},
 			},
 			"cam_role_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "CAM role name authorized to access.",
+				Description: "被授权访问的 CAM 角色名称",
 			},
 			// computed
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Container instance status.",
+				Description: "Container 实例状态",
 			},
 			"created_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Container instance creation time.",
+				Description: "Container instance 创建时间。",
 			},
 			"auto_create_eip_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID of EIP which create automatically.",
+				Description: "ID EIP which create automatically。",
 			},
 			"eip_address": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "EIP address.",
+				Description: "EIP 地址",
 			},
 			"private_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Private IP address.",
+				Description: "内网 IP 地址",
 			},
 		},
 	}

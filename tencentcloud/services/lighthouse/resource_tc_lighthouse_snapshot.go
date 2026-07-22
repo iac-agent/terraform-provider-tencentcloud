@@ -26,13 +26,13 @@ func ResourceTencentCloudLighthouseSnapshot() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the instance for which to create a snapshot.",
+				Description: "ID instance for which to create a snapshot。",
 			},
 
 			"snapshot_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot name, which can contain up to 60 characters.",
+				Description: "Snapshot 名称，which can contain up to 60 characters。",
 			},
 		},
 	}

@@ -20,70 +20,70 @@ func DataSourceTencentCloudVodSubApplications() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Application name for exact match filtering.",
+				Description: "Application 名称 for exact match filtering。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag key-value pairs for filtering applications. Applications matching all specified tags will be returned.",
+				Description: "标签键-值 pairs for filtering applications. Applications matching all specified 标签 will be returned。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results in JSON format.",
+				Description: "用于保存结果 in JSON 格式",
 			},
 			"sub_application_info_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of sub-application information.",
+				Description: "列表 sub-application information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"sub_app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sub-application ID.",
+							Description: "Sub-application ID。",
 						},
 						"sub_app_id_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sub-application name.",
+							Description: "Sub-application 名称",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Legacy name field (for backward compatibility).",
+							Description: "Legacy 名称 field (for backward compatibility)。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sub-application description.",
+							Description: "Sub-application 描述",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time in ISO 8601 format.",
+							Description: "创建时间 in ISO 8601 格式",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Application status. Valid values: On, Off, Destroying, Destroyed.",
+							Description: "Application 状态 有效值：On，Off，Destroying，Destroyed。",
 						},
 						"mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Application mode. Valid values: fileid, fileid+path.",
+							Description: "Application 模式 有效值：fileid，fileid+路径",
 						},
 						"storage_regions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of enabled storage regions.",
+							Description: "列表 已启用 storage regions。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Resource tags bound to the sub-application.",
+							Description: "Resource 标签 bound to the sub-application。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 					},

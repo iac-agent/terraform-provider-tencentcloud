@@ -20,49 +20,49 @@ func DataSourceTencentCloudMonitorTmpRegions() *schema.Resource {
 			"pay_mode": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Pay mode. `1`-Prepaid, `2`-Postpaid, `3`-All regions (default is all regions if not filled in).",
+				Description: "付费模式 `1`-Prepaid，`2`-Postpaid，`3`-All regions (默认为 all regions 如果未填写 in)。",
 			},
 
 			"region_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Region set.",
+				Description: "地域 set。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region.",
+							Description: "地域",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Region ID.",
+							Description: "地域 ID",
 						},
 						"region_state": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Region status (0-unavailable; 1-available).",
+							Description: "地域 状态 (0-unavailable; 1-available)。",
 						},
 						"region_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region name.",
+							Description: "地域名称",
 						},
 						"region_short_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region short name.",
+							Description: "地域 short 名称",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region area.",
+							Description: "地域 area。",
 						},
 						"region_pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Region pay mode.",
+							Description: "地域 付费模式",
 						},
 					},
 				},
@@ -71,7 +71,7 @@ func DataSourceTencentCloudMonitorTmpRegions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

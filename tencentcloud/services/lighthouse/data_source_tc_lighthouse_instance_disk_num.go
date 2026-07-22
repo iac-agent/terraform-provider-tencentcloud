@@ -22,29 +22,29 @@ func DataSourceTencentCloudLighthouseInstanceDiskNum() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of instance IDs.",
+				Description: "列表 instance IDs。",
 			},
 
 			"attach_detail_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Mount information list.",
+				Description: "Mount information list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Id.",
+							Description: "实例 ID",
 						},
 						"attached_disk_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of elastic cloud disks mounted to the instance.",
+							Description: "数量 elastic cloud disks mounted to the instance。",
 						},
 						"max_attach_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of elastic cloud disks that can be mounted.",
+							Description: "数量 elastic cloud disks that can be mounted。",
 						},
 					},
 				},
@@ -53,7 +53,7 @@ func DataSourceTencentCloudLighthouseInstanceDiskNum() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

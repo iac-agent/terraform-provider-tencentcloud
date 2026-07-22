@@ -20,60 +20,60 @@ func DataSourceTencentCloudDcdbSecurityGroups() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "security group list.",
+				Description: "security group list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "project id.",
+							Description: "项目 ID",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 						"security_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "security group id.",
+							Description: "安全组 ID",
 						},
 						"security_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "security group name.",
+							Description: "security 组名称",
 						},
 						"inbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "inbound rules.",
+							Description: "inbound rules。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "cidr ip.",
+										Description: "cidr ip。",
 									},
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "policy action.",
+										Description: "policy 操作",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "port range.",
+										Description: "端口 range。",
 									},
 									"ip_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "internet protocol.",
+										Description: "internet 协议",
 									},
 								},
 							},
@@ -81,28 +81,28 @@ func DataSourceTencentCloudDcdbSecurityGroups() *schema.Resource {
 						"outbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "outbound rules.",
+							Description: "outbound rules。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "cidr ip.",
+										Description: "cidr ip。",
 									},
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "policy action.",
+										Description: "policy 操作",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "port range.",
+										Description: "端口 range。",
 									},
 									"ip_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "internet protocol.",
+										Description: "internet 协议",
 									},
 								},
 							},
@@ -114,7 +114,7 @@ func DataSourceTencentCloudDcdbSecurityGroups() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

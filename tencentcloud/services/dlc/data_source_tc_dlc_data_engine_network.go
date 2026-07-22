@@ -18,30 +18,30 @@ func DataSourceTencentCloudDlcDataEngineNetwork() *schema.Resource {
 			"sort_by": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sort Field.",
+				Description: "Sort Field。",
 			},
 
 			"sorting": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sort order, asc or desc.",
+				Description: "排序顺序，asc or desc。",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions are optional, engine-network-id--engine network ID, engine-network-state--engine network status.",
+				Description: "Filter conditions are 可选，engine-network-id--engine network ID，engine-network-state--engine network 状态",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Attribute name, if there are multiple filters, the relationship between filters is a logical OR relationship.",
+							Description: "Attribute 名称，if there are multiple filters，the relationship between filters is a logical OR relationship。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Attribute value, if there are multiple values, the relationship between values is a logical OR relationship.",
+							Description: "Attribute 值，if there are multiple values，the relationship between values is a logical OR relationship。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -53,84 +53,84 @@ func DataSourceTencentCloudDlcDataEngineNetwork() *schema.Resource {
 			"engine_networks_infos": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Engine network information list.",
+				Description: "Engine network information list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"engine_network_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Engine network name.",
+							Description: "Engine network 名称",
 						},
 						"engine_network_state": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Engine network status, 0--initialized, 2--available, -1--deleted.",
+							Description: "Engine network 状态，0--initialized，2--available，-1--deleted。",
 						},
 						"engine_network_cidr": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Engine network CIDR.",
+							Description: "Engine network CIDR。",
 						},
 						"engine_network_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Engine network ID.",
+							Description: "Engine network ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"private_link_number": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of private links.",
+							Description: "数量 private links。",
 						},
 						"engine_number": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of engines.",
+							Description: "数量 engines。",
 						},
 						"gate_way_info": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Gateway information list.",
+							Description: "Gateway information list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"gateway_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Gateway ID.",
+										Description: "网关 ID",
 									},
 									"gateway_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Gateway name.",
+										Description: "Gateway 名称",
 									},
 									"size": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Gateway size.",
+										Description: "Gateway size。",
 									},
 									"state": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Gateway status: -1--Failed, -2--Deleted, 0--Init,1--Pause, 2--running, 3--ToBeDeleted, 4--Deleting, 5--Pausing, 6--Resuming, 7--Isolating, 8--Isolated, 9--Renewing, 10--Modifying, 11--Modified, 12--Restoring, 13--Restored, 14--ToBeRestored.",
+										Description: "Gateway 状态: -1--Failed，-2--Deleted，0--Init,1--Pause，2--running，3--ToBeDeleted，4--Deleting，5--Pausing，6--Resuming，7--Isolating，8--Isolated，9--Renewing，10--Modifying，11--Modified，12--Restoring，13--Restored，14--ToBeRestored。",
 									},
 									"pay_mode": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Pay mode.",
+										Description: "付费模式",
 									},
 									"mode": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Gateway mode.",
+										Description: "Gateway 模式",
 									},
 								},
 							},
@@ -142,7 +142,7 @@ func DataSourceTencentCloudDlcDataEngineNetwork() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

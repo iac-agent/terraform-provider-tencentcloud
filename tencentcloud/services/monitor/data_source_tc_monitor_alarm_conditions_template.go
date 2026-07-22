@@ -20,115 +20,115 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 			"module": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Fixed value, as&amp;amp;#39; monitor &amp;amp;#39;.",
+				Description: "Fixed 值，as&amp;amp;#39; monitor &amp;amp;#39;。",
 			},
 
 			"view_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "View name, composed of [DescribeAllNamespaces]( https://cloud.tencent.com/document/product/248/48683 )Obtain. For cloud product monitoring, retrieve the QceNamespacesNew. N.ID parameter from the interface, such as cvm_ Device.",
+				Description: "View 名称，composed of [DescribeAllNamespaces]( https://cloud.tencent.com/document/product/248/48683 )Obtain. For cloud product monitoring，retrieve the QceNamespacesNew. N.ID parameter from the interface，such as cvm_ Device。",
 			},
 
 			"group_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter queries based on trigger condition template names.",
+				Description: "Filter queries based on trigger condition template names。",
 			},
 
 			"group_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter queries based on trigger condition template ID.",
+				Description: "Filter queries based on trigger condition 模板 ID",
 			},
 
 			"update_time_order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Specify the sorting method by update time, asc=ascending, desc=descending.",
+				Description: "指定sorting method by 更新时间，asc=ascending，desc=descending。",
 			},
 
 			"policy_count_order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Specify the sorting method based on the number of binding policies, asc=ascending, desc=descending.",
+				Description: "指定sorting method based on the 数量 binding policies，asc=ascending，desc=descending。",
 			},
 
 			"template_group_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Template List.",
+				Description: "Template List。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"conditions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Indicator alarm rules.",
+							Description: "Indicator alarm rules。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"alarm_notify_period": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Alarm notification frequency.",
+										Description: "Alarm notification frequency。",
 									},
 									"alarm_notify_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Predefined repeated notification strategy (0- alarm only once, 1- exponential alarm, 2- connection alarm).",
+										Description: "Predefined repeated notification strategy (0- alarm only once，1- exponential alarm，2- connection alarm)。",
 									},
 									"calc_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Detection method.",
+										Description: "Detection method。",
 									},
 									"calc_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Detection value.",
+										Description: "Detection 值",
 									},
 									"continue_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Duration in seconds.",
+										Description: "Duration （秒）。",
 									},
 									"metric_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Indicator ID.",
+										Description: "Indicator ID。",
 									},
 									"metric_display_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Indicator display name (external).",
+										Description: "Indicator display 名称 (external)。",
 									},
 									"period": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Cycle.",
+										Description: "Cycle。",
 									},
 									"rule_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Rule ID.",
+										Description: "Rule ID。",
 									},
 									"unit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Indicator unit.",
+										Description: "Indicator unit。",
 									},
 									"is_advanced": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether it is an advanced indicator, 0: No; 1: Yes.",
+										Description: "是否为an advanced indicator，0: No; 1: Yes。",
 									},
 									"is_open": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether to activate advanced indicators, 0: No; 1: Yes.",
+										Description: "是否activate advanced indicators，0: No; 1: Yes。",
 									},
 									"product_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Product ID.",
+										Description: "Product ID。",
 									},
 								},
 							},
@@ -136,33 +136,33 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 						"event_conditions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Event alarm rules.",
+							Description: "Event alarm rules。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"alarm_notify_period": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Alarm notification frequency.",
+										Description: "Alarm notification frequency。",
 									},
 									"alarm_notify_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Predefined repeated notification strategy (0- alarm only once, 1- exponential alarm, 2- connection alarm).",
+										Description: "Predefined repeated notification strategy (0- alarm only once，1- exponential alarm，2- connection alarm)。",
 									},
 									"event_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Event ID.",
+										Description: "事件 ID",
 									},
 									"event_display_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Event Display Name (External).",
+										Description: "Event Display 名称 (External)。",
 									},
 									"rule_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule ID.",
+										Description: "Rule ID。",
 									},
 								},
 							},
@@ -170,74 +170,74 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 						"policy_groups": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Associate Alert Policy Group.",
+							Description: "Associate Alert Policy Group。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"can_set_default": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Can it be set as the default alarm strategy.",
+										Description: "Can it be set as the default alarm strategy。",
 									},
 									"group_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Alarm Policy Group ID.",
+										Description: "Alarm Policy 组 ID",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Alarm Policy Group Name.",
+										Description: "Alarm Policy Group 名称",
 									},
 									"insert_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Creation time.",
+										Description: "创建时间。",
 									},
 									"is_default": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Is it the default alarm policy.",
+										Description: "Is it the default alarm policy。",
 									},
 									"enable": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Alarm Policy Enable Status.",
+										Description: "Alarm Policy Enable 状态",
 									},
 									"last_edit_uin": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Last modified by UIN.",
+										Description: "Last modified by UIN。",
 									},
 									"no_shielded_instance_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of unshielded instances.",
+										Description: "数量 unshielded instances。",
 									},
 									"parent_group_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Parent Policy Group ID.",
+										Description: "Parent Policy 组 ID",
 									},
 									"project_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Project ID.",
+										Description: "项目 ID",
 									},
 									"receiver_infos": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Alarm receiving object information.",
+										Description: "Alarm receiving object information。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"end_time": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Effective period end time.",
+													Description: "Effective 周期 结束时间。",
 												},
 												"need_send_notice": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Do you need to send a notification.",
+													Description: "Do you need to send a notification。",
 												},
 												"notify_way": {
 													Type: schema.TypeSet,
@@ -245,12 +245,12 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "Alarm reception channel.",
+													Description: "Alarm reception channel。",
 												},
 												"person_interval": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Telephone alarm to personal interval (seconds).",
+													Description: "Telephone alarm to personal interval (seconds)。",
 												},
 												"receiver_group_list": {
 													Type: schema.TypeSet,
@@ -258,12 +258,12 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 														Type: schema.TypeInt,
 													},
 													Computed:    true,
-													Description: "Message receiving group list.",
+													Description: "消息 receiving group list。",
 												},
 												"receiver_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Receiver type.",
+													Description: "Receiver 类型",
 												},
 												"receiver_user_list": {
 													Type: schema.TypeSet,
@@ -271,7 +271,7 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 														Type: schema.TypeInt,
 													},
 													Computed:    true,
-													Description: "Recipient list. List of recipient IDs queried through the platform interface.",
+													Description: "Recipient list. 列表 recipient IDs queried through the platform interface。",
 												},
 												"recover_notify": {
 													Type: schema.TypeSet,
@@ -279,17 +279,17 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "Alarm recovery notification method.",
+													Description: "Alarm recovery notification method。",
 												},
 												"round_interval": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Telephone alarm interval per round (seconds).",
+													Description: "Telephone alarm interval per round (seconds)。",
 												},
 												"round_number": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of phone alarm rounds.",
+													Description: "数量 phone alarm rounds。",
 												},
 												"send_for": {
 													Type: schema.TypeSet,
@@ -297,12 +297,12 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "Timing of telephone alarm notification. Optional OCCUR (notification during alarm), RECOVER (notification during recovery).",
+													Description: "Timing of telephone alarm notification. 可选 OCCUR (notification during alarm)，RECOVER (notification during recovery)。",
 												},
 												"start_time": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Effective period start time.",
+													Description: "Effective 周期 开始时间。",
 												},
 												"uid_list": {
 													Type: schema.TypeSet,
@@ -310,7 +310,7 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 														Type: schema.TypeInt,
 													},
 													Computed:    true,
-													Description: "Telephone alarm receiver uid.",
+													Description: "Telephone alarm receiver uid。",
 												},
 											},
 										},
@@ -318,27 +318,27 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 									"remark": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Remarks.",
+										Description: "备注",
 									},
 									"update_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Modification time.",
+										Description: "修改时间。",
 									},
 									"total_instance_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Total number of bound instances.",
+										Description: "Total 数量 bound instances。",
 									},
 									"view_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "View.",
+										Description: "View。",
 									},
 									"is_union_rule": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Is it a relationship rule with.",
+										Description: "Is it a relationship rule with。",
 									},
 								},
 							},
@@ -346,42 +346,42 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 						"group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Template Policy Group ID.",
+							Description: "Template Policy 组 ID",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Template Policy Group Name.",
+							Description: "Template Policy Group 名称",
 						},
 						"insert_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"last_edit_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Last modified by UIN.",
+							Description: "Last modified by UIN。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remarks.",
+							Description: "备注",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"view_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "View.",
+							Description: "View。",
 						},
 						"is_union_rule": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Is it a relationship with.",
+							Description: "Is it a relationship with。",
 						},
 					},
 				},
@@ -390,7 +390,7 @@ func DataSourceTencentCloudMonitorAlarmConditionsTemplate() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -28,31 +28,31 @@ func ResourceTencentCloudCfsUserQuota() *schema.Resource {
 			"file_system_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "File system ID.",
+				Description: "File system ID。",
 			},
 
 			"user_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Quota type. Valid value: `Uid`, `Gid`.",
+				Description: "Quota 类型 Valid 值: `Uid`，`Gid`。",
 			},
 
 			"user_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Info of UID/GID.",
+				Description: "Info of UID/GID。",
 			},
 
 			"capacity_hard_limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Capacity Limit(GB).",
+				Description: "Capacity 限制(GB)。",
 			},
 
 			"file_hard_limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "File limit.",
+				Description: "File 限制",
 			},
 		},
 	}

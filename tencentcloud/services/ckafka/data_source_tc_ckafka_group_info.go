@@ -19,7 +19,7 @@ func DataSourceTencentCloudCkafkaGroupInfo() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"group_list": {
@@ -28,77 +28,77 @@ func DataSourceTencentCloudCkafkaGroupInfo() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Kafka consumption group, Consumer-group, here is an array format, format GroupList.0=xxx&amp;amp;GroupList.1=yyy.",
+				Description: "Kafka consumption group，Consumer-group，here is an array 格式，格式 GroupList.0=xxx&amp;amp;GroupList.1=yyy。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "result.",
+				Description: "结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"error_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Error code, normally 0.",
+							Description: "错误码，normally 0。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Group state description (commonly Empty, Stable, and Dead states): Dead: The consumption group does not exist Empty: The consumption group does not currently have any consumer subscriptions PreparingRebalance: The consumption group is in the rebalance state CompletingRebalance: The consumption group is in the rebalance state Stable: Each consumer in the consumption group has joined and is in a stable state.",
+							Description: "Group state 描述 (commonly Empty，Stable，and Dead states): Dead: The consumption group does not exist Empty: The consumption group does not currently have any consumer subscriptions PreparingRebalance: The consumption group is in the rebalance state CompletingRebalance: The consumption group is in the rebalance state Stable: Each consumer in the consumption group has joined and is in a stable state。",
 						},
 						"protocol_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The protocol type selected by the consumption group is normally the consumer, but some systems use their own protocol, such as kafka-connect, which uses connect. Only the standard consumer protocol, this interface knows the format of the specific allocation method, and can analyze the specific partition allocation.",
+							Description: "The 协议 类型 selected by the consumption group is normally the consumer，but some systems use their own 协议，such as kafka-connect，which uses connect. Only the standard consumer 协议，this interface knows the 格式 of the specific allocation method，and can analyze the specific partition allocation。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Common consumer partition allocation algorithms are as follows (the default option for Kafka consumer SDK is range)  range|roundrobin|sticky.",
+							Description: "Common consumer partition allocation algorithms are as follows (the default option for Kafka consumer SDK is range)  range|roundrobin|sticky。",
 						},
 						"members": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "This array contains information only if state is Stable and protocol_type is consumer.",
+							Description: "This array 包含information only if state is Stable and protocol_type is consumer。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"member_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID that the coordinator generated for consumer.",
+										Description: "ID that the coordinator generated for consumer。",
 									},
 									"client_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The client.id information set by the client consumer SDK itself.",
+										Description: "The client.id information set by the client consumer SDK itself。",
 									},
 									"client_host": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Generally store the customer&#39;s IP address.",
+										Description: "Generally store the customer&#39;s IP 地址",
 									},
 									"assignment": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Stores the partition information assigned to the consumer.",
+										Description: "Stores the partition information assigned to the consumer。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"version": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "assignment version information.",
+													Description: "assignment 版本 information。",
 												},
 												"topics": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "topic list.",
+													Description: "topic list。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"topic": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Assigned topic name.",
+																Description: "Assigned topic 名称",
 															},
 															"partitions": {
 																Type: schema.TypeSet,
@@ -106,7 +106,7 @@ func DataSourceTencentCloudCkafkaGroupInfo() *schema.Resource {
 																	Type: schema.TypeInt,
 																},
 																Computed:    true,
-																Description: "Allocated partition information.",
+																Description: "Allocated partition information。",
 															},
 														},
 													},
@@ -120,7 +120,7 @@ func DataSourceTencentCloudCkafkaGroupInfo() *schema.Resource {
 						"group": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Kafka consumer group.",
+							Description: "Kafka consumer group。",
 						},
 					},
 				},
@@ -129,7 +129,7 @@ func DataSourceTencentCloudCkafkaGroupInfo() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

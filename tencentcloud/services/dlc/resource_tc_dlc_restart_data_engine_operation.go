@@ -26,14 +26,14 @@ func ResourceTencentCloudDlcRestartDataEngineOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Engine ID.",
+				Description: "Engine ID。",
 			},
 
 			"forced_operation": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to restart by force and ignore tasks.",
+				Description: "是否restart by force and ignore tasks。",
 			},
 		},
 	}

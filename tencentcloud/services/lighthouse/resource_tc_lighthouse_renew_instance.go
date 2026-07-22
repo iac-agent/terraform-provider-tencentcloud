@@ -26,7 +26,7 @@ func ResourceTencentCloudLighthouseRenewInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"instance_charge_prepaid": {
@@ -34,13 +34,13 @@ func ResourceTencentCloudLighthouseRenewInstance() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Prepaid mode, that is, yearly and monthly subscription related parameter settings. Through this parameter, you can specify attributes such as the purchase duration of the Subscription instance and whether to set automatic renewal.",
+				Description: "Prepaid 模式，that is，yearly and monthly subscription related parameter settings. Through this parameter，you can 指定attributes such as the purchase duration of the Subscription instance and 是否set automatic renewal。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The duration of purchasing an instance. Unit is month. Valid values are (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60).",
+							Description: "The duration of purchasing an instance. Unit is month. Valid values are (1，2，3，4，5，6，7，8，9，10，11，12，24，36，48，60)。",
 						},
 						"renew_flag": {
 							Type:     schema.TypeString,
@@ -59,7 +59,7 @@ func ResourceTencentCloudLighthouseRenewInstance() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to renew the data disk. Valid values:true: Indicates that the renewal instance also renews the data disk attached to it.false: Indicates that the instance will be renewed and the data disk attached to it will not be renewed at the same time.Default value: true.",
+				Description: "是否renew the data disk. Valid values:true: 表示that the renewal instance also renews the data disk attached to it.false: 表示that the instance will be renewed and the data disk attached to it will not be renewed at the same time.默认值：true。",
 			},
 
 			"auto_voucher": {

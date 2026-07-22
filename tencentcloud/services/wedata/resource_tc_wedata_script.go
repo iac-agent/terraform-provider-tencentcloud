@@ -29,32 +29,32 @@ func ResourceTencentCloudWedataScript() *schema.Resource {
 			"file_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cos file path:/datastudio/project/projectId/.",
+				Description: "Cos file 路径:/datastudio/project/projectId/。",
 			},
 			"project_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 			"bucket_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cos bucket name.",
+				Description: "Cos 存储桶名称",
 			},
 			"region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cos region.",
+				Description: "Cos 地域",
 			},
 			"file_extension_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "File Extension Type:jar, sql, zip, py, sh, txt, di, dg, pyspark, kjb, ktr, csv.",
+				Description: "File Extension 类型:jar，sql，zip，py，sh，txt，di，dg，pyspark，kjb，ktr，csv。",
 			},
 			"resource_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Resource ID.",
+				Description: "资源 ID",
 			},
 		},
 	}

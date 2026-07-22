@@ -22,42 +22,42 @@ func ResourceTencentCloudScfSyncInvokeFunction() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Function name.",
+				Description: "Function 名称",
 			},
 
 			"qualifier": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Version or alias of the function. It defaults to $DEFAULT.",
+				Description: "版本 or alias of the function. It 默认为 $DEFAULT。",
 			},
 
 			"event": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB. This field corresponds to event input parameter.",
+				Description: "Function running parameter，which is in the JSON 格式 Maximum parameter size is 6 MB. This field corresponds to event input parameter。",
 			},
 
 			"log_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Valid value: None (default) or Tail. If the value is Tail, log in the response will contain the corresponding function execution log (up to 4KB).",
+				Description: "Valid 值: None (default) or Tail. If the 值 is Tail，log in the response will contain the corresponding function execution log (up to 4KB)。",
 			},
 
 			"namespace": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace. default is used if it's left empty.",
+				Description: "Namespace. 默认为 used if it's left empty。",
 			},
 
 			"routing_key": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Traffic routing config in json format, e.g., {k:v}. Please note that both k and v must be strings. Up to 1024 bytes allowed.",
+				Description: "Traffic routing 配置 in json 格式，e.g.，{k:v}. Please note that both k and v must be strings. Up to 1024 bytes allowed。",
 			},
 		},
 	}

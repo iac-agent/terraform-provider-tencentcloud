@@ -27,24 +27,24 @@ func ResourceTencentCloudDlcUserDataEngineConfig() *schema.Resource {
 			"data_engine_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Engine unique id.",
+				Description: "Engine unique id。",
 			},
 
 			"data_engine_config_pairs": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Engine configuration items.",
+				Description: "Engine configuration items。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_item": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Config key.",
+							Description: "配置 键",
 						},
 						"config_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Config value.",
+							Description: "配置 值",
 						},
 					},
 				},
@@ -54,28 +54,28 @@ func ResourceTencentCloudDlcUserDataEngineConfig() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Job engine resource configuration template.",
+				Description: "Job engine resource configuration template。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"driver_size": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Engine driver size specification only supports: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge.",
+							Description: "Engine driver size specification only supports: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge。",
 						},
 						"executor_size": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Engine executor size specification only supports: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge.",
+							Description: "Engine executor size specification only supports: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge。",
 						},
 						"executor_nums": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Specify the number of executors. The minimum value is 1 and the maximum value is less than the cluster specification.",
+							Description: "指定number of executors. The minimum 值 is 1 and the maximum 值 is less than the cluster specification。",
 						},
 						"executor_max_numbers": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Specify the executor max number (in a dynamic configuration scenario), the minimum value is 1, and the maximum value is less than the cluster specification (when ExecutorMaxNumbers is less than ExecutorNums, the value is set to ExecutorNums).",
+							Description: "指定executor max number (in a dynamic configuration scenario)，the minimum 值 is 1，and the maximum 值 is less than the cluster specification (when ExecutorMaxNumbers is less than ExecutorNums，the 值 is set to ExecutorNums)。",
 						},
 					},
 				},

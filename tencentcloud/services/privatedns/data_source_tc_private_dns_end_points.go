@@ -18,18 +18,18 @@ func DataSourceTencentCloudPrivateDnsEndPoints() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter parameters. Valid values: EndPointName, EndPointId, EndPointServiceId, and EndPointVip.",
+				Description: "Filter parameters. 有效值：EndPointName，EndPointId，EndPointServiceId，and EndPointVip。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter name.",
+							Description: "Parameter 名称",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Array of parameter values.",
+							Description: "数组 parameter values。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -41,28 +41,28 @@ func DataSourceTencentCloudPrivateDnsEndPoints() *schema.Resource {
 			"end_point_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Endpoint list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+				Description: "Endpoint list.\n注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"end_point_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Endpoint ID.",
+							Description: "Endpoint ID。",
 						},
 						"end_point_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Endpoint name.",
+							Description: "Endpoint 名称",
 						},
 						"end_point_service_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Endpoint service ID.",
+							Description: "Endpoint 服务 ID",
 						},
 						"end_point_vip_set": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "VIP list of the endpoint.",
+							Description: "VIP 列表 the endpoint。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -70,23 +70,23 @@ func DataSourceTencentCloudPrivateDnsEndPoints() *schema.Resource {
 						"region_code": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ap-guangzhou\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "ap-guangzhou\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Tag key-value pair collection.\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "标签键-值 pair collection.\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -98,7 +98,7 @@ func DataSourceTencentCloudPrivateDnsEndPoints() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

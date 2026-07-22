@@ -26,14 +26,14 @@ func ResourceTencentCloudTsfBindApiGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway group id.",
+				Description: "gateway group id。",
 			},
 
 			"group_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "group id.",
+				Description: "group id。",
 			},
 		},
 	}

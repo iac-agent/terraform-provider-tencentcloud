@@ -28,7 +28,7 @@ func ResourceTencentCloudMqttUser() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"username": {
@@ -43,25 +43,25 @@ func ResourceTencentCloudMqttUser() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Sensitive:   true,
-				Description: "Password, when this field is empty, the backend will generate it by default.",
+				Description: "密码，when this field is empty，the backend will generate it by default。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Note that the length should not exceed 128 characters.",
+				Description: "Note that the length should not exceed 128 characters。",
 			},
 
 			"created_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Creation time, millisecond timestamp.",
+				Description: "创建时间，millisecond 时间戳。",
 			},
 
 			"modified_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Modify time, millisecond timestamp.",
+				Description: "修改时间，millisecond 时间戳。",
 			},
 		},
 	}

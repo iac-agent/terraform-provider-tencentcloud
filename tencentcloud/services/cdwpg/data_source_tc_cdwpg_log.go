@@ -18,151 +18,151 @@ func DataSourceTencentCloudCdwpgLog() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"start_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Start time.",
+				Description: "开始时间。",
 			},
 
 			"end_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "End time.",
+				Description: "结束时间。",
 			},
 
 			"database": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Database.",
+				Description: "Database。",
 			},
 
 			"order_by": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sort by.",
+				Description: "排序方式",
 			},
 
 			"order_by_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Ascending/Descending.",
+				Description: "Ascending/Descending。",
 			},
 
 			"duration": {
 				Type:        schema.TypeFloat,
 				Optional:    true,
-				Description: "Filter duration.",
+				Description: "Filter duration。",
 			},
 
 			"slow_log_details": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Slow sql log details.",
+				Description: "Slow sql log details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_time": {
 							Type:        schema.TypeFloat,
 							Required:    true,
-							Description: "Total time spent.",
+							Description: "Total time spent。",
 						},
 						"total_call_times": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total call count.",
+							Description: "Total call count。",
 						},
 						"normal_querys": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Slow sql.",
+							Description: "Slow sql。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"call_times": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Call count.",
+										Description: "Call count。",
 									},
 									"shared_read_blocks": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Shared read blocks.",
+										Description: "Shared read blocks。",
 									},
 									"shared_write_blocks": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Shared write blocks.",
+										Description: "Shared write blocks。",
 									},
 									"database_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Database.",
+										Description: "Database。",
 									},
 									"normal_query": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Desensitized query.",
+										Description: "Desensitized query。",
 									},
 									"max_elapsed_query": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Longest execution time query.",
+										Description: "Longest 执行时间 query。",
 									},
 									"cost_time": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Total time spent.",
+										Description: "Total time spent。",
 									},
 									"client_ip": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Client ip.",
+										Description: "Client ip。",
 									},
 									"user_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Username.",
+										Description: "用户名",
 									},
 									"total_call_times_percent": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Total call count percentage.",
+										Description: "Total call count percentage。",
 									},
 									"total_cost_time_percent": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Total time spent percentage.",
+										Description: "Total time spent percentage。",
 									},
 									"min_cost_time": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Minimum time spent.",
+										Description: "Minimum time spent。",
 									},
 									"max_cost_time": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Maximum time spent.",
+										Description: "Maximum time spent。",
 									},
 									"first_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Earliest timestamp.",
+										Description: "Earliest 时间戳。",
 									},
 									"last_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Latest timestamp.",
+										Description: "Latest 时间戳。",
 									},
 									"read_cost_time": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Total read I/O time.",
+										Description: "Total read I/O time。",
 									},
 									"write_cost_time": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Total write I/O time.",
+										Description: "Total write I/O time。",
 									},
 								},
 							},
@@ -174,28 +174,28 @@ func DataSourceTencentCloudCdwpgLog() *schema.Resource {
 			"error_log_details": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Error log details.",
+				Description: "错误 log details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Username.",
+							Description: "用户名",
 						},
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database.",
+							Description: "Database。",
 						},
 						"error_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Error time.",
+							Description: "错误 time。",
 						},
 						"error_message": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Error message.",
+							Description: "错误信息",
 						},
 					},
 				},
@@ -204,7 +204,7 @@ func DataSourceTencentCloudCdwpgLog() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

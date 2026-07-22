@@ -29,59 +29,59 @@ func ResourceTencentCloudElasticsearchLogstashPipeline() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Logstash instance id.",
+				Description: "Logstash 实例 ID",
 			},
 			"pipeline": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Pipeline information.",
+				Description: "Pipeline information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"pipeline_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pipeline id.",
+							Description: "Pipeline id。",
 						},
 						"pipeline_desc": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pipeline description information.",
+							Description: "Pipeline 描述 information。",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pipeline configuration content.",
+							Description: "Pipeline configuration 内容",
 						},
 						"workers": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Number of Worker of pipe.",
+							Description: "数量 Worker of pipe。",
 						},
 						"batch_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Pipe batch size.",
+							Description: "Pipe batch size。",
 						},
 						"batch_delay": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Pipeline batch processing delay.",
+							Description: "Pipeline batch processing 延迟",
 						},
 						"queue_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pipeline buffer queue type.",
+							Description: "Pipeline buffer queue 类型",
 						},
 						"queue_max_bytes": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pipeline buffer queue size.",
+							Description: "Pipeline buffer queue size。",
 						},
 						"queue_check_point_writes": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Number of pipeline buffer queue checkpoint writes.",
+							Description: "数量 pipeline buffer queue checkpoint writes。",
 						},
 					},
 				},
@@ -90,7 +90,7 @@ func ResourceTencentCloudElasticsearchLogstashPipeline() *schema.Resource {
 			"op_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Operation type. 1: save only; 2: save and deploy.",
+				Description: "操作类型 1: save only; 2: save and deploy。",
 			},
 		},
 	}

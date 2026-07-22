@@ -34,23 +34,23 @@ func ResourceTencentCloudLighthouseInstance() *schema.Resource {
 			"bundle_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the Lighthouse package.",
+				Description: "ID Lighthouse package。",
 			},
 			"is_update_bundle_id_auto_voucher": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Whether the voucher is deducted automatically when update bundle id. Value range: `true`: indicates automatic deduction of vouchers, `false`: does not automatically deduct vouchers. Default value: `false`.",
+				Description: "是否voucher is deducted automatically when update bundle id. 取值范围：`true`: 表示automatic deduction of vouchers，`false`: does not automatically deduct vouchers. 默认值：`false`。",
 			},
 			"blueprint_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the Lighthouse image.",
+				Description: "ID Lighthouse image。",
 			},
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Subscription period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.",
+				Description: "Subscription 周期 in months. 有效值：1，2，3，4，5，6，7，8，9，10，11，12，24，36，48，60。",
 			},
 			"renew_flag": {
 				Type:     schema.TypeString,
@@ -61,13 +61,13 @@ func ResourceTencentCloudLighthouseInstance() *schema.Resource {
 			"instance_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The display name of the Lighthouse instance.",
+				Description: "The display 名称 Lighthouse instance。",
 			},
 			"zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "List of availability zones. A random AZ is selected by default.",
+				Description: "列表 availability zones. A random AZ is selected by default。",
 			},
 			"dry_run": {
 				Type:     schema.TypeBool,
@@ -79,24 +79,24 @@ func ResourceTencentCloudLighthouseInstance() *schema.Resource {
 			"client_token": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.",
+				Description: "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified，the idem-potency of the request cannot be guaranteed。",
 			},
 			"login_configuration": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Login password of the instance. It is only available for Windows instances. If it is not specified, it means that the user choose to set the login password after the instance creation.",
+				Description: "Login 密码 of the instance. It is only available for Windows instances. If it is not specified，it means that the 用户 choose to set the login 密码 after the instance creation。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"auto_generate_password": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "whether auto generate password. if false, need set password.",
+							Description: "whether auto generate 密码 if false，need set 密码",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Login password.",
+							Description: "Login 密码",
 						},
 					},
 				},
@@ -107,45 +107,45 @@ func ResourceTencentCloudLighthouseInstance() *schema.Resource {
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"YES", "NO"}),
 				Deprecated:   "It has been deprecated from version v1.81.8. Use `tencentcloud_lighthouse_key_pair_attachment` manage key pair.",
-				Description:  "Whether to allow login using the default key pair. `YES`: allow login; `NO`: disable login. Default: `YES`.",
+				Description:  "是否allow login using the default 键 pair. `YES`: allow login; `NO`: disable login. 默认值：`YES`。",
 			},
 			"isolate_data_disk": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
-				Description: "Whether to return the mounted data disk. `true`: returns both the instance and the mounted data disk; `false`: returns the instance and no longer returns its mounted data disk. Default: `true`.",
+				Description: "是否return the mounted data disk. `true`: 返回both the instance and the mounted data disk; `false`: 返回instance and no longer 返回its mounted data disk. 默认值：`true`。",
 			},
 			"containers": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Configuration of the containers to create.",
+				Description: "Configuration of the containers to create。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"container_image": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Container image address.",
+							Description: "Container image 地址",
 						},
 						"container_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Container name.",
+							Description: "Container 名称",
 						},
 						"envs": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of environment variables.",
+							Description: "列表 environment variables。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Environment variable key.",
+										Description: "Environment variable 键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Environment variable value.",
+										Description: "Environment variable 值",
 									},
 								},
 							},
@@ -153,28 +153,28 @@ func ResourceTencentCloudLighthouseInstance() *schema.Resource {
 						"publish_ports": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of mappings of container ports and host ports.",
+							Description: "列表 mappings of container ports and 主机 ports。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"host_port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Host port.",
+										Description: "主机端口",
 									},
 									"container_port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Container port.",
+										Description: "Container 端口",
 									},
 									"ip": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "External IP. It defaults to 0.0.0.0.",
+										Description: "External IP. It 默认为 0.0.0.0。",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The protocol defaults to tcp. Valid values: tcp, udp and sctp.",
+										Description: "The 协议 默认为 tcp. 有效值：tcp，udp and sctp。",
 									},
 								},
 							},
@@ -182,18 +182,18 @@ func ResourceTencentCloudLighthouseInstance() *schema.Resource {
 						"volumes": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of container mount volumes.",
+							Description: "列表 container mount volumes。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"container_path": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Container path.",
+										Description: "Container 路径",
 									},
 									"host_path": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Host path.",
+										Description: "主机 路径",
 									},
 								},
 							},
@@ -201,7 +201,7 @@ func ResourceTencentCloudLighthouseInstance() *schema.Resource {
 						"command": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The command to run.",
+							Description: "The command to run。",
 						},
 					},
 				},
@@ -210,19 +210,19 @@ func ResourceTencentCloudLighthouseInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Firewall template ID. If this parameter is not specified, the default firewall policy is used.",
+				Description: "Firewall 模板 ID If this parameter is not specified，the default firewall policy is used。",
 			},
 			"public_addresses": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Computed:    true,
-				Description: "Public addresses.",
+				Description: "Public addresses。",
 			},
 			"private_addresses": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Computed:    true,
-				Description: "Private addresses.",
+				Description: "Private addresses。",
 			},
 		},
 	}

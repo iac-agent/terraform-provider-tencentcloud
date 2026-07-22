@@ -19,19 +19,19 @@ func DataSourceTencentCloudMqttRegistrationCode() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"registration_code": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Registration code.",
+				Description: "Registration 代码",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

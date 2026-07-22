@@ -19,24 +19,24 @@ func DataSourceTencentCloudAPIGatewayUpstreams() *schema.Resource {
 			"upstream_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Backend channel ID.",
+				Description: "Backend channel ID。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "ServiceId and ApiId filtering queries.",
+				Description: "ServiceId and ApiId filtering queries。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Fields that need to be filtered.",
+							Description: "Fields that need to be filtered。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "The filtering value of the field.",
+							Description: "The filtering 值 of the field。",
 						},
 					},
 				},
@@ -44,33 +44,33 @@ func DataSourceTencentCloudAPIGatewayUpstreams() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Query Results.",
+				Description: "Query Results。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API Unique ID.",
+							Description: "API Unique ID。",
 						},
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service Unique ID.",
+							Description: "Service Unique ID。",
 						},
 						"api_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API nameNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "API name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service NameNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Service Name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"bind_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "binding time.",
+							Description: "binding time。",
 						},
 					},
 				},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudAPIGatewayUpstreams() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

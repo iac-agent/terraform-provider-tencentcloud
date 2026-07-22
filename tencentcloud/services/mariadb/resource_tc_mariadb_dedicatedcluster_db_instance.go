@@ -29,70 +29,70 @@ func ResourceTencentCloudMariadbDedicatedclusterDbInstance() *schema.Resource {
 			"goods_num": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "number of instance.",
+				Description: "数量 instance。",
 			},
 
 			"memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "instance memory.",
+				Description: "instance memory。",
 			},
 
 			"storage": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "instance disk storage.",
+				Description: "instance disk storage。",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "dedicated cluster id.",
+				Description: "dedicated 集群 ID",
 			},
 
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "project id.",
+				Description: "项目 ID",
 			},
 
 			"vip": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "vip.",
+				Description: "VIP",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "vpc id.",
+				Description: "私有网络 ID",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "subnet id, it&amp;#39;s required when vpcId is set.",
+				Description: "子网 ID，it&amp;#39;s 必填 when vpcId is set。",
 			},
 
 			"db_version_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "db engine version, default to 0.",
+				Description: "db engine 版本，默认为 0。",
 			},
 
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "name of this instance.",
+				Description: "名称 this instance。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

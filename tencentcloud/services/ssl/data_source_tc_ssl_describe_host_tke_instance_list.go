@@ -19,30 +19,30 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID to be deployed.",
+				Description: "证书 ID to be deployed。",
 			},
 
 			"is_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to query the cache, 1: Yes; 0: No, the default is the query cache, the cache is half an hour.",
+				Description: "是否query the cache，1: Yes; 0: No，the 默认为 the query cache，the cache is half an hour。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "List of filtering parameters; Filterkey: domainmatch.",
+				Description: "列表 filtering parameters; Filterkey: domainmatch。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"filter_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter key.",
+							Description: "过滤参数键",
 						},
 						"filter_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter value.",
+							Description: "过滤参数值",
 						},
 					},
 				},
@@ -51,68 +51,68 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 			"async_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to cache asynchronous.",
+				Description: "是否cache asynchronous。",
 			},
 
 			"old_certificate_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Original certificate ID.",
+				Description: "Original 证书 ID",
 			},
 
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "CLB instance listener listNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "CLB instance listener listNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster ID.",
+							Description: "集群 ID",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster name.",
+							Description: "集群名称",
 						},
 						"namespace_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Cluster Naming Space List.",
+							Description: "Cluster Naming Space List。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "namespace name.",
+										Description: "namespace 名称",
 									},
 									"secret_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Secret list.",
+										Description: "Secret list。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Secret name.",
+													Description: "Secret 名称",
 												},
 												"cert_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Certificate ID.",
+													Description: "证书 ID",
 												},
 												"ingress_list": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Ingress list.",
+													Description: "Ingress list。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"ingress_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Ingress name.",
+																Description: "Ingress 名称",
 															},
 															"tls_domains": {
 																Type: schema.TypeSet,
@@ -120,7 +120,7 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 																	Type: schema.TypeString,
 																},
 																Computed:    true,
-																Description: "TLS domain name list.",
+																Description: "TLS 域名 名称 list。",
 															},
 															"domains": {
 																Type: schema.TypeSet,
@@ -128,7 +128,7 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 																	Type: schema.TypeString,
 																},
 																Computed:    true,
-																Description: "Ingress domain name list.",
+																Description: "Ingress 域名 名称 list。",
 															},
 														},
 													},
@@ -139,7 +139,7 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "List of domain names that are not matched with the new certificateNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+													Description: "列表 域名 names that are not matched with the new certificateNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 												},
 											},
 										},
@@ -150,12 +150,12 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster.",
+							Description: "Cluster。",
 						},
 						"cluster_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster.",
+							Description: "Cluster。",
 						},
 					},
 				},
@@ -164,25 +164,25 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 			"async_total_num": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of asynchronous refreshNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "The total 数量 asynchronous refreshNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"async_offset": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Asynchronous refresh current execution numberNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Asynchronous refresh current execution numberNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"async_cache_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Current cache read timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Current cache read timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

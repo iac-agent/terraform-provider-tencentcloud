@@ -20,24 +20,24 @@ func DataSourceTencentCloudOceanusSystemResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Array of resource IDs to be queried.",
+				Description: "数组 resource IDs to be queried。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Query the resource configuration list. If not specified, return all job configuration lists under ResourceIds.N.",
+				Description: "Query the resource configuration list. 如果未指定，return all job configuration lists under ResourceIds.N。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Filter values for the field.",
+							Description: "Filter values for the field。",
 						},
 					},
 				},
@@ -45,48 +45,48 @@ func DataSourceTencentCloudOceanusSystemResource() *schema.Resource {
 			"cluster_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 			"flink_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query built-in connectors for the corresponding Flink version.",
+				Description: "Query built-in connectors for the corresponding Flink 版本",
 			},
 			"resource_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Collection of resource details.",
+				Description: "Collection of resource details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource ID.",
+							Description: "资源 ID",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource name.",
+							Description: "资源名称",
 						},
 						"resource_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource type. 1 indicates JAR package, which is currently the only supported value.",
+							Description: "资源类型 1 表示JAR package，which is currently the only supported 值",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource remarks.",
+							Description: "Resource 备注",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region to which the resource belongs.",
+							Description: "地域 to which the resource belongs。",
 						},
 						"latest_resource_config_version": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Latest version of the resource.",
+							Description: "Latest 版本 of the resource。",
 						},
 					},
 				},
@@ -94,7 +94,7 @@ func DataSourceTencentCloudOceanusSystemResource() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

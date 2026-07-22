@@ -28,26 +28,26 @@ func ResourceTencentCloudMysqlAuditService() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "TencentDB for MySQL instance ID.",
+				Description: "腾讯数据库 MySQL 实例 ID。",
 			},
 
 			"log_expire_day": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Retention period of the audit log. Valid values:  `7` (one week), `30` (one month), `90` (three months), `180` (six months), `365` (one year), `1095` (three years), `1825` (five years).",
+				Description: "审计日志的保留期限。有效值：“7”（一周）、“30”（一个月）、“90”（三个月）、“180”（六个月）、“365”（一年）、“1095”（三年）、“1825”（五年）。",
 			},
 
 			"high_log_expire_day": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Retention period of high-frequency audit logs. Valid values:  `7` (one week), `30` (one month).",
+				Description: "高频审计日志的保留期限。有效值：“7”（一周）、“30”（一个月）。",
 			},
 
 			"rule_template_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Rule template ID. If both this parameter and AuditRuleFilters are not specified, all SQL statements will be recorded.",
+				Description: "规则模板ID。如果该参数和AuditRuleFilters均未指定，则记录所有SQL语句。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -57,7 +57,7 @@ func ResourceTencentCloudMysqlAuditService() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Audit type. Valid values: true: Record all; false: Record by rules (default value).",
+				Description: "审核类型。有效值：true：记录全部； false：按规则记录（默认值）。",
 			},
 		},
 	}

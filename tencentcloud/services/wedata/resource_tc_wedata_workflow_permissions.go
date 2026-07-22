@@ -28,43 +28,43 @@ func ResourceTencentCloudWedataWorkflowPermissions() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"entity_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Authorization entity ID.",
+				Description: "Authorization entity ID。",
 			},
 
 			"entity_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Authorization entity type, folder/workflow.",
+				Description: "Authorization entity 类型，folder/workflow。",
 			},
 
 			"permission_list": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Authorization information array.",
+				Description: "Authorization information array。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"permission_target_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Authorization target type (user: user, role: role).",
+							Description: "Authorization target 类型 (用户: 用户，角色: 角色)。",
 						},
 						"permission_target_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Authorization target ID array (userId/roleId).",
+							Description: "Authorization target ID array (userId/roleId)。",
 						},
 						"permission_type_list": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Authorization permission type array (CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE, currently only supports CAN_MANAGE).",
+							Description: "Authorization permission 类型 array (CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，currently only supports CAN_MANAGE)。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

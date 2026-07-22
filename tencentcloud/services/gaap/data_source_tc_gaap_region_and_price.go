@@ -19,55 +19,55 @@ func DataSourceTencentCloudGaapRegionAndPrice() *schema.Resource {
 			"ip_address_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "IP version. Available values: IPv4, IPv6. Default is IPv4.",
+				Description: "IP 版本 可用值：IPv4，IPv6. 默认为 IPv4。",
 			},
 
 			"package_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Type of channel package. `Thunder` represents standard channel group, `Accelerator` represents game accelerator channel, and `CrossBorder` represents cross-border channel.",
+				Description: "类型 channel package. `Thunder` represents standard channel group，`Accelerator` represents game accelerator channel，and `CrossBorder` represents cross-border channel。",
 			},
 
 			"dest_region_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Source Site Area Details List.",
+				Description: "来源 Site Area Details List。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region Id.",
+							Description: "地域 ID",
 						},
 						"region_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region Name.",
+							Description: "地域 名称",
 						},
 						"region_area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region of the computer room.",
+							Description: "地域 of the computer room。",
 						},
 						"region_area_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region name of the computer room.",
+							Description: "地域名称 of the computer room。",
 						},
 						"idc_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of computer room, dc represents DataCenter data center, ec represents EdgeComputing edge node.",
+							Description: "类型 computer room，dc represents DataCenter data center，ec represents EdgeComputing edge node。",
 						},
 						"feature_bitmap": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Property bitmap, where each bit represents a property, where:0, indicates that the feature is not supported;1, indicates support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Property bitmap，where each bit represents a property，where:0，表示that the feature is not supported;1，表示support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"support_feature": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Ability to access regional supportNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Ability to access regional support注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"network_type": {
@@ -76,7 +76,7 @@ func DataSourceTencentCloudGaapRegionAndPrice() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "A list of network types supported by the access area, with `normal` indicating support for regular BGP, `cn2` indicating premium BGP, `triple` indicating three networks, and `secure_eip` represents a custom secure EIP.",
+										Description: "A 列表 network types supported by the access area，with `normal` indicating support for regular BGP，`cn2` indicating premium BGP，`triple` indicating three networks，and `secure_eip` represents a custom secure EIP。",
 									},
 								},
 							},
@@ -88,7 +88,7 @@ func DataSourceTencentCloudGaapRegionAndPrice() *schema.Resource {
 			"bandwidth_unit_price": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "proxy bandwidth cost gradient price.",
+				Description: "proxy bandwidth cost gradient price。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"bandwidth_range": {
@@ -97,17 +97,17 @@ func DataSourceTencentCloudGaapRegionAndPrice() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "Band width Range.",
+							Description: "Band width Range。",
 						},
 						"bandwidth_unit_price": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Band width Unit Price, Unit:yuan/Mbps/day.",
+							Description: "Band width Unit Price，Unit:yuan/Mbps/day。",
 						},
 						"discount_bandwidth_unit_price": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Bandwidth discount price, unit:yuan/Mbps/day.",
+							Description: "Bandwidth discount price，unit:yuan/Mbps/day。",
 						},
 					},
 				},
@@ -116,13 +116,13 @@ func DataSourceTencentCloudGaapRegionAndPrice() *schema.Resource {
 			"currency": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Bandwidth Price Currency Type:CNYUSD.",
+				Description: "Bandwidth Price Currency 类型:CNYUSD。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

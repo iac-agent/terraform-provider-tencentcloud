@@ -29,49 +29,49 @@ func ResourceTencentCloudCamPolicyVersion() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Strategy ID.",
+				Description: "Strategy ID。",
 			},
 
 			"policy_document": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Strategic text information.",
+				Description: "Strategic text information。",
 			},
 
 			"set_as_default": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to set as a version of the current strategy.",
+				Description: "是否set as a 版本 of the current strategy。",
 			},
 
 			"policy_version": {
 				Computed:    true,
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Strategic version detailsNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Strategic 版本 detailsNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Strategic version numberNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Strategic 版本 numberNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 						"create_date": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Strategic version creation timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Strategic 版本 creation timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 						"is_default_version": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether it is an effective version.0 means not, 1 means yesNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "是否为an effective 版本0 means not，1 means yesNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 						"document": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Strategic grammar textNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Strategic grammar textNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 					},
 				},

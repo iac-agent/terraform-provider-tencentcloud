@@ -19,45 +19,45 @@ func DataSourceTencentCloudCynosdbProxyNode() *schema.Resource {
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort field, value range:CREATETIME: creation time; PRIODENDTIME: expiration time.",
+				Description: "排序字段，取值范围：CREATETIME：创建时间； PRIODENDTIME：过期时间。",
 			},
 			"order_by_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort type, value range:ASC: ascending sort; DESC: descending sort.",
+				Description: "排序类型，取值范围：ASC：升序排序； DESC：降序排序。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Search criteria, if there are multiple filters, the relationship between the filters is a logical AND relationship.",
+				Description: "搜索条件，如果有多个过滤器，过滤器之间的关系是逻辑与关系。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"names": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Search String.",
+							Description: "搜索字符串。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Search String.",
+							Description: "搜索字符串。",
 						},
 						"exact_match": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Exact match or not.",
+							Description: "精确匹配与否。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Search Fields. Supported: Status, ProxyNodeId, ClusterId.",
+							Description: "搜索字段。支持：状态、ProxyNodeId、集群 ID。",
 						},
 						"operator": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Operator.",
+							Description: "操作员。",
 						},
 					},
 				},
@@ -65,58 +65,58 @@ func DataSourceTencentCloudCynosdbProxyNode() *schema.Resource {
 			"proxy_node_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Database Agent Node List.",
+				Description: "数据库代理节点列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"proxy_node_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database Agent Node ID.",
+							Description: "数据库代理节点 ID。",
 						},
 						"proxy_node_connections": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The current number of connections of the node. The DescribeProxyNodes interface does not return a value for this field.",
+							Description: "节点当前的连接数。 DescribeProxyNodes 接口不返回该字段的值。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Database Agent Node CPU.",
+							Description: "数据库代理节点 CPU。",
 						},
 						"mem": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Database Agent Node Memory.",
+							Description: "数据库代理节点内存。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database Agent Node Status.",
+							Description: "数据库代理节点状态。",
 						},
 						"proxy_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database Agent Group ID.",
+							Description: "数据库代理组 ID。",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster ID.",
+							Description: "集群 ID。",
 						},
 						"app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "User AppID.",
+							Description: "用户应用程序 ID。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region.",
+							Description: "地区。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability Zone.",
+							Description: "可用区。",
 						},
 					},
 				},
@@ -124,7 +124,7 @@ func DataSourceTencentCloudCynosdbProxyNode() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

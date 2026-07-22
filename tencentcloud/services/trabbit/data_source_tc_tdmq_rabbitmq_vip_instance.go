@@ -20,19 +20,19 @@ func DataSourceTencentCloudTdmqRabbitmqVipInstance() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "query condition filter.",
+				Description: "query condition filter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The name of the filter parameter.",
+							Description: "The 名称 filter parameter。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Optional:    true,
-							Description: "value.",
+							Description: "值",
 						},
 					},
 				},
@@ -41,83 +41,83 @@ func DataSourceTencentCloudTdmqRabbitmqVipInstance() *schema.Resource {
 			"instances": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Instance information list.",
+				Description: "Instance information list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance id.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance name.",
+							Description: "实例名称",
 						},
 						"instance_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance versionNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "instance version注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance status, 0 means creating, 1 means normal, 2 means isolating, 3 means destroyed, 4 - abnormal, 5 - delivery failed.",
+							Description: "实例状态，0 means creating，1 means normal，2 means isolating，3 means destroyed，4 - abnormal，5 - delivery failed。",
 						},
 						"node_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of nodes.",
+							Description: "节点数量",
 						},
 						"config_display": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance configuration specification name.",
+							Description: "Instance configuration 规格名称",
 						},
 						"max_tps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Peak TPS.",
+							Description: "Peak TPS。",
 						},
 						"max_band_width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Peak bandwidth, in Mbps.",
+							Description: "Peak bandwidth，in Mbps。",
 						},
 						"max_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Storage capacity, in GB.",
+							Description: "Storage capacity，（GB）。",
 						},
 						"expire_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance expiration time, in milliseconds.",
+							Description: "Instance 过期时间，（毫秒）。",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Automatic renewal mark, 0 indicates the default state (the user has not set it, that is, the initial state is manual renewal), 1 indicates automatic renewal, 2 indicates that the automatic renewal is not specified (user setting).",
+							Description: "Automatic renewal mark，0 表示default state (the 用户 has not set it，that is，the initial state is manual renewal)，1 表示automatic renewal，2 表示that the automatic renewal is not specified (用户 setting)。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "0-postpaid, 1-prepaid.",
+							Description: "0-postpaid，1-prepaid。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "RemarksNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Remarks注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"spec_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Configuration ID.",
+							Description: "Instance Configuration ID。",
 						},
 						"exception_information": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The cluster is abnormal.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The cluster is abnormal.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -125,7 +125,7 @@ func DataSourceTencentCloudTdmqRabbitmqVipInstance() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

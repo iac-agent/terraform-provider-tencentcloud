@@ -27,66 +27,66 @@ func ResourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 			"cluster_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster name, which can contain 3-64 letters, digits, hyphens, and underscores.",
+				Description: "集群名称，which can contain 3-64 letters，digits，hyphens，and underscores。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cluster description (up to 128 characters).",
+				Description: "Cluster 描述 (up to 128 characters)。",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"region": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Region information.",
+				Description: "地域 information。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Creation time in milliseconds.",
+				Description: "创建时间 （毫秒）。",
 			},
 
 			"public_end_point": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Public network access address.",
+				Description: "Public network access 地址",
 			},
 
 			"vpc_end_point": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "VPC access address.",
+				Description: "VPC access 地址",
 			},
 
 			"support_namespace_endpoint": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether the namespace access point is supported.",
+				Description: "是否namespace access point is supported。",
 			},
 
 			"vpcs": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Vpc list.",
+				Description: "Vpc list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Vpc ID.",
+							Description: "Vpc ID。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet ID.",
+							Description: "子网 ID",
 						},
 					},
 				},
@@ -95,13 +95,13 @@ func ResourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 			"is_vip": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether it is an exclusive instance.",
+				Description: "是否为an exclusive instance。",
 			},
 
 			"rocket_m_q_flag": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Rocketmq cluster identification.",
+				Description: "Rocketmq cluster identification。",
 			},
 		},
 	}

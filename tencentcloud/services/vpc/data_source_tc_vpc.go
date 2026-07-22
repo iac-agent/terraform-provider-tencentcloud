@@ -19,28 +19,28 @@ func DataSourceTencentCloudVpc() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The ID of the specific VPC to retrieve.",
+				Description: "The ID specific VPC to retrieve。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The name of the specific VPC to retrieve.",
+				Description: "The 名称 specific VPC to retrieve。",
 			},
 			"cidr_block": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The CIDR block of the VPC.",
+				Description: "The CIDR block of the VPC。",
 			},
 			"is_default": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether or not the default VPC.",
+				Description: "Whether or not the default VPC。",
 			},
 			"is_multicast": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether or not the VPC has Multicast support.",
+				Description: "Whether or not the VPC has Multicast support。",
 			},
 		},
 	}

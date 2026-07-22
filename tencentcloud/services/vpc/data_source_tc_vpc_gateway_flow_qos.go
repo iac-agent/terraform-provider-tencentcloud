@@ -19,7 +19,7 @@ func DataSourceTencentCloudVpcGatewayFlowQos() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Network instance ID, the network instance types we currently support are:Private line gateway instance ID, in the form of `dcg-ltjahce6`;Nat gateway instance ID, in the form of `nat-ltjahce6`;VPN gateway instance ID, in the form of `vpn-ltjahce6`.",
+				Description: "Network instance ID，the network instance types we currently support are:Private line gateway instance ID，in the form of `dcg-ltjahce6`;Nat gateway instance ID，in the form of `nat-ltjahce6`;VPN gateway instance ID，in the form of `vpn-ltjahce6`。",
 			},
 
 			"ip_addresses": {
@@ -28,34 +28,34 @@ func DataSourceTencentCloudVpcGatewayFlowQos() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Intranet IP of the cloud server with traffic limitation.",
+				Description: "Intranet IP of the cloud server with traffic limitation。",
 			},
 
 			"gateway_qos_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "instance detail list.",
+				Description: "instance detail list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "vpc id.",
+							Description: "私有网络 ID",
 						},
 						"ip_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cvm ip address.",
+							Description: "cvm ip 地址",
 						},
 						"bandwidth": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "bandwidth value.",
+							Description: "bandwidth 值",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 					},
 				},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudVpcGatewayFlowQos() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

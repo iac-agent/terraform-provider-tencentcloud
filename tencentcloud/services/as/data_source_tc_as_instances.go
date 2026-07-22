@@ -22,19 +22,19 @@ func DataSourceTencentCloudAsInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Instance ID of the cloud server (CVM) to be queried. The limit is 100 per request.",
+				Description: "实例 ID cloud server (CVM) to be queried. The 限制 is 100 per request。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions. If there are multiple Filters, the relationship between Filters is a logical AND (AND) relationship. If there are multiple Values in the same Filter, the relationship between Values under the same Filter is a logical OR (OR) relationship.",
+				Description: "Filter conditions. If there are multiple Filters，the relationship between Filters is a logical AND (AND) relationship. If there are multiple Values in the same Filter，the relationship between Values under the same Filter is a logical OR (OR) relationship。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Fields to be filtered. Valid names: `instance-id`: Filters by instance ID, `auto-scaling-group-id`: Filter by scaling group ID.",
+							Description: "Fields to be filtered. Valid names: `instance-id`: Filters by instance ID，`auto-scaling-group-id`: Filter by scaling 组 ID",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudAsInstances() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Value of the field.",
+							Description: "值 of the field。",
 						},
 					},
 				},
@@ -51,73 +51,73 @@ func DataSourceTencentCloudAsInstances() *schema.Resource {
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of instance details.",
+				Description: "列表 instance details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"auto_scaling_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Auto scaling group ID.",
+							Description: "Auto scaling 组 ID",
 						},
 						"auto_scaling_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Auto scaling group name.",
+							Description: "Auto scaling 组名称",
 						},
 						"launch_configuration_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Launch configuration ID.",
+							Description: "启动配置 ID",
 						},
 						"launch_configuration_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Launch configuration name.",
+							Description: "Launch configuration 名称",
 						},
 						"life_cycle_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Life cycle state. Please refer to the link for field value details: https://cloud.tencent.com/document/api/377/20453#Instance.",
+							Description: "Life cycle state. Please refer to the link for field 值 details: https://cloud.tencent.com/document/api/377/20453#Instance。",
 						},
 						"health_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Health status, the valid values are HEALTHY and UNHEALTHY.",
+							Description: "Health 状态，the valid values are HEALTHY and UNHEALTHY。",
 						},
 						"protected_from_scale_in": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Enable scale in protection.",
+							Description: "Enable scale in protection。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Available zone.",
+							Description: "Available 可用区",
 						},
 						"creation_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Valid values: `AUTO_CREATION`, `MANUAL_ATTACHING`.",
+							Description: "有效值：`AUTO_CREATION`，`MANUAL_ATTACHING`。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The time when the instance joined the group.",
+							Description: "The time when the instance joined the group。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance type.",
+							Description: "实例类型",
 						},
 						"version_number": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Version ID.",
+							Description: "版本 ID。",
 						},
 					},
 				},
@@ -126,7 +126,7 @@ func DataSourceTencentCloudAsInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

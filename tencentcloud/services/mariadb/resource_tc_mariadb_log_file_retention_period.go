@@ -27,13 +27,13 @@ func ResourceTencentCloudMariadbLogFileRetentionPeriod() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"days": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The number of days to save, cannot exceed 30.",
+				Description: "The 数量 days to save，cannot exceed 30。",
 			},
 		},
 	}

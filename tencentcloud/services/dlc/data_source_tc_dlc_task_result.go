@@ -18,148 +18,148 @@ func DataSourceTencentCloudDlcTaskResult() *schema.Resource {
 			"task_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Unique task ID.",
+				Description: "Unique task ID。",
 			},
 
 			"next_token": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The pagination information returned by the last response. This parameter can be omitted for the first response, where the data will be returned from the beginning. The data with a volume set by the `MaxResults` field is returned each time.",
+				Description: "The pagination information returned by the last response. This parameter can be omitted for the first response，where the data will be returned from the beginning. The data with a volume set by the `MaxResults` field is returned each time。",
 			},
 
 			"max_results": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Maximum number of returned rows. Value range: 0-1,000. Default value: 1,000.",
+				Description: "最大returned rows. 取值范围：0-1,000. 默认值：1,000。",
 			},
 
 			"is_transform_data_type": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to convert the data type.",
+				Description: "是否convert the data 类型",
 			},
 
 			"task_info": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The queried task information. If the returned value is empty, the task with the entered task ID does not exist. The task result will be returned only if the task status is `2` (succeeded).\nNote: This field may return null, indicating that no valid values can be obtained.",
+				Description: "The queried task information. If the returned 值 is empty，the task with the entered task ID does not exist. The task 结果 will be returned only if the task 状态 is `2` (succeeded).\n注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Unique task ID.",
+							Description: "Unique task ID。",
 						},
 						"datasource_connection_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name of the default selected data source when the current job is executed\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "名称 default selected data 来源 when the current job is executed\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"database_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name of the default selected database when the current job is executed\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "名称 default selected database when the current job is executed\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"sql": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The currently executed SQL statement. Each task contains one SQL statement.",
+							Description: "The currently executed SQL statement. Each task 包含one SQL statement。",
 						},
 						"sql_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Type of the executed task. Valid values: `DDL`, `DML`, `DQL`.",
+							Description: "类型 executed task. 有效值：`DDL`，`DML`，`DQL`。",
 						},
 						"state": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "u200cThe current task status. Valid values: `0` (initializing), `1` (executing), `2` (executed), `3` (writing data), `4` (queuing), u200c`-1` (failed), and `-3` (canceled). Only when the task is successfully executed, a task execution result will be returned.",
+							Description: "u200cThe current task 状态 有效值：`0` (initializing)，`1` (executing)，`2` (executed)，`3` (writing data)，`4` (queuing)，u200c`-1` (failed)，and `-3` (canceled). Only when the task is successfully executed，a task execution 结果 will be returned。",
 						},
 						"data_amount": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Amount of the data scanned in bytes.",
+							Description: "Amount of the data scanned in bytes。",
 						},
 						"used_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The compute time in ms.",
+							Description: "The compute time in ms。",
 						},
 						"output_path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Address of the COS bucket for storing the task result.",
+							Description: "地址 of the COS 存储桶 for storing the task 结果",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task creation timestamp.",
+							Description: "Task creation 时间戳。",
 						},
 						"output_message": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task execution information. `success` will be returned if the task succeeds; otherwise, the failure cause will be returned.",
+							Description: "Task execution information. `success` will be returned if the task succeeds; otherwise，the failure cause will be returned。",
 						},
 						"row_affect_info": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Number of affected rows.",
+							Description: "数量 affected rows。",
 						},
 						"result_schema": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Schema information of the result\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Schema information of the 结果\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Column name, which is case-insensitive and can contain up to 25 characters.",
+										Description: "Column 名称，which is case-insensitive and can contain up to 25 characters。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Column type. Valid values:\nstring|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array<data_type>|map<primitive_type, data_type>|struct<col_name : data_type [COMMENT col_comment], ...>|uniontype<data_type, data_type, ...>.",
+										Description: "Column 类型 Valid values:\nstring|tinyint|smallint|int|bigint|boolean|float|double|decimal|时间戳|date|binary|array<data_type>|map<primitive_type，data_type>|struct<col_name : data_type [COMMENT col_comment]，...>|uniontype<data_type，data_type，...>。",
 									},
 									"comment": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Class comment.\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Class 注释\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"precision": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Length of the entire numeric value\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Length of the entire numeric 值\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"scale": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Length of the decimal part\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Length of the decimal part\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"nullable": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether the column is null.\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "是否column is null.\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"position": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Field position\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Field position\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Field creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Field 创建时间\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"modified_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Field modification time\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Field 修改时间\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"is_partition": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether the column is the partition field.\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "是否column is the partition field.\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -167,37 +167,37 @@ func DataSourceTencentCloudDlcTaskResult() *schema.Resource {
 						"result_set": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Result information. After it is unescaped, each element of the outer array is a data row.\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "结果 information. After it is unescaped，each element of the outer array is a data row.\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"next_token": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pagination information. If there is no more result data, `nextToken` will be empty.",
+							Description: "Pagination information. If there is no more 结果 data，`nextToken` will be empty。",
 						},
 						"percentage": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Task progress (%).",
+							Description: "Task progress (%)。",
 						},
 						"progress_detail": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task progress details.",
+							Description: "Task progress details。",
 						},
 						"display_format": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Console display format. Valid values: `table`, `text`.",
+							Description: "Console display 格式 有效值：`table`，`text`。",
 						},
 						"total_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The task time in ms.",
+							Description: "The task time in ms。",
 						},
 						"query_result_time": {
 							Type:        schema.TypeFloat,
 							Required:    true,
-							Description: "Time consumed to get results\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Time consumed to get results\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -206,7 +206,7 @@ func DataSourceTencentCloudDlcTaskResult() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -30,49 +30,49 @@ func ResourceTencentCloudClbFunctionTargetsAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Load Balancer Instance ID.",
+				Description: "负载均衡器实例 ID。",
 			},
 
 			"listener_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Load Balancer Listener ID.",
+				Description: "负载均衡器侦听器 ID。",
 			},
 
 			"function_targets": {
 				Required:    true,
 				MaxItems:    1,
 				Type:        schema.TypeList,
-				Description: "List of cloud functions to be bound.",
+				Description: "需要绑定的云函数列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"function": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "Information about cloud functions.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "云函数信息。注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"function_namespace": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The namespace of function.",
+										Description: "函数的命名空间。",
 									},
 									"function_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The name of function.",
+										Description: "函数的名称。",
 									},
 									"function_qualifier": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The version name or alias of the function.",
+										Description: "函数的版本名称或别名。",
 									},
 									"function_qualifier_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Identifies the type of FunctionQualifier parameter, possible values: VERSION, ALIAS.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "标识FunctionQualifier参数的类型，可能值：VERSION、ALIAS。注意：该字段可能返回null，表示取不到有效值。",
 									},
 								},
 							},
@@ -81,7 +81,7 @@ func ResourceTencentCloudClbFunctionTargetsAttachment() *schema.Resource {
 							Type:        schema.TypeInt,
 							Default:     10,
 							Optional:    true,
-							Description: "Weight. The default is `10`.",
+							Description: "重量。默认值为“10”。",
 						},
 					},
 				},
@@ -93,7 +93,7 @@ func ResourceTencentCloudClbFunctionTargetsAttachment() *schema.Resource {
 				Computed:      true,
 				Type:          schema.TypeString,
 				ConflictsWith: []string{"domain", "url"},
-				Description:   "The ID of the target forwarding rule. When binding the cloud function to a layer-7 forwarding rule, this parameter or the Domain+Url parameter must be entered.",
+				Description: "目标转发规则ID。云函数绑定七层转发规则时，必须输入该参数或Domain+Url参数。",
 			},
 
 			"domain": {
@@ -102,7 +102,7 @@ func ResourceTencentCloudClbFunctionTargetsAttachment() *schema.Resource {
 				Computed:     true,
 				Type:         schema.TypeString,
 				RequiredWith: []string{"url"},
-				Description:  "The domain name of the target forwarding rule. If the LocationId parameter has been entered, this parameter will not take effect.",
+				Description: "目标转发规则的域名。如果已输入LocationId参数，则该参数不生效。",
 			},
 
 			"url": {
@@ -111,7 +111,7 @@ func ResourceTencentCloudClbFunctionTargetsAttachment() *schema.Resource {
 				Computed:     true,
 				Type:         schema.TypeString,
 				RequiredWith: []string{"domain"},
-				Description:  "The URL of the target forwarding rule. If the LocationId parameter has been entered, this parameter will not take effect.",
+				Description: "目标转发规则的URL。如果已输入LocationId参数，则该参数不生效。",
 			},
 		},
 	}

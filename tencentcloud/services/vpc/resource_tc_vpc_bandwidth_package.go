@@ -45,19 +45,19 @@ func ResourceTencentCloudVpcBandwidthPackage() *schema.Resource {
 			"bandwidth_package_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Bandwidth package name.",
+				Description: "Bandwidth package 名称",
 			},
 
 			"internet_max_bandwidth": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Bandwidth packet speed limit size. Unit: Mbps, -1 means no speed limit.",
+				Description: "Bandwidth packet speed 限制 size. 单位：Mbps，-1 means no speed 限制",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 				Deprecated:  "Use `tag` instead.",
 			},
 
@@ -65,21 +65,21 @@ func ResourceTencentCloudVpcBandwidthPackage() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 
 			"time_span": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The purchase duration of the prepaid monthly bandwidth package, unit: month, value range: 1~60.",
+				Description: "The purchase duration of the prepaid monthly bandwidth package，unit: month，取值范围：1~60。",
 			},
 
 			"egress": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Network egress. It defaults to `center_egress1`. If you want to try the egress feature, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+				Description: "Network egress. It 默认为 `center_egress1`. If you want to try the egress feature，please [提交 a ticket](https://console.cloud.tencent.com/workorder/category)。",
 			},
 		},
 	}

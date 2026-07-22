@@ -19,73 +19,73 @@ func DataSourceTencentCloudKmsWhiteBoxKeyDetails() *schema.Resource {
 			"key_status": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Filter condition: status of the key, 0: disabled, 1: enabled.",
+				Description: "Filter condition: 状态 键，0: 已禁用，1: 已启用",
 			},
 			"key_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of white box key information.",
+				Description: "列表 white box 键 information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"algorithm": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The type of algorithm used by the key.",
+							Description: "类型 algorithm used by the 键",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Key creation time, Unix timestamp.",
+							Description: "键 创建时间，Unix 时间戳。",
 						},
 						"decrypt_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "White box decryption key, base64 encoded.",
+							Description: "White box decryption 键，base64 encoded。",
 						},
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource ID, format: creatorUin/$creatorUin/$keyId.",
+							Description: "资源 ID，格式: creatorUin/$creatorUin/$keyId。",
 						},
 						"key_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Globally unique identifier for the white box key.",
+							Description: "Globally unique identifier for the white box 键",
 						},
 						"creator_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creator.",
+							Description: "创建者",
 						},
 						"alias": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "As an alias for a key that is easier to identify and easier to understand, it cannot be empty and is a combination of 1-60 alphanumeric characters - _. The first character must be a letter or number. It cannot be repeated.",
+							Description: "As an alias for a 键 that is easier to identify and easier to understand，it cannot be empty and is a combination of 1-60 alphanumeric characters - _. The first character must be a letter or number. It cannot be repeated。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the key.",
+							Description: "描述 键",
 						},
 						"encrypt_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "White box encryption key, base64 encoded.",
+							Description: "White box encryption 键，base64 encoded。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creator.",
+							Description: "创建者",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The status of the white box key, the value is: Enabled | Disabled.",
+							Description: "The 状态 white box 键，the 值 is: 已启用 | 已禁用",
 						},
 						"device_fingerprint_bind": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Is there a device fingerprint bound to the current key?.",
+							Description: "Is there a device fingerprint bound to the current 键?。",
 						},
 					},
 				},
@@ -93,7 +93,7 @@ func DataSourceTencentCloudKmsWhiteBoxKeyDetails() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

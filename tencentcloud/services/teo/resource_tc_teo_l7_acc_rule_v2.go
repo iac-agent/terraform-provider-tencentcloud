@@ -27,22 +27,22 @@ func ResourceTencentCloudTeoL7AccRuleV2() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id.",
+				Description: "可用区 ID",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule status. The possible values are: `enable`: enabled; `disable`: disabled.",
+				Description: "Rule 状态 The possible values are: `enable`: 已启用; `disable`: 已禁用",
 			},
 			"rule_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule name. The name length limit is 255 characters.",
+				Description: "Rule 名称 The 名称 length 限制 is 255 characters。",
 			},
 			"description": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Rule annotation. multiple annotations can be added.",
+				Description: "Rule annotation. multiple annotations can be added。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -50,7 +50,7 @@ func ResourceTencentCloudTeoL7AccRuleV2() *schema.Resource {
 			"branches": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.",
+				Description: "Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid。",
 				Elem: &schema.Resource{
 					Schema: TencentTeoL7RuleBranchBasicInfo(1),
 				},
@@ -58,12 +58,12 @@ func ResourceTencentCloudTeoL7AccRuleV2() *schema.Resource {
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Rule ID. Unique identifier of the rule.",
+				Description: "Rule ID. Unique identifier of the rule。",
 			},
 			"rule_priority": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Rule priority. only used as an output parameter.",
+				Description: "Rule 优先级 only used as an output parameter。",
 			},
 		},
 	}

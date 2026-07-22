@@ -19,33 +19,33 @@ func DataSourceTencentCloudPostgresqlZones() *schema.Resource {
 			"zone_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "AZ information set.",
+				Description: "AZ information set。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "AZ abbreviation.",
+							Description: "AZ abbreviation。",
 						},
 						"zone_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "AZ name.",
+							Description: "AZ 名称",
 						},
 						"zone_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "AZ number.",
+							Description: "AZ number。",
 						},
 						"zone_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability status. Valid values:`UNAVAILABLE`.`AVAILABLE`.`SELLOUT`.`SUPPORTMODIFYONLY` (supports configuration adjustment).",
+							Description: "Availability 状态 Valid values:`UNAVAILABLE`.`AVAILABLE`.`SELLOUT`.`SUPPORTMODIFYONLY` (supports configuration adjustment)。",
 						},
 						"zone_support_ipv6": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the AZ supports IPv6 address access.",
+							Description: "是否AZ supports IPv6 地址 access。",
 						},
 						"standby_zone_set": {
 							Type: schema.TypeSet,
@@ -53,7 +53,7 @@ func DataSourceTencentCloudPostgresqlZones() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "AZs that can be used as standby when this AZ is primaryNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "AZs that can be used as standby when this AZ is primaryNote: this field may return `null`，indicating that no valid values can be obtained。",
 						},
 					},
 				},
@@ -62,7 +62,7 @@ func DataSourceTencentCloudPostgresqlZones() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

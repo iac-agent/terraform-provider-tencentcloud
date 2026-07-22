@@ -29,27 +29,27 @@ func ResourceTencentCloudCssBackupStream() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Push domain.",
+				Description: "Push 域名",
 			},
 
 			"app_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "App name.",
+				Description: "App 名称",
 			},
 
 			"stream_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Stream id.",
+				Description: "Stream id。",
 			},
 
 			"upstream_sequence": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Sequence.",
+				Description: "Sequence。",
 			},
 		},
 	}

@@ -19,33 +19,33 @@ func DataSourceTencentCloudCynosdbRollbackTimeRange() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"time_range_start": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Effective regression time range start time point (obsolete) Note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "有效回归时间范围开始时间点（已废弃） 注：该字段可能返回null，表示无法获取有效值。",
 			},
 			"time_range_end": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Effective regression time range end time point (obsolete) Note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "有效回归时间范围结束时间点（已废弃） 注：该字段可能返回null，表示无法获取有效值。",
 			},
 			"rollback_time_ranges": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Reversible time range.",
+				Description: "可逆时间范围。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time_range_start": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "start time.",
+							Description: "开始时间。",
 						},
 						"time_range_end": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End time.",
+							Description: "结束时间。",
 						},
 					},
 				},
@@ -53,7 +53,7 @@ func DataSourceTencentCloudCynosdbRollbackTimeRange() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

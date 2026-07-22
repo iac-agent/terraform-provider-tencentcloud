@@ -18,7 +18,7 @@ func DataSourceTencentCloudDayuEip() *schema.Resource {
 			"resource_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Id of the resource.",
+				Description: "Id of the resource。",
 			},
 			"bind_status": {
 				Type: schema.TypeList,
@@ -27,29 +27,29 @@ func DataSourceTencentCloudDayuEip() *schema.Resource {
 					ValidateFunc: tccommon.ValidateAllowedStringValue(DDOS_EIP_BIND_STATUS),
 				},
 				Optional:    true,
-				Description: "The binding state of the instance, value range [BINDING, BIND, UNBINDING, UNBIND], default is [BINDING, BIND, UNBINDING, UNBIND].",
+				Description: "The binding state of the instance，值 range [BINDING，BIND，UNBINDING，UNBIND]，默认为 [BINDING，BIND，UNBINDING，UNBIND]。",
 			},
 			"offset": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "The page start offset, default is `0`.",
+				Description: "The page start 偏移量，默认为 `0`。",
 			},
 			"limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     10,
-				Description: "The number of pages, default is `10`.",
+				Description: "The 数量 pages，默认为 `10`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of layer 4 rules. Each element contains the following attributes:",
+				Description: "A 列表 layer 4 rules. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"eip_list": {
@@ -63,52 +63,52 @@ func DataSourceTencentCloudDayuEip() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of the resource instance.",
+							Description: "ID resource instance。",
 						},
 						"eip_bound_rsc_ins": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The ID of the resource instance for the binding.",
+							Description: "The ID resource instance for the binding。",
 						},
 						"eip_bound_rsc_eni": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The ID of the bound ENI.",
+							Description: "The ID bound ENI。",
 						},
 						"eip_bound_rsc_vip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Bind the resource intranet IP.",
+							Description: "Bind the resource intranet IP。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The created time of resource.",
+							Description: "The created time of resource。",
 						},
 						"expired_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The expired time of resource.",
+							Description: "The 过期时间 of resource。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The modify time of resource.",
+							Description: "The 修改时间 of resource。",
 						},
 						"protection_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The protection status of the asset instance.",
+							Description: "The protection 状态 asset instance。",
 						},
 						"eip_address_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Eip PUBLIC IP status.",
+							Description: "Eip PUBLIC IP 状态",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The region where the asset instance is located.",
+							Description: "The 地域 where the asset instance is located。",
 						},
 					},
 				},

@@ -25,46 +25,46 @@ func ResourceTencentCloudWedataRerunTriggerWorkflowRunAsync() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"workflow_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Workflow ID.",
+				Description: "Workflow ID。",
 			},
 
 			"workflow_execution_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Workflow execution ID.",
+				Description: "Workflow execution ID。",
 			},
 
 			"execute_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Execution type: Normal execution with default parameters: 1, Advanced execution with optional task scope and parameters: 2.",
+				Description: "Execution 类型: Normal execution with default parameters: 1，Advanced execution with 可选 task 范围 and parameters: 2。",
 			},
 
 			"advanced_params": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Custom execution parameters for advanced execution type.",
+				Description: "Custom execution parameters for advanced execution 类型",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter name.",
+							Description: "Parameter 名称",
 						},
 						"param_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter value.",
+							Description: "Parameter 值",
 						},
 						"ext_properties": {
 							Type:        schema.TypeString,
@@ -79,7 +79,7 @@ func ResourceTencentCloudWedataRerunTriggerWorkflowRunAsync() *schema.Resource {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Set of specific task IDs to run in advanced execution mode.",
+				Description: "Set of specific task IDs to run in advanced execution 模式",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -89,14 +89,14 @@ func ResourceTencentCloudWedataRerunTriggerWorkflowRunAsync() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Specified scheduling resource group, defaults to the original configured scheduling resource group if empty.",
+				Description: "Specified scheduling resource group，默认为 the original configured scheduling resource group 如果为空。",
 			},
 
 			"integration_resource_group": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Specified integration resource group, defaults to the original configured integration resource group if empty.",
+				Description: "Specified integration resource group，默认为 the original configured integration resource group 如果为空。",
 			},
 		},
 	}

@@ -21,13 +21,13 @@ func ResourceTencentCloudOpenIdentityCenterOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Space name, which must be globally unique and contain 2-64 characters including lowercase letters, digits, and hyphens (-). It can neither start or end with a hyphen (-) nor contain two consecutive hyphens (-).",
+				Description: "Space 名称，which must be globally unique and contain 2-64 characters including lowercase letters，digits，and hyphens (-). It can neither start or end with a hyphen (-) nor contain two consecutive hyphens (-)。",
 			},
 
 			"zone_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Space ID. z-Prefix starts with 12 random numbers/lowercase letters followed by.",
+				Description: "Space ID. z-Prefix starts with 12 random numbers/lowercase letters followed by。",
 			},
 		},
 	}

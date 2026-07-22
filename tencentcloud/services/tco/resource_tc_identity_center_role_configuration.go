@@ -27,49 +27,49 @@ func ResourceTencentCloudIdentityCenterRoleConfiguration() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Space ID.",
+				Description: "Space ID。",
 			},
 
 			"role_configuration_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access configuration name, which contains up to 128 characters, including English letters, digits, and hyphens (-).",
+				Description: "Access configuration 名称，which 包含up to 128 characters，including English letters，digits，and hyphens (-)。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Access configuration description, which contains up to 1024 characters.",
+				Description: "Access configuration 描述，which 包含up to 1024 characters。",
 			},
 
 			"session_duration": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Session duration. It indicates the maximum session duration when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. Unit: seconds. Value range: 900-43,200 (15 minutes to 12 hours). Default value: 3600 (1 hour).",
+				Description: "Session duration. It 表示maximum session duration when CIC users use the access configuration to access the target 账号 of the Tencent Cloud Organization. 单位：seconds. 取值范围：900-43,200 (15 minutes to 12 hours). 默认值：3600 (1 hour)。",
 			},
 
 			"relay_state": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Initial access page. It indicates the initial access page URL when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. This page must be the Tencent Cloud console page. The default is null, which indicates navigating to the home page of the Tencent Cloud console.",
+				Description: "Initial access page. It 表示initial access page URL when CIC users use the access configuration to access the target 账号 of the Tencent Cloud Organization. This page must be the Tencent Cloud console page. The 默认为 null，which 表示navigating to the home page of the Tencent Cloud console。",
 			},
 			"role_configuration_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Role configuration id.",
+				Description: "角色 configuration id。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time.",
+				Description: "创建时间。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

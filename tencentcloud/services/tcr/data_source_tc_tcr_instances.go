@@ -21,61 +21,61 @@ func DataSourceTencentCloudTCRInstances() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the TCR instance to query.",
+				Description: "名称 TCR instance to query。",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the TCR instance to query.",
+				Description: "ID TCR instance to query。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the dedicated TCR instances.",
+				Description: "Information 列表 the dedicated TCR instances。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the TCR instance.",
+							Description: "ID TCR instance。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of TCR instance.",
+							Description: "名称 TCR instance。",
 						},
 
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Status of the TCR instance.",
+							Description: "状态 TCR instance。",
 						},
 						"public_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public address for access of the TCR instance.",
+							Description: "Public 地址 for access of the TCR instance。",
 						},
 						"internal_end_point": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Internal address for access of the TCR instance.",
+							Description: "Internal 地址 for access of the TCR instance。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance type.",
+							Description: "实例类型",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Tags of the TCR instance.",
+							Description: "标签 of the TCR instance。",
 						},
 					},
 				},

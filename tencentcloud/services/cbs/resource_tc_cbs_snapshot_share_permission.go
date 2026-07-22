@@ -28,12 +28,12 @@ func ResourceTencentCloudCbsSnapshotSharePermission() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of account IDs with which a snapshot is shared. For the format of array-type parameters, see[API Introduction](https://cloud.tencent.com/document/api/213/568). You can find the account ID in[Account Information](https://console.cloud.tencent.com/developer).",
+				Description: "列表 账号 IDs with which a snapshot is shared. For the 格式 of array-类型 parameters，see[API Introduction](https://cloud.tencent.com/document/api/213/568). You can find the 账号 ID in[账号 Information](https://console.cloud.tencent.com/developer)。",
 			},
 			"snapshot_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of the snapshot to be queried. You can obtain this by using [DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647).",
+				Description: "The ID snapshot to be queried. You can obtain this by using [DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)。",
 			},
 		},
 	}

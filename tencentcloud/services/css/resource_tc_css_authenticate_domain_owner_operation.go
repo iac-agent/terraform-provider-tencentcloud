@@ -23,7 +23,7 @@ func ResourceTencentCloudCssAuthenticateDomainOwnerOperation() *schema.Resource 
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The domain name to verify.",
+				Description: "The 域名 名称 to verify。",
 			},
 
 			"verify_type": {
@@ -31,7 +31,7 @@ func ResourceTencentCloudCssAuthenticateDomainOwnerOperation() *schema.Resource 
 				ForceNew:    true,
 				Type:        schema.TypeString,
 				Default:     CSS_VERIFY_TYPE_DB_CHECK,
-				Description: "Authentication type. Possible values:`dnsCheck`: Immediately verify whether the resolution record of the configured dns is consistent with the content to be verified, and save the record if successful.`fileCheck`: Immediately verify whether the web file is consistent with the content to be verified, and save the record if successful.`dbCheck`: Check if authentication has been successful.",
+				Description: "Authentication 类型 Possible values:`dnsCheck`: Immediately verify 是否resolution record of the configured dns is consistent with the 内容 to be verified，and save the record if successful.`fileCheck`: Immediately verify 是否web file is consistent with the 内容 to be verified，and save the record if successful.`dbCheck`: Check if authentication has been successful。",
 			},
 		},
 	}

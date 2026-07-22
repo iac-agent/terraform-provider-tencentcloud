@@ -27,31 +27,31 @@ func ResourceTencentCloudGaapProxyGroup() *schema.Resource {
 			"project_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "ID of the project to which the proxy group belongs.",
+				Description: "ID project to which the proxy group belongs。",
 			},
 
 			"group_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Channel group alias.",
+				Description: "Channel group alias。",
 			},
 
 			"real_server_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "real server region, refer to the interface DescribeDestRegions to return the RegionId in the parameter RegionDetail.",
+				Description: "real server 地域，refer to the interface DescribeDestRegions to return the RegionId in the parameter RegionDetail。",
 			},
 
 			"ip_address_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "IP version, can be taken as IPv4 or IPv6 with a default value of IPv4.",
+				Description: "IP 版本，can be taken as IPv4 or IPv6 with a 默认值 of IPv4。",
 			},
 
 			"package_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Package type of channel group. Available values: Thunder and Accelerator. Default is Thunder.",
+				Description: "Package 类型 channel group. 可用值：Thunder and Accelerator. 默认为 Thunder。",
 			},
 		},
 	}

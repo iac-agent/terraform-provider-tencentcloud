@@ -23,14 +23,14 @@ func ResourceTencentCloudAsAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of a scaling group.",
+				Description: "ID scaling group。",
 			},
 			"instance_ids": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				MinItems:    1,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "ID list of CVM instances to be attached to the scaling group.",
+				Description: "ID 列表 CVM instances to be attached to the scaling group。",
 			},
 		},
 	}

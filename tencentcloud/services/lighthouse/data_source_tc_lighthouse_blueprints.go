@@ -22,7 +22,7 @@ func DataSourceTencentCloudLighthouseBlueprints() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Blueprint ID list.",
+				Description: "Blueprint ID list。",
 			},
 
 			"filters": {
@@ -41,7 +41,7 @@ func DataSourceTencentCloudLighthouseBlueprints() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -49,7 +49,7 @@ func DataSourceTencentCloudLighthouseBlueprints() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter value of field.",
+							Description: "过滤值 of field。",
 						},
 					},
 				},
@@ -58,98 +58,98 @@ func DataSourceTencentCloudLighthouseBlueprints() *schema.Resource {
 			"blueprint_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of blueprint details.",
+				Description: "列表 blueprint details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"blueprint_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Blueprint ID, which is the unique identifier of Blueprint.",
+							Description: "Blueprint ID，which is the unique identifier of Blueprint。",
 						},
 						"display_title": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Blueprint display title.",
+							Description: "Blueprint display title。",
 						},
 						"display_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Blueprint display version.",
+							Description: "Blueprint display 版本",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Blueprint description.",
+							Description: "Blueprint 描述",
 						},
 						"os_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Operating system name.",
+							Description: "Operating system 名称",
 						},
 						"platform": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Operating system platform.",
+							Description: "Operating system platform。",
 						},
 						"platform_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Platform type, such as LINUX_UNIX and WINDOWS.",
+							Description: "Platform 类型，such as LINUX_UNIX and WINDOWS。",
 						},
 						"blueprint_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Blueprint type, such as APP_OS, PURE_OS, DOCKER, PRIVATE, and SHARED.",
+							Description: "Blueprint 类型，such as APP_OS，PURE_OS，DOCKER，PRIVATE，and SHARED。",
 						},
 						"image_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Blueprint image URL.",
+							Description: "Blueprint image URL",
 						},
 						"required_system_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "System disk size required by blueprint in GB.",
+							Description: "System disk size 必填 by blueprint （GB）。",
 						},
 						"blueprint_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Blueprint state.",
+							Description: "Blueprint state。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time according to ISO 8601 standard. UTC time is used. Format is YYYY-MM-DDThh:mm:ssZ.",
+							Description: "创建时间 according to ISO 8601 standard. UTC time is used. 格式 is YYYY-MM-DDThh:mm:ssZ。",
 						},
 						"blueprint_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Blueprint name.",
+							Description: "Blueprint 名称",
 						},
 						"support_automation_tools": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the blueprint supports automation tools.",
+							Description: "是否blueprint supports automation tools。",
 						},
 						"required_memory_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size required by blueprint in GB.",
+							Description: "Memory size 必填 by blueprint （GB）。",
 						},
 						"image_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the Lighthouse blueprint shared from a CVM image. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "ID Lighthouse blueprint shared from a CVM image. Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"community_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "URL of official website of the open-source project.",
+							Description: "URL of official website of the open-来源 project。",
 						},
 						"guide_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Guide documentation URL.",
+							Description: "Guide documentation URL",
 						},
 						"scene_id_set": {
 							Type: schema.TypeSet,
@@ -157,12 +157,12 @@ func DataSourceTencentCloudLighthouseBlueprints() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Array of IDs of scenes associated with a blueprint. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "数组 IDs of scenes associated with a blueprint. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"docker_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Docker version. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Docker 版本 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -171,7 +171,7 @@ func DataSourceTencentCloudLighthouseBlueprints() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

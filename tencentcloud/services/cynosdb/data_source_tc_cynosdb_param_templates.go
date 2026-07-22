@@ -23,7 +23,7 @@ func DataSourceTencentCloudCynosdbParamTemplates() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Database engine version number.",
+				Description: "数据库引擎版本号。",
 			},
 
 			"template_names": {
@@ -32,7 +32,7 @@ func DataSourceTencentCloudCynosdbParamTemplates() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The name list of templates.",
+				Description: "模板的名称列表。",
 			},
 
 			"template_ids": {
@@ -41,7 +41,7 @@ func DataSourceTencentCloudCynosdbParamTemplates() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "The id list of templates.",
+				Description: "模板的 id 列表。",
 			},
 
 			"db_modes": {
@@ -50,21 +50,21 @@ func DataSourceTencentCloudCynosdbParamTemplates() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Database mode, optional values: NORMAL, SERVERLESS.",
+				Description: "数据库模式，可选值：NORMAL、SERVERLESS。",
 			},
 
 			"offset": {
 				Optional:    true,
 				Default:     0,
 				Type:        schema.TypeInt,
-				Description: "Page offset.",
+				Description: "页面偏移量。",
 			},
 
 			"limit": {
 				Optional:    true,
 				Default:     10,
 				Type:        schema.TypeInt,
-				Description: "Query limit.",
+				Description: "查询限制。",
 			},
 
 			"products": {
@@ -73,7 +73,7 @@ func DataSourceTencentCloudCynosdbParamTemplates() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The product type corresponding to the query template.",
+				Description: "查询模板对应的产品类型。",
 			},
 
 			"template_types": {
@@ -82,7 +82,7 @@ func DataSourceTencentCloudCynosdbParamTemplates() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Template types.",
+				Description: "模板类型。",
 			},
 
 			"engine_types": {
@@ -91,67 +91,67 @@ func DataSourceTencentCloudCynosdbParamTemplates() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Engine types.",
+				Description: "发动机类型。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The sort field for the returned results.",
+				Description: "返回结果的排序字段。",
 			},
 
 			"order_direction": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort by (asc, desc).",
+				Description: "按（升序、降序）排序。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Parameter Template Information.",
+				Description: "参数模板信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The ID of template.",
+							Description: "模板的ID。",
 						},
 						"template_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of template.",
+							Description: "模板的名称。",
 						},
 						"template_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The description of template.",
+							Description: "模板的描述。",
 						},
 						"engine_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Engine version.",
+							Description: "引擎版本。",
 						},
 						"db_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database mode, optional values: NORMAL, SERVERLESS.",
+							Description: "数据库模式，可选值：NORMAL、SERVERLESS。",
 						},
 						"param_info_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Parameter template details.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "参数模板详情。注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"current_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Current value.",
+										Description: "当前值。",
 									},
 									"default": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Default value.",
+										Description: "默认值。",
 									},
 									"enum_value": {
 										Type:     schema.TypeSet,
@@ -159,37 +159,37 @@ func DataSourceTencentCloudCynosdbParamTemplates() *schema.Resource {
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
-										Description: "An optional set of value types when the parameter type is enum.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "当参数类型为enum时，一组可选的值类型。注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"max": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The maximum value when the parameter type is float/integer.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "参数类型为float/integer时的最大值。注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"min": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The minimum value when the parameter type is float/integer.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "参数类型为float/integer时的最小值。注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"param_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The name of parameter.",
+										Description: "参数名称。",
 									},
 									"need_reboot": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether to reboot.",
+										Description: "是否重启。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The description of parameter.",
+										Description: "参数说明。",
 									},
 									"param_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Parameter type: integer/float/string/enum.",
+										Description: "参数类型：整数/浮点/字符串/枚举。",
 									},
 								},
 							},
@@ -201,7 +201,7 @@ func DataSourceTencentCloudCynosdbParamTemplates() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

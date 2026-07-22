@@ -18,24 +18,24 @@ func DataSourceTencentCloudCkafkaTaskStatus() *schema.Resource {
 			"flow_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "FlowId.",
+				Description: "FlowId。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Result.",
+				Description: "结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Status.",
+							Description: "状态",
 						},
 						"output": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "OutPut Info.",
+							Description: "OutPut Info。",
 						},
 					},
 				},
@@ -44,7 +44,7 @@ func DataSourceTencentCloudCkafkaTaskStatus() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

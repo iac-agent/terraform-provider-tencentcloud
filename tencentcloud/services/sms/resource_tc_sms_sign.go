@@ -26,49 +26,49 @@ func ResourceTencentCloudSmsSign() *schema.Resource {
 			"sign_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Sms sign name, unique.",
+				Description: "Sms sign 名称，unique。",
 			},
 
 			"sign_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Sms sign type: 0, 1, 2, 3, 4, 5, 6.",
+				Description: "Sms sign 类型: 0，1，2，3，4，5，6。",
 			},
 
 			"document_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "DocumentType is used for enterprise authentication, or website, app authentication, etc. DocumentType: 0, 1, 2, 3, 4, 5, 6, 7, 8.",
+				Description: "DocumentType is 用于enterprise authentication，or website，app authentication，etc. DocumentType: 0，1，2，3，4，5，6，7，8。",
 			},
 
 			"international": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Whether it is Global SMS: 0: Mainland China SMS; 1: Global SMS.",
+				Description: "是否为Global SMS: 0: Mainland China SMS; 1: Global SMS。",
 			},
 
 			"sign_purpose": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Signature purpose: 0: for personal use; 1: for others.",
+				Description: "签名 purpose: 0: for personal use; 1: for others。",
 			},
 
 			"proof_image": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "You should Base64-encode the image of the identity certificate corresponding to the signature first, remove the prefix data:image/jpeg;base64, from the resulted string, and then use it as the value of this parameter.",
+				Description: "You should Base64-encode the image of the identity certificate corresponding to the 签名 first，remove the prefix data:image/jpeg;base64，from the resulted string，and then use it as the 值 of this parameter。",
 			},
 
 			"commission_image": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Power of attorney, which should be submitted if SignPurpose is for use by others. You should Base64-encode the image first, remove the prefix data:image/jpeg;base64, from the resulted string, and then use it as the value of this parameter. Note: this field will take effect only when SignPurpose is 1 (for user by others).",
+				Description: "Power of attorney，which should be submitted if SignPurpose is for use by others. You should Base64-encode the image first，remove the prefix data:image/jpeg;base64，from the resulted string，and then use it as the 值 of this parameter. Note: this field will take effect only when SignPurpose is 1 (for 用户 by others)。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Signature application remarks.",
+				Description: "签名 application 备注",
 			},
 		},
 	}

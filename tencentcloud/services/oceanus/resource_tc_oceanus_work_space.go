@@ -28,63 +28,63 @@ func ResourceTencentCloudOceanusWorkSpace() *schema.Resource {
 			"work_space_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace name.",
+				Description: "Workspace 名称",
 			},
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace description.",
+				Description: "Workspace 描述",
 			},
 			// computed
 			"app_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "User APPID.",
+				Description: "用户 APPID。",
 			},
 			"work_space_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace ID.",
+				Description: "Workspace ID。",
 			},
 			"serial_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Serial ID.",
+				Description: "Serial ID。",
 			},
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Workspace status.",
+				Description: "Workspace 状态",
 			},
 			"role_auth_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of workspace members.",
+				Description: "数量 workspace members。",
 			},
 			"jobs_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of Jobs.",
+				Description: "数量 Jobs。",
 			},
 			"creator_uin": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Creator UIN.",
+				Description: "创建者 UIN。",
 			},
 			"owner_uin": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Owner UIN.",
+				Description: "所有者 UIN。",
 			},
 			"create_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Create time.",
+				Description: "创建时间。",
 			},
 			"update_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

@@ -21,148 +21,148 @@ func DataSourceTencentCloudGaapHttpRules() *schema.Resource {
 			"listener_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the layer7 listener to be queried.",
+				Description: "ID layer7 listener to be queried。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Forward domain of the layer7 listener to be queried.",
+				Description: "Forward 域名 of the layer7 listener to be queried。",
 			},
 			"path": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringPrefix("/"),
-				Description:  "Path of the forward rule to be queried.",
+				Description:  "路径 of the forward rule to be queried。",
 			},
 			"forward_host": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Requested host which is forwarded to the realserver by the listener to be queried.",
+				Description: "Requested 主机 which is forwarded to the realserver by the listener to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"rules": {
 				Type:        schema.TypeSet,
 				Computed:    true,
-				Description: "An information list of forward rule of the layer7 listeners. Each element contains the following attributes:",
+				Description: "An information 列表 forward rule of the layer7 listeners. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the forward rule.",
+							Description: "ID forward rule。",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the layer7 listener.",
+							Description: "ID layer7 listener。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Forward domain of the forward rule.",
+							Description: "Forward 域名 of the forward rule。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Path of the forward rule.",
+							Description: "路径 of the forward rule。",
 						},
 						"realserver_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the realserver.",
+							Description: "类型 realserver。",
 						},
 						"scheduler": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scheduling policy of the forward rule.",
+							Description: "Scheduling policy of the forward rule。",
 						},
 						"health_check": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates whether health check is enable.",
+							Description: "表示是否health check is enable。",
 						},
 						"interval": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Interval of the health check.",
+							Description: "Interval of the health check。",
 						},
 						"connect_timeout": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Timeout of the health check response.",
+							Description: "Timeout of the health check response。",
 						},
 						"health_check_path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Path of health check.",
+							Description: "路径 of health check。",
 						},
 						"health_check_method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Method of the health check.",
+							Description: "Method of the health check。",
 						},
 						"health_check_status_codes": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
-							Description: "Return code of confirmed normal.",
+							Description: "Return 代码 of confirmed normal。",
 						},
 						"forward_host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Requested host which is forwarded to the realserver by the listener.",
+							Description: "Requested 主机 which is forwarded to the realserver by the listener。",
 						},
 						"sni_switch": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ServerNameIndication (SNI) switch.",
+							Description: "ServerNameIndication (SNI) switch。",
 						},
 						"sni": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ServerNameIndication (SNI).",
+							Description: "ServerNameIndication (SNI)。",
 						},
 						"realservers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "An information list of GAAP realserver. Each element contains the following attributes:",
+							Description: "An information 列表 GAAP realserver. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of the GAAP realserver.",
+										Description: "ID GAAP realserver。",
 									},
 									"ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "IP of the GAAP realserver.",
+										Description: "IP of the GAAP realserver。",
 									},
 									"domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Domain of the GAAP realserver.",
+										Description: "域名 of the GAAP realserver。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Port of the GAAP realserver.",
+										Description: "端口 of the GAAP realserver。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Scheduling weight.",
+										Description: "Scheduling 权重",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Status of the GAAP realserver.",
+										Description: "状态 GAAP realserver。",
 									},
 								},
 							},

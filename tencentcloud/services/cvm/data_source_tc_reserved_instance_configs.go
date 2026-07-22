@@ -22,86 +22,86 @@ func DataSourceTencentCloudReservedInstanceConfigs() *schema.Resource {
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The available zone that the reserved instance locates at.",
+				Description: "The available 可用区 that the reserved instance locates at。",
 			},
 			"duration": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{31536000, 94608000}),
-				Description:  "Validity period of the reserved instance. Valid values are `31536000`(1 year) and `94608000`(3 years).",
+				Description:  "Validity 周期 of the reserved instance. Valid values are `31536000`(1 year) and `94608000`(3 years)。",
 			},
 			"instance_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The type of reserved instance.",
+				Description: "类型 reserved instance。",
 			},
 			"offering_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by Payment Type. Such as All Upfront.",
+				Description: "Filter by Payment 类型 Such as All Upfront。",
 			},
 			"product_description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by the Platform Description (that is, operating system) for Reserved Instance billing. Shaped like: linux.",
+				Description: "Filter by the Platform 描述 (that is，operating system) for Reserved Instance billing. Shaped like: linux。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"config_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of reserved instance configuration. Each element contains the following attributes:",
+				Description: "An information 列表 reserved instance configuration. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Configuration ID of the purchasable reserved instance.",
+							Description: "Configuration ID purchasable reserved instance。",
 						},
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability zone of the purchasable reserved instance.",
+							Description: "Availability 可用区 of the purchasable reserved instance。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance type of the reserved instance.",
+							Description: "Instance 类型 reserved instance。",
 						},
 						"duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Validity period of the reserved instance.",
+							Description: "Validity 周期 of the reserved instance。",
 						},
 						"price": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Purchase price of the reserved instance.",
+							Description: "Purchase price of the reserved instance。",
 						},
 						"currency_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Settlement currency of the reserved instance, which is a standard currency code as listed in ISO 4217.",
+							Description: "Settlement currency of the reserved instance，which is a standard currency 代码 as listed in ISO 4217。",
 						},
 						"platform": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Platform of the reserved instance.",
+							Description: "Platform of the reserved instance。",
 						},
 						"offering_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "OfferingType of the reserved instance.",
+							Description: "OfferingType of the reserved instance。",
 						},
 						"usage_price": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "UsagePrice of the reserved instance.",
+							Description: "UsagePrice of the reserved instance。",
 						},
 					},
 				},

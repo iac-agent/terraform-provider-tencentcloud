@@ -31,128 +31,128 @@ func ResourceTencentCloudDcdbHourdbInstance() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "available zone.",
+				Description: "available 可用区",
 			},
 
 			"shard_memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "memory(GB) for each shard. It can be obtained by querying api DescribeShardSpec.",
+				Description: "memory(GB) for each shard. It can be obtained by querying api DescribeShardSpec。",
 			},
 
 			"shard_storage": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "storage(GB) for each shard. It can be obtained by querying api DescribeShardSpec.",
+				Description: "storage(GB) for each shard. It can be obtained by querying api DescribeShardSpec。",
 			},
 
 			"shard_node_count": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "node count for each shard. It can be obtained by querying api DescribeShardSpec.",
+				Description: "node count for each shard. It can be obtained by querying api DescribeShardSpec。",
 			},
 
 			"shard_count": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "instance shard count.",
+				Description: "instance 分片数",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "vpc id.",
+				Description: "私有网络 ID",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "subnet id, its required when vpcId is set.",
+				Description: "子网 ID，its 必填 when vpcId is set。",
 			},
 
 			"db_version_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "db engine version, default to Percona 5.7.17.",
+				Description: "db engine 版本，默认为 Percona 5.7.17。",
 			},
 
 			"security_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "security group id.",
+				Description: "安全组 ID",
 			},
 
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "project id.",
+				Description: "项目 ID",
 			},
 
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "name of this instance.",
+				Description: "名称 this instance。",
 			},
 
 			"dcn_region": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "DCN source region.",
+				Description: "DCN 来源 地域",
 			},
 
 			"dcn_instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "DCN source instance ID.",
+				Description: "DCN 来源 instance ID。",
 			},
 
 			"ipv6_flag": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to support IPv6.",
+				Description: "是否support IPv6。",
 			},
 
 			"extranet_access": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to open the extranet access.",
+				Description: "是否open the extranet access。",
 			},
 
 			"vip": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The field is required to specify VIP.",
+				Description: "The field 为必填项 to 指定VIP。",
 			},
 
 			"vipv6": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The field is required to specify VIPv6.",
+				Description: "The field 为必填项 to 指定VIPv6。",
 			},
 
 			"vport": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Intranet port.",
+				Description: "Intranet 端口",
 			},
 
 			"resource_tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "resource tags.",
+				Description: "resource 标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "tag value.",
+							Description: "标签值",
 						},
 					},
 				},

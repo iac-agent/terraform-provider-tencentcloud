@@ -26,7 +26,7 @@ func ResourceTencentCloudChdfsMountPointAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "associate mount point.",
+				Description: "associate mount point。",
 			},
 
 			"access_group_ids": {
@@ -36,7 +36,7 @@ func ResourceTencentCloudChdfsMountPointAttachment() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "associate access group id.",
+				Description: "associate access group id。",
 			},
 		},
 	}

@@ -19,82 +19,82 @@ func DataSourceTencentCloudEbEventRules() *schema.Resource {
 			"event_bus_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "event bus Id.",
+				Description: "event bus Id。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "According to which field to sort the returned results, the following fields are supported: AddTime (creation time), ModTime (modification time).",
+				Description: "According to which field to sort the returned results，the following fields are supported: AddTime (创建时间)，ModTime (修改时间)。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Return results in ascending or descending order, optional values ASC (ascending) and DESC (descending).",
+				Description: "Return results in ascending or 降序，可选 values ASC (ascending) and DESC (descending)。",
 			},
 
 			"rules": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Event rule information.",
+				Description: "Event rule information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Status.",
+							Description: "状态",
 						},
 						"mod_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "modify time.",
+							Description: "修改时间。",
 						},
 						"enable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "enable switch.",
+							Description: "enable switch。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "description.",
+							Description: "描述",
 						},
 						"rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "rule Id.",
+							Description: "rule Id。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 						"event_bus_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "event bus Id.",
+							Description: "event bus Id。",
 						},
 						"rule_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "rule name.",
+							Description: "rule 名称",
 						},
 						"targets": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Target brief information, note: this field may return null, indicating that no valid value can be obtained.",
+							Description: "Target brief information，note: this field may return null，indicating that no valid 值 can be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"target_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "target Id.",
+										Description: "target Id。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "target type.",
+										Description: "target 类型",
 									},
 								},
 							},
@@ -102,29 +102,29 @@ func DataSourceTencentCloudEbEventRules() *schema.Resource {
 						"dead_letter_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The dlq rule set by rule. It may be null. Note: this field may return null, indicating that no valid value can be obtained.",
+							Description: "The dlq rule set by rule. It may be null. Note: this field may return null，indicating that no valid 值 can be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dispose_method": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Support three modes of dlq, discarding, ignoring errors and continuing to pass, corresponding to: DLQ, DROP, IGNORE_ERROR.",
+										Description: "Support three modes of dlq，discarding，ignoring errors and continuing to pass，corresponding to: DLQ，DROP，IGNORE_ERROR。",
 									},
 									"ckafka_delivery_params": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "After setting the DLQ mode, this option is required. The error message will be delivered to the corresponding kafka topic Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "After setting the DLQ 模式，this option 为必填项. The 错误信息 will be delivered to the corresponding kafka topic 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"topic_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "ckafka topic name.",
+													Description: "ckafka topic 名称",
 												},
 												"resource_description": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "ckafka resource qcs six-segment.",
+													Description: "ckafka resource qcs six-segment。",
 												},
 											},
 										},
@@ -139,7 +139,7 @@ func DataSourceTencentCloudEbEventRules() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

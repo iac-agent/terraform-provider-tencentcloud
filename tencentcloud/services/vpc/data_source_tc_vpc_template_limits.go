@@ -19,28 +19,28 @@ func DataSourceTencentCloudVpcTemplateLimits() *schema.Resource {
 			"template_limit": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "template limit.",
+				Description: "template 限制",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"address_template_member_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "address template member limit.",
+							Description: "地址 template member 限制",
 						},
 						"address_template_group_member_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "address template group member limit.",
+							Description: "地址 template group member 限制",
 						},
 						"service_template_member_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "service template member limit.",
+							Description: "service template member 限制",
 						},
 						"service_template_group_member_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "service template group member limit.",
+							Description: "service template group member 限制",
 						},
 					},
 				},
@@ -49,7 +49,7 @@ func DataSourceTencentCloudVpcTemplateLimits() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

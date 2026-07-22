@@ -18,30 +18,30 @@ func DataSourceTencentCloudDlcStandardEngineResourceGroupConfigInformation() *sc
 			"sort_by": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sort Field.",
+				Description: "Sort Field。",
 			},
 
 			"sorting": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Ascending or descending.",
+				Description: "Ascending or descending。",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions are optional, engine-resource-group-id or engine-id.",
+				Description: "Filter conditions are 可选，engine-resource-group-id or engine-id。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Attribute name. If there are multiple filters, the relationship between the filters is a logical OR relationship.",
+							Description: "Attribute 名称 If there are multiple filters，the relationship between the filters is a logical OR relationship。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Attribute value, if there are multiple Values in the same Filter, the relationship between the Values under the same Filter is a logical OR relationship.",
+							Description: "Attribute 值，if there are multiple Values in the same Filter，the relationship between the Values under the same Filter is a logical OR relationship。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -53,34 +53,34 @@ func DataSourceTencentCloudDlcStandardEngineResourceGroupConfigInformation() *sc
 			"standard_engine_resource_group_config_infos": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Standard engine resource group, configuration related information.",
+				Description: "Standard engine resource group，configuration related information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_group_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Engine resource group id.",
+							Description: "Engine resource group id。",
 						},
 						"data_engine_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Engine id.",
+							Description: "Engine id。",
 						},
 						"static_config_pairs": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Static parameters of the resource group, which require restarting the resource group to take effect.",
+							Description: "Static parameters of the resource group，which require restarting the resource group to take effect。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_item": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration items.",
+										Description: "Configuration items。",
 									},
 									"config_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration item value.",
+										Description: "Configuration item 值",
 									},
 								},
 							},
@@ -88,18 +88,18 @@ func DataSourceTencentCloudDlcStandardEngineResourceGroupConfigInformation() *sc
 						"dynamic_config_pairs": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Dynamic parameters of the resource group, effective in the next task.",
+							Description: "Dynamic parameters of the resource group，effective in the next task。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_item": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration items.",
+										Description: "Configuration items。",
 									},
 									"config_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration item value.",
+										Description: "Configuration item 值",
 									},
 								},
 							},
@@ -107,12 +107,12 @@ func DataSourceTencentCloudDlcStandardEngineResourceGroupConfigInformation() *sc
 						"create_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 					},
 				},
@@ -121,7 +121,7 @@ func DataSourceTencentCloudDlcStandardEngineResourceGroupConfigInformation() *sc
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -27,39 +27,39 @@ func ResourceTencentCloudCfwNatInstance() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Firewall instance name.",
+				Description: "Firewall 实例名称",
 			},
 			"width": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateIntegerMin(BAND_WIDTH),
-				Description:  "Bandwidth.",
+				Description:  "Bandwidth。",
 			},
 			"mode": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(MODE),
-				Description:  "Mode 1: access mode; 0: new mode.",
+				Description:  "模式 1: access 模式; 0: new 模式",
 			},
 			"new_mode_items": {
 				Optional:     true,
 				Type:         schema.TypeList,
 				MaxItems:     1,
 				ExactlyOneOf: []string{"nat_gw_list"},
-				Description:  "New mode passing parameters are added, at least one of new_mode_items and nat_gw_list is passed.",
+				Description:  "New 模式 passing parameters are added，at least one of new_mode_items and nat_gw_list is passed。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_list": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "List of vpcs connected in new mode.",
+							Description: "列表 vpcs connected in new 模式",
 						},
 						"eips": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "List of egress elastic public network IPs bound in the new mode.",
+							Description: "列表 egress elastic public network IPs bound in the new 模式",
 						},
 					},
 				},
@@ -69,7 +69,7 @@ func ResourceTencentCloudCfwNatInstance() *schema.Resource {
 				Type:         schema.TypeSet,
 				ExactlyOneOf: []string{"new_mode_items"},
 				Elem:         &schema.Schema{Type: schema.TypeString},
-				Description:  "A list of nat gateways connected to the access mode, at least one of NewModeItems and NatgwList is passed.",
+				Description:  "A 列表 nat gateways connected to the access 模式，at least one of NewModeItems and NatgwList is passed。",
 			},
 			"zone_set": {
 				Type:        schema.TypeSet,
@@ -77,14 +77,14 @@ func ResourceTencentCloudCfwNatInstance() *schema.Resource {
 				MinItems:    1,
 				MaxItems:    2,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Zone list.",
+				Description: "可用区 list。",
 			},
 			"cross_a_zone": {
 				Optional:     true,
 				Type:         schema.TypeInt,
 				Default:      CROSS_A_ZONE_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(CROSS_A_ZONE),
-				Description:  "Off-site disaster recovery 1: use off-site disaster recovery; 0: do not use off-site disaster recovery; if empty, the default is not to use off-site disaster recovery.",
+				Description:  "Off-site disaster recovery 1: use off-site disaster recovery; 0: do not use off-site disaster recovery; 如果为空，the 默认为 not to use off-site disaster recovery。",
 			},
 			//"domain": {
 			//	Optional:    true,
@@ -135,7 +135,7 @@ func ResourceTencentCloudCfwNatInstance() *schema.Resource {
 			"nat_instance_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Nat instance ID.",
+				Description: "Nat instance ID。",
 			},
 		},
 	}

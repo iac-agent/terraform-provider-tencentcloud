@@ -20,119 +20,119 @@ func DataSourceTencentCloudAPIGatewayServices() *schema.Resource {
 			"service_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Service name for query.",
+				Description: "服务名称 for query。",
 			},
 			"service_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Service ID for query.",
+				Description: "服务 ID for query。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			// Computed values.
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of services.",
+				Description: "A 列表 services。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom service ID.",
+							Description: "Custom 服务 ID",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom service name.",
+							Description: "Custom 服务名称",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service frontend request type. Valid values: `http`, `https`, `http&https`.",
+							Description: "Service frontend request 类型 有效值：`http`，`https`，`http&https`。",
 						},
 						"service_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom service description.",
+							Description: "Custom service 描述",
 						},
 						"exclusive_set_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
 							Deprecated:  "It has been deprecated from version 1.81.9.",
-							Description: "Self-deployed cluster name, which is used to specify the self-deployed cluster where the service is to be created.",
+							Description: "Self-deployed 集群名称，which is 用于指定self-deployed cluster where the service is to be created。",
 						},
 						"net_type": {
 							Type:     schema.TypeSet,
 							Computed: true,
 							Elem:     &schema.Schema{Type: schema.TypeString},
-							Description: "Network type list, which is used to specify the supported network types. " +
+							Description: "网络类型列表，用于指定支持的网络类型。" +
 								"Valid values: `INNER`, `OUTER`. " +
 								"`INNER` indicates access over private network, and `OUTER` indicates access over public network.",
 						},
 						"ip_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP version number.",
+							Description: "IP 版本 number。",
 						},
 						"internal_sub_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Private network access sub-domain name.",
+							Description: "Private network access sub-域名 名称",
 						},
 						"outer_sub_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public network access subdomain name.",
+							Description: "Public network access subdomain 名称",
 						},
 						"inner_http_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Port number for http access over private network.",
+							Description: "端口 number for http access over private network。",
 						},
 						"inner_https_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Port number for https access over private network.",
+							Description: "端口 number for https access over private network。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
+							Description: "最后修改时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
+							Description: "创建时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
 						},
 						"usage_plan_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A list of attach usage plans. Each element contains the following attributes:",
+							Description: "A 列表 attach usage plans. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"usage_plan_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of the usage plan.",
+										Description: "ID usage plan。",
 									},
 									"usage_plan_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Name of the usage plan.",
+										Description: "名称 usage plan。",
 									},
 									"bind_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Binding type.",
+										Description: "Binding 类型",
 									},
 									"api_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of the API.",
+										Description: "ID API。",
 									},
 								},
 							},

@@ -28,32 +28,32 @@ func ResourceTencentCloudDlcUser() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Sub-user UIN that needs to be granted permissions. It can be checked through the upper right corner of Tencent Cloud Console -> Account Information -> Account ID.",
+				Description: "Sub-用户 UIN that needs to be granted permissions. It can be checked through the upper right corner of Tencent Cloud Console -> 账号 Information -> 账号 ID。",
 			},
 
 			"user_description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "User description, which can make it easy to identify different users.",
+				Description: "用户 描述，which can make it easy to identify different users。",
 			},
 
 			"user_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Types of users. ADMIN: administrators; COMMON: general users. When the type of user is administrator, the collections of permissions and bound working groups cannot be set. Administrators own all the permissions by default. If the parameter is not filled in, it will be COMMON by default.",
+				Description: "Types of users. ADMIN: administrators; COMMON: general users. When 类型 用户 is administrator，the collections of permissions and bound working groups cannot be set. Administrators own all the permissions by default. If the parameter is not filled in，it will be COMMON by default。",
 			},
 
 			"user_alias": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "User alias, and its characters are less than 50.",
+				Description: "用户 alias，and its characters are less than 50。",
 			},
 
 			"work_group_ids": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Collection of IDs of working groups bound to users.",
+				Description: "Collection of IDs of working groups bound to users。",
 			},
 		},
 	}

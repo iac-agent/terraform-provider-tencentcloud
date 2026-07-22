@@ -26,13 +26,13 @@ func ResourceTencentCloudMpsEvent() *schema.Resource {
 			"event_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Event name.",
+				Description: "事件名称",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Event description.",
+				Description: "Event 描述",
 			},
 		},
 	}

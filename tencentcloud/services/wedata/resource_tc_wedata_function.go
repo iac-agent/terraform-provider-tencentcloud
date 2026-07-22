@@ -26,68 +26,68 @@ func ResourceTencentCloudWedataFunction() *schema.Resource {
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function Type, Enum: HIVE, SPARK, DLC.",
+				Description: "Function 类型，Enum: HIVE，SPARK，DLC。",
 			},
 			"kind": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function Kind, Enum: ANALYSIS, ENCRYPTION, AGGREGATE, LOGIC, DATE_AND_TIME, MATH, CONVERSION, STRING, IP_AND_DOMAIN, WINDOW, OTHER.",
+				Description: "Function Kind，Enum: ANALYSIS，ENCRYPTION，AGGREGATE，LOGIC，DATE_AND_TIME，MATH，CONVERSION，STRING，IP_AND_DOMAIN，WINDOW，OTHER。",
 			},
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function Name.",
+				Description: "Function 名称",
 			},
 			"cluster_identifier": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database name.",
+				Description: "Database 名称",
 			},
 			"project_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 			"class_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Class name of function entry.",
+				Description: "Class 名称 function entry。",
 			},
 			"resource_list": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Resource of the function, stored in WeData COS(.jar,...).",
+				Description: "Resource of the function，stored in WeData COS(.jar,...)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource Path.",
+							Description: "Resource 路径",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource Name.",
+							Description: "Resource 名称",
 						},
 						"id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Resource ID.",
+							Description: "资源 ID",
 						},
 						"md5": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Resource MD5 Value.",
+							Description: "Resource MD5 值",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Resource Type.",
+							Description: "资源类型",
 						},
 					},
 				},
@@ -95,37 +95,37 @@ func ResourceTencentCloudWedataFunction() *schema.Resource {
 			"description": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Description of the function.",
+				Description: "描述 function。",
 			},
 			"usage": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Usage of the function.",
+				Description: "Usage of the function。",
 			},
 			"param_desc": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Description of the Parameter.",
+				Description: "描述 Parameter。",
 			},
 			"return_desc": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Description of the Return value.",
+				Description: "描述 返回值",
 			},
 			"example": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Example of the function.",
+				Description: "Example of the function。",
 			},
 			"comment": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Comment.",
+				Description: "注释",
 			},
 			"function_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Function ID.",
+				Description: "Function ID。",
 			},
 		},
 	}

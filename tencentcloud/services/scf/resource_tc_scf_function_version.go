@@ -28,27 +28,27 @@ func ResourceTencentCloudScfFunctionVersion() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Name of the released function.",
+				Description: "名称 released function。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Function description.",
+				Description: "Function 描述",
 			},
 
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Function namespace.",
+				Description: "Function namespace。",
 			},
 
 			"function_version": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Version of the released function.",
+				Description: "版本 of the released function。",
 			},
 		},
 	}

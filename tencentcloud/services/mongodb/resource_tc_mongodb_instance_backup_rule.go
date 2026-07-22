@@ -26,7 +26,7 @@ func ResourceTencentCloudMongodbInstanceBackupRule() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"backup_method": {
@@ -41,68 +41,68 @@ func ResourceTencentCloudMongodbInstanceBackupRule() *schema.Resource {
 			"backup_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Set the start time for automatic backup. The value range is: [0,23]. For example, setting this parameter to 2 means that backup starts at 02:00.",
+				Description: "Set the 开始时间 for automatic backup. The 值 range is: [0,23]. For example，setting this parameter to 2 means that backup starts at 02:00。",
 			},
 
 			"backup_frequency": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Specify the daily automatic backup frequency. 12: Back up twice a day, approximately 12 hours apart; 24: Back up once a day (default), approximately 24 hours apart.",
+				Description: "指定daily automatic backup frequency. 12: Back up twice a day，approximately 12 hours apart; 24: Back up once a day (default)，approximately 24 hours apart。",
 			},
 
 			"notify": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Set whether to send failure alerts when automatic backup errors occur.\n- true: Send.\n- false: Do not send.",
+				Description: "Set 是否send failure alerts when automatic backup errors occur.\n- true: Send.\n- false: Do not send。",
 			},
 
 			"backup_retention_period": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Specifies the retention period for backup data. Unit: days, default is 7 days. Value range: [7, 365].",
+				Description: "指定retention 周期 for backup data. 单位：days，默认为 7 days. 取值范围：[7，365]。",
 			},
 
 			"active_weekdays": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specify the specific dates for automatic backups to be performed each week. Format: Enter a number between 0 and 6 to represent Sunday through Saturday (e.g., 1 represents Monday). Separate multiple dates with commas (,). Example: Entering 1,3,5 means the system will perform backups on Mondays, Wednesdays, and Fridays every week. Default: If not set, the default is a full cycle (0,1,2,3,4,5,6), meaning backups will be performed daily.",
+				Description: "指定specific dates for automatic backups to be performed each week. 格式: Enter a number between 0 and 6 to represent Sunday through Saturday (e.g.，1 represents Monday). Separate multiple dates with commas (,). Example: Entering 1,3,5 means the system will perform backups on Mondays，Wednesdays，and Fridays every week. 默认值：If not set，the 默认为 a full cycle (0,1,2,3,4,5,6)，meaning backups will be performed daily。",
 			},
 
 			"long_term_unit": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Long-term retention period. Supports selecting specific dates for backups on a weekly or monthly basis (e.g., backup data for the 1st and 15th of each month) to retain for a longer period. Disabled (default): Long-term retention is disabled. Weekly retention: Specify `weekly`. Monthly retention: Specify `monthly`.",
+				Description: "Long-term retention 周期 Supports selecting specific dates for backups on a weekly or monthly basis (e.g.，backup data for the 1st and 15th of each month) to retain for a longer 周期 已禁用 (default): Long-term retention is 已禁用 Weekly retention: 指定`weekly`. Monthly retention: 指定`monthly`。",
 			},
 
 			"long_term_active_days": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specify the specific backup dates to be retained long-term. This setting only takes effect when LongTermUnit is set to weekly or monthly. Weekly Retention: Enter a number between 0 and 6 to represent Sunday through Saturday. Separate multiple dates with commas. Monthly Retention: Enter a number between 1 and 31 to represent specific dates within the month. Separate multiple dates with commas.",
+				Description: "指定specific backup dates to be retained long-term. This setting only takes effect when LongTermUnit is set to weekly or monthly. Weekly Retention: Enter a number between 0 and 6 to represent Sunday through Saturday. Separate multiple dates with commas. Monthly Retention: Enter a number between 1 and 31 to represent specific dates within the month. Separate multiple dates with commas。",
 			},
 
 			"long_term_expired_days": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Long-term backup retention period. Value range [30, 1075].",
+				Description: "Long-term backup retention 周期 值 range [30，1075]。",
 			},
 
 			"oplog_expired_days": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Incremental backup retention period. Unit: days. Default value: 7 days. Value range: [7,365].",
+				Description: "Incremental backup retention 周期 单位：days. 默认值：7 days. 取值范围：[7,365]。",
 			},
 
 			"backup_version": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Backup version. Old version backup is 0, advanced backup is 1. Set this value to 1 when enabling advanced backup.",
+				Description: "Backup 版本 Old 版本 backup is 0，advanced backup is 1. Set this 值 to 1 when enabling advanced backup。",
 			},
 
 			"alarm_water_level": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Sets the alarm threshold for backup dataset storage space usage. Unit: %. Default value: 100. Value range: [50, 300].",
+				Description: "Sets the alarm threshold for backup dataset storage space usage. 单位：%. 默认值：100. 取值范围：[50，300]。",
 			},
 		},
 	}

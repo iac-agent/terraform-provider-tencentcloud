@@ -23,7 +23,7 @@ func ResourceTencentCloudDlcUpgradeDataEngineImageOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Engine ID.",
+				Description: "Engine ID。",
 			},
 		},
 	}

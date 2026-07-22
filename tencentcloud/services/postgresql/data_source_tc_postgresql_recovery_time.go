@@ -19,25 +19,25 @@ func DataSourceTencentCloudPostgresqlRecoveryTime() *schema.Resource {
 			"db_instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"recovery_begin_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The earliest restoration time (UTC+8).",
+				Description: "The earliest restoration time (UTC+8)。",
 			},
 
 			"recovery_end_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The latest restoration time (UTC+8).",
+				Description: "The latest restoration time (UTC+8)。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

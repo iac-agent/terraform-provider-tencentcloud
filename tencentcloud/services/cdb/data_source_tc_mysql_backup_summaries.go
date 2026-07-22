@@ -19,76 +19,76 @@ func DataSourceTencentCloudMysqlBackupSummaries() *schema.Resource {
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The type of cloud database product to be queried, currently only supports `mysql`.",
+				Description: "查询的云数据库产品类型，目前仅支持`mysql`。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Specify to sort by a certain item, the optional values include: BackupVolume: backup volume, DataBackupVolume: data backup volume, BinlogBackupVolume: log backup volume, AutoBackupVolume: automatic backup volume, ManualBackupVolume: manual backup volume. By default, they are sorted by BackupVolume.",
+				Description: "指定按某项排序，可选值包括：BackupVolume：备份卷、DataBackupVolume：数据备份卷、BinlogBackupVolume：日志备份卷、AutoBackupVolume：自动备份卷、ManualBackupVolume：手动备份卷。默认情况下，它们按备份卷排序。",
 			},
 
 			"order_direction": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Specify the sorting direction, optional values include: ASC: forward order, DESC: reverse order. The default is ASC.",
+				Description: "指定排序方向，可选值包括：ASC：正序，DESC：逆序。默认为 ASC。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Instance backup statistics entries.",
+				Description: "实例备份统计条目。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例ID。",
 						},
 						"auto_backup_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of automatic data backups for this instance.",
+							Description: "该实例的自动数据备份数量。",
 						},
 						"auto_backup_volume": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The automatic data backup capacity of this instance.",
+							Description: "该实例的自动数据备份能力。",
 						},
 						"manual_backup_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of manual data backups for this instance.",
+							Description: "该实例的手动数据备份数量。",
 						},
 						"manual_backup_volume": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The capacity of manual data backup for this instance.",
+							Description: "本实例手动数据备份的容量。",
 						},
 						"data_backup_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The total number of data backups (including automatic backups and manual backups) of the instance.",
+							Description: "实例的数据备份总数（包括自动备份和手动备份）。",
 						},
 						"data_backup_volume": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The total data backup capacity of this instance.",
+							Description: "该实例的总数据备份容量。",
 						},
 						"binlog_backup_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of log backups for this instance.",
+							Description: "此实例的日志备份数。",
 						},
 						"binlog_backup_volume": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The capacity of the instance log backup.",
+							Description: "实例日志备份的容量。",
 						},
 						"backup_volume": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The total backup (including data backup and log backup) of the instance occupies capacity.",
+							Description: "实例的总备份（包括数据备份和日志备份）占用容量。",
 						},
 					},
 				},
@@ -97,7 +97,7 @@ func DataSourceTencentCloudMysqlBackupSummaries() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

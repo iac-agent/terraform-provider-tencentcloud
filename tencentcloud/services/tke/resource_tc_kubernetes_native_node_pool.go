@@ -32,36 +32,36 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the cluster.",
+				Description: "ID cluster。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Node pool name.",
+				Description: "Node pool 名称",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Node pool type. Optional value is `Native`.",
+				Description: "Node pool 类型 可选 值 is `Native`。",
 			},
 
 			"labels": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Node Labels.",
+				Description: "Node Labels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name in the map table.",
+							Description: "名称 in the map table。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Value in map table.",
+							Description: "值 in map table。",
 						},
 					},
 				},
@@ -70,23 +70,23 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 			"taints": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Node taint.",
+				Description: "Node taint。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Key of the taint.",
+							Description: "键 of the taint。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Value of the taint.",
+							Description: "值 of the taint。",
 						},
 						"effect": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Effect of the taint.",
+							Description: "Effect of the taint。",
 						},
 					},
 				},
@@ -95,29 +95,29 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Node tags.",
+				Description: "Node 标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The resource type bound to the label. `cluster`: related to clusters; `machine`: related to node pools.",
+							Description: "The 资源类型 bound to the 标签 `cluster`: related to clusters; `machine`: related to node pools。",
 						},
 						"tags": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Tag pair list.",
+							Description: "标签 pair list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Tag Key.",
+										Description: "标签键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Tag Value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -130,21 +130,21 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable deletion protection.",
+				Description: "是否enable 删除保护",
 			},
 
 			"unschedulable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether the node is not schedulable by default. The native node is not aware of it and passes false by default.",
+				Description: "是否node is not schedulable by default. The native node is not aware of it and passes false by default。",
 			},
 
 			"native": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Native node pool creation parameters.",
+				Description: "Native node pool creation parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"scaling": {
@@ -152,26 +152,26 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Node pool scaling configuration.",
+							Description: "Node pool scaling configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"min_replicas": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Minimum number of replicas in node pool.",
+										Description: "最小replicas in node pool。",
 									},
 									"max_replicas": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Maximum number of replicas in node pool.",
+										Description: "最大replicas in node pool。",
 									},
 									"create_policy": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Node pool expansion strategy. `ZoneEquality`: multiple availability zones are broken up; `ZonePriority`: the preferred availability zone takes precedence.",
+										Description: "Node pool expansion strategy. `ZoneEquality`: multiple availability zones are broken up; `ZonePriority`: the preferred availability 可用区 takes precedence。",
 									},
 								},
 							},
@@ -179,7 +179,7 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 						"subnet_ids": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Subnet list.",
+							Description: "Subnet list。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -188,27 +188,27 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Node billing type. `PREPAID` is a yearly and monthly subscription, `POSTPAID_BY_HOUR` is a pay-as-you-go plan. The default is `POSTPAID_BY_HOUR`.",
+							Description: "Node billing 类型 `PREPAID` is a yearly and monthly subscription，`POSTPAID_BY_HOUR` is a pay-as-you-go plan. The 默认为 `POSTPAID_BY_HOUR`。",
 						},
 						"system_disk": {
 							Type:        schema.TypeList,
 							Required:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "System disk configuration.",
+							Description: "System disk configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Cloud disk type. Valid values: `CLOUD_PREMIUM`: Premium Cloud Storage, `CLOUD_SSD`: cloud SSD disk, `CLOUD_BSSD`: Basic SSD, `CLOUD_HSSD`: Enhanced SSD.",
+										Description: "Cloud disk 类型 有效值：`CLOUD_PREMIUM`: Premium Cloud Storage，`CLOUD_SSD`: cloud SSD disk，`CLOUD_BSSD`: Basic SSD，`CLOUD_HSSD`: Enhanced SSD。",
 									},
 									"disk_size": {
 										Type:        schema.TypeInt,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Cloud disk size (G).",
+										Description: "Cloud disk size (G)。",
 									},
 									//"auto_format_and_mount": {
 									//	Type:        schema.TypeBool,
@@ -229,12 +229,12 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 									"encrypt": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Encrypt System Drive. Allow value: `ENCRYPT`.",
+										Description: "Encrypt System Drive. Allow 值: `ENCRYPT`。",
 									},
 									"kms_key_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Kms key ID.",
+										Description: "Kms 键 ID。",
 									},
 								},
 							},
@@ -243,7 +243,7 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 							Type:        schema.TypeList,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Model list.",
+							Description: "Model list。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -251,7 +251,7 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 						"security_group_ids": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Security group list.",
+							Description: "Security group list。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -337,7 +337,7 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 						"auto_repair": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable self-healing ability.",
+							Description: "是否enable self-healing ability。",
 						},
 						"instance_charge_prepaid": {
 							Type:        schema.TypeList,
@@ -345,20 +345,20 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 							Computed:    true,
 							MaxItems:    1,
 							ForceNew:    true,
-							Description: "Billing configuration for yearly and monthly models.",
+							Description: "Billing configuration for yearly and monthly models。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"period": {
 										Type:        schema.TypeInt,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Postpaid billing cycle, unit (month): 1, 2, 3, 4, 5,, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.",
+										Description: "Postpaid billing cycle，unit (month): 1，2，3，4，5,，6，7，8，9，10，11，12，24，36，48，60。",
 									},
 									"renew_flag": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Prepaid renewal method:\n  - `NOTIFY_AND_AUTO_RENEW`: Notify users of expiration and automatically renew (default).\n  - `NOTIFY_AND_MANUAL_RENEW`: Notify users of expiration, but do not automatically renew.\n  - `DISABLE_NOTIFY_AND_MANUAL_RENEW`: Do not notify users of expiration and do not automatically renew.",
+										Description: "Prepaid renewal method:\n  - `NOTIFY_AND_AUTO_RENEW`: Notify users of expiration and automatically renew (default).\n  - `NOTIFY_AND_MANUAL_RENEW`: Notify users of expiration，but do not automatically renew.\n  - `DISABLE_NOTIFY_AND_MANUAL_RENEW`: Do not notify users of expiration and do not automatically renew。",
 									},
 								},
 							},
@@ -368,14 +368,14 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Node pool management parameter settings.",
+							Description: "Node pool management parameter settings。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"nameservers": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Computed:    true,
-										Description: "Dns configuration.",
+										Description: "Dns configuration。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -383,7 +383,7 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 									"hosts": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Hosts configuration.",
+										Description: "Hosts configuration。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -391,7 +391,7 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 									"kernel_args": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Kernel parameter configuration.",
+										Description: "Kernel parameter configuration。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -402,17 +402,17 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 						"health_check_policy_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Fault self-healing rule name.",
+							Description: "Fault self-healing rule 名称",
 						},
 						"host_name_pattern": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Native node pool hostName pattern string.",
+							Description: "Native node pool hostName pattern string。",
 						},
 						"kubelet_args": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Kubelet custom parameters.",
+							Description: "Kubelet custom parameters。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -422,18 +422,18 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Predefined scripts.",
+							Description: "Predefined scripts。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"pre_init": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Custom script before node initialization.",
+										Description: "Custom script before node initialization。",
 									},
 									"post_init": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Custom script after node initialization.",
+										Description: "Custom script after node initialization。",
 									},
 								},
 							},
@@ -443,18 +443,18 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Runtime root directory.",
+							Description: "Runtime root directory。",
 						},
 						"enable_autoscaling": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable elastic scaling.",
+							Description: "是否enable elastic scaling。",
 						},
 						"replicas": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Desired number of nodes.",
+							Description: "Desired 数量 nodes。",
 						},
 						"internet_accessible": {
 							Type:        schema.TypeList,
@@ -462,27 +462,27 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 							Computed:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Public network bandwidth settings.",
+							Description: "Public network bandwidth settings。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"max_bandwidth_out": {
 										Type:         schema.TypeInt,
 										Required:     true,
 										ForceNew:     true,
-										Description:  "Maximum bandwidth output. Note: When chargeType is `TRAFFIC_POSTPAID_BY_HOUR` and `BANDWIDTH_POSTPAID_BY_HOUR`, the valid range is 1~100. When chargeType is `BANDWIDTH_PACKAG`, the valid range is 1~2000.",
+										Description:  "Maximum bandwidth output. Note: When chargeType is `TRAFFIC_POSTPAID_BY_HOUR` and `BANDWIDTH_POSTPAID_BY_HOUR`，the valid range is 1~100. When chargeType is `BANDWIDTH_PACKAG`，the valid range is 1~2000。",
 										ValidateFunc: tccommon.ValidateIntegerMin(1),
 									},
 									"charge_type": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Network billing method. Optional value is `TRAFFIC_POSTPAID_BY_HOUR`, `BANDWIDTH_POSTPAID_BY_HOUR` and `BANDWIDTH_PACKAGE`.",
+										Description: "Network billing method. 可选 值 is `TRAFFIC_POSTPAID_BY_HOUR`，`BANDWIDTH_POSTPAID_BY_HOUR` and `BANDWIDTH_PACKAGE`。",
 									},
 									"bandwidth_package_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Bandwidth package ID. Note: When ChargeType is BANDWIDTH_PACKAG, the value cannot be empty; otherwise, the value must be empty.",
+										Description: "Bandwidth package ID. Note: When ChargeType is BANDWIDTH_PACKAG，the 值 cannot be empty; otherwise，the 值 must be empty。",
 									},
 								},
 							},
@@ -490,58 +490,58 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 						"data_disks": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Native node pool data disk list.",
+							Description: "Native node pool data disk list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Cloud disk type. Valid values: `CLOUD_PREMIUM`: Premium Cloud Storage, `CLOUD_SSD`: cloud SSD disk, `CLOUD_BSSD`: Basic SSD, `CLOUD_HSSD`: Enhanced SSD, `CLOUD_TSSD`: Tremendous SSD, `LOCAL_NVME`: local NVME disk.",
+										Description: "Cloud disk 类型 有效值：`CLOUD_PREMIUM`: Premium Cloud Storage，`CLOUD_SSD`: cloud SSD disk，`CLOUD_BSSD`: Basic SSD，`CLOUD_HSSD`: Enhanced SSD，`CLOUD_TSSD`: Tremendous SSD，`LOCAL_NVME`: local NVME disk。",
 									},
 									"file_system": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "File system (ext3/ext4/xfs).",
+										Description: "File system (ext3/ext4/xfs)。",
 									},
 									"disk_size": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Cloud disk size (G).",
+										Description: "Cloud disk size (G)。",
 									},
 									"auto_format_and_mount": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Whether to automatically format the disk and mount it.",
+										Description: "是否automatically 格式 the disk and mount it。",
 									},
 									"disk_partition": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Mount device name or partition name.",
+										Description: "Mount device 名称 or partition 名称",
 									},
 									"mount_target": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Mount directory.",
+										Description: "挂载目录",
 									},
 									"encrypt": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Pass in this parameter to create an encrypted cloud disk. The value is fixed to `ENCRYPT`.",
+										Description: "Pass in this parameter to create an encrypted cloud disk. The 值 is fixed to `ENCRYPT`。",
 									},
 									"kms_key_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Customize the key when purchasing an encrypted disk. When this parameter is passed in, the Encrypt parameter is not empty.",
+										Description: "Customize the 键 when purchasing an encrypted disk. When this parameter is passed in，the Encrypt parameter is not empty。",
 									},
 									"snapshot_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Snapshot ID. If passed in, the cloud disk will be created based on this snapshot. The snapshot type must be a data disk snapshot.",
+										Description: "Snapshot ID. If passed in，the cloud disk will be created based on this snapshot. The snapshot 类型 must be a data disk snapshot。",
 									},
 									"throughput_performance": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Cloud disk performance, unit: MB/s. Use this parameter to purchase additional performance for the cloud disk.",
+										Description: "Cloud disk performance，unit: MB/s. Use this parameter to purchase additional performance for the cloud disk。",
 									},
 								},
 							},
@@ -549,7 +549,7 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 						"key_ids": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Node pool ssh public key id array.",
+							Description: "Node pool ssh public 键 id array。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -559,7 +559,7 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Node pool type. Example value: `NativeCVM` or `Native`. Default is `Native`.",
+							Description: "Node pool 类型 Example 值: `NativeCVM` or `Native`. 默认为 `Native`。",
 						},
 					},
 				},
@@ -569,18 +569,18 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
-				Description: "Node Annotation List.",
+				Description: "Node Annotation List。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name in the map table.",
+							Description: "名称 in the map table。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Value in the map table.",
+							Description: "值 in the map table。",
 						},
 					},
 				},
@@ -589,13 +589,13 @@ func ResourceTencentCloudKubernetesNativeNodePool() *schema.Resource {
 			"life_state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Node pool status.",
+				Description: "Node pool 状态",
 			},
 
 			"created_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "创建时间。",
 			},
 		},
 	}

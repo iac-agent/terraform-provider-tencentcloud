@@ -22,49 +22,49 @@ func ResourceTencentCloudScfInvokeFunction() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Function name.",
+				Description: "Function 名称",
 			},
 
 			"invocation_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Fill in RequestResponse for synchronized invocations (default and recommended) and Event for asychronized invocations. Note that for synchronized invocations, the max timeout period is 300s. Choose asychronized invocations if the required timeout period is longer than 300 seconds. You can also use InvokeFunction for synchronized invocations.",
+				Description: "Fill in RequestResponse for synchronized invocations (default and recommended) and Event for asychronized invocations. Note that for synchronized invocations，the max timeout 周期 is 300s. Choose asychronized invocations if the 必填 timeout 周期 is longer than 300 seconds. You can also use InvokeFunction for synchronized invocations。",
 			},
 
 			"qualifier": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The version or alias of the triggered function. It defaults to $LATEST.",
+				Description: "The 版本 or alias of the triggered function. It 默认为 $LATEST。",
 			},
 
 			"client_context": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Function running parameter, which is in the JSON format. The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to event input parameter.",
+				Description: "Function running parameter，which is in the JSON 格式 The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to event input parameter。",
 			},
 
 			"log_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Null for async invocations.",
+				Description: "Null for async invocations。",
 			},
 
 			"namespace": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace.",
+				Description: "Namespace。",
 			},
 
 			"routing_key": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Traffic routing config in json format, e.g., {k:v}. Please note that both k and v must be strings. Up to 1024 bytes allowed.",
+				Description: "Traffic routing 配置 in json 格式，e.g.，{k:v}. Please note that both k and v must be strings. Up to 1024 bytes allowed。",
 			},
 		},
 	}

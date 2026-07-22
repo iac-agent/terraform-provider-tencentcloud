@@ -22,21 +22,21 @@ func ResourceTencentCloudDnspodModifyDomainOwnerOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"account": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The account to which the domain needs to be transferred, supporting Uin or email format.",
+				Description: "The 账号 to which the 域名 needs to be transferred，supporting Uin or email 格式",
 			},
 
 			"domain_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Domain ID. The parameter DomainId has a higher priority than the parameter Domain. If the parameter DomainId is passed, the parameter Domain will be ignored. You can find all Domains and DomainIds through the DescribeDomainList interface.",
+				Description: "域名 ID. The parameter DomainId has a higher 优先级 than the parameter 域名 If the parameter DomainId is passed，the parameter 域名 will be ignored. You can find all Domains and DomainIds through the DescribeDomainList interface。",
 			},
 		},
 	}

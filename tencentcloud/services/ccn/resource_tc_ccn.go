@@ -32,13 +32,13 @@ func ResourceTencentCloudCcn() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "Name of the CCN to be queried, and maximum length does not exceed 60 bytes.",
+				Description:  "名称 CCN to be queried，and maximum length does not exceed 60 bytes。",
 			},
 			"description": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 100),
-				Description:  "Description of CCN, and maximum length does not exceed 100 bytes.",
+				Description:  "描述 CCN，and maximum length does not exceed 100 bytes。",
 			},
 			"qos": {
 				Type:         schema.TypeString,
@@ -46,7 +46,7 @@ func ResourceTencentCloudCcn() *schema.Resource {
 				ForceNew:     true,
 				Default:      CNN_QOS_AU,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{CNN_QOS_PT, CNN_QOS_AU, CNN_QOS_AG}),
-				Description:  "CCN service quality, 'PT': Platinum, 'AU': Gold, 'AG': Silver. The default is 'AU'.",
+				Description:  "CCN service quality，'PT': Platinum，'AU': Gold，'AG': Silver. The 默认为 'AU'。",
 			},
 			"charge_type": {
 				Type:         schema.TypeString,
@@ -75,40 +75,40 @@ func ResourceTencentCloudCcn() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Instance metering type. Valid values: `BANDWIDTH` (bandwidth billing), `TRAFFIC` (traffic billing). This parameter cannot be modified after creation.",
+				Description: "Instance metering 类型 有效值：`BANDWIDTH` (bandwidth billing)，`TRAFFIC` (traffic billing). This parameter cannot be modified after creation。",
 			},
 			"route_ecmp_flag": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable the equivalent routing function. `true`: enabled, `false`: disabled. Default is false.",
+				Description: "是否enable the equivalent routing function. `true`: 已启用，`false`: 已禁用 默认为 false。",
 			},
 			"route_overlap_flag": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable the routing overlap function. `true`: enabled, `false`: disabled. Default is true, cannot set to false.",
+				Description: "是否enable the routing overlap function. `true`: 已启用，`false`: 已禁用 默认为 true，cannot set to false。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Instance tag.",
+				Description: "Instance 标签",
 			},
 			// Computed values
 			"state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "States of instance. Valid values: `ISOLATED`(arrears) and `AVAILABLE`.",
+				Description: "States of instance. 有效值：`ISOLATED`(arrears) and `AVAILABLE`。",
 			},
 			"instance_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of attached instances.",
+				Description: "数量 attached instances。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of resource.",
+				Description: "创建时间 of resource。",
 			},
 		},
 	}

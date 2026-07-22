@@ -20,19 +20,19 @@ func DataSourceTencentCloudDcdbDatabases() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Database information.",
+				Description: "Database information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database Name.",
+							Description: "Database 名称",
 						},
 					},
 				},
@@ -41,7 +41,7 @@ func DataSourceTencentCloudDcdbDatabases() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

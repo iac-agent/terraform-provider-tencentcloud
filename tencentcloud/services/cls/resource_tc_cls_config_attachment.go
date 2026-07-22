@@ -28,13 +28,13 @@ func ResourceTencentCloudClsConfigAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Collection configuration id.",
+				Description: "集合配置id。",
 			},
 			"group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Machine group id.",
+				Description: "机器组 ID。",
 			},
 		},
 	}

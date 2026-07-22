@@ -29,7 +29,7 @@ func ResourceTencentCloudCbsSnapshotPolicy() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(2, 60),
-				Description:  "Name of snapshot policy. The maximum length can not exceed 60 bytes.",
+				Description:  "名称 snapshot policy. The maximum length can not exceed 60 bytes。",
 			},
 			"repeat_weekdays": {
 				Type:     schema.TypeList,
@@ -38,7 +38,7 @@ func ResourceTencentCloudCbsSnapshotPolicy() *schema.Resource {
 					Type:         schema.TypeInt,
 					ValidateFunc: tccommon.ValidateIntegerInRange(0, 6),
 				},
-				Description: "Periodic snapshot is enabled. Valid values: [0, 1, 2, 3, 4, 5, 6]. 0 means Sunday, 1-6 means Monday to Saturday.",
+				Description: "Periodic snapshot is 已启用 有效值：[0，1，2，3，4，5，6]. 0 means Sunday，1-6 means Monday to Saturday。",
 			},
 			"repeat_hours": {
 				Type:     schema.TypeList,
@@ -47,13 +47,13 @@ func ResourceTencentCloudCbsSnapshotPolicy() *schema.Resource {
 					Type:         schema.TypeInt,
 					ValidateFunc: tccommon.ValidateIntegerInRange(0, 23),
 				},
-				Description: "Trigger times of periodic snapshot. Valid value ranges: (0~23). The 0 means 00:00, and so on.",
+				Description: "Trigger times of periodic snapshot. Valid 值 ranges: (0~23). The 0 means 00:00，and so on。",
 			},
 			"retention_days": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     7,
-				Description: "Retention days of the snapshot, and the default value is 7.",
+				Description: "Retention days of the snapshot，and the 默认值为 7。",
 			},
 		},
 	}

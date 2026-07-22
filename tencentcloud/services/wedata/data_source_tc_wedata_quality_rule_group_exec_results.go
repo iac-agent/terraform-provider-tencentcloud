@@ -19,24 +19,24 @@ func DataSourceTencentCloudWedataQualityRuleGroupExecResults() *schema.Resource 
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions. Supported filters:\n1. GroupType - Rule group type: DEFAULT (default type), WORKFLOW_NODE (workflow node type)\n2. InstanceId - Rule group execution instance ID\n3. ParentInstanceId - Parent instance ID\n4. LifeCycleRunNum - Lifecycle run number\n5. InstanceStatus - Instance status: Waiting (INITIAL, EVENT_LISTENING, DEPENDENCE, ALLOCATED, LAUNCHED, BEFORE_ASPECT, ISSUED), Running (RUNNING, AFTER_ASPECT, WAITING_AFTER_ASPECT), Failed (FAILED, EXPIRED, KILL, KILLING, PENDING), Success (COMPLETED)\n6. DatasourceId - Data source ID\n7. DatasourceType - Data source type: 1-MYSQL, 2-HIVE, 3-DLC, 4-GBASE, 5-TCHouse-P/CDW, 6-ICEBERG, 7-DORIS, 8-TCHouse-D, 9-EMR_STARROCKS, 10-TBDS_STARROCKS, 11-TCHouse-X\n8. DatabaseName - Database name\n9. DatabaseId - Database ID\n10. SchemaName - Schema name\n11. ReceiverFlag - Whether it is the current user's subscription: true/false\n12. TableName - Table name (supports fuzzy matching)\n13. RuleGroupName - Rule group name\n14. RuleGroupExecId - Rule group execution ID\n15. RuleGroupTableId - Rule group table ID\n16. Keyword - Keyword search (rule group execution ID, table name, table owner)\n17. StartTime - Actual run start time (Unix timestamp)\n18. EndTime - Actual run end time (Unix timestamp)\n19. ScheduledStartTime - Scheduled start time (Unix timestamp)\n20. ScheduledEndTime - Scheduled end time (Unix timestamp)\n21. DsJobId - Data source job ID\n22. TriggerType - Trigger type: 1-Manual, 2-Schedule, 3-Periodic\n23. Status - Rule group execution status: 0-Initial, 1-Submitted, 2-Detecting, 3-Normal, 4-Abnormal, 5-Delivering, 6-Execution error, 7-Not detected\n24. TableIds - Table ID collection\n25. RuleGroupId - Rule group ID\n26. BizCatalogIds - Business catalog ID\n27. CatalogName - Data catalog name.",
+				Description: "Filter conditions. Supported filters:\n1. GroupType - Rule group 类型: DEFAULT (default 类型)，WORKFLOW_NODE (workflow node 类型)\n2. 实例 ID - Rule group execution instance ID\n3. ParentInstanceId - Parent instance ID\n4. LifeCycleRunNum - Lifecycle run number\n5. InstanceStatus - 实例状态: Waiting (INITIAL，EVENT_LISTENING，DEPENDENCE，ALLOCATED，LAUNCHED，BEFORE_ASPECT，ISSUED)，Running (RUNNING，AFTER_ASPECT，WAITING_AFTER_ASPECT)，Failed (FAILED，EXPIRED，KILL，KILLING，PENDING)，Success (COMPLETED)\n6. DatasourceId - 数据源 ID\n7. DatasourceType - Data 来源 类型: 1-MYSQL，2-HIVE，3-DLC，4-GBASE，5-TCHouse-P/CDW，6-ICEBERG，7-DORIS，8-TCHouse-D，9-EMR_STARROCKS，10-TBDS_STARROCKS，11-TCHouse-X\n8. DatabaseName - Database 名称\n9. DatabaseId - Database ID\n10. SchemaName - Schema 名称\n11. ReceiverFlag - 是否为the current 用户's subscription: true/false\n12. TableName - Table 名称 (supports fuzzy matching)\n13. RuleGroupName - Rule 组名称\n14. RuleGroupExecId - Rule group execution ID\n15. RuleGroupTableId - Rule group table ID\n16. Keyword - Keyword search (rule group execution ID，table 名称，table 所有者)\n17. StartTime - Actual run 开始时间 (Unix 时间戳)\n18. EndTime - Actual run 结束时间 (Unix 时间戳)\n19. ScheduledStartTime - Scheduled 开始时间 (Unix 时间戳)\n20. ScheduledEndTime - Scheduled 结束时间 (Unix 时间戳)\n21. DsJobId - Data 来源 job ID\n22. TriggerType - Trigger 类型: 1-Manual，2-Schedule，3-Periodic\n23. 状态 - Rule group execution 状态: 0-Initial，1-Submitted，2-Detecting，3-Normal，4-Abnormal，5-Delivering，6-Execution 错误，7-Not detected\n24. TableIds - Table ID collection\n25. RuleGroupId - Rule 组 ID\n26. BizCatalogIds - Business catalog ID\n27. CatalogName - Data catalog 名称",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Filter field name.",
+							Description: "过滤字段名称",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Filter value list.",
+							Description: "过滤值 list。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -48,18 +48,18 @@ func DataSourceTencentCloudWedataQualityRuleGroupExecResults() *schema.Resource 
 			"order_fields": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Sort fields. Supported fields: CreateTime (sort by creation time), UpdateTime (sort by update time, default). Sort direction: 1-ASC, 2-DESC.",
+				Description: "Sort fields. Supported fields: CreateTime (排序方式 创建时间)，UpdateTime (排序方式 更新时间，default). Sort direction: 1-ASC，2-DESC。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Sort field name.",
+							Description: "排序字段 名称",
 						},
 						"direction": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Sort direction: ASC|DESC.",
+							Description: "Sort direction: ASC|DESC。",
 						},
 					},
 				},
@@ -68,194 +68,194 @@ func DataSourceTencentCloudWedataQualityRuleGroupExecResults() *schema.Resource 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Rule group execution result list.",
+				Description: "Rule group execution 结果 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Total count.",
+							Description: "总数",
 						},
 						"items": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Rule group execution results.",
+							Description: "Rule group execution results。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rule_group_exec_id": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Rule group execution ID.",
+										Description: "Rule group execution ID。",
 									},
 									"rule_group_id": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Rule group ID.",
+										Description: "Rule 组 ID",
 									},
 									"trigger_type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Execution trigger type: 1-Manual trigger, 2-Schedule trigger, 3-Periodic schedule trigger.",
+										Description: "Execution trigger 类型: 1-Manual trigger，2-Schedule trigger，3-Periodic schedule trigger。",
 									},
 									"exec_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Execution time yyyy-MM-dd HH:mm:ss.",
+										Description: "执行时间 yyyy-MM-dd HH:mm:ss。",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Execution status: 1-Submitted, 2-Detecting, 3-Normal, 4-Abnormal.",
+										Description: "Execution 状态: 1-Submitted，2-Detecting，3-Normal，4-Abnormal。",
 									},
 									"alarm_rule_count": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Abnormal rule count.",
+										Description: "Abnormal rule count。",
 									},
 									"total_rule_count": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Total rule count.",
+										Description: "Total rule count。",
 									},
 									"table_owner_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Source table owner.",
+										Description: "来源 table 所有者",
 									},
 									"table_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Source table name.",
+										Description: "来源 table 名称",
 									},
 									"table_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Table ID.",
+										Description: "Table ID。",
 									},
 									"database_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Database ID.",
+										Description: "Database ID。",
 									},
 									"datasource_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Data source ID.",
+										Description: "数据源 ID",
 									},
 									"permission": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Permission status.",
+										Description: "Permission 状态",
 									},
 									"exec_detail": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Execution details, schedule plan or associated production task ID.",
+										Description: "Execution details，schedule plan or associated production task ID。",
 									},
 									"engine_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Actual execution engine.",
+										Description: "Actual execution engine。",
 									},
 									"rule_exec_result_vo_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Rule execution results.",
+										Description: "Rule execution results。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"rule_exec_id": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Rule execution ID.",
+													Description: "Rule execution ID。",
 												},
 												"rule_group_exec_id": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Rule group execution ID.",
+													Description: "Rule group execution ID。",
 												},
 												"rule_group_id": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Rule group ID.",
+													Description: "Rule 组 ID",
 												},
 												"rule_id": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Rule ID.",
+													Description: "Rule ID。",
 												},
 												"rule_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Rule name.",
+													Description: "Rule 名称",
 												},
 												"rule_type": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Rule type: 1-System template, 2-Custom template, 3-Custom SQL.",
+													Description: "Rule 类型: 1-System template，2-Custom template，3-Custom SQL。",
 												},
 												"source_object_data_type_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Source field detailed type (int, string).",
+													Description: "来源 field detailed 类型 (int，string)。",
 												},
 												"source_object_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Source field name.",
+													Description: "来源 field 名称",
 												},
 												"condition_expression": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Condition scan WHERE expression.",
+													Description: "Condition scan WHERE expression。",
 												},
 												"exec_result_status": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Detection result: 1-Passed, 2-Triggered rule, 3-Detection failed.",
+													Description: "Detection 结果: 1-Passed，2-Triggered rule，3-Detection failed。",
 												},
 												"trigger_result": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Trigger result (alarm sent successfully, task blocked successfully).",
+													Description: "Trigger 结果 (alarm sent successfully，task blocked successfully)。",
 												},
 												"compare_result": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Comparison result.",
+													Description: "比较结果",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"items": {
 																Type:        schema.TypeList,
 																Required:    true,
-																Description: "Comparison result item list.",
+																Description: "比较结果 item list。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"fix_result": {
 																			Type:        schema.TypeInt,
 																			Required:    true,
-																			Description: "Comparison result: 1-True, 2-False.",
+																			Description: "比较结果: 1-True，2-False。",
 																		},
 																		"result_value": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Quality SQL execution result.",
+																			Description: "Quality SQL execution 结果",
 																		},
 																		"values": {
 																			Type:        schema.TypeList,
 																			Required:    true,
-																			Description: "Threshold list.",
+																			Description: "Threshold list。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"value_type": {
 																						Type:        schema.TypeInt,
 																						Optional:    true,
-																						Description: "Threshold type: 1-Low threshold, 2-High threshold, 3-Normal threshold, 4-Enum value.",
+																						Description: "Threshold 类型: 1-Low threshold，2-High threshold，3-Normal threshold，4-Enum 值",
 																					},
 																					"value": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Threshold value.",
+																						Description: "Threshold 值",
 																					},
 																				},
 																			},
@@ -263,17 +263,17 @@ func DataSourceTencentCloudWedataQualityRuleGroupExecResults() *schema.Resource 
 																		"operator": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Comparison operator type.",
+																			Description: "比较运算符 类型",
 																		},
 																		"compare_type": {
 																			Type:        schema.TypeInt,
 																			Required:    true,
-																			Description: "Comparison type.",
+																			Description: "比较类型",
 																		},
 																		"value_compute_type": {
 																			Type:        schema.TypeInt,
 																			Required:    true,
-																			Description: "Value comparison type.",
+																			Description: "值 比较类型",
 																		},
 																	},
 																},
@@ -281,22 +281,22 @@ func DataSourceTencentCloudWedataQualityRuleGroupExecResults() *schema.Resource 
 															"total_rows": {
 																Type:        schema.TypeInt,
 																Required:    true,
-																Description: "Total rows count.",
+																Description: "Total rows count。",
 															},
 															"pass_rows": {
 																Type:        schema.TypeInt,
 																Required:    true,
-																Description: "Passed rows count.",
+																Description: "Passed rows count。",
 															},
 															"trigger_rows": {
 																Type:        schema.TypeInt,
 																Required:    true,
-																Description: "Failed rows count.",
+																Description: "Failed rows count。",
 															},
 															"compute_expression": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Comparison relationship.",
+																Description: "比较关系",
 															},
 														},
 													},
@@ -304,77 +304,77 @@ func DataSourceTencentCloudWedataQualityRuleGroupExecResults() *schema.Resource 
 												"template_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Template name.",
+													Description: "模板名称",
 												},
 												"quality_dim": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Quality dimension.",
+													Description: "Quality dimension。",
 												},
 												"target_db_table_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Target table - database table name.",
+													Description: "Target table - database table 名称",
 												},
 												"target_object_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Target table - field name.",
+													Description: "Target table - field 名称",
 												},
 												"target_object_data_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Target table - field type.",
+													Description: "Target table - field 类型",
 												},
 												"field_config": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Custom template SQL expression parameters.",
+													Description: "Custom template SQL expression parameters。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"where_config": {
 																Type:        schema.TypeList,
 																Optional:    true,
-																Description: "WHERE variables.",
+																Description: "WHERE variables。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"field_key": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Field key.",
+																			Description: "Field 键",
 																		},
 																		"field_value": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Field value.",
+																			Description: "Field 值",
 																		},
 																		"field_data_type": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Field value type.",
+																			Description: "Field 值 类型",
 																		},
 																		"value_config": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Field value variable information.",
+																			Description: "Field 值 variable information。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"field_key": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Field value key.",
+																						Description: "Field 值 键",
 																					},
 																					"field_value": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Field value.",
+																						Description: "Field 值",
 																					},
 																					"field_data_type": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Field value type.",
+																						Description: "Field 值 类型",
 																					},
 																				},
 																			},
@@ -385,76 +385,76 @@ func DataSourceTencentCloudWedataQualityRuleGroupExecResults() *schema.Resource 
 															"table_config": {
 																Type:        schema.TypeList,
 																Optional:    true,
-																Description: "Database table variables.",
+																Description: "Database table variables。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"database_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Database ID.",
+																			Description: "Database ID。",
 																		},
 																		"database_name": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Database name.",
+																			Description: "Database 名称",
 																		},
 																		"table_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Table ID.",
+																			Description: "Table ID。",
 																		},
 																		"table_name": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Table name.",
+																			Description: "Table 名称",
 																		},
 																		"table_key": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Table key.",
+																			Description: "Table 键",
 																		},
 																		"field_config": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
-																			Description: "Field variables.",
+																			Description: "Field variables。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"field_key": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Field key.",
+																						Description: "Field 键",
 																					},
 																					"field_value": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Field value.",
+																						Description: "Field 值",
 																					},
 																					"field_data_type": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Field value type.",
+																						Description: "Field 值 类型",
 																					},
 																					"value_config": {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Field value variable information.",
+																						Description: "Field 值 variable information。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"field_key": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Field value key.",
+																									Description: "Field 值 键",
 																								},
 																								"field_value": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Field value.",
+																									Description: "Field 值",
 																								},
 																								"field_data_type": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Field value type.",
+																									Description: "Field 值 类型",
 																								},
 																							},
 																						},
@@ -471,92 +471,92 @@ func DataSourceTencentCloudWedataQualityRuleGroupExecResults() *schema.Resource 
 												"rel_condition_expr": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Source field and target field association condition ON expression.",
+													Description: "来源 field and target field association condition ON expression。",
 												},
 												"start_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Execution time.",
+													Description: "执行时间。",
 												},
 												"alarm_level": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Alarm level: 1-Low, 2-Medium, 3-High.",
+													Description: "Alarm 级别: 1-Low，2-Medium，3-High。",
 												},
 												"trigger_condition": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Trigger condition.",
+													Description: "Trigger condition。",
 												},
 												"rule_group_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Task name.",
+													Description: "Task 名称",
 												},
 												"datasource_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Data source ID.",
+													Description: "数据源 ID",
 												},
 												"datasource_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Data source name.",
+													Description: "数据源名称",
 												},
 												"database_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database name.",
+													Description: "Database 名称",
 												},
 												"schema_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Schema name.",
+													Description: "Schema 名称",
 												},
 												"table_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Table name.",
+													Description: "Table 名称",
 												},
 												"rule_group_exist": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Whether to block monitoring: 0-Block, 1-Not block.",
+													Description: "是否block monitoring: 0-Block，1-Not block。",
 												},
 												"datasource_type": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Data source type.",
+													Description: "Data 来源 类型",
 												},
 												"rule_group_table_id": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Data table ID.",
+													Description: "Data table ID。",
 												},
 												"monitor_type": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Monitor type: 1-Not configured, 2-Associated with production scheduling, 3-Offline periodic detection.",
+													Description: "监控类型: 1-Not configured，2-Associated with production scheduling，3-Offline periodic detection。",
 												},
 												"finish_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Execution end time.",
+													Description: "Execution 结束时间。",
 												},
 												"group_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Monitor task type.",
+													Description: "Monitor task 类型",
 												},
 												"aspect_task_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Orchestration task ID.",
+													Description: "Orchestration task ID。",
 												},
 												"catalog_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Data catalog.",
+													Description: "Data catalog。",
 												},
 											},
 										},
@@ -564,77 +564,77 @@ func DataSourceTencentCloudWedataQualityRuleGroupExecResults() *schema.Resource 
 									"database_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Database name.",
+										Description: "Database 名称",
 									},
 									"rule_group_table_id": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Local rule table ID.",
+										Description: "Local rule table ID。",
 									},
 									"cluster_deploy_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Cluster deployment type.",
+										Description: "Cluster deployment 类型",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Instance ID.",
+										Description: "实例 ID",
 									},
 									"ds_env_type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Database environment: 0-Undefined, 1-Production, 2-Development.",
+										Description: "Database environment: 0-Undefined，1-Production，2-Development。",
 									},
 									"project_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Project ID.",
+										Description: "项目 ID",
 									},
 									"project_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Project name.",
+										Description: "项目名称",
 									},
 									"instance_status": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Instance status.",
+										Description: "实例状态",
 									},
 									"start_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Instance start time.",
+										Description: "Instance 开始时间。",
 									},
 									"finish_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Instance end time.",
+										Description: "Instance 结束时间。",
 									},
 									"rule_group_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Monitor name.",
+										Description: "Monitor 名称",
 									},
 									"rule_group_exist": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Whether to block monitoring: 0-Block, 1-Not block.",
+										Description: "是否block monitoring: 0-Block，1-Not block。",
 									},
 									"biz_catalog_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Category name.",
+										Description: "Category 名称",
 									},
 									"biz_catalog_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Category ID.",
+										Description: "Category ID。",
 									},
 									"fail_msg": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Failure reason.",
+										Description: "Failure reason。",
 									},
 								},
 							},
@@ -646,7 +646,7 @@ func DataSourceTencentCloudWedataQualityRuleGroupExecResults() *schema.Resource 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,206 +19,206 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"task_type_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task type Id. -20: common data sync, - 25:ETLTaskType, - 26:ETLTaskType, - 30:python, - 31:pyspark, - 34:HiveSQLTaskType, - 35:shell, - 36:SparkSQLTaskType, - 21:JDBCSQLTaskType, - 32:DLCTaskType, - 33:ImpalaTaskType, - 40:CDWTaskType, - 41:kettle, - 46:DLCSparkTaskType, -47: TiOne machine learning, - 48:TrinoTaskType, - 50:DLCPyspark39:spark, - 92:mr, -38: shell script, -70: hivesql script, -1000: common custom business.",
+				Description: "Task 类型 Id. -20: common data sync，- 25:ETLTaskType，- 26:ETLTaskType，- 30:python，- 31:pyspark，- 34:HiveSQLTaskType，- 35:shell，- 36:SparkSQLTaskType，- 21:JDBCSQLTaskType，- 32:DLCTaskType，- 33:ImpalaTaskType，- 40:CDWTaskType，- 41:kettle，- 46:DLCSparkTaskType，-47: TiOne machine learning，- 48:TrinoTaskType，- 50:DLCPyspark39:spark，- 92:mr，-38: shell script，-70: hivesql script，-1000: common custom business。",
 			},
 
 			"workflow_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow ID.",
+				Description: "Workflow ID。",
 			},
 
 			"workflow_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow name.",
+				Description: "Workflow 名称",
 			},
 
 			"owner_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Owner id.",
+				Description: "所有者 id。",
 			},
 
 			"folder_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Folder ID.",
+				Description: "Folder ID。",
 			},
 
 			"source_service_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Data source ID.",
+				Description: "数据源 ID",
 			},
 
 			"target_service_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target data source id.",
+				Description: "Target data 来源 id。",
 			},
 
 			"executor_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Executor Group ID.",
+				Description: "Executor 组 ID",
 			},
 
 			"cycle_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task Cycle Type: ONEOFF_CYCLE: One-time, YEAR_CYCLE: Yearly, MONTH_CYCLE: Monthly, WEEK_CYCLE: Weekly, DAY_CYCLE: Daily, HOUR_CYCLE: Hourly, MINUTE_CYCLE: Minute-level, CRONTAB_CYCLE: Crontab expression-based.",
+				Description: "Task Cycle 类型: ONEOFF_CYCLE: One-time，YEAR_CYCLE: Yearly，MONTH_CYCLE: Monthly，WEEK_CYCLE: Weekly，DAY_CYCLE: Daily，HOUR_CYCLE: Hourly，MINUTE_CYCLE: Minute-级别，CRONTAB_CYCLE: Crontab expression-based。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task Status: -Y: Running, -F: Stopped, -O: Frozen, -T: Stopping, -INVALID: Invalid.",
+				Description: "Task 状态: -Y: Running，-F: Stopped，-O: Frozen，-T: Stopping，-INVALID: Invalid。",
 			},
 
 			"time_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Time zone. defaults to UTC+8.",
+				Description: "时区. 默认为 UTC+8。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Task list.",
+				Description: "Task list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total number of results.",
+							Description: "Total 数量 results。",
 						},
 						"total_page_number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total pages.",
+							Description: "总页数",
 						},
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Record list.",
+							Description: "Record list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"task_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task ID.",
+										Description: "任务 ID",
 									},
 									"task_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task name.",
+										Description: "Task 名称",
 									},
 									"owner_uin": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Owner id.",
+										Description: "所有者 id。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task Status: -N: New, -Y: Scheduling, -F: Offline, -O: Paused, -T: Offlining, -INVALID: Invalid..",
+										Description: "Task 状态: -N: New，-Y: Scheduling，-F: Offline，-O: Paused，-T: Offlining，-INVALID: Invalid.。",
 									},
 									"folder_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Folder ID.",
+										Description: "Folder ID。",
 									},
 									"folder_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Folder name.",
+										Description: "Folder 名称",
 									},
 									"workflow_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Workflow id.",
+										Description: "Workflow id。",
 									},
 									"workflow_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Workflow name.",
+										Description: "Workflow 名称",
 									},
 									"project_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Project ID.",
+										Description: "项目 ID",
 									},
 									"project_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Project name.",
+										Description: "项目名称",
 									},
 									"update_user_uin": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Specifies the name of the updater.",
+										Description: "指定name of the updater。",
 									},
 									"task_type_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Task type Id. 21:JDBC SQL, 23:TDSQL-PostgreSQL, 26:OfflineSynchronization, 30:Python, 31:PySpark, 33:Impala, 34:Hive SQL, 35:Shell, 36:Spark SQL, 38:Shell Form Mode, 39:Spark, 40:TCHouse-P, 41:Kettle, 42:Tchouse-X, 43:TCHouse-X SQL, 46:DLC Spark, 47:TiOne, 48:Trino, 50:DLC PySpark, 92:MapReduce, 130:Branch Node, 131:Merged Node, 132:Notebook, 133:SSH, 134:StarRocks, 137:For-each, 138:Setats SQL.",
+										Description: "Task 类型 Id. 21:JDBC SQL，23:TDSQL-PostgreSQL，26:OfflineSynchronization，30:Python，31:PySpark，33:Impala，34:Hive SQL，35:Shell，36:Spark SQL，38:Shell Form 模式，39:Spark，40:TCHouse-P，41:Kettle，42:Tchouse-X，43:TCHouse-X SQL，46:DLC Spark，47:TiOne，48:Trino，50:DLC PySpark，92:MapReduce，130:Branch Node，131:Merged Node，132:Notebook，133:SSH，134:StarRocks，137:For-each，138:Setats SQL。",
 									},
 									"task_type_desc": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task type description. -Universal data synchronization, - ETLTaskType, - ETLTaskType, - python, - pyspark, - HiveSQLTaskType, - shell, - SparkSQLTaskType, - JDBCSQLTaskType, - DLCTaskType, - ImpalaTaskType, - CDWTaskType, - kettle, - DLCSparkTaskType, -TiOne machine learning, - TrinoTaskType, - DLCPyspark, - spark, - mr, -Specifies the shell script, -hivesql script, -Specifies common custom business.",
+										Description: "Task 类型 描述 -Universal data synchronization，- ETLTaskType，- ETLTaskType，- python，- pyspark，- HiveSQLTaskType，- shell，- SparkSQLTaskType，- JDBCSQLTaskType，- DLCTaskType，- ImpalaTaskType，- CDWTaskType，- kettle，- DLCSparkTaskType，-TiOne machine learning，- TrinoTaskType，- DLCPyspark，- spark，- mr，-指定shell script，-hivesql script，-指定common custom business。",
 									},
 									"cycle_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task Cycle Type: ONEOFF_CYCLE: One-time, YEAR_CYCLE: Yearly, MONTH_CYCLE: Monthly, WEEK_CYCLE: Weekly, DAY_CYCLE: Daily, HOUR_CYCLE: Hourly, MINUTE_CYCLE: Minute-level, CRONTAB_CYCLE: Crontab expression-based.",
+										Description: "Task Cycle 类型: ONEOFF_CYCLE: One-time，YEAR_CYCLE: Yearly，MONTH_CYCLE: Monthly，WEEK_CYCLE: Weekly，DAY_CYCLE: Daily，HOUR_CYCLE: Hourly，MINUTE_CYCLE: Minute-级别，CRONTAB_CYCLE: Crontab expression-based。",
 									},
 									"executor_group_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Resource group ID.",
+										Description: "Resource 组 ID",
 									},
 									"schedule_desc": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Scheduling description.",
+										Description: "Scheduling 描述",
 									},
 									"executor_group_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Resource group name.",
+										Description: "Resource 组名称",
 									},
 									"last_scheduler_commit_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Latest scheduling submission time.",
+										Description: "Latest scheduling submission time。",
 									},
 									"first_run_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "First execution time.",
+										Description: "First 执行时间。",
 									},
 									"first_submit_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Most recent submission time.",
+										Description: "Most recent submission time。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Creation time.",
+										Description: "创建时间。",
 									},
 									"last_update_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Latest update time.",
+										Description: "Latest 更新时间。",
 									},
 								},
 							},
@@ -226,12 +226,12 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 						"page_number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Page number.",
+							Description: "页码",
 						},
 						"page_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Pagination size.",
+							Description: "Pagination size。",
 						},
 					},
 				},
@@ -240,7 +240,7 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -27,19 +27,19 @@ func ResourceTencentCloudTatInvoker() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Invoker name.",
+				Description: "Invoker 名称",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Invoker type. It can only be `SCHEDULE` (recurring invokers).",
+				Description: "Invoker 类型 It can only be `SCHEDULE` (recurring invokers)。",
 			},
 
 			"command_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Remote command ID.",
+				Description: "Remote 命令 ID",
 			},
 
 			"instance_ids": {
@@ -48,42 +48,42 @@ func ResourceTencentCloudTatInvoker() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "ID of the instance bound to the trigger. Up to 100 IDs are allowed.",
+				Description: "ID instance bound to the trigger. Up to 100 IDs are allowed。",
 			},
 
 			"username": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The user who executes the command.",
+				Description: "The 用户 who executes the command。",
 			},
 
 			"parameters": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom parameters of the command.",
+				Description: "Custom parameters of the command。",
 			},
 
 			"schedule_settings": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Settings required for a recurring invoker.",
+				Description: "Settings 必填 for a recurring invoker。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Execution policy: `ONCE`: Execute once; `RECURRENCE`: Execute repeatedly.",
+							Description: "Execution policy: `ONCE`: Execute once; `RECURRENCE`: Execute repeatedly。",
 						},
 						"recurrence": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Trigger the crontab expression. This field is required if `Policy` is `RECURRENCE`. The crontab expression is parsed in UTC+8.",
+							Description: "Trigger the crontab expression. This field 为必填项 if `Policy` is `RECURRENCE`. The crontab expression is parsed in UTC+8。",
 						},
 						"invoke_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The next execution time of the invoker. This field is required if Policy is ONCE.",
+							Description: "The next 执行时间 of the invoker. This field 为必填项 if Policy is ONCE。",
 						},
 					},
 				},
@@ -92,25 +92,25 @@ func ResourceTencentCloudTatInvoker() *schema.Resource {
 			"invoker_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Invoker ID.",
+				Description: "Invoker ID。",
 			},
 
 			"enable": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether to enable the invoker.",
+				Description: "是否enable the invoker。",
 			},
 
 			"created_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "创建时间。",
 			},
 
 			"updated_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Modification time.",
+				Description: "修改时间。",
 			},
 		},
 	}

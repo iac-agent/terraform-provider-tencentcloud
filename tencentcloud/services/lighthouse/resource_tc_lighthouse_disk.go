@@ -25,42 +25,42 @@ func ResourceTencentCloudLighthouseDisk() *schema.Resource {
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Availability zone.",
+				Description: "Availability 可用区",
 			},
 
 			"disk_size": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Disk size, unit: GB.",
+				Description: "Disk size，unit: GB。",
 			},
 
 			"disk_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Disk type. Value:CLOUD_PREMIUM, CLOUD_SSD.",
+				Description: "Disk 类型 值:CLOUD_PREMIUM，CLOUD_SSD。",
 			},
 
 			"disk_charge_prepaid": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Disk subscription related parameter settings.",
+				Description: "Disk subscription related parameter settings。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "new purchase cycle.",
+							Description: "new purchase cycle。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Automatic renewal flag. Value: `NOTIFY_AND_AUTO_RENEW`: Notice expires and auto-renews. `NOTIFY_AND_MANUAL_RENEW`: Notification expires without automatic renewal, users need to manually renew. `DISABLE_NOTIFY_AND_AUTO_RENEW`: No automatic renewal and no notification. Default: `NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the disk will be automatically renewed monthly when the account balance is sufficient.",
+							Description: "Automatic renewal flag. 值: `NOTIFY_AND_AUTO_RENEW`: Notice expires and auto-renews. `NOTIFY_AND_MANUAL_RENEW`: Notification expires without automatic renewal，users need to manually renew. `DISABLE_NOTIFY_AND_AUTO_RENEW`: No automatic renewal and no notification. 默认值：`NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`，the disk will be automatically renewed monthly when the 账号 balance is sufficient。",
 						},
 						"time_unit": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "newly purchased unit. Default: m.",
+							Description: "newly purchased unit. 默认值：m。",
 						},
 					},
 				},
@@ -70,51 +70,51 @@ func ResourceTencentCloudLighthouseDisk() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Disk name. Maximum length 60.",
+				Description: "Disk 名称 Maximum length 60。",
 			},
 
 			"disk_count": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Disk count. Values: [1, 30]. Default: 1.",
+				Description: "Disk count. Values: [1，30]. 默认值：1。",
 			},
 
 			"disk_backup_quota": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Specify the disk backup quota. If not uploaded, the default is no backup quota. Currently, only one disk backup quota is supported.",
+				Description: "指定disk backup quota. If not uploaded，the 默认为 no backup quota. Currently，only one disk backup quota is supported。",
 			},
 
 			"auto_voucher": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to automatically use the voucher. Not used by default.",
+				Description: "是否automatically use the voucher. Not used by default。",
 			},
 
 			"auto_mount_configuration": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Automatically mount and initialize data disks.",
+				Description: "Automatically mount and initialize data disks。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance ID to be mounted. The specified instance must be in the Running state.",
+							Description: "实例 ID to be mounted. The specified instance must be in the Running state。",
 						},
 						"mount_point": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The mount point within the instance. Only instances of the Linux operating system can pass in this parameter, and if it is not passed, it will be mounted under the /data/disk path by default.",
+							Description: "The mount point within the instance. Only instances of the Linux operating system can pass in this parameter，and if it is not passed，it will be mounted under the /data/disk 路径 by default。",
 						},
 						"file_system_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The file system type. Value: ext4, xfs. Only instances of the Linux operating system can pass in this parameter, and if it is not passed, it defaults to ext4.",
+							Description: "The file system 类型 值: ext4，xfs. Only instances of the Linux operating system can pass in this parameter，and if it is not passed，it 默认为 ext4。",
 						},
 					},
 				},

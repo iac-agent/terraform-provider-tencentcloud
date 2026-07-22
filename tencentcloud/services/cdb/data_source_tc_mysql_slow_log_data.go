@@ -19,19 +19,19 @@ func DataSourceTencentCloudMysqlSlowLogData() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Start timestamp. For example 1585142640.",
+				Description: "开始时间戳。例如 1585142640。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "End timestamp. For example 1585142640.",
+				Description: "结束时间戳。例如 1585142640。",
 			},
 
 			"user_hosts": {
@@ -40,7 +40,7 @@ func DataSourceTencentCloudMysqlSlowLogData() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of client hosts.",
+				Description: "客户端主机列表。",
 			},
 
 			"user_names": {
@@ -49,7 +49,7 @@ func DataSourceTencentCloudMysqlSlowLogData() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "A list of client usernames.",
+				Description: "客户端用户名列表。",
 			},
 
 			"data_bases": {
@@ -58,87 +58,87 @@ func DataSourceTencentCloudMysqlSlowLogData() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of databases accessed.",
+				Description: "访问的数据库列表。",
 			},
 
 			"sort_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort field. Currently supported: Timestamp, QueryTime, LockTime, RowsExamined, RowsSent.",
+				Description: "排序字段。目前支持：时间戳、QueryTime、LockTime、RowsExamined、RowsSent。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort in ascending or descending order. Currently supported: ASC,DESC.",
+				Description: "按升序或降序排序。目前支持：ASC、DESC。",
 			},
 
 			"inst_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Only valid when the instance is the master instance or disaster recovery instance, the optional value: slave, which means to pull the log of the slave machine.",
+				Description: "仅当实例为主实例或灾备实例时有效，可选值：slave，表示拉取从机的日志。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Query records.",
+				Description: "查询记录。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timestamp": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sql execution time.",
+							Description: "SQL执行时间。",
 						},
 						"query_time": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Sql execution time (seconds).",
+							Description: "Sql 执行时间（秒）。",
 						},
 						"sql_text": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sql statement.",
+							Description: "SQL语句。",
 						},
 						"user_host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "client address.",
+							Description: "客户地址。",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "user name.",
+							Description: "用户名。",
 						},
 						"database": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "database name.",
+							Description: "数据库名称。",
 						},
 						"lock_time": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Lock duration (seconds).",
+							Description: "锁定持续时间（秒）。",
 						},
 						"rows_examined": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of rows to scan.",
+							Description: "要扫描的行数。",
 						},
 						"rows_sent": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of rows in the result set.",
+							Description: "结果集中的行数。",
 						},
 						"sql_template": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sql template.",
+							Description: "SQL 模板。",
 						},
 						"md5": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The md5 of the Sql statement.",
+							Description: "Sql语句的md5。",
 						},
 					},
 				},
@@ -147,7 +147,7 @@ func DataSourceTencentCloudMysqlSlowLogData() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -20,31 +20,31 @@ func DataSourceTencentCloudAntiddosOverviewAttackTrend() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"cc", "ddos"}),
-				Description:  "Attack type: cc, ddos.",
+				Description:  "Attack 类型: cc，ddos。",
 			},
 
 			"dimension": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Latitude, currently only attackcount is supported.",
+				Description: "Latitude，currently only attackcount is supported。",
 			},
 
 			"period": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Period, currently only 86400 is supported.",
+				Description: "周期，currently only 86400 is supported。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Protection Overview Attack Trend Start Time.",
+				Description: "Protection Overview Attack Trend Start Time。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Protection Overview Attack Trend End Time.",
+				Description: "Protection Overview Attack Trend End Time。",
 			},
 
 			"data": {
@@ -53,19 +53,19 @@ func DataSourceTencentCloudAntiddosOverviewAttackTrend() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Number of attacks per cycle point.",
+				Description: "数量 attacks per cycle point。",
 			},
 
 			"period_point_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of period points included.",
+				Description: "数量 周期 points included。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

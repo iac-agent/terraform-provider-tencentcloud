@@ -26,13 +26,13 @@ func ResourceTencentCloudAPIGatewayAPIKeyAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of API key.",
+				Description: "ID API 键",
 			},
 			"usage_plan_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the usage plan.",
+				Description: "ID usage plan。",
 			},
 		},
 	}

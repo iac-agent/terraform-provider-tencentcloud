@@ -28,31 +28,31 @@ func ResourceTencentCloudTeoApplicationProxyRule() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Site ID.",
+				Description: "站点 ID",
 			},
 
 			"proxy_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Proxy ID.",
+				Description: "Proxy ID。",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 
 			"proto": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Protocol. Valid values: `TCP`, `UDP`.",
+				Description: "协议 有效值：`TCP`，`UDP`。",
 			},
 
 			"port": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Valid values: `80` means port 80; `81-90` means port range 81-90.",
+				Description: "有效值：`80` means 端口 80; `81-90` means 端口 range 81-90。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -61,19 +61,19 @@ func ResourceTencentCloudTeoApplicationProxyRule() *schema.Resource {
 			"origin_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Origin server type. Valid values: `custom`: Specified origins; `origins`: An origin group.",
+				Description: "Origin server 类型 有效值：`custom`: Specified origins; `origins`: An origin group。",
 			},
 
 			"origin_port": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Origin port, supported formats: single port: 80; Port segment: 81-90, 81 to 90 ports.",
+				Description: "Origin 端口，supported formats: single 端口: 80; 端口 segment: 81-90，81 to 90 ports。",
 			},
 
 			"origin_value": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Origin site information: When `OriginType` is `custom`, it indicates one or more origin sites, such as `['8.8.8.8', '9.9.9.9']` or `OriginValue=['test.com']`; When `OriginType` is `origins`, there is required to be one and only one element, representing the origin site group ID, such as `['origin-537f5b41-162a-11ed-abaa-525400c5da15']`.",
+				Description: "Origin site information: When `OriginType` is `custom`，it 表示one or more origin sites，such as `['8.8.8.8'，'9.9.9.9']` or `OriginValue=['test.com']`; When `OriginType` is `origins`，there 为必填项 to be one and only one element，representing the origin site 组 ID，such as `['origin-537f5b41-162a-11ed-abaa-525400c5da15']`。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -83,21 +83,21 @@ func ResourceTencentCloudTeoApplicationProxyRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Status, the values are: `online`: enabled; `offline`: deactivated; `progress`: being deployed; `stopping`: being deactivated; `fail`: deployment failure/deactivation failure.",
+				Description: "状态，the values are: `online`: 已启用; `offline`: deactivated; `progress`: being deployed; `stopping`: being deactivated; `fail`: deployment failure/deactivation failure。",
 			},
 
 			"forward_client_ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Passes the client IP. Default value is `OFF`. When Proto is TCP, valid values: `TOA`: Pass the client IP via TOA; `PPV1`: Pass the client IP via Proxy Protocol V1; `PPV2`: Pass the client IP via Proxy Protocol V2; `OFF`: Do not pass the client IP. When Proto=UDP, valid values: `PPV2`: Pass the client IP via Proxy Protocol V2; `OFF`: Do not pass the client IP.",
+				Description: "Passes the 客户端 IP 默认值为 `OFF`. When Proto is TCP，有效值：`TOA`: Pass the 客户端 IP via TOA; `PPV1`: Pass the 客户端 IP via Proxy 协议 V1; `PPV2`: Pass the 客户端 IP via Proxy 协议 V2; `OFF`: Do not pass the 客户端 IP When Proto=UDP，有效值：`PPV2`: Pass the 客户端 IP via Proxy 协议 V2; `OFF`: Do not pass the 客户端 IP",
 			},
 
 			"session_persist": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Specifies whether to enable session persistence. Default value is false.",
+				Description: "指定是否enable session persistence. 默认值为 false。",
 			},
 		},
 	}

@@ -22,7 +22,7 @@ func ResourceTencentCloudBhSyncDevicesToIoaOperation() *schema.Resource {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Asset ID collection. Assets must be bound to bastion host instances that support IOA functionality. Maximum 200 assets can be synchronized at a time.",
+				Description: "Asset ID collection. Assets must be bound to bastion 主机 instances that support IOA functionality. Maximum 200 assets can be synchronized at a time。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},

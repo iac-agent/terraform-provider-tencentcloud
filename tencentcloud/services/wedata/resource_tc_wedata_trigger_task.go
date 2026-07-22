@@ -32,40 +32,40 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"trigger_task_base_attribute": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Basic task attributes.",
+				Description: "Basic task attributes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task name.",
+							Description: "Task 名称",
 						},
 						"task_type_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task type ID: `26`: OfflineSynchronization; `30`: Python; `32`: DLC SQL; `35`: Shell; `38`: Shell Form Mode; `46`: DLC Spark; `50`: DLC PySpark; `130`: Branch Node; `131`: Merged Node; `132`: Notebook; `133`: SSH; `137`: For-each; `139`: DLC Spark Streaming; `140`: Run Workflow.",
+							Description: "Task 类型 ID: `26`: OfflineSynchronization; `30`: Python; `32`: DLC SQL; `35`: Shell; `38`: Shell Form 模式; `46`: DLC Spark; `50`: DLC PySpark; `130`: Branch Node; `131`: Merged Node; `132`: Notebook; `133`: SSH; `137`: For-each; `139`: DLC Spark Streaming; `140`: Run Workflow。",
 						},
 						"workflow_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow ID.",
+							Description: "Workflow ID。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task owner ID, defaults to the current user.",
+							Description: "Task 所有者 ID，默认为 the current 用户",
 						},
 						"task_description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task description.",
+							Description: "Task 描述",
 						},
 						"task_folder_path": {
 							Type:        schema.TypeString,
@@ -80,18 +80,18 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Task configuration.",
+				Description: "Task configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_group": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Resource group ID. Obtain ExecutorGroupId via DescribeNormalSchedulerExecutorGroups.",
+							Description: "Resource 组 ID Obtain ExecutorGroupId via DescribeNormalSchedulerExecutorGroups。",
 						},
 						"code_content": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Base64-encoded code content.",
+							Description: "Base64-encoded 代码 内容",
 						},
 						"task_ext_configuration_list": {
 							Type:        schema.TypeSet,
@@ -103,12 +103,12 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 									"param_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parameter name.",
+										Description: "Parameter 名称",
 									},
 									"param_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parameter value.",
+										Description: "Parameter 值",
 									},
 								},
 							},
@@ -122,12 +122,12 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 									"param_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Parameter name.",
+										Description: "Parameter 名称",
 									},
 									"param_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Parameter value.",
+										Description: "Parameter 值",
 									},
 								},
 							},
@@ -135,67 +135,67 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 						"data_cluster": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cluster ID.",
+							Description: "集群 ID",
 						},
 						"broker_ip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Specified execution node.",
+							Description: "Specified execution node。",
 						},
 						"yarn_queue": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Resource pool queue name. Obtain via DescribeProjectClusterQueues.",
+							Description: "Resource pool queue 名称 Obtain via DescribeProjectClusterQueues。",
 						},
 						"source_service_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Source data source IDs, separated by semicolons (;). Obtain via DescribeDataSourceWithoutInfo.",
+							Description: "来源 data 来源 IDs，separated by semicolons (;). Obtain via DescribeDataSourceWithoutInfo。",
 						},
 						"source_service_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The source data source type needs to be obtained through DescribeDataSourceWithoutInfo.",
+							Description: "The 来源 data 来源 类型 needs to be obtained through DescribeDataSourceWithoutInfo。",
 						},
 						"source_service_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The source data source name needs to be obtained through DescribeDataSourceWithoutInfo..",
+							Description: "The 来源 数据源名称 needs to be obtained through DescribeDataSourceWithoutInfo.。",
 						},
 						"target_service_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Target data source IDs, separated by semicolons (;). Obtain via DescribeDataSourceWithoutInfo.",
+							Description: "Target data 来源 IDs，separated by semicolons (;). Obtain via DescribeDataSourceWithoutInfo。",
 						},
 						"target_service_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The target data source type needs to be obtained through DescribeDataSourceWithoutInfo.",
+							Description: "The target data 来源 类型 needs to be obtained through DescribeDataSourceWithoutInfo。",
 						},
 						"target_service_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The target data source name, which needs to be obtained through DescribeDataSourceWithoutInfo.",
+							Description: "The target 数据源名称，which needs to be obtained through DescribeDataSourceWithoutInfo。",
 						},
 						"task_scheduling_parameter_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Scheduling parameters.",
+							Description: "Scheduling parameters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"param_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parameter name.",
+										Description: "Parameter 名称",
 									},
 									"param_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parameter value.",
+										Description: "Parameter 值",
 									},
 								},
 							},
@@ -203,12 +203,12 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 						"bundle_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Bundle ID in use.",
+							Description: "Bundle ID in use。",
 						},
 						"bundle_info": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Bundle information.",
+							Description: "Bundle information。",
 						},
 					},
 				},
@@ -218,19 +218,19 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Task scheduling configuration.",
+				Description: "Task scheduling configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"upstream_dependency_config_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of upstream dependent tasks.",
+							Description: "列表 upstream dependent tasks。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"task_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task ID.",
+										Description: "任务 ID",
 									},
 								},
 							},
@@ -238,48 +238,48 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 						"run_priority_type": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Task scheduling priority. Run priority: `4`-High; `5`-Medium; `6`-Low. Default: 6.",
+							Description: "Task scheduling 优先级 Run 优先级: `4`-High; `5`-Medium; `6`-Low. 默认值：6。",
 						},
 						"retry_wait_minute": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Retry policy. Retry wait time in minutes. Default: 5.",
+							Description: "Retry policy. Retry wait time in minutes. 默认值：5。",
 						},
 						"max_retry_number": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Retry policy. Maximum retry attempts. Default: 4.",
+							Description: "Retry policy. Maximum retry attempts. 默认值：4。",
 						},
 						"execution_ttl_minute": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Timeout handling policy. Execution timeout in minutes. Default: -1.",
+							Description: "Timeout handling policy. Execution timeout in minutes. 默认值：-1。",
 						},
 						"wait_execution_total_ttl_minute": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Timeout handling policy. Total wait timeout in minutes. Default: -1.",
+							Description: "Timeout handling policy. Total wait timeout in minutes. 默认值：-1。",
 						},
 						"allow_redo_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Rerun & backfill configuration. Default: ALL. ALL: rerun or backfill allowed after success or failure; FAILURE: not allowed after success, allowed after failure; NONE: not allowed after success or failure.",
+							Description: "Rerun & backfill configuration. 默认值：ALL. ALL: rerun or backfill allowed after success or failure; FAILURE: not allowed after success，allowed after failure; NONE: not allowed after success or failure。",
 						},
 						"param_task_out_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Output parameter list.",
+							Description: "Output parameter list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"param_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parameter name.",
+										Description: "Parameter 名称",
 									},
 									"param_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parameter definition.",
+										Description: "Parameter definition。",
 									},
 								},
 							},
@@ -287,28 +287,28 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 						"param_task_in_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Input parameter list.",
+							Description: "Input parameter list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"param_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parameter name.",
+										Description: "Parameter 名称",
 									},
 									"param_desc": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parameter description. Format: project_identifier.task_name.parameter_name; e.g., project_wedata_1.sh_250820_104107.pp_out.",
+										Description: "Parameter 描述 格式: project_identifier.task_name.parameter_name; e.g.，project_wedata_1.sh_250820_104107.pp_out。",
 									},
 									"from_task_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parent task ID.",
+										Description: "Parent task ID。",
 									},
 									"from_param_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parent task parameter key.",
+										Description: "Parent task parameter 键",
 									},
 								},
 							},
@@ -316,48 +316,48 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 						"task_output_registry_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Output registry.",
+							Description: "Output registry。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"datasource_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Data source ID.",
+										Description: "数据源 ID",
 									},
 									"database_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Database name.",
+										Description: "Database 名称",
 									},
 									"table_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Table name.",
+										Description: "Table 名称",
 									},
 									"partition_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Partition name.",
+										Description: "Partition 名称",
 									},
 									"data_flow_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Input/output table type: input stream: `UPSTREAM`, output stream: `DOWNSTREAM`.",
+										Description: "Input/output table 类型: input stream: `UPSTREAM`，output stream: `DOWNSTREAM`。",
 									},
 									"table_physical_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Table physical unique ID.",
+										Description: "Table physical unique ID。",
 									},
 									"db_guid": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Database unique identifier.",
+										Description: "Database unique identifier。",
 									},
 									"table_guid": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Table unique identifier.",
+										Description: "Table unique identifier。",
 									},
 								},
 							},
@@ -369,12 +369,12 @@ func ResourceTencentCloudWedataTriggerTask() *schema.Resource {
 			"operate_inform": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Should task operations trigger notifications to downstream task owners, `true`: Notify; `false`: Do not notify; If not specified, the default is `false`. This parameter is only used during deletion.",
+				Description: "Should task operations trigger notifications to downstream task owners，`true`: Notify; `false`: Do not notify; 如果未指定，the 默认为 `false`. This parameter is only used during deletion。",
 			},
 			"delete_mode": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Task deletion method: `true`: does not force downstream task instances to fail; `false`: forces downstream task instances to fail; defaults to `false` if not specified, and is only used during deletion.",
+				Description: "Task deletion method: `true`: does not force downstream task instances to fail; `false`: forces downstream task instances to fail; 默认为 `false` 如果未指定，and is only used during deletion。",
 			},
 		},
 	}

@@ -29,42 +29,42 @@ func ResourceTencentCloudMonitorTmpMultipleWrites() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"remote_writes": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Data multiple write configuration.",
+				Description: "Data multiple write configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"url": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Data multiple write url.",
+							Description: "Data multiple write URL",
 						},
 						"url_relabel_config": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "RelabelConfig.",
+							Description: "RelabelConfig。",
 						},
 						"basic_auth": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Authentication information.",
+							Description: "Authentication information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"user_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "User name.",
+										Description: "用户 名称",
 									},
 									"password": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Password.",
+										Description: "密码",
 									},
 								},
 							},
@@ -72,28 +72,28 @@ func ResourceTencentCloudMonitorTmpMultipleWrites() *schema.Resource {
 						"max_block_size": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Maximum block.",
+							Description: "Maximum block。",
 						},
 						"label": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Label.",
+							Description: "标签",
 						},
 						"headers": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "HTTP additional headers.",
+							Description: "HTTP additional headers。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "HTTP header key.",
+										Description: "HTTP header 键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "HTTP header value.",
+										Description: "HTTP header 值",
 									},
 								},
 							},

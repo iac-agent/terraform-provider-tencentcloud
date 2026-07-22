@@ -33,49 +33,49 @@ func ResourceTencentCloudTeoFunction() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the site.",
+				Description: "ID site。",
 			},
 
 			"function_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID of the Function.",
+				Description: "ID Function。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Function name. It can only contain lowercase letters, numbers, hyphens, must start and end with a letter or number, and can have a maximum length of 30 characters.",
+				Description: "Function 名称 It can only contain lowercase letters，numbers，hyphens，must start and end with a letter or number，and can have a 最大长度30 characters。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Function description, maximum support of 60 characters.",
+				Description: "Function 描述，maximum support of 60 characters。",
 			},
 
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Function content, currently only supports JavaScript code, with a maximum size of 5MB.",
+				Description: "Function 内容，currently only supports JavaScript 代码，with a maximum size of 5MB。",
 			},
 
 			"domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The default domain name for the function.",
+				Description: "The default 域名 名称 for the function。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time. The time is in Coordinated Universal Time (UTC) and follows the date and time format specified by the ISO 8601 standard.",
+				Description: "创建时间. The time is in Coordinated Universal Time (UTC) and follows the date and 时间格式 specified by the ISO 8601 standard。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Modification time. The time is in Coordinated Universal Time (UTC) and follows the date and time format specified by the ISO 8601 standard.",
+				Description: "修改时间. The time is in Coordinated Universal Time (UTC) and follows the date and 时间格式 specified by the ISO 8601 standard。",
 			},
 		},
 	}

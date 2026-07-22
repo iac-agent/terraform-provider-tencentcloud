@@ -26,122 +26,122 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access permission name, maximum 32 characters, cannot contain whitespace characters.",
+				Description: "Access permission 名称，maximum 32 characters，cannot contain whitespace characters。",
 			},
 
 			"allow_disk_redirect": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to enable disk mapping.",
+				Description: "是否enable disk mapping。",
 			},
 
 			"allow_any_account": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to allow any account to log in.",
+				Description: "是否allow any 账号 to log in。",
 			},
 
 			"allow_clip_file_up": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable clipboard file upload.",
+				Description: "是否enable clipboard file upload。",
 			},
 
 			"allow_clip_file_down": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable clipboard file download.",
+				Description: "是否enable clipboard file download。",
 			},
 
 			"allow_clip_text_up": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable clipboard text (including images) upload.",
+				Description: "是否enable clipboard text (including images) upload。",
 			},
 
 			"allow_clip_text_down": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable clipboard text (including images) download.",
+				Description: "是否enable clipboard text (including images) download。",
 			},
 
 			"allow_file_up": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable SFTP file upload.",
+				Description: "是否enable SFTP file upload。",
 			},
 
 			"max_file_up_size": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "File transfer upload size limit (reserved parameter, not currently used).",
+				Description: "File transfer upload size 限制 (reserved parameter，not currently used)。",
 			},
 
 			"allow_file_down": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable SFTP file download.",
+				Description: "是否enable SFTP file download。",
 			},
 
 			"max_file_down_size": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "File transfer download size limit (reserved parameter, not currently used).",
+				Description: "File transfer download size 限制 (reserved parameter，not currently used)。",
 			},
 
 			"allow_disk_file_up": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable RDP disk mapping file upload.",
+				Description: "是否enable RDP disk mapping file upload。",
 			},
 
 			"allow_disk_file_down": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable RDP disk mapping file download.",
+				Description: "是否enable RDP disk mapping file download。",
 			},
 
 			"allow_shell_file_up": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable rz sz file upload.",
+				Description: "是否enable rz sz file upload。",
 			},
 
 			"allow_shell_file_down": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable rz sz file download.",
+				Description: "是否enable rz sz file download。",
 			},
 
 			"allow_file_del": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable SFTP file deletion.",
+				Description: "是否enable SFTP file deletion。",
 			},
 
 			"allow_access_credential": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to allow the use of access credentials. Default is allowed.",
+				Description: "是否allow the use of access credentials. 默认为 allowed。",
 			},
 
 			"allow_keyboard_logger": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to allow keyboard logging.",
+				Description: "是否allow keyboard logging。",
 			},
 
 			"max_access_credential_duration": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Maximum validity period of access credentials (in seconds). Must be a multiple of 86400 when access credentials are enabled.",
+				Description: "Maximum validity 周期 of access credentials (in seconds). Must be a multiple of 86400 when access credentials are 已启用",
 			},
 
 			"user_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated user ID set.",
+				Description: "Associated 用户 ID set。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -150,7 +150,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"user_group_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated user group ID set.",
+				Description: "Associated 用户 组 ID set。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -159,7 +159,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"device_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated asset ID set.",
+				Description: "Associated asset ID set。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -168,7 +168,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"app_asset_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated application asset ID set.",
+				Description: "Associated application asset ID set。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -177,7 +177,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"device_group_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated asset group ID set.",
+				Description: "Associated asset 组 ID set。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -186,7 +186,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"account_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated account set.",
+				Description: "Associated 账号 set。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -195,7 +195,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"cmd_template_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated high-risk command template ID set.",
+				Description: "Associated high-risk command 模板 ID set。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -204,7 +204,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"ac_template_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated high-risk DB template ID set.",
+				Description: "Associated high-risk DB 模板 ID set。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -214,28 +214,28 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Access permission effective time in ISO8601 format, e.g.: `2021-09-22T00:00:00+00:00`. If not set, the permission is permanently valid.",
+				Description: "Access permission effective time in ISO8601 格式，e.g.: `2021-09-22T00:00:00+00:00`. If not set，the permission is permanently valid。",
 			},
 
 			"validate_to": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Access permission expiration time in ISO8601 format, e.g.: `2021-09-23T00:00:00+00:00`. If not set, the permission is permanently valid.",
+				Description: "Access permission 过期时间 in ISO8601 格式，e.g.: `2021-09-23T00:00:00+00:00`. If not set，the permission is permanently valid。",
 			},
 
 			"department_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Department ID to which the access permission belongs, e.g.: `1.2.3`.",
+				Description: "Department ID to which the access permission belongs，e.g.: `1.2.3`。",
 			},
 
 			// computed
 			"acl_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Access permission ID.",
+				Description: "Access permission ID。",
 			},
 		},
 	}

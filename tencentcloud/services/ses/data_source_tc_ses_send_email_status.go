@@ -19,86 +19,86 @@ func DataSourceTencentCloudSesSendEmailStatus() *schema.Resource {
 			"request_date": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Date sent. This parameter is required. You can only query the sending status for a single date at a time.",
+				Description: "Date sent. This parameter 为必填项. You can only query the sending 状态 for a single date at a time。",
 			},
 
 			"message_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The MessageId field returned by the SendMail API.",
+				Description: "The MessageId field returned by the SendMail API。",
 			},
 
 			"to_email_address": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Recipient email address.",
+				Description: "Recipient email 地址",
 			},
 
 			"email_status_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Status of sent emails.",
+				Description: "状态 sent emails。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"message_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The MessageId field returned by the SendEmail API.",
+							Description: "The MessageId field returned by the SendEmail API。",
 						},
 						"to_email_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Recipient email address.",
+							Description: "Recipient email 地址",
 						},
 						"from_email_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sender email address.",
+							Description: "Sender email 地址",
 						},
 						"send_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Tencent Cloud processing status: `0`: Successful. `1001`: Internal system exception. `1002`: Internal system exception. `1003`: Internal system exception. `1003`: Internal system exception. `1004`: Email sending timed out. `1005`: Internal system exception. `1006`: You have sent too many emails to the same address in a short period. `1007`: The email address is in the blocklist. `1008`: The sender domain is rejected by the recipient. `1009`: Internal system exception. `1010`: The daily email sending limit is exceeded. `1011`: You have no permission to send custom content. Use a template. `1013`: The sender domain is unsubscribed from by the recipient. `2001`: No results were found. `3007`: The template ID is invalid or the template is unavailable. `3008`: The sender domain is temporarily blocked by the recipient domain. `3009`: You have no permission to use this template. `3010`: The format of the TemplateData field is incorrect. `3014`: The email cannot be sent because the sender domain is not verified. `3020`: The recipient email address is in the blocklist. `3024`: Failed to precheck the email address format. `3030`: Email sending is restricted temporarily due to a high bounce rate. `3033`: The account has insufficient balance or overdue payment.",
+							Description: "Tencent Cloud processing 状态: `0`: Successful. `1001`: Internal system exception. `1002`: Internal system exception. `1003`: Internal system exception. `1003`: Internal system exception. `1004`: Email sending timed out. `1005`: Internal system exception. `1006`: You have sent too many emails to the same 地址 in a short 周期 `1007`: The email 地址 is in the blocklist. `1008`: The sender 域名 is rejected by the recipient. `1009`: Internal system exception. `1010`: The daily email sending 限制 is exceeded. `1011`: You have no permission to send custom 内容 Use a template. `1013`: The sender 域名 is unsubscribed from by the recipient. `2001`: No results were found. `3007`: The 模板 ID is invalid or the template is unavailable. `3008`: The sender 域名 is temporarily blocked by the recipient 域名 `3009`: You have no permission to use this template. `3010`: The 格式 of the TemplateData field is incorrect. `3014`: The email cannot be sent because the sender 域名 is not verified. `3020`: The recipient email 地址 is in the blocklist. `3024`: Failed to precheck the email 地址 格式 `3030`: Email sending is restricted temporarily due to a high bounce rate. `3033`: The 账号 has insufficient balance or overdue payment。",
 						},
 						"deliver_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Recipient processing status0: Tencent Cloud has accepted the request and added it to the send queue.1: The email is delivered successfully. DeliverTime indicates the time when the email is delivered successfully.2: The email is discarded. DeliverMessage indicates the reason for discarding.3: The recipient&amp;#39;s ESP rejects the email, probably because the email address does not exist or due to other reasons.8: The email is delayed by the ESP. DeliverMessage indicates the reason for delay.",
+							Description: "Recipient processing status0: Tencent Cloud has accepted the request and added it to the send queue.1: The email is delivered successfully. DeliverTime 表示time when the email is delivered successfully.2: The email is discarded. DeliverMessage 表示reason for discarding.3: The recipient&amp;#39;s ESP rejects the email，probably because the email 地址 does not exist or due to other reasons.8: The email is delayed by the ESP. DeliverMessage 表示reason for 延迟",
 						},
 						"deliver_message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the recipient processing status.",
+							Description: "描述 recipient processing 状态",
 						},
 						"request_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Timestamp when the request arrives at Tencent Cloud.",
+							Description: "时间戳 when the request arrives at Tencent Cloud。",
 						},
 						"deliver_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Timestamp when Tencent Cloud delivers the email.",
+							Description: "时间戳 when Tencent Cloud delivers the email。",
 						},
 						"user_opened": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the recipient has opened the email.",
+							Description: "是否recipient has opened the email。",
 						},
 						"user_clicked": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the recipient has clicked the links in the email.",
+							Description: "是否recipient has clicked the links in the email。",
 						},
 						"user_unsubscribed": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the recipient has unsubscribed from the email sent by the sender.",
+							Description: "是否recipient has unsubscribed from the email sent by the sender。",
 						},
 						"user_complainted": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the recipient has reported the sender.",
+							Description: "是否recipient has reported the sender。",
 						},
 					},
 				},
@@ -107,7 +107,7 @@ func DataSourceTencentCloudSesSendEmailStatus() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

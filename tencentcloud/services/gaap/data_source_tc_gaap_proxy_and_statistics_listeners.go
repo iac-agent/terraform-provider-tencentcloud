@@ -19,50 +19,50 @@ func DataSourceTencentCloudGaapProxyAndStatisticsListeners() *schema.Resource {
 			"project_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Project Id.",
+				Description: "项目 ID",
 			},
 
 			"proxy_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "proxy information that can be counted.",
+				Description: "proxy information that can be counted。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"proxy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Proxy Id.",
+							Description: "Proxy Id。",
 						},
 						"proxy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Proxy Name.",
+							Description: "Proxy 名称",
 						},
 						"listener_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Listener List.",
+							Description: "Listener List。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"listener_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener Id.",
+										Description: "Listener Id。",
 									},
 									"listener_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener Name.",
+										Description: "Listener 名称",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "listerned port.",
+										Description: "listerned 端口",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener protocol type.",
+										Description: "Listener 协议 类型",
 									},
 								},
 							},
@@ -74,7 +74,7 @@ func DataSourceTencentCloudGaapProxyAndStatisticsListeners() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

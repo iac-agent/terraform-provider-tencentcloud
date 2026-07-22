@@ -30,32 +30,32 @@ func ResourceTencentCloudScfTriggerConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Function name.",
+				Description: "Function 名称",
 			},
 
 			"trigger_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Trigger Name.",
+				Description: "Trigger 名称",
 			},
 
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Trigger type.",
+				Description: "Trigger 类型",
 			},
 
 			"enable": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Status of trigger. Values: OPEN (enabled); CLOSE disabled).",
+				Description: "状态 trigger. Values: OPEN (已启用); CLOSE 已禁用)。",
 			},
 
 			"qualifier": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Function version. It defaults to `$LATEST`. It's recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.",
+				Description: "Function 版本 It 默认为 `$LATEST`. It's recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release。",
 			},
 
 			"namespace": {
@@ -63,26 +63,26 @@ func ResourceTencentCloudScfTriggerConfig() *schema.Resource {
 				ForceNew:    true,
 				Default:     "default",
 				Type:        schema.TypeString,
-				Description: "Function namespace.",
+				Description: "Function namespace。",
 			},
 
 			"trigger_desc": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "TriggerDesc parameter.",
+				Description: "TriggerDesc parameter。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Trigger description.",
+				Description: "Trigger 描述",
 			},
 
 			"custom_argument": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "User Additional Information.",
+				Description: "用户 Additional Information。",
 			},
 		},
 	}

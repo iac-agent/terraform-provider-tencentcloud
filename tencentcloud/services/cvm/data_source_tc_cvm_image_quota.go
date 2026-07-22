@@ -18,13 +18,13 @@ func DataSourceTencentCloudCvmImageQuota() *schema.Resource {
 			"image_num_quota": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The image quota of an account.",
+				Description: "The image quota of an 账号",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

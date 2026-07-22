@@ -23,24 +23,24 @@ func ResourceTencentCloudClbSnatIp() *schema.Resource {
 			"clb_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CLB instance ID.",
+				Description: "CLB实例ID。",
 			},
 			"ips": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Snat IP address config.",
+				Description: "Snat IP 地址配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Subnet ID.",
+							Description: "子网 ID。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Snat IP.",
+							Description: "静态IP。",
 						},
 					},
 				},

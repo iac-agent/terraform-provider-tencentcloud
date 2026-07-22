@@ -18,65 +18,65 @@ func DataSourceTencentCloudBillingBudgetOperationLog() *schema.Resource {
 			"budget_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Budget id.",
+				Description: "Budget id。",
 			},
 
 			"records": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Query data list.",
+				Description: "Query data list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"payer_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Payer uin.",
+							Description: "Payer uin。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Owner uin.",
+							Description: "所有者 uin。",
 						},
 						"operate_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Operate uin.",
+							Description: "Operate uin。",
 						},
 						"bill_day": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Bill day.",
+							Description: "Bill day。",
 						},
 						"bill_month": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Bill month.",
+							Description: "Bill month。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Modification type: ADD, UPDATE.",
+							Description: "Modification 类型: ADD，UPDATE。",
 						},
 						"diff_value": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "change information.",
+							Description: "change information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"property": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Change attributes.",
+										Description: "Change attributes。",
 									},
 									"before": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Content before change.",
+										Description: "内容 before change。",
 									},
 									"after": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Content after change.",
+										Description: "内容 after change。",
 									},
 								},
 							},
@@ -84,22 +84,22 @@ func DataSourceTencentCloudBillingBudgetOperationLog() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"operation_channel": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Operation channel.",
+							Description: "Operation channel。",
 						},
 						"budget_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Budget item id.",
+							Description: "Budget item id。",
 						},
 					},
 				},
@@ -108,7 +108,7 @@ func DataSourceTencentCloudBillingBudgetOperationLog() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -28,52 +28,52 @@ func ResourceTencentCloudEbEventTarget() *schema.Resource {
 			"event_bus_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "event bus id.",
+				Description: "event bus id。",
 			},
 
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "target type.",
+				Description: "target 类型",
 			},
 
 			"target_description": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "target description.",
+				Description: "target 描述",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "QCS resource six-stage format, more references [resource six-stage format](https://cloud.tencent.com/document/product/598/10606).",
+							Description: "QCS resource six-stage 格式，more references [resource six-stage 格式](https://cloud.tencent.com/document/product/598/10606)。",
 						},
 						"scf_params": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "cloud function parameters.",
+							Description: "cloud function parameters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"batch_timeout": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Maximum waiting time for batch delivery. This parameter is no longer effective, please use the batch_timeout parameter at the outer level.",
+										Description: "Maximum waiting time for batch delivery. This parameter is no longer effective，please use the batch_timeout parameter at the outer 级别",
 									},
 									"batch_event_count": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Maximum number of events for batch delivery. This parameter is no longer effective, please use the batch_event_count parameter at the outer level.",
+										Description: "最大events for batch delivery. This parameter is no longer effective，please use the batch_event_count parameter at the outer 级别",
 									},
 									"enable_batch_delivery": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										Computed:    true,
-										Description: "Enable batch delivery. This parameter is no longer effective, please use the enable_batch_delivery parameter at the outer level.",
+										Description: "Enable batch delivery. This parameter is no longer effective，please use the enable_batch_delivery parameter at the outer 级别",
 									},
 								},
 							},
@@ -82,30 +82,30 @@ func ResourceTencentCloudEbEventTarget() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Ckafka parameters.",
+							Description: "Ckafka parameters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"topic_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The ckafka topic to deliver to.",
+										Description: "The ckafka topic to deliver to。",
 									},
 									"retry_policy": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Required:    true,
-										Description: "retry strategy.",
+										Description: "retry strategy。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"retry_interval": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Retry Interval Unit: Seconds.",
+													Description: "Retry Interval 单位：Seconds。",
 												},
 												"max_retry_attempts": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Maximum number of retries.",
+													Description: "最大retries。",
 												},
 											},
 										},
@@ -117,38 +117,38 @@ func ResourceTencentCloudEbEventTarget() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "ElasticSearch parameters.",
+							Description: "ElasticSearch parameters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"net_mode": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "network connection type.",
+										Description: "network connection 类型",
 									},
 									"index_prefix": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "index prefix.",
+										Description: "索引 prefix。",
 									},
 									"rotation_interval": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "es log rotation granularity.",
+										Description: "es log rotation granularity。",
 									},
 									"output_mode": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "DTS event configuration.",
+										Description: "DTS event configuration。",
 									},
 									"index_suffix_mode": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "DTS index configuration.",
+										Description: "DTS 索引 configuration。",
 									},
 									"index_template_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "es template type.",
+										Description: "es template 类型",
 									},
 								},
 							},
@@ -160,28 +160,28 @@ func ResourceTencentCloudEbEventTarget() *schema.Resource {
 			"rule_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "event rule id.",
+				Description: "event rule id。",
 			},
 
 			"batch_timeout": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Maximum waiting time for batch delivery.",
+				Description: "Maximum waiting time for batch delivery。",
 			},
 
 			"batch_event_count": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Maximum number of events for batch delivery.",
+				Description: "最大events for batch delivery。",
 			},
 
 			"enable_batch_delivery": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Enable batch delivery.",
+				Description: "Enable batch delivery。",
 			},
 		},
 	}

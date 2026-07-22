@@ -27,35 +27,35 @@ func ResourceTencentCloudPostgresqlInstanceHAConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 			"sync_mode": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(SYNC_MODE),
-				Description:  "Master slave synchronization method, Semi-sync: Semi synchronous; Async: Asynchronous. Main instance default value: Semi-sync, Read-only instance default value: Async.",
+				Description:  "Master slave synchronization method，Semi-sync: Semi synchronous; Async: Asynchronous. Main instance 默认值：Semi-sync，Read-only instance 默认值：Async。",
 			},
 			"max_standby_latency": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1073741824, 322122547200),
-				Description:  "Maximum latency data volume for highly available backup machines. When the delay data amount of the backup node is less than or equal to this value, and the delay time of the backup node is less than or equal to MaxStandbyLag, it can switch to the main node. Unit: byte; Parameter range: [1073741824, 322122547200].",
+				Description:  "Maximum latency data volume for highly available backup machines. When the 延迟 data amount of the backup node is less than or equal to this 值，and the 延迟 time of the backup node is less than or equal to MaxStandbyLag，it can switch to the main node. 单位：byte; Parameter range: [1073741824，322122547200]。",
 			},
 			"max_standby_lag": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(5, 10),
-				Description:  "Maximum latency of highly available backup machines. When the delay time of the backup node is less than or equal to this value, and the amount of delay data of the backup node is less than or equal to MaxStandbyLatency, the primary node can be switched. Unit: s; Parameter range: [5, 10].",
+				Description:  "Maximum latency of highly available backup machines. When the 延迟 time of the backup node is less than or equal to this 值，and the amount of 延迟 data of the backup node is less than or equal to MaxStandbyLatency，the primary node can be switched. 单位：s; Parameter range: [5，10]。",
 			},
 			"max_sync_standby_latency": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Maximum latency data for synchronous backup. When the amount of data delayed by the backup machine is less than or equal to this value, and the delay time of the backup machine is less than or equal to MaxSyncStandbyLag, then the backup machine adopts synchronous replication; Otherwise, adopt asynchronous replication. This parameter value is valid for instances where SyncMode is set to Semi sync. When a semi synchronous instance prohibits degradation to asynchronous replication, MaxSyncStandbyLatency and MaxSyncStandbyLag are not set. When semi synchronous instances allow degenerate asynchronous replication, PostgreSQL version 9 instances must have MaxSyncStandbyLatency set and MaxSyncStandbyLag not set, while PostgreSQL version 10 and above instances must have MaxSyncStandbyLatency and MaxSyncStandbyLag set.",
+				Description: "Maximum latency data for synchronous backup. When the amount of data delayed by the backup machine is less than or equal to this 值，and the 延迟 time of the backup machine is less than or equal to MaxSyncStandbyLag，then the backup machine adopts synchronous replication; Otherwise，adopt asynchronous replication. This parameter 值 is valid for instances where SyncMode is set to Semi sync. When a semi synchronous instance prohibits degradation to asynchronous replication，MaxSyncStandbyLatency and MaxSyncStandbyLag are not set. When semi synchronous instances allow degenerate asynchronous replication，PostgreSQL 版本 9 instances must have MaxSyncStandbyLatency set and MaxSyncStandbyLag not set，while PostgreSQL 版本 10 and above instances must have MaxSyncStandbyLatency and MaxSyncStandbyLag set。",
 			},
 			"max_sync_standby_lag": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Maximum delay time for synchronous backup. When the delay time of the standby machine is less than or equal to this value, and the amount of delay data of the standby machine is less than or equal to MaxSyncStandbyLatency, then the standby machine adopts synchronous replication; Otherwise, adopt asynchronous replication. This parameter value is valid for instances where SyncMode is set to Semi sync. When a semi synchronous instance prohibits degradation to asynchronous replication, MaxSyncStandbyLatency and MaxSyncStandbyLag are not set. When semi synchronous instances allow degenerate asynchronous replication, PostgreSQL version 9 instances must have MaxSyncStandbyLatency set and MaxSyncStandbyLag not set, while PostgreSQL version 10 and above instances must have MaxSyncStandbyLatency and MaxSyncStandbyLag set.",
+				Description: "Maximum 延迟 time for synchronous backup. When the 延迟 time of the standby machine is less than or equal to this 值，and the amount of 延迟 data of the standby machine is less than or equal to MaxSyncStandbyLatency，then the standby machine adopts synchronous replication; Otherwise，adopt asynchronous replication. This parameter 值 is valid for instances where SyncMode is set to Semi sync. When a semi synchronous instance prohibits degradation to asynchronous replication，MaxSyncStandbyLatency and MaxSyncStandbyLag are not set. When semi synchronous instances allow degenerate asynchronous replication，PostgreSQL 版本 9 instances must have MaxSyncStandbyLatency set and MaxSyncStandbyLag not set，while PostgreSQL 版本 10 and above instances must have MaxSyncStandbyLatency and MaxSyncStandbyLag set。",
 			},
 		},
 	}

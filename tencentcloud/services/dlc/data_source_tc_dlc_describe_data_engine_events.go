@@ -19,19 +19,19 @@ func DataSourceTencentCloudDlcDescribeDataEngineEvents() *schema.Resource {
 			"data_engine_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Data engine name.",
+				Description: "Data engine 名称",
 			},
 
 			"session_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Session ID, standard spark engine required.",
+				Description: "Session ID，standard spark engine 必填",
 			},
 
 			"events": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Event details.",
+				Description: "Event details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time": {
@@ -40,7 +40,7 @@ func DataSourceTencentCloudDlcDescribeDataEngineEvents() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Event time.",
+							Description: "Event time。",
 						},
 						"events_action": {
 							Type: schema.TypeSet,
@@ -48,7 +48,7 @@ func DataSourceTencentCloudDlcDescribeDataEngineEvents() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Event action.",
+							Description: "Event 操作",
 						},
 						"cluster_info": {
 							Type: schema.TypeSet,
@@ -56,7 +56,7 @@ func DataSourceTencentCloudDlcDescribeDataEngineEvents() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Cluster information.",
+							Description: "Cluster information。",
 						},
 					},
 				},
@@ -65,7 +65,7 @@ func DataSourceTencentCloudDlcDescribeDataEngineEvents() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

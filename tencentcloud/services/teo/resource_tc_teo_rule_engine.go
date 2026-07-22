@@ -28,37 +28,37 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the site.",
+				Description: "ID site。",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 
 			"rule_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The rule name (1 to 255 characters).",
+				Description: "The rule 名称 (1 to 255 characters)。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule status. Values:\n  - `enable`: Enabled.\n  - `disable`: Disabled.",
+				Description: "Rule 状态 Values:\n  - `enable`: 已启用\n  - `disable`: 已禁用",
 			},
 
 			"rule_priority": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Rule priority, the larger the value, the higher the priority, the minimum is 1.",
+				Description: "Rule 优先级，the larger the 值，the higher the 优先级，the minimum is 1。",
 			},
 
 			"tags": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "rule tag list.",
+				Description: "rule 标签列表",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -67,30 +67,30 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 			"rules": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Rule items list.",
+				Description: "Rule items list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"or": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "OR Conditions list of the rule. Rule would be triggered if any of the condition is true.",
+							Description: "OR Conditions 列表 the rule. Rule would be triggered if any of the condition is true。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"and": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "AND Conditions list of the rule. Rule would be triggered if all conditions are true.",
+										Description: "AND Conditions 列表 the rule. Rule would be triggered if all conditions are true。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"operator": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Operator. Valid values:\n  - `equal`: Equal.\n  - `notEqual`: Does not equal.\n  - `exist`: Exists.\n  - `notexist`: Does not exist.",
+													Description: "操作者 Valid values:\n  - `equal`: Equal.\n  - `notEqual`: Does not equal.\n  - `exist`: Exists.\n  - `notexist`: Does not exist。",
 												},
 												"target": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The match type. Values:\n  - `filename`: File name.\n  - `extension`: File extension.\n  - `host`: Host.\n  - `full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.\n  - `url`: Partial URL under the current site.\n  - `client_country`: Country/Region of the client.\n  - `query_string`: Query string in the request URL.\n  - `request_header`: HTTP request header.\n  - `client_ip`: Client IP.",
+													Description: "The match 类型 Values:\n  - `filename`: File 名称\n  - `extension`: File extension.\n  - `主机`: 主机\n  - `full_url`: Full URL，which 表示complete URL 路径 under the current site and must contain the HTTP 协议，主机，and 路径\n  - `URL`: Partial URL under the current site.\n  - `client_country`: Country/地域 of the client.\n  - `query_string`: Query string in the request URL\n  - `request_header`: HTTP request header.\n  - `client_ip`: 客户端 IP",
 												},
 												"values": {
 													Type:        schema.TypeSet,
@@ -103,7 +103,7 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 												"ignore_case": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Whether the parameter value is case insensitive. Default value: false.",
+													Description: "是否parameter 值 is case insensitive. 默认值：false。",
 												},
 												"name": {
 													Type:        schema.TypeString,
@@ -119,36 +119,36 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 						"actions": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Feature to be executed.",
+							Description: "Feature to be executed。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"normal_action": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Common operation. Values:\n  - `AccessUrlRedirect`: Access URL rewrite.\n  - `UpstreamUrlRedirect`: Origin-pull URL rewrite.\n  - `QUIC`: QUIC.\n  - `WebSocket`: WebSocket.\n  - `VideoSeek`: Video dragging.\n  - `Authentication`: Token authentication.\n  - `CacheKey`: Custom cache key.\n  - `Cache`: Node cache TTL.\n  - `MaxAge`: Browser cache TTL.\n  - `OfflineCache`: Offline cache.\n  - `SmartRouting`: Smart acceleration.\n  - `RangeOriginPull`: Range GETs.\n  - `UpstreamHttp2`: HTTP/2 forwarding.\n  - `HostHeader`: Host header rewrite.\n  - `ForceRedirect`: Force HTTPS.\n  - `OriginPullProtocol`: Origin-pull HTTPS.\n  - `CachePrefresh`: Cache prefresh.\n  - `Compression`: Smart compression.\n  - `Hsts`.\n  - `ClientIpHeader`.\n  - `SslTlsSecureConf`.\n  - `OcspStapling`.\n  - `Http2`: HTTP/2 access.\n  - `UpstreamFollowRedirect`: Follow origin redirect.\n  - `Origin`: Origin.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+										Description: "Common operation. Values:\n  - `AccessUrlRedirect`: Access URL rewrite.\n  - `UpstreamUrlRedirect`: Origin-pull URL rewrite.\n  - `QUIC`: QUIC.\n  - `WebSocket`: WebSocket.\n  - `VideoSeek`: Video dragging.\n  - `Authentication`: 令牌 authentication.\n  - `CacheKey`: Custom cache 键\n  - `Cache`: Node cache TTL.\n  - `MaxAge`: Browser cache TTL.\n  - `OfflineCache`: Offline cache.\n  - `SmartRouting`: Smart acceleration.\n  - `RangeOriginPull`: Range GETs.\n  - `UpstreamHttp2`: HTTP/2 forwarding.\n  - `HostHeader`: 主机 header rewrite.\n  - `ForceRedirect`: Force HTTPS.\n  - `OriginPullProtocol`: Origin-pull HTTPS.\n  - `CachePrefresh`: Cache prefresh.\n  - `Compression`: Smart compression.\n  - `Hsts`.\n  - `ClientIpHeader`.\n  - `SslTlsSecureConf`.\n  - `OcspStapling`.\n  - `Http2`: HTTP/2 access.\n  - `UpstreamFollowRedirect`: Follow origin redirect.\n  - `Origin`: Origin.\nNote: This field may return `null`，indicating that no valid 值 can be obtained。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"action": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+													Description: "Feature 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature 名称",
 												},
 												"parameters": {
 													Type:        schema.TypeList,
 													Required:    true,
-													Description: "Parameter.",
+													Description: "Parameter。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
+																Description: "Parameter 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter 名称",
 															},
 															"values": {
 																Type:        schema.TypeSet,
 																Required:    true,
-																Description: "The parameter value.",
+																Description: "The parameter 值",
 																Elem: &schema.Schema{
 																	Type: schema.TypeString,
 																},
@@ -163,34 +163,34 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Feature operation with a request/response header. Features of this type include:\n  - `RequestHeader`: HTTP request header modification.\n  - `ResponseHeader`: HTTP response header modification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Feature operation with a request/response header. Features of this 类型 include:\n  - `RequestHeader`: HTTP request header modification.\n  - `ResponseHeader`: HTTP response header modification.\n注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"action": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+													Description: "Feature 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature 名称",
 												},
 												"parameters": {
 													Type:        schema.TypeList,
 													Required:    true,
-													Description: "Parameter.",
+													Description: "Parameter。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"action": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Feature parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name, which has three values:\n  - add: Add the HTTP header.\n  - set: Rewrite the HTTP header.\n  - del: Delete the HTTP header.",
+																Description: "Feature parameter 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter 名称，which has three values:\n  - add: Add the HTTP header.\n  - set: Rewrite the HTTP header.\n  - del: Delete the HTTP header。",
 															},
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Parameter name.",
+																Description: "Parameter 名称",
 															},
 															"values": {
 																Type:        schema.TypeSet,
 																Required:    true,
-																Description: "Parameter value.",
+																Description: "Parameter 值",
 																Elem: &schema.Schema{
 																	Type: schema.TypeString,
 																},
@@ -205,34 +205,34 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Feature operation with a status code. Features of this type include:\n  - `ErrorPage`: Custom error page.\n  - `StatusCodeCache`: Status code cache TTL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Feature operation with a 状态 代码 Features of this 类型 include:\n  - `ErrorPage`: Custom 错误 page.\n  - `StatusCodeCache`: 状态 代码 cache TTL.\n注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"action": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+													Description: "Feature 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature 名称",
 												},
 												"parameters": {
 													Type:        schema.TypeList,
 													Required:    true,
-													Description: "Operation parameter.",
+													Description: "Operation parameter。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"status_code": {
 																Type:        schema.TypeInt,
 																Required:    true,
-																Description: "The status code.",
+																Description: "The 状态 代码",
 															},
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
+																Description: "The parameter 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter 名称",
 															},
 															"values": {
 																Type:        schema.TypeSet,
 																Required:    true,
-																Description: "The parameter value.",
+																Description: "The parameter 值",
 																Elem: &schema.Schema{
 																	Type: schema.TypeString,
 																},
@@ -249,13 +249,13 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 						"sub_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "The nested rule.",
+							Description: "The nested rule。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tags": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Tag of the rule.",
+										Description: "标签 of the rule。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -263,30 +263,30 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 									"rules": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Nested rule settings.",
+										Description: "Nested rule settings。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"or": {
 													Type:        schema.TypeList,
 													Required:    true,
-													Description: "The condition that determines if a feature should run.\nNote: If any condition in the array is met, the feature will run.",
+													Description: "The condition that 决定if a feature should run.\nNote: If any condition in the array is met，the feature will run。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"and": {
 																Type:        schema.TypeList,
 																Required:    true,
-																Description: "Rule engine condition. This condition will be considered met if all items in the array are met.",
+																Description: "Rule engine condition. This condition will be considered met if all items in the array are met。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"operator": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Operator. Valid values:\n  - `equal`: Equal.\n  - `notEqual`: Does not equal.\n  - `exist`: Exists.\n  - `notexist`: Does not exist.",
+																			Description: "操作者 Valid values:\n  - `equal`: Equal.\n  - `notEqual`: Does not equal.\n  - `exist`: Exists.\n  - `notexist`: Does not exist。",
 																		},
 																		"target": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The match type. Values:\n  - `filename`: File name.\n  - `extension`: File extension.\n  - `host`: Host.\n  - `full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.\n  - `url`: Partial URL under the current site.  - `client_country`: Country/Region of the client.\n  - `query_string`: Query string in the request URL.\n  - `request_header`: HTTP request header.\n  - `client_ip`: Client IP.",
+																			Description: "The match 类型 Values:\n  - `filename`: File 名称\n  - `extension`: File extension.\n  - `主机`: 主机\n  - `full_url`: Full URL，which 表示complete URL 路径 under the current site and must contain the HTTP 协议，主机，and 路径\n  - `URL`: Partial URL under the current site.  - `client_country`: Country/地域 of the client.\n  - `query_string`: Query string in the request URL\n  - `request_header`: HTTP request header.\n  - `client_ip`: 客户端 IP",
 																		},
 																		"values": {
 																			Type:        schema.TypeSet,
@@ -299,7 +299,7 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 																		"ignore_case": {
 																			Type:        schema.TypeBool,
 																			Optional:    true,
-																			Description: "Whether the parameter value is case insensitive. Default value: false.",
+																			Description: "是否parameter 值 is case insensitive. 默认值：false。",
 																		},
 																		"name": {
 																			Type:        schema.TypeString,
@@ -315,36 +315,36 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 												"actions": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "The feature to be executed.",
+													Description: "The feature to be executed。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"normal_action": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Common operation. Values:\n  - `AccessUrlRedirect`: Access URL rewrite.\n  - `UpstreamUrlRedirect`: Origin-pull URL rewrite.\n  - `QUIC`: QUIC.\n  - `WebSocket`: WebSocket.\n  - `VideoSeek`: Video dragging.\n  - `Authentication`: Token authentication.\n  - `CacheKey`: Custom cache key.\n  - `Cache`: Node cache TTL.\n  - `MaxAge`: Browser cache TTL.\n  - `OfflineCache`: Offline cache.\n  - `SmartRouting`: Smart acceleration.\n  - `RangeOriginPull`: Range GETs.\n  - `UpstreamHttp2`: HTTP/2 forwarding.\n  - `HostHeader`: Host header rewrite.\n  - `ForceRedirect`: Force HTTPS.\n  - `OriginPullProtocol`: Origin-pull HTTPS.\n  - `CachePrefresh`: Cache prefresh.\n  - `Compression`: Smart compression.\n  - `Hsts`.\n  - `ClientIpHeader`.\n  - `SslTlsSecureConf`.\n  - `OcspStapling`.\n  - `Http2`: HTTP/2 access.\n  - `UpstreamFollowRedirect`: Follow origin redirect.\n  - `Origin`: Origin.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+																Description: "Common operation. Values:\n  - `AccessUrlRedirect`: Access URL rewrite.\n  - `UpstreamUrlRedirect`: Origin-pull URL rewrite.\n  - `QUIC`: QUIC.\n  - `WebSocket`: WebSocket.\n  - `VideoSeek`: Video dragging.\n  - `Authentication`: 令牌 authentication.\n  - `CacheKey`: Custom cache 键\n  - `Cache`: Node cache TTL.\n  - `MaxAge`: Browser cache TTL.\n  - `OfflineCache`: Offline cache.\n  - `SmartRouting`: Smart acceleration.\n  - `RangeOriginPull`: Range GETs.\n  - `UpstreamHttp2`: HTTP/2 forwarding.\n  - `HostHeader`: 主机 header rewrite.\n  - `ForceRedirect`: Force HTTPS.\n  - `OriginPullProtocol`: Origin-pull HTTPS.\n  - `CachePrefresh`: Cache prefresh.\n  - `Compression`: Smart compression.\n  - `Hsts`.\n  - `ClientIpHeader`.\n  - `SslTlsSecureConf`.\n  - `OcspStapling`.\n  - `Http2`: HTTP/2 access.\n  - `UpstreamFollowRedirect`: Follow origin redirect.\n  - `Origin`: Origin.\nNote: This field may return `null`，indicating that no valid 值 can be obtained。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"action": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+																			Description: "Feature 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature 名称",
 																		},
 																		"parameters": {
 																			Type:        schema.TypeList,
 																			Required:    true,
-																			Description: "Parameter.",
+																			Description: "Parameter。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"name": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
+																						Description: "Parameter 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter 名称",
 																					},
 																					"values": {
 																						Type:        schema.TypeSet,
 																						Required:    true,
-																						Description: "The parameter value.",
+																						Description: "The parameter 值",
 																						Elem: &schema.Schema{
 																							Type: schema.TypeString,
 																						},
@@ -359,34 +359,34 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Feature operation with a request/response header. Features of this type include:\n  - `RequestHeader`: HTTP request header modification.\n  - `ResponseHeader`: HTTP response header modification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Feature operation with a request/response header. Features of this 类型 include:\n  - `RequestHeader`: HTTP request header modification.\n  - `ResponseHeader`: HTTP response header modification.\n注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"action": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+																			Description: "Feature 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature 名称",
 																		},
 																		"parameters": {
 																			Type:        schema.TypeList,
 																			Required:    true,
-																			Description: "Parameter.",
+																			Description: "Parameter。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"action": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Feature parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name, which has three values:\n  - add: Add the HTTP header.\n  - set: Rewrite the HTTP header.\n  - del: Delete the HTTP header.",
+																						Description: "Feature parameter 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter 名称，which has three values:\n  - add: Add the HTTP header.\n  - set: Rewrite the HTTP header.\n  - del: Delete the HTTP header。",
 																					},
 																					"name": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Parameter name.",
+																						Description: "Parameter 名称",
 																					},
 																					"values": {
 																						Type:        schema.TypeSet,
 																						Required:    true,
-																						Description: "Parameter value.",
+																						Description: "Parameter 值",
 																						Elem: &schema.Schema{
 																							Type: schema.TypeString,
 																						},
@@ -401,29 +401,29 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Feature operation with a status code. Features of this type include:\n  - `ErrorPage`: Custom error page.\n  - `StatusCodeCache`: Status code cache TTL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Feature operation with a 状态 代码 Features of this 类型 include:\n  - `ErrorPage`: Custom 错误 page.\n  - `StatusCodeCache`: 状态 代码 cache TTL.\n注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"action": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+																			Description: "Feature 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature 名称",
 																		},
 																		"parameters": {
 																			Type:        schema.TypeList,
 																			Required:    true,
-																			Description: "Operation parameter.",
+																			Description: "Operation parameter。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"name": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "The parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
+																						Description: "The parameter 名称 You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter 名称",
 																					},
 																					"values": {
 																						Type:        schema.TypeSet,
 																						Required:    true,
-																						Description: "The parameter value.",
+																						Description: "The parameter 值",
 																						Elem: &schema.Schema{
 																							Type: schema.TypeString,
 																						},
@@ -431,7 +431,7 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 																					"status_code": {
 																						Type:        schema.TypeInt,
 																						Required:    true,
-																						Description: "The status code.",
+																						Description: "The 状态 代码",
 																					},
 																				},
 																			},

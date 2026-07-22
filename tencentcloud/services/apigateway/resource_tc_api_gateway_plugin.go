@@ -27,22 +27,22 @@ func ResourceTencentCloudAPIGatewayPlugin() *schema.Resource {
 			"plugin_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Name of the user define plugin. It must start with a letter and end with letter or number, the rest can contain letters, numbers and dashes(-). The length range is from 2 to 50.",
+				Description: "名称 用户 define plugin. It must start with a letter and end with letter or number，the rest can contain letters，numbers and dashes(-). The length range is from 2 to 50。",
 			},
 			"plugin_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Type of plugin. Now support IPControl, TrafficControl, Cors, CustomReq, CustomAuth, Routing, TrafficControlByParameter, CircuitBreaker, ProxyCache.",
+				Description: "类型 plugin. Now support IPControl，TrafficControl，Cors，CustomReq，CustomAuth，Routing，TrafficControlByParameter，CircuitBreaker，ProxyCache。",
 			},
 			"plugin_data": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Statement to define plugin.",
+				Description: "Statement to define plugin。",
 			},
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Description of plugin.",
+				Description: "描述 plugin。",
 			},
 		},
 	}

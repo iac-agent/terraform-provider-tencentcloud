@@ -19,36 +19,36 @@ func DataSourceTencentCloudMariadbDatabaseTable() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "database name.",
+				Description: "database 名称",
 			},
 
 			"table": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "table name.",
+				Description: "table 名称",
 			},
 
 			"cols": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "column list.",
+				Description: "column list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"col": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "column name.",
+							Description: "column 名称",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "column type.",
+							Description: "column 类型",
 						},
 					},
 				},
@@ -57,7 +57,7 @@ func DataSourceTencentCloudMariadbDatabaseTable() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

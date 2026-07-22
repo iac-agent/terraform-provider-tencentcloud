@@ -28,28 +28,28 @@ func ResourceTencentCloudTsfInstancesAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"instance_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cloud server ID.",
+				Description: "Cloud server ID。",
 			},
 
 			"os_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Operating system name.",
+				Description: "Operating system 名称",
 			},
 
 			"image_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Operating system image ID.",
+				Description: "Operating system image ID。",
 			},
 
 			"password": {
@@ -57,35 +57,35 @@ func ResourceTencentCloudTsfInstancesAttachment() *schema.Resource {
 				ForceNew:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "Reset system password.",
+				Description: "Reset system 密码",
 			},
 
 			"key_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Associated key for system reinstallation.",
+				Description: "Associated 键 for system reinstallation。",
 			},
 
 			"sg_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Security group setting.",
+				Description: "Security group setting。",
 			},
 
 			"instance_import_mode": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cloud server import mode, required for virtual machine clusters, not required for container clusters. R: Reinstall TSF system image, M: Manual installation of agent.",
+				Description: "Cloud server import 模式，必填 for virtual machine clusters，not 必填 for container clusters. R: Reinstall TSF system image，M: Manual installation of agent。",
 			},
 
 			"os_customize_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Image customization type.",
+				Description: "Image customization 类型",
 			},
 
 			"feature_id_list": {
@@ -95,7 +95,7 @@ func ResourceTencentCloudTsfInstancesAttachment() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Image feature ID list.",
+				Description: "Image feature ID list。",
 			},
 
 			"instance_advanced_settings": {
@@ -103,18 +103,18 @@ func ResourceTencentCloudTsfInstancesAttachment() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Additional instance parameter information.",
+				Description: "Additional instance parameter information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mount_target": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Data disk mount point, data disks are not mounted by default. Data disks with formatted ext3, ext4, xfs file systems will be mounted directly, other file systems or unformatted data disks will be automatically formatted as ext4 and mounted. Please back up your data! This setting does not take effect for cloud servers with no data disks or multiple data disks. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Data disk mount point，data disks are not mounted by default. Data disks with formatted ext3，ext4，xfs file systems will be mounted directly，other file systems or unformatted data disks will be automatically formatted as ext4 and mounted. Please back up your data! This setting does not take effect for cloud servers with no data disks or multiple data disks. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"docker_graph_path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Dockerd --graph specifies the value, default is /var/lib/docker Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Dockerd --graph 指定value，默认为 /var/lib/docker 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -127,7 +127,7 @@ func ResourceTencentCloudTsfInstancesAttachment() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Security group.",
+				Description: "Security group。",
 			},
 		},
 	}

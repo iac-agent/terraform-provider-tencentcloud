@@ -27,82 +27,82 @@ func ResourceTencentCloudTdcpgCluster() *schema.Resource {
 			"zone": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "available zone.",
+				Description: "available 可用区",
 			},
 
 			"master_user_password": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Sensitive:   true,
-				Description: "user password.",
+				Description: "用户 密码",
 			},
 
 			"cpu": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "cpu cores.",
+				Description: "CPU 核数",
 			},
 
 			"memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "memory size.",
+				Description: "memory size。",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "vpc id.",
+				Description: "私有网络 ID",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "subnet id.",
+				Description: "子网 ID",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "pay mode, the value is either PREPAID or POSTPAID_BY_HOUR.",
+				Description: "付费模式，the 值 is either PREPAID or POSTPAID_BY_HOUR。",
 			},
 
 			"cluster_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "cluster name.",
+				Description: "集群名称",
 			},
 
 			"db_version": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "community version number, default to 10.17.",
+				Description: "community 版本 number，默认为 10.17。",
 			},
 
 			"instance_count": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "instance count.",
+				Description: "instance count。",
 			},
 
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "purchase time, required when PayMode is PREPAID, the value range is 1~60, default to 1.",
+				Description: "purchase time，必填 when PayMode is PREPAID，the 值 range is 1~60，默认为 1。",
 			},
 
 			"storage": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "max storage, the unit is GB.",
+				Description: "max storage，the unit is GB。",
 			},
 
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "project id, default to 0, means default project.",
+				Description: "项目 ID，默认为 0，means default project。",
 			},
 		},
 	}

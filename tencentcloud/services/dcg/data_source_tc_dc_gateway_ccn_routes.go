@@ -16,44 +16,44 @@ func DataSourceTencentCloudDcGatewayCCNRoutes() *schema.Resource {
 			"dcg_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the DCG to be queried.",
+				Description: "ID DCG to be queried。",
 			},
 			"ccn_route_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cloud networking routing learning type, optional values: BGP - Automatic Learning; STATIC - User configured. Default is STATIC.",
+				Description: "Cloud networking routing learning 类型，可选 values: BGP - Automatic Learning; STATIC - 用户 configured. 默认为 STATIC。",
 			},
 			"address_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Address type, supports: IPv4, IPv6. Default is IPv4.",
+				Description: "地址 类型，supports: IPv4，IPv6. 默认为 IPv4。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			// Computed values
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the DCG route entries.",
+				Description: "Information 列表 the DCG route entries。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dcg_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the DCG.",
+							Description: "ID DCG。",
 						},
 						"route_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the DCG route.",
+							Description: "ID DCG route。",
 						},
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "A network address segment of IDC.",
+							Description: "A network 地址 segment of IDC。",
 						},
 						"as_path": {
 							Type:     schema.TypeList,
@@ -61,7 +61,7 @@ func DataSourceTencentCloudDcGatewayCCNRoutes() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "As path list of the BGP.",
+							Description: "As 路径 列表 the BGP。",
 						},
 					},
 				},

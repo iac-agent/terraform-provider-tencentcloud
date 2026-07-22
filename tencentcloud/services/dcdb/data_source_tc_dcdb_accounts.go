@@ -20,53 +20,53 @@ func DataSourceTencentCloudDcdbAccounts() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Cloud database account information.",
+				Description: "Cloud database 账号 information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User Name.",
+							Description: "用户 名称",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "From which host the user can log in (corresponding to the host field of MySQL users, UserName + Host uniquely identifies a user, in the form of IP, the IP segment ends with %; supports filling in %; if it is empty, it defaults to %).",
+							Description: "From which 主机 the 用户 can log in (corresponding to the 主机 field of MySQL users，UserName + 主机 uniquely identifies a 用户，in the form of IP，the IP segment ends with %; supports filling in %; if it is empty，it 默认为 %)。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User remarks info.",
+							Description: "用户 备注 info。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last update time.",
+							Description: "Last 更新时间。",
 						},
 						"read_only": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Read-only flag, 0: No, 1: The SQL request of this account is preferentially executed on the standby machine, and the host is selected for execution when the standby machine is unavailable. 2: The standby machine is preferentially selected for execution, and the operation fails when the standby machine is unavailable.",
+							Description: "Read-only flag，0: No，1: The SQL request of this 账号 is preferentially executed on the standby machine，and the 主机 is selected for execution when the standby machine is unavailable. 2: The standby machine is preferentially selected for execution，and the operation fails when the standby machine is unavailable。",
 						},
 						"delay_thresh": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "If the standby machine delay exceeds the setting value of this parameter, the system will consider that the standby machine is faulty and recommend that the parameter value be greater than 10. This parameter takes effect when ReadOnly selects 1 and 2.",
+							Description: "If the standby machine 延迟 exceeds the setting 值 of this parameter，the system will consider that the standby machine is faulty and recommend that the parameter 值 be greater than 10. This parameter takes effect when ReadOnly selects 1 and 2。",
 						},
 						"slave_const": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "For read-only accounts, set the policy whether to fix the standby machine, 0: not fix the standby machine, that is, the standby machine will not disconnect from the client if it does not meet the conditions, the Proxy selects other available standby machines, 1: the standby machine will be disconnected if the conditions are not met, Make sure a connection is secured to the standby machine.",
+							Description: "For read-only accounts，set the policy 是否fix the standby machine，0: not fix the standby machine，that is，the standby machine will not disconnect from the client if it does not meet the conditions，the Proxy selects other available standby machines，1: the standby machine will be disconnected if the conditions are not met，Make sure a connection is secured to the standby machine。",
 						},
 					},
 				},
@@ -74,7 +74,7 @@ func DataSourceTencentCloudDcdbAccounts() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -27,71 +27,71 @@ func ResourceTencentCloudWafLogPostCkafkaFlow() *schema.Resource {
 			"ckafka_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The region where CKafka is located for delivery.",
+				Description: "The 地域 where CKafka is located for delivery。",
 			},
 
 			"ckafka_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CKafka ID.",
+				Description: "CKafka ID。",
 			},
 
 			"brokers": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The supporting environment is IP:PORT, The external network environment is domain:PORT.",
+				Description: "The supporting environment is IP:PORT，The external network environment is 域名:PORT。",
 			},
 
 			"compression": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Default to none, supports snappy, gzip, and lz4 compression, recommended snappy.",
+				Description: "默认为 none，supports snappy，gzip，and lz4 compression，recommended snappy。",
 			},
 
 			"vip_type": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
-				Description:  "1. External network TGW, 2. Supporting environment, default is supporting environment.",
+				Description:  "1. External network TGW，2. Supporting environment，默认为 supporting environment。",
 			},
 
 			"log_type": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
-				Description:  "1- Access log, 2- Attack log, the default is access log.",
+				Description:  "1- Access log，2- Attack log，the 默认为 access log。",
 			},
 
 			"topic": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Theme name, default not to pass or pass empty string, default value is waf_post_access_log.",
+				Description: "Theme 名称，default not to pass or pass empty string，默认值为 waf_post_access_log。",
 			},
 
 			"kafka_version": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Version number of Kafka cluster.",
+				Description: "版本 数量 Kafka cluster。",
 			},
 
 			"sasl_enable": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable SASL verification, default not enabled, 0-off, 1-on.",
+				Description: "是否enable SASL verification，default not 已启用，0-off，1-on。",
 			},
 
 			"sasl_user": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "SASL username.",
+				Description: "SASL 用户名",
 			},
 
 			"sasl_password": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Sensitive:   true,
-				Description: "SASL password.",
+				Description: "SASL 密码",
 			},
 
 			"write_config": {
@@ -99,28 +99,28 @@ func ResourceTencentCloudWafLogPostCkafkaFlow() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Enable access to certain fields of the log and check if they have been delivered.",
+				Description: "Enable access to certain fields of the log and check if they have been delivered。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable_headers": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "1: Enable 0: Do not enable.",
+							Description: "1: Enable 0: Do not enable。",
 						},
 
 						"enable_body": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "1: Enable 0: Do not enable.",
+							Description: "1: Enable 0: Do not enable。",
 						},
 
 						"enable_bot": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "1: Enable 0: Do not enable.",
+							Description: "1: Enable 0: Do not enable。",
 						},
 					},
 				},
@@ -129,13 +129,13 @@ func ResourceTencentCloudWafLogPostCkafkaFlow() *schema.Resource {
 			"flow_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Unique ID for post cls flow.",
+				Description: "Unique ID for post cls flow。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Status 0- Off 1- On.",
+				Description: "状态 0- Off 1- On。",
 			},
 		},
 	}

@@ -28,13 +28,13 @@ func ResourceTencentCloudMonitorGrafanaSsoCamConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Grafana instance ID.",
+				Description: "Grafana 实例 ID",
 			},
 
 			"enable_sso_cam_check": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable the CAM authorization: `true` for enabling; `false` for disabling.",
+				Description: "是否enable the CAM authorization: `true` for enabling; `false` for disabling。",
 			},
 		},
 	}

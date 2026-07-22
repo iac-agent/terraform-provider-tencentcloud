@@ -19,29 +19,29 @@ func DataSourceTencentCloudMongodbInstanceConnections() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page.",
+				Description: "实例 ID，the 格式 is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page。",
 			},
 
 			"clients": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Client connection info.",
+				Description: "Client connection info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "client connection ip.",
+							Description: "client connection ip。",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "client connection count.",
+							Description: "client connection count。",
 						},
 						"internal_service": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "is internal.",
+							Description: "is internal。",
 						},
 					},
 				},
@@ -50,7 +50,7 @@ func DataSourceTencentCloudMongodbInstanceConnections() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

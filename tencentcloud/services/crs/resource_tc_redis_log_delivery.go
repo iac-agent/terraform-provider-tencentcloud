@@ -27,7 +27,7 @@ func ResourceTencentCloudRedisLogDelivery() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"logset_id": {
@@ -35,7 +35,7 @@ func ResourceTencentCloudRedisLogDelivery() *schema.Resource {
 				Optional:      true,
 				Computed:      true,
 				ConflictsWith: []string{"logset_name"},
-				Description:   "The ID of the log set being delivered.",
+				Description:   "The ID log set being delivered。",
 			},
 
 			"topic_id": {
@@ -43,7 +43,7 @@ func ResourceTencentCloudRedisLogDelivery() *schema.Resource {
 				Optional:      true,
 				Computed:      true,
 				ConflictsWith: []string{"topic_name"},
-				Description:   "The ID of the topic being delivered.",
+				Description:   "The ID topic being delivered。",
 			},
 
 			"logset_name": {
@@ -51,7 +51,7 @@ func ResourceTencentCloudRedisLogDelivery() *schema.Resource {
 				Optional:      true,
 				ConflictsWith: []string{"logset_id"},
 				Computed:      true,
-				Description:   "Log set name. If LogsetId does not specify a specific log set ID, please configure this parameter to set the log set name, and the system will automatically create a new log set with the specified name.",
+				Description:   "Log set 名称 If LogsetId does not 指定a specific log set ID，please configure this parameter to set the log set 名称，and the system will automatically create a new log set with the specified 名称",
 			},
 
 			"topic_name": {
@@ -59,28 +59,28 @@ func ResourceTencentCloudRedisLogDelivery() *schema.Resource {
 				Optional:      true,
 				ConflictsWith: []string{"topic_id"},
 				Computed:      true,
-				Description:   "Log topic name, required when TopicId is empty, a new log topic will be automatically created.",
+				Description:   "Log topic 名称，必填 when TopicId is empty，a new log topic will be automatically created。",
 			},
 
 			"log_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The region where the log set is located; if not specified, the region where the instance is located will be used by default.",
+				Description: "The 地域 where the log set is located; 如果未指定，the 地域 where the instance is located will be used by default。",
 			},
 
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Log storage time, defaults to 30 days, with an optional range of 1-3600 days.",
+				Description: "Log storage time，默认为 30 days，with an 可选 range of 1-3600 days。",
 			},
 
 			"create_index": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to create an index when creating a log topic.",
+				Description: "是否create an 索引 when creating a log topic。",
 			},
 		},
 	}

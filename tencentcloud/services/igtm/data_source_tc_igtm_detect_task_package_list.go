@@ -18,18 +18,18 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Detect task filter conditions.",
+				Description: "Detect task filter conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter field name, supported list as follows:\n- ResourceId: detect task resource id.\n- PeriodStart: minimum expiration time.\n- PeriodEnd: maximum expiration time.",
+							Description: "过滤字段名称，supported list as follows:\n- ResourceId: detect task 资源 ID\n- PeriodStart: minimum 过期时间.\n- PeriodEnd: maximum 过期时间。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter field value.",
+							Description: "过滤字段值",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -37,7 +37,7 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable fuzzy query, only supports filter field name as domain.\nWhen fuzzy query is enabled, maximum Value length is 1, otherwise maximum Value length is 5. (Reserved field, not currently used).",
+							Description: "是否enable fuzzy query，only supports 过滤字段名称 as 域名\nWhen fuzzy query is 已启用，maximum 值 length is 1，otherwise maximum 值 length is 5. (Reserved field，not currently used)。",
 						},
 					},
 				},
@@ -46,69 +46,69 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 			"task_package_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Detect task package list.",
+				Description: "Detect task package list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource ID.",
+							Description: "资源 ID",
 						},
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource type\nTASK Detect task.",
+							Description: "资源类型\nTASK Detect task。",
 						},
 						"quota": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Quota.",
+							Description: "Quota。",
 						},
 						"current_deadline": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package expiration time.",
+							Description: "Package 过期时间。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package creation time.",
+							Description: "Package 创建时间。",
 						},
 						"is_expire": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether expired 0 no 1 yes.",
+							Description: "Whether expired 0 no 1 yes。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Status\nENABLED: Normal\nISOLATED: Isolated\nDESTROYED: Destroyed\nREFUNDED: Refunded.",
+							Description: "状态\nENABLED: Normal\nISOLATED: Isolated\nDESTROYED: Destroyed\nREFUNDED: Refunded。",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether auto-renew 0 no 1 yes.",
+							Description: "Whether auto-renew 0 no 1 yes。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 						"cost_item_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Billing item.",
+							Description: "Billing item。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cost_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Billing item name.",
+										Description: "Billing item 名称",
 									},
 									"cost_value": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Billing item value.",
+										Description: "Billing item 值",
 									},
 								},
 							},
@@ -116,7 +116,7 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 						"group": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Detect task type: 100 system setting; 200 billing; 300 management system; 110D monitoring migration free task; 120 disaster recovery switch task.",
+							Description: "Detect task 类型: 100 system setting; 200 billing; 300 management system; 110D monitoring migration free task; 120 disaster recovery switch task。",
 						},
 					},
 				},
@@ -125,7 +125,7 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

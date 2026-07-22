@@ -26,37 +26,37 @@ func ResourceTencentCloudTeoDdosProtectionConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 
 			"ddos_protection": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Specifies the exclusive Anti-DDoS configuration.",
+				Description: "指定exclusive Anti-DDoS configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protection_option": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specifies the protection scope of standalone DDoS. valid values:.\n<li>protect_all_domains: specifies exclusive Anti-DDoS protection for all domain names in the site. newly added domain names automatically enable exclusive Anti-DDoS protection. when this parameter is specified, DomainDDoSProtections will not be processed.</li>.\n<li>protect_specified_domains: only applicable to specified domains. specific scope can be set via DomainDDoSProtection parameter.</li>.",
+							Description: "指定protection 范围 of standalone DDoS. valid values:.\n<li>protect_all_domains: 指定exclusive Anti-DDoS protection for all 域名 names in the site. newly added 域名 names automatically enable exclusive Anti-DDoS protection. when this parameter is specified，DomainDDoSProtections will not be processed.</li>.\n<li>protect_specified_domains: only applicable to specified domains. specific 范围 can be set via DomainDDoSProtection parameter.</li>。",
 						},
 						"domain_ddos_protections": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Computed:    true,
-							Description: "Anti-DDoS configuration of the domain. specifies the exclusive ddos protection settings for the domain in request parameters.\n<li>When ProtectionOption remains protect_specified_domains, the domain names not filled in keep their exclusive Anti-DDoS protection configuration unchanged, while explicitly specified domain names are updated according to the input parameters.</li>.\n<li>When ProtectionOption switches from protect_all_domains to protect_specified_domains: if DomainDDoSProtections is empty, disable exclusive DDoS protection for all domains under the site; if DomainDDoSProtections is not empty, disable or maintain exclusive DDoS protection for the domain names specified in the parameter, and disable exclusive DDoS protection for other unlisted domain names.</li>.",
+							Description: "Anti-DDoS configuration of the 域名 指定exclusive ddos protection settings for the 域名 in request parameters.\n<li>When ProtectionOption remains protect_specified_domains，the 域名 names not filled in keep their exclusive Anti-DDoS protection configuration unchanged，while explicitly specified 域名 names are updated according to the input parameters.</li>.\n<li>When ProtectionOption switches from protect_all_domains to protect_specified_domains: if DomainDDoSProtections is empty，disable exclusive DDoS protection for all domains under the site; if DomainDDoSProtections is not empty，disable or maintain exclusive DDoS protection for the 域名 names specified in the parameter，and disable exclusive DDoS protection for other unlisted 域名 names.</li>。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"domain": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Domain name.",
+										Description: "域名 名称",
 									},
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Standalone DDoS switch of the domain. valid values:.\n<li>on: enabled;</li>.\n<li>off: closed.</li>.",
+										Description: "Standalone DDoS switch of the 域名 valid values:.\n<li>on: 已启用;</li>.\n<li>off: closed.</li>。",
 									},
 								},
 							},
@@ -64,18 +64,18 @@ func ResourceTencentCloudTeoDdosProtectionConfig() *schema.Resource {
 						"shared_cname_ddos_protections": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Specifies the exclusive DDoS protection configuration of a shared CNAME. used as an output parameter.",
+							Description: "指定exclusive DDoS protection configuration of a shared CNAME. used as an output parameter。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Domain name.",
+										Description: "域名 名称",
 									},
 									"switch": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Standalone DDoS switch of the domain. valid values:.\n<li>on: enabled;</li>.\n<li>off: closed.</li>.",
+										Description: "Standalone DDoS switch of the 域名 valid values:.\n<li>on: 已启用;</li>.\n<li>off: closed.</li>。",
 									},
 								},
 							},

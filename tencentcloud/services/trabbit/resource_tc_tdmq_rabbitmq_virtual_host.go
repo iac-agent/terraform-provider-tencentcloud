@@ -29,23 +29,23 @@ func ResourceTencentCloudTdmqRabbitmqVirtualHost() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster instance ID.",
+				Description: "Cluster instance ID。",
 			},
 			"virtual_host": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "vhost name.",
+				Description: "vhost 名称",
 			},
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "describe.",
+				Description: "describe。",
 			},
 			"trace_flag": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Message track switch, true is on, false is off, default is off.",
+				Description: "消息 track switch，true is on，false is off，默认为 off。",
 			},
 		},
 	}

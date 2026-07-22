@@ -30,28 +30,28 @@ func ResourceTencentCloudOrganizationOrgMemberPolicyAttachment() *schema.Resourc
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Member Uin list. Up to 10.",
+				Description: "Member Uin list. Up to 10。",
 			},
 
 			"policy_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Policy name.The maximum length is 128 characters, supporting English letters, numbers, and symbols +=,.@_-.",
+				Description: "Policy 名称The maximum length is 128 characters，supporting English letters，numbers，and symbols +=,.@_-。",
 			},
 
 			"identity_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Organization identity ID.",
+				Description: "Organization identity ID。",
 			},
 
 			"description": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Notes.The maximum length is 128 characters.",
+				Description: "Notes.The maximum length is 128 characters。",
 			},
 		},
 	}

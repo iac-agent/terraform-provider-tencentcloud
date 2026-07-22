@@ -22,24 +22,24 @@ func DataSourceTencentCloudMysqlInstanceRebootTime() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The instance ID, in the format: cdb-c1nl9rpv, is the same as the instance ID displayed on the cloud database console page.",
+				Description: "实例ID与云数据库控制台页面显示的实例ID一致，格式为：cdb-c1nl9rpv。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Returned parameter information.",
+				Description: "返回的参数信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID, the format is: cdb-c1nl9rpv, which is the same as the instance ID displayed on the cloud database console page.",
+							Description: "实例ID，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同。",
 						},
 						"time_in_seconds": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "expected restart time.",
+							Description: "预计重启时间。",
 						},
 					},
 				},
@@ -48,7 +48,7 @@ func DataSourceTencentCloudMysqlInstanceRebootTime() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

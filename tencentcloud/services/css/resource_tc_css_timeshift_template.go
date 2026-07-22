@@ -28,37 +28,37 @@ func ResourceTencentCloudCssTimeshiftTemplate() *schema.Resource {
 			"template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name.Maximum length: 255 bytes.Only letters, numbers, underscores, and hyphens are supported.",
+				Description: "The 模板名称Maximum length: 255 bytes.Only letters，numbers，underscores，and hyphens are supported。",
 			},
 
 			"duration": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The time shifting duration.Unit: Second.",
+				Description: "The time shifting duration.单位：Second。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The template description.Only letters, numbers, underscores, and hyphens are supported.",
+				Description: "The 模板描述Only letters，numbers，underscores，and hyphens are supported。",
 			},
 
 			"area": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The region.`Mainland`: The Chinese mainland.`Overseas`: Outside the Chinese mainland.Default value: `Mainland`.",
+				Description: "The 地域`Mainland`: The Chinese mainland.`Overseas`: Outside the Chinese mainland.默认值：`Mainland`。",
 			},
 
 			"item_duration": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The segment size.Value range: 3-10.Unit: Second.Default value: 5.",
+				Description: "The segment size.取值范围：3-10.单位：Second.默认值：5。",
 			},
 
 			"remove_watermark": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to remove watermarks.If you pass in `true`, the original stream will be recorded.Default value: `false`.",
+				Description: "是否remove watermarks.If you pass in `true`，the original stream will be recorded.默认值：`false`。",
 			},
 
 			"transcode_template_ids": {
@@ -67,7 +67,7 @@ func ResourceTencentCloudCssTimeshiftTemplate() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "The transcoding template IDs.This API works only if `RemoveWatermark` is `false`.",
+				Description: "The transcoding template IDs.This API works only if `RemoveWatermark` is `false`。",
 			},
 		},
 	}

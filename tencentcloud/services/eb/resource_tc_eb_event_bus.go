@@ -28,31 +28,31 @@ func ResourceTencentCloudEbEventBus() *schema.Resource {
 			"event_bus_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Event set name, which can only contain letters, numbers, underscores, hyphens, starts with a letter and ends with a number or letter, 2~60 characters.",
+				Description: "Event set 名称，which can only contain letters，numbers，underscores，hyphens，starts with a letter and ends with a number or letter，2~60 characters。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Event set description, unlimited character type, description within 200 characters.",
+				Description: "Event set 描述，unlimited character 类型，描述 within 200 characters。",
 			},
 
 			"save_days": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "EB storage duration.",
+				Description: "EB storage duration。",
 			},
 
 			"enable_store": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether the EB storage is enabled.",
+				Description: "是否EB storage is 已启用",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

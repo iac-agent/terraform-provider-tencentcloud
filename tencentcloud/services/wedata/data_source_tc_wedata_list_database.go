@@ -18,56 +18,56 @@ func DataSourceTencentCloudWedataListDatabase() *schema.Resource {
 			"catalog_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Catalog name.",
+				Description: "Catalog 名称",
 			},
 
 			"datasource_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Data source ID.",
+				Description: "数据源 ID",
 			},
 
 			"keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Database name search keyword.",
+				Description: "Database 名称 search keyword。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Database record list.",
+				Description: "Database record list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"guid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database GUID.",
+							Description: "Database GUID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name.",
+							Description: "Database 名称",
 						},
 						"catalog_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database catalog.",
+							Description: "Database catalog。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database description.",
+							Description: "Database 描述",
 						},
 						"location": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database location.",
+							Description: "Database location。",
 						},
 						"storage_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Database storage size.",
+							Description: "Database storage size。",
 						},
 					},
 				},
@@ -76,7 +76,7 @@ func DataSourceTencentCloudWedataListDatabase() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

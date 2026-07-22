@@ -29,25 +29,25 @@ func ResourceTencentCloudTcrServiceAccount() *schema.Resource {
 			"registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Service account name.",
+				Description: "Service 账号 名称",
 			},
 
 			"permissions": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "strategy list.",
+				Description: "strategy list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "resource path, currently only supports Namespace. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "resource 路径，currently only supports Namespace. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"actions": {
 							Type: schema.TypeSet,
@@ -55,7 +55,7 @@ func ResourceTencentCloudTcrServiceAccount() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Actions, currently support: `tcr:PushRepository`, `tcr:PullRepository`, `tcr:CreateRepository`, `tcr:CreateHelmChart`, `tcr:DescribeHelmCharts`. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Actions，currently support: `tcr:PushRepository`，`tcr:PullRepository`，`tcr:CreateRepository`，`tcr:CreateHelmChart`，`tcr:DescribeHelmCharts`. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -64,26 +64,26 @@ func ResourceTencentCloudTcrServiceAccount() *schema.Resource {
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service account description.",
+				Description: "Service 账号 描述",
 			},
 
 			"duration": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "expiration date (unit: day), calculated from the current time, priority is higher than ExpiresAt Service account description.",
+				Description: "expiration date (unit: day)，calculated from the current time，优先级 is higher than ExpiresAt Service 账号 描述",
 			},
 
 			"expires_at": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Service account expiration time (time stamp, unit: milliseconds).",
+				Description: "Service 账号 过期时间 (time stamp，unit: milliseconds)。",
 			},
 
 			"disable": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "whether to disable Service accounts.",
+				Description: "是否disable Service accounts。",
 			},
 
 			"password": {
@@ -91,13 +91,13 @@ func ResourceTencentCloudTcrServiceAccount() *schema.Resource {
 				Computed:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "Password of the service account.",
+				Description: "密码 of the service 账号",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

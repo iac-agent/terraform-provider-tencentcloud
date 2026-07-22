@@ -24,23 +24,23 @@ func ResourceTencentCloudClickhouseAccount() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 			"user_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "User name.",
+				Description: "用户 名称",
 			},
 			"password": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Sensitive:   true,
-				Description: "Password.",
+				Description: "密码",
 			},
 			"describe": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description.",
+				Description: "描述",
 			},
 		},
 	}

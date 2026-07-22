@@ -23,13 +23,13 @@ func ResourceTencentCloudTsfOperateGroup() *schema.Resource {
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "group id.",
+				Description: "group id。",
 			},
 
 			"operate": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Operation, `start`- start the group, `stop`- stop the group.",
+				Description: "Operation，`start`- start the group，`stop`- stop the group。",
 			},
 		},
 	}

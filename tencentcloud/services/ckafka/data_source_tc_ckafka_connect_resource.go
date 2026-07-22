@@ -19,101 +19,101 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 			"type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "connection source type.",
+				Description: "connection 来源 类型",
 			},
 
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Keyword for search.",
+				Description: "Keyword for search。",
 			},
 
 			"offset": {
 				Optional:    true,
 				Default:     0,
 				Type:        schema.TypeInt,
-				Description: "Page offset, default is 0.",
+				Description: "Page 偏移量，默认为 0。",
 			},
 
 			"limit": {
 				Optional:    true,
 				Default:     20,
 				Type:        schema.TypeInt,
-				Description: "Return the number, the default is 20, the maximum is 100.",
+				Description: "Return the number，the 默认为 20，the maximum is 100。",
 			},
 
 			"resource_region": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Keyword query of the connection source, query the connection in the connection management list in the local region according to the region (only support the connection source containing the region input).",
+				Description: "Keyword query of the connection 来源，query the connection in the connection management list in the local 地域 according to the 地域 (only support the connection 来源 containing the 地域 input)。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Connection source list.",
+				Description: "Connection 来源 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of connection sources.",
+							Description: "数量 connection sources。",
 						},
 						"connect_resource_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Resource List.",
+							Description: "Resource List。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resource id.",
+										Description: "Resource id。",
 									},
 									"resource_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resource name.",
+										Description: "资源名称",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Description.",
+										Description: "描述",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resource type.",
+										Description: "资源类型",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Resource status.",
+										Description: "Resource 状态",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Creation time.",
+										Description: "创建时间。",
 									},
 									"error_message": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Error Messages.",
+										Description: "错误 Messages。",
 									},
 									"datahub_task_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of Datahub tasks associated with this connection source.",
+										Description: "The 数量 Datahub tasks associated with this connection 来源",
 									},
 									"current_step": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The current step of the connection source.",
+										Description: "The current step of the connection 来源",
 									},
 									"task_progress": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Creation progress percentage.",
+										Description: "Creation progress percentage。",
 									},
 									"step_list": {
 										Type: schema.TypeSet,
@@ -121,48 +121,48 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Step List.",
+										Description: "Step List。",
 									},
 									"dts_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Dts configuration, returned when Type is DTS.",
+										Description: "Dts configuration，returned when 类型 is DTS。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Dts port.",
+													Description: "Dts 端口",
 												},
 												"group_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The id of the Dts consumer group.",
+													Description: "The ID Dts consumer group。",
 												},
 												"user_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The UserName of the Dts consumer group.",
+													Description: "The UserName of the Dts consumer group。",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The password of the Dts consumer group.",
+													Description: "The 密码 of the Dts consumer group。",
 												},
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Dts Id.",
+													Description: "Dts Id。",
 												},
 												"topic": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Topic subscribed by Dts.",
+													Description: "Topic subscribed by Dts。",
 												},
 												"is_update": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether to update to the associated Datahub task.",
+													Description: "是否update to the associated Datahub task。",
 												},
 											},
 										},
@@ -170,48 +170,48 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 									"mongo_db_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Mongo DB configuration, returned when Type is MONGODB.",
+										Description: "Mongo DB configuration，returned when 类型 is MONGODB。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "MongoDB port.",
+													Description: "MongoDB 端口",
 												},
 												"user_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The username of the connection source.",
+													Description: "The 用户名 of the connection 来源",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The password of the connection source.",
+													Description: "The 密码 of the connection 来源",
 												},
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance resource of connection source.",
+													Description: "Instance resource of connection 来源",
 												},
 												"self_built": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether the connection source is a self-built cluster.",
+													Description: "是否connection 来源 is a 自建集群",
 												},
 												"service_vip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance VIP of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "实例 VIP of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"uniq_vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The vpc Id of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "The vpc Id of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"is_update": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether to update to the associated Datahub task.",
+													Description: "是否update to the associated Datahub task。",
 												},
 											},
 										},
@@ -219,48 +219,48 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 									"es_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Es configuration, return when Type is ES.",
+										Description: "Es configuration，return when 类型 is ES。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "ES port.",
+													Description: "ES 端口",
 												},
 												"user_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The username of the connection source.",
+													Description: "The 用户名 of the connection 来源",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The password of the connection source.",
+													Description: "The 密码 of the connection 来源",
 												},
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance resource of connection source.",
+													Description: "Instance resource of connection 来源",
 												},
 												"self_built": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether the connection source is a self-built cluster.",
+													Description: "是否connection 来源 is a 自建集群",
 												},
 												"service_vip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance VIP of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "实例 VIP of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"uniq_vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The vpc Id of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "The vpc Id of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"is_update": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether to update to the associated Datahub task.",
+													Description: "是否update to the associated Datahub task。",
 												},
 											},
 										},
@@ -268,48 +268,48 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 									"clickhouse_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "ClickHouse configuration, returned when Type is CLICKHOUSE.",
+										Description: "ClickHouse configuration，returned when 类型 is CLICKHOUSE。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "ClickHouse port.",
+													Description: "ClickHouse 端口",
 												},
 												"user_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The username of the connection source.",
+													Description: "The 用户名 of the connection 来源",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The password of the connection source.",
+													Description: "The 密码 of the connection 来源",
 												},
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance resource of connection source.",
+													Description: "Instance resource of connection 来源",
 												},
 												"self_built": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether the connection source is a self-built cluster.",
+													Description: "是否connection 来源 is a 自建集群",
 												},
 												"service_vip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance VIP of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "实例 VIP of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"uniq_vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The vpc Id of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "The vpc Id of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"is_update": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether to update to the associated Datahub task.",
+													Description: "是否update to the associated Datahub task。",
 												},
 											},
 										},
@@ -317,53 +317,53 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 									"mysql_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Mysql configuration, returned when Type is MYSQL or TDSQL C MYSQL.",
+										Description: "Mysql configuration，returned when 类型 is MYSQL or TDSQL C MYSQL。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "MySQL port.",
+													Description: "MySQL 端口",
 												},
 												"user_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The username of the connection source.",
+													Description: "The 用户名 of the connection 来源",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The password of the connection source.",
+													Description: "The 密码 of the connection 来源",
 												},
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "MySQL Instance resource of connection source.",
+													Description: "MySQL Instance resource of connection 来源",
 												},
 												"service_vip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance VIP of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "实例 VIP of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"uniq_vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The vpc Id of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "The vpc Id of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"is_update": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether to update to the associated Datahub task.",
+													Description: "是否update to the associated Datahub task。",
 												},
 												"cluster_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Required when type is TDSQL C_MYSQL.",
+													Description: "必填 when 类型 is TDSQL C_MYSQL。",
 												},
 												"self_built": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Mysql Whether the connection source is a self-built cluster.",
+													Description: "Mysql 是否connection 来源 is a 自建集群",
 												},
 											},
 										},
@@ -371,53 +371,53 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 									"postgre_sql_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Postgresql configuration, returned when Type is POSTGRESQL or TDSQL C POSTGRESQL.",
+										Description: "Postgresql configuration，returned when 类型 is POSTGRESQL or TDSQL C POSTGRESQL。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "PostgreSQL port.",
+													Description: "PostgreSQL 端口",
 												},
 												"user_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The username of the connection source.",
+													Description: "The 用户名 of the connection 来源",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The password of the connection source.",
+													Description: "The 密码 of the connection 来源",
 												},
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance resource of connection source.",
+													Description: "Instance resource of connection 来源",
 												},
 												"service_vip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance VIP of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "实例 VIP of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"uniq_vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The vpc Id of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "The vpc Id of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"cluster_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Required when type is TDSQL C_POSTGRESQL.",
+													Description: "必填 when 类型 is TDSQL C_POSTGRESQL。",
 												},
 												"is_update": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether to update to the associated Datahub task.",
+													Description: "是否update to the associated Datahub task。",
 												},
 												"self_built": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether the connection source is a self-built cluster.",
+													Description: "是否connection 来源 is a 自建集群",
 												},
 											},
 										},
@@ -425,43 +425,43 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 									"maria_db_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Mariadb configuration, returned when Type is MARIADB.",
+										Description: "Mariadb configuration，returned when 类型 is MARIADB。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "MariaDB port.",
+													Description: "MariaDB 端口",
 												},
 												"user_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The username of the connection source.",
+													Description: "The 用户名 of the connection 来源",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The password of the connection source.",
+													Description: "The 密码 of the connection 来源",
 												},
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance resource of connection source.",
+													Description: "Instance resource of connection 来源",
 												},
 												"service_vip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance VIP of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "实例 VIP of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"uniq_vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The vpc Id of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "The vpc Id of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"is_update": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether to update to the associated Datahub task.",
+													Description: "是否update to the associated Datahub task。",
 												},
 											},
 										},
@@ -469,43 +469,43 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 									"sql_server_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "SQL Server configuration, returned when Type is SQLSERVER.",
+										Description: "SQL Server configuration，returned when 类型 is SQLSERVER。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "SQLServer port.",
+													Description: "SQLServer 端口",
 												},
 												"user_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The username of the connection source.",
+													Description: "The 用户名 of the connection 来源",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The password of the connection source.",
+													Description: "The 密码 of the connection 来源",
 												},
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance resource of connection source.",
+													Description: "Instance resource of connection 来源",
 												},
 												"service_vip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance VIP of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "实例 VIP of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"uniq_vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The vpc Id of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "The vpc Id of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"is_update": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether to update to the associated Dip task.",
+													Description: "是否update to the associated Dip task。",
 												},
 											},
 										},
@@ -513,38 +513,38 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 									"ctsdb_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Ctsdb configuration, returned when Type is CTSDB.",
+										Description: "Ctsdb configuration，returned when 类型 is CTSDB。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Ctsdb port.",
+													Description: "Ctsdb 端口",
 												},
 												"service_vip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Ctsdb vip.",
+													Description: "Ctsdb VIP",
 												},
 												"uniq_vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Ctsdb vpcId.",
+													Description: "Ctsdb vpcId。",
 												},
 												"user_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The username of the connection source.",
+													Description: "The 用户名 of the connection 来源",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The password of the connection source.",
+													Description: "The 密码 of the connection 来源",
 												},
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance resource of connection source.",
+													Description: "Instance resource of connection 来源",
 												},
 											},
 										},
@@ -552,53 +552,53 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 									"doris_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Doris Configuration, returned when Type is DORIS.",
+										Description: "Doris Configuration，returned when 类型 is DORIS。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Doris jdbc Load balancing connection port, usually mapped to port 9030 of fe.",
+													Description: "Doris jdbc Load balancing connection 端口，usually mapped to 端口 9030 of fe。",
 												},
 												"user_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The username of the connection source.",
+													Description: "The 用户名 of the connection 来源",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The password of the connection source.",
+													Description: "The 密码 of the connection 来源",
 												},
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance resource of connection source.",
+													Description: "Instance resource of connection 来源",
 												},
 												"service_vip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance VIP of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "实例 VIP of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"uniq_vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The vpc Id of the connection source, when it is a Tencent Cloud instance, it is required.",
+													Description: "The vpc Id of the connection 来源，when it is a 腾讯云实例，it 为必填项。",
 												},
 												"is_update": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether to update to the associated Datahub task.",
+													Description: "是否update to the associated Datahub task。",
 												},
 												"self_built": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether the connection source is a self-built cluster.",
+													Description: "是否connection 来源 is a 自建集群",
 												},
 												"be_port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Doris's http load balancing connection port, usually mapped to be's 8040 port.",
+													Description: "Doris's http load balancing connection 端口，usually mapped to be's 8040 端口",
 												},
 											},
 										},
@@ -606,33 +606,33 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 									"kafka_connect_param": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Kafka configuration, returned when Type is KAFKA.",
+										Description: "Kafka configuration，returned when 类型 is KAFKA。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"resource": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance resource of Kafka connection source, required when not self-built.",
+													Description: "Instance resource of Kafka connection 来源，必填 when not self-built。",
 												},
 												"self_built": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether it is a self-built cluster.",
+													Description: "是否为a 自建集群",
 												},
 												"is_update": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether to update to the associated Dip task.",
+													Description: "是否update to the associated Dip task。",
 												},
 												"broker_address": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Broker address for Kafka connection, required for self-build.",
+													Description: "Broker 地址 for Kafka connection，必填 for self-build。",
 												},
 												"region": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance resource region of CKafka connection source, required when crossing regions.",
+													Description: "Instance resource 地域 of CKafka connection 来源，必填 when crossing regions。",
 												},
 											},
 										},
@@ -647,7 +647,7 @@ func DataSourceTencentCloudCkafkaConnectResource() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

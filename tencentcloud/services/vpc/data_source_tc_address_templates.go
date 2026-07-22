@@ -21,35 +21,35 @@ func DataSourceTencentCloudAddressTemplates() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the address template to query.",
+				Description: "名称 地址 template to query。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the address template to query.",
+				Description: "ID 地址 template to query。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"template_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the dedicated address templates.",
+				Description: "Information 列表 the dedicated 地址 templates。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the address template.",
+							Description: "ID 地址 template。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of address template.",
+							Description: "名称 地址 template。",
 						},
 						"addresses": {
 							Type: schema.TypeList,
@@ -57,7 +57,7 @@ func DataSourceTencentCloudAddressTemplates() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Set of the addresses.",
+							Description: "Set of the addresses。",
 						},
 					},
 				},

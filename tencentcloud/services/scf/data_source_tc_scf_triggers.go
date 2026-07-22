@@ -19,37 +19,37 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 			"function_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function name.",
+				Description: "Function 名称",
 			},
 
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace. Default value: default.",
+				Description: "Namespace. 默认值：default。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Indicates by which field to sort the returned results. Valid values: add_time, mod_time. Default value: mod_time.",
+				Description: "表示by which field to sort the returned results. 有效值：add_time，mod_time. 默认值：mod_time。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC.",
+				Description: "表示是否returned results are sorted in ascending or 降序 有效值：ASC，DESC. 默认值：DESC。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "* Qualifier:Function version, alias.",
+				Description: "* Qualifier:Function 版本，alias。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Fields to be filtered. Up to 10 conditions allowed.Values of Name: VpcId, SubnetId, ClsTopicId, ClsLogsetId, Role, CfsId, CfsMountInsId, Eip. Values limit: 1.Name options: Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, TraceEnable. Values limit: 20.When Name is Runtime, CustomImage refers to the image type function.",
+							Description: "Fields to be filtered. Up to 10 conditions allowed.Values of 名称: VpcId，SubnetId，ClsTopicId，ClsLogsetId，角色，CfsId，CfsMountInsId，Eip. Values 限制: 1.名称 options: 状态，Runtime，FunctionType，PublicNetStatus，AsyncRunEnable，TraceEnable. Values 限制: 20.When 名称 is Runtime，CustomImage refers to the image 类型 function。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -57,7 +57,7 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter values of the field.",
+							Description: "Filter values of the field。",
 						},
 					},
 				},
@@ -66,68 +66,68 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 			"triggers": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Trigger list.",
+				Description: "Trigger list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to enable.",
+							Description: "是否enable。",
 						},
 						"qualifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Function version or alias.",
+							Description: "Function 版本 or alias。",
 						},
 						"trigger_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Trigger name.",
+							Description: "Trigger 名称",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Trigger type.",
+							Description: "Trigger 类型",
 						},
 						"trigger_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Detailed configuration of trigger.",
+							Description: "Detailed configuration of trigger。",
 						},
 						"available_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether the trigger is available.",
+							Description: "是否trigger is available。",
 						},
 						"custom_argument": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom parameterNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Custom parameterNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Trigger creation time.",
+							Description: "Trigger 创建时间。",
 						},
 						"mod_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Trigger last modified time.",
+							Description: "Trigger 最后修改时间。",
 						},
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Minimum resource ID of trigger.",
+							Description: "Minimum resource ID trigger。",
 						},
 						"bind_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Trigger-Function binding status.",
+							Description: "Trigger-Function binding 状态",
 						},
 						"trigger_attribute": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console.",
+							Description: "Trigger 类型 Two-way means that the trigger can be manipulated in both consoles，while one-way means that the trigger can be created only in the SCF Console。",
 						},
 					},
 				},
@@ -136,7 +136,7 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

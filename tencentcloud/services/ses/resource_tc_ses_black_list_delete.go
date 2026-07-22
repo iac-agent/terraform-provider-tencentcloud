@@ -25,7 +25,7 @@ func ResourceTencentCloudSesBlackListDelete() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Email addresses to be unblocklisted.",
+				Description: "Email addresses to be unblocklisted。",
 			},
 		},
 	}

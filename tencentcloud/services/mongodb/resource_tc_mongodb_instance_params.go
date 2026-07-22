@@ -24,24 +24,24 @@ func ResourceTencentCloudMongodbInstanceParams() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"instance_params": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Specify the parameter name and value to be modified.",
+				Description: "指定parameter 名称 and 值 to be modified。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter names that need to be modified.",
+							Description: "Parameter names that need to be modified。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The value corresponding to the parameter name to be modified.",
+							Description: "The 值 corresponding to the parameter 名称 to be modified。",
 						},
 					},
 				},

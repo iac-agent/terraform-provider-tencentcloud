@@ -30,22 +30,22 @@ func ResourceTencentCloudCynosdbSsl() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster id.",
+				Description: "集群 ID。",
 			},
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID。",
 			},
 			"status": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Whether to enable SSL. `ON` means enabled, `OFF` means not enabled.",
+				Description: "是否启用SSL。 “ON”表示启用，“OFF”表示不启用。",
 			},
 			"download_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate download address.",
+				Description: "证书下载地址。",
 			},
 		},
 	}

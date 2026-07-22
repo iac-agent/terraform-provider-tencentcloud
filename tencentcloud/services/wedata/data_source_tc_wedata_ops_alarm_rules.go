@@ -19,19 +19,19 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"monitor_object_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Monitoring object type, Task dimension monitoring: can be configured according to task/workflow/project: 1.Task, 2.Workflow, 3.Project (default is 1.Task) Project dimension monitoring: Project overall task fluctuation alarm, 7: Project fluctuation monitoring alarm.",
+				Description: "Monitoring object 类型，Task dimension monitoring: can be configured according to task/workflow/project: 1.Task，2.Workflow，3.Project (默认为 1.Task) Project dimension monitoring: Project overall task fluctuation alarm，7: Project fluctuation monitoring alarm。",
 			},
 
 			"task_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Query alarm rules based on task ID.",
+				Description: "Query alarm rules based on task ID。",
 			},
 
 			"alarm_type": {
@@ -43,31 +43,31 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 			"alarm_level": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Alarm level: 1. Normal, 2. Major, 3. Urgent.",
+				Description: "Alarm 级别: 1. Normal，2. Major，3. Urgent。",
 			},
 
 			"alarm_recipient_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Query the alarm rules configured for the corresponding alarm recipient.",
+				Description: "Query the alarm rules configured for the corresponding alarm recipient。",
 			},
 
 			"keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Query the corresponding alarm rule based on the alarm rule ID/rule name.",
+				Description: "Query the corresponding alarm rule based on the alarm rule ID/rule 名称",
 			},
 
 			"create_user_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Alarm rule creator filtering.",
+				Description: "Alarm rule 创建者 filtering。",
 			},
 
 			"create_time_from": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The start time of the alarm rule creation time range, in the format of 2025-08-17 00:00:00.",
+				Description: "The 开始时间 of the alarm rule 创建时间 range，in the 格式 of 2025-08-17 00:00:00。",
 			},
 
 			"create_time_to": {
@@ -91,59 +91,59 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Alarm information response.",
+				Description: "Alarm information response。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"page_number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The number of pages in the pagination, the current page number.",
+							Description: "The 数量 pages in the pagination，the current 页码",
 						},
 						"page_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Number of items displayed per page.",
+							Description: "数量 items displayed per page。",
 						},
 						"total_page_number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total number of pages.",
+							Description: "Total 数量 pages。",
 						},
 						"total_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The total number of alarm rules.",
+							Description: "The total 数量 alarm rules。",
 						},
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Alarm rule information list.",
+							Description: "Alarm rule information list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"alarm_rule_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Alarm rule ID.",
+										Description: "Alarm rule ID。",
 									},
 									"alarm_rule_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Alarm rule name.",
+										Description: "Alarm rule 名称",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Alarm rule description.",
+										Description: "Alarm rule 描述",
 									},
 									"monitor_object_type": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Monitoring object type, Task-based monitoring: Configurable by task/workflow/project: 1. Task, 2. Workflow, 3. Project (default is 1. Task). Project-based monitoring: Alerts for overall project task fluctuations, 7: Project fluctuation monitoring alerts.",
+										Description: "Monitoring object 类型，Task-based monitoring: Configurable by task/workflow/project: 1. Task，2. Workflow，3. Project (默认为 1. Task). Project-based monitoring: Alerts for overall project task fluctuations，7: Project fluctuation monitoring alerts。",
 									},
 									"monitor_object_ids": {
 										Type:        schema.TypeSet,
 										Required:    true,
-										Description: "A list of monitored object business IDs. Different business IDs are passed in based on the MonitorType setting. For example, 1 (Task) - MonitorObjectIds is a list of task IDs; 2 (Workflow) - MonitorObjectIds is a list of workflow IDs (workflow IDs can be obtained from the ListWorkflows interface); 3 (Project) - MonitorObjectIds is a list of project IDs.",
+										Description: "A 列表 monitored object business IDs. Different business IDs are passed in based on the MonitorType setting. For example，1 (Task) - MonitorObjectIds is a 列表 task IDs; 2 (Workflow) - MonitorObjectIds is a 列表 workflow IDs (workflow IDs can be obtained from the ListWorkflows interface); 3 (Project) - MonitorObjectIds is a 列表 project IDs。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -151,7 +151,7 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 									"alarm_types": {
 										Type:        schema.TypeSet,
 										Required:    true,
-										Description: "Alarm Rule Monitoring Types: failure: failure alarm; overtime: timeout alarm; success: success alarm; backTrackingOrRerunSuccess: backTrackingOrRerunSuccess: backTrackingOrRerunFailure: backTrackingOrRerunFailure. Project Fluctuation Alarms: projectFailureInstanceUpwardFluctuationAlarm: alarm if the upward fluctuation rate of failed instances exceeds the threshold. projectSuccessInstanceDownwardFluctuationAlarm: alarm if the downward fluctuation rate of successful instances exceeds the threshold. Offline Integration Task Reconciliation Alarms: reconciliationFailure: offline reconciliation task failure alarm; reconciliationOvertime: offline reconciliation task timeout alarm; reconciliationMismatch: alarm if the number of inconsistent entries in a data reconciliation task exceeds the threshold.",
+										Description: "Alarm Rule Monitoring Types: failure: failure alarm; overtime: timeout alarm; success: success alarm; backTrackingOrRerunSuccess: backTrackingOrRerunSuccess: backTrackingOrRerunFailure: backTrackingOrRerunFailure. Project Fluctuation Alarms: projectFailureInstanceUpwardFluctuationAlarm: alarm if the upward fluctuation rate of failed instances exceeds the threshold. projectSuccessInstanceDownwardFluctuationAlarm: alarm if the downward fluctuation rate of successful instances exceeds the threshold. Offline Integration Task Reconciliation Alarms: reconciliationFailure: offline reconciliation task failure alarm; reconciliationOvertime: offline reconciliation task timeout alarm; reconciliationMismatch: alarm if the 数量 inconsistent entries in a data reconciliation task exceeds the threshold。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -159,55 +159,55 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 									"status": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Whether the alarm rule is enabled: 0-disable, 1-enable.",
+										Description: "是否alarm rule is 已启用: 0-disable，1-enable。",
 									},
 									"alarm_rule_detail": {
 										Type:        schema.TypeList,
 										Required:    true,
 										MaxItems:    1,
-										Description: "Alarm rule configuration information: Success alarms do not require configuration. Failure alarms can be configured as either first-failure alarms or all retry failure alarms. Timeout configuration requires the timeout type and timeout threshold. Project fluctuation alarms require the fluctuation rate and anti-shake period.",
+										Description: "Alarm rule configuration information: Success alarms do not require configuration. Failure alarms can be configured as either first-failure alarms or all retry failure alarms. Timeout configuration requires the timeout 类型 and timeout threshold. Project fluctuation alarms require the fluctuation rate and anti-shake 周期",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"trigger": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Failure trigger timing: 1 - Triggered on first failure; 2 -- Triggered when all retries complete (default).",
+													Description: "Failure trigger timing: 1 - Triggered on first failure; 2 -- Triggered when all retries complete (default)。",
 												},
 												"data_backfill_or_rerun_trigger": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Re-recording trigger timing: 1 - Triggered by the first failure; 2 - Triggered by completion of all retries.",
+													Description: "Re-recording trigger timing: 1 - Triggered by the first failure; 2 - Triggered by completion of all retries。",
 												},
 												"time_out_ext_info": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Periodic instance timeout configuration details.",
+													Description: "Periodic instance timeout configuration details。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"rule_type": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Timeout alarm configuration: 1. Estimated running time exceeded, 2. Estimated completion time exceeded, 3. Estimated waiting time for scheduling exceeded, 4. Estimated completion within the period but not completed.",
+																Description: "Timeout alarm configuration: 1. Estimated running time exceeded，2. Estimated completion time exceeded，3. Estimated waiting time for scheduling exceeded，4. Estimated completion within the 周期 but not completed。",
 															},
 															"type": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Timeout value configuration type: 1-Specified value; 2-Average value.",
+																Description: "Timeout 值 configuration 类型: 1-Specified 值; 2-Average 值",
 															},
 															"hour": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Specify the timeout value in hours. The default value is 0.",
+																Description: "指定timeout 值 in hours. The 默认值为 0。",
 															},
 															"min": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "The timeout value is specified in minutes. The default value is 1.",
+																Description: "The timeout 值 is specified in minutes. The 默认值为 1。",
 															},
 															"schedule_time_zone": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "The time zone configuration corresponding to the timeout period, such as UTC+7, the default is UTC+8.",
+																Description: "The 时区 configuration corresponding to the timeout 周期，such as UTC+7，the 默认为 UTC+8。",
 															},
 														},
 													},
@@ -215,33 +215,33 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 												"data_backfill_or_rerun_time_out_ext_info": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Detailed configuration of re-running and re-recording instance timeout.",
+													Description: "Detailed configuration of re-running and re-recording instance timeout。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"rule_type": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Timeout alarm configuration: 1. Estimated running time exceeded, 2. Estimated completion time exceeded, 3. Estimated waiting time for scheduling exceeded, 4. Estimated completion within the period but not completed.",
+																Description: "Timeout alarm configuration: 1. Estimated running time exceeded，2. Estimated completion time exceeded，3. Estimated waiting time for scheduling exceeded，4. Estimated completion within the 周期 but not completed。",
 															},
 															"type": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Timeout value configuration type: 1-Specified value; 2-Average value.",
+																Description: "Timeout 值 configuration 类型: 1-Specified 值; 2-Average 值",
 															},
 															"hour": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Specify the timeout value in hours. The default value is 0.",
+																Description: "指定timeout 值 in hours. The 默认值为 0。",
 															},
 															"min": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "The timeout value is specified in minutes. The default value is 1.",
+																Description: "The timeout 值 is specified in minutes. The 默认值为 1。",
 															},
 															"schedule_time_zone": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "The time zone configuration corresponding to the timeout period, such as UTC+7, the default is UTC+8.",
+																Description: "The 时区 configuration corresponding to the timeout 周期，such as UTC+7，the 默认为 UTC+8。",
 															},
 														},
 													},
@@ -249,43 +249,43 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 												"project_instance_statistics_alarm_info_list": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Project fluctuation alarm configuration details.",
+													Description: "Project fluctuation alarm configuration details。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"alarm_type": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Alarm type: projectFailureInstanceUpwardFluctuationAlarm: Failure instance upward fluctuation alarm; projectSuccessInstanceDownwardFluctuationAlarm: Success instance downward fluctuation alarm.",
+																Description: "Alarm 类型: projectFailureInstanceUpwardFluctuationAlarm: Failure instance upward fluctuation alarm; projectSuccessInstanceDownwardFluctuationAlarm: Success instance downward fluctuation alarm。",
 															},
 															"instance_threshold_count_percent": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "The alarm threshold for the proportion of instance successes fluctuating downwards; the alarm threshold for the proportion of instance failures fluctuating upwards.",
+																Description: "The alarm threshold for the proportion of instance successes fluctuating downwards; the alarm threshold for the proportion of instance failures fluctuating upwards。",
 															},
 															"instance_threshold_count": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "The cumulative instance number fluctuation threshold.",
+																Description: "The cumulative instance number fluctuation threshold。",
 															},
 															"stabilize_threshold": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Stability threshold (number of statistical cycles for anti-shake configuration).",
+																Description: "Stability threshold (数量 statistical cycles for anti-shake configuration)。",
 															},
 															"stabilize_statistics_cycle": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Stability statistics period (number of anti-shake configuration statistics periods).",
+																Description: "Stability statistics 周期 (数量 anti-shake configuration statistics periods)。",
 															},
 															"is_cumulant": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "Whether to calculate cumulatively, false: continuous, true: cumulative.",
+																Description: "是否calculate cumulatively，false: continuous，true: cumulative。",
 															},
 															"instance_count": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "The cumulative number of instances on the day; the downward fluctuation of the number of failed instances on the day.",
+																Description: "The cumulative 数量 instances on the day; the downward fluctuation of the 数量 failed instances on the day。",
 															},
 														},
 													},
@@ -293,28 +293,28 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 												"reconciliation_ext_info": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Offline integrated reconciliation alarm configuration information.",
+													Description: "Offline integrated reconciliation alarm configuration information。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"rule_type": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Offline alarm rule types: reconciliationFailure: Offline reconciliation failure alarm; reconciliationOvertime: Offline reconciliation task timeout alarm (timeout must be configured); reconciliationMismatch: Offline reconciliation mismatch alarm (mismatch threshold must be configured).",
+																Description: "Offline alarm rule types: reconciliationFailure: Offline reconciliation failure alarm; reconciliationOvertime: Offline reconciliation task timeout alarm (timeout must be configured); reconciliationMismatch: Offline reconciliation mismatch alarm (mismatch threshold must be configured)。",
 															},
 															"mismatch_count": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Reconciliation inconsistency threshold, RuleType=reconciliationMismatch. This field needs to be configured and has no default value.",
+																Description: "Reconciliation inconsistency threshold，RuleType=reconciliationMismatch. This field needs to be configured and has no 默认值",
 															},
 															"hour": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Reconciliation task timeout threshold: hours, default is 0.",
+																Description: "Reconciliation task timeout threshold: hours，默认为 0。",
 															},
 															"min": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Reconciliation task timeout threshold: minutes, default is 1.",
+																Description: "Reconciliation task timeout threshold: minutes，默认为 1。",
 															},
 														},
 													},
@@ -325,33 +325,33 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 									"alarm_level": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Alarm level: 1. Normal, 2. Major, 3. Urgent.",
+										Description: "Alarm 级别: 1. Normal，2. Major，3. Urgent。",
 									},
 									"owner_uin": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Alarm rule creator uid.",
+										Description: "Alarm rule 创建者 uid。",
 									},
 									"bundle_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Alarm rules bound to the bundle client: If it is empty, it is a normal alarm rule; if it is not empty, it corresponds to the rule bound to the bundle client.",
+										Description: "Alarm rules bound to the bundle client: If it is empty，it is a normal alarm rule; if it is not empty，it corresponds to the rule bound to the bundle client。",
 									},
 									"bundle_info": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "If bundleId is not empty, it indicates the name of the bound bundle client.",
+										Description: "If bundleId is not empty，it 表示name of the bound bundle client。",
 									},
 									"alarm_groups": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Alarm recipient configuration list.",
+										Description: "Alarm recipient configuration list。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"alarm_escalation_recipient_ids": {
 													Type:        schema.TypeSet,
 													Optional:    true,
-													Description: "Alarm escalator ID list. If the alarm receiver or the upper escalator does not confirm the alarm within the alarm interval, the alarm will be sent to the next level escalator.",
+													Description: "Alarm escalator ID list. If the alarm receiver or the upper escalator does not confirm the alarm within the alarm interval，the alarm will be sent to the next 级别 escalator。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -359,24 +359,24 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 												"alarm_escalation_interval": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Alarm escalation interval.",
+													Description: "Alarm escalation interval。",
 												},
 												"notification_fatigue": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Alarm notification fatigue configuration.",
+													Description: "Alarm notification fatigue configuration。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"notify_count": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Number of alarms.",
+																Description: "数量 alarms。",
 															},
 															"notify_interval": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Alarm interval, in minutes.",
+																Description: "Alarm interval，in minutes。",
 															},
 															"quiet_intervals": {
 																Type:        schema.TypeList,
@@ -387,7 +387,7 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 																		"days_of_week": {
 																			Type:        schema.TypeSet,
 																			Optional:    true,
-																			Description: "According to the ISO standard, 1 represents Monday and 7 represents Sunday.",
+																			Description: "According to the ISO standard，1 represents Monday and 7 represents Sunday。",
 																			Elem: &schema.Schema{
 																				Type: schema.TypeInt,
 																			},
@@ -395,12 +395,12 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 																		"start_time": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Start time, with precision of hours, minutes, and seconds, in the format of HH:mm:ss.",
+																			Description: "开始时间，with precision of hours，minutes，and seconds，in the 格式 of HH:mm:ss。",
 																		},
 																		"end_time": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "End time, with precision of hours, minutes, and seconds, in the format of HH:mm:ss.",
+																			Description: "结束时间，with precision of hours，minutes，and seconds，in the 格式 of HH:mm:ss。",
 																		},
 																	},
 																},
@@ -411,7 +411,7 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 												"alarm_ways": {
 													Type:        schema.TypeSet,
 													Optional:    true,
-													Description: "Alert Channels: 1: Email, 2: SMS, 3: WeChat, 4: Voice, 5: WeChat Enterprise, 6: Http, 7: WeChat Enterprise Group, 8: Lark Group, 9: DingTalk Group, 10: Slack Group, 11: Teams Group (Default: Email), Only one channel can be selected.",
+													Description: "Alert Channels: 1: Email，2: SMS，3: WeChat，4: Voice，5: WeChat Enterprise，6: Http，7: WeChat Enterprise Group，8: Lark Group，9: DingTalk Group，10: Slack Group，11: Teams Group (默认值：Email)，Only one channel can be selected。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -419,18 +419,18 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 												"web_hooks": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "List of webhook addresses for corporate WeChat groups, Feishu groups, DingTalk groups, Slack groups, and Teams groups.",
+													Description: "列表 webhook addresses for corporate WeChat groups，Feishu groups，DingTalk groups，Slack groups，and Teams groups。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"alarm_way": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Alert channel value: 7. Enterprise WeChat group, 8. Feishu group, 9. DingTalk group, 10. Slack group, 11. Teams group.",
+																Description: "Alert channel 值: 7. Enterprise WeChat group，8. Feishu group，9. DingTalk group，10. Slack group，11. Teams group。",
 															},
 															"web_hooks": {
 																Type:        schema.TypeSet,
 																Optional:    true,
-																Description: "List of webhook addresses for the alarm group.",
+																Description: "列表 webhook addresses for the alarm group。",
 																Elem: &schema.Schema{
 																	Type: schema.TypeString,
 																},
@@ -441,12 +441,12 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 												"alarm_recipient_type": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Alarm Recipient Type: 1. Designated Personnel, 2. Task Responsible Personnel, 3. Duty Roster (Default: 1. Designated Personnel).",
+													Description: "Alarm Recipient 类型: 1. Designated Personnel，2. Task Responsible Personnel，3. Duty Roster (默认值：1. Designated Personnel)。",
 												},
 												"alarm_recipient_ids": {
 													Type:        schema.TypeSet,
 													Optional:    true,
-													Description: "Depending on the type of AlarmRecipientType, this list has different business IDs: 1 (Specified Person): Alarm Recipient ID List; 2 (Task Responsible Person): No configuration required; 3 (Duty Roster): Duty Roster ID List.",
+													Description: "Depending on 类型 AlarmRecipientType，this list has different business IDs: 1 (Specified Person): Alarm Recipient ID List; 2 (Task Responsible Person): No configuration 必填; 3 (Duty Roster): Duty Roster ID List。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -464,7 +464,7 @@ func DataSourceTencentCloudWedataOpsAlarmRules() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,41 +19,41 @@ func DataSourceTencentCloudTsfMicroserviceApiVersion() *schema.Resource {
 			"microservice_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Microservice ID.",
+				Description: "Microservice ID。",
 			},
 
 			"path": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "api path.",
+				Description: "api 路径",
 			},
 
 			"method": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "request method.",
+				Description: "request method。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "api version list.",
+				Description: "API 版本 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"application_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Application ID.",
+							Description: "Application ID。",
 						},
 						"application_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Application Name.",
+							Description: "Application 名称",
 						},
 						"pkg_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "application pkg version.",
+							Description: "application pkg 版本",
 						},
 					},
 				},
@@ -62,7 +62,7 @@ func DataSourceTencentCloudTsfMicroserviceApiVersion() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

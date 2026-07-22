@@ -27,34 +27,34 @@ func ResourceTencentCloudSesReceiver() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Recipient group name.",
+				Description: "Recipient 组名称",
 			},
 
 			"desc": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Recipient group description.",
+				Description: "Recipient group 描述",
 			},
 
 			"data": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeSet,
-				Description: "Recipient email and template parameters in array format. The number of recipients is limited to within 20,000. If there is an object in the `data` list that inputs `template_data`, then other objects are also required.",
+				Description: "Recipient email and template parameters in array 格式 The 数量 recipients is limited to within 20,000. If there is an object in the `data` list that inputs `template_data`，then other objects are also 必填",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"email": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Recipient email addresses.",
+							Description: "Recipient email addresses。",
 						},
 						"template_data": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Variable parameters in the template, please use json.dump to format the JSON object as a string type. The object is a set of key-value pairs, where each key represents a variable in the template, and the variables in the template are represented by {{key}}, and the corresponding values will be replaced with {{value}} when sent.Note: Parameter values cannot be complex data such as HTML. The total length of TemplateData (the entire JSON structure) should be less than 800 bytes.",
+							Description: "Variable parameters in the template，please use json.dump to 格式 the JSON object as a string 类型 The object is a set of 键-值 pairs，where each 键 represents a variable in the template，and the variables in the template are represented by {{键}}，and the corresponding values will be replaced with {{值}} when sent.Note: Parameter values cannot be complex data such as HTML. The total length of TemplateData (the entire JSON structure) should be less than 800 bytes。",
 						},
 					},
 				},

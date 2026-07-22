@@ -24,20 +24,20 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule name.",
+				Description: "Rule 名称",
 			},
 
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain name.",
+				Description: "域名 名称",
 			},
 
 			"strategies": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Rule-Based matching policy list.",
+				Description: "Rule-Based matching policy list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"field": {
@@ -48,22 +48,22 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 						"compare_func": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specifies the logic symbol. \n\nLogical symbols are divided into the following types:.\nEmpty (content is empty).\nnull (not found).\nEq (equal to).\nneq (not equal to).\ncontains (contain).\nncontains (do not contain).\nstrprefix (prefix matching).\nstrsuffix (suffix matching).\nLen_eq (length equals to).\nLen_gt (length greater than).\nLen_lt (length less than).\nipmatch (belong).\nipnmatch (not_in).\nnumgt (value greater than).\nNumValue smaller than].\nValue equal to.\nnumneq (value not equal to).\nnumle (less than or equal to).\nnumge (value is greater than or equal to).\ngeo_in (IP geographic belong).\ngeo_not_in (IP geographic not_in).\nSpecifies different logical operators for matching fields. for details, see the matching field table above.",
+							Description: "指定logic symbol. \n\nLogical symbols are divided into the following types:.\nEmpty (内容 is empty).\nnull (not found).\nEq (equal to).\nneq (not equal to).\n包含(contain).\nn包含(do not contain).\nstrprefix (prefix matching).\nstrsuffix (suffix matching).\nLen_eq (length equals to).\nLen_gt (length greater than).\nLen_lt (length less than).\nipmatch (belong).\nipnmatch (not_in).\nnumgt (值 greater than).\nNumValue smaller than].\nValue equal to.\nnumneq (值 not equal to).\nnumle (less than or equal to).\nnumge (值 is greater than or equal to).\ngeo_in (IP geographic belong).\ngeo_not_in (IP geographic not_in).\n指定different logical operators for matching fields. for details，see the matching field table above。",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specifies the match content.\n\nCurrently, when the match field is COOKIE (COOKIE), match content is not required. all others are needed.",
+							Description: "指定match 内容\n\nCurrently，when the match field is COOKIE (COOKIE)，match 内容 不是必填项. all others are needed。",
 						},
 						"arg": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specifies the matching parameter.\n\nConfiguration parameters are divided into two data types: parameter not supported and support parameters.\nWhen the match field is one of the following four, the matching parameter can be entered, otherwise not supported.\nGET (get parameter value).\v\t\t\nPOST (post parameter value).\v\t\t\nARGS_COOKIE (COOKIE parameter value).\v\t\t\nARGS_HEADER (HEADER parameter value).",
+							Description: "指定matching parameter.\n\nConfiguration parameters are divided into two data types: parameter not supported and support parameters.\nWhen the match field is one of the following four，the matching parameter can be entered，otherwise not supported.\nGET (get parameter 值).\v\t\t\nPOST (post parameter 值).\v\t\t\nARGS_COOKIE (COOKIE parameter 值).\v\t\t\nARGS_HEADER (HEADER parameter 值)。",
 						},
 						"case_not_sensitive": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Case-Sensitive.\nCase-Insensitive.",
+							Description: "Case-Sensitive.\nCase-Insensitive。",
 						},
 					},
 				},
@@ -72,7 +72,7 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 			"ids": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "ID list of allowlisted rules.",
+				Description: "ID 列表 allowlisted rules。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -81,37 +81,37 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 			"type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Allowlist type. valid values: 0 (allowlisting by specific rule ID), 1 (allowlisting by rule type).",
+				Description: "Allowlist 类型 有效值：0 (allowlisting by specific rule ID)，1 (allowlisting by rule 类型)。",
 			},
 
 			"job_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule execution mode: TimedJob indicates scheduled execution. CronJob indicates periodic execution.",
+				Description: "Rule execution 模式: TimedJob 表示scheduled execution. CronJob 表示periodic execution。",
 			},
 
 			"job_date_time": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Scheduled task configuration.",
+				Description: "Scheduled task configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timed": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameter for scheduled execution.",
+							Description: "Time parameter for scheduled execution。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"start_date_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Start timestamp, in seconds.",
+										Description: "Start 时间戳，（秒）。",
 									},
 									"end_date_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "End timestamp, in seconds.",
+										Description: "End 时间戳，（秒）。",
 									},
 								},
 							},
@@ -119,13 +119,13 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 						"cron": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameter for periodic execution.",
+							Description: "Time parameter for periodic execution。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Execution day of each month.",
+										Description: "Execution day of each month。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -133,7 +133,7 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 									"w_days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Execution day of each week.",
+										Description: "Execution day of each week。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -141,12 +141,12 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 									"start_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Start time.",
+										Description: "开始时间。",
 									},
 									"end_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "End time.",
+										Description: "结束时间。",
 									},
 								},
 							},
@@ -154,7 +154,7 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 						"time_t_zone": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Specifies the time zone.",
+							Description: "指定time 可用区",
 						},
 					},
 				},
@@ -163,21 +163,21 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 			"expire_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "If the JobDateTime field is not set, this field is used. 0 means permanent, other values indicate the cutoff time for scheduled effect (unit: seconds).",
+				Description: "If the JobDateTime field is not set，this field is used. 0 means permanent，other values indicate the cutoff time for scheduled effect (unit: seconds)。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Rule status. valid values: 0 (disabled), 1 (enabled). enabled by default.",
+				Description: "Rule 状态 有效值：0 (已禁用)，1 (已启用). 已启用 by default。",
 			},
 
 			// computed
 			"rule_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 		},
 	}

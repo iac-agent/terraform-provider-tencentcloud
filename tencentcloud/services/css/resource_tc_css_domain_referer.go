@@ -26,31 +26,31 @@ func ResourceTencentCloudCssDomainReferer() *schema.Resource {
 			"domain_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain Name.",
+				Description: "域名 名称",
 			},
 
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to enable the referer blacklist authentication of the current domain name,`0`: off, `1`: on.",
+				Description: "是否enable the referer blacklist authentication of the current 域名 名称,`0`: off，`1`: on。",
 			},
 
 			"type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "List type: 0: blacklist, 1: whitelist.",
+				Description: "List 类型: 0: blacklist，1: whitelist。",
 			},
 
 			"allow_empty": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Allow blank referers, 0: not allowed, 1: allowed.",
+				Description: "Allow blank referers，0: not allowed，1: allowed。",
 			},
 
 			"rules": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The list of referers to; separate.",
+				Description: "The 列表 referers to; separate。",
 			},
 		},
 	}

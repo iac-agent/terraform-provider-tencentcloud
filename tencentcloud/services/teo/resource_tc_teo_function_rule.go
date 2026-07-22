@@ -30,38 +30,38 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the site.",
+				Description: "ID site。",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID of the Function Rule.",
+				Description: "ID Function Rule。",
 			},
 
 			"function_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the Function.",
+				Description: "ID Function。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule description, maximum support of 60 characters.",
+				Description: "Rule 描述，maximum support of 60 characters。",
 			},
 
 			"function_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The name of the function.",
+				Description: "The 名称 function。",
 			},
 
 			"priority": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The priority of the function trigger rule. A higher numerical value indicates a higher priority.",
+				Description: "The 优先级 of the function trigger rule. A higher numerical 值 表示a higher 优先级",
 			},
 
 			"function_rule_conditions": {
@@ -73,18 +73,18 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 						"rule_conditions": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "For edge function trigger rule conditions, if all items in the list are satisfied, then the condition is considered fulfilled.",
+							Description: "For edge function trigger rule conditions，if all items in the list are satisfied，then the condition is considered fulfilled。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"operator": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Operator. Valid values:\n  - `equals`: Equals.\n  - `notEquals`: Does not equal.\n  - `exist`: Exists.\n  - `notexist`: Does not exist.",
+										Description: "操作者 Valid values:\n  - `equals`: Equals.\n  - `notEquals`: Does not equal.\n  - `exist`: Exists.\n  - `notexist`: Does not exist。",
 									},
 									"target": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The match type. Values:\n  - `filename`: File name.\n  - `extension`: File extension.\n  - `host`: Host.\n  - `full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.\n  - `url`: Partial URL under the current site.\n  - `client_country`: Country/Region of the client.\n  - `query_string`: Query string in the request URL.\n  - `request_header`: HTTP request header.",
+										Description: "The match 类型 Values:\n  - `filename`: File 名称\n  - `extension`: File extension.\n  - `主机`: 主机\n  - `full_url`: Full URL，which 表示complete URL 路径 under the current site and must contain the HTTP 协议，主机，and 路径\n  - `URL`: Partial URL under the current site.\n  - `client_country`: Country/地域 of the client.\n  - `query_string`: Query string in the request URL\n  - `request_header`: HTTP request header。",
 									},
 									"values": {
 										Type:        schema.TypeSet,
@@ -97,7 +97,7 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 									"ignore_case": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether the parameter value is case insensitive. Default value: false.",
+										Description: "是否parameter 值 is case insensitive. 默认值：false。",
 									},
 									"name": {
 										Type:        schema.TypeString,

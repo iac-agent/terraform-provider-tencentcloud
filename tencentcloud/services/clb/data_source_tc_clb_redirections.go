@@ -20,63 +20,63 @@ func DataSourceTencentCloudClbRedirections() *schema.Resource {
 			"clb_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the CLB to be queried.",
+				Description: "需要查询的CLB ID。",
 			},
 			"source_listener_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of source listener to be queried.",
+				Description: "需要查询的源监听ID。",
 			},
 			"target_listener_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of target listener to be queried.",
+				Description: "需要查询的目标监听ID。",
 			},
 			"source_rule_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule ID of source listener to be queried.",
+				Description: "需要查询的源监听的规则ID。",
 			},
 			"target_rule_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule ID of target listener to be queried.",
+				Description: "需要查询的目标监听的规则ID。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"redirection_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of cloud load balancer redirection configurations. Each element contains the following attributes:",
+				Description: "云负载均衡器重定向配置列表。每个元素包含以下属性：",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"clb_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the CLB.",
+							Description: "CLB的ID。",
 						},
 						"source_listener_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of source listener.",
+							Description: "源监听器ID。",
 						},
 						"target_listener_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of target listener.",
+							Description: "目标监听者ID。",
 						},
 						"source_rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule ID of source listener.",
+							Description: "源监听器的规则ID。",
 						},
 						"target_rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule ID of target listener.",
+							Description: "目标监听器的规则ID。",
 						},
 					},
 				},

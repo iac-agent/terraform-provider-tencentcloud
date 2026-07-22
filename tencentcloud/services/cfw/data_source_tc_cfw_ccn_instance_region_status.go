@@ -18,13 +18,13 @@ func DataSourceTencentCloudCfwCcnInstanceRegionStatus() *schema.Resource {
 			"ccn_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CCN ID.",
+				Description: "CCN ID。",
 			},
 
 			"instance_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "List of instance IDs associated with CCN for querying traffic steering network deployment status.",
+				Description: "列表 instance IDs associated with CCN for querying traffic steering network deployment 状态",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -33,29 +33,29 @@ func DataSourceTencentCloudCfwCcnInstanceRegionStatus() *schema.Resource {
 			"routing_mode": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Traffic steering routing method, 0: multi-route table, 1: policy routing.",
+				Description: "Traffic steering routing method，0: multi-route table，1: policy routing。",
 			},
 
 			"region_fw_status": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of regional firewall traffic steering network status.",
+				Description: "列表 regional firewall traffic steering network 状态",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region.",
+							Description: "地域",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Traffic steering network deployment status.\n1. `NotDeployed` Firewall cluster not deployed.\n2. `Deployed` Firewall cluster deployed, but traffic steering network not created.\n3. `Auto` Firewall cluster deployed, and traffic steering network created with automatically selected network segment.\n4. `Custom` Firewall cluster deployed, and traffic steering network created with user-defined network segment.",
+							Description: "Traffic steering network deployment 状态\n1. `NotDeployed` Firewall cluster not deployed.\n2. `Deployed` Firewall cluster deployed，but traffic steering network not created.\n3. `Auto` Firewall cluster deployed，and traffic steering network created with automatically selected network segment.\n4. `Custom` Firewall cluster deployed，and traffic steering network created with 用户-defined network segment。",
 						},
 						"cidr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CIDR of the traffic steering network, empty if traffic steering network is not deployed.",
+							Description: "CIDR of the traffic steering network，empty if traffic steering network is not deployed。",
 						},
 					},
 				},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudCfwCcnInstanceRegionStatus() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

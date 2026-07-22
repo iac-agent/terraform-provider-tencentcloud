@@ -27,54 +27,54 @@ func ResourceTencentCloudDtsMigrateService() *schema.Resource {
 			"src_database_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "source database type, optional value is mysql/redis/percona/mongodb/postgresql/sqlserver/mariadb.",
+				Description: "来源 database 类型，可选 值 is mysql/redis/percona/mongodb/postgresql/sqlserver/mariadb。",
 			},
 
 			"dst_database_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "destination database type, optional value is mysql/redis/percona/mongodb/postgresql/sqlserver/mariadb.",
+				Description: "destination database 类型，可选 值 is mysql/redis/percona/mongodb/postgresql/sqlserver/mariadb。",
 			},
 
 			"src_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "source region.",
+				Description: "来源 地域",
 			},
 
 			"dst_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "destination region.",
+				Description: "destination 地域",
 			},
 
 			"instance_class": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance class, optional value is small/medium/large/xlarge/2xlarge.",
+				Description: "instance class，可选 值 is small/medium/large/xlarge/2xlarge。",
 			},
 
 			"job_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "job name.",
+				Description: "作业名称",
 			},
 
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "tags.",
+				Description: "标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "tag value.",
+							Description: "标签值",
 						},
 					},
 				},

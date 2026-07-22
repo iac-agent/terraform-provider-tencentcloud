@@ -19,58 +19,58 @@ func DataSourceTencentCloudAPIGatewayPlugins() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The service ID to query.",
+				Description: "The 服务 ID to query。",
 			},
 			"plugin_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The plugin ID to query.",
+				Description: "The plugin ID to query。",
 			},
 			"environment_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Environmental information.",
+				Description: "Environmental information。",
 			},
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of plugin related APIs.",
+				Description: "列表 plugin related APIs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API ID.",
+							Description: "API ID。",
 						},
 						"api_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API name.",
+							Description: "API 名称",
 						},
 						"api_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API type.",
+							Description: "API 类型",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API path.",
+							Description: "API 路径",
 						},
 						"method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API method.",
+							Description: "API method。",
 						},
 						"attached_other_plugin": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the API is bound to other plugins.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "是否API is bound to other plugins.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_attached": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the API is bound to the current plugin.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "是否API is bound to the current plugin.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudAPIGatewayPlugins() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

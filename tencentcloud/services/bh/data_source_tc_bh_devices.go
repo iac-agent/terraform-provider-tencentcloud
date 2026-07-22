@@ -18,7 +18,7 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Asset ID collection.",
+				Description: "Asset ID collection。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -27,19 +27,19 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Asset name or asset IP, fuzzy search.",
+				Description: "Asset 名称 or asset IP，fuzzy search。",
 			},
 
 			"ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Not currently used.",
+				Description: "Not currently used。",
 			},
 
 			"ap_code_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Region code collection.",
+				Description: "地域 代码 collection。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -48,13 +48,13 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"kind": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Operating system type, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer.",
+				Description: "Operating system 类型，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer。",
 			},
 
 			"authorized_user_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "User ID collection with access to this asset.",
+				Description: "用户 ID collection with access to this asset。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -63,7 +63,7 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"resource_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Filter condition, asset-bound bastion host service ID collection.",
+				Description: "Filter condition，asset-bound bastion 主机 服务 ID collection。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -72,7 +72,7 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"kind_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Can filter by multiple types, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer.",
+				Description: "Can filter by multiple types，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -81,19 +81,19 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"managed_account": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Whether the asset contains managed accounts. 1, contains; 0, does not contain.",
+				Description: "是否asset 包含managed accounts. 1，contains; 0，does not contain。",
 			},
 
 			"department_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter condition, can filter by department ID.",
+				Description: "Filter condition，can filter by department ID。",
 			},
 
 			"account_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Cloud account ID to which the asset belongs.",
+				Description: "Cloud 账号 ID to which the asset belongs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -102,7 +102,7 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"provider_type_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Cloud provider type, 1 - Tencent Cloud, 2 - Alibaba Cloud.",
+				Description: "Cloud provider 类型，1 - Tencent Cloud，2 - Alibaba Cloud。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -111,7 +111,7 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"cloud_device_status_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Synchronized cloud asset status, marking the status of synchronized assets, 0 - deleted, 1 - normal, 2 - isolated, 3 - expired.",
+				Description: "Synchronized cloud asset 状态，marking 状态 synchronized assets，0 - deleted，1 - normal，2 - isolated，3 - expired。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -126,12 +126,12 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -143,18 +143,18 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter array.",
+				Description: "Filter array。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to filter. Support: BindingStatus, InstanceId, DeviceAccount, VpcId, DomainId, ResourceId, Name, Ip, ManageDimension.",
+							Description: "Field to filter. Support: BindingStatus，实例 ID，DeviceAccount，VpcId，DomainId，ResourceId，名称，Ip，ManageDimension。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter values for the field. \nIf multiple Filters exist, the relationship between Filters is logical AND. \nIf multiple Values exist for the same Filter, the relationship between Values under the same Filter is logical OR.",
+							Description: "Filter values for the field. \nIf multiple Filters exist，the relationship between Filters is logical AND. \nIf multiple Values exist for the same Filter，the relationship between Values under the same Filter is logical OR。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -166,95 +166,95 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"device_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Asset information list.",
+				Description: "Asset information list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Asset ID.",
+							Description: "Asset ID。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID, corresponding to CVM, CDB and other instance IDs.",
+							Description: "实例 ID，corresponding to CVM，CDB and other instance IDs。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Asset name.",
+							Description: "Asset 名称",
 						},
 						"public_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public IP.",
+							Description: "Public IP。",
 						},
 						"private_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Private IP.",
+							Description: "Private IP。",
 						},
 						"ap_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region code.",
+							Description: "地域 代码",
 						},
 						"ap_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region name.",
+							Description: "地域名称",
 						},
 						"os_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Operating system name.",
+							Description: "Operating system 名称",
 						},
 						"kind": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Asset type 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer.",
+							Description: "Asset 类型 1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Management port.",
+							Description: "Management 端口",
 						},
 						"group_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Asset group list to which it belongs.",
+							Description: "Asset group list to which it belongs。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Group ID.",
+										Description: "组 ID",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group name.",
+										Description: "组名称",
 									},
 									"department": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Department information to which it belongs.",
+										Description: "Department information to which it belongs。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Department ID.",
+													Description: "Department ID。",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Department name, 1 - 256 characters.",
+													Description: "Department 名称，1 - 256 characters。",
 												},
 												"managers": {
 													Type:        schema.TypeSet,
 													Computed:    true,
-													Description: "Department administrator account ID.",
+													Description: "Department administrator 账号 ID。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -262,18 +262,18 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 												"manager_users": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Administrator users.",
+													Description: "Administrator users。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"manager_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Administrator ID.",
+																Description: "Administrator ID。",
 															},
 															"manager_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Administrator name.",
+																Description: "Administrator 名称",
 															},
 														},
 													},
@@ -284,7 +284,7 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 									"count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Count.",
+										Description: "Count。",
 									},
 								},
 							},
@@ -292,133 +292,133 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 						"account_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of accounts bound to the asset.",
+							Description: "数量 accounts bound to the asset。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC ID.",
+							Description: "私有网络 ID",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet ID.",
+							Description: "子网 ID",
 						},
 						"resource": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Bastion host service information, note that it is null when no service is bound.",
+							Description: "Bastion 主机 service information，note that it is null when no service is bound。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Service instance ID, such as bh-saas-s3ed4r5e.",
+										Description: "Service instance ID，such as bh-saas-s3ed4r5e。",
 									},
 									"ap_code": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region code.",
+										Description: "地域 代码",
 									},
 									"sv_args": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Service instance specification information.",
+										Description: "Service instance specification information。",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VPC ID.",
+										Description: "私有网络 ID",
 									},
 									"nodes": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of assets corresponding to the service specification.",
+										Description: "数量 assets corresponding to the service specification。",
 									},
 									"renew_flag": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Auto-renewal flag, 0 - default state, 1 - auto-renewal, 2 - explicitly not auto-renewal.",
+										Description: "Auto-renewal flag，0 - default state，1 - auto-renewal，2 - explicitly not auto-renewal。",
 									},
 									"expire_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Expiration time.",
+										Description: "过期时间。",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Resource status, 0 - not initialized, 1 - normal, 2 - isolated, 3 - destroyed, 4 - initialization failed, 5 - initializing.",
+										Description: "Resource 状态，0 - not initialized，1 - normal，2 - isolated，3 - destroyed，4 - initialization failed，5 - initializing。",
 									},
 									"resource_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Service instance name, such as T-Sec-Bastion Host (SaaS type).",
+										Description: "Service 实例名称，such as T-Sec-Bastion 主机 (SaaS 类型)。",
 									},
 									"pid": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Pricing model ID.",
+										Description: "Pricing model ID。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resource creation time.",
+										Description: "Resource 创建时间。",
 									},
 									"product_code": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Product code, p_cds_dasb.",
+										Description: "Product 代码，p_cds_dasb。",
 									},
 									"sub_product_code": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Sub-product code, sp_cds_dasb_bh_saas.",
+										Description: "Sub-product 代码，sp_cds_dasb_bh_saas。",
 									},
 									"zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Availability zone.",
+										Description: "Availability 可用区",
 									},
 									"expired": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether expired, true - expired, false - not expired.",
+										Description: "Whether expired，true - expired，false - not expired。",
 									},
 									"deployed": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether deployed, true - deployed, false - not deployed.",
+										Description: "Whether deployed，true - deployed，false - not deployed。",
 									},
 									"vpc_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VPC name where the service is deployed.",
+										Description: "VPC 名称 where the service is deployed。",
 									},
 									"vpc_cidr_block": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CIDR block of the VPC where the service is deployed.",
+										Description: "CIDR block of the VPC where the service is deployed。",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Subnet ID where the service is deployed.",
+										Description: "子网 ID where the service is deployed。",
 									},
 									"subnet_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Subnet name where the service is deployed.",
+										Description: "Subnet 名称 where the service is deployed。",
 									},
 									"cidr_block": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CIDR block of the subnet where the service is deployed.",
+										Description: "CIDR block of the subnet where the service is deployed。",
 									},
 									"public_ip_set": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "External IP.",
+										Description: "External IP。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -426,7 +426,7 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 									"private_ip_set": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Internal IP.",
+										Description: "Internal IP。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -434,7 +434,7 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 									"module_set": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Advanced feature list enabled for the service, such as: [DB].",
+										Description: "Advanced feature list 已启用 for the service，such as: [DB]。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -442,38 +442,38 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 									"used_nodes": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of used authorization points.",
+										Description: "数量 used authorization points。",
 									},
 									"extend_points": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Extension points.",
+										Description: "Extension points。",
 									},
 									"package_bandwidth": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of bandwidth extension packages (4M).",
+										Description: "数量 bandwidth extension packages (4M)。",
 									},
 									"package_node": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of authorization point extension packages (50 points).",
+										Description: "数量 authorization point extension packages (50 points)。",
 									},
 									"log_delivery_args": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Log delivery specification information.",
+										Description: "Log delivery specification information。",
 									},
 									"clb_set": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Bastion host resource load balancer.",
+										Description: "Bastion 主机 resource load balancer。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"clb_ip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Load balancer IP.",
+													Description: "Load balancer IP。",
 												},
 											},
 										},
@@ -481,42 +481,42 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 									"domain_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of network domains.",
+										Description: "数量 network domains。",
 									},
 									"used_domain_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of network domains already used.",
+										Description: "数量 network domains already used。",
 									},
 									"trial": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "0 non-trial version, 1 trial version.",
+										Description: "0 non-trial 版本，1 trial 版本",
 									},
 									"log_delivery": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Log delivery specification information.",
+										Description: "Log delivery specification information。",
 									},
 									"cdc_cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CDC cluster ID.",
+										Description: "CDC cluster ID。",
 									},
 									"deploy_model": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Deployment mode, default 0, 0-cvm 1-tke.",
+										Description: "Deployment 模式，default 0，0-cvm 1-tke。",
 									},
 									"intranet_access": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "0 default value, non-intranet access, 1 intranet access, 2 intranet access opening, 3 intranet access closing.",
+										Description: "0 默认值，non-intranet access，1 intranet access，2 intranet access opening，3 intranet access closing。",
 									},
 									"intranet_private_ip_set": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "IP addresses for intranet access.",
+										Description: "IP addresses for intranet access。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -524,82 +524,82 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 									"intranet_vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VPC for enabling intranet access.",
+										Description: "VPC for enabling intranet access。",
 									},
 									"intranet_subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Subnet ID for enabling intranet access.",
+										Description: "子网 ID for enabling intranet access。",
 									},
 									"intranet_vpc_cidr": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CIDR block of the VPC for enabling intranet access.",
+										Description: "CIDR block of the VPC for enabling intranet access。",
 									},
 									"domain_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Custom domain name for bastion host intranet IP.",
+										Description: "Custom 域名 名称 for bastion 主机 intranet IP。",
 									},
 									"share_clb": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to share CLB, true-shared CLB, false-dedicated CLB.",
+										Description: "是否share CLB，true-shared CLB，false-dedicated CLB。",
 									},
 									"open_clb_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Shared CLB ID.",
+										Description: "Shared CLB ID",
 									},
 									"lb_vip_isp": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ISP information.",
+										Description: "ISP information。",
 									},
 									"tui_cmd_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Linux asset command line operation port.",
+										Description: "Linux asset command line operation 端口",
 									},
 									"tui_direct_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Linux asset direct connection port.",
+										Description: "Linux asset direct connection 端口",
 									},
 									"web_access": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "1 default value, web access enabled, 0 web access disabled, 2 web access opening, 3 web access closing.",
+										Description: "1 默认值，web access 已启用，0 web access 已禁用，2 web access opening，3 web access closing。",
 									},
 									"client_access": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "1 default value, client access enabled, 0 client access disabled, 2 client access opening, 3 client access closing.",
+										Description: "1 默认值，client access 已启用，0 client access 已禁用，2 client access opening，3 client access closing。",
 									},
 									"external_access": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "1 default value, external access enabled, 0 external access disabled, 2 external access opening, 3 external access closing.",
+										Description: "1 默认值，external access 已启用，0 external access 已禁用，2 external access opening，3 external access closing。",
 									},
 									"ioa_resource": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "0 default value, 0-free version (trial version) IOA, 1-paid version IOA.",
+										Description: "0 默认值，0-free 版本 (trial 版本) IOA，1-paid 版本 IOA。",
 									},
 									"package_ioa_user_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of zero trust bastion host user extension packages, 1 extension package corresponds to 20 users.",
+										Description: "数量 zero trust bastion 主机 用户 extension packages，1 extension package corresponds to 20 users。",
 									},
 									"package_ioa_bandwidth": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of zero trust bastion host bandwidth extension packages, one extension package represents 4M bandwidth.",
+										Description: "数量 zero trust bastion 主机 bandwidth extension packages，one extension package represents 4M bandwidth。",
 									},
 									"ioa_resource_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Zero trust instance ID corresponding to the bastion host instance.",
+										Description: "Zero trust instance ID corresponding to the bastion 主机 instance。",
 									},
 								},
 							},
@@ -607,23 +607,23 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 						"department": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Department to which the asset belongs.",
+							Description: "Department to which the asset belongs。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Department ID.",
+										Description: "Department ID。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Department name, 1 - 256 characters.",
+										Description: "Department 名称，1 - 256 characters。",
 									},
 									"managers": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Department administrator account ID.",
+										Description: "Department administrator 账号 ID。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -631,18 +631,18 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 									"manager_users": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Administrator users.",
+										Description: "Administrator users。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"manager_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Administrator ID.",
+													Description: "Administrator ID。",
 												},
 												"manager_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Administrator name.",
+													Description: "Administrator 名称",
 												},
 											},
 										},
@@ -653,7 +653,7 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 						"ip_port_set": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Multi-node information for database assets.",
+							Description: "Multi-node information for database assets。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -661,82 +661,82 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 						"domain_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network domain ID.",
+							Description: "Network 域名 ID。",
 						},
 						"domain_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network domain name.",
+							Description: "Network 域名 名称",
 						},
 						"enable_ssl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether SSL is enabled, only supports Redis assets, 0: disabled 1: enabled.",
+							Description: "Whether SSL is 已启用，only supports Redis assets，0: 已禁用 1: 已启用",
 						},
 						"ssl_cert_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the uploaded SSL certificate.",
+							Description: "名称 uploaded SSL certificate。",
 						},
 						"ioa_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource ID on the IOA side.",
+							Description: "资源 ID on the IOA side。",
 						},
 						"manage_dimension": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "K8S cluster management dimension, 1-cluster, 2-namespace, 3-workload.",
+							Description: "K8S cluster management dimension，1-cluster，2-namespace，3-workload。",
 						},
 						"manage_account_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "K8S cluster management account ID.",
+							Description: "K8S cluster management 账号 ID。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "K8S cluster namespace.",
+							Description: "K8S cluster namespace。",
 						},
 						"workload": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "K8S cluster workload.",
+							Description: "K8S cluster workload。",
 						},
 						"sync_pod_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of synchronized pods in K8S cluster.",
+							Description: "数量 synchronized pods in K8S cluster。",
 						},
 						"total_pod_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total number of pods in K8S cluster.",
+							Description: "Total 数量 pods in K8S cluster。",
 						},
 						"cloud_account_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cloud account ID.",
+							Description: "Cloud 账号 ID。",
 						},
 						"cloud_account_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud account name.",
+							Description: "Cloud 账号 名称",
 						},
 						"provider_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cloud provider type, 1-Tencent Cloud, 2-Alibaba Cloud.",
+							Description: "Cloud provider 类型，1-Tencent Cloud，2-Alibaba Cloud。",
 						},
 						"provider_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud provider name.",
+							Description: "Cloud provider 名称",
 						},
 						"sync_cloud_device_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Synchronized cloud asset status, marking the status of synchronized assets, 0-deleted, 1-normal, 2-isolated, 3-expired.",
+							Description: "Synchronized cloud asset 状态，marking 状态 synchronized assets，0-deleted，1-normal，2-isolated，3-expired。",
 						},
 					},
 				},
@@ -745,7 +745,7 @@ func DataSourceTencentCloudBhDevices() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

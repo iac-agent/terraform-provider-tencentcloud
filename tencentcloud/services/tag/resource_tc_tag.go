@@ -29,14 +29,14 @@ func ResourceTencentCloudTag() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Tag key.",
+				Description: "标签键",
 			},
 
 			"tag_value": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Tag value.",
+				Description: "标签值",
 			},
 		},
 	}

@@ -28,14 +28,14 @@ func ResourceTencentCloudPlacementGroup() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "Name of the placement group, 1-60 characters in length.",
+				Description:  "名称 placement group，1-60 characters in length。",
 			},
 			"type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CVM_PLACEMENT_GROUP_TYPE),
-				Description:  "Type of the placement group. Valid values: `HOST`, `SW` and `RACK`.",
+				Description:  "类型 placement group. 有效值：`HOST`，`SW` and `RACK`。",
 			},
 			"affinity": {
 				Type:         schema.TypeInt,
@@ -43,29 +43,29 @@ func ResourceTencentCloudPlacementGroup() *schema.Resource {
 				Computed:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1, 10),
-				Description:  "Affinity of the placement group.Valid values: 1~10, default is 1.",
+				Description:  "Affinity of the placement group.有效值：1~10，默认为 1。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the placement group.",
+				Description: "标签 of the placement group。",
 			},
 
 			// computed
 			"cvm_quota_total": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Maximum number of hosts in the placement group.",
+				Description: "最大hosts in the placement group。",
 			},
 			"current_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of hosts in the placement group.",
+				Description: "数量 hosts in the placement group。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of the placement group.",
+				Description: "创建时间 of the placement group。",
 			},
 		},
 	}

@@ -30,27 +30,27 @@ func ResourceTencentCloudCkafkaRoute() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"vip_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Routing network type (3:vpc routing; 4: standard support routing; 7: professional support routing).",
+				Description: "Routing network 类型 (3:vpc routing; 4: standard support routing; 7: professional support routing)。",
 			},
 
 			"vpc_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Vpc id.",
+				Description: "私有网络 ID",
 			},
 
 			"subnet_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Subnet id.",
+				Description: "子网 ID",
 			},
 
 			"access_type": {
@@ -67,42 +67,42 @@ func ResourceTencentCloudCkafkaRoute() *schema.Resource {
 			"auth_flag": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Auth flag.",
+				Description: "Auth flag。",
 			},
 
 			"caller_appid": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Caller appid.",
+				Description: "Caller appid。",
 			},
 
 			"public_network": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Public network.",
+				Description: "Public network。",
 			},
 
 			"ip": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Ip.",
+				Description: "Ip。",
 			},
 			"vip_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Virtual IP list.",
+				Description: "Virtual IP list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Virtual IP.",
+							Description: "Virtual IP。",
 						},
 						"vport": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Virtual port.",
+							Description: "Virtual 端口",
 						},
 					},
 				},
@@ -110,18 +110,18 @@ func ResourceTencentCloudCkafkaRoute() *schema.Resource {
 			"broker_vip_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Virtual IP list (1 to 1 broker nodes).",
+				Description: "Virtual IP list (1 to 1 broker nodes)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Virtual IP.",
+							Description: "Virtual IP。",
 						},
 						"vport": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Virtual port.",
+							Description: "Virtual 端口",
 						},
 					},
 				},

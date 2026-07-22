@@ -28,107 +28,107 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 			"project_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 			"rule_group_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Rule group id.",
+				Description: "Rule group id。",
 			},
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule name.",
+				Description: "Rule 名称",
 			},
 			"table_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Table id.",
+				Description: "Table id。",
 			},
 			"rule_template_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Rule template id.",
+				Description: "Rule template id。",
 			},
 			"type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Rule Type 1. System Template, 2. Custom Template, 3. Custom SQL.",
+				Description: "Rule 类型 1. System Template，2. Custom Template，3. Custom SQL。",
 			},
 			"quality_dim": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Rules belong to quality dimensions (1. accuracy, 2. uniqueness, 3. completeness, 4. consistency, 5. timeliness, 6. effectiveness).",
+				Description: "Rules belong to quality dimensions (1. accuracy，2. uniqueness，3. completeness，4. consistency，5. timeliness，6. effectiveness)。",
 			},
 			"source_object_data_type_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Source field type. int, string.",
+				Description: "来源 field 类型 int，string。",
 			},
 			"source_object_value": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Source field name.",
+				Description: "来源 field 名称",
 			},
 			"condition_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Detection scope 1. Full Table 2. Conditional scan.",
+				Description: "Detection 范围 1. Full Table 2. Conditional scan。",
 			},
 			"condition_expression": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Condition scans WHERE condition expressions.",
+				Description: "Condition scans WHERE condition expressions。",
 			},
 			"custom_sql": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Custom sql.",
+				Description: "Custom sql。",
 			},
 			"compare_rule": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Alarm trigger condition.",
+				Description: "Alarm trigger condition。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"items": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Comparison condition listNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Comparison condition list注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"compare_type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Comparison type 1. Fixed value 2. Fluctuating value 3. Comparison of value range 4. Enumeration range comparison 5. Do not compareNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "比较类型 1. Fixed 值 2. Fluctuating 值 3. Comparison of 值 range 4. Enumeration range comparison 5. Do not compare注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"operator": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Comparison operation type &amp;lt; &amp;lt;= == =&amp;gt; &amp;gt;Note: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Comparison 操作类型 &amp;lt; &amp;lt;= == =&amp;gt; &amp;gt;注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"value_compute_type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Quality statistics Type 1. Absolute value 2. Increase 3. Decrease 4. C contains 5. N C does not containNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Quality statistics 类型 1. Absolute 值 2. Increase 3. Decrease 4. C 包含5. N C does not contain注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"value_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Compare the threshold listNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Compare the threshold list注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"value_type": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Threshold type 1. Low threshold 2. High threshold 3. Common threshold 4. Enumerated valueNote: This field may return null, indicating that a valid value cannot be obtained.",
+													Description: "Threshold 类型 1. Low threshold 2. High threshold 3. Common threshold 4. Enumerated value注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Threshold valueNote: This field may return null, indicating that a valid value cannot be obtained.",
+													Description: "Threshold value注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -139,7 +139,7 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 						"cycle_step": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Periodic Indicates the default period of a template, in secondsNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Periodic 表示default 周期 of a template，in seconds注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -147,12 +147,12 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 			"alarm_level": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Alarm trigger levels 1. Low, 2. Medium, 3. High.",
+				Description: "Alarm trigger levels 1. Low，2. Medium，3. High。",
 			},
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Rule description.",
+				Description: "Rule 描述",
 			},
 			//"datasource_id": {
 			//	Required:    true,
@@ -167,50 +167,50 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 			"target_database_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Target database id.",
+				Description: "Target database id。",
 			},
 			"target_table_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Target table id.",
+				Description: "Target table id。",
 			},
 			"target_condition_expr": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Target filter condition expression.",
+				Description: "Target filter condition expression。",
 			},
 			"rel_condition_expr": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The source field and the target field are associated with a conditional on expression.",
+				Description: "The 来源 field and the target field are associated with a conditional on expression。",
 			},
 			"field_config": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Custom template sql expression field replacement parameters.",
+				Description: "Custom template sql expression field replacement parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"where_config": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Where variableNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Where variable注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"field_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Field keyNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Field key注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"field_value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Field valueNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Field value注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"field_data_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Field typeNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Field type注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -218,54 +218,54 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 						"table_config": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Library table variableNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Library table variable注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Database idNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Database id注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"database_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Database nameNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Database name注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"table_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Table idNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Table id注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"table_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Table nameNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Table name注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"table_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Table keyNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Table key注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"field_config": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Field variableNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Field variable注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"field_key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Field keyNote: This field may return null, indicating that a valid value cannot be obtained.",
+													Description: "Field key注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"field_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Field valueNote: This field may return null, indicating that a valid value cannot be obtained.",
+													Description: "Field value注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"field_data_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Field typeNote: This field may return null, indicating that a valid value cannot be obtained.",
+													Description: "Field type注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -279,19 +279,19 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 			"target_object_value": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Target field name  CITY.",
+				Description: "Target field 名称  CITY。",
 			},
 			"source_engine_types": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "List of execution engines supported by this rule.",
+				Description: "列表 execution engines supported by this rule。",
 			},
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 		},
 	}

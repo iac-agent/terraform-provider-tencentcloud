@@ -28,55 +28,55 @@ func ResourceTencentCloudWedataWorkflow() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"workflow_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Workflow name.",
+				Description: "Workflow 名称",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Parent folder path.",
+				Description: "Parent folder 路径",
 			},
 
 			"workflow_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow type, value example: cycle cycle workflow;manual manual workflow, passed in cycle by default.",
+				Description: "Workflow 类型，值 example: cycle cycle workflow;manual manual workflow，passed in cycle by default。",
 			},
 
 			"workflow_desc": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow description.",
+				Description: "Workflow 描述",
 			},
 
 			"owner_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Workflow Owner ID.",
+				Description: "Workflow 所有者 ID。",
 			},
 
 			"workflow_params": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "workflow parameter.",
+				Description: "workflow parameter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter name.",
+							Description: "Parameter 名称",
 						},
 						"param_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter value.",
+							Description: "Parameter 值",
 						},
 					},
 				},
@@ -87,83 +87,83 @@ func ResourceTencentCloudWedataWorkflow() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Unified dispatch information.",
+				Description: "Unified dispatch information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"schedule_time_zone": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "time zone.",
+							Description: "时区。",
 						},
 						"cycle_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Cycle type: Supported types are\nONEOFF_CYCLE: One-time\nYEAR_CYCLE: Year\nMONTH_CYCLE: Month\nWEEK_CYCLE: Week\nDAY_CYCLE: Day\nHOUR_CYCLE: Hour\nMINUTE_CYCLE: Minute\nCRONTAB_CYCLE: crontab expression type.",
+							Description: "Cycle 类型: Supported types are\nONEOFF_CYCLE: One-time\nYEAR_CYCLE: Year\nMONTH_CYCLE: Month\nWEEK_CYCLE: Week\nDAY_CYCLE: Day\nHOUR_CYCLE: Hour\nMINUTE_CYCLE: Minute\nCRONTAB_CYCLE: crontab expression 类型",
 						},
 						"self_depend": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Self-dependence, default value serial, values are: parallel, serial, orderly.",
+							Description: "Self-dependence，默认值 serial，values are: parallel，serial，orderly。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Start time.",
+							Description: "开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "End time.",
+							Description: "结束时间。",
 						},
 						"crontab_expression": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Crontab expression.",
+							Description: "Crontab expression。",
 						},
 						"dependency_workflow": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Workflow dependence, yes or no.",
+							Description: "Workflow dependence，yes or no。",
 						},
 						"modify_cycle_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "0: Do not modify 1: Change the upstream dependency configuration of the task to the default value.",
+							Description: "0: Do not modify 1: Change the upstream dependency configuration of the task to the 默认值",
 						},
 						"clear_link": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Workflows have cross-workflow dependencies and are scheduled using cron expressions. If you save unified scheduling, unsupported dependencies will be broken.",
+							Description: "Workflows have cross-workflow dependencies and are scheduled using cron expressions. If you save unified scheduling，unsupported dependencies will be broken。",
 						},
 						"main_cyclic_config": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Effective when ModifyCycleValue is 1, indicating the default modified upstream dependence-time dimension. The value is: \n* CRONTAB\n* DAY\n* HOUR\n* LIST_DAY\n* LIST_HOUR\n * LIST_MINUTE\n * MONTH\n* RANGE_DAY\n * RANGE_HOUR\n * RANGE_MINUTE\n* WEEK\n* YEAR\n\nhttps://capi.woa.com/object/detail? product=wedata&env=api_dev&version=2025-08-06&name=WorkflowSchedulerConfigurationInfo.",
+							Description: "Effective when ModifyCycleValue is 1，indicating the default modified upstream dependence-time dimension. The 值 is: \n* CRONTAB\n* DAY\n* HOUR\n* LIST_DAY\n* LIST_HOUR\n * LIST_MINUTE\n * MONTH\n* RANGE_DAY\n * RANGE_HOUR\n * RANGE_MINUTE\n* WEEK\n* YEAR\n\nhttps://capi.woa.com/object/detail? product=wedata&env=api_dev&版本=2025-08-06&名称=WorkflowSchedulerConfigurationInfo。",
 						},
 						"subordinate_cyclic_config": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Effective when ModifyCycleValue is 1, which means that the default modified upstream dependency-instance range\n value is: \n* ALL_DAY_OF_YEAR\n* ALL_MONTH_OF_YEAR\n* CURRENT\n* CURRENT_DAY\n* CURRENT_HOUR\n* CURRENT_MINUTE\n* CURRENT_MONTH\n* CURRENT_WEEK\n* CURRENT_YEAR\n* PREVIOUS_BEGIN_OF_MONTH\n* PREVIOUS_DAY\n* PREVIOUS_DAY_LATER_OFFSET_HOUR\n* PREVIOUS_DAY_LATER_OFFSET_MINUTE\n* PREVIOUS_END_OF_MONTH\n* PREVIOUS_FRIDAY\n* PREVIOUS_HOUR\n* PREVIOUS_HOUR_CYCLE\n* PREVIOUS_HOUR_LATER_OFFSET_MINUTE\n* PREVIOUS_MINUTE_CYCLE\n* PREVIOUS_MONTH\n* PREVIOUS_WEEK\n* PREVIOUS_WEEKEND\n* RECENT_DATE\n\nhttps://capi.woa.com/object/detail? product=wedata&env=api_dev&version=2025-08-06&name=WorkflowSchedulerConfigurationInfo.",
+							Description: "Effective when ModifyCycleValue is 1，which means that the default modified upstream dependency-instance range\n 值 is: \n* ALL_DAY_OF_YEAR\n* ALL_MONTH_OF_YEAR\n* CURRENT\n* CURRENT_DAY\n* CURRENT_HOUR\n* CURRENT_MINUTE\n* CURRENT_MONTH\n* CURRENT_WEEK\n* CURRENT_YEAR\n* PREVIOUS_BEGIN_OF_MONTH\n* PREVIOUS_DAY\n* PREVIOUS_DAY_LATER_OFFSET_HOUR\n* PREVIOUS_DAY_LATER_OFFSET_MINUTE\n* PREVIOUS_END_OF_MONTH\n* PREVIOUS_FRIDAY\n* PREVIOUS_HOUR\n* PREVIOUS_HOUR_CYCLE\n* PREVIOUS_HOUR_LATER_OFFSET_MINUTE\n* PREVIOUS_MINUTE_CYCLE\n* PREVIOUS_MONTH\n* PREVIOUS_WEEK\n* PREVIOUS_WEEKEND\n* RECENT_DATE\n\nhttps://capi.woa.com/object/detail? product=wedata&env=api_dev&版本=2025-08-06&名称=WorkflowSchedulerConfigurationInfo。",
 						},
 						"execution_start_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Execution time left-closed interval, example: 00:00, only if the cycle type is MINUTE_CYCLE needs to be filled in.",
+							Description: "执行时间 left-closed interval，example: 00:00，only if the cycle 类型 is MINUTE_CYCLE needs to be filled in。",
 						},
 						"execution_end_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Execution time right-closed interval, example: 23:59, only if the cycle type is MINUTE_CYCLE needs to be filled in.",
+							Description: "执行时间 right-closed interval，example: 23:59，only if the cycle 类型 is MINUTE_CYCLE needs to be filled in。",
 						},
 						"calendar_open": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Do you want to turn on calendar scheduling 1 on 0 off.",
+							Description: "Do you want to turn on calendar scheduling 1 on 0 off。",
 						},
 						"calendar_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "calendar id.",
+							Description: "calendar id。",
 						},
 					},
 				},
@@ -172,19 +172,19 @@ func ResourceTencentCloudWedataWorkflow() *schema.Resource {
 			"bundle_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Bundle Id.",
+				Description: "Bundle Id。",
 			},
 
 			"bundle_info": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Bundle Information.",
+				Description: "Bundle Information。",
 			},
 
 			"workflow_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Workflow id.",
+				Description: "Workflow id。",
 			},
 		},
 	}

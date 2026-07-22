@@ -22,14 +22,14 @@ func ResourceTencentCloudDlcModifyDataEngineDescriptionOperation() *schema.Resou
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Engine description and its maximum length is 250 characters.",
+				Description: "Engine 描述 and its maximum length is 250 characters。",
 			},
 
 			"message": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Engine description and its maximum length is 250 characters.",
+				Description: "Engine 描述 and its maximum length is 250 characters。",
 			},
 		},
 	}

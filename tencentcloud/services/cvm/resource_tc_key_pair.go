@@ -32,7 +32,7 @@ func ResourceTencentCloudKeyPair() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateKeyPairName,
-				Description:  "The key pair's name. It is the only in one TencentCloud account.",
+				Description:  "The 键 pair's 名称 It is the only in one TencentCloud 账号",
 			},
 			"public_key": {
 				Type:     schema.TypeString,
@@ -52,29 +52,29 @@ func ResourceTencentCloudKeyPair() *schema.Resource {
 						return ""
 					}
 				},
-				Description: "You can import an existing public key and using TencentCloud key pair to manage it.",
+				Description: "You can import an existing public 键 and using TencentCloud 键 pair to manage it。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
 				ForceNew:    true,
-				Description: "Specifys to which project the key pair belongs.",
+				Description: "Specifys to which project the 键 pair belongs。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the key pair.",
+				Description: "标签 of the 键 pair。",
 			},
 			"private_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Content of private key in a key pair. Tencent Cloud do not keep private keys. Please keep it properly.",
+				Description: "内容 of private 键 in a 键 pair. Tencent Cloud do not keep private keys. Please keep it properly。",
 			},
 			"created_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.",
+				Description: "创建时间，which follows the `ISO8601` standard and uses `UTC` time in the 格式 of `YYYY-MM-DDThh:mm:ssZ`。",
 			},
 		},
 	}

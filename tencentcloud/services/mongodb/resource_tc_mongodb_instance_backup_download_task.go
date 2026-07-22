@@ -27,27 +27,27 @@ func ResourceTencentCloudMongodbInstanceBackupDownloadTask() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page.",
+				Description: "实例 ID，the 格式 is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page。",
 			},
 
 			"backup_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The name of the backup file to be downloaded can be obtained through the DescribeDBBackups interface.",
+				Description: "The 名称 backup file to be downloaded can be obtained through the DescribeDBBackups interface。",
 			},
 
 			"backup_sets": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Specifies the node names of replica sets to download or a list of shard names for sharded clusters.For example, the replica set cmgo-p8vnipr5, example (fixed value): BackupSets.0=cmgo-p8vnipr5_0, the full amount of data can be downloaded.For example, the sharded cluster cmgo-p8vnipr5, for example: BackupSets.0=cmgo-p8vnipr5_0&amp;amp;BackupSets.1=cmgo-p8vnipr5_1, that is, to download the data of shard 0 and 1. If the sharded cluster needs to be downloaded in full, please pass in the example. Full slice name.",
+				Description: "指定node names of replica sets to download or a 列表 shard names for sharded clusters.For example，the replica set cmgo-p8vnipr5，example (fixed 值): BackupSets.0=cmgo-p8vnipr5_0，the full amount of data can be downloaded.For example，the sharded cluster cmgo-p8vnipr5，for example: BackupSets.0=cmgo-p8vnipr5_0&amp;amp;BackupSets.1=cmgo-p8vnipr5_1，that is，to download the data of shard 0 and 1. If the sharded cluster needs to be downloaded in full，please pass in the example. Full slice 名称",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"replica_set_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Replication Id.",
+							Description: "Replication Id。",
 						},
 					},
 				},

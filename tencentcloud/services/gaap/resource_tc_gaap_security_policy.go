@@ -23,20 +23,20 @@ func ResourceTencentCloudGaapSecurityPolicy() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the GAAP proxy.",
+				Description: "ID GAAP proxy。",
 			},
 			"action": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ACCEPT", "DROP"}),
 				ForceNew:     true,
-				Description:  "Default policy. Valid value: `ACCEPT` and `DROP`.",
+				Description:  "Default policy. Valid 值: `ACCEPT` and `DROP`。",
 			},
 			"enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
-				Description: "Indicates whether policy is enable, default value is `true`.",
+				Description: "表示是否policy is enable，默认值为 `true`。",
 			},
 		},
 	}

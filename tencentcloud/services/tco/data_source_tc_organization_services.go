@@ -20,79 +20,79 @@ func DataSourceTencentCloudOrganizationServices() *schema.Resource {
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Keyword for search by name.",
+				Description: "Keyword for search by 名称",
 			},
 			// computed
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Organization service list.",
+				Description: "Organization service list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Organization service ID. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Organization 服务 ID 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"product_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Organization service product name. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Organization service product 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_assign": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to support delegation. Valid values: 1 (yes), 2 (no). Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否support delegation. 有效值：1 (yes)，2 (no). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Organization service description. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Organization service 描述 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"member_num": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Number of the current delegated admins. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "数量 the current delegated admins. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"document": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Help documentation. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Help documentation. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"console_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Console path of the organization service product. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Console 路径 of the organization service product. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_usage_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to access the usage status. Valid values: 1 (yes), 2 (no). Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否access the usage 状态 有效值：1 (yes)，2 (no). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"can_assign_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Limit for the number of delegated admins. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "限制 for the 数量 delegated admins. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"product": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Organization service product identifier. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Organization service product identifier. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"service_grant": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to support organization service authorization. Valid values: 1 (yes), 2 (no). Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否support organization service authorization. 有效值：1 (yes)，2 (no). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"grant_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Enabling status of organization service authorization. This field is valid when ServiceGrant is 1. Valid values: Enabled, Disabled. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Enabling 状态 organization service authorization. This field is valid when ServiceGrant is 1. 有效值：已启用，已禁用 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_set_management_scope": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to support setting the delegated management scope. Valid values: 1 (yes), 2 (no).\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否support setting the delegated management 范围 有效值：1 (yes)，2 (no).\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -100,7 +100,7 @@ func DataSourceTencentCloudOrganizationServices() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

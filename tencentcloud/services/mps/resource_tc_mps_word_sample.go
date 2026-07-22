@@ -30,13 +30,13 @@ func ResourceTencentCloudMpsWordSample() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Keyword usage. Valid values: 1.`Recognition.Ocr`: OCR-based content recognition. 2.`Recognition.Asr`: ASR-based content recognition. 3.`Review.Ocr`: OCR-based inappropriate information recognition. 4.`Review.Asr`: ASR-based inappropriate information recognition.",
+				Description: "Keyword usage. 有效值：1.`Recognition.Ocr`: OCR-based 内容 recognition. 2.`Recognition.Asr`: ASR-based 内容 recognition. 3.`Review.Ocr`: OCR-based inappropriate information recognition. 4.`Review.Asr`: ASR-based inappropriate information recognition。",
 			},
 
 			"keyword": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Keyword. Length limit: 20 characters.",
+				Description: "Keyword. Length 限制: 20 characters。",
 			},
 			"tags": {
 				Type: schema.TypeSet,
@@ -44,7 +44,7 @@ func ResourceTencentCloudMpsWordSample() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "Keyword tag. Array length limit: 20 tags. Each tag length limit: 128 characters.",
+				Description: "Keyword 标签 Array length 限制: 20 标签 Each 标签 length 限制: 128 characters。",
 			},
 		},
 	}

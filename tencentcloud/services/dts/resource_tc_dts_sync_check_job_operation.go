@@ -23,7 +23,7 @@ func ResourceTencentCloudDtsSyncCheckJobOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Sync job id.",
+				Description: "Sync 作业 ID",
 			},
 		},
 	}

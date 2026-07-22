@@ -26,19 +26,19 @@ func ResourceTencentCloudKubernetesGlobalMaintenanceWindowAndExclusion() *schema
 			"maintenance_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Maintenance start time.",
+				Description: "Maintenance 开始时间。",
 			},
 
 			"duration": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Maintenance duration (hours).",
+				Description: "Maintenance duration (hours)。",
 			},
 
 			"day_of_week": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Maintenance cycle (which days of the week). supported parameter values are as follows:\n\n- MO: Monday\n- TU: Tuesday\n- WE: Wednesday\n- TH: Thursday\n- FR: Friday\n- SA: Saturday\n- SU: Sunday.",
+				Description: "Maintenance cycle (which days of the week). supported parameter values are as follows:\n\n- MO: Monday\n- TU: Tuesday\n- WE: Wednesday\n- TH: Thursday\n- FR: Friday\n- SA: Saturday\n- SU: Sunday。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -47,7 +47,7 @@ func ResourceTencentCloudKubernetesGlobalMaintenanceWindowAndExclusion() *schema
 			"target_regions": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Regions.",
+				Description: "Regions。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -56,28 +56,28 @@ func ResourceTencentCloudKubernetesGlobalMaintenanceWindowAndExclusion() *schema
 			"exclusions": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Maintenance exclusions.",
+				Description: "Maintenance exclusions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Maintenance exclusion name.",
+							Description: "Maintenance exclusion 名称",
 						},
 						"start_at": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Maintenance exclusion start time.",
+							Description: "Maintenance exclusion 开始时间。",
 						},
 						"end_at": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Maintenance exclusion end time.",
+							Description: "Maintenance exclusion 结束时间。",
 						},
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maintenance exclusion ID.",
+							Description: "Maintenance exclusion ID。",
 						},
 					},
 				},

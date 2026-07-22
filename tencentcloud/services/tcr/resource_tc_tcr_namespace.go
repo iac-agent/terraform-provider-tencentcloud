@@ -28,50 +28,50 @@ func ResourceTencentCloudTcrNamespace() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the TCR instance.",
+				Description: "ID TCR instance。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Name of the TCR namespace. Valid length is [2~30]. It can only contain lowercase letters, numbers and separators (`.`, `_`, `-`), and cannot start, end or continue with separators.",
+				Description: "名称 TCR namespace. Valid length is [2~30]. It can only contain lowercase letters，numbers and separators (`.`，`_`，`-`)，and cannot start，end or continue with separators。",
 			},
 			"is_public": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Indicate that the namespace is public or not. Default is `false`.",
+				Description: "Indicate that the namespace is public or not. 默认为 `false`。",
 			},
 			"is_auto_scan": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Scanning level, `True` is automatic, `False` is manual. Default is `false`.",
+				Description: "Scanning 级别，`True` is automatic，`False` is manual. 默认为 `false`。",
 			},
 
 			"is_prevent_vul": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Blocking switch, `True` is open, `False` is closed. Default is `false`.",
+				Description: "Blocking switch，`True` is open，`False` is closed. 默认为 `false`。",
 			},
 
 			"severity": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Block vulnerability level, currently only supports `low`, `medium`, `high`.",
+				Description: "Block vulnerability 级别，currently only supports `low`，`medium`，`high`。",
 			},
 
 			"cve_whitelist_items": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Vulnerability Whitelist.",
+				Description: "Vulnerability Whitelist。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cve_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Vulnerability Whitelist ID.",
+							Description: "Vulnerability Whitelist ID。",
 						},
 					},
 				},
@@ -80,7 +80,7 @@ func ResourceTencentCloudTcrNamespace() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "Tag key-value pairs for the TCR namespace.",
+				Description: "标签键-值 pairs for the TCR namespace。",
 			},
 		},
 	}

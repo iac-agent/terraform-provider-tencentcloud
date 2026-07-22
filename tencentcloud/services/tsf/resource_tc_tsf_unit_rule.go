@@ -27,119 +27,119 @@ func ResourceTencentCloudTsfUnitRule() *schema.Resource {
 			"gateway_instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway entity ID.",
+				Description: "gateway entity ID。",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "rule name.",
+				Description: "rule 名称",
 			},
 
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "rule ID.",
+				Description: "rule ID。",
 			},
 
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "usage status: enabled/disabled.",
+				Description: "usage 状态: 已启用/已禁用",
 			},
 
 			"description": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "rule description.",
+				Description: "rule 描述",
 			},
 
 			"unit_rule_item_list": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "list of rule items.",
+				Description: "列表 rule items。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"relationship": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "logical relationship: AND/OR.",
+							Description: "logical relationship: AND/OR。",
 						},
 						"dest_namespace_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "destination namespace ID.",
+							Description: "destination namespace ID。",
 						},
 						"dest_namespace_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "destination namespace name.",
+							Description: "destination namespace 名称",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "rule item name.",
+							Description: "rule item 名称",
 						},
 						"rule_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "rule item ID.",
+							Description: "rule item ID。",
 						},
 						"unit_rule_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Unitization rule ID.",
+							Description: "Unitization rule ID。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "rule order, the smaller the higher the priority: the default is 0.",
+							Description: "rule 顺序，the smaller the higher the 优先级: the 默认为 0。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "rule description.",
+							Description: "rule 描述",
 						},
 						"unit_rule_tag_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "list of rule labels.",
+							Description: "列表 rule labels。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag Type: U(User Tag).",
+										Description: "标签 类型: U(用户 标签)。",
 									},
 									"tag_field": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "label name.",
+										Description: "标签 名称",
 									},
 									"tag_operator": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Operator: IN/NOT_IN/EQUAL/NOT_EQUAL/REGEX.",
+										Description: "操作者: IN/NOT_IN/EQUAL/NOT_EQUAL/REGEX。",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "tag value.",
+										Description: "标签值",
 									},
 									"unit_rule_item_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Unitization rule item ID.",
+										Description: "Unitization rule item ID。",
 									},
 									"rule_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "rule ID.",
+										Description: "rule ID。",
 									},
 								},
 							},

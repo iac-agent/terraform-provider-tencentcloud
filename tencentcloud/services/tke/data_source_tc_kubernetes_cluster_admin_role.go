@@ -17,17 +17,17 @@ func DataSourceTencentCloudKubernetesClusterAdminRole() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 			"request_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The request ID returned by the API.",
+				Description: "The 请求 ID returned by the API。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -22,7 +22,7 @@ func ResourceTencentCloudPostgresqlRebalanceReadonlyGroupOperation() *schema.Res
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "readonly Group ID.",
+				Description: "readonly 组 ID",
 			},
 		},
 	}

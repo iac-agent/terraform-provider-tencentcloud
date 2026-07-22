@@ -28,63 +28,63 @@ func ResourceTencentCloudReserveIpAddress() *schema.Resource {
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "VPC unique ID.",
+				Description: "VPC unique ID。",
 			},
 
 			"ip_address": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Specify the reserved IP address of the intranet for which the IP application is requested.",
+				Description: "指定reserved IP 地址 of the intranet for which the IP application is requested。",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Subnet ID.",
+				Description: "子网 ID",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The IP name is reserved for the intranet.",
+				Description: "The IP 名称 is reserved for the intranet。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The IP description is retained on the intranet.",
+				Description: "The IP 描述 is retained on the intranet。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags.",
+				Description: "标签",
 			},
 			"reserve_ip_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Reserve ip ID.",
+				Description: "Reserve ip ID。",
 			},
 			"resource_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The intranet retains the resource instance ID bound to the IPs.",
+				Description: "The intranet retains the resource instance ID bound to the IPs。",
 			},
 			"ip_type": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Ip type for product application.",
+				Description: "Ip 类型 for product application。",
 			},
 			"state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Binding status.",
+				Description: "Binding 状态",
 			},
 			"created_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Created time.",
+				Description: "Created time。",
 			},
 		},
 	}

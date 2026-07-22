@@ -27,32 +27,32 @@ func ResourceTencentCloudApmPrometheusRule() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Metric match rule name.",
+				Description: "Metric match rule 名称",
 			},
 
 			"service_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Applications where the rule takes effect. input an empty string for all applications.",
+				Description: "Applications where the rule takes effect. input an empty string for all applications。",
 			},
 
 			"metric_match_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Match type: 0 - precision match, 1 - prefix match, 2 - suffix match.",
+				Description: "Match 类型: 0 - precision match，1 - prefix match，2 - suffix match。",
 			},
 
 			"metric_name_rule": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Specifies the rule for customer-defined metric names with cache hit.",
+				Description: "指定rule for customer-defined metric names with cache hit。",
 			},
 
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Business system ID.",
+				Description: "Business system ID。",
 			},
 
 			"status": {
@@ -60,14 +60,14 @@ func ResourceTencentCloudApmPrometheusRule() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
-				Description:  "Rule status. 1 - enabled, 2 - disabled. Default value: 1.",
+				Description:  "Rule 状态 1 - 已启用，2 - 已禁用 默认值：1。",
 			},
 
 			// computed
 			"rule_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "ID of the indicator matching rule.",
+				Description: "ID indicator matching rule。",
 			},
 		},
 	}

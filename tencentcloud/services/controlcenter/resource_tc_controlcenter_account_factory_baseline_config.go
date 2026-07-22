@@ -25,29 +25,29 @@ func ResourceTencentCloudControlcenterAccountFactoryBaselineConfig() *schema.Res
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Baseline name, which must be unique. Supports only English letters, numbers, Chinese characters, and symbols @, &, _, [], -. Combination of 1-25 Chinese or English characters.",
+				Description: "Baseline 名称，which must be unique. Supports only English letters，numbers，Chinese characters，and symbols @，&，_，[]，-. Combination of 1-25 Chinese or English characters。",
 			},
 
 			"baseline_config_items": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Baseline configuration, overwrite update. You can query existing baseline configurations via controlcenter:GetAccountFactoryBaseline. You can query supported baseline lists via controlcenter:ListAccountFactoryBaselineItems.",
+				Description: "Baseline configuration，overwrite update. You can query existing baseline configurations via controlcenter:GetAccountFactoryBaseline. You can query supported baseline lists via controlcenter:ListAccountFactoryBaselineItems。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identifier": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Specifies the unique identifier for account factory baseline item, can only contain `english letters`, `digits`, and `@,._[]-:()()[]+=.`, with a length of 2-128 characters.",
+							Description: "指定unique identifier for 账号 factory baseline item，can only contain `english letters`，`digits`，and `@,._[]-:()()[]+=.`，with a length of 2-128 characters。",
 						},
 						"configuration": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Account factory baseline item configuration, different baseline items have different configuration parameters.",
+							Description: "账号 factory baseline item configuration，different baseline items have different configuration parameters。",
 						},
 						"apply_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Specifies the number of accounts for baseline applications.",
+							Description: "指定number of accounts for baseline applications。",
 						},
 					},
 				},
@@ -57,13 +57,13 @@ func ResourceTencentCloudControlcenterAccountFactoryBaselineConfig() *schema.Res
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "创建时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

@@ -19,39 +19,39 @@ func DataSourceTencentCloudAntiddosBgpBizTrend() *schema.Resource {
 			"business": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Dayu sub product code (bgpip represents advanced defense IP; net represents professional version of advanced defense IP).",
+				Description: "Dayu sub product 代码 (bgpip represents advanced defense IP; net represents professional 版本 of advanced defense IP)。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Statistic start time.",
+				Description: "Statistic 开始时间。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Statistic end time.",
+				Description: "Statistic 结束时间。",
 			},
 
 			"metric_name": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"intraffic", "outtraffic", "inpkg", "outpkg"}),
-				Description:  "Statistic metric name, for example: intraffic, outtraffic, inpkg, outpkg.",
+				Description:  "Statistic 指标名称，for example: intraffic，outtraffic，inpkg，outpkg。",
 			},
 
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Antiddos InstanceId.",
+				Description: "Antiddos 实例 ID",
 			},
 
 			"flag": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "0 represents fixed time, 1 represents custom time.",
+				Description:  "0 represents fixed time，1 represents custom time。",
 			},
 
 			"data_list": {
@@ -60,25 +60,25 @@ func DataSourceTencentCloudAntiddosBgpBizTrend() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Values at various time points on the graph.",
+				Description: "Values at various time points on the graph。",
 			},
 
 			"total": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of values in the curve graph.",
+				Description: "数量 values in the curve graph。",
 			},
 
 			"max_data": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Returns the maximum value of an array.",
+				Description: "返回maximum 值 of an array。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

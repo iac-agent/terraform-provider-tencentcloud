@@ -23,14 +23,14 @@ func ResourceTencentCloudKubernetesCancelUpgradePlanOperation() *schema.Resource
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"plan_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Upgrade plan ID.",
+				Description: "Upgrade plan ID。",
 			},
 		},
 	}

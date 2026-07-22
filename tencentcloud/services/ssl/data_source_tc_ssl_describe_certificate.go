@@ -17,156 +17,156 @@ func DataSourceTencentCloudSslDescribeCertificate() *schema.Resource {
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID.",
+				Description: "证书 ID",
 			},
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "result list.",
+				Description: "结果 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"owner_uin": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Account UIN.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "账号 UIN.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"project_id": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Project ID.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "项目 IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"from": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Certificate source: Trustasia,uploadNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Certificate 来源: Trustasia,uploadNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"certificate_type": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Certificate type: CA = CA certificate, SVR = server certificate.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Certificate 类型: CA = CA certificate，SVR = server certificate.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"package_type": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Types of Certificate Package: 1 = Geotrust DV SSL CA -G3, 2 = Trustasia TLS RSA CA, 3 = SecureSite Enhanced Enterprise Edition (EV Pro), 4 = SecureSite enhanced (EV), 5 = SecureSite Enterprise Professional Edition (OVPro), 6 = SecureSite Enterprise (OV), 7 = SecureSite Enterprise (OV) compatriots, 8 = Geotrust enhanced type (EV), 9 = Geotrust Enterprise (OV), 10 = Geotrust Enterprise (OV) pass,11 = Trustasia Domain Multi -domain SSL certificate, 12 = Trustasia domain model (DV) passing, 13 = Trustasia Enterprise Passing Character (OV) SSL certificate (D3), 14 = Trustasia Enterprise (OV) SSL certificate (D3), 15= Trustasia Enterprise Multi -domain name (OV) SSL certificate (D3), 16 = Trustasia enhanced (EV) SSL certificate (D3), 17 = Trustasia enhanced multi -domain name (EV) SSL certificate (D3), 18 = GlobalSign enterprise type enterprise type(OV) SSL certificate, 19 = GlobalSign Enterprise Type -type STL Certificate, 20 = GlobalSign enhanced (EV) SSL certificate, 21 = Trustasia Enterprise Tongzhi Multi -domain name (OV) SSL certificate (D3), 22 = GlobalSignignMulti -domain name (OV) SSL certificate, 23 = GlobalSign Enterprise Type -type multi -domain name (OV) SSL certificate, 24 = GlobalSign enhanced multi -domain name (EV) SSL certificate.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Types of Certificate Package: 1 = Geotrust DV SSL CA -G3，2 = Trustasia TLS RSA CA，3 = SecureSite Enhanced Enterprise Edition (EV Pro)，4 = SecureSite enhanced (EV)，5 = SecureSite Enterprise Professional Edition (OVPro)，6 = SecureSite Enterprise (OV)，7 = SecureSite Enterprise (OV) compatriots，8 = Geotrust enhanced 类型 (EV)，9 = Geotrust Enterprise (OV)，10 = Geotrust Enterprise (OV) pass,11 = Trustasia 域名 Multi -域名 SSL certificate，12 = Trustasia 域名 model (DV) passing，13 = Trustasia Enterprise Passing Character (OV) SSL certificate (D3)，14 = Trustasia Enterprise (OV) SSL certificate (D3)，15= Trustasia Enterprise Multi -域名 名称 (OV) SSL certificate (D3)，16 = Trustasia enhanced (EV) SSL certificate (D3)，17 = Trustasia enhanced multi -域名 名称 (EV) SSL certificate (D3)，18 = GlobalSign enterprise 类型 enterprise 类型(OV) SSL certificate，19 = GlobalSign Enterprise 类型 -类型 STL Certificate，20 = GlobalSign enhanced (EV) SSL certificate，21 = Trustasia Enterprise Tongzhi Multi -域名 名称 (OV) SSL certificate (D3)，22 = GlobalSignignMulti -域名 名称 (OV) SSL certificate，23 = GlobalSign Enterprise 类型 -类型 multi -域名 名称 (OV) SSL certificate，24 = GlobalSign enhanced multi -域名 名称 (EV) SSL certificate.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"product_zh_name": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Certificate issuer name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Certificate issuer 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"domain": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "domain name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "域名 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"alias": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Remark name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "备注 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"status": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "= Submitted information, to be uploaded to confirmation letter, 9 = Certificate is revoked, 10 = revoked, 11 = Re -issuance, 12 = Upload and revoke the confirmation letter.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "= Submitted information，to be uploaded to confirmation letter，9 = Certificate is revoked，10 = revoked，11 = Re -issuance，12 = Upload and revoke the confirmation letter.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"status_msg": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "status information.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "状态 information.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"verify_type": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Verification type: DNS_AUTO = Automatic DNS verification, DNS = manual DNS verification, file = file verification, email = email verification.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Verification 类型: DNS_AUTO = Automatic DNS verification，DNS = manual DNS verification，file = file verification，email = email verification.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"vulnerability_status": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Vulnerability scanning status.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Vulnerability scanning 状态Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"cert_begin_time": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Certificate takes effect time.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Certificate takes effect time.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"cert_end_time": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "The certificate is invalid time.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "The certificate is invalid time.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"validity_period": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Validity period: unit (month).Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Validity 周期: unit (month).Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"insert_time": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "application time.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "application time.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"order_id": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Order ID.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "顺序 ID.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"certificate_extra": {
 							Computed:    true,
 							Type:        schema.TypeList,
-							Description: "Certificate extension information.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Certificate extension information.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"domain_number": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Certificate can be configured in the number of domain names.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Certificate can be configured in the 数量 域名 names.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"origin_certificate_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Original certificate ID.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Original 证书 IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"replaced_by": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Re -issue the original ID of the certificate.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Re -issue the original ID certificate.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"replaced_for": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Re -issue a new ID.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Re -issue a new ID.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"renew_order": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "New order certificate ID.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "New 顺序 证书 IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"s_m_cert": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Is it a national secret certificateNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Is it a national secret certificateNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"company_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Type of company. Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "类型 company. Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 								},
 							},
@@ -175,69 +175,69 @@ func DataSourceTencentCloudSslDescribeCertificate() *schema.Resource {
 						"dv_auth_detail": {
 							Computed:    true,
 							Type:        schema.TypeList,
-							Description: "DV certification information.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "DV certification information.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dv_auth_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV certification key.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV certification 键Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"dv_auth_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV certification value.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV certification 值Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"dv_auth_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV authentication value domain name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV authentication 值 域名 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"dv_auth_path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV authentication value path.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV authentication 值 路径Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"dv_auth_key_sub_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV certification sub -domain name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV certification sub -域名 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"dv_auths": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "DV certification information.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV certification information.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"dv_auth_key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "DV certification key.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+													Description: "DV certification 键Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 												},
 												"dv_auth_value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "DV certification value.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+													Description: "DV certification 值Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 												},
 												"dv_auth_domain": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "DV authentication value domain name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+													Description: "DV authentication 值 域名 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 												},
 												"dv_auth_path": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "DV authentication value path.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+													Description: "DV authentication 值 路径Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 												},
 												"dv_auth_sub_domain": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "DV certification sub -domain name,Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+													Description: "DV certification sub -域名 名称,Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 												},
 												"dv_auth_verify_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "DV certification type.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+													Description: "DV certification 类型Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 												},
 											},
 										},
@@ -249,19 +249,19 @@ func DataSourceTencentCloudSslDescribeCertificate() *schema.Resource {
 						"vulnerability_report": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Vulnerability scanning evaluation report.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Vulnerability scanning evaluation report.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"package_type_name": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Certificate type name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Certificate 类型 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"status_name": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "status description.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "状态 描述Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"subject_alt_name": {
@@ -270,59 +270,59 @@ func DataSourceTencentCloudSslDescribeCertificate() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "The certificate contains multiple domain names (containing the main domain name).Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "The certificate 包含multiple 域名 names (containing the main 域名 名称).Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"is_vip": {
 							Computed:    true,
 							Type:        schema.TypeBool,
-							Description: "Whether it is a VIP customer.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "是否为a VIP customer.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"is_wildcard": {
 							Computed:    true,
 							Type:        schema.TypeBool,
-							Description: "Whether it is a pan -domain certificate certificate.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "是否为a pan -域名 certificate certificate.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"is_dv": {
 							Computed:    true,
 							Type:        schema.TypeBool,
-							Description: "Whether it is the DV version.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "是否为the DV 版本Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"is_vulnerability": {
 							Computed:    true,
 							Type:        schema.TypeBool,
-							Description: "Whether the vulnerability scanning function is enabled.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "是否vulnerability scanning function is 已启用Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"renew_able": {
 							Computed:    true,
 							Type:        schema.TypeBool,
-							Description: "Whether you can issue a certificate.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Whether you can issue a certificate.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"submitted_data": {
 							Computed:    true,
 							Type:        schema.TypeList,
-							Description: "Submitted information information.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Submitted information information.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"csr_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CSR type, (online = online CSR, PARSE = paste CSR).Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "CSR 类型，(online = online CSR，PARSE = paste CSR).Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"csr_content": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CSR content.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "CSR 内容Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"certificate_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Domain information.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "域名 information.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"domain_list": {
 										Type: schema.TypeSet,
@@ -330,112 +330,112 @@ func DataSourceTencentCloudSslDescribeCertificate() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "DNS information.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DNS information.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"key_password": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Private key password.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Private 键 密码Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"organization_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Enterprise or unit name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Enterprise or unit 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"organization_division": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "department.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "department.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"organization_address": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "address.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "地址Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"organization_country": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "nation.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "nation.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"organization_city": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "city.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "city.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"organization_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Province.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Province.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"postal_code": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Postal code.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Postal 代码Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"phone_area_code": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Local region code.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Local 地域 代码Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"phone_number": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Landline number.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Landline number.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"admin_first_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Administrator name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Administrator 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"admin_last_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The surname of the administrator.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "The surname of the administrator.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"admin_phone_num": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Administrator phone number.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Administrator phone number.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"admin_email": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Administrator mailbox address.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Administrator mailbox 地址Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"admin_position": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Administrator position.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Administrator position.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"contact_first_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Contact name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Contact 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"contact_last_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Contact surname.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Contact surname.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"contact_number": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Contact phone number.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Contact phone number.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"contact_email": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Contact mailbox address,Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Contact mailbox 地址,Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"contact_position": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Contact position.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Contact position.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"verify_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Verification type.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Verification 类型Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 								},
 							},
@@ -444,7 +444,7 @@ func DataSourceTencentCloudSslDescribeCertificate() *schema.Resource {
 						"deployable": {
 							Computed:    true,
 							Type:        schema.TypeBool,
-							Description: "Whether it can be deployed.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Whether it can be deployed.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"c_a_encrypt_algorithms": {
@@ -453,7 +453,7 @@ func DataSourceTencentCloudSslDescribeCertificate() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "All encryption methods of CA certificateNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "All encryption methods of CA certificateNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"c_a_common_names": {
@@ -462,7 +462,7 @@ func DataSourceTencentCloudSslDescribeCertificate() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "All general names of the CA certificateNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "All general names of the CA certificateNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"c_a_end_times": {
@@ -471,44 +471,44 @@ func DataSourceTencentCloudSslDescribeCertificate() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "CA certificate all maturity timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "CA certificate all maturity timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 
 						"dv_revoke_auth_detail": {
 							Computed:    true,
 							Type:        schema.TypeList,
-							Description: "DV certificate revoking verification valueNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "DV certificate revoking verification valueNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dv_auth_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV certification key.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV certification 键Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"dv_auth_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV certification value.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV certification 值Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"dv_auth_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV authentication value domain name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV authentication 值 域名 名称Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"dv_auth_path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV authentication value path.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV authentication 值 路径Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"dv_auth_sub_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV certification sub -domain name,Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV certification sub -域名 名称,Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"dv_auth_verify_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV certification type.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DV certification 类型Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 								},
 							},
@@ -519,7 +519,7 @@ func DataSourceTencentCloudSslDescribeCertificate() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

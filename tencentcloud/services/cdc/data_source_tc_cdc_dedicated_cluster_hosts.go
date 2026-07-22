@@ -17,69 +17,69 @@ func DataSourceTencentCloudCdcDedicatedClusterHosts() *schema.Resource {
 			"dedicated_cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Dedicated Cluster ID.",
+				Description: "Dedicated 集群 ID",
 			},
 			// computed
 			"host_info_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Dedicated Cluster Host Info.",
+				Description: "Dedicated Cluster 主机 Info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"host_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dedicated Cluster Host Ip (Deprecated).",
+							Description: "Dedicated Cluster 主机 Ip (已弃用)。",
 						},
 						"service_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dedicated Cluster Service Type.",
+							Description: "Dedicated Cluster Service 类型",
 						},
 						"host_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dedicated Cluster Host Status.",
+							Description: "Dedicated Cluster 主机 状态",
 						},
 						"host_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dedicated Cluster Host Type.",
+							Description: "Dedicated Cluster 主机 类型",
 						},
 						"cpu_available": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Dedicated Cluster Host CPU Available Count.",
+							Description: "Dedicated Cluster 主机 CPU Available Count。",
 						},
 						"cpu_total": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Dedicated Cluster Host CPU Total Count.",
+							Description: "Dedicated Cluster 主机 CPU Total Count。",
 						},
 						"mem_available": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Dedicated Cluster Host Memory Available Count (GB).",
+							Description: "Dedicated Cluster 主机 Memory Available Count (GB)。",
 						},
 						"mem_total": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Dedicated Cluster Host Memory Total Count (GB).",
+							Description: "Dedicated Cluster 主机 Memory Total Count (GB)。",
 						},
 						"run_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dedicated Cluster Host Run Time.",
+							Description: "Dedicated Cluster 主机 Run Time。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dedicated Cluster Host Expire Time.",
+							Description: "Dedicated Cluster 主机 Expire Time。",
 						},
 						"host_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dedicated Cluster Host ID.",
+							Description: "Dedicated Cluster 主机 ID。",
 						},
 					},
 				},
@@ -87,7 +87,7 @@ func DataSourceTencentCloudCdcDedicatedClusterHosts() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

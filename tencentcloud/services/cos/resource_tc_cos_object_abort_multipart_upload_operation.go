@@ -20,19 +20,19 @@ func ResourceTencentCloudCosObjectAbortMultipartUploadOperation() *schema.Resour
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket.",
+				Description: "存储桶",
 			},
 			"key": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Object key.",
+				Description: "Object 键",
 			},
 			"upload_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Multipart uploaded id.",
+				Description: "Multipart uploaded id。",
 			},
 		},
 	}

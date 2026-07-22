@@ -24,13 +24,13 @@ func ResourceTencentCloudVpcSnapshotPolicyConfig() *schema.Resource {
 			"snapshot_policy_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot policy Id.",
+				Description: "Snapshot policy Id。",
 			},
 
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "If enable snapshot policy.",
+				Description: "If enable snapshot policy。",
 			},
 		},
 	}

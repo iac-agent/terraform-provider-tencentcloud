@@ -31,36 +31,36 @@ func ResourceTencentCloudAntiddosDdosSpeedLimitConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"ddos_speed_limit_config": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Accessing speed limit configuration, the configuration ID cannot be empty when filling in parameters.",
+				Description: "Accessing speed 限制 configuration，the configuration ID cannot be empty when filling in parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mode": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Speed limit mode, value [1 (based on source IP speed limit) 2 (based on destination port speed limit)].",
+							Description: "Speed 限制 模式，值 [1 (based on 来源 IP speed 限制) 2 (based on destination 端口 speed 限制)]。",
 						},
 						"speed_values": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Speed limit values, each type of speed limit value can support up to 1; This field array has at least one speed limit value.",
+							Description: "Speed 限制 values，each 类型 speed 限制 值 can support up to 1; This field array has at least one speed 限制 值",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Speed limit value type, value [1 (packet rate pps) 2 (bandwidth bps)].",
+										Description: "Speed 限制 值 类型，值 [1 (packet rate pps) 2 (bandwidth bps)]。",
 									},
 									"value": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "value.",
+										Description: "值",
 									},
 								},
 							},
@@ -68,18 +68,18 @@ func ResourceTencentCloudAntiddosDdosSpeedLimitConfig() *schema.Resource {
 						"dst_port_scopes": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "This field has been deprecated. Please fill in the new field DstPortList.",
+							Description: "This field has been 已弃用 Please fill in the new field DstPortList。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"begin_port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Starting port, ranging from 1 to 65535.",
+										Description: "Starting 端口，ranging from 1 to 65535。",
 									},
 									"end_port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "end  port, ranging from 1 to 65535.",
+										Description: "end  端口，ranging from 1 to 65535。",
 									},
 								},
 							},
@@ -87,12 +87,12 @@ func ResourceTencentCloudAntiddosDdosSpeedLimitConfig() *schema.Resource {
 						"protocol_list": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "IP protocol numbers, values [ALL (all protocols) TCP (tcp protocol) UDP (udp protocol) SMP (smp protocol) 1; 2-100 (custom protocol number range, up to 8)] Note: When customizing the protocol number range, only the protocol number can be filled in, multiple ranges; Separation; When filling in ALL, no other agreements or agreements can be filled inNumber.",
+							Description: "IP 协议 numbers，values [ALL (all protocols) TCP (tcp 协议) UDP (udp 协议) SMP (smp 协议) 1; 2-100 (custom 协议 number range，up to 8)] Note: When customizing the 协议 number range，only the 协议 number can be filled in，multiple ranges; Separation; When filling in ALL，no other agreements or agreements can be filled inNumber。",
 						},
 						"dst_port_list": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "List of port ranges, up to 8, multiple; Separate and indicate the range with -; This port range must be filled in; Fill in style 1:0-65535, style 2: 80; 443; 1000-2000.",
+							Description: "列表 端口 ranges，up to 8，multiple; Separate and indicate the range with -; This 端口 range must be filled in; Fill in style 1:0-65535，style 2: 80; 443; 1000-2000。",
 						},
 					},
 				},

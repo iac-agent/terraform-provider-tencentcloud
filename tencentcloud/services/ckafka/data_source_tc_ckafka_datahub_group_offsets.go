@@ -19,67 +19,67 @@ func DataSourceTencentCloudCkafkaDatahubGroupOffsets() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "topic name that the task subscribe.",
+				Description: "topic 名称 that the task subscribe。",
 			},
 
 			"group": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Kafka consumer group.",
+				Description: "Kafka consumer group。",
 			},
 
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "fuzzy match topicName.",
+				Description: "fuzzy match topicName。",
 			},
 
 			"topic_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The topic array, where each element is a json object.",
+				Description: "The topic array，where each element is a json object。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"topic": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "topic name.",
+							Description: "topic 名称",
 						},
 						"partitions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The topic partition array, where each element is a json object.",
+							Description: "The topic partition array，where each element is a json object。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"partition": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "topic partitionId.",
+										Description: "topic partitionId。",
 									},
 									"offset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "consumer offset.",
+										Description: "consumer 偏移量",
 									},
 									"metadata": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Usually an empty string.",
+										Description: "Usually an empty string。",
 									},
 									"error_code": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Error Code.",
+										Description: "错误 代码",
 									},
 									"log_end_offset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "partition Log End Offset.",
+										Description: "partition Log End 偏移量",
 									},
 									"lag": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of unconsumed messages.",
+										Description: "The 数量 unconsumed messages。",
 									},
 								},
 							},
@@ -91,7 +91,7 @@ func DataSourceTencentCloudCkafkaDatahubGroupOffsets() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

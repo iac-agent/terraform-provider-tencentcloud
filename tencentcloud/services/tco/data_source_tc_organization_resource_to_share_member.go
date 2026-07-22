@@ -18,68 +18,68 @@ func DataSourceTencentCloudOrganizationResourceToShareMember() *schema.Resource 
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Area.",
+				Description: "Area。",
 			},
 
 			"search_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search keywords, support business resource ID search.",
+				Description: "Search keywords，support business resource ID search。",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Resource Type.",
+				Description: "资源类型",
 			},
 
 			"product_resource_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Business resource ID. Maximum 50.",
+				Description: "Business resource ID. Maximum 50。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Details.",
+				Description: "Details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource ID.",
+							Description: "资源 ID",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource type.",
+							Description: "资源类型",
 						},
 						"unit_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Shared unit ID.",
+							Description: "共享单元 ID",
 						},
 						"unit_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Shared unit name.",
+							Description: "Shared unit 名称",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 						"product_resource_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Business resource ID.",
+							Description: "Business resource ID。",
 						},
 						"share_manager_uin": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shared Administrator uin.",
+							Description: "Shared Administrator uin。",
 						},
 					},
 				},
@@ -88,7 +88,7 @@ func DataSourceTencentCloudOrganizationResourceToShareMember() *schema.Resource 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

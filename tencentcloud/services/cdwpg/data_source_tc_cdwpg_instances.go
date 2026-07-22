@@ -18,19 +18,19 @@ func DataSourceTencentCloudCdwpgInstances() *schema.Resource {
 			"search_instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search instance id.",
+				Description: "Search 实例 ID",
 			},
 
 			"search_instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search instance name.",
+				Description: "Search 实例名称",
 			},
 
 			"search_tags": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Search tags.",
+				Description: "Search 标签",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -39,93 +39,93 @@ func DataSourceTencentCloudCdwpgInstances() *schema.Resource {
 			"instances_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instances list.",
+				Description: "Instances list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "id.",
+							Description: "id。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Instance id.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Version.",
+							Description: "版本",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Region.",
+							Description: "地域",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Region id.",
+							Description: "地域 id。",
 						},
 						"region_desc": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Region description.",
+							Description: "地域 描述",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Zone.",
+							Description: "可用区",
 						},
 						"zone_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Zone id.",
+							Description: "可用区 ID",
 						},
 						"zone_desc": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Zone description.",
+							Description: "可用区 描述",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Vpc id.",
+							Description: "私有网络 ID",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Subnet id.",
+							Description: "子网 ID",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Create time, such as 2022-09-05 20:00:01.",
+							Description: "创建时间，such as 2022-09-05 20:00:01。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Expire time, such as 2022-09-05 20:00:01.",
+							Description: "Expire time，such as 2022-09-05 20:00:01。",
 						},
 						"access_info": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Access information.",
+							Description: "Access information。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Pay mode.",
+							Description: "付费模式",
 						},
 						"renew_flag": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Renew flag.",
+							Description: "续费标识",
 						},
 					},
 				},
@@ -134,7 +134,7 @@ func DataSourceTencentCloudCdwpgInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

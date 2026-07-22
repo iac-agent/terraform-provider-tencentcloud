@@ -19,23 +19,23 @@ func DataSourceTencentCloudVpcBandwidthPackageQuota() *schema.Resource {
 			"quota_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Bandwidth Package Quota Details.",
+				Description: "Bandwidth Package Quota Details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"quota_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Quota type.",
+							Description: "Quota 类型",
 						},
 						"quota_current": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "current amount.",
+							Description: "current amount。",
 						},
 						"quota_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "quota amount.",
+							Description: "quota amount。",
 						},
 					},
 				},
@@ -44,7 +44,7 @@ func DataSourceTencentCloudVpcBandwidthPackageQuota() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

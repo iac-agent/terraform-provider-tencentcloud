@@ -28,61 +28,61 @@ func ResourceTencentCloudOrganizationOrgMemberEmail() *schema.Resource {
 			"member_uin": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Member Uin.",
+				Description: "Member Uin。",
 			},
 
 			"email": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Email address.",
+				Description: "Email 地址",
 			},
 
 			"country_code": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "International region.",
+				Description: "International 地域",
 			},
 
 			"phone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Phone number.",
+				Description: "Phone number。",
 			},
 
 			"bind_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Binding IDNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Binding IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"apply_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Application timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Application timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"bind_status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Binding status is not binding: unbound, to be activated: value, successful binding: success, binding failure: failedNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Binding 状态 is not binding: unbound，to be activated: 值，successful binding: success，binding failure: failedNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"bind_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Binding timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Binding timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"description": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "FailedNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "FailedNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"phone_bind": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Safe mobile phone binding state is not bound: 0, has been binded: 1Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Safe mobile phone binding state is not bound: 0，has been binded: 1Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 		},
 	}

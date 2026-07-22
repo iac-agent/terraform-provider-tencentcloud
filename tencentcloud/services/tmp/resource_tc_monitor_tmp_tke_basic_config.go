@@ -31,25 +31,25 @@ func ResourceTencentCloudMonitorTmpTkeBasicConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of instance.",
+				Description: "ID instance。",
 			},
 
 			"cluster_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Type of cluster.",
+				Description: "类型 cluster。",
 			},
 
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of cluster.",
+				Description: "ID cluster。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name. The naming rule is: namespace/name. If you don&#39;t have any namespace, use the default namespace: kube-system, otherwise use the specified one.",
+				Description: "名称 The naming rule is: namespace/名称 If you don&#39;t have any namespace，use the default namespace: kube-system，otherwise use the specified one。",
 			},
 
 			"metrics_name": {
@@ -59,19 +59,19 @@ func ResourceTencentCloudMonitorTmpTkeBasicConfig() *schema.Resource {
 					Type:         schema.TypeString,
 					ValidateFunc: tccommon.ValidateNotEmpty,
 				},
-				Description: "Configure the name of the metric to keep on.",
+				Description: "Configure the 名称 metric to keep on。",
 			},
 
 			"config_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "config type, `service_monitors`, `pod_monitors`, `raw_jobs`.",
+				Description: "配置 类型，`service_monitors`，`pod_monitors`，`raw_jobs`。",
 			},
 
 			"config": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Full configuration in yaml format.",
+				Description: "Full configuration in yaml 格式",
 			},
 		},
 	}

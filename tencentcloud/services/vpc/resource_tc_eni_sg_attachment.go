@@ -28,7 +28,7 @@ func ResourceTencentCloudEniSgAttachment() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				MaxItems:    1,
-				Description: "ENI instance ID. Such as:eni-pxir56ns. It Only support set one eni instance now.",
+				Description: "ENI instance ID. Such as:eni-pxir56ns. It Only support set one eni instance now。",
 			},
 
 			"security_group_ids": {
@@ -38,7 +38,7 @@ func ResourceTencentCloudEniSgAttachment() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Security group instance ID, for example:sg-33ocnj9n, can be obtained through DescribeSecurityGroups. There is a limit of 100 instances per request.",
+				Description: "Security group instance ID，for example:sg-33ocnj9n，can be obtained through DescribeSecurityGroups. There is a 限制 of 100 instances per request。",
 			},
 		},
 	}

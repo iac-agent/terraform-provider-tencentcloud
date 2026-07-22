@@ -17,13 +17,13 @@ func DataSourceTencentCloudMongodbInstanceUrls() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"urls": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Example connection string access address in the form of an instance URI. Contains: URI type and connection string address.",
+				Description: "Example connection string access 地址 in the form of an instance URI. Contains: URI 类型 and connection string 地址",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"url_type": {
@@ -44,7 +44,7 @@ func DataSourceTencentCloudMongodbInstanceUrls() *schema.Resource {
 						"address": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Example connection string access address in the form of an instance URI.",
+							Description: "Example connection string access 地址 in the form of an instance URI。",
 						},
 					},
 				},
@@ -53,7 +53,7 @@ func DataSourceTencentCloudMongodbInstanceUrls() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

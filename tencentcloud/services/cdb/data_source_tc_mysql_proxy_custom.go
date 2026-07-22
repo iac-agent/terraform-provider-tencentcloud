@@ -17,39 +17,39 @@ func DataSourceTencentCloudMysqlProxyCustom() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instanced id.",
+				Description: "实例化 ID。",
 			},
 
 			"custom_conf": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "proxy configuration.",
+				Description: "代理配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"device": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "equipment.",
+							Description: "设备。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "type.",
+							Description: "类型。",
 						},
 						"device_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Equipment type.",
+							Description: "设备类型。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory.",
+							Description: "记忆。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "number of cores.",
+							Description: "核心数量。",
 						},
 					},
 				},
@@ -58,18 +58,18 @@ func DataSourceTencentCloudMysqlProxyCustom() *schema.Resource {
 			"weight_rule": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "weight limit.",
+				Description: "重量限制。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"less_than": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "division ceiling.",
+							Description: "分区上限。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "weight limit.",
+							Description: "重量限制。",
 						},
 					},
 				},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudMysqlProxyCustom() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -30,7 +30,7 @@ func ResourceTencentCloudAntiddosCcBlackWhiteIp() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"black_white_ip": {
@@ -38,18 +38,18 @@ func ResourceTencentCloudAntiddosCcBlackWhiteIp() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Black white ip.",
+				Description: "Black white ip。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ip address.",
+							Description: "ip 地址",
 						},
 						"mask": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "ip mask.",
+							Description: "ip mask。",
 						},
 					},
 				},
@@ -59,28 +59,28 @@ func ResourceTencentCloudAntiddosCcBlackWhiteIp() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "IP type, value [black(blacklist IP), white(whitelist IP)].",
+				Description: "IP 类型，值 [black(blacklist IP)，white(whitelist IP)]。",
 			},
 
 			"ip": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ip address.",
+				Description: "ip 地址",
 			},
 
 			"domain": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "domain.",
+				Description: "域名",
 			},
 
 			"protocol": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "protocol.",
+				Description: "协议",
 			},
 		},
 	}

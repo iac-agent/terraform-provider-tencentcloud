@@ -27,13 +27,13 @@ func ResourceTencentCloudClbInstanceMixIpTargetConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID of CLB instances to be queried.",
+				Description: "需要查询的CLB实例ID。",
 			},
 
 			"mix_ip_target": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "False: closed True:open.",
+				Description: "False：关闭 True：打开。",
 			},
 		},
 	}

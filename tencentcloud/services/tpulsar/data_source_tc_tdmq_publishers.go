@@ -20,34 +20,34 @@ func DataSourceTencentCloudTdmqPublishers() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 			"namespace": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace name.",
+				Description: "namespace 名称",
 			},
 			"topic": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "topic name.",
+				Description: "topic 名称",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Parameter filter, support ProducerName, Address field.",
+				Description: "Parameter filter，support ProducerName，地址 field。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The name of the filter parameter.",
+							Description: "The 名称 filter parameter。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Optional:    true,
-							Description: "value.",
+							Description: "值",
 						},
 					},
 				},
@@ -56,18 +56,18 @@ func DataSourceTencentCloudTdmqPublishers() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "sorter.",
+				Description: "sorter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "sorter.",
+							Description: "sorter。",
 						},
 						"order": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Ascending ASC, descending DESC.",
+							Description: "Ascending ASC，descending DESC。",
 						},
 					},
 				},
@@ -76,53 +76,53 @@ func DataSourceTencentCloudTdmqPublishers() *schema.Resource {
 			"publishers": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Producer Information ListNote: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Producer Information List注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"producer_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "producer idNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "producer id注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"producer_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "producer nameNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "producer name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "producer addressNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "producer address注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"client_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "client versionNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "client version注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"msg_rate_in": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Message production rate (articles/second)Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "消息 production rate (articles/second)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"msg_throughput_in": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Message production throughput rate (bytes/second)Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "消息 production throughput rate (bytes/second)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"average_msg_size": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Average message size (bytes)Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Average 消息 size (bytes)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"connected_since": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "connection timeNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "connection time注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"partition": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The topic partition number of the producer connectionNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The topic partition 数量 the producer connection注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -130,7 +130,7 @@ func DataSourceTencentCloudTdmqPublishers() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

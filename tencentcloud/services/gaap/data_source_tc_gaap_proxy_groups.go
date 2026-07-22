@@ -19,19 +19,19 @@ func DataSourceTencentCloudGaapProxyGroups() *schema.Resource {
 			"project_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Project ID. Value range:-1, All projects under this user0, default projectOther values, specified items.",
+				Description: "项目 ID 值 range:-1，All projects under this user0，default projectOther values，specified items。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions,The upper limit of Filter.Values per request is 5.RealServerRegion - String - Required: No - (filtering criteria) Filter by real server region, refer to the RegionId in the returned results of the DescribeDestRegions interface.PackageType - String - Required: No - (Filter condition) proxy group type, where &amp;#39;Thunder&amp;#39; represents the standard proxy group and &amp;#39;Accelerator&amp;#39; represents the silver acceleration proxy group.",
+				Description: "Filter conditions,The upper 限制 of Filter.Values per request is 5.RealServerRegion - String - 必填: No - (filtering criteria) Filter by real server 地域，refer to the RegionId in the returned results of the DescribeDestRegions interface.PackageType - String - 必填: No - (Filter condition) proxy group 类型，where &amp;#39;Thunder&amp;#39; represents the standard proxy group and &amp;#39;Accelerator&amp;#39; represents the silver acceleration proxy group。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter conditions.",
+							Description: "Filter conditions。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -39,7 +39,7 @@ func DataSourceTencentCloudGaapProxyGroups() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "filtering value.",
+							Description: "filtering 值",
 						},
 					},
 				},
@@ -48,18 +48,18 @@ func DataSourceTencentCloudGaapProxyGroups() *schema.Resource {
 			"tag_set": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Tag list, when this field exists, pulls the resource list under the corresponding tag.Supports a maximum of 5 labels. When there are two or more labels and any one of them is met, the proxy group will be pulled out.",
+				Description: "标签列表，when this field exists，pulls the resource list under the corresponding 标签Supports a maximum of 5 labels. When there are two or more labels and any one of them is met，the proxy group will be pulled out。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag Key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag Value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -68,69 +68,69 @@ func DataSourceTencentCloudGaapProxyGroups() *schema.Resource {
 			"proxy_group_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of proxy groups.Note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "列表 proxy groups.注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "proxy group Id.",
+							Description: "proxy group Id。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "proxy group domain nameNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "proxy group 域名 name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "proxy Group NameNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "proxy Group Name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project Id.",
+							Description: "项目 ID",
 						},
 						"real_server_region_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Real Server Region Info.",
+							Description: "Real Server 地域 Info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region Id.",
+										Description: "地域 ID",
 									},
 									"region_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region Name.",
+										Description: "地域 名称",
 									},
 									"region_area": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region of the computer room.",
+										Description: "地域 of the computer room。",
 									},
 									"region_area_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region name of the computer room.",
+										Description: "地域名称 of the computer room。",
 									},
 									"idc_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The type of computer room, where &#39;dc&#39; represents the DataCenter data center and &#39;ec&#39; represents the EdgeComputing edge node.",
+										Description: "类型 computer room，where &#39;dc&#39; represents the DataCenter data center and &#39;ec&#39; represents the EdgeComputing edge node。",
 									},
 									"feature_bitmap": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Property bitmap, where each bit represents a property, where:0, indicates that the feature is not supported;1, indicates support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.Note: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Property bitmap，where each bit represents a property，where:0，表示that the feature is not supported;1，表示support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"support_feature": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Ability to access regional supportNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Ability to access regional support注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"network_type": {
@@ -139,7 +139,7 @@ func DataSourceTencentCloudGaapProxyGroups() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "A list of network types supported by the access area, with &#39;normal&#39; indicating support for regular BGP, &#39;cn2&#39; indicating premium BGP, &#39;triple&#39; indicating three networks, and &#39;secure_EIP&#39; represents a custom secure EIP.",
+													Description: "A 列表 network types supported by the access area，with &#39;normal&#39; indicating support for regular BGP，&#39;cn2&#39; indicating premium BGP，&#39;triple&#39; indicating three networks，and &#39;secure_EIP&#39; represents a custom secure EIP。",
 												},
 											},
 										},
@@ -150,23 +150,23 @@ func DataSourceTencentCloudGaapProxyGroups() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "proxy group status.Among them,&#39;RUNNING&#39; indicates running;&#39;CREATING&#39; indicates being created;&#39;DESTROYING&#39; indicates being destroyed;&#39;MOVING&#39; indicates that the proxy is being migrated;&#39;CHANGING&#39; indicates partial deployment.",
+							Description: "proxy group 状态Among them,&#39;RUNNING&#39; 表示running;&#39;CREATING&#39; 表示being created;&#39;DESTROYING&#39; 表示being destroyed;&#39;MOVING&#39; 表示that the proxy is being migrated;&#39;CHANGING&#39; 表示partial deployment。",
 						},
 						"tag_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Tag Set.",
+							Description: "标签 Set。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag Key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag Value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -174,27 +174,27 @@ func DataSourceTencentCloudGaapProxyGroups() *schema.Resource {
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "proxy Group VersionNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "proxy Group Version注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Create TimeNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Create Time注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"proxy_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Does the proxy group include Microsoft proxysNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Does the proxy group include Microsoft proxys注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"http3_supported": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Supports the identification of Http3 features, where:0 indicates shutdown;1 indicates enabled.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Supports the identification of Http3 features，where:0 表示shutdown;1 表示enabled.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"feature_bitmap": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Property bitmap, where each bit represents a property, where:0, indicates that the feature is not supported;1, indicates support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Property bitmap，where each bit represents a property，where:0，表示that the feature is not supported;1，表示support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -203,7 +203,7 @@ func DataSourceTencentCloudGaapProxyGroups() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

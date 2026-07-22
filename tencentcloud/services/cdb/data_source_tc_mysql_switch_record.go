@@ -17,24 +17,24 @@ func DataSourceTencentCloudMysqlSwitchRecord() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cdb-c1nl9rpv or cdbro-c1nl9rpv, which is the same as the instance ID displayed on the cloud database console page.",
+				Description: "实例ID，格式为：cdb-c1nl9rpv或cdbro-c1nl9rpv，与云数据库控制台页面显示的实例ID相同。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Instance switching record details.",
+				Description: "实例切换记录详细信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Switching time, the format is: 2017-09-03 01:34:31.",
+							Description: "切换时间，格式为：2017-09-03 01:34:31。",
 						},
 						"switch_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Switch type, possible return values: TRANSFER - data migration; MASTER2SLAVE - master-standby switch; RECOVERY - master-slave recovery.",
+							Description: "开关类型，可能的返回值：TRANSFER——数据迁移； MASTER2SLAVE——主备切换； RECOVERY——主从恢复。",
 						},
 					},
 				},
@@ -43,7 +43,7 @@ func DataSourceTencentCloudMysqlSwitchRecord() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

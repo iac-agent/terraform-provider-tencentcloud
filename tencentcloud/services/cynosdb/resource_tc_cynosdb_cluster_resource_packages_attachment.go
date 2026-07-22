@@ -27,14 +27,14 @@ func ResourceTencentCloudCynosdbClusterResourcePackagesAttachment() *schema.Reso
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"package_ids": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Resource Package Unique ID.",
+				Description: "资源包唯一ID。",
 			},
 		},
 	}

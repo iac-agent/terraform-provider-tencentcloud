@@ -26,14 +26,14 @@ func ResourceTencentCloudSslUpdateCertificateInstanceOperation() *schema.Resourc
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Update new certificate ID.",
+				Description: "Update new 证书 ID",
 			},
 
 			"old_certificate_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Update the original certificate ID.",
+				Description: "Update the original 证书 ID",
 			},
 
 			"resource_types": {
@@ -43,20 +43,20 @@ func ResourceTencentCloudSslUpdateCertificateInstanceOperation() *schema.Resourc
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The resource type that needs to be deployed. The parameter value is optional: clb, cdn, waf, live, ddos, teo, apigateway, vod, tke, tcb.",
+				Description: "The 资源类型 that needs to be deployed. The parameter 值 为可选项: clb，cdn，waf，live，ddos，teo，apigateway，vod，tke，tcb。",
 			},
 
 			"resource_types_regions": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "List of regions where cloud resources need to be deploye.",
+				Description: "列表 regions where cloud resources need to be deploye。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cloud resource type.",
+							Description: "Cloud 资源类型",
 						},
 						"regions": {
 							Type: schema.TypeSet,
@@ -64,7 +64,7 @@ func ResourceTencentCloudSslUpdateCertificateInstanceOperation() *schema.Resourc
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Region list.",
+							Description: "地域 list。",
 						},
 					},
 				},
@@ -75,7 +75,7 @@ func ResourceTencentCloudSslUpdateCertificateInstanceOperation() *schema.Resourc
 				ForceNew:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "Certificate public key. If you upload the certificate public key, CertificateId does not need to be passed.",
+				Description: "Certificate public 键 If you upload the certificate public 键，CertificateId does not need to be passed。",
 			},
 
 			"certificate_private_key": {
@@ -83,35 +83,35 @@ func ResourceTencentCloudSslUpdateCertificateInstanceOperation() *schema.Resourc
 				ForceNew:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "Certificate private key. If you upload the certificate public key, CertificateId does not need to be passed.",
+				Description: "Certificate private 键 If you upload the certificate public 键，CertificateId does not need to be passed。",
 			},
 
 			"expiring_notification_switch": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to ignore expiration reminders for old certificates 0: Do not ignore notifications. 1: Ignore the notification and ignore the OldCertificateId expiration reminder.",
+				Description: "是否ignore expiration reminders for old certificates 0: Do not ignore notifications. 1: Ignore the notification and ignore the OldCertificateId expiration reminder。",
 			},
 
 			"repeatable": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether the same certificate is allowed to be uploaded repeatedly. If you choose to upload the certificate, you can configure this parameter.",
+				Description: "是否same certificate is allowed to be uploaded repeatedly. If you choose to upload the certificate，you can configure this parameter。",
 			},
 
 			"allow_download": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to allow downloading, if you choose to upload the certificate, you can configure this parameter.",
+				Description: "是否allow downloading，if you choose to upload the certificate，you can configure this parameter。",
 			},
 
 			"project_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Project ID, if you choose to upload the certificate, you can configure this parameter.",
+				Description: "项目 ID，if you choose to upload the certificate，you can configure this parameter。",
 			},
 		},
 	}

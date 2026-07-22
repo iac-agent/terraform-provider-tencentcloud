@@ -25,14 +25,14 @@ func ResourceTencentCloudBhAssetSyncFlagConfig() *schema.Resource {
 			"auto_sync": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to enable asset auto-sync, false - disabled, true - enabled.",
+				Description: "是否enable asset auto-sync，false - 已禁用，true - 已启用",
 			},
 
 			// computed
 			"role_granted": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether the role has been authorized, false - not authorized, true - authorized.",
+				Description: "是否role has been authorized，false - not authorized，true - authorized。",
 			},
 		},
 	}

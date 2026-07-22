@@ -20,54 +20,54 @@ func DataSourceTencentCloudMariadbAccounts() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "account list.",
+				Description: "账号 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "username.",
+							Description: "用户名",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The host from which the user can log in (corresponding to the host field of MySQL users, UserName + Host uniquely identifies a user, in the form of IP, and the IP segment ends with %; supports filling in %; if it is empty, it defaults to %).",
+							Description: "The 主机 from which the 用户 can log in (corresponding to the 主机 field of MySQL users，UserName + 主机 uniquely identifies a 用户，in the form of IP，and the IP segment ends with %; supports filling in %; if it is empty，it 默认为 %)。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User remarks.",
+							Description: "用户 备注",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "creation time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"read_only": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Read-only flag, `0`: No, `1`: The SQL request of this account is preferentially executed on the standby machine, and the host machine is selected for execution when the standby machine is unavailable, `2`: The standby machine is preferentially selected for execution, and the operation fails when the standby machine is unavailable.",
+							Description: "Read-only flag，`0`: No，`1`: The SQL request of this 账号 is preferentially executed on the standby machine，and the 主机 machine is selected for execution when the standby machine is unavailable，`2`: The standby machine is preferentially selected for execution，and the operation fails when the standby machine is unavailable。",
 						},
 						"delay_thresh": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "This field is meaningful for read-only accounts, indicating that the standby machine with the active-standby delay less than this value is selected.",
+							Description: "This field is meaningful for read-only accounts，indicating that the standby machine with the 活跃-standby 延迟 less than this 值 is selected。",
 						},
 						"slave_const": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "For read-only accounts, set whether the policy is to fix the standby machine, `0`: The standby machine is not fixed, that is, the standby machine does not meet the conditions and will not disconnect from the client, and the Proxy selects other available standby machines, `1`: The standby machine does not meet the conditions Disconnect, make sure one connection secures the standby.",
+							Description: "For read-only accounts，set 是否policy is to fix the standby machine，`0`: The standby machine is not fixed，that is，the standby machine does not meet the conditions and will not disconnect from the client，and the Proxy selects other available standby machines，`1`: The standby machine does not meet the conditions Disconnect，make sure one connection secures the standby。",
 						},
 					},
 				},
@@ -76,7 +76,7 @@ func DataSourceTencentCloudMariadbAccounts() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

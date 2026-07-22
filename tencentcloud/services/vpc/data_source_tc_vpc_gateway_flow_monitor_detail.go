@@ -19,75 +19,75 @@ func DataSourceTencentCloudVpcGatewayFlowMonitorDetail() *schema.Resource {
 			"time_point": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The point in time. This indicates details of this minute will be queried. For example, in `2019-02-28 18:15:20`, details at `18:15` will be queried.",
+				Description: "The point in time. This 表示details of this minute will be queried. For example，in `2019-02-28 18:15:20`，details at `18:15` will be queried。",
 			},
 
 			"vpn_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The instance ID of the VPN gateway, such as `vpn-ltjahce6`.",
+				Description: "The instance ID VPN gateway，such as `vpn-ltjahce6`。",
 			},
 
 			"direct_connect_gateway_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The instance ID of the Direct Connect gateway, such as `dcg-ltjahce6`.",
+				Description: "The instance ID Direct Connect gateway，such as `dcg-ltjahce6`。",
 			},
 
 			"peering_connection_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The instance ID of the peering connection, such as `pcx-ltjahce6`.",
+				Description: "The instance ID peering connection，such as `pcx-ltjahce6`。",
 			},
 
 			"nat_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The instance ID of the NAT gateway, such as `nat-ltjahce6`.",
+				Description: "The instance ID NAT gateway，such as `nat-ltjahce6`。",
 			},
 
 			"order_field": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The order field supports `InPkg`, `OutPkg`, `InTraffic`, and `OutTraffic`.",
+				Description: "The 顺序 field supports `InPkg`，`OutPkg`，`InTraffic`，and `OutTraffic`。",
 			},
 
 			"order_direction": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Order methods. Ascending: `ASC`, Descending: `DESC`.",
+				Description: "顺序 methods. Ascending: `ASC`，Descending: `DESC`。",
 			},
 
 			"gateway_flow_monitor_detail_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The gateway traffic monitoring details.",
+				Description: "The gateway traffic monitoring details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"private_ip_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Origin `IP`.",
+							Description: "Origin `IP`。",
 						},
 						"in_pkg": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Inbound packets.",
+							Description: "Inbound packets。",
 						},
 						"out_pkg": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Outbound packets.",
+							Description: "Outbound packets。",
 						},
 						"in_traffic": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Inbound traffic, in Byte.",
+							Description: "Inbound traffic，in Byte。",
 						},
 						"out_traffic": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Outbound traffic, in Byte.",
+							Description: "Outbound traffic，in Byte。",
 						},
 					},
 				},
@@ -96,7 +96,7 @@ func DataSourceTencentCloudVpcGatewayFlowMonitorDetail() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

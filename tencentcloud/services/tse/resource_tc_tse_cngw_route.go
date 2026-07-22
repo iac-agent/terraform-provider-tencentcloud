@@ -28,19 +28,19 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID.",
+				Description: "gateway ID。",
 			},
 
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the service which the route belongs to.",
+				Description: "ID service which the route belongs to。",
 			},
 
 			"route_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "the name of the route, unique in the instance.",
+				Description: "the 名称 route，unique in the instance。",
 			},
 
 			"methods": {
@@ -49,7 +49,7 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "route methods. Reference value:`GET`,`POST`,`DELETE`,`PUT`,`OPTIONS`,`PATCH`,`HEAD`,`ANY`,`TRACE`,`COPY`,`MOVE`,`PROPFIND`,`PROPPATCH`,`MKCOL`,`LOCK`,`UNLOCK`.",
+				Description: "route methods. Reference 值:`GET`,`POST`,`DELETE`,`PUT`,`OPTIONS`,`PATCH`,`HEAD`,`ANY`,`TRACE`,`COPY`,`MOVE`,`PROPFIND`,`PROPPATCH`,`MKCOL`,`LOCK`,`UNLOCK`。",
 			},
 
 			"hosts": {
@@ -58,7 +58,7 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "host list.",
+				Description: "主机 list。",
 			},
 
 			"paths": {
@@ -67,7 +67,7 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "path list.",
+				Description: "路径 list。",
 			},
 
 			"protocols": {
@@ -76,32 +76,32 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "the protocol list of route.Reference value:`https`,`http`.",
+				Description: "the 协议 列表 route.Reference 值:`https`,`http`。",
 			},
 
 			"preserve_host": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "whether to keep the host when forwarding to the backend.",
+				Description: "是否keep the 主机 when forwarding to the backend。",
 			},
 
 			"https_redirect_status_code": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "https redirection status code.",
+				Description: "https redirection 状态 代码",
 			},
 
 			"strip_path": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "whether to strip path when forwarding to the backend.",
+				Description: "是否strip 路径 when forwarding to the backend。",
 			},
 
 			"force_https": {
 				Optional:    true,
 				Type:        schema.TypeBool,
 				Deprecated:  "This field has been deprecated and will be deleted in subsequent versions.",
-				Description: "whether to enable forced HTTPS, no longer use.",
+				Description: "是否enable forced HTTPS，no longer use。",
 			},
 
 			"destination_ports": {
@@ -110,24 +110,24 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "destination port for Layer 4 matching.",
+				Description: "destination 端口 for Layer 4 matching。",
 			},
 
 			"headers": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "the headers of route.",
+				Description: "the headers of route。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "key of header.",
+							Description: "键 of header。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "value of header.",
+							Description: "值 of header。",
 						},
 					},
 				},
@@ -136,7 +136,7 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 			"route_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "the id of the route, unique in the instance.",
+				Description: "the ID route，unique in the instance。",
 			},
 		},
 	}

@@ -19,24 +19,24 @@ func DataSourceTencentCloudCvmImageSharePermission() *schema.Resource {
 			"image_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of the image to be shared.",
+				Description: "The ID image to be shared。",
 			},
 
 			"share_permission_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information on image sharing.",
+				Description: "Information on image sharing。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Time when an image was shared.",
+							Description: "Time when an image was shared。",
 						},
 						"account_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the account with which the image is shared.",
+							Description: "ID 账号 with which the image is shared。",
 						},
 					},
 				},
@@ -45,7 +45,7 @@ func DataSourceTencentCloudCvmImageSharePermission() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

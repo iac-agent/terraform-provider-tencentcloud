@@ -30,14 +30,14 @@ func ResourceTencentCloudDasbUserGroupMembers() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "User Group ID.",
+				Description: "用户 组 ID",
 			},
 			"member_id_set": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Collection of member user IDs.",
+				Description: "Collection of member 用户 IDs。",
 			},
 		},
 	}

@@ -28,21 +28,21 @@ func ResourceTencentCloudPostgresqlInstanceNetworkAccess() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID in the format of postgres-6bwgamo3.",
+				Description: "实例 ID in the 格式 of postgres-6bwgamo3。",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Unified VPC ID.",
+				Description: "Unified 私有网络 ID",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Subnet ID.",
+				Description: "子网 ID",
 			},
 
 			"vip": {
@@ -50,7 +50,7 @@ func ResourceTencentCloudPostgresqlInstanceNetworkAccess() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Target VIP.",
+				Description: "Target VIP",
 			},
 		},
 	}

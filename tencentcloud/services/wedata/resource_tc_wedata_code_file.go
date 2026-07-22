@@ -28,51 +28,51 @@ func ResourceTencentCloudWedataCodeFile() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"code_file_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Code file name.",
+				Description: "代码 file 名称",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Parent folder path, for example /aaa/bbb/ccc, path header must start with a slash, root directory pass /.",
+				Description: "Parent folder 路径，for example /aaa/bbb/ccc，路径 header must start with a slash，root directory pass /。",
 			},
 
 			"code_file_config": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Code file configuration.",
+				Description: "代码 file configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"params": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Advanced runtime parameters, variable substitution, map-json String,String.",
+							Description: "Advanced runtime parameters，variable substitution，map-json String,String。",
 						},
 						"notebook_session_info": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Notebook kernel session information.",
+							Description: "Notebook kernel session information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"notebook_session_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Session ID.",
+										Description: "Session ID。",
 									},
 									"notebook_session_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Session name.",
+										Description: "Session 名称",
 									},
 								},
 							},
@@ -84,26 +84,26 @@ func ResourceTencentCloudWedataCodeFile() *schema.Resource {
 			"code_file_content": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Code file content.",
+				Description: "代码 file 内容",
 			},
 
 			// computed
 			"code_file_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Code file ID.",
+				Description: "代码 file ID。",
 			},
 
 			"access_scope": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Permission range: SHARED, PRIVATE.",
+				Description: "Permission range: SHARED，PRIVATE。",
 			},
 
 			"path": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The full path of the node, /aaa/bbb/ccc.ipynb, consists of the names of each node.",
+				Description: "The full 路径 of the node，/aaa/bbb/ccc.ipynb，consists of the names of each node。",
 			},
 		},
 	}

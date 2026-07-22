@@ -19,95 +19,95 @@ func DataSourceTencentCloudBiUserProject() *schema.Resource {
 			"project_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"all_page": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to display all, if true, ignore paging.",
+				Description: "是否display all，if true，ignore paging。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Array(Note: This field may return null, indicating that no valid value can be obtained).",
+				Description: "Array(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User id.",
+							Description: "用户 id。",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Username.",
+							Description: "用户名",
 						},
 						"corp_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Enterprise id(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Enterprise id(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"email": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "E-mail(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "E-mail(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"last_login": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last login time, public cloud unrelated fields(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Last login time，public cloud unrelated fields(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Disabled state(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "已禁用 state(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"first_modify": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "First login to change password, public cloud unrelated fields(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "First login to change 密码，public cloud unrelated fields(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"phone_number": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Phone number(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Phone number(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"area_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mobile area code(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Mobile area 代码(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"created_user": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Created by(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Created by(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"created_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Created at(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Created at(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"updated_user": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Updated by(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Updated by(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Updated at(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Updated at(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"global_user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Global role name(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Global 角色 名称(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"mobile": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mobile number, public cloud unrelated fields(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Mobile number，public cloud unrelated fields(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 					},
 				},
@@ -116,7 +116,7 @@ func DataSourceTencentCloudBiUserProject() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

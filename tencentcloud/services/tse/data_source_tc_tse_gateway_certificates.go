@@ -19,24 +19,24 @@ func DataSourceTencentCloudTseGatewayCertificates() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Gateway ID.",
+				Description: "网关 ID",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions, valid value: `BindDomain`, `Name`.",
+				Description: "Filter conditions，valid 值: `BindDomain`，`名称`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Filter name.",
+							Description: "过滤名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Filter value.",
+							Description: "过滤值",
 						},
 					},
 				},
@@ -45,29 +45,29 @@ func DataSourceTencentCloudTseGatewayCertificates() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Result.",
+				Description: "结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total count. Note: This field may return null, indicating that a valid value is not available.",
+							Description: "总数 注意：此字段可能返回 null，表示有效值不可用。",
 						},
 						"certificates_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Certificate list of gateway. Note: This field may return null, indicating that a valid value is not available.",
+							Description: "Certificate 列表 gateway. 注意：此字段可能返回 null，表示有效值不可用。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Certificate name. Note: This field may return null, indicating that a valid value is not available.",
+										Description: "Certificate 名称 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Certificate ID. Note: This field may return null, indicating that a valid value is not available.",
+										Description: "证书 ID 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"bind_domains": {
 										Type: schema.TypeSet,
@@ -75,47 +75,47 @@ func DataSourceTencentCloudTseGatewayCertificates() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Domains of the binding. Note: This field may return null, indicating that a valid value is not available.",
+										Description: "Domains of the binding. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Status of certificate. Reference value:- expired- active. Note: This field may return null, indicating that a valid value is not available.",
+										Description: "状态 certificate. Reference 值:- expired- 活跃 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"crt": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Pem format of certificate. Note: This field may return null, indicating that a valid value is not available.",
+										Description: "Pem 格式 of certificate. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Private key of certificate. Note: This field may return null, indicating that a valid value is not available.",
+										Description: "Private 键 of certificate. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"expire_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Expiration time of certificate. Note: This field may return null, indicating that a valid value is not available.",
+										Description: "过期时间 of certificate. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Upload time of certificate. Note: This field may return null, indicating that a valid value is not available.",
+										Description: "Upload time of certificate. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"issue_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Issuance time of certificateNote: This field may return null, indicating that a valid value is not available.",
+										Description: "Issuance time of certificate注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"cert_source": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Source of certificate. Reference value:- native. Source: konga- ssl. Source: ssl platform. Note: This field may return null, indicating that a valid value is not available.",
+										Description: "来源 of certificate. Reference 值:- native. 来源: konga- ssl. 来源: ssl platform. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"cert_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Certificate ID of ssl platform. Note: This field may return null, indicating that a valid value is not available.",
+										Description: "证书 ID ssl platform. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 								},
 							},
@@ -127,7 +127,7 @@ func DataSourceTencentCloudTseGatewayCertificates() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

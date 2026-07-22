@@ -25,61 +25,61 @@ func DataSourceTencentCloudVpnCustomerGateways() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "Name of the customer gateway. The length of character is limited to 1-60.",
+				Description:  "名称 customer gateway. The length of character is limited to 1-60。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the VPN customer gateway.",
+				Description: "ID VPN customer gateway。",
 			},
 			"public_ip_address": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIp,
-				Description:  "Public ip address of the VPN customer gateway.",
+				Description:  "Public ip 地址 of the VPN customer gateway。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the VPN customer gateway to be queried.",
+				Description: "标签 of the VPN customer gateway to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"gateway_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the dedicated gateways.",
+				Description: "Information 列表 the dedicated gateways。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the VPN customer gateway.",
+							Description: "ID VPN customer gateway。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the VPN customer gateway.",
+							Description: "名称 VPN customer gateway。",
 						},
 						"public_ip_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public ip address of the VPN customer gateway.",
+							Description: "Public ip 地址 of the VPN customer gateway。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Tags of the VPN customer gateway.",
+							Description: "标签 of the VPN customer gateway。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the VPN customer gateway.",
+							Description: "创建时间 of the VPN customer gateway。",
 						},
 					},
 				},

@@ -21,24 +21,24 @@ func DataSourceTencentCloudOceanusTreeJobs() *schema.Resource {
 			"work_space_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace SerialId.",
+				Description: "Workspace SerialId。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter rules.",
+				Description: "Filter rules。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered. Can only be set `Zone` or `JobType` or `JobStatus`.",
+							Description: "待过滤字段 Can only be set `可用区` or `JobType` or `JobStatus`。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Filter values for the field.",
+							Description: "Filter values for the field。",
 						},
 					},
 				},
@@ -46,54 +46,54 @@ func DataSourceTencentCloudOceanusTreeJobs() *schema.Resource {
 			"tree_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Tree structure information.",
+				Description: "Tree structure information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID.",
+							Description: "ID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name.",
+							Description: "名称",
 						},
 						"parent_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parent Id.",
+							Description: "Parent Id。",
 						},
 						"job_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of jobs.",
+							Description: "列表 jobs。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"job_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Job ID.",
+										Description: "作业 ID",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Job Name.",
+										Description: "Job 名称",
 									},
 									"job_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Job Type.",
+										Description: "Job 类型",
 									},
 									"running_cu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Resources occupied by homework.",
+										Description: "Resources occupied by homework。",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Job status.",
+										Description: "Job 状态",
 									},
 								},
 							},
@@ -101,7 +101,7 @@ func DataSourceTencentCloudOceanusTreeJobs() *schema.Resource {
 						"children": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subdirectory Information.",
+							Description: "Subdirectory Information。",
 						},
 					},
 				},
@@ -109,7 +109,7 @@ func DataSourceTencentCloudOceanusTreeJobs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

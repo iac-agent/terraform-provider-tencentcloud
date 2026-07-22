@@ -23,24 +23,24 @@ func ResourceTencentCloudVpcReplaceRoutesWithRoutePolicyConfig() *schema.Resourc
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Route Table Instance ID.",
+				Description: "Route Table 实例 ID",
 			},
 
 			"routes": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Routing policy object. requires specifying the unique ID of routing policy (RouteItemId).",
+				Description: "Routing policy object. requires specifying the unique ID routing policy (RouteItemId)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"route_item_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Route unique policy ID.",
+							Description: "Route unique policy ID。",
 						},
 						"force_match_policy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Match the route reception policy tag.",
+							Description: "Match the route reception policy 标签",
 						},
 					},
 				},

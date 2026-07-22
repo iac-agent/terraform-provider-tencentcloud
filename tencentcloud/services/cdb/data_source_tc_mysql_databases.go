@@ -19,25 +19,25 @@ func DataSourceTencentCloudMysqlDatabases() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "实例的ID。",
 			},
 
 			"offset": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Page offset.",
+				Description: "页面偏移量。",
 			},
 
 			"limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of single requests, the default value is 20, the minimum value is 1, and the maximum value is 100.",
+				Description: "单次请求数，默认20，最小值1，最大值100。",
 			},
 
 			"database_regexp": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Regular expression to match database library names.",
+				Description: "匹配数据库库名称的正则表达式。",
 			},
 
 			"items": {
@@ -46,24 +46,24 @@ func DataSourceTencentCloudMysqlDatabases() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Returned instance information.",
+				Description: "返回实例信息。",
 			},
 
 			"database_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Database name and character set.",
+				Description: "数据库名称和字符集。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database_name": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "The name of database.",
+							Description: "数据库的名称。",
 						},
 						"character_set": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "character set type.",
+							Description: "字符集类型。",
 						},
 					},
 				},
@@ -72,7 +72,7 @@ func DataSourceTencentCloudMysqlDatabases() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -22,7 +22,7 @@ func ResourceTencentCloudMysqlRollbackStop() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cloud database instance ID.",
+				Description: "云数据库实例ID。",
 			},
 		},
 	}

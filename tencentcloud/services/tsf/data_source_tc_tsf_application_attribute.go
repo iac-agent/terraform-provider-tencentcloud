@@ -19,29 +19,29 @@ func DataSourceTencentCloudTsfApplicationAttribute() *schema.Resource {
 			"application_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "application Id.",
+				Description: "application Id。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "application list other attribute.",
+				Description: "application list other attribute。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total number of instances.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Total 数量 instances.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"run_instance_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of running instances.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "数量 running instances.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"group_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of deployment groups under the application.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "数量 deployment groups under the application.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -50,7 +50,7 @@ func DataSourceTencentCloudTsfApplicationAttribute() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

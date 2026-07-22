@@ -20,81 +20,81 @@ func DataSourceTencentCloudAntiddosOverviewDdosEventList() *schema.Resource {
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "StartTime.",
+				Description: "StartTime。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "EndTime.",
+				Description: "EndTime。",
 			},
 
 			"attack_status": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "filter event by attack status, start: attacking; end: attack end.",
+				Description: "filter event by attack 状态，start: attacking; end: attack end。",
 			},
 
 			"event_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "EventList.",
+				Description: "EventList。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "event id.",
+							Description: "event id。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ip.",
+							Description: "ip。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "StartTime.",
+							Description: "StartTime。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "EndTime.",
+							Description: "EndTime。",
 						},
 						"attack_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "AttackType.",
+							Description: "AttackType。",
 						},
 						"attack_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Attack status, 0: Under attack; 1: End of attack.",
+							Description: "Attack 状态，0: Under attack; 1: End of attack。",
 						},
 						"mbps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Attack traffic, unit Mbps.",
+							Description: "Attack traffic，unit Mbps。",
 						},
 						"pps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "unit Mbps.",
+							Description: "unit Mbps。",
 						},
 						"business": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dayu sub product code (bgpip represents advanced defense IP; net represents professional version of advanced defense IP).",
+							Description: "Dayu sub product 代码 (bgpip represents advanced defense IP; net represents professional 版本 of advanced defense IP)。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "InstanceId.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "InstanceId.",
+							Description: "实例 ID",
 						},
 					},
 				},
@@ -103,7 +103,7 @@ func DataSourceTencentCloudAntiddosOverviewDdosEventList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -30,24 +30,24 @@ func ResourceTencentCloudVpnGatewayCcnRoutes() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "VPN GATEWAY INSTANCE ID.",
+				Description: "VPN GATEWAY INSTANCE ID。",
 			},
 			"route_id": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Route Id.",
+				Description: "Route Id。",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Whether routing information is enabled. `ENABLE`: Enable Route, `DISABLE`: Disable Route.",
+				Description: "Whether routing information is 已启用 `ENABLE`: Enable Route，`DISABLE`: Disable Route。",
 			},
 			"destination_cidr_block": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Routing CIDR.",
+				Description: "Routing CIDR。",
 			},
 		},
 	}

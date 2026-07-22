@@ -28,111 +28,111 @@ func ResourceTencentCloudTseInstance() *schema.Resource {
 			"engine_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "engine type. Reference value: `zookeeper`, `nacos`, `polaris`.",
+				Description: "engine 类型 Reference 值: `zookeeper`，`nacos`，`polaris`。",
 			},
 
 			"engine_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "An open source version of the engine. Each engine supports different open source versions, refer to the product documentation or console purchase page.",
+				Description: "An open 来源 版本 of the engine. Each engine supports different open 来源 versions，refer to the product documentation or console purchase page。",
 			},
 
 			"engine_product_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Engine product version. Reference value: `Nacos`: `TRIAL`: Development version, optional node num: `1`, optional spec list: `1C1G`; `STANDARD`: Standard versions, optional node num: `3`, `5`, `7`, optional spec list: `1C2G`, `2C4G`, `4C8G`, `8C16G`, `16C32G`. `Zookeeper`: `TRIAL`: Development version, optional node num: `1`, optional spec list: `1C1G`; `STANDARD`: Standard versions, optional node num: `3`, `5`, `7`, optional spec list: `1C2G`, `2C4G`, `4C8G`, `8C16G`, `16C32G`; `PROFESSIONAL`: professional versions, optional node num: `3`, `5`, `7`, optional spec list: `1C2G`, `2C4G`, `4C8G`, `8C16G`, `16C32G`. `Polarismesh`: `BASE`: Base version, optional node num: `1`, optional spec list: `NUM50`; `PROFESSIONAL`: Enterprise versions, optional node num: `2`, `3`, optional spec list: `NUM50`, `NUM100`, `NUM200`, `NUM500`, `NUM1000`, `NUM5000`, `NUM10000`, `NUM50000`.",
+				Description: "Engine product 版本 Reference 值: `Nacos`: `TRIAL`: Development 版本，可选 node num: `1`，可选 spec list: `1C1G`; `STANDARD`: Standard versions，可选 node num: `3`，`5`，`7`，可选 spec list: `1C2G`，`2C4G`，`4C8G`，`8C16G`，`16C32G`. `Zookeeper`: `TRIAL`: Development 版本，可选 node num: `1`，可选 spec list: `1C1G`; `STANDARD`: Standard versions，可选 node num: `3`，`5`，`7`，可选 spec list: `1C2G`，`2C4G`，`4C8G`，`8C16G`，`16C32G`; `PROFESSIONAL`: professional versions，可选 node num: `3`，`5`，`7`，可选 spec list: `1C2G`，`2C4G`，`4C8G`，`8C16G`，`16C32G`. `Polarismesh`: `BASE`: Base 版本，可选 node num: `1`，可选 spec list: `NUM50`; `PROFESSIONAL`: Enterprise versions，可选 node num: `2`，`3`，可选 spec list: `NUM50`，`NUM100`，`NUM200`，`NUM500`，`NUM1000`，`NUM5000`，`NUM10000`，`NUM50000`。",
 			},
 
 			"engine_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "engine deploy region. Reference value: `China area` Reference value: `ap-guangzhou`, `ap-beijing`, `ap-chengdu`, `ap-chongqing`, `ap-nanjing`, `ap-shanghai` `ap-beijing-fsi`, `ap-shanghai-fsi`, `ap-shenzhen-fsi`. `Asia Pacific` area Reference value: `ap-hongkong`, `ap-taipei`, `ap-jakarta`, `ap-singapore`, `ap-bangkok`, `ap-seoul`, `ap-tokyo`. `North America area` Reference value: `na-toronto`, `sa-saopaulo`, `na-siliconvalley`, `na-ashburn`.",
+				Description: "engine deploy 地域 Reference 值: `China area` Reference 值: `ap-guangzhou`，`ap-beijing`，`ap-chengdu`，`ap-chongqing`，`ap-nanjing`，`ap-shanghai` `ap-beijing-fsi`，`ap-shanghai-fsi`，`ap-shenzhen-fsi`. `Asia Pacific` area Reference 值: `ap-hongkong`，`ap-taipei`，`ap-jakarta`，`ap-singapore`，`ap-bangkok`，`ap-seoul`，`ap-tokyo`. `North America area` Reference 值: `na-toronto`，`sa-saopaulo`，`na-siliconvalley`，`na-ashburn`。",
 			},
 
 			"engine_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "engien name. Reference value: nacos-test.",
+				Description: "engien 名称 Reference 值: nacos-test。",
 			},
 
 			"trade_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "trade type. Reference value:- 0:postpaid- 1:Prepaid (Interface does not support the creation of prepaid instances yet).",
+				Description: "trade 类型 Reference 值:- 0:postpaid- 1:Prepaid (Interface does not support the creation of prepaid instances yet)。",
 			},
 
 			"engine_resource_spec": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "engine spec ID. see EngineProductVersion.",
+				Description: "engine spec ID. see EngineProductVersion。",
 			},
 
 			"engine_node_num": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "engine node num. see EngineProductVersion.",
+				Description: "engine node num. see EngineProductVersion。",
 			},
 
 			"vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "VPC ID. Assign an IP address to the engine in the VPC subnet. Reference value: vpc-conz6aix.",
+				Description: "私有网络 ID Assign an IP 地址 to the engine in the VPC subnet. Reference 值: vpc-conz6aix。",
 			},
 
 			"subnet_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "subnet ID. Assign an IP address to the engine in the VPC subnet. Reference value: subnet-ahde9me9.",
+				Description: "subnet ID. Assign an IP 地址 to the engine in the VPC subnet. Reference 值: subnet-ahde9me9。",
 			},
 
 			"prepaid_period": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Prepaid time, in monthly units.",
+				Description: "Prepaid time，in monthly units。",
 			},
 
 			"prepaid_renew_flag": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Automatic renewal mark, prepaid only.  Reference value: `0`: No automatic renewal, `1`: Automatic renewal.",
+				Description: "Automatic renewal mark，prepaid only.  Reference 值: `0`: No automatic renewal，`1`: Automatic renewal。",
 			},
 
 			"engine_region_infos": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Details about the regional configuration of the engine in cross-region deployment, only zookeeper professional requires the use of the EngineRegionInfos parameter.",
+				Description: "Details about the regional configuration of the engine in cross-地域 deployment，only zookeeper professional requires the use of the EngineRegionInfos parameter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"engine_region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Engine node region.",
+							Description: "Engine node 地域",
 						},
 						"replica": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The number of nodes allocated in this region.",
+							Description: "The 数量 nodes allocated in this 地域",
 						},
 						"vpc_infos": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Cluster network information.",
+							Description: "Cluster network information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Vpc Id.",
+										Description: "私有网络 ID",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Subnet ID.",
+										Description: "子网 ID",
 									},
 									"intranet_address": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Intranet access addressNote: This field may return null, indicating that a valid value is not available..",
+										Description: "Intranet access address注意：此字段可能返回 null，表示有效值不可用。。",
 									},
 								},
 							},
@@ -144,13 +144,13 @@ func ResourceTencentCloudTseInstance() *schema.Resource {
 			"enable_client_internet_access": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Client public network access, `true`: on, `false`: off, default: false.",
+				Description: "Client public network access，`true`: on，`false`: off，默认值：false。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

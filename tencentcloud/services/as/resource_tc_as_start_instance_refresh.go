@@ -29,47 +29,47 @@ func ResourceTencentCloudAsStartInstanceRefresh() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Scaling group ID.",
+				Description: "Scaling 组 ID",
 			},
 			"refresh_settings": {
 				Type:        schema.TypeList,
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Refresh settings.",
+				Description: "Refresh settings。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"check_instance_target_health": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Backend service health check status for instances, defaults to FALSE. This setting takes effect only for scaling groups bound with application load balancers. When enabled, if an instance fails the check after being refreshed, its load balancer port weight remains 0 and is marked as a refresh failure. Valid values: <br><li>TRUE: Enable the check.</li> <li>FALSE: Do not enable the check.",
+							Description: "Backend service health check 状态 for instances，默认为 FALSE. This setting takes effect only for scaling groups bound with application load balancers. When 已启用，if an instance fails the check after being refreshed，its load balancer 端口 权重 remains 0 and is marked as a refresh failure. 有效值：<br><li>TRUE: Enable the check.</li> <li>FALSE: Do not enable the check。",
 						},
 						"rolling_update_settings": {
 							Type:        schema.TypeList,
 							Required:    true,
 							MaxItems:    1,
-							Description: "Rolling update settings parameters. RefreshMode is the rolling update. This parameter must be filled in.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Rolling update settings parameters. RefreshMode is the rolling update. This parameter must be filled in.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"batch_number": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Batch quantity. The batch quantity should be a positive integer greater than 0, but cannot exceed the total number of instances pending refresh.",
+										Description: "Batch quantity. The batch quantity should be a positive integer greater than 0，but cannot exceed the total 数量 instances pending refresh。",
 									},
 									"batch_pause": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Pause policy between batches. Default value: Automatic. Valid values: <br><li>FIRST_BATCH_PAUSE: Pause after the first batch update completes.</li> <li>BATCH_INTERVAL_PAUSE: Pause between each batch update.</li> <li>AUTOMATIC: No pauses.",
+										Description: "Pause policy between batches. 默认值：Automatic. 有效值：<br><li>FIRST_BATCH_PAUSE: Pause after the first batch update completes.</li> <li>BATCH_INTERVAL_PAUSE: Pause between each batch update.</li> <li>AUTOMATIC: No pauses。",
 									},
 									"max_surge": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Maximum Extra Quantity. After setting this parameter, a batch of pay-as-you-go extra instances will be created according to the launch configuration before the rolling update starts, and the extra instances will be destroyed after the rolling update is completed.",
+										Description: "Maximum Extra Quantity. After setting this parameter，a batch of pay-as-you-go extra instances will be created according to the launch configuration before the rolling update starts，and the extra instances will be destroyed after the rolling update is completed。",
 									},
 									"fail_process": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Failure Handling Policy. The default value is `AUTO_PAUSE`. The values are as follows, `AUTO_PAUSE`: Pause after refresh fails; `AUTO_ROLLBACK`: Roll back after refresh fails; `AUTO_CANCEL`: Cancel after refresh fails.",
+										Description: "Failure Handling Policy. The 默认值为 `AUTO_PAUSE`. The values are as follows，`AUTO_PAUSE`: Pause after refresh fails; `AUTO_ROLLBACK`: Roll back after refresh fails; `AUTO_CANCEL`: Cancel after refresh fails。",
 									},
 								},
 							},
@@ -77,7 +77,7 @@ func ResourceTencentCloudAsStartInstanceRefresh() *schema.Resource {
 						"check_instance_target_health_timeout": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The timeout period for backend service health status checks, in seconds. The valid range is [60, 7200], with a default value of 1800 seconds. This takes effect only when the CheckInstanceTargetHealth parameter is enabled. If the instance health check times out, it will be marked as a refresh failure.",
+							Description: "The timeout 周期 for backend service health 状态 checks，（秒）。 The valid range is [60，7200]，with a 默认值 of 1800 seconds. This takes effect only when the CheckInstanceTargetHealth parameter is 已启用 If the instance health check times out，it will be marked as a refresh failure。",
 						},
 					},
 				},
@@ -86,7 +86,7 @@ func ResourceTencentCloudAsStartInstanceRefresh() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Refresh mode. Value range: ROLLING_UPDATE_RESET: Reinstall the system for rolling update; ROLLING_UPDATE_REPLACE: Create a new instance for rolling update. This mode does not support the rollback interface yet.",
+				Description: "Refresh 模式 取值范围：ROLLING_UPDATE_RESET: Reinstall the system for rolling update; ROLLING_UPDATE_REPLACE: Create a new instance for rolling update. This 模式 does not support the rollback interface yet。",
 			},
 		},
 	}

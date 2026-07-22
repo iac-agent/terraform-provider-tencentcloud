@@ -25,28 +25,28 @@ func ResourceTencentCloudCdwpgDbconfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 			"node_config_params": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Node config parameters.",
+				Description: "Node 配置 parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Node type.",
+							Description: "Node 类型",
 						},
 						"parameter_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter name.",
+							Description: "Parameter 名称",
 						},
 						"parameter_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter value.",
+							Description: "Parameter 值",
 						},
 					},
 				},

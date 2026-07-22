@@ -20,61 +20,61 @@ func DataSourceTencentCloudDcdbParameters() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "parameter list.",
+				Description: "parameter list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "parameter name.",
+							Description: "parameter 名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "parameter value.",
+							Description: "parameter 值",
 						},
 						"default": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "default value.",
+							Description: "默认值",
 						},
 						"constraint": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "params constraint.",
+							Description: "params constraint。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "type.",
+										Description: "类型",
 									},
 									"enum": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "a list of optional values of type num.",
+										Description: "a 列表 可选 values of 类型 num。",
 									},
 									"range": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "range constraint.",
+										Description: "range constraint。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"min": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "min value.",
+													Description: "min 值",
 												},
 												"max": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "max value.",
+													Description: "max 值",
 												},
 											},
 										},
@@ -82,7 +82,7 @@ func DataSourceTencentCloudDcdbParameters() *schema.Resource {
 									"string": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "constraint type is string.",
+										Description: "constraint 类型 is string。",
 									},
 								},
 							},
@@ -90,12 +90,12 @@ func DataSourceTencentCloudDcdbParameters() *schema.Resource {
 						"have_set_value": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "have set value.",
+							Description: "have set 值",
 						},
 						"need_restart": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "need restart.",
+							Description: "need restart。",
 						},
 					},
 				},
@@ -104,7 +104,7 @@ func DataSourceTencentCloudDcdbParameters() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

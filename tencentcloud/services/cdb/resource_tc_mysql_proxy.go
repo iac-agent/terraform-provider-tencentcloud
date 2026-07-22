@@ -28,51 +28,51 @@ func ResourceTencentCloudMysqlProxy() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID。",
 			},
 
 			"uniq_vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Vpc id.",
+				Description: "专有网络 ID。",
 			},
 
 			"uniq_subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Subnet id.",
+				Description: "子网 ID。",
 			},
 
 			"proxy_node_custom": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Node specification configuration.",
+				Description: "节点规范配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Number of nodes.",
+							Description: "节点数。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Number of CPU cores.",
+							Description: "CPU 核心数。",
 						},
 						"mem": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Memory size.",
+							Description: "内存大小。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Region.",
+							Description: "地区。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Zone.",
+							Description: "区。",
 						},
 					},
 				},
@@ -84,58 +84,58 @@ func ResourceTencentCloudMysqlProxy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Security group.",
+				Description: "保安组。",
 			},
 
 			"desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Describe.",
+				Description: "描述。",
 			},
 
 			"connection_pool_limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Connection Pool Threshold.",
+				Description: "连接池阈值。",
 			},
 
 			"vip": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "IP address.",
+				Description: "IP 地址。",
 			},
 
 			"vport": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Port.",
+				Description: "港口。",
 			},
 
 			"proxy_version": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The current version of the database agent. No need to fill in when creating.",
+				Description: "数据库代理的当前版本。创建时无需填写。",
 			},
 
 			"upgrade_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Upgrade time: nowTime (upgrade completed) timeWindow (instance maintenance time), Required when modifying the agent version, No need to fill in when creating.",
+				Description: "升级时间：nowTime（升级完成）timeWindow（实例维护时间），修改代理版本时必填，创建时无需填写。",
 			},
 
 			"proxy_group_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Proxy group id.",
+				Description: "代理组 ID。",
 			},
 
 			"proxy_address_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Proxy address id.",
+				Description: "代理地址 ID。",
 			},
 		},
 	}

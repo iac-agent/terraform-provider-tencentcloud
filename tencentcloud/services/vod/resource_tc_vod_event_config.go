@@ -26,7 +26,7 @@ func ResourceTencentCloudVodEventConfig() *schema.Resource {
 			"sub_app_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Sub app id.",
+				Description: "Sub app id。",
 			},
 
 			"mode": {
@@ -41,21 +41,21 @@ func ResourceTencentCloudVodEventConfig() *schema.Resource {
 			"notification_url": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The address used to receive 3.0 format callbacks when receiving HTTP callback notifications. Note: If you take the NotificationUrl parameter and the value is an empty string, the 3.0 format callback address is cleared.",
+				Description: "The 地址 用于receive 3.0 格式 callbacks when receiving HTTP callback notifications. Note: If you take the NotificationUrl parameter and the 值 is an empty string，the 3.0 格式 callback 地址 is cleared。",
 			},
 
 			"upload_media_complete_event_switch": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Whether to receive video upload completion event notification, default `OFF` means to ignore the event notification, `ON` means to receive event notification.",
+				Description: "是否receive video upload completion event notification，default `OFF` means to ignore the event notification，`ON` means to receive event notification。",
 			},
 
 			"delete_media_complete_event_switch": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Whether to receive video deletion completion event notification, default `OFF` is to ignore the event notification, `ON` is to receive event notification.",
+				Description: "是否receive video deletion completion event notification，default `OFF` is to ignore the event notification，`ON` is to receive event notification。",
 			},
 		},
 	}

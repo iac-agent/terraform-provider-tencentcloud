@@ -17,19 +17,19 @@ func DataSourceTencentCloudMysqlInstanceCharset() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cdb-c1nl9rpv, which is the same as the instance ID displayed on the cloud database console page, and you can use the [query instance list] (https://cloud.tencent.com/document/api/236/15872) interface Gets the value of the field InstanceId in the output parameter.",
+				Description: "实例ID，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同，可以通过【查询实例列表】（https://cloud.tencent.com/document/api/236/15872）接口获取输出参数中InstanceId字段的值。",
 			},
 
 			"charset": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The default character set of the instance, such as `latin1`, `utf8` etc.",
+				Description: "实例的默认字符集，如“latin1”、“utf8”等。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

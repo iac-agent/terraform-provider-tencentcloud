@@ -24,14 +24,14 @@ func ResourceTencentCloudTatInvokerConfig() *schema.Resource {
 			"invoker_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the invoker to be enabled.",
+				Description: "ID invoker to be 已启用",
 			},
 
 			"invoker_status": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"on", "off"}),
-				Description:  "Invoker on and off state, Values: `on`, `off`.",
+				Description:  "Invoker on and off state，Values: `on`，`off`。",
 			},
 		},
 	}

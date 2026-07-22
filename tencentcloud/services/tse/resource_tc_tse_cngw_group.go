@@ -28,31 +28,31 @@ func ResourceTencentCloudTseCngwGroup() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway IDonly postpaid gateway supported.",
+				Description: "gateway IDonly postpaid gateway supported。",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway group name.",
+				Description: "gateway 组名称",
 			},
 
 			"node_config": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "group node configration.",
+				Description: "group node configration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"specification": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "group specification, 1c2g|2c4g|4c8g|8c16g.",
+							Description: "group specification，1c2g|2c4g|4c8g|8c16g。",
 						},
 						"number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "group node number, 2-50.",
+							Description: "group node number，2-50。",
 						},
 					},
 				},
@@ -61,67 +61,67 @@ func ResourceTencentCloudTseCngwGroup() *schema.Resource {
 			"subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "subnet ID. Assign an IP address to the engine in the VPC subnet. Reference value:- subnet-ahde9me9.",
+				Description: "subnet ID. Assign an IP 地址 to the engine in the VPC subnet. Reference 值:- subnet-ahde9me9。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "description information of group.",
+				Description: "描述 information of group。",
 			},
 
 			"internet_max_bandwidth_out": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "public network outbound traffic bandwidth,[1,2048]Mbps.",
+				Description: "public network outbound traffic bandwidth,[1,2048]Mbps。",
 			},
 
 			"internet_config": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "internet configration.",
+				Description: "internet configration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"internet_address_version": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "internet type. Reference value:- IPV4 (default value)- IPV6.",
+							Description: "internet 类型 Reference 值:- IPV4 (默认值)- IPV6。",
 						},
 						"internet_pay_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "trade type of internet. Reference value:- BANDWIDTH- TRAFFIC (default value).",
+							Description: "trade 类型 internet. Reference 值:- BANDWIDTH- TRAFFIC (默认值)。",
 						},
 						"internet_max_bandwidth_out": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "public network bandwidth.",
+							Description: "public network bandwidth。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "description of clb.",
+							Description: "描述 clb。",
 						},
 						"sla_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "specification type of clb. Default shared type when this parameter is empty. Reference value:- SLA LCU-supported.",
+							Description: "specification 类型 clb. Default shared 类型 when this parameter is empty. Reference 值:- SLA LCU-supported。",
 						},
 						"multi_zone_flag": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether load balancing has multiple availability zones.",
+							Description: "Whether load balancing has multiple availability zones。",
 						},
 						"master_zone_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "primary availability zone.",
+							Description: "primary availability 可用区",
 						},
 						"slave_zone_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "alternate availability zone.",
+							Description: "alternate availability 可用区",
 						},
 					},
 				},
@@ -130,7 +130,7 @@ func ResourceTencentCloudTseCngwGroup() *schema.Resource {
 			"group_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "gateway group id.",
+				Description: "gateway group id。",
 			},
 		},
 	}

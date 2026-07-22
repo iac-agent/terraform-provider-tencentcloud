@@ -18,61 +18,61 @@ func DataSourceTencentCloudGaapCheckProxyCreate() *schema.Resource {
 			"access_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The access (acceleration) area of the proxy. The value can be obtained through the interface DescribeAccessRegionsByDestRegion.",
+				Description: "The access (acceleration) area of the proxy. The 值 can be obtained through the interface DescribeAccessRegionsByDestRegion。",
 			},
 
 			"real_server_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The origin area of the proxy. The value can be obtained through the interface DescribeDestRegions.",
+				Description: "The origin area of the proxy. The 值 can be obtained through the interface DescribeDestRegions。",
 			},
 
 			"bandwidth": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The upper limit of proxy bandwidth, in Mbps.",
+				Description: "The upper 限制 of proxy bandwidth，in Mbps。",
 			},
 
 			"concurrent": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The upper limit of chanproxynel concurrency, representing the number of simultaneous online connections, in tens of thousands.",
+				Description: "The upper 限制 of chanproxynel 并发，representing the 数量 simultaneous online connections，in tens of thousands。",
 			},
 
 			"group_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "If creating a proxy under a proxy group, you need to fill in the ID of the proxy group.",
+				Description: "If creating a proxy under a proxy group，you need to fill in the ID proxy group。",
 			},
 
 			"ip_address_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "IP version, can be taken as IPv4 or IPv6, with a default value of IPv4.",
+				Description: "IP 版本，can be taken as IPv4 or IPv6，with a 默认值 of IPv4。",
 			},
 
 			"network_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Network type, can take values &amp;#39;normal&amp;#39;, &amp;#39;cn2&amp;#39;, default value normal.",
+				Description: "Network 类型，can take values &amp;#39;normal&amp;#39;，&amp;#39;cn2&amp;#39;，默认值 normal。",
 			},
 
 			"package_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Channel package type. Thunder represents the standard proxy group, Accelerator represents the game accelerator proxy, and CrossBorder represents the cross-border proxy.",
+				Description: "Channel package 类型 Thunder represents the standard proxy group，Accelerator represents the game accelerator proxy，and CrossBorder represents the cross-border proxy。",
 			},
 
 			"check_flag": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Query whether the proxy with the given configuration can be created, 1 can be created, 0 cannot be created.",
+				Description: "Query 是否proxy with the given configuration can be created，1 can be created，0 cannot be created。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

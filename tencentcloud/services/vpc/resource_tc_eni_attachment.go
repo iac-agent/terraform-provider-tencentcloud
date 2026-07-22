@@ -25,13 +25,13 @@ func ResourceTencentCloudEniAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the ENI.",
+				Description: "ID ENI。",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the instance which bind the ENI.",
+				Description: "ID instance which bind the ENI。",
 			},
 		},
 	}

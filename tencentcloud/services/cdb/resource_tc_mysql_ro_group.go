@@ -26,51 +26,51 @@ func ResourceTencentCloudMysqlRoGroup() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, in the format: cdbro-3i70uj0k.",
+				Description: "实例 ID，格式为：cdbro-3i70uj0k。",
 			},
 
 			"ro_group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of the RO group.",
+				Description: "RO组的ID。",
 			},
 
 			"ro_group_info": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Details of the RO group.",
+				Description: "RO 组的详细信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ro_group_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "RO group name.",
+							Description: "RO 组名。",
 						},
 						"ro_max_delay_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "RO instance maximum latency threshold. The unit is seconds, the minimum value is 1. Note that the RO group must have enabled instance delay culling policy for this value to be valid.",
+							Description: "RO实例最大延迟阈值。单位为秒，最小值为1。注意RO组必须启用实例延迟剔除策略才能使该值有效。",
 						},
 						"ro_offline_delay": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Whether to enable delayed culling of instances. Supported values are: 1 - on; 0 - not on. Note that if you enable instance delay culling, you must set the delay threshold (RoMaxDelayTime) parameter.",
+							Description: "是否启用实例的延迟剔除。支持的值为： 1 - 开启； 0 - 未开启。请注意，如果启用实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。",
 						},
 						"min_ro_in_group": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The minimum number of reserved instances. It can be set to any value less than or equal to the number of RO instances under this RO group. Note that if the setting value is greater than the number of RO instances, it will not be removed; if it is set to 0, all instances whose latency exceeds the limit will be removed.",
+							Description: "保留实例的最小数量。可以设置为小于或等于该RO组下RO实例数量的任意值。注意，如果设置值大于RO实例数量，则不会被移除；如果设置为0，则所有延迟超过限制的实例将被删除。",
 						},
 						"weight_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "weight mode. Supported values include: `system` - automatically assigned by the system; `custom` - user-defined settings. Note that if the `custom` mode is set, the RO instance weight configuration (RoWeightValues) parameter must be set.",
+							Description: "重量模式。支持的值包括： `system` - 由系统自动分配； `custom` - 用户定义的设置。请注意，如果设置了“自定义”模式，则必须设置RO实例权重配置（RoWeightValues）参数。",
 						},
 						"replication_delay_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Delayed replication time.",
+							Description: "复制时间延迟。",
 						},
 					},
 				},
@@ -79,18 +79,18 @@ func ResourceTencentCloudMysqlRoGroup() *schema.Resource {
 			"ro_weight_values": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "The weight of the instance within the RO group. If the weight mode of the RO group is changed to user-defined mode (custom), this parameter must be set, and the weight value of each RO instance needs to be set.",
+				Description: "RO组内实例的权重。如果RO组的权重模式改为用户自定义模式（自定义），则必须设置该参数，并且需要设置每个RO实例的权重值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "RO instance ID.",
+							Description: "RO 实例 ID。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Weights. The value range is [0, 100].",
+							Description: "重量。取值范围为[0，100]。",
 						},
 					},
 				},
@@ -99,7 +99,7 @@ func ResourceTencentCloudMysqlRoGroup() *schema.Resource {
 			"is_balance_ro_load": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to rebalance the load of RO instances in the RO group. Supported values include: 1 - rebalance load; 0 - do not rebalance load. The default value is 0. Note that when it is set to rebalance the load, the RO instance in the RO group will have a momentary disconnection of the database connection, please ensure that the application can reconnect to the database.",
+				Description: "是否重新平衡RO组中RO实例的负载。支持的值包括： 1 - 重新平衡负载； 0 - 不重新平衡负载。默认值为0。注意，当设置为重新平衡负载时，RO组中的RO实例会出现数据库连接瞬间断开的情况，请确保应用程序可以重新连接数据库。",
 			},
 		},
 	}

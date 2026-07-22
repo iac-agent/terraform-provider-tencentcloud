@@ -27,13 +27,13 @@ func ResourceTencentCloudBhUser() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Username, 3-20 characters, must start with an English letter and cannot contain characters other than `letters`, `numbers`, `.`, `_`, `-`.",
+				Description: "用户名，3-20 characters，must start with an English letter and cannot contain characters other than `letters`，`numbers`，`.`，`_`，`-`。",
 			},
 
 			"real_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "User's real name, maximum length 20 characters, cannot contain whitespace characters.",
+				Description: "用户's real 名称，maximum length 20 characters，cannot contain whitespace characters。",
 			},
 
 			"phone": {
@@ -45,7 +45,7 @@ func ResourceTencentCloudBhUser() *schema.Resource {
 			"email": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Email address. At least one of phone and email parameters must be provided.",
+				Description: "Email 地址 At least one of phone and email parameters must be provided。",
 			},
 
 			"validate_from": {
@@ -65,7 +65,7 @@ func ResourceTencentCloudBhUser() *schema.Resource {
 			"group_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "User group ID set to which the user belongs.",
+				Description: "用户 组 ID set to which the 用户 belongs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -75,13 +75,13 @@ func ResourceTencentCloudBhUser() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Authentication method, 0 - local, 1 - LDAP, 2 - OAuth. Default is 0 if not provided.",
+				Description: "Authentication method，0 - local，1 - LDAP，2 - OAuth. 默认为 0 if not provided。",
 			},
 
 			"validate_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Access time restriction, a string composed of 0 and 1 with length 168 (7 * 24), representing the time slots allowed for the user in a week. The Nth character in the string represents the Nth hour in the week, 0 - not allowed to access, 1 - allowed to access.",
+				Description: "Access time restriction，a string composed of 0 and 1 with length 168 (7 * 24)，representing the time slots allowed for the 用户 in a week. The Nth character in the string represents the Nth hour in the week，0 - not allowed to access，1 - allowed to access。",
 			},
 
 			"department_id": {
@@ -95,7 +95,7 @@ func ResourceTencentCloudBhUser() *schema.Resource {
 			"user_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "User ID.",
+				Description: "用户 ID。",
 			},
 		},
 	}

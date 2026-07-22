@@ -33,7 +33,7 @@ func NatGatewaySnatPara() map[string]*schema.Schema {
 			Type:        schema.TypeString,
 			Required:    true,
 			ForceNew:    true,
-			Description: "NAT gateway ID.",
+			Description: "NAT gateway ID。",
 		},
 		"resource_type": {
 			Type:        schema.TypeString,
@@ -69,22 +69,22 @@ func NatGatewaySnatPara() map[string]*schema.Schema {
 			Type:        schema.TypeList,
 			Required:    true,
 			Elem:        &schema.Schema{Type: schema.TypeString},
-			Description: "Elastic IP address pool.",
+			Description: "Elastic IP 地址 pool。",
 		},
 		"description": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "Description.",
+			Description: "描述",
 		},
 		"snat_id": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "SNAT rule ID.",
+			Description: "SNAT rule ID。",
 		},
 		"create_time": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Create time.",
+			Description: "创建时间。",
 		},
 	}
 }

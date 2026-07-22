@@ -26,42 +26,42 @@ func ResourceTencentCloudGwlbTargetGroup() *schema.Resource {
 			"target_group_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target group name, limited to 60 characters.",
+				Description: "Target 组名称，limited to 60 characters。",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "VPCID attribute of target group. If this parameter is left blank, the default VPC will be used.",
+				Description: "VPCID attribute of target group. If this parameter is left blank，the default VPC will be used。",
 			},
 
 			"port": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Default port of the target group, which can be used when servers are added later. Either 'Port' or 'TargetGroupInstances.N.port' must be filled in.",
+				Description: "Default 端口 of the target group，which can be used when servers are added later. Either '端口' or 'TargetGroupInstances.N.端口' must be filled in。",
 			},
 
 			"target_group_instances": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Real server bound to a target group.",
+				Description: "Real server bound to a target group。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"bind_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Private network IP of target group instance.",
+							Description: "Private network IP of target group instance。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Port of target group instance. Only 6081 is supported.",
+							Description: "端口 of target group instance. Only 6081 is supported。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Weight of target group instance. Only 0 or 16 is supported, and non-0 is uniformly treated as 16.",
+							Description: "权重 of target group instance. Only 0 or 16 is supported，and non-0 is uniformly treated as 16。",
 						},
 					},
 				},
@@ -81,13 +81,13 @@ func ResourceTencentCloudGwlbTargetGroup() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Health check settings.",
+				Description: "Health check settings。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"health_switch": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether to enable the health check.",
+							Description: "是否enable the health check。",
 						},
 						"protocol": {
 							Type:     schema.TypeString,
@@ -101,31 +101,31 @@ func ResourceTencentCloudGwlbTargetGroup() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Health check port, which is required when the probe protocol is TCP.",
+							Description: "Health check 端口，which 为必填项 when the probe 协议 is TCP。",
 						},
 						"timeout": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Health check timeout. The default is 2 seconds. Value range: 2-30 seconds.",
+							Description: "Health check timeout. The 默认为 2 seconds. 取值范围：2-30 seconds。",
 						},
 						"interval_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Detection interval time. The default is 5 seconds. Value range: 2-300 seconds.",
+							Description: "Detection interval time. The 默认为 5 seconds. 取值范围：2-300 seconds。",
 						},
 						"health_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Health detection threshold. The default is 3 times. Value range: 2-10 times.",
+							Description: "Health detection threshold. The 默认为 3 times. 取值范围：2-10 times。",
 						},
 						"un_health_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Unhealth detection threshold. The default is 3 times. Value range: 2-10 times.",
+							Description: "Unhealth detection threshold. The 默认为 3 times. 取值范围：2-10 times。",
 						},
 					},
 				},

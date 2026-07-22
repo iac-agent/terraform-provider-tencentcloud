@@ -27,61 +27,61 @@ func ResourceTencentCloudTsfNamespace() *schema.Resource {
 			"namespace_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace name.",
+				Description: "namespace 名称",
 			},
 
 			"cluster_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "cluster ID.",
+				Description: "cluster ID。",
 			},
 
 			"namespace_desc": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "namespace description.",
+				Description: "namespace 描述",
 			},
 
 			"namespace_resource_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "namespace resource type (default is DEF).",
+				Description: "namespace 资源类型 (默认为 DEF)。",
 			},
 
 			"namespace_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Whether it is a global namespace (the default is DEF, which means a common namespace; GLOBAL means a global namespace).",
+				Description: "是否为a global namespace (the 默认为 DEF，which means a common namespace; GLOBAL means a global namespace)。",
 			},
 
 			"namespace_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace ID.",
+				Description: "Namespace ID。",
 			},
 
 			"is_ha_enable": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "whether to enable high availability.",
+				Description: "是否enable high availability。",
 			},
 
 			"program_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the dataset to be bound.",
+				Description: "ID dataset to be bound。",
 			},
 
 			"kube_inject_enable": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "KubeInjectEnable value.",
+				Description: "KubeInjectEnable 值",
 			},
 
 			"program_id_list": {
@@ -90,43 +90,43 @@ func ResourceTencentCloudTsfNamespace() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Program id list.",
+				Description: "Program id list。",
 			},
 
 			"namespace_code": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace encoding.",
+				Description: "Namespace encoding。",
 			},
 
 			"is_default": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "default namespace.",
+				Description: "default namespace。",
 			},
 
 			"namespace_status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "namespace status.",
+				Description: "namespace 状态",
 			},
 
 			"delete_flag": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Delete ID.",
+				Description: "Delete ID。",
 			},
 
 			"create_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "creation time.",
+				Description: "创建时间。",
 			},
 
 			"update_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

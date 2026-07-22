@@ -19,48 +19,48 @@ func DataSourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 			"ccn_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CCN Instance ID.",
+				Description: "CCN 实例 ID",
 			},
 
 			"route_table_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CCN Route table ID.",
+				Description: "CCN Route table ID。",
 			},
 
 			"policy_version": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Policy version.",
+				Description: "Policy 版本",
 			},
 
 			"policy_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Policy set.",
+				Description: "Policy set。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policys": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Policys.",
+							Description: "Policys。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"route_conditions": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Routing conditions.",
+										Description: "Routing conditions。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "condition type.",
+													Description: "条件类型",
 												},
 												"values": {
 													Type:        schema.TypeSet,
 													Required:    true,
-													Description: "List of conditional values.",
+													Description: "列表 conditional values。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -68,7 +68,7 @@ func DataSourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 												"match_pattern": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Matching mode, `1` precise matching, `0` fuzzy matching.",
+													Description: "Matching 模式，`1` precise matching，`0` fuzzy matching。",
 												},
 											},
 										},
@@ -76,22 +76,22 @@ func DataSourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 									"action": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Routing behavior, `accept` allows, `drop` rejects.",
+										Description: "Routing behavior，`accept` allows，`drop` rejects。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Policy description",
+										Description: "Policy 描述",
 									},
 									"operate_as_path": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "as-path operate",
+										Description: "as-路径 operate",
 									},
 									"as_path_operate_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "as-path operate mode",
+										Description: "as-路径 operate 模式",
 									},
 								},
 							},
@@ -99,12 +99,12 @@ func DataSourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 						"policy_version": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Policy version.",
+							Description: "Policy 版本",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 					},
 				},
@@ -113,7 +113,7 @@ func DataSourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

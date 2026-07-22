@@ -38,25 +38,25 @@ func ResourceTencentCloudMysqlAccountPrivilege() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 			"account_name": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Account name.",
+				Description: "帐户名称。",
 			},
 			"account_host": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
 				Default:     MYSQL_DEFAULT_ACCOUNT_HOST,
-				Description: "Account host, default is `%`.",
+				Description: "帐户主机，默认为`%`。",
 			},
 			"privileges": {
 				Optional:    true,
 				Type:        schema.TypeSet,
-				Description: "Database permissions. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT` and `TRIGGER``.",
+				Description: "数据库权限。有效值：“选择”、“插入”、“更新”、“删除”、“创建”、“删除”、“引用”、“索引”、“更改”、“创建临时表”、“锁定表”、“执行”、“创建视图”、“显示视图”、“创建例程”、“更改例程”、“事件”和“触发”。",
 				Elem: &schema.Schema{
 					Type:         schema.TypeString,
 					ValidateFunc: tccommon.ValidateAllowedStringValueIgnoreCase(MYSQL_DATABASE_PRIVILEGE),
@@ -68,7 +68,7 @@ func ResourceTencentCloudMysqlAccountPrivilege() *schema.Resource {
 			"database_names": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "List of specified database name.",
+				Description: "指定数据库名称的列表。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				MinItems:    1,
 			},

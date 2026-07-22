@@ -19,24 +19,24 @@ func DataSourceTencentCloudTseGatewayServices() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID.",
+				Description: "gateway ID。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filter conditions, valid value:name,upstreamType.",
+				Description: "filter conditions，valid 值:名称,upstreamType。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "filter name.",
+							Description: "过滤名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "filter value.",
+							Description: "过滤值",
 						},
 					},
 				},
@@ -45,24 +45,24 @@ func DataSourceTencentCloudTseGatewayServices() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "result.",
+				Description: "结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "service list.",
+							Description: "service list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "service ID.",
+										Description: "服务 ID",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "service name.",
+										Description: "服务名称",
 									},
 									"tags": {
 										Type: schema.TypeSet,
@@ -70,74 +70,74 @@ func DataSourceTencentCloudTseGatewayServices() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "tag list.",
+										Description: "标签列表",
 									},
 									"upstream_info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "upstream information.",
+										Description: "upstream information。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"host": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "an IP address or domain name.",
+													Description: "an IP 地址 or 域名 名称",
 												},
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "port.",
+													Description: "端口",
 												},
 												"source_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "service source ID.",
+													Description: "service 来源 ID。",
 												},
 												"namespace": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "namespace.",
+													Description: "namespace。",
 												},
 												"service_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "the name of the service in registry or kubernetes.",
+													Description: "the 名称 service in registry or kubernetes。",
 												},
 												"targets": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "provided when service type is IPList.",
+													Description: "provided when service 类型 is IPList。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"host": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Host.",
+																Description: "主机",
 															},
 															"port": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "port.",
+																Description: "端口",
 															},
 															"weight": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "weight.",
+																Description: "权重",
 															},
 															"health": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "health.",
+																Description: "health。",
 															},
 															"created_time": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "created time.",
+																Description: "created time。",
 															},
 															"source": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "source of target.",
+																Description: "来源 of target。",
 															},
 														},
 													},
@@ -145,67 +145,67 @@ func DataSourceTencentCloudTseGatewayServices() *schema.Resource {
 												"source_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "source service type.",
+													Description: "来源 service 类型",
 												},
 												"scf_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "scf lambda type.",
+													Description: "scf lambda 类型",
 												},
 												"scf_namespace": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "scf lambda namespace.",
+													Description: "scf lambda namespace。",
 												},
 												"scf_lambda_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "scf lambda name.",
+													Description: "scf lambda 名称",
 												},
 												"scf_lambda_qualifier": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "scf lambda version.",
+													Description: "scf lambda 版本",
 												},
 												"slow_start": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "slow start time, unit:second,when it&#39;s enabled, weight of the node is increased from 1 to the target value gradually.",
+													Description: "slow 开始时间，unit:second,when it&#39;s 已启用，权重 of the node is increased from 1 to the target 值 gradually。",
 												},
 												"algorithm": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "load balance algorithm,default:round-robin,least-connections and consisten_hashing also support.",
+													Description: "load balance algorithm,default:round-robin,least-connections and consisten_hashing also support。",
 												},
 												"auto_scaling_group_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "auto scaling group ID of cvm.",
+													Description: "auto scaling 组 ID cvm。",
 												},
 												"auto_scaling_cvm_port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "auto scaling group port of cvm.",
+													Description: "auto scaling group 端口 of cvm。",
 												},
 												"auto_scaling_tat_cmd_status": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "tat cmd status in auto scaling group of cvm.",
+													Description: "tat cmd 状态 in auto scaling group of cvm。",
 												},
 												"auto_scaling_hook_status": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "hook status in auto scaling group of cvm.",
+													Description: "hook 状态 in auto scaling group of cvm。",
 												},
 												"source_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "the name of source service.",
+													Description: "名称 来源 service。",
 												},
 												"real_source_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "exact source service type.",
+													Description: "exact 来源 service 类型",
 												},
 											},
 										},
@@ -213,17 +213,17 @@ func DataSourceTencentCloudTseGatewayServices() *schema.Resource {
 									"upstream_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "service type.",
+										Description: "service 类型",
 									},
 									"created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "created time.",
+										Description: "created time。",
 									},
 									"editable": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "editable status.",
+										Description: "editable 状态",
 									},
 								},
 							},
@@ -231,7 +231,7 @@ func DataSourceTencentCloudTseGatewayServices() *schema.Resource {
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "total count.",
+							Description: "总数",
 						},
 					},
 				},
@@ -240,7 +240,7 @@ func DataSourceTencentCloudTseGatewayServices() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -17,60 +17,60 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 			"keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search keyword. Supports identifier/name/label/description search.",
+				Description: "Search keyword. Supports identifier/名称/标签/描述 search。",
 			},
 
 			"risk_level": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Risk level for filtering. Valid values: 1 (high risk), 2 (medium risk), 3 (low risk).",
+				Description: "风险等级 for filtering. 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 			},
 
 			"rule_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "System preset rule list.",
+				Description: "System preset rule list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule unique identifier.",
+							Description: "Rule unique identifier。",
 						},
 						"rule_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule name.",
+							Description: "Rule 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule description.",
+							Description: "Rule 描述",
 						},
 						"risk_level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Risk level. Valid values: 1 (high risk), 2 (medium risk), 3 (low risk).",
+							Description: "风险等级 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 						},
 						"service_function": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Corresponding service function.",
+							Description: "Corresponding service function。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last update time.",
+							Description: "Last 更新时间。",
 						},
 						"trigger_type": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Trigger type list.",
+							Description: "Trigger 类型 list。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 						"resource_type": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Supported resource type list.",
+							Description: "Supported 资源类型 list。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -86,7 +86,7 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 						"label": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Rule label list.",
+							Description: "Rule 标签 list。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -94,12 +94,12 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 						"reference_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of times this rule is referenced.",
+							Description: "数量 times this rule is referenced。",
 						},
 						"identifier_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule type.",
+							Description: "Rule 类型",
 						},
 					},
 				},
@@ -108,7 +108,7 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

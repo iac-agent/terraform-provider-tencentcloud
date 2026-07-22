@@ -19,18 +19,18 @@ func DataSourceTencentCloudWafTlsVersions() *schema.Resource {
 			"tls": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "TLS key value.",
+				Description: "TLS 键 值",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "TLS version IDNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "TLS 版本 ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"version_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Tls version nameNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Tls 版本 name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -38,7 +38,7 @@ func DataSourceTencentCloudWafTlsVersions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

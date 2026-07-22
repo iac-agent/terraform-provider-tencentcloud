@@ -19,18 +19,18 @@ func DataSourceTencentCloudEbPlatformProducts() *schema.Resource {
 			"platform_products": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Platform product list.",
+				Description: "Platform product list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"product_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Platform product name.",
+							Description: "Platform product 名称",
 						},
 						"product_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Platform product type.",
+							Description: "Platform 产品类型",
 						},
 					},
 				},
@@ -39,7 +39,7 @@ func DataSourceTencentCloudEbPlatformProducts() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

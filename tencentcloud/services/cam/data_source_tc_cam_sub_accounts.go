@@ -19,7 +19,7 @@ func DataSourceTencentCloudCamSubAccounts() *schema.Resource {
 			"filter_sub_account_uin": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "List of sub-user UINs. Up to 50 UINs are supported.",
+				Description: "列表 sub-用户 UINs. Up to 50 UINs are supported。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -28,48 +28,48 @@ func DataSourceTencentCloudCamSubAccounts() *schema.Resource {
 			"sub_accounts": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Sub-user list.",
+				Description: "Sub-用户 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"uin": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Sub-user ID.",
+							Description: "Sub-用户 ID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Sub-user name.",
+							Description: "Sub-用户 名称",
 						},
 						"uid": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Sub-user UID. UID is the unique identifier of a user who is a message recipient, while UIN is a unique identifier of a user.",
+							Description: "Sub-用户 UID. UID is the unique identifier of a 用户 who is a 消息 recipient，while UIN is a unique identifier of a 用户",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Sub-user remarks.",
+							Description: "Sub-用户 备注",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "创建时间\nNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"user_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "User type (1: root account; 2: sub-user; 3: WeCom sub-user; 4: collaborator; 5: message recipient).",
+							Description: "用户 类型 (1: root 账号; 2: sub-用户; 3: WeCom sub-用户; 4: collaborator; 5: 消息 recipient)。",
 						},
 						"last_login_ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Last login IP.",
+							Description: "Last login IP。",
 						},
 						"last_login_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Last login time.",
+							Description: "Last login time。",
 						},
 					},
 				},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudCamSubAccounts() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

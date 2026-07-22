@@ -28,19 +28,19 @@ func ResourceTencentCloudMonitorTmpAlertGroup() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"group_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Alarm group id.",
+				Description: "Alarm group id。",
 			},
 
 			"group_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Unique alert group name.",
+				Description: "Unique alert 组名称",
 			},
 
 			"amp_receivers": {
@@ -49,41 +49,41 @@ func ResourceTencentCloudMonitorTmpAlertGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Tencent cloud notification template id list.",
+				Description: "Tencent cloud notification template id list。",
 			},
 
 			"custom_receiver": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "User custom notification template, such as webhook, alertmanager.",
+				Description: "用户 custom notification template，such as webhook，alertmanager。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Custom receiver type, webhook|alertmanager.",
+							Description: "Custom receiver 类型，webhook|alertmanager。",
 						},
 						"url": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Custom receiver address, can be accessed by process in prometheus instance subnet.",
+							Description: "Custom receiver 地址，can be accessed by process in prometheus instance subnet。",
 						},
 						"allowed_time_ranges": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time ranges which allow alert message send.",
+							Description: "Time ranges which allow alert 消息 send。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"start": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Time range start, seconds since 0 o'clock.",
+										Description: "Time range start，seconds since 0 o'clock。",
 									},
 									"end": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Time range end, seconds since 0 o'clock.",
+										Description: "Time range end，seconds since 0 o'clock。",
 									},
 								},
 							},
@@ -91,12 +91,12 @@ func ResourceTencentCloudMonitorTmpAlertGroup() *schema.Resource {
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Only effect when alertmanager in user cluster, this cluster id.",
+							Description: "Only effect when alertmanager in 用户 cluster，this 集群 ID",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Only effect when alertmanager in user cluster, this cluster type (tke|eks|tdcc).",
+							Description: "Only effect when alertmanager in 用户 cluster，this 集群类型 (tke|eks|tdcc)。",
 						},
 					},
 				},
@@ -105,44 +105,44 @@ func ResourceTencentCloudMonitorTmpAlertGroup() *schema.Resource {
 			"repeat_interval": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Alert message send interval, default 1 hour.",
+				Description: "Alert 消息 send interval，default 1 hour。",
 			},
 
 			"rules": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "A list of alert rules.",
+				Description: "A 列表 alert rules。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Alert rule name.",
+							Description: "Alert rule 名称",
 						},
 						"labels": {
 							Type:        schema.TypeMap,
 							Optional:    true,
-							Description: "Labels of alert rule.",
+							Description: "Labels of alert rule。",
 						},
 						"annotations": {
 							Type:        schema.TypeMap,
 							Optional:    true,
-							Description: "Annotation of alert rule. `summary`, `description` is special annotation in prometheus, mapping `Alarm Object`, `Alarm Information` in alarm message.",
+							Description: "Annotation of alert rule. `summary`，`描述` is special annotation in prometheus，mapping `Alarm Object`，`Alarm Information` in alarm 消息",
 						},
 						"duration": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Rule alarm duration.",
+							Description: "Rule alarm duration。",
 						},
 						"expr": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Prometheus alert expression.",
+							Description: "Prometheus alert expression。",
 						},
 						"state": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Rule state. `2`-enable, `3`-disable, default `2`.",
+							Description: "Rule state. `2`-enable，`3`-disable，default `2`。",
 						},
 					},
 				},

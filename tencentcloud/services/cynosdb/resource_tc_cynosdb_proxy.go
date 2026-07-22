@@ -28,90 +28,90 @@ func ResourceTencentCloudCynosdbProxy() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"cpu": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of CPU cores.",
+				Description: "CPU 核心数。",
 			},
 			"mem": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Memory.",
+				Description: "记忆。",
 			},
 			"unique_vpc_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Private network ID, which is consistent with the cluster private network ID by default.",
+				Description: "私网ID，默认与集群私网ID一致。",
 			},
 			"unique_subnet_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The private network subnet ID is consistent with the cluster subnet ID by default.",
+				Description: "私网子网ID默认与集群子网ID一致。",
 			},
 			"vip": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Internal IP address.",
+				Description: "内部 IP 地址。",
 			},
 			"proxy_count": {
 				Optional:      true,
 				Computed:      true,
 				Type:          schema.TypeInt,
 				ConflictsWith: []string{"proxy_zones"},
-				Description:   "Number of database proxy group nodes. If it is set at the same time as the `proxy_zones` field, the `proxy_zones` parameter shall prevail.",
+				Description: "数据库代理组节点数。如果与proxy_zones字段同时设置，则以proxy_zones参数为准。",
 			},
 			"connection_pool_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Connection pool type: SessionConnectionPool (session level Connection pool).",
+				Description: "连接池类型：SessionConnectionPool（会话级连接池）。",
 			},
 			"open_connection_pool": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Whether to enable Connection pool, yes - enable, no - do not enable.",
+				Description: "是否启用连接池，yes-启用，no-不启用。",
 			},
 			"connection_pool_time_out": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Connection pool threshold: unit (second).",
+				Description: "连接池阈值：单位（秒）。",
 			},
 			"security_group_ids": {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Security Group ID Array.",
+				Description: "安全组 ID 数组。",
 			},
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Description.",
+				Description: "描述。",
 			},
 			"proxy_group_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Proxy Group Id.",
+				Description: "代理组 ID。",
 			},
 			"proxy_zones": {
 				Optional:      true,
 				Computed:      true,
 				Type:          schema.TypeList,
-				Description:   "Database node information.",
+				Description: "数据库节点信息。",
 				ConflictsWith: []string{"proxy_count"},
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"proxy_node_zone": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Proxy node availability zone.",
+							Description: "代理节点可用区。",
 						},
 						"proxy_node_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of proxy nodes.",
+							Description: "代理节点数量。",
 						},
 					},
 				},
@@ -119,18 +119,18 @@ func ResourceTencentCloudCynosdbProxy() *schema.Resource {
 			"ro_instances": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Read only instance list.",
+				Description: "只读实例列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "instance id.",
+							Description: "实例 ID。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "weight.",
+							Description: "重量。",
 						},
 					},
 				},

@@ -28,38 +28,38 @@ func ResourceTencentCloudWafBotSceneStatusConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"scene_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Scene ID.",
+				Description: "Scene ID。",
 			},
 
 			"status": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Bot status. true - enable; false - disable.",
+				Description: "Bot 状态 true - enable; false - disable。",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Scene type, default: Default scenario, custom: Non default scenario.",
+				Description: "Scene 类型，默认值：Default scenario，custom: Non default scenario。",
 			},
 
 			"scene_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Scene name.",
+				Description: "Scene 名称",
 			},
 
 			"priority": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Priority.",
+				Description: "优先级",
 			},
 		},
 	}

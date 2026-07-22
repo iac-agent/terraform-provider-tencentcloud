@@ -22,24 +22,24 @@ func DataSourceTencentCloudCvmChcDeniedActions() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "CHC host IDs.",
+				Description: "CHC 主机 IDs。",
 			},
 
 			"chc_host_denied_action_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Actions not allowed for the CHC instance.",
+				Description: "Actions not allowed for the CHC instance。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"chc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CHC instance ID.",
+							Description: "CHC instance ID。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CHC instance status.",
+							Description: "CHC 实例状态",
 						},
 						"deny_actions": {
 							Type: schema.TypeSet,
@@ -47,7 +47,7 @@ func DataSourceTencentCloudCvmChcDeniedActions() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Actions not allowed for the current CHC instance.",
+							Description: "Actions not allowed for the current CHC instance。",
 						},
 					},
 				},
@@ -56,7 +56,7 @@ func DataSourceTencentCloudCvmChcDeniedActions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

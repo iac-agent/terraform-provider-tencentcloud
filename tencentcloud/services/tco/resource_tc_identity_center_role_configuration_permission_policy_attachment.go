@@ -28,46 +28,46 @@ func ResourceTencentCloudIdentityCenterRoleConfigurationPermissionPolicyAttachme
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Space ID.",
+				Description: "Space ID。",
 			},
 
 			"role_configuration_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Permission configuration ID.",
+				Description: "权限配置 ID",
 			},
 
 			"role_policy_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Role policy id.",
+				Description: "角色 policy id。",
 			},
 
 			"role_policy_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Role policy name.",
+				Description: "角色 policy 名称",
 			},
 
 			"role_policy_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Role policy type.",
+				Description: "角色 policy 类型",
 			},
 
 			"role_policy_document": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Role policy document.",
+				Description: "角色 policy document。",
 			},
 
 			"add_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Role policy add time.",
+				Description: "角色 policy add time。",
 			},
 		},
 	}

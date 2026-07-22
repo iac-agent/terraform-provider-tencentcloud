@@ -27,36 +27,36 @@ func ResourceTencentCloudGwlbInstance() *schema.Resource {
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the VPC to which the backend target device of the GWLB belongs, such as vpc-12345678. It can be obtained through the DescribeVpcEx interface. If left blank, it defaults to DefaultVPC. This parameter is required when a private network CLB instance is created.",
+				Description: "ID VPC to which the backend target device of the GWLB belongs，such as vpc-12345678. It can be obtained through the DescribeVpcEx interface. If left blank，it 默认为 DefaultVPC. This parameter 为必填项 when a private network CLB instance is created。",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Subnet ID of the VPC to which the backend target device of the GWLB belongs.",
+				Description: "子网 ID VPC to which the backend target device of the GWLB belongs。",
 			},
 
 			"load_balancer_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "GWLB instance name. It supports input of 1 to 60 characters. If not filled in, it will be generated automatically by default.",
+				Description: "GWLB 实例名称 It supports input of 1 to 60 characters. 如果未填写 in，it will be generated automatically by default。",
 			},
 
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "While the GWLB is purchased, it is tagged, with a maximum of 20 tag key-value pairs.",
+				Description: "While the GWLB is purchased，it is tagged，with a maximum of 20 标签键-值 pairs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -66,7 +66,7 @@ func ResourceTencentCloudGwlbInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "GWLB instance billing type, which currently supports POSTPAID_BY_HOUR only. The default is POSTPAID_BY_HOUR.",
+				Description: "GWLB instance billing 类型，which currently supports POSTPAID_BY_HOUR only. The 默认为 POSTPAID_BY_HOUR。",
 			},
 			"vips": {
 				Computed: true,
@@ -74,42 +74,42 @@ func ResourceTencentCloudGwlbInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Gateway Load Balancer provides virtual IP services.",
+				Description: "Gateway Load Balancer 提供virtual IP services。",
 			},
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Gateway Load Balancer instance status. 0: Creating, 1: Running normally, 3: Removing.",
+				Description: "Gateway Load Balancer 实例状态 0: Creating，1: Running normally，3: Removing。",
 			},
 			"target_group_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Unique ID of the associated target group.",
+				Description: "Unique ID associated target group。",
 			},
 			"delete_protect": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether to turn on the deletion protection function.",
+				Description: "是否turn on the 删除保护 function。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time.",
+				Description: "创建时间。",
 			},
 			"isolation": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "0: means not quarantined, 1: means quarantined.",
+				Description: "0: means not quarantined，1: means quarantined。",
 			},
 			"isolated_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Time when the Gateway Load Balancer instance was isolated.",
+				Description: "Time when the Gateway Load Balancer instance was isolated。",
 			},
 			"operate_protect": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether to enable the configuration modification protection function.",
+				Description: "是否enable the configuration modification protection function。",
 			},
 		},
 	}

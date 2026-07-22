@@ -25,79 +25,79 @@ func ResourceTencentCloudTcssImageRegistry() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Repository name.",
+				Description: "Repository 名称",
 			},
 
 			"username": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Username.",
+				Description: "用户名",
 			},
 
 			"password": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Sensitive:   true,
-				Description: "Password.",
+				Description: "密码",
 			},
 
 			"url": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Repository URL.",
+				Description: "Repository URL",
 			},
 
 			"registry_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Repository type, which can be `harbor`. Valid values: harbor, quay, jfrog, aws, azure, other-tcr.",
+				Description: "Repository 类型，which can be `harbor`. 有效值：harbor，quay，jfrog，aws，azure，other-tcr。",
 			},
 
 			"net_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Network type, which can be `public` (public network).",
+				Description: "Network 类型，which can be `public` (public network)。",
 			},
 
 			"registry_version": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Repository version.",
+				Description: "Repository 版本",
 			},
 
 			"registry_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Region. Default value: `default`.",
+				Description: "地域 默认值：`default`。",
 			},
 
 			"speed_limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Speed limit.",
+				Description: "Speed 限制",
 			},
 
 			"insecure": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Valid values: `0` (secure mode with certificate verification, which is the default value); `1` (unsecure mode that skips certificate verification).",
+				Description: "有效值：`0` (secure 模式 with certificate verification，which is the 默认值); `1` (unsecure 模式 that skips certificate verification)。",
 			},
 
 			"conn_detect_config": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Connectivity detection configuration.",
+				Description: "Connectivity detection configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"quuid": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Host Quuid.",
+							Description: "主机 Quuid。",
 						},
 						"uuid": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Host uuid.",
+							Description: "主机 uuid。",
 						},
 					},
 				},
@@ -106,13 +106,13 @@ func ResourceTencentCloudTcssImageRegistry() *schema.Resource {
 			"need_scan": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to scan the latest image.",
+				Description: "是否scan the latest image。",
 			},
 
 			"sync_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Sync status.",
+				Description: "Sync 状态",
 			},
 		},
 	}

@@ -28,31 +28,31 @@ func ResourceTencentCloudTdcpgInstance() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "cluster id.",
+				Description: "集群 ID",
 			},
 
 			"cpu": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "cpu cores.",
+				Description: "CPU 核数",
 			},
 
 			"memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "memory size.",
+				Description: "memory size。",
 			},
 
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "instance name.",
+				Description: "实例名称",
 			},
 
 			"operation_timing": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "operation timing, optional value is IMMEDIATE or MAINTAIN_PERIOD.",
+				Description: "operation timing，可选 值 is IMMEDIATE or MAINTAIN_PERIOD。",
 			},
 		},
 	}

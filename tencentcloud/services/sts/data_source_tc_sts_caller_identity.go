@@ -18,37 +18,37 @@ func DataSourceTencentCloudStsCallerIdentity() *schema.Resource {
 			"arn": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current caller ARN.",
+				Description: "Current caller ARN。",
 			},
 
 			"account_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The primary account Uin to which the current caller belongs.",
+				Description: "The primary 账号 Uin to which the current caller belongs。",
 			},
 
 			"user_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Identity:- When the caller is a cloud account, the current account `Uin` is returned.- When the caller is a role, it returns `roleId:roleSessionName`- When the caller is a federated identity, it returns `uin:federatedUserName`.",
+				Description: "Identity:- When the caller is a cloud 账号，the current 账号 `Uin` is returned.- When the caller is a 角色，it 返回`roleId:roleSessionName`- When the caller is a federated identity，it 返回`uin:federatedUserName`。",
 			},
 
 			"principal_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Account Uin to which the key belongs:- The caller is a cloud account, and the returned current account Uin- The caller is a role, and the returned account Uin that applies for the role key.",
+				Description: "账号 Uin to which the 键 belongs:- The caller is a cloud 账号，and the returned current 账号 Uin- The caller is a 角色，and the returned 账号 Uin that applies for the 角色 键",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Identity type.",
+				Description: "Identity 类型",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

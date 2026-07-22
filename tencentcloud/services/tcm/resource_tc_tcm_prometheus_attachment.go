@@ -27,7 +27,7 @@ func ResourceTencentCloudTcmPrometheusAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Mesh ID.",
+				Description: "Mesh ID。",
 			},
 
 			"prometheus": {
@@ -35,75 +35,75 @@ func ResourceTencentCloudTcmPrometheusAttachment() *schema.Resource {
 				MaxItems:    1,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Prometheus configuration.",
+				Description: "Prometheus configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Vpc id for TMP.",
+							Description: "私有网络 ID for TMP。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Subnet id for TMP.",
+							Description: "子网 ID for TMP。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Region for TMP.",
+							Description: "地域 for TMP。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Existed TMP id, auto create TMP if empty.",
+							Description: "Existed TMP id，auto create TMP 如果为空。",
 						},
 						"custom_prom": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Third party prometheus.",
+							Description: "Third party prometheus。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"is_public_addr": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										Computed:    true,
-										Description: "Whether it is public address, default false.",
+										Description: "是否为public 地址，default false。",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Vpc id.",
+										Description: "私有网络 ID",
 									},
 									"url": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Url of the prometheus.",
+										Description: "Url of the prometheus。",
 									},
 									"auth_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Authentication type of the prometheus.",
+										Description: "Authentication 类型 prometheus。",
 									},
 									"username": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Username of the prometheus, used in basic authentication type.",
+										Description: "用户名 of the prometheus，used in basic authentication 类型",
 									},
 									"password": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
 										Sensitive:   true,
-										Description: "Password of the prometheus, used in basic authentication type.",
+										Description: "密码 of the prometheus，used in basic authentication 类型",
 									},
 								},
 							},

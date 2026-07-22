@@ -29,13 +29,13 @@ func ResourceTencentCloudCbsSnapshot() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the the CBS which this snapshot created from.",
+				Description: "ID the CBS which this snapshot created from。",
 			},
 			"snapshot_name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(2, 60),
-				Description:  "Name of the snapshot.",
+				Description:  "名称 snapshot。",
 			},
 			"disk_usage": {
 				Type:         schema.TypeString,
@@ -43,39 +43,39 @@ func ResourceTencentCloudCbsSnapshot() *schema.Resource {
 				Computed:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"SYSTEM_DISK", "DATA_DISK"}),
-				Description:  "The type of cloud disk associated with the snapshot: SYSTEM_DISK: system disk; DATA_DISK: data disk. If not filled in, the snapshot type will be consistent with the cloud disk type. This parameter is used in some scenarios where users need to create a data disk snapshot from the system disk for shared use.",
+				Description:  "类型 cloud disk associated with the snapshot: SYSTEM_DISK: system disk; DATA_DISK: data disk. 如果未填写 in，the snapshot 类型 will be consistent with the cloud disk 类型 This parameter is used in some scenarios where users need to create a data disk snapshot from the system disk for shared use。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "The available tags within this CBS Snapshot.",
+				Description: "The available 标签 within this CBS Snapshot。",
 			},
 			// computed
 			"storage_size": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Volume of storage which this snapshot created from.",
+				Description: "Volume of storage which this snapshot created from。",
 			},
 			"snapshot_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Status of the snapshot.",
+				Description: "状态 snapshot。",
 			},
 			"disk_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Deprecated:  "It has been deprecated from version 1.82.14. Please use `disk_usage` instead.",
-				Description: "Types of CBS which this snapshot created from.",
+				Description: "Types of CBS which this snapshot created from。",
 			},
 			"percent": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Snapshot creation progress percentage. If the snapshot has created successfully, the constant value is 100.",
+				Description: "Snapshot creation progress percentage. If the snapshot has created successfully，the constant 值 is 100。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of snapshot.",
+				Description: "创建时间 of snapshot。",
 			},
 		},
 	}

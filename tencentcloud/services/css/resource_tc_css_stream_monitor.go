@@ -27,33 +27,33 @@ func ResourceTencentCloudCssStreamMonitor() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Monitor task output info.",
+				Description: "Monitor task output info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"output_stream_width": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Output stream width, limit[1, 1920].",
+							Description: "Output stream width，限制[1，1920]。",
 						},
 						"output_stream_height": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Monitor task output height, limit[1, 1080].",
+							Description: "Monitor task output height，限制[1，1080]。",
 						},
 						"output_stream_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Monitor task output stream name.limit 256 bytes.",
+							Description: "Monitor task output stream 名称limit 256 bytes。",
 						},
 						"output_domain": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Monitor task output play domain.limit 128 bytes.",
+							Description: "Monitor task output play 域名limit 128 bytes。",
 						},
 						"output_app": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Monitor task play path.limit 32 bytes.",
+							Description: "Monitor task play 路径limit 32 bytes。",
 						},
 					},
 				},
@@ -62,33 +62,33 @@ func ResourceTencentCloudCssStreamMonitor() *schema.Resource {
 			"input_list": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Wait monitor input info list.",
+				Description: "Wait monitor input info list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"input_stream_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Wait monitor input stream name.limit 256 bytes.",
+							Description: "Wait monitor input stream 名称limit 256 bytes。",
 						},
 						"input_domain": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Wait monitor input push domain.limit 128 bytes.",
+							Description: "Wait monitor input push 域名limit 128 bytes。",
 						},
 						"input_app": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Wait monitor input push path.limit 32 bytes.",
+							Description: "Wait monitor input push 路径limit 32 bytes。",
 						},
 						"input_url": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Wait monitor input stream push url.",
+							Description: "Wait monitor input stream push URL",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Description content.limit 256 bytes.",
+							Description: "描述 内容limit 256 bytes。",
 						},
 					},
 				},
@@ -97,25 +97,25 @@ func ResourceTencentCloudCssStreamMonitor() *schema.Resource {
 			"monitor_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Monitor task name.",
+				Description: "Monitor task 名称",
 			},
 
 			"notify_policy": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Monitor event notify policy.",
+				Description: "Monitor event notify policy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"notify_policy_type": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Notify policy type.0: not notify.1: use global policy.",
+							Description: "Notify policy 类型0: not notify.1: use global policy。",
 						},
 						"callback_url": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Callback url.limit [0,512].only http or https.",
+							Description: "Callback URLlimit [0,512].only http or https。",
 						},
 					},
 				},
@@ -124,13 +124,13 @@ func ResourceTencentCloudCssStreamMonitor() *schema.Resource {
 			"asr_language": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Asr language.0: close.1: Chinese2: English3: Japanese4: Korean.",
+				Description: "Asr 语言0: close.1: Chinese2: English3: Japanese4: Korean。",
 			},
 
 			"ocr_language": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Intelligent text recognition language settings: ocr language.0: close.1. Chinese,English.",
+				Description: "Intelligent text recognition 语言 settings: ocr 语言0: close.1. Chinese,English。",
 			},
 
 			"ai_asr_input_index_list": {
@@ -139,7 +139,7 @@ func ResourceTencentCloudCssStreamMonitor() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "AI asr input index list.(first input index is 1.).",
+				Description: "AI asr input 索引 list.(first input 索引 is 1.)。",
 			},
 
 			"ai_ocr_input_index_list": {
@@ -148,31 +148,31 @@ func ResourceTencentCloudCssStreamMonitor() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Ai ocr input index list(first input index is 1.).",
+				Description: "Ai ocr input 索引 list(first input 索引 is 1.)。",
 			},
 
 			"check_stream_broken": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "If enable stream broken check.",
+				Description: "If enable stream broken check。",
 			},
 
 			"check_stream_low_frame_rate": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "If enable low frame rate check.",
+				Description: "If enable low frame rate check。",
 			},
 
 			"allow_monitor_report": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "If store monitor event.",
+				Description: "If store monitor event。",
 			},
 
 			"ai_format_diagnose": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "If enable format diagnose.",
+				Description: "If enable 格式 diagnose。",
 			},
 		},
 	}

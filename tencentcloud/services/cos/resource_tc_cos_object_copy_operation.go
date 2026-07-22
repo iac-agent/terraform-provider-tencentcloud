@@ -20,19 +20,19 @@ func ResourceTencentCloudCosObjectCopyOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket.",
+				Description: "存储桶",
 			},
 			"key": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Object key.",
+				Description: "Object 键",
 			},
 			"source_url": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Source url. In the CDC scenario, the CDC source url is used.",
+				Description: "来源 URL In the CDC scenario，the CDC 来源 URL is used。",
 			},
 		},
 	}

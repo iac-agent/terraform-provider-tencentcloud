@@ -27,7 +27,7 @@ func ResourceTencentCloudSslCheckCertificateChainOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The certificate chain to check.",
+				Description: "The certificate chain to check。",
 			},
 		},
 	}

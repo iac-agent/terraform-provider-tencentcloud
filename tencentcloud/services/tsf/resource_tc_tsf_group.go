@@ -28,49 +28,49 @@ func ResourceTencentCloudTsfGroup() *schema.Resource {
 			"application_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The application ID to which the group belongs.",
+				Description: "The application ID to which the group belongs。",
 			},
 
 			"namespace_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the namespace to which the group belongs.",
+				Description: "ID namespace to which the group belongs。",
 			},
 
 			"group_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Group name field, length 1~60, beginning with a letter or underscore, can contain alphanumeric underscore.",
+				Description: "组名称 field，length 1~60，beginning with a letter or underscore，can contain alphanumeric underscore。",
 			},
 
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"group_desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Group description.",
+				Description: "Group 描述",
 			},
 
 			"alias": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Deployment Group Notes.",
+				Description: "Deployment Group Notes。",
 			},
 
 			"group_resource_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Deployment Group Resource Type.",
+				Description: "Deployment Group 资源类型",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

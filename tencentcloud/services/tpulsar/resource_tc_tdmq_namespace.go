@@ -29,42 +29,42 @@ func ResourceTencentCloudTdmqNamespace() *schema.Resource {
 			"environ_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The name of namespace to be created.",
+				Description: "名称 namespace to be created。",
 			},
 			"msg_ttl": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The expiration time of unconsumed message.",
+				Description: "The 过期时间 of unconsumed 消息",
 			},
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The Dedicated Cluster Id.",
+				Description: "The Dedicated Cluster Id。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the namespace.",
+				Description: "描述 namespace。",
 			},
 			"retention_policy": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "The Policy of message to retain. Format like: `{time_in_minutes: Int, size_in_mb: Int}`. `time_in_minutes`: the time of message to retain; `size_in_mb`: the size of message to retain.",
+				Description: "The Policy of 消息 to retain. 格式 like: `{time_in_minutes: Int，size_in_mb: Int}`. `time_in_minutes`: the time of 消息 to retain; `size_in_mb`: the size of 消息 to retain。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time_in_minutes": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "the time of message to retain.",
+							Description: "the time of 消息 to retain。",
 						},
 						"size_in_mb": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "the size of message to retain.",
+							Description: "the size of 消息 to retain。",
 						},
 					},
 				},

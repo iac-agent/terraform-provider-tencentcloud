@@ -32,26 +32,26 @@ func ResourceTencentCloudOrganizationOrgShareUnitMemberV2() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Shared unit ID.",
+				Description: "共享单元 ID",
 			},
 
 			"area": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Shared unit region.",
+				Description: "Shared unit 地域",
 			},
 
 			"members": {
 				Required:    true,
 				Type:        schema.TypeSet,
-				Description: "Shared member list.",
+				Description: "Shared member list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"share_member_uin": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Member uin.",
+							Description: "Member uin。",
 						},
 					},
 				},

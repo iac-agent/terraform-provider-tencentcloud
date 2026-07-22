@@ -30,45 +30,45 @@ func ResourceTencentCloudTrocketRocketmqConsumerGroup() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"consumer_group": {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Name of consumer group.",
+				Description: "名称 consumer group。",
 			},
 
 			"max_retry_times": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Max retry times.",
+				Description: "Max 重试次数",
 			},
 
 			"consume_enable": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable consumption.",
+				Description: "是否enable consumption。",
 			},
 
 			"consume_message_orderly": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "`true`: Sequential delivery, `false`: Concurrent delivery.",
+				Description: "`true`: Sequential delivery，`false`: Concurrent delivery。",
 			},
 
 			"remark": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "remark.",
+				Description: "备注",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "Tag of consumer group.",
+				Description: "标签 of consumer group。",
 			},
 		},
 	}

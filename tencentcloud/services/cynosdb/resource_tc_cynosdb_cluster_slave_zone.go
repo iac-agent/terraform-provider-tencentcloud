@@ -35,13 +35,13 @@ func ResourceTencentCloudCynosdbClusterSlaveZone() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of cluster.",
+				Description: "集群的ID。",
 			},
 
 			"slave_zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Slave zone.",
+				Description: "奴隶区。",
 			},
 		},
 	}

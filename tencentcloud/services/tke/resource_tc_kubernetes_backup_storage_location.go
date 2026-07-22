@@ -26,40 +26,40 @@ func ResourceTencentCloudKubernetesBackupStorageLocation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Name of the backup storage location.",
+				Description: "名称 backup storage location。",
 			},
 
 			"storage_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Region of the storage.",
+				Description: "地域 of the storage。",
 			},
 
 			"bucket": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Name of the bucket.",
+				Description: "名称 存储桶",
 			},
 
 			"path": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Prefix of the bucket.",
+				Description: "Prefix of the 存储桶",
 			},
 
 			"state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "State of the backup storage location.",
+				Description: "State of the backup storage location。",
 			},
 
 			"message": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Message of the backup storage location.",
+				Description: "消息 of the backup storage location。",
 			},
 		},
 	}

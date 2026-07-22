@@ -28,40 +28,40 @@ func ResourceTencentCloudCssLiveTranscodeRuleAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "domain name hich you want to bind the transcode template.",
+				Description: "域名 名称 hich you want to bind the transcode template。",
 			},
 
 			"app_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "app name which you want to bind, can be empty string if not binding specific app name.",
+				Description: "app 名称 which you want to bind，can be empty string if not binding specific app 名称",
 			},
 
 			"stream_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "stream name which you want to bind, can be empty string if not binding specific stream.",
+				Description: "stream 名称 which you want to bind，can be empty string if not binding specific stream。",
 			},
 
 			"template_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "template created by css_live_transcode_template.",
+				Description: "template created by css_live_transcode_template。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "create time.",
+				Description: "创建时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

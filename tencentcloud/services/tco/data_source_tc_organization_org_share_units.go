@@ -18,70 +18,70 @@ func DataSourceTencentCloudOrganizationOrgShareUnits() *schema.Resource {
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Shared unit area.",
+				Description: "Shared unit area。",
 			},
 
 			"search_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search for keywords. Support UnitId and Name searches.",
+				Description: "Search for keywords. Support UnitId and 名称 searches。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Shared unit list.",
+				Description: "Shared unit list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"unit_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Shared unit ID.",
+							Description: "共享单元 ID",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Shared unit name.",
+							Description: "Shared unit 名称",
 						},
 						"uin": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shared unit manager Uin.",
+							Description: "Shared unit manager Uin。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shared unit manager OwnerUin.",
+							Description: "Shared unit manager OwnerUin。",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Shared unit area.",
+							Description: "Shared unit area。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "description.",
+							Description: "描述",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 						"share_resource_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Number of shared unit resources.",
+							Description: "数量 shared unit resources。",
 						},
 						"share_member_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Number of shared unit members.",
+							Description: "数量 shared unit members。",
 						},
 						"share_scope": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shared scope. Value: 1-Only allowed to share within the group organization 2-allowed to share to any account.",
+							Description: "Shared 范围 值: 1-Only allowed to share within the group organization 2-allowed to share to any 账号",
 						},
 					},
 				},
@@ -90,7 +90,7 @@ func DataSourceTencentCloudOrganizationOrgShareUnits() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

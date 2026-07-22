@@ -32,7 +32,7 @@ func TencentMsyqlBasicInfo() map[string]*schema.Schema {
 			Type:         schema.TypeString,
 			Required:     true,
 			ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-			Description:  "The name of a mysql instance.",
+			Description: "mysql 实例的名称。",
 		},
 		"pay_type": {
 			Type:          schema.TypeInt,
@@ -44,7 +44,7 @@ func TencentMsyqlBasicInfo() map[string]*schema.Schema {
 				return true
 			},
 			Default:     -1,
-			Description: "Pay type of instance. Valid values: `0`, `1`. `0`: prepaid, `1`: postpaid.",
+			Description: "实例付费类型。有效值：“0”、“1”。 “0”：预付费，“1”：后付费。",
 		},
 		"charge_type": {
 			Type:          schema.TypeString,
@@ -67,7 +67,7 @@ func TencentMsyqlBasicInfo() map[string]*schema.Schema {
 				}
 				return olds == news
 			},
-			Description: "Pay type of instance. Valid values:`PREPAID`, `POSTPAID`. Default is `POSTPAID`.",
+			Description: "实例付费类型。有效值：`预付费`、`后付费`。默认为“后付费”。",
 		},
 		"period": {
 			Type:          schema.TypeInt,
@@ -79,7 +79,7 @@ func TencentMsyqlBasicInfo() map[string]*schema.Schema {
 			DiffSuppressFunc: func(k, olds, news string, d *schema.ResourceData) bool {
 				return true
 			},
-			Description: "Period of instance. NOTES: Only supported prepaid instance.",
+			Description: "实例时期。注意：仅支持预付费实例。",
 		},
 		"prepaid_period": {
 			Type:          schema.TypeInt,
@@ -87,51 +87,51 @@ func TencentMsyqlBasicInfo() map[string]*schema.Schema {
 			Default:       1,
 			ConflictsWith: []string{"pay_type", "period"},
 			ValidateFunc:  tccommon.ValidateAllowedIntValue(MYSQL_AVAILABLE_PERIOD),
-			Description:   "Period of instance. NOTES: Only supported prepaid instance.",
+			Description: "实例时期。注意：仅支持预付费实例。",
 		},
 		"auto_renew_flag": {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
 			Default:      0,
-			Description:  "Auto renew flag. NOTES: Only supported prepaid instance.",
+			Description: "自动更新标志。注意：仅支持预付费实例。",
 		},
 		"intranet_port": {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateIntegerInRange(1024, 65535),
 			Default:      3306,
-			Description:  "Public access port. Valid value ranges: [1024~65535]. The default value is `3306`.",
+			Description: "公共访问端口。有效值范围：[1024~65535]。默认值为“3306”。",
 		},
 		"mem_size": {
 			Type:        schema.TypeInt,
 			Required:    true,
-			Description: "Memory size (in MB).",
+			Description: "内存大小（以 MB 为单位）。",
 		},
 		"cpu": {
 			Type:        schema.TypeInt,
 			Computed:    true,
 			Optional:    true,
-			Description: "CPU cores.",
+			Description: "CPU 核心。",
 		},
 		"volume_size": {
 			Type:        schema.TypeInt,
 			Required:    true,
-			Description: "Disk size (in GB).",
+			Description: "磁盘大小（以 GB 为单位）。",
 		},
 		"vpc_id": {
 			Type:         schema.TypeString,
 			Optional:     true,
 			Computed:     true,
 			ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-			Description:  "ID of VPC, which can be modified once every 24 hours and can't be removed.",
+			Description: "VPC的ID，每24小时可修改一次，且不可删除。",
 		},
 		"subnet_id": {
 			Type:         schema.TypeString,
 			Optional:     true,
 			Computed:     true,
 			ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-			Description:  "Private network ID. If `vpc_id` is set, this value is required.",
+			Description: "私网ID。如果设置了“vpc_id”，则该值是必需的。",
 		},
 
 		"security_groups": {
@@ -141,23 +141,23 @@ func TencentMsyqlBasicInfo() map[string]*schema.Schema {
 			Set: func(v interface{}) int {
 				return helper.HashString(v.(string))
 			},
-			Description: "Security groups to use.",
+			Description: "要使用的安全组。",
 		},
 		"param_template_id": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "Specify parameter template id.",
+			Description: "指定参数模板id。",
 		},
 		"fast_upgrade": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "Specify whether to enable fast upgrade when upgrade instance spec, available value: `1` - enabled, `0` - disabled.",
+			Description: "指定升级实例规格时是否启用快速升级，可用值：`1` - 启用，`0` - 禁用。",
 		},
 		"device_type": {
 			Type:     schema.TypeString,
 			Optional: true,
 			Computed: true,
-			Description: "Specify device type, available values:\n" +
+			Description: "指定设备类型，可用值:\n" +
 				"	- `UNIVERSAL` (default): universal instance,\n" +
 				"	- `EXCLUSIVE`: exclusive instance,\n" +
 				"	- `BASIC_V2`: ONTKE single-node instance,\n" +
@@ -168,44 +168,44 @@ func TencentMsyqlBasicInfo() map[string]*schema.Schema {
 		"tags": {
 			Type:        schema.TypeMap,
 			Optional:    true,
-			Description: "Instance tags.",
+			Description: "实例标签。",
 		},
 		"force_delete": {
 			Type:        schema.TypeBool,
 			Optional:    true,
 			Default:     false,
-			Description: "Indicate whether to delete instance directly or not. Default is `false`. If set true, the instance will be deleted instead of staying recycle bin. Note: only works for `PREPAID` instance. When the main mysql instance set true, this para of the readonly mysql instance will not take effect.",
+			Description: "是否直接删除实例。默认为“假”。如果设置为true，实例将被删除而不是保留在回收站中。注意：仅适用于“PREPAID”实例。当主mysql实例设置为true时，只读mysql实例的该参数将不会生效。",
 		},
 		"wait_switch": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "Switch the method of accessing new instances, default is `0`. Supported values include: `0` - switch immediately, `1` - switch in time window.",
+			Description: "切换访问新实例的方法，默认为“0”。支持的值包括：“0”-立即切换，“1”-在时间窗口中切换。",
 		},
 		"cluster_topology": {
 			Type:        schema.TypeList,
 			Optional:    true,
 			Computed:    true,
 			MaxItems:    1,
-			Description: "Cluster Edition node topology configuration. Note: If you purchased a cluster edition instance, this parameter is required. You need to set the RW and RO node topology of the cluster edition instance. The RO node range is 1-5. Please set at least 1 RO node.",
+			Description: "Cluster Edition 节点拓扑配置。说明：如果您购买的是集群版实例，则该参数为必填项。您需要设置集群版实例的RW和RO节点拓扑。 RO节点范围为1-5。请至少设置1个RO节点。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"read_write_node": {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "RW Node Topology.",
+						Description: "RW 节点拓扑。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"zone": {
 									Type:        schema.TypeString,
 									Required:    true,
-									Description: "The availability zone where the RW node is located.",
+									Description: "RW节点所在的可用区。",
 								},
 								"node_id": {
 									Type:        schema.TypeString,
 									Optional:    true,
 									Computed:    true,
-									Description: "When upgrading a cluster instance, if you want to adjust the availability zone of a read-only node, you need to specify the node ID.",
+									Description: "升级集群实例时，如果需要调整只读节点的可用区，需要指定节点ID。",
 								},
 							},
 						},
@@ -213,26 +213,26 @@ func TencentMsyqlBasicInfo() map[string]*schema.Schema {
 					"read_only_nodes": {
 						Type:        schema.TypeSet,
 						Optional:    true,
-						Description: "RO Node Topology.",
+						Description: "RO 节点拓扑。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"is_random_zone": {
 									Type:        schema.TypeBool,
 									Optional:    true,
 									Computed:    true,
-									Description: "Whether to distribute in random availability zones. Enter `true` to specify a random availability zone. Otherwise, use the availability zone specified by Zone.",
+									Description: "是否分布在随机可用区。输入“true”以指定随机可用区。否则，使用Zone指定的可用区。",
 								},
 								"zone": {
 									Type:        schema.TypeString,
 									Optional:    true,
 									Computed:    true,
-									Description: "Specifies the availability zone where the node is distributed.",
+									Description: "指定节点分布的可用区。",
 								},
 								"node_id": {
 									Type:        schema.TypeString,
 									Optional:    true,
 									Computed:    true,
-									Description: "When upgrading a cluster instance, if you want to adjust the availability zone of a read-only node, you need to specify the node ID.",
+									Description: "升级集群实例时，如果需要调整只读节点的可用区，需要指定节点ID。",
 								},
 							},
 						},
@@ -245,35 +245,35 @@ func TencentMsyqlBasicInfo() map[string]*schema.Schema {
 			Optional:    true,
 			ForceNew:    true,
 			Computed:    true,
-			Description: "Disk Type: This parameter can be specified for Single-Node (Cloud Disk) or Cloud Disk Edition instances. `CLOUD_SSD` designates an SSD cloud disk; `CLOUD_HSSD` designates an Enhanced SSD cloud disk; and `CLOUD_PREMIUM` designates a High-Performance cloud disk. Note: The regions that support the disk types for Single-Node (Cloud Disk) and Cloud Disk Edition instances vary slightly; please refer to `Regions and Availability Zones` for specific support details.",
+			Description: "磁盘类型：单机（云盘）或云盘版实例可以指定该参数。 `CLOUD_SSD`表示SSD云盘； `CLOUD_HSSD`表示增强型SSD云盘； “CLOUD_PREMIUM”表示高性能云盘。注：单节点（云盘）和云盘版实例支持的磁盘类型地域略有差异；具体支持详情请参阅“区域和可用区”。",
 		},
 		// Computed values
 		"intranet_ip": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "instance intranet IP.",
+			Description: "实例内网IP。",
 		},
 
 		"locked": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Indicates whether the instance is locked. Valid values: `0`, `1`. `0` - No; `1` - Yes.",
+			Description: "指示实例是否被锁定。有效值：“0”、“1”。 `0` - 否； `1` - 是的。",
 		},
 		"status": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Instance status. Valid values: `0`, `1`, `4`, `5`. `0` - Creating; `1` - Running; `4` - Isolating; `5` - Isolated.",
+			Description: "实例状态。有效值：“0”、“1”、“4”、“5”。 `0` - 创建； `1` - 运行； `4`-隔离； `5`-隔离。",
 		},
 		"task_status": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Indicates which kind of operations is being executed.",
+			Description: "指示正在执行哪种操作。",
 		},
 
 		"gtid": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Indicates whether GTID is enable. `0` - Not enabled; `1` - Enabled.",
+			Description: "指示GTID是否启用。 `0` - 未启用； `1` - 启用。",
 		},
 	}
 }
@@ -284,94 +284,94 @@ func ResourceTencentCloudMysqlInstance() *schema.Resource {
 			Type:        schema.TypeMap,
 			Optional:    true,
 			Computed:    true,
-			Description: "List of parameters to use.",
+			Description: "要使用的参数列表。",
 		},
 		"internet_service": {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
 			Default:      0,
-			Description:  "Indicates whether to enable the access to an instance from public network: 0 - No, 1 - Yes.",
+			Description: "是否允许公网访问实例：0-否，1-是。",
 		},
 		"engine_version": {
 			Type:         schema.TypeString,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateAllowedStringValue(MYSQL_SUPPORTS_ENGINE),
 			Default:      MYSQL_SUPPORTS_ENGINE[len(MYSQL_SUPPORTS_ENGINE)-2],
-			Description:  "The version number of the database engine to use. Supported versions include 5.5/5.6/5.7/8.0, and default is 5.7. Upgrade the instance engine version to support 5.6/5.7 and switch immediately.",
+			Description: "要使用的数据库引擎的版本号。支持的版本包括5.5/5.6/5.7/8.0，默认为5.7。升级实例引擎版本支持5.6/5.7并立即切换。",
 		},
 		"engine_type": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "Instance engine type. The default value is `InnoDB`. Supported values include `InnoDB` and `RocksDB`.",
+			Description: "实例引擎类型。默认值为“InnoDB”。支持的值包括“InnoDB”和“RocksDB”。",
 		},
 		"upgrade_subversion": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "Whether it is a kernel subversion upgrade, supported values: 1 - upgrade the kernel subversion; 0 - upgrade the database engine version. Only need to fill in when upgrading kernel subversion and engine version.",
+			Description: "是否是kernel subversion升级，支持值：1-升级kernel subversion； 0 - 升级数据库引擎版本。仅在升级内核颠覆和引擎版本时需要填写。",
 		},
 		"max_deay_time": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "Latency threshold. Value range 1~10. Only need to fill in when upgrading kernel subversion and engine version.",
+			Description: "延迟阈值。取值范围1~10。仅在升级内核颠覆和引擎版本时需要填写。",
 		},
 
 		"availability_zone": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "Indicates which availability zone will be used.",
+			Description: "指示将使用哪个可用区。",
 		},
 		"root_password": {
 			Type:         schema.TypeString,
 			Optional:     true,
 			Sensitive:    true,
 			ValidateFunc: tccommon.ValidateMysqlPassword,
-			Description:  "Password of root account. This parameter can be specified when you purchase master instances, but it should be ignored when you purchase read-only instances or disaster recovery instances.",
+			Description: "root帐户的密码。当您购买主实例时可以指定该参数，但当您购买只读实例或灾备实例时则应忽略该参数。",
 		},
 		"slave_deploy_mode": {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
 			Default:      0,
-			Description:  "Availability zone deployment method. Available values: 0 - Single availability zone; 1 - Multiple availability zones. Readonly instance settings are not supported.",
+			Description: "可用区部署方式。可用值：0 - 单个可用区； 1 - 多个可用区。不支持只读实例设置。",
 		},
 		"first_slave_zone": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "Zone information about first slave instance.",
+			Description: "有关第一个从属实例的区域信息。",
 		},
 		"second_slave_zone": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "Zone information about second slave instance.",
+			Description: "有关第二个从属实例的区域信息。",
 		},
 		"slave_sync_mode": {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1, 2}),
 			Default:      0,
-			Description:  "Data replication mode. 0 - Async replication; 1 - Semisync replication; 2 - Strongsync replication.",
+			Description: "数据复制模式。 0 - 异步复制； 1 - 半同步复制； 2 - 强同步复制。",
 		},
 		"project_id": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Default:     0,
-			Description: "Project ID, default value is 0.",
+			Description: "项目ID，默认值为0。",
 		},
 
 		// Computed values
 		"internet_host": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "host for public access.",
+			Description: "主机供公众访问。",
 		},
 		"internet_port": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Access port for public access.",
+			Description: "用于公共访问的访问端口。",
 		},
 	}
 

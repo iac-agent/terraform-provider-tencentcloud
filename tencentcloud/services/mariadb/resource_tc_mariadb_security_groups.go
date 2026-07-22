@@ -28,19 +28,19 @@ func ResourceTencentCloudMariadbSecurityGroups() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"security_group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "security group id.",
+				Description: "安全组 ID",
 			},
 
 			"product": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "product name, fixed to mariadb.",
+				Description: "product 名称，fixed to mariadb。",
 			},
 		},
 	}

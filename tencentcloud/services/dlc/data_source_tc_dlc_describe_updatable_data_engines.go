@@ -19,59 +19,59 @@ func DataSourceTencentCloudDlcDescribeUpdatableDataEngines() *schema.Resource {
 			"data_engine_config_command": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Operation commands of engine configuration. UpdateSparkSQLLakefsPath updates the path of managed tables, and UpdateSparkSQLResultPath updates the path of result buckets.",
+				Description: "Operation commands of engine configuration. UpdateSparkSQLLakefsPath updates the 路径 of managed tables，and UpdateSparkSQLResultPath updates the 路径 of 结果 buckets。",
 			},
 
 			"data_engine_basic_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Basic cluster information.",
+				Description: "Basic cluster information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"data_engine_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DataEngine name.",
+							Description: "DataEngine 名称",
 						},
 						"state": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "EData engine status: -2: deleted; -1: failed; 0: initializing; 1: suspended; 2: running; 3: ready to delete; 4: deleting.",
+							Description: "EData engine 状态: -2: deleted; -1: failed; 0: initializing; 1: suspended; 2: running; 3: ready to delete; 4: deleting。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Returned information.",
+							Description: "Returned information。",
 						},
 						"data_engine_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Engine ID.",
+							Description: "Engine ID。",
 						},
 						"data_engine_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Engine types, and the valid values are PrestoSQL, SparkSQL, and SparkBatch.",
+							Description: "Engine types，and the valid values are PrestoSQL，SparkSQL，and SparkBatch。",
 						},
 						"app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "User ID.",
+							Description: "用户 ID。",
 						},
 						"user_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Account uin.",
+							Description: "账号 uin。",
 						},
 					},
 				},
@@ -80,7 +80,7 @@ func DataSourceTencentCloudDlcDescribeUpdatableDataEngines() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

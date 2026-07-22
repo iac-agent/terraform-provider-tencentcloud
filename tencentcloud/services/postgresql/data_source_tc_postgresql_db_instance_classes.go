@@ -19,62 +19,62 @@ func DataSourceTencentCloudPostgresqlDbInstanceClasses() *schema.Resource {
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "AZ ID, which can be obtained through the `DescribeZones` API.",
+				Description: "AZ ID，which can be obtained through the `DescribeZones` API。",
 			},
 
 			"db_engine": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database engines. Valid values: 1. `postgresql` (TencentDB for PostgreSQL) 2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL).",
+				Description: "Database engines. 有效值：1. `postgresql` (TencentDB for PostgreSQL) 2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL)。",
 			},
 
 			"db_major_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Major version of a database, such as 12 or 13, which can be obtained through the `DescribeDBVersions` API.",
+				Description: "Major 版本 of a database，such as 12 or 13，which can be obtained through the `DescribeDBVersions` API。",
 			},
 
 			"storage_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Storage type filter. Valid values: `PHYSICAL_LOCAL_SSD` (local SSD), `CLOUD_PREMIUM` (premium cloud disk), `CLOUD_SSD` (cloud SSD), `CLOUD_HSSD` (enhanced cloud SSD).",
+				Description: "Storage 类型 filter. 有效值：`PHYSICAL_LOCAL_SSD` (local SSD)，`CLOUD_PREMIUM` (premium cloud disk)，`CLOUD_SSD` (cloud SSD)，`CLOUD_HSSD` (enhanced cloud SSD)。",
 			},
 
 			"class_info_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of database specifications.",
+				Description: "列表 database specifications。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spec_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specification ID.",
+							Description: "Specification ID。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of CPU cores.",
+							Description: "CPU 核数",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size in MB.",
+							Description: "Memory size （MB）。",
 						},
 						"max_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum storage capacity in GB supported by this specification.",
+							Description: "Maximum storage capacity in GB supported by this specification。",
 						},
 						"min_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum storage capacity in GB supported by this specification.",
+							Description: "Minimum storage capacity in GB supported by this specification。",
 						},
 						"qps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Estimated QPS for this specification.",
+							Description: "Estimated QPS for this specification。",
 						},
 					},
 				},
@@ -83,7 +83,7 @@ func DataSourceTencentCloudPostgresqlDbInstanceClasses() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

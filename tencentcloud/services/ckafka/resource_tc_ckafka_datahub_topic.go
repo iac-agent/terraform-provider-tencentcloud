@@ -29,31 +29,31 @@ func ResourceTencentCloudCkafkaDatahubTopic() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Name, start with appid, which is a string of no more than 128 characters, must start with a letter, and the rest can contain letters, numbers, and dashes (-).",
+				Description: "名称，start with appid，which is a string of no more than 128 characters，must start with a letter，and the rest can contain letters，numbers，and dashes (-)。",
 			},
 
 			"partition_num": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of Partitions, greater than 0.",
+				Description: "数量 Partitions，greater than 0。",
 			},
 
 			"retention_ms": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Message retention time, in ms, the current minimum value is 60000 ms.",
+				Description: "消息 retention time，in ms，the current minimum 值 is 60000 ms。",
 			},
 
 			"note": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Subject note, which is a string of no more than 64 characters, must start with a letter, and the rest can contain letters, numbers and dashes (-).",
+				Description: "Subject note，which is a string of no more than 64 characters，must start with a letter，and the rest can contain letters，numbers and dashes (-)。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of dataHub topic.",
+				Description: "标签 of dataHub topic。",
 			},
 		},
 	}

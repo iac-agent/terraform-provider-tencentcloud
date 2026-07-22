@@ -30,60 +30,60 @@ func ResourceTencentCloudCkafkaAclRule() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"resource_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Acl resource type, currently only supports Topic, enumeration value list{Topic}.",
+				Description: "Acl 资源类型，currently only supports Topic，enumeration 值 list{Topic}。",
 			},
 
 			"pattern_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Match type, currently supports prefix matching and preset strategy, enumeration value list{PREFIXED/PRESET}.",
+				Description: "Match 类型，currently supports prefix matching and preset strategy，enumeration 值 list{PREFIXED/PRESET}。",
 			},
 
 			"rule_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "rule name.",
+				Description: "rule 名称",
 			},
 
 			"rule_list": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "List of configured ACL rules.",
+				Description: "列表 configured ACL rules。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"operation": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Acl operation mode, enumeration value (all operations All, read Read, write Write).",
+							Description: "Acl operation 模式，enumeration 值 (all operations All，read Read，write Write)。",
 						},
 						"permission_type": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "permission type, (Deny|Allow).",
+							Description: "permission 类型，(Deny|Allow)。",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "The default is *, which means that any host can be accessed. Currently, ckafka does not support host and ip network segment.",
+							Description: "The 默认为 *，which means that any 主机 can be accessed. Currently，ckafka does not support 主机 and ip network segment。",
 						},
 						"principal": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "User list, the default is User:, which means that any user can access, and the current user can only be the user included in the user list. The input format needs to be prefixed with [User:]. For example, user A is passed in as User:A.",
+							Description: "用户 list，the 默认为 用户:，which means that any 用户 can access，and the current 用户 can only be the 用户 included in the 用户 list. The input 格式 needs to be prefixed with [用户:]. For example，用户 A is passed in as 用户:A。",
 						},
 					},
 				},
@@ -93,13 +93,13 @@ func ResourceTencentCloudCkafkaAclRule() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "A value representing the prefix that the prefix matches.",
+				Description: "A 值 representing the prefix that the prefix matches。",
 			},
 
 			"is_applied": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether the preset ACL rule is applied to the newly added topic.",
+				Description: "是否preset ACL rule is applied to the newly added topic。",
 			},
 		},
 	}

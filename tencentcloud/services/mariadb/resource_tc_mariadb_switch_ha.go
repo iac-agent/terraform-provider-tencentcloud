@@ -25,13 +25,13 @@ func ResourceTencentCloudMariadbSwitchHA() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of tdsql-ow728lmc.",
+				Description: "实例 ID in the 格式 of tdsql-ow728lmc。",
 			},
 			"zone": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Target AZ. The node with the lowest delay in the target AZ will be automatically promoted to primary node.",
+				Description: "Target AZ. The node with the lowest 延迟 in the target AZ will be automatically promoted to primary node。",
 			},
 		},
 	}

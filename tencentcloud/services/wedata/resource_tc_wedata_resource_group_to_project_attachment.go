@@ -27,14 +27,14 @@ func ResourceTencentCloudWedataResourceGroupToProjectAttachment() *schema.Resour
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Resource group ID.",
+				Description: "Resource 组 ID",
 			},
 
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 		},
 	}

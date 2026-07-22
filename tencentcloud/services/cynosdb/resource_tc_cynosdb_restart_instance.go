@@ -28,13 +28,13 @@ func ResourceTencentCloudCynosdbRestartInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "instance state.",
+				Description: "实例状态。",
 			},
 		},
 	}

@@ -28,30 +28,30 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"strategy_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Strategy name, cannot be duplicated.",
+				Description: "Strategy 名称，cannot be duplicated。",
 			},
 
 			"source": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Resolution lines.",
+				Description: "Resolution lines。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dns_line_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Resolution request source line ID.",
+							Description: "Resolution 请求来源 line ID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Resolution request source line name.",
+							Description: "Resolution 请求来源 line 名称",
 						},
 					},
 				},
@@ -60,24 +60,24 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 			"main_address_pool_set": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Main address pool set, up to four levels allowed.",
+				Description: "Main 地址 pool set，up to four levels allowed。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"address_pools": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Address pool IDs and weights in the set, array.",
+							Description: "地址 pool IDs and weights in the set，array。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"pool_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Address pool ID.",
+										Description: "地址 pool ID。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Weight.",
+										Description: "权重",
 									},
 								},
 							},
@@ -86,19 +86,19 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Address pool set ID.",
+							Description: "地址 pool set ID。",
 						},
 						"min_survive_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Switch threshold, cannot exceed the total number of addresses in the main set.",
+							Description: "Switch threshold，cannot exceed the total 数量 addresses in the main set。",
 						},
 						"traffic_strategy": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Switch strategy: ALL resolves all addresses; WEIGHT: load balancing. When ALL, the weight value of resolved addresses is 1; when WEIGHT, weight is address pool weight * address weight.",
+							Description: "Switch strategy: ALL resolves all addresses; WEIGHT: load balancing. When ALL，the 权重 值 of resolved addresses is 1; when WEIGHT，权重 is 地址 pool 权重 * 地址 权重",
 						},
 					},
 				},
@@ -107,24 +107,24 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 			"fallback_address_pool_set": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Fallback address pool set, only one level allowed and address pool count must be 1.",
+				Description: "Fallback 地址 pool set，only one 级别 allowed and 地址 pool count must be 1。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"address_pools": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Address pool IDs and weights in the set, array.",
+							Description: "地址 pool IDs and weights in the set，array。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"pool_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Address pool ID.",
+										Description: "地址 pool ID。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Weight.",
+										Description: "权重",
 									},
 								},
 							},
@@ -133,19 +133,19 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Address pool set ID.",
+							Description: "地址 pool set ID。",
 						},
 						"min_survive_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Switch threshold, cannot exceed the total number of addresses in the main set.",
+							Description: "Switch threshold，cannot exceed the total 数量 addresses in the main set。",
 						},
 						"traffic_strategy": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Switch strategy: ALL resolves all addresses; WEIGHT: load balancing. When ALL, the weight value of resolved addresses is 1; when WEIGHT, weight is address pool weight * address weight.",
+							Description: "Switch strategy: ALL resolves all addresses; WEIGHT: load balancing. When ALL，the 权重 值 of resolved addresses is 1; when WEIGHT，权重 is 地址 pool 权重 * 地址 权重",
 						},
 					},
 				},
@@ -154,20 +154,20 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 			"keep_domain_records": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Whether to enable policy forced retention of default lines disabled, enabled, default is disabled and only one policy can be enabled.",
+				Description: "是否enable policy forced retention of default lines 已禁用，已启用，默认为 已禁用 and only one policy can be 已启用",
 			},
 
 			"switch_pool_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Policy scheduling mode: AUTO default switching; STOP only pause without switching.",
+				Description: "Policy scheduling 模式: AUTO default switching; STOP only pause without switching。",
 			},
 
 			// computed
 			"strategy_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Strategy ID.",
+				Description: "Strategy ID。",
 			},
 		},
 	}

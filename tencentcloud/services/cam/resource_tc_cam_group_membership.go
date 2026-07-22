@@ -29,7 +29,7 @@ func ResourceTencentCloudCamGroupMembership() *schema.Resource {
 			"group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of CAM group.",
+				Description: "ID CAM group。",
 			},
 			"user_ids": {
 				Type:         schema.TypeSet,
@@ -39,7 +39,7 @@ func ResourceTencentCloudCamGroupMembership() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Deprecated:  "It has been deprecated from version 1.59.5. Use `user_names` instead.",
-				Description: "ID set of the CAM group members.",
+				Description: "ID set of the CAM group members。",
 			},
 			"user_names": {
 				Type:         schema.TypeSet,
@@ -48,7 +48,7 @@ func ResourceTencentCloudCamGroupMembership() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "User name set as ID of the CAM group members.",
+				Description: "用户 名称 set as ID CAM group members。",
 			},
 		},
 	}

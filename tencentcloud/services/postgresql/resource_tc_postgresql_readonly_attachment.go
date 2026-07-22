@@ -30,13 +30,13 @@ func ResourceTencentCloudPostgresqlReadonlyAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Read only instance ID.",
+				Description: "Read only instance ID。",
 			},
 			"read_only_group_id": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Read only group ID.",
+				Description: "Read only 组 ID",
 			},
 		},
 	}

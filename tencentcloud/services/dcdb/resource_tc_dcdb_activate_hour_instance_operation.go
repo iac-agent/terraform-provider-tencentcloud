@@ -22,7 +22,7 @@ func ResourceTencentCloudDcdbActivateHourInstanceOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "instance ID in the format of dcdbt-ow728lmc, which can be obtained through the `DescribeDCDBInstances` API.",
+				Description: "instance ID in the 格式 of dcdbt-ow728lmc，which can be obtained through the `DescribeDCDBInstances` API。",
 			},
 		},
 	}

@@ -25,13 +25,13 @@ func ResourceTencentCloudBhReconnectionSettingConfig() *schema.Resource {
 			"reconnection_max_count": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Retry count, value range: 0-20.",
+				Description: "Retry count，取值范围：0-20。",
 			},
 
 			"enable": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "true: limit reconnection count, false: do not limit reconnection count.",
+				Description: "true: 限制 reconnection count，false: do not 限制 reconnection count。",
 			},
 		},
 	}

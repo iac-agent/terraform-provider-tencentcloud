@@ -22,70 +22,70 @@ func DataSourceTencentCloudVpcNetDetectStateCheck() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The array of detection destination IPv4 addresses, which contains at most two IP addresses.",
+				Description: "The 数组 detection destination IPv4 addresses，which 包含at most two IP addresses。",
 			},
 
 			"next_hop_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The type of the next hop. Currently supported types are:VPN: VPN gateway;DIRECTCONNECT: direct connect gateway;PEERCONNECTION: peering connection;NAT: NAT gateway;NORMAL_CVM: normal CVM.",
+				Description: "The 类型 next hop. Currently supported types are:VPN: VPN gateway;DIRECTCONNECT: direct connect gateway;PEERCONNECTION: peering connection;NAT: NAT gateway;NORMAL_CVM: normal CVM。",
 			},
 
 			"next_hop_destination": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The next-hop destination gateway. The value is related to NextHopType.If NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.If NextHopType is set to DIRECTCONNECT, the value of this parameter is the direct connect gateway ID, such as dcg-12345678.If NextHopType is set to PEERCONNECTION, the value of this parameter is the peering connection ID, such as pcx-12345678.If NextHopType is set to NAT, the value of this parameter is the NAT gateway ID, such as nat-12345678.If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.",
+				Description: "The next-hop destination gateway. The 值 is related to NextHopType.If NextHopType is set to VPN，the 值 of this parameter is the VPN 网关 ID，such as vpngw-12345678.If NextHopType is set to DIRECTCONNECT，the 值 of this parameter is the direct connect gateway ID，such as dcg-12345678.If NextHopType is set to PEERCONNECTION，the 值 of this parameter is the peering connection ID，such as pcx-12345678.If NextHopType is set to NAT，the 值 of this parameter is the NAT gateway ID，such as nat-12345678.If NextHopType is set to NORMAL_CVM，the 值 of this parameter is the IPv4 地址 of the CVM，such as 10.0.0.12。",
 			},
 
 			"net_detect_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID of a network inspector instance, e.g. netd-12345678. Enter at least one of this parameter, VpcId, SubnetId, and NetDetectName. Use NetDetectId if it is present.",
+				Description: "ID network inspector instance，e.g. netd-12345678. Enter at least one of this parameter，VpcId，SubnetId，and NetDetectName. Use NetDetectId if it is present。",
 			},
 
 			"vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID of a `VPC` instance, e.g. `vpc-12345678`, which is used together with SubnetId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present.",
+				Description: "ID `VPC` instance，e.g. `vpc-12345678`，which is used together with SubnetId and NetDetectName. You should enter either this parameter or NetDetectId，or both. Use NetDetectId if it is present。",
 			},
 
 			"subnet_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID of a subnet instance, e.g. `subnet-12345678`, which is used together with VpcId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present.",
+				Description: "ID subnet instance，e.g. `subnet-12345678`，which is used together with VpcId and NetDetectName. You should enter either this parameter or NetDetectId，or both. Use NetDetectId if it is present。",
 			},
 
 			"net_detect_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The name of a network inspector, up to 60 bytes in length. It is used together with VpcId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present.",
+				Description: "名称 a network inspector，up to 60 bytes in length. It is used together with VpcId and NetDetectName. You should enter either this parameter or NetDetectId，or both. Use NetDetectId if it is present。",
 			},
 
 			"net_detect_ip_state_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The array of network detection verification results.",
+				Description: "The 数组 network detection verification results。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"detect_destination_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The destination IPv4 address of network detection.",
+							Description: "The destination IPv4 地址 of network detection。",
 						},
 						"state": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The detection result.0: successful;-1: no packet loss occurred during routing;-2: packet loss occurred when outbound traffic is blocked by the ACL;-3: packet loss occurred when inbound traffic is blocked by the ACL;-4: other errors.",
+							Description: "The detection 结果0: successful;-1: no packet loss occurred during routing;-2: packet loss occurred when outbound traffic is blocked by the ACL;-3: packet loss occurred when inbound traffic is blocked by the ACL;-4: other errors。",
 						},
 						"delay": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The latency. Unit: ms.",
+							Description: "The latency. 单位：ms。",
 						},
 						"packet_loss_rate": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The packet loss rate.",
+							Description: "The packet loss rate。",
 						},
 					},
 				},
@@ -94,7 +94,7 @@ func DataSourceTencentCloudVpcNetDetectStateCheck() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

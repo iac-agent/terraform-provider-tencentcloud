@@ -29,28 +29,28 @@ func ResourceTencentCloudCssTimeshiftRuleAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The push domain.",
+				Description: "The push 域名",
 			},
 
 			"app_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.",
+				Description: "The push 路径，which should be the same as `AppName` in the push and playback URLs. The 默认值为 `live`。",
 			},
 
 			"stream_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The stream name.Note: If you pass in a non-empty string, the rule will only be applied to the specified stream.",
+				Description: "The stream 名称Note: If you pass in a non-empty string，the rule will only be applied to the specified stream。",
 			},
 
 			"template_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The template ID.",
+				Description: "The 模板 ID",
 			},
 		},
 	}

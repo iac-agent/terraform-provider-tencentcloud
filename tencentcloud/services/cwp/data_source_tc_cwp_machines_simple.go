@@ -19,34 +19,34 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 			"machine_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Service types. -CVM: Cloud Virtual Machine; -ECM: Edge Computing Machine; -LH: Lighthouse; -Other: Mixed cloud; -ALL: All server types.",
+				Description: "Service types. -CVM: Cloud Virtual Machine; -ECM: Edge Computing Machine; -LH: Lighthouse; -Other: Mixed cloud; -ALL: All server types。",
 			},
 			"machine_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The area where the machine belongs,Such as: ap-guangzhou, ap-shanghai, all-regions: All server region types.",
+				Description: "The area where the machine belongs,Such as: ap-guangzhou，ap-shanghai，all-regions: All server 地域 types。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filter list.",
+				Description: "filter list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Only supported Keywords, Version and TagId.",
+							Description: "Only supported Keywords，版本 and TagId。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "If `name` is `Keywords`: enter keyword query; If `name` is `Version`: enter PRO_VERSION: Professional Edition | BASIC_VERSION: Basic | Flagship: Flagship | ProtectedMachines: Professional+Flagship | UnFlagship: Non Flagship | PRO_POST_PAY: Professional Edition Pay by Volume | PRO_PRE_PAY: Professional Edition Monthly Package query; If `name` is `TagId`: enter tag ID query.",
+							Description: "If `名称` is `Keywords`: enter keyword query; If `名称` is `版本`: enter PRO_VERSION: Professional Edition | BASIC_VERSION: Basic | Flagship: Flagship | ProtectedMachines: Professional+Flagship | UnFlagship: Non Flagship | PRO_POST_PAY: Professional Edition Pay by Volume | PRO_PRE_PAY: Professional Edition Monthly Package query; If `名称` is `TagId`: enter 标签 ID query。",
 						},
 						"exact_match": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "exact match. true or false.",
+							Description: "exact match. true or false。",
 						},
 					},
 				},
@@ -55,74 +55,74 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Project id list.",
+				Description: "项目 ID list。",
 			},
 			"machines": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Machine list.",
+				Description: "Machine list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"machine_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Machine name.",
+							Description: "Machine 名称",
 						},
 						"machine_os": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Machine OS System.",
+							Description: "Machine OS System。",
 						},
 						"uuid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cwp client sole UUID.",
+							Description: "Cwp client sole UUID。",
 						},
 						"quuid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud server sole UUID.",
+							Description: "Cloud server sole UUID。",
 						},
 						"machine_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Machine Internal net IP.",
+							Description: "Machine Internal net IP。",
 						},
 						"is_pro_version": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Paid version or not. true: yes; false: no.",
+							Description: "Paid 版本 or not. true: yes; false: no。",
 						},
 						"machine_wan_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Machine Outer net IP.",
+							Description: "Machine Outer net IP。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Payment model. POSTPAY: Pay as you go; PREPAY: Monthly subscription.",
+							Description: "Payment model. POSTPAY: Pay as you go; PREPAY: Monthly subscription。",
 						},
 						"tag": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Tag.",
+							Description: "标签",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rid": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Relevance tag id.",
+										Description: "Relevance 标签 id。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag name.",
+										Description: "标签 名称",
 									},
 									"tag_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Tag ID.",
+										Description: "标签 ID。",
 									},
 								},
 							},
@@ -130,33 +130,33 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 						"region_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Region detail.",
+							Description: "地域 detail。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region, Such as ap-guangzhou, ap-shanghai, ap-beijing.",
+										Description: "地域，Such as ap-guangzhou，ap-shanghai，ap-beijing。",
 									},
 									"region_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Regional Chinese name.",
+										Description: "Regional Chinese 名称",
 									},
 									"region_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Region ID.",
+										Description: "地域 ID",
 									},
 									"region_code": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region Code.",
+										Description: "地域 代码",
 									},
 									"region_name_en": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Regional English name.",
+										Description: "Regional English 名称",
 									},
 								},
 							},
@@ -164,58 +164,58 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 						"instance_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance status.",
+							Description: "实例状态",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project ID.",
+							Description: "项目 ID",
 						},
 						"machine_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service types. -CVM: Cloud Virtual Machine; -ECM: Edge Computing Machine -LH: Lighthouse; -Other: Mixed cloud; -ALL: All server types.",
+							Description: "Service types. -CVM: Cloud Virtual Machine; -ECM: Edge Computing Machine -LH: Lighthouse; -Other: Mixed cloud; -ALL: All server types。",
 						},
 						"kernel_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Core Version.",
+							Description: "Core 版本",
 						},
 						"protect_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Protection Version. -BASIC_VERSION: Basic Version; -PRO_VERSION: Pro Version -Flagship: Flagship Version; -GENERAL_DISCOUNT: CWP-LH Version.",
+							Description: "Protection 版本 -BASIC_VERSION: Basic 版本; -PRO_VERSION: Pro 版本 -Flagship: Flagship 版本; -GENERAL_DISCOUNT: CWP-LH 版本",
 						},
 						"license_order": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "License Order ObjectNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "License 顺序 Object注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"license_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "License ID.",
+										Description: "License ID。",
 									},
 									"license_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "License Types.",
+										Description: "License Types。",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "License Order Status.",
+										Description: "License 顺序 状态",
 									},
 									"source_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Order types.",
+										Description: "顺序 types。",
 									},
 									"resource_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resource ID.",
+										Description: "资源 ID",
 									},
 								},
 							},
@@ -223,18 +223,18 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 						"cloud_tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Cloud tags detailNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Cloud 标签 detail注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -242,7 +242,7 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance IDNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Instance ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -250,7 +250,7 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

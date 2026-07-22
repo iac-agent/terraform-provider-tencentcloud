@@ -32,21 +32,21 @@ func ResourceTencentCloudMongodbInstanceAccount() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Instance ID, the format is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page.",
+				Description: "实例 ID，the 格式 is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page。",
 			},
 
 			"user_name": {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "The new account name. Its format requirements are as follows: character range [1,32]. Characters in the range of [A,Z], [a,z], [1,9] as well as underscore _ and dash - can be input.",
+				Description: "The new 账号 名称 Its 格式 requirements are as follows: character range [1,32]. Characters in the range of [A,Z]，[a,z]，[1,9] as well as underscore _ and dash - can be input。",
 			},
 
 			"password": {
 				Optional:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "New account password. Password complexity requirements are as follows: character length range [8,32]. Contains at least letters, numbers and special characters (exclamation point!, at@, pound sign #, percent sign %, caret ^, asterisk *, parentheses (), underscore _).",
+				Description: "New 账号 密码 密码 complexity requirements are as follows: character length range [8,32]. 包含at least letters，numbers and special characters (exclamation point!，at@，pound sign #，percent sign %，caret ^，asterisk *，parentheses ()，underscore _)。",
 			},
 
 			"mongo_user_password": {
@@ -54,30 +54,30 @@ func ResourceTencentCloudMongodbInstanceAccount() *schema.Resource {
 				Sensitive:   true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "The password corresponding to the mongouser account. mongouser is the system default account, which is the password set when creating an instance.",
+				Description: "The 密码 corresponding to the mongouser 账号 mongouser is the system default 账号，which is the 密码 set when creating an instance。",
 			},
 
 			"user_desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Account remarks.",
+				Description: "账号 备注",
 			},
 
 			"auth_role": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "The read and write permission information of the account.",
+				Description: "The read and write 权限信息 of the 账号",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mask": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Permission information of the current account. 0: No permission. 1: read-only. 2: Write only. 3: Read and write.",
+							Description: "权限信息 of the current 账号 0: No permission. 1: read-only. 2: Write only. 3: Read and write。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Refers to the name of the database with the current account permissions.*: Indicates all databases. db.name: Indicates the database of a specific name.",
+							Description: "Refers to the 名称 database with the current 账号 permissions.*: 表示all databases. db.名称: 表示database of a specific 名称",
 						},
 					},
 				},

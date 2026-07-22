@@ -19,45 +19,45 @@ func DataSourceTencentCloudTcrTagRetentionExecutions() *schema.Resource {
 			"registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"retention_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "retention id.",
+				Description: "retention id。",
 			},
 
 			"retention_execution_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "list of version retention execution records.",
+				Description: "列表 版本 retention execution records。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"execution_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "execution id.",
+							Description: "execution id。",
 						},
 						"retention_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "retention id.",
+							Description: "retention id。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "execution start time.",
+							Description: "execution 开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "execution end time.",
+							Description: "execution 结束时间。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "execution status: Failed, Succeed, Stopped, InProgress.",
+							Description: "execution 状态: Failed，Succeed，Stopped，InProgress。",
 						},
 					},
 				},
@@ -66,7 +66,7 @@ func DataSourceTencentCloudTcrTagRetentionExecutions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

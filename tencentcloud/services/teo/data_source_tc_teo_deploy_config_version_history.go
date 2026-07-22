@@ -18,30 +18,30 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 
 			"env_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Environment ID.",
+				Description: "Environment ID。",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: record-id (Filter by release record ID).",
+				Description: "Filtering condition. The maximum 值 of Filters.Values is 20. Detailed filtering conditions: record-id (Filter by release record ID)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Value of the filtered field.",
+							Description: "值 of the filtered field。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -49,7 +49,7 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable fuzzy query.",
+							Description: "是否enable fuzzy query。",
 						},
 					},
 				},
@@ -58,49 +58,49 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 			"records": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Release record details.",
+				Description: "Release record details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_group_version_infos": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Details about the released version.",
+							Description: "Details about the released 版本",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"version_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Version ID.",
+										Description: "版本 ID。",
 									},
 									"version_number": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version No.",
+										Description: "版本 No。",
 									},
 									"group_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuraration group ID.",
+										Description: "Configuraration 组 ID",
 									},
 									"group_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuration group type. Valid values: l7_acceleration (L7 acceleration configuration group), edge_functions (Edge function configuration group).",
+										Description: "Configuration group 类型 有效值：l7_acceleration (L7 acceleration configuration group)，edge_functions (Edge function configuration group)。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version description.",
+										Description: "版本 描述",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version status. Valid values: creating (Being created), inactive (Not effective), active (Effective).",
+										Description: "版本 状态 有效值：creating (Being created)，inactive (Not effective)，活跃 (Effective)。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+										Description: "版本 创建时间. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
 									},
 								},
 							},
@@ -108,27 +108,27 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 						"deploy_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Release time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+							Description: "Release time. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Release status. Valid values: deploying (Being released), failure (Release failed), success (Released successfully).",
+							Description: "Release 状态 有效值：deploying (Being released)，failure (Release failed)，success (Released successfully)。",
 						},
 						"message": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Release result information.",
+							Description: "Release 结果 information。",
 						},
 						"record_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Release record ID.",
+							Description: "Release record ID。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Change description.",
+							Description: "Change 描述",
 						},
 					},
 				},
@@ -137,7 +137,7 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

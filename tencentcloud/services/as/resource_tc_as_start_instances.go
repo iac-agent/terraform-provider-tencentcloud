@@ -24,7 +24,7 @@ func ResourceTencentCloudAsStartInstances() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Launch configuration ID.",
+				Description: "启动配置 ID",
 			},
 
 			"instance_ids": {
@@ -34,7 +34,7 @@ func ResourceTencentCloudAsStartInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of cvm instances to start.",
+				Description: "列表 cvm instances to start。",
 			},
 		},
 	}

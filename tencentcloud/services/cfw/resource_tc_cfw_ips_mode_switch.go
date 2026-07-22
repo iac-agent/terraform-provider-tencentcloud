@@ -26,7 +26,7 @@ func ResourceTencentCloudCfwIpsModeSwitch() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Protection mode: 0-observation mode, 1-interception mode, 2-strict mode.",
+				Description: "Protection 模式: 0-observation 模式，1-interception 模式，2-strict 模式",
 			},
 		},
 	}

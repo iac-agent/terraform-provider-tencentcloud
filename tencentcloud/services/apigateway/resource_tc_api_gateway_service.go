@@ -29,25 +29,25 @@ func ResourceTencentCloudAPIGatewayService() *schema.Resource {
 			"service_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Custom service name.",
+				Description: "Custom 服务名称",
 			},
 			"protocol": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(API_GATEWAY_SERVICE_PROTOCOLS),
-				Description:  "Service frontend request type. Valid values: `http`, `https`, `http&https`.",
+				Description:  "Service frontend request 类型 有效值：`http`，`https`，`http&https`。",
 			},
 			"service_desc": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom service description.",
+				Description: "Custom service 描述",
 			},
 			"exclusive_set_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
 				Deprecated:  "It has been deprecated from version 1.81.9.",
-				Description: "Self-deployed cluster name, which is used to specify the self-deployed cluster where the service is to be created.",
+				Description: "Self-deployed 集群名称，which is 用于指定self-deployed cluster where the service is to be created。",
 			},
 			"net_type": {
 				Type:     schema.TypeSet,
@@ -57,7 +57,7 @@ func ResourceTencentCloudAPIGatewayService() *schema.Resource {
 					Type:         schema.TypeString,
 					ValidateFunc: tccommon.ValidateAllowedStringValue([]string{API_GATEWAY_NET_TYPE_INNER, API_GATEWAY_NET_TYPE_OUTER}),
 				},
-				Description: "Network type list, which is used to specify the supported network types. Valid values: `INNER`, `OUTER`. " +
+				Description: "网络类型列表，用于指定支持的网络类型。有效值：“内部”、“外部”。" +
 					"`INNER` indicates access over private network, and `OUTER` indicates access over public network.",
 			},
 			"ip_version": {
@@ -66,98 +66,98 @@ func ResourceTencentCloudAPIGatewayService() *schema.Resource {
 				ForceNew:     true,
 				Default:      "IPv4",
 				ValidateFunc: tccommon.ValidateAllowedStringValue(API_GATEWAY_NET_IP_VERSIONS),
-				Description:  "IP version number. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.",
+				Description:  "IP 版本 number. 有效值：`IPv4`，`IPv6`. 默认值：`IPv4`。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Exclusive instance ID.",
+				Description: "Exclusive instance ID。",
 			},
 			"uniq_vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "VPC ID.",
+				Description: "私有网络 ID",
 			},
 			"release_limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "API QPS value. Enter a positive number to limit the API query rate per second `QPS`.",
+				Description: "API QPS 值 Enter a positive number to 限制 the API query rate per second `QPS`。",
 			},
 			"pre_limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "API QPS value. Enter a positive number to limit the API query rate per second `QPS`.",
+				Description: "API QPS 值 Enter a positive number to 限制 the API query rate per second `QPS`。",
 			},
 			"test_limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "API QPS value. Enter a positive number to limit the API query rate per second `QPS`.",
+				Description: "API QPS 值 Enter a positive number to 限制 the API query rate per second `QPS`。",
 			},
 			// Computed values.
 			"internal_sub_domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Private network access subdomain name.",
+				Description: "Private network access subdomain 名称",
 			},
 			"outer_sub_domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Public network access subdomain name.",
+				Description: "Public network access subdomain 名称",
 			},
 			"inner_http_port": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Port number for http access over private network.",
+				Description: "端口 number for http access over private network。",
 			},
 			"inner_https_port": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Port number for https access over private network.",
+				Description: "端口 number for https access over private network。",
 			},
 			"modify_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
+				Description: "最后修改时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
+				Description: "创建时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
 			},
 			"usage_plan_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of attach usage plans.",
+				Description: "A 列表 attach usage plans。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"usage_plan_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the usage plan.",
+							Description: "ID usage plan。",
 						},
 						"usage_plan_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the usage plan.",
+							Description: "名称 usage plan。",
 						},
 						"bind_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Binding type.",
+							Description: "Binding 类型",
 						},
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the API.",
+							Description: "ID API。",
 						},
 					},
 				},
@@ -165,33 +165,33 @@ func ResourceTencentCloudAPIGatewayService() *schema.Resource {
 			"api_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of APIs.",
+				Description: "A 列表 APIs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the API.",
+							Description: "ID API。",
 						},
 						"api_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the API.",
+							Description: "名称 API。",
 						},
 						"api_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the API.",
+							Description: "描述 API。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Path of the API.",
+							Description: "路径 of the API。",
 						},
 						"method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Method of the API.",
+							Description: "Method of the API。",
 						},
 					},
 				},

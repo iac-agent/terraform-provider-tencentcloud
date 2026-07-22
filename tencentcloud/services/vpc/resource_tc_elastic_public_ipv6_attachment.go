@@ -26,27 +26,27 @@ func ResourceTencentCloudElasticPublicIpv6Attachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Elastic IPv6 unique ID, EIPv6 unique ID is like eipv6-11112222.",
+				Description: "Elastic IPv6 unique ID，EIPv6 unique ID is like eipv6-11112222。",
 			},
 
 			"network_interface_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Elastic Network Interface ID to bind. Elastic Network Interface ID is like eni-11112222. NetworkInterfaceId and InstanceId cannot be specified simultaneously. The Elastic Network Interface ID can be queried by logging in to the console, or obtained through the networkInterfaceId in the return value of the DescribeNetworkInterfaces interface.",
+				Description: "Elastic Network Interface ID to bind. Elastic Network Interface ID is like eni-11112222. NetworkInterfaceId and 实例 ID cannot be specified simultaneously. The Elastic Network Interface ID can be queried by logging in to the console，or obtained through the networkInterfaceId in the 返回值 of the DescribeNetworkInterfaces interface。",
 			},
 
 			"private_ipv6_address": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The intranet IPv6 to bind. If NetworkInterfaceId is specified, PrivateIPv6Address must also be specified, which means that the EIP is bound to the specified private network IP of the specified Elastic Network Interface. Also ensure that the specified PrivateIPv6Address is an intranet IPv6 on the specified NetworkInterfaceId. The intranet IPv6 of the specified Elastic Network Interface can be queried by logging in to the console, or obtained through the Ipv6AddressSet.Address in the return value of the DescribeNetworkInterfaces interface.",
+				Description: "The intranet IPv6 to bind. If NetworkInterfaceId is specified，PrivateIPv6Address must also be specified，which means that the EIP is bound to the specified private network IP of the specified Elastic Network Interface. Also ensure that the specified PrivateIPv6Address is an intranet IPv6 on the specified NetworkInterfaceId. The intranet IPv6 of the specified Elastic Network Interface can be queried by logging in to the console，or obtained through the Ipv6AddressSet.地址 in the 返回值 of the DescribeNetworkInterfaces interface。",
 			},
 
 			"keep_bind_with_eni": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to keep the Elastic Network Interface bound when unbinding.",
+				Description: "是否keep the Elastic Network Interface bound when unbinding。",
 			},
 		},
 	}

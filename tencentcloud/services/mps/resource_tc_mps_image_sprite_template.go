@@ -26,67 +26,67 @@ func ResourceTencentCloudMpsImageSpriteTemplate() *schema.Resource {
 			"sample_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Sampling type, optional value:Percent/Time.",
+				Description: "Sampling 类型，可选 值:Percent/Time。",
 			},
 
 			"sample_interval": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Sampling interval.When SampleType is Percent, specify the percentage of the sampling interval.When SampleType is Time, specify the sampling interval time in seconds.",
+				Description: "Sampling interval.When SampleType is Percent，指定percentage of the sampling interval.When SampleType is Time，指定sampling interval time （秒）。",
 			},
 
 			"row_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of rows in the small image in the sprite.",
+				Description: "The 数量 rows in the small image in the sprite。",
 			},
 
 			"column_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of columns in the small image in the sprite.",
+				Description: "The 数量 columns in the small image in the sprite。",
 			},
 
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Image sprite template name, length limit: 64 characters.",
+				Description: "Image sprite 模板名称，length 限制: 64 characters。",
 			},
 
 			"width": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum value of the width (or long side) of the small image in the sprite image, value range: 0 and [128, 4096], unit: px.When Width and Height are both 0, the resolution is the same.When Width is 0 and Height is not 0, Width is scaled proportionally.When Width is not 0 and Height is 0, Height is scaled proportionally.When both Width and Height are not 0, the resolution is specified by the user.Default value: 0.",
+				Description: "The maximum 值 of the width (or long side) of the small image in the sprite image，取值范围：0 and [128，4096]，unit: px.When Width and Height are both 0，the resolution is the same.When Width is 0 and Height is not 0，Width is scaled proportionally.When Width is not 0 and Height is 0，Height is scaled proportionally.When both Width and Height are not 0，the resolution is specified by the 用户默认值：0。",
 			},
 
 			"height": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum value of the height (or short side) of the small image in the sprite image, value range: 0 and [128, 4096], unit: px.When Width and Height are both 0, the resolution is the same.When Width is 0 and Height is not 0, Width is scaled proportionally.When Width is not 0 and Height is 0, Height is scaled proportionally.When both Width and Height are not 0, the resolution is specified by the user.Default value: 0.",
+				Description: "The maximum 值 of the height (or short side) of the small image in the sprite image，取值范围：0 and [128，4096]，unit: px.When Width and Height are both 0，the resolution is the same.When Width is 0 and Height is not 0，Width is scaled proportionally.When Width is not 0 and Height is 0，Height is scaled proportionally.When both Width and Height are not 0，the resolution is specified by the 用户默认值：0。",
 			},
 
 			"resolution_adaptive": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Adaptive resolution, optional value:open: At this time, Width represents the long side of the video, Height represents the short side of the video.close: At this point, Width represents the width of the video, and Height represents the height of the video.Default value: open.",
+				Description: "Adaptive resolution，可选 值:open: At this time，Width represents the long side of the video，Height represents the short side of the video.close: At this point，Width represents the width of the video，and Height represents the height of the video.默认值：open。",
 			},
 
 			"fill_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filling type, when the aspect ratio of the video stream configuration is inconsistent with the aspect ratio of the original video, the processing method for transcoding is filling. Optional filling type:stretch: Stretching, stretching each frame to fill the entire screen, which may cause the transcoded video to be squashed or stretched.black: Leave black, keep the video aspect ratio unchanged, and fill the rest of the edge with black.Default value: black.",
+				Description: "Filling 类型，when the aspect ratio of the video stream configuration is inconsistent with the aspect ratio of the original video，the processing method for transcoding is filling. 可选 filling 类型:stretch: Stretching，stretching each frame to fill the entire screen，which may cause the transcoded video to be squashed or stretched.black: Leave black，keep the video aspect ratio unchanged，and fill the rest of the edge with black.默认值：black。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Template description information, length limit: 256 characters.",
+				Description: "模板描述 information，length 限制: 256 characters。",
 			},
 
 			"format": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Image format, the value can be jpg, png, webp. Default is jpg.",
+				Description: "Image 格式，the 值 can be jpg，png，webp. 默认为 jpg。",
 			},
 		},
 	}

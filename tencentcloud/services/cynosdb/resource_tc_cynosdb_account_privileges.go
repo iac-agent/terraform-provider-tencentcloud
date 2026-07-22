@@ -29,20 +29,20 @@ func ResourceTencentCloudCynosdbAccountPrivileges() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"account_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Account.",
+				Description: "帐户。",
 			},
 			"host": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Host, default `%`.",
+				Description: "主机，默认“%”。",
 			},
 
 			"global_privileges": {
@@ -51,19 +51,19 @@ func ResourceTencentCloudCynosdbAccountPrivileges() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Array of global permissions.",
+				Description: "全局权限数组。",
 			},
 
 			"database_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Array of database permissions.",
+				Description: "数据库权限数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database.",
+							Description: "数据库。",
 						},
 						"privileges": {
 							Type: schema.TypeSet,
@@ -71,7 +71,7 @@ func ResourceTencentCloudCynosdbAccountPrivileges() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Database privileges.",
+							Description: "数据库权限。",
 						},
 					},
 				},
@@ -80,18 +80,18 @@ func ResourceTencentCloudCynosdbAccountPrivileges() *schema.Resource {
 			"table_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "array of table permissions.",
+				Description: "表权限数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database name.",
+							Description: "数据库名称。",
 						},
 						"table_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Table name.",
+							Description: "表名。",
 						},
 						"privileges": {
 							Type: schema.TypeSet,
@@ -99,7 +99,7 @@ func ResourceTencentCloudCynosdbAccountPrivileges() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Table privileges.",
+							Description: "表特权。",
 						},
 					},
 				},

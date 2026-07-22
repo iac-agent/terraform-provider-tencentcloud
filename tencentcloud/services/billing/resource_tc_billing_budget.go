@@ -25,31 +25,31 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 			"budget_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Budget name.",
+				Description: "Budget 名称",
 			},
 
 			"cycle_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cycle type, valid values: DAY, MONTH, QUARTER, YEAR.",
+				Description: "Cycle 类型，有效值：DAY，MONTH，QUARTER，YEAR。",
 			},
 
 			"period_begin": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Valid period starting time 2025-01-01(cycle: days) / 2025-01 (cycle: months).",
+				Description: "Valid 周期 starting time 2025-01-01(cycle: days) / 2025-01 (cycle: months)。",
 			},
 
 			"period_end": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Expiration period end time 2025-12-01(cycle: days) / 2025-12 (cycle: months).",
+				Description: "Expiration 周期 结束时间 2025-12-01(cycle: days) / 2025-12 (cycle: months)。",
 			},
 
 			"plan_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "FIX: fixed budget, CYCLE: planned budget.",
+				Description: "FIX: fixed budget，CYCLE: planned budget。",
 			},
 
 			"budget_quota": {
@@ -61,35 +61,35 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 			"bill_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "BILL: system bill, CONSUMPTION: consumption bill.",
+				Description: "BILL: system bill，CONSUMPTION: consumption bill。",
 			},
 
 			"fee_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "COST original price, REAL_COST actual cost, CASH cash, INCENTIVE gift, VOUCHER voucher, TRANSFER share, TAX tax, AMOUNT_BEFORE_TAX cash payment (before tax).",
+				Description: "COST original price，REAL_COST actual cost，CASH cash，INCENTIVE gift，VOUCHER voucher，TRANSFER share，TAX tax，AMOUNT_BEFORE_TAX cash payment (before tax)。",
 			},
 
 			"warn_json": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Threshold reminder.",
+				Description: "Threshold reminder。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"warn_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ACTUAL: actual amount, FORECAST: forecast amount.",
+							Description: "ACTUAL: actual amount，FORECAST: forecast amount。",
 						},
 						"cal_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "PERCENTAGE: Percentage of budget amount, ABS: fixed value.",
+							Description: "PERCENTAGE: Percentage of budget amount，ABS: fixed 值",
 						},
 						"threshold_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Threshold (greater than or equal to 0).",
+							Description: "Threshold (greater than or equal to 0)。",
 						},
 					},
 				},
@@ -98,20 +98,20 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 			"budget_note": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Budget remarks.",
+				Description: "Budget 备注",
 			},
 
 			"dimensions_range": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Budget dimension range conditions.",
+				Description: "Budget dimension range conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"business": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Products.",
+							Description: "Products。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -119,7 +119,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"pay_mode": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Pay mode.",
+							Description: "付费模式",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -127,7 +127,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"product_codes": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Sub-product.",
+							Description: "Sub-product。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -135,7 +135,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"component_codes": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Component codes.",
+							Description: "组件代码",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -143,7 +143,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"zone_ids": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Zone ids.",
+							Description: "可用区 ids。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -151,7 +151,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"region_ids": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Region ids.",
+							Description: "地域 ids。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -159,7 +159,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"project_ids": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Project ids.",
+							Description: "Project ids。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -167,7 +167,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"action_types": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Action types.",
+							Description: "操作 types。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -175,7 +175,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"consumption_types": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Consumption types.",
+							Description: "Consumption types。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -183,18 +183,18 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Tags.",
+							Description: "标签",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -205,7 +205,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"payer_uins": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Payer uins.",
+							Description: "Payer uins。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -213,7 +213,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"owner_uins": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Owner uins.",
+							Description: "所有者 uins。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -221,7 +221,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"tree_node_uniq_keys": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Unique key for end-level ledger unit.",
+							Description: "Unique 键 for end-级别 ledger unit。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -233,28 +233,28 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 			"wave_threshold_json": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Volatility reminder.",
+				Description: "Volatility reminder。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"warn_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ACTUAL: actual amount, FORECAST: forecast amount.",
+							Description: "ACTUAL: actual amount，FORECAST: forecast amount。",
 						},
 						"threshold": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Volatility threshold (greater than or equal to 0).",
+							Description: "Volatility threshold (greater than or equal to 0)。",
 						},
 						"meta_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Alarm type: chain month-on-month, yoy year-on-year, fix fixed value\n (Supported types: daily month-on-month chain day, daily month-on-year chain weekday, daily month-on-year monthly month-on-year fixed value fix day, month-on-month chain month, monthly fixed value fix month).",
+							Description: "Alarm 类型: chain month-on-month，yoy year-on-year，fix fixed 值\n (Supported types: daily month-on-month chain day，daily month-on-year chain weekday，daily month-on-year monthly month-on-year fixed 值 fix day，month-on-month chain month，monthly fixed 值 fix month)。",
 						},
 						"period_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Alarm dimension: day day, month month, weekday week\n (Support types: day-to-day chain day, day-to-year weekly dimension chain weekday, day-to-year monthly dimension yoy day, daily fixed value fix day, month-to-month chain month, monthly fixed value fix month).",
+							Description: "Alarm dimension: day day，month month，weekday week\n (Support types: day-to-day chain day，day-to-year weekly dimension chain weekday，day-to-year monthly dimension yoy day，daily fixed 值 fix day，month-to-month chain month，monthly fixed 值 fix month)。",
 						},
 					},
 				},

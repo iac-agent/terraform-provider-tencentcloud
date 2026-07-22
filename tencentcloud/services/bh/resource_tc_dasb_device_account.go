@@ -28,13 +28,13 @@ func ResourceTencentCloudDasbDeviceAccount() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Device ID.",
+				Description: "Device ID。",
 			},
 			"account": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Device account.",
+				Description: "Device 账号",
 			},
 		},
 	}

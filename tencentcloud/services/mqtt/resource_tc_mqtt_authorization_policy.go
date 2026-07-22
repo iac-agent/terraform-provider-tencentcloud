@@ -29,7 +29,7 @@ func ResourceTencentCloudMqttAuthorizationPolicy() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "MQTT instance ID.",
+				Description: "MQTT instance ID。",
 			},
 
 			"policy_name": {
@@ -41,74 +41,74 @@ func ResourceTencentCloudMqttAuthorizationPolicy() *schema.Resource {
 			"policy_version": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Policy version, default is 1, currently only 1 is supported.",
+				Description: "Policy 版本，默认为 1，currently only 1 is supported。",
 			},
 
 			"priority": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The strategy priority, the smaller the higher the priority, cannot be repeated.",
+				Description: "The strategy 优先级，the smaller the higher the 优先级，cannot be repeated。",
 			},
 
 			"effect": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Decision: allow/deny.",
+				Description: "Decision: allow/deny。",
 			},
 
 			"actions": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Operation - connect: connect; pub: publish; sub: subscribe.",
+				Description: "Operation - connect: connect; pub: publish; sub: subscribe。",
 			},
 
 			"retain": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Condition - Reserved message 1, match reserved message; 2, match unreserved message, 3. match reserved and unreserved message.",
+				Description: "Condition - Reserved 消息 1，match reserved 消息; 2，match unreserved 消息，3. match reserved and unreserved 消息",
 			},
 
 			"qos": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Condition: Quality of Service 0: At most once 1: At least once 2: Exactly once.",
+				Description: "Condition: Quality of Service 0: At most once 1: At least once 2: Exactly once。",
 			},
 
 			"resources": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Resources, requiring matching subscriptions.",
+				Description: "Resources，requiring matching subscriptions。",
 			},
 
 			"username": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Condition - Username.",
+				Description: "Condition - 用户名",
 			},
 
 			"client_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Condition - Client ID, supports regular expressions.",
+				Description: "Condition - Client ID，supports regular expressions。",
 			},
 
 			"ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Condition - Client IP address, supports IP or CIDR.",
+				Description: "Condition - 客户端 IP 地址，supports IP or CIDR。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remarks, up to 128 characters.",
+				Description: "备注，up to 128 characters。",
 			},
 
 			// computed
 			"policy_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Authorization policy rule id.",
+				Description: "Authorization policy rule id。",
 			},
 		},
 	}

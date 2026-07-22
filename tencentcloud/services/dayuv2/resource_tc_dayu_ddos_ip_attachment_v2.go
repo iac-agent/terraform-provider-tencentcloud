@@ -28,35 +28,35 @@ func ResourceTencentCloudDayuDDosIpAttachmentV2() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Anti-DDoS instance ID.",
+				Description: "Anti-DDoS instance ID。",
 			},
 
 			"bound_ip_list": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Array of IPs to bind to the Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, the array contains only one IP. If there are no IPs to bind, it is empty; however, either BoundDevList or UnBoundDevList must not be empty.",
+				Description: "数组 IPs to bind to the Anti-DDoS instance. For Anti-DDoS Pro Single IP instance，the array 包含only one IP. If there are no IPs to bind，it is empty; however，either BoundDevList or UnBoundDevList must not be empty。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP address.",
+							Description: "IP 地址",
 						},
 						"biz_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Category of product that can be bound. Valid values: public (CVM and CLB), bm (BM), eni (ENI), vpngw (VPN gateway), natgw (NAT gateway), waf (WAF), fpc (financial products), gaap (GAAP), and other (hosted IP). This field is required when you perform binding.",
+							Description: "Category of product that can be bound. 有效值：public (CVM and CLB)，bm (BM)，eni (ENI)，vpngw (VPN gateway)，natgw (NAT gateway)，waf (WAF)，fpc (financial products)，gaap (GAAP)，and other (hosted IP). This field 为必填项 when you perform binding。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Anti-DDoS instance ID of the IP. This field is required only when the instance is bound to an IP. For example, this field InstanceId will be eni-* if the instance ID is bound to an ENI IP; none if there is no instance to bind to a managed IP.",
+							Description: "Anti-DDoS instance ID IP. This field 为必填项 only when the instance is bound to an IP. For example，this field 实例 ID will be eni-* if the instance ID is bound to an ENI IP; none if there is no instance to bind to a managed IP。",
 						},
 						"device_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Sub-product category. Valid values: cvm (CVM), lb (Load balancer), eni (ENI), vpngw (VPN gateway), natgw (NAT gateway), waf (WAF), fpc (financial products), gaap (GAAP), eip (BM EIP) and other (managed IP). This field is required when you perform binding.",
+							Description: "Sub-product category. 有效值：cvm (CVM)，lb (Load balancer)，eni (ENI)，vpngw (VPN gateway)，natgw (NAT gateway)，waf (WAF)，fpc (financial products)，gaap (GAAP)，eip (BM EIP) and other (managed IP). This field 为必填项 when you perform binding。",
 						},
 					},
 				},

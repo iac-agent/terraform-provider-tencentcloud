@@ -23,21 +23,21 @@ func ResourceTencentCloudPostgresqlRenewDbInstanceOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of postgres-6fego161.",
+				Description: "实例 ID in the 格式 of postgres-6fego161。",
 			},
 
 			"period": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Renewal duration in months.",
+				Description: "Renewal duration in months。",
 			},
 
 			"auto_voucher": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to automatically use vouchers. 1:yes, 0:no. Default value:0.",
+				Description: "是否automatically use vouchers. 1:yes，0:no. 默认值:0。",
 			},
 
 			"voucher_ids": {
@@ -47,7 +47,7 @@ func ResourceTencentCloudPostgresqlRenewDbInstanceOperation() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Voucher ID list (only one voucher can be specified currently).",
+				Description: "Voucher ID list (only one voucher can be specified currently)。",
 			},
 		},
 	}

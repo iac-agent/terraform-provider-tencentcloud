@@ -20,13 +20,13 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "query condition filter.",
+				Description: "query condition filter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The name of the filter parameter.",
+							Description: "The 名称 filter parameter。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -34,7 +34,7 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "value.",
+							Description: "值",
 						},
 					},
 				},
@@ -42,104 +42,104 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 			"instances": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Instance information list.",
+				Description: "Instance information list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"instance_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance version.",
+							Description: "Instance 版本",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance status, 0-creating, 1-normal, 2-isolating, 3-destroyed, 4-abnormal, 5-delivery failure, 6-allocation change, 7-allocation failure.",
+							Description: "实例状态，0-creating，1-normal，2-isolating，3-destroyed，4-abnormal，5-delivery failure，6-allocation change，7-allocation failure。",
 						},
 						"config_display": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance configuration specification name.",
+							Description: "Instance configuration 规格名称",
 						},
 						"max_tps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Peak TPS.",
+							Description: "Peak TPS。",
 						},
 						"max_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Storage capacity, in GB.",
+							Description: "Storage capacity，（GB）。",
 						},
 						"expire_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance expiration time, in milliseconds.",
+							Description: "Instance 过期时间，（毫秒）。",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Automatic renewal mark, 0 indicates the default state (the user has not set it, that is, the initial state is manual renewal), 1 indicates automatic renewal, 2 indicates that the automatic renewal is not specified (user setting).",
+							Description: "Automatic renewal mark，0 表示default state (the 用户 has not set it，that is，the initial state is manual renewal)，1 表示automatic renewal，2 表示that the automatic renewal is not specified (用户 setting)。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "0-postpaid, 1-prepaid.",
+							Description: "0-postpaid，1-prepaid。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "RemarksNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Remarks注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"spec_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Configuration ID.",
+							Description: "Instance Configuration ID。",
 						},
 						"scalable_tps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Elastic TPS outside specificationNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Elastic TPS outside specification注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of the VPCNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Id of the VPC注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet idNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Subnet id注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"max_band_width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Peak bandwidth. Unit: mbps.",
+							Description: "Peak bandwidth. 单位：mbps。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Tag list.",
+							Description: "标签列表",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -147,7 +147,7 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 					},
 				},
@@ -155,7 +155,7 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

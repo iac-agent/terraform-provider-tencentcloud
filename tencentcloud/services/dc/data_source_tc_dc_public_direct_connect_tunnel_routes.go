@@ -19,19 +19,19 @@ func DataSourceTencentCloudDcPublicDirectConnectTunnelRoutes() *schema.Resource 
 			"direct_connect_tunnel_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "direct connect tunnel id.",
+				Description: "direct connect tunnel id。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filter condition: route-type: route type, value: BGP/STATIC route-subnet: route cidr, value such as: 192.68.1.0/24.",
+				Description: "filter condition: route-类型: route 类型，值: BGP/STATIC route-subnet: route cidr，值 such as: 192.68.1.0/24。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Fields to be filtered.",
+							Description: "Fields to be filtered。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -39,7 +39,7 @@ func DataSourceTencentCloudDcPublicDirectConnectTunnelRoutes() *schema.Resource 
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "filter value of the field.",
+							Description: "过滤值 of the field。",
 						},
 					},
 				},
@@ -48,28 +48,28 @@ func DataSourceTencentCloudDcPublicDirectConnectTunnelRoutes() *schema.Resource 
 			"routes": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Internet tunnel route list.",
+				Description: "Internet tunnel route list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"route_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "direct connect tunnel route id.",
+							Description: "direct connect tunnel route id。",
 						},
 						"destination_cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network CIDR.",
+							Description: "Network CIDR。",
 						},
 						"route_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Route type: BGP/STATIC route.",
+							Description: "Route 类型: BGP/STATIC route。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ENABLE: routing is enabled, DISABLE: routing is disabled.",
+							Description: "ENABLE: routing is 已启用，DISABLE: routing is 已禁用",
 						},
 						"as_path": {
 							Type: schema.TypeSet,
@@ -77,12 +77,12 @@ func DataSourceTencentCloudDcPublicDirectConnectTunnelRoutes() *schema.Resource 
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "ASPath info.",
+							Description: "ASPath info。",
 						},
 						"next_hop": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Route next hop ip.",
+							Description: "Route next hop ip。",
 						},
 					},
 				},
@@ -91,7 +91,7 @@ func DataSourceTencentCloudDcPublicDirectConnectTunnelRoutes() *schema.Resource 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

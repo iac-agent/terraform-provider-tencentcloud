@@ -27,61 +27,61 @@ func ResourceTencentCloudVodSampleSnapshotTemplate() *schema.Resource {
 			"sample_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Sampled screencapturing type. Valid values: Percent: by percent. Time: by time interval.",
+				Description: "Sampled screencapturing 类型 有效值：Percent: by percent. Time: by 时间间隔。",
 			},
 
 			"sample_interval": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Sampling interval. If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage. If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.",
+				Description: "Sampling interval. If `SampleType` is `Percent`，sampling will be performed at an interval of the specified percentage. If `SampleType` is `Time`，sampling will be performed at the specified 时间间隔 （秒）。",
 			},
 
 			"sub_app_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.",
+				Description: "The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25，2023，if they want to access resources in a VOD application (whether it's the default application or a newly created one)，they must fill in this field with the application ID。",
 			},
 
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Name of a sampled screencapturing template. Length limit: 64 characters.",
+				Description: "名称 a sampled screencapturing template. Length 限制: 64 characters。",
 			},
 
 			"width": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096]. If both `Width` and `Height` are 0, the resolution will be the same as that of the source video; If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled; If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled; If both `Width` and `Height` are not 0, the custom resolution will be used.Default value: 0.",
+				Description: "Maximum 值 of the width (or long side) of a screenshot （像素）。 取值范围：0 and [128，4,096]. If both `Width` and `Height` are 0，the resolution will be the same as that of the 来源 video; If `Width` is 0，but `Height` is not 0，`Width` will be proportionally scaled; If `Width` is not 0，but `Height` is 0，`Height` will be proportionally scaled; If both `Width` and `Height` are not 0，the custom resolution will be used.默认值：0。",
 			},
 
 			"height": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096]. If both `Width` and `Height` are 0, the resolution will be the same as that of the source video; If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled; If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled; If both `Width` and `Height` are not 0, the custom resolution will be used.Default value: 0.",
+				Description: "Maximum 值 of the height (or short side) of a screenshot （像素）。 取值范围：0 and [128，4,096]. If both `Width` and `Height` are 0，the resolution will be the same as that of the 来源 video; If `Width` is 0，but `Height` is not 0，`Width` will be proportionally scaled; If `Width` is not 0，but `Height` is 0，`Height` will be proportionally scaled; If both `Width` and `Height` are not 0，the custom resolution will be used.默认值：0。",
 			},
 
 			"resolution_adaptive": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Resolution adaption. Valid values: open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side; close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.Default value: open.",
+				Description: "Resolution adaption. 有效值：open: 已启用 In this case，`Width` represents the long side of a video，while `Height` the short side; close: 已禁用 In this case，`Width` represents the width of a video，while `Height` the height.默认值：open。",
 			},
 
 			"format": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Image format. Valid values: jpg, png. Default value: jpg.",
+				Description: "Image 格式 有效值：jpg，png. 默认值：jpg。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Template description. Length limit: 256 characters.",
+				Description: "模板描述 Length 限制: 256 characters。",
 			},
 
 			"fill_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fill type. Fill refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:  stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot shorter or longer; black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks. white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks. gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.Default value: black.",
+				Description: "Fill 类型 Fill refers to the way of processing a screenshot when its aspect ratio is different from that of the 来源 video. The following fill types are supported:  stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the 来源 video，which may make the screenshot shorter or longer; black: fill with black. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with black color blocks. white: fill with white. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with white color blocks. gauss: fill with Gaussian blur. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with Gaussian blur.默认值：black。",
 			},
 		},
 	}

@@ -17,74 +17,74 @@ func DataSourceTencentCloudCfsMountTargets() *schema.Resource {
 			"file_system_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "File system ID.",
+				Description: "File system ID。",
 			},
 
 			"mount_targets": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Mount target details.",
+				Description: "挂载目标 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"file_system_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "File system ID.",
+							Description: "File system ID。",
 						},
 						"mount_target_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mount target ID.",
+							Description: "挂载目标 ID。",
 						},
 						"ip_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mount target IP.",
+							Description: "挂载目标 IP。",
 						},
 						"fs_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mount root-directory.",
+							Description: "Mount root-directory。",
 						},
 						"life_cycle_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mount target status.",
+							Description: "挂载目标 状态",
 						},
 						"network_interface": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network type.",
+							Description: "Network 类型",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC ID.",
+							Description: "私有网络 ID",
 						},
 						"vpc_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC name.",
+							Description: "VPC 名称",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet ID.",
+							Description: "子网 ID",
 						},
 						"subnet_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet name.",
+							Description: "Subnet 名称",
 						},
 						"ccn_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CCN instance ID used by CFS Turbo.",
+							Description: "CCN 实例 ID used by CFS Turbo。",
 						},
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CCN IP range used by CFS Turbo.",
+							Description: "CCN IP range used by CFS Turbo。",
 						},
 					},
 				},
@@ -93,7 +93,7 @@ func DataSourceTencentCloudCfsMountTargets() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

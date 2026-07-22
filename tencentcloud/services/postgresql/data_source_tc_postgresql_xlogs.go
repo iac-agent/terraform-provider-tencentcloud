@@ -23,58 +23,58 @@ func DataSourceTencentCloudPostgresqlXlogs() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "PostgreSQL instance id.",
+				Description: "PostgreSQL 实例 ID",
 			},
 			"start_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Xlog start time, format `yyyy-MM-dd hh:mm:ss`, start time cannot before 7 days ago.",
+				Description: "Xlog 开始时间，格式 `yyyy-MM-dd hh:mm:ss`，开始时间 cannot before 7 days ago。",
 			},
 			"end_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Xlog end time, format `yyyy-MM-dd hh:mm:ss`.",
+				Description: "Xlog 结束时间，格式 `yyyy-MM-dd hh:mm:ss`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used for save results.",
+				Description: "用于save results。",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of Xlog query result.",
+				Description: "列表 Xlog query 结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Xlog id.",
+							Description: "Xlog id。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Xlog file created start time.",
+							Description: "Xlog file created 开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Xlog file created end time.",
+							Description: "Xlog file created 结束时间。",
 						},
 						"internal_addr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Xlog internal download address.",
+							Description: "Xlog internal download 地址",
 						},
 						"external_addr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Xlog external download address.",
+							Description: "Xlog external download 地址",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Xlog file size.",
+							Description: "Xlog file size。",
 						},
 					},
 				},

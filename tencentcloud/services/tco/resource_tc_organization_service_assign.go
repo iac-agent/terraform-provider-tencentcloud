@@ -26,32 +26,32 @@ func ResourceTencentCloudOrganizationServiceAssign() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Organization service ID.",
+				Description: "Organization 服务 ID",
 			},
 			"member_uins": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    20,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Uin list of the delegated admins, Including up to 20 items.",
+				Description: "Uin 列表 the delegated admins，Including up to 20 items。",
 			},
 			"management_scope": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Management scope of the delegated admin. Valid values: 1 (all members), 2 (partial members). Default value: `1`.",
+				Description: "Management 范围 of the delegated admin. 有效值：1 (all members)，2 (partial members). 默认值：`1`。",
 			},
 			"management_scope_uins": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Uin list of the managed members. This parameter is valid when `management_scope` is `2`.",
+				Description: "Uin 列表 the managed members. This parameter is valid when `management_scope` is `2`。",
 			},
 			"management_scope_node_ids": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "ID list of the managed departments. This parameter is valid when `management_scope` is `2`.",
+				Description: "ID 列表 the managed departments. This parameter is valid when `management_scope` is `2`。",
 			},
 		},
 	}

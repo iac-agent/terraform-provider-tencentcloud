@@ -19,66 +19,66 @@ func DataSourceTencentCloudCkafkaTopicSyncReplica() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"topic_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "TopicName.",
+				Description: "TopicName。",
 			},
 
 			"out_of_sync_replica_only": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Filter only unsynced replicas.",
+				Description: "Filter only unsynced replicas。",
 			},
 
 			"topic_in_sync_replica_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Topic details and copy collection.",
+				Description: "Topic details and copy collection。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"partition": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "partition name.",
+							Description: "partition 名称",
 						},
 						"leader": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Leader Id.",
+							Description: "Leader Id。",
 						},
 						"replica": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "replica set.",
+							Description: "replica set。",
 						},
 						"in_sync_replica": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ISR.",
+							Description: "ISR。",
 						},
 						"begin_offset": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "BeginOffset.",
+							Description: "BeginOffset。",
 						},
 						"end_offset": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "EndOffset.",
+							Description: "EndOffset。",
 						},
 						"message_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Message Count.",
+							Description: "消息 Count。",
 						},
 						"out_of_sync_replica": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Out Of Sync Replica.",
+							Description: "Out Of Sync Replica。",
 						},
 					},
 				},
@@ -87,7 +87,7 @@ func DataSourceTencentCloudCkafkaTopicSyncReplica() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

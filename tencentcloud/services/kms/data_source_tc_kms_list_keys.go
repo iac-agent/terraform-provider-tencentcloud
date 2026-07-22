@@ -19,23 +19,23 @@ func DataSourceTencentCloudKmsListKeys() *schema.Resource {
 			"role": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Filter based on the creator role. The default value is 0, which indicates the cmk created by the user himself, and 1, which indicates the cmk automatically created by authorizing other cloud products.",
+				Description: "Filter based on the 创建者 角色 The 默认值为 0，which 表示cmk created by the 用户 himself，and 1，which 表示cmk automatically created by authorizing other cloud products。",
 			},
 			"hsm_cluster_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "HSM cluster ID (only valid for KMS exclusive/managed service instances).",
+				Description: "HSM cluster ID (only valid for KMS exclusive/managed service instances)。",
 			},
 			"keys": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of KMS keys.",
+				Description: "A 列表 KMS keys。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of CMK.",
+							Description: "ID CMK。",
 						},
 					},
 				},
@@ -43,7 +43,7 @@ func DataSourceTencentCloudKmsListKeys() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

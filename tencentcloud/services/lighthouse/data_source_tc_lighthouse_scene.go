@@ -22,43 +22,43 @@ func DataSourceTencentCloudLighthouseScene() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of scene IDs.",
+				Description: "列表 scene IDs。",
 			},
 
 			"offset": {
 				Optional:    true,
 				Default:     0,
 				Type:        schema.TypeInt,
-				Description: "Offset. Default value is 0.",
+				Description: "偏移量 默认值为 0。",
 			},
 
 			"limit": {
 				Optional:    true,
 				Default:     20,
 				Type:        schema.TypeInt,
-				Description: "Number of returned results. Default value is 20. Maximum value is 100.",
+				Description: "数量 returned results. 默认值为 20. Maximum 值 is 100。",
 			},
 
 			"scene_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of scene info.",
+				Description: "列表 scene info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"scene_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use scene Id.",
+							Description: "Use scene Id。",
 						},
 						"display_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the scene presentation name.",
+							Description: "Use the scene presentation 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use scene description.",
+							Description: "Use scene 描述",
 						},
 					},
 				},
@@ -67,7 +67,7 @@ func DataSourceTencentCloudLighthouseScene() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

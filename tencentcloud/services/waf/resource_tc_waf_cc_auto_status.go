@@ -28,19 +28,19 @@ func ResourceTencentCloudWafCcAutoStatus() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 			"edition": {
 				Required:     true,
 				ForceNew:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(EDITION_TYPE),
-				Description:  "Waf edition. clb-waf means clb-waf, sparta-waf means saas-waf.",
+				Description:  "Waf edition. clb-waf means clb-waf，sparta-waf means saas-waf。",
 			},
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "cc auto status, 1(open), 0(close).",
+				Description: "cc auto 状态，1(open)，0(close)。",
 			},
 		},
 	}

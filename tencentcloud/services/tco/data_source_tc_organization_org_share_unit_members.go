@@ -18,36 +18,36 @@ func DataSourceTencentCloudOrganizationOrgShareUnitMembers() *schema.Resource {
 			"unit_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Shared unit ID.",
+				Description: "共享单元 ID",
 			},
 
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Shared unit area.",
+				Description: "Shared unit area。",
 			},
 
 			"search_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search for keywords. Support member Uin searches.",
+				Description: "Search for keywords. Support member Uin searches。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Shared unit member list.",
+				Description: "Shared unit member list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"share_member_uin": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shared member Uin.",
+							Description: "Shared member Uin。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 					},
 				},
@@ -56,7 +56,7 @@ func DataSourceTencentCloudOrganizationOrgShareUnitMembers() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -28,13 +28,13 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the layer7 listener.",
+				Description: "ID layer7 listener。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Forward domain of the forward rule.",
+				Description: "Forward 域名 of the forward rule。",
 			},
 			"path": {
 				Type:     schema.TypeString,
@@ -47,40 +47,40 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 
 					return tccommon.ValidateStringPrefix("/")(v, k)
 				},
-				Description: "Path of the forward rule. Maximum length is 80.",
+				Description: "路径 of the forward rule. Maximum length is 80。",
 			},
 			"realserver_type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"IP", "DOMAIN"}),
 				ForceNew:     true,
-				Description:  "Type of the realserver. Valid value: `IP` and `DOMAIN`.",
+				Description:  "类型 realserver. Valid 值: `IP` and `DOMAIN`。",
 			},
 			"scheduler": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      "rr",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"rr", "wrr", "lc"}),
-				Description:  "Scheduling policy of the forward rule, default value is `rr`. Valid value: `rr`, `wrr` and `lc`.",
+				Description:  "Scheduling policy of the forward rule，默认值为 `rr`. Valid 值: `rr`，`wrr` and `lc`。",
 			},
 			"health_check": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Indicates whether health check is enable.",
+				Description: "表示是否health check is enable。",
 			},
 			"interval": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      5,
 				ValidateFunc: tccommon.ValidateIntegerInRange(5, 300),
-				Description:  "Interval of the health check, default value is 5s.",
+				Description:  "Interval of the health check，默认值为 5s。",
 			},
 			"connect_timeout": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      2,
 				ValidateFunc: tccommon.ValidateIntegerInRange(2, 60),
-				Description:  "Timeout of the health check response, default value is 2s.",
+				Description:  "Timeout of the health check response，默认值为 2s。",
 			},
 			"health_check_path": {
 				Type:     schema.TypeString,
@@ -94,14 +94,14 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 
 					return tccommon.ValidateStringPrefix("/")(v, k)
 				},
-				Description: "Path of health check. Maximum length is 80.",
+				Description: "路径 of health check. Maximum length is 80。",
 			},
 			"health_check_method": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      http.MethodHead,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{http.MethodGet, http.MethodHead}),
-				Description:  "Method of the health check. Valid value: `GET` and `HEAD`.",
+				Description:  "Method of the health check. Valid 值: `GET` and `HEAD`。",
 			},
 			"health_check_status_codes": {
 				Type:        schema.TypeSet,
@@ -109,7 +109,7 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 				Elem:        &schema.Schema{Type: schema.TypeInt},
 				Set:         schema.HashInt,
 				Computed:    true,
-				Description: "Return code of confirmed normal. Valid value: `100`, `200`, `300`, `400` and `500`.",
+				Description: "Return 代码 of confirmed normal. Valid 值: `100`，`200`，`300`，`400` and `500`。",
 			},
 			"realservers": {
 				Type:     schema.TypeSet,
@@ -119,31 +119,31 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 					return helper.HashString(fmt.Sprintf("%s-%s-%d-%d", m["id"].(string), m["ip"].(string), m["port"].(int), m["weight"].(int)))
 
 				},
-				Description: "An information list of GAAP realserver.",
+				Description: "An information 列表 GAAP realserver。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ID of the GAAP realserver.",
+							Description: "ID GAAP realserver。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP of the GAAP realserver.",
+							Description: "IP of the GAAP realserver。",
 						},
 						"port": {
 							Type:         schema.TypeInt,
 							Required:     true,
 							ValidateFunc: tccommon.ValidatePort,
-							Description:  "Port of the GAAP realserver.",
+							Description:  "端口 of the GAAP realserver。",
 						},
 						"weight": {
 							Type:         schema.TypeInt,
 							Optional:     true,
 							Default:      1,
 							ValidateFunc: tccommon.ValidateIntegerInRange(1, 100),
-							Description:  "Scheduling weight, default value is `1`. Valid value ranges: (1~100).",
+							Description:  "Scheduling 权重，默认值为 `1`. Valid 值 ranges: (1~100)。",
 						},
 					},
 				},
@@ -152,20 +152,20 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "default",
-				Description: "The default value of requested host which is forwarded to the realserver by the listener is `default`.",
+				Description: "The 默认值 of requested 主机 which is forwarded to the realserver by the listener is `default`。",
 			},
 			"sni_switch": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{GAAP_SERVER_NAME_INDICATION_SWITCH_ON, GAAP_SERVER_NAME_INDICATION_SWITCH_OFF}),
-				Description:  "ServerNameIndication (SNI) switch. ON means on and OFF means off.",
+				Description:  "ServerNameIndication (SNI) switch. ON means on and OFF means off。",
 			},
 			"sni": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "ServerNameIndication (SNI) is required when the SNI switch is turned on.",
+				Description: "ServerNameIndication (SNI) 为必填项 when the SNI switch is turned on。",
 			},
 		},
 	}

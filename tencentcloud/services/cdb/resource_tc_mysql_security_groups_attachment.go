@@ -28,14 +28,14 @@ func ResourceTencentCloudMysqlSecurityGroupsAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of security group.",
+				Description: "安全组ID。",
 			},
 
 			"instance_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The id of instance.",
+				Description: "实例的id。",
 			},
 		},
 	}

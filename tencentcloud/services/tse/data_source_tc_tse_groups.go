@@ -19,19 +19,19 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID.",
+				Description: "gateway ID。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filter conditions, valid value:Name,GroupId.",
+				Description: "filter conditions，valid 值:名称,GroupId。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "filter name.",
+							Description: "过滤名称",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -39,7 +39,7 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "filter values.",
+							Description: "filter values。",
 						},
 					},
 				},
@@ -48,50 +48,50 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "groups information.",
+				Description: "groups information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "total count.",
+							Description: "总数",
 						},
 						"gateway_group_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "group list of gateway.",
+							Description: "group 列表 gateway。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "group Id.",
+										Description: "group Id。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "group name.",
+										Description: "组名称",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "group description.",
+										Description: "group 描述",
 									},
 									"node_config": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "group node configration.",
+										Description: "group node configration。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"specification": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "group specification, 1c2g|2c4g|4c8g|8c16g.",
+													Description: "group specification，1c2g|2c4g|4c8g|8c16g。",
 												},
 												"number": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "group node number, 2-50.",
+													Description: "group node number，2-50。",
 												},
 											},
 										},
@@ -99,85 +99,85 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "group status.",
+										Description: "group 状态",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "group create time.",
+										Description: "group 创建时间。",
 									},
 									"is_first_group": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "whether it is the default group- 0: false.- 1: yes.",
+										Description: "whether it is the default group- 0: false.- 1: yes。",
 									},
 									"binding_strategy": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "associated strategy informationNote: This field may return null, indicating that a valid value is not available.",
+										Description: "associated strategy information注意：此字段可能返回 null，表示有效值不可用。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"strategy_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "strategy ID.",
+													Description: "strategy ID。",
 												},
 												"strategy_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "strategy nameNote: This field may return null, indicating that a valid value is not available.",
+													Description: "strategy name注意：此字段可能返回 null，表示有效值不可用。",
 												},
 												"create_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "create timeNote: This field may return null, indicating that a valid value is not available.",
+													Description: "create time注意：此字段可能返回 null，表示有效值不可用。",
 												},
 												"modify_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "modify timeNote: This field may return null, indicating that a valid value is not available.",
+													Description: "modify time注意：此字段可能返回 null，表示有效值不可用。",
 												},
 												"description": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "description of strategyNote: This field may return null, indicating that a valid value is not available.",
+													Description: "描述 strategy注意：此字段可能返回 null，表示有效值不可用。",
 												},
 												"config": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "auto scaling configurationNote: This field may return null, indicating that a valid value is not available.",
+													Description: "auto scaling configuration注意：此字段可能返回 null，表示有效值不可用。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"max_replicas": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "maximum number of replicasNote: This field may return null, indicating that a valid value is not available.",
+																Description: "最大replicas注意：此字段可能返回 null，表示有效值不可用。",
 															},
 															"metrics": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "metric listNote: This field may return null, indicating that a valid value is not available.",
+																Description: "metric list注意：此字段可能返回 null，表示有效值不可用。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "metric typeNote: This field may return null, indicating that a valid value is not available.",
+																			Description: "metric type注意：此字段可能返回 null，表示有效值不可用。",
 																		},
 																		"resource_name": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "metric resource nameNote: This field may return null, indicating that a valid value is not available.",
+																			Description: "metric resource name注意：此字段可能返回 null，表示有效值不可用。",
 																		},
 																		"target_type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "metric target typeNote: This field may return null, indicating that a valid value is not available.",
+																			Description: "metric target type注意：此字段可能返回 null，表示有效值不可用。",
 																		},
 																		"target_value": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "metric target valueNote: This field may return null, indicating that a valid value is not available.",
+																			Description: "metric target value注意：此字段可能返回 null，表示有效值不可用。",
 																		},
 																	},
 																},
@@ -185,27 +185,27 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 															"enabled": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "whether to enable metric auto scalingNote: This field may return null, indicating that a valid value is not available.",
+																Description: "是否enable metric auto scaling注意：此字段可能返回 null，表示有效值不可用。",
 															},
 															"create_time": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "create timeNote: This field may return null, indicating that a valid value is not available.",
+																Description: "create time注意：此字段可能返回 null，表示有效值不可用。",
 															},
 															"modify_time": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "modify timeNote: This field may return null, indicating that a valid value is not available.",
+																Description: "modify time注意：此字段可能返回 null，表示有效值不可用。",
 															},
 															"strategy_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "strategy IDNote: This field may return null, indicating that a valid value is not available.",
+																Description: "strategy ID注意：此字段可能返回 null，表示有效值不可用。",
 															},
 															"auto_scaler_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "auto scaler IDNote: This field may return null, indicating that a valid value is not available.",
+																Description: "auto scaler ID注意：此字段可能返回 null，表示有效值不可用。",
 															},
 														},
 													},
@@ -213,44 +213,44 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 												"gateway_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "gateway IDNote: This field may return null, indicating that a valid value is not available.",
+													Description: "gateway ID注意：此字段可能返回 null，表示有效值不可用。",
 												},
 												"cron_config": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "timing scaling configurationNote: This field may return null, indicating that a valid value is not available.",
+													Description: "timing scaling configuration注意：此字段可能返回 null，表示有效值不可用。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"enabled": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "whether to enable timing auto scaling.",
+																Description: "是否enable timing auto scaling。",
 															},
 															"params": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "params of timing auto scaling.",
+																Description: "params of timing auto scaling。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"period": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "period of timing auto scaling.",
+																			Description: "周期 of timing auto scaling。",
 																		},
 																		"start_at": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "start time.",
+																			Description: "开始时间。",
 																		},
 																		"target_replicas": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "target replicas.",
+																			Description: "target replicas。",
 																		},
 																		"crontab": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "cron expression.",
+																			Description: "cron expression。",
 																		},
 																	},
 																},
@@ -258,17 +258,17 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 															"create_time": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "create time.",
+																Description: "创建时间。",
 															},
 															"modify_time": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "modify time.",
+																Description: "修改时间。",
 															},
 															"strategy_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "strategy ID.",
+																Description: "strategy ID。",
 															},
 														},
 													},
@@ -276,7 +276,7 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 												"max_replicas": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "maximum number of replicas.",
+													Description: "最大replicas。",
 												},
 											},
 										},
@@ -284,22 +284,22 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 									"gateway_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "gateway ID.",
+										Description: "gateway ID。",
 									},
 									"internet_max_bandwidth_out": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "public network outbound traffic bandwidth.",
+										Description: "public network outbound traffic bandwidth。",
 									},
 									"modify_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "modify time.",
+										Description: "修改时间。",
 									},
 									"subnet_ids": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "subnet IDs.",
+										Description: "subnet IDs。",
 									},
 								},
 							},
@@ -311,7 +311,7 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

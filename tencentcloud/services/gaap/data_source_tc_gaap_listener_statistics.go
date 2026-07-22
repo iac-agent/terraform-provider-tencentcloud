@@ -19,19 +19,19 @@ func DataSourceTencentCloudGaapListenerStatistics() *schema.Resource {
 			"listener_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Listener Id.",
+				Description: "Listener Id。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start Time.",
+				Description: "Start Time。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End Time.",
+				Description: "End Time。",
 			},
 
 			"metric_names": {
@@ -40,41 +40,41 @@ func DataSourceTencentCloudGaapListenerStatistics() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of statistical indicator names. Supporting: InBandwidth, OutBandwidth, Concurrent, InPackets, OutPackets.",
+				Description: "列表 statistical indicator names. Supporting: InBandwidth，OutBandwidth，Concurrent，InPackets，OutPackets。",
 			},
 
 			"granularity": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Monitoring granularity, currently supporting 300 3600 86400, in seconds.The query time range does not exceed 1 day and supports a minimum granularity of 300 seconds;The query interval should not exceed 7 days and support a minimum granularity of 3600 seconds;The query interval exceeds 7 days and supports a minimum granularity of 86400 seconds.",
+				Description: "Monitoring granularity，currently supporting 300 3600 86400，（秒）。The query time range does not exceed 1 day and supports a minimum granularity of 300 seconds;The query interval should not exceed 7 days and support a minimum granularity of 3600 seconds;The query interval exceeds 7 days and supports a minimum granularity of 86400 seconds。",
 			},
 
 			"statistics_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Channel Group Statistics.",
+				Description: "Channel Group Statistics。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"metric_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Metric Name.",
+							Description: "Metric 名称",
 						},
 						"metric_data": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Metric Data.",
+							Description: "Metric Data。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Time.",
+										Description: "Time。",
 									},
 									"data": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Statistical data valueNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Statistical data value注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -86,7 +86,7 @@ func DataSourceTencentCloudGaapListenerStatistics() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

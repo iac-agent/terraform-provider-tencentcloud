@@ -19,13 +19,13 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 			"module": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Value fixed at monitor.",
+				Description: "值 fixed at monitor。",
 			},
 
 			"policy_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fuzzy search by policy name.",
+				Description: "Fuzzy search by policy 名称",
 			},
 
 			"monitor_types": {
@@ -34,7 +34,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default.",
+				Description: "Filter by 监控类型 有效值：MT_QCE (Tencent Cloud service monitoring). 如果此参数为空，all will be queried by default。",
 			},
 
 			"namespaces": {
@@ -43,13 +43,13 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by namespace. For the values of different policy types, please see:[Poicy Type List](https://www.tencentcloud.com/document/product/248/39565?has_map=1).",
+				Description: "Filter by namespace. For the values of different policy types，please see:[Poicy 类型 List](https://www.tencentcloud.com/document/product/248/39565?has_map=1)。",
 			},
 
 			"dimensions": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The alarm object list, which is a JSON string. The outer array corresponds to multiple instances, and the inner array is the dimension of an object.For example, 'CVM - Basic Monitor' can be written as: [ {Dimensions: {unInstanceId: ins-qr8d555g}}, {Dimensions: {unInstanceId: ins-qr8d555h}} ]You can also refer to the 'Example 2' below.For more information on the parameter samples of different Tencent Cloud services, see [Product Policy Type and Dimension Information](https://www.tencentcloud.com/document/product/248/39565?has_map=1).Note: If 1 is passed in for NeedCorrespondence, the relationship between a policy and an instance needs to be returned. You can pass in up to 20 alarm object dimensions to avoid request timeout.",
+				Description: "The alarm object list，which is a JSON string. The outer array corresponds to multiple instances，and the inner array is the dimension of an object.For example，'CVM - Basic Monitor' can be written as: [ {Dimensions: {unInstanceId: ins-qr8d555g}}，{Dimensions: {unInstanceId: ins-qr8d555h}} ]You can also refer to the 'Example 2' below.For more information on the parameter samples of different Tencent Cloud services，see [Product Policy 类型 and Dimension Information](https://www.tencentcloud.com/document/product/248/39565?has_map=1).Note: If 1 is passed in for NeedCorrespondence，the relationship between a policy and an instance needs to be returned. You can pass in up to 20 alarm object dimensions to avoid request timeout。",
 			},
 
 			"receiver_uids": {
@@ -58,7 +58,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Search by recipient. You can get the user list with the API [ListUsers](https://www.tencentcloud.com/document/product/598/34587?from_cn_redirect=1) in 'Cloud Access Management' or query the sub-user information with the API [GetUser](https://www.tencentcloud.com/document/product/598/34590?from_cn_redirect=1). The Uid field in the returned result should be entered here.",
+				Description: "Search by recipient. You can get the 用户 list with the API [ListUsers](https://www.tencentcloud.com/document/product/598/34587?from_cn_redirect=1) in 'Cloud Access Management' or query the sub-用户 information with the API [GetUser](https://www.tencentcloud.com/document/product/598/34590?from_cn_redirect=1). The Uid field in the returned 结果 should be entered here。",
 			},
 
 			"receiver_groups": {
@@ -67,7 +67,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Search by recipient group. You can get the user group list with the API [ListGroups](https://www.tencentcloud.com/document/product/598/34589?from_cn_redirect=1) in 'Cloud Access Management' or query the user group list where a sub-user is in with the API [ListGroupsForUser](https://www.tencentcloud.com/document/product/598/34588?from_cn_redirect=1). The GroupId field in the returned result should be entered here.",
+				Description: "Search by recipient group. You can get the 用户 group list with the API [ListGroups](https://www.tencentcloud.com/document/product/598/34589?from_cn_redirect=1) in 'Cloud Access Management' or query the 用户 group list where a sub-用户 is in with the API [ListGroupsForUser](https://www.tencentcloud.com/document/product/598/34588?from_cn_redirect=1). The GroupId field in the returned 结果 should be entered here。",
 			},
 
 			"policy_type": {
@@ -76,19 +76,19 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by default policy. Valid values: DEFAULT (display default policy), NOT_DEFAULT (display non-default policies). If this parameter is left empty, all policies will be displayed.",
+				Description: "Filter by default policy. 有效值：DEFAULT (display default policy)，NOT_DEFAULT (display non-default policies). 如果此参数为空，all policies will be displayed。",
 			},
 
 			"field": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort by field. For example, to sort by the last modification time, use Field: UpdateTime.",
+				Description: "排序方式 field. For example，to 排序方式 the last 修改时间，use Field: UpdateTime。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort order. Valid values: ASC (ascending), DESC (descending).",
+				Description: "排序顺序 有效值：ASC (ascending)，DESC (descending)。",
 			},
 
 			"project_ids": {
@@ -97,7 +97,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "ID array of the policy project, which can be viewed on the following page: [Project Management](https://console.tencentcloud.com/project).",
+				Description: "ID 数组 the policy project，which can be viewed on the following page: [Project Management](https://console.tencentcloud.com/project)。",
 			},
 
 			"notice_ids": {
@@ -106,7 +106,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of the notification template IDs, which can be obtained by querying the notification template list.It can be queried with the API [DescribeAlarmNotices](https://www.tencentcloud.com/document/product/248/39300).",
+				Description: "列表 the notification template IDs，which can be obtained by querying the notification template list.It can be queried with the API [DescribeAlarmNotices](https://www.tencentcloud.com/document/product/248/39300)。",
 			},
 
 			"rule_types": {
@@ -115,7 +115,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by trigger condition. Valid values: STATIC (display policies with static threshold), DYNAMIC (display policies with dynamic threshold). If this parameter is left empty, all policies will be displayed.",
+				Description: "Filter by trigger condition. 有效值：STATIC (display policies with static threshold)，DYNAMIC (display policies with dynamic threshold). 如果此参数为空，all policies will be displayed。",
 			},
 
 			"enable": {
@@ -124,42 +124,42 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Filter by alarm status. Valid values: [1]: enabled; [0]: disabled; [0, 1]: all.",
+				Description: "Filter by 告警状态 有效值：[1]: 已启用; [0]: 已禁用; [0，1]: all。",
 			},
 
 			"not_binding_notice_rule": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "If 1 is passed in, alarm policies with no notification rules configured are queried. If it is left empty or other values are passed in, all alarm policies are queried.",
+				Description: "If 1 is passed in，alarm policies with no notification rules configured are queried. If it is left empty or other values are passed in，all alarm policies are queried。",
 			},
 
 			"instance_group_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Instance group ID.",
+				Description: "Instance 组 ID",
 			},
 
 			"need_correspondence": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether the relationship between a policy and the input parameter filter dimension is required. 1: Yes. 0: No. Default value: 0.",
+				Description: "是否relationship between a policy and the input parameter filter dimension 为必填项. 1: Yes. 0: No. 默认值：0。",
 			},
 
 			"trigger_tasks": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter alarm policy by triggered task (such as auto scaling task). Up to 10 tasks can be specified.",
+				Description: "Filter alarm policy by triggered task (such as auto scaling task). Up to 10 tasks can be specified。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Triggered task type. Valid value: AS (auto scaling)Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Triggered task 类型 Valid 值: AS (auto scaling)Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"task_config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration information in JSON format, such as {Key1:Value1,Key2:Value2}Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Configuration information in JSON 格式，such as {Key1:Value1,Key2:Value2}Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 					},
 				},
@@ -171,25 +171,25 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by quick alarm policy. If this parameter is left empty, all policies are displayed. ONECLICK: Display quick alarm policies; NOT_ONECLICK: Display non-quick alarm policies.",
+				Description: "Filter by quick alarm policy. 如果此参数为空，all policies are displayed. ONECLICK: Display quick alarm policies; NOT_ONECLICK: Display non-quick alarm policies。",
 			},
 
 			"not_bind_all": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether the returned result needs to filter policies associated with all objects. Valid values: 1 (Yes), 0 (No).",
+				Description: "是否returned 结果 needs to filter policies associated with all objects. 有效值：1 (Yes)，0 (No)。",
 			},
 
 			"not_instance_group": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether the returned result needs to filter policies associated with instance groups. Valid values: 1 (Yes), 0 (No).",
+				Description: "是否returned 结果 needs to filter policies associated with instance groups. 有效值：1 (Yes)，0 (No)。",
 			},
 
 			"prom_ins_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the TencentCloud Managed Service for Prometheus instance, which is used for customizing a metric policy.",
+				Description: "ID TencentCloud Managed Service for Prometheus instance，which is 用于customizing a metric policy。",
 			},
 
 			"receiver_on_call_form_ids": {
@@ -198,132 +198,132 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Search by schedule.",
+				Description: "Search by schedule。",
 			},
 
 			"policies": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Policy array.",
+				Description: "Policy array。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm policy IDNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Alarm policy IDNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"policy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm policy nameNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Alarm policy nameNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "RemarksNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "RemarksNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"monitor_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "监控类型 有效值：MT_QCE (Tencent Cloud service monitoring)Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"enable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Status. Valid values: 0 (disabled), 1 (enabled)Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "状态 有效值：0 (已禁用)，1 (已启用)Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"use_sum": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of instances bound to policy groupNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "数量 instances bound to policy groupNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project ID. Valid values: -1 (no project), 0 (default project)Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "项目 ID 有效值：-1 (no project)，0 (default project)Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"project_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project nameNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Project nameNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm policy typeNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Alarm policy typeNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"condition_template_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Trigger condition template IDNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Trigger condition template IDNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"condition": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Metric trigger conditionNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Metric trigger conditionNote: this field may return null，indicating that no valid values can be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"is_union_rule": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Judgment condition of an alarm trigger condition (0: Any; 1: All; 2: Composite). When the value is set to 2 (i.e., composite trigger conditions), this parameter should be used together with ComplexExpression.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Judgment condition of an alarm trigger condition (0: Any; 1: All; 2: Composite). When the 值 is set to 2 (i.e.，composite trigger conditions)，this parameter should be used together with ComplexExpression.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"rules": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Alarm trigger condition listNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Alarm trigger condition listNote: this field may return null，indicating that no valid values can be obtained。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"metric_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Metric name or event name. The supported metrics can be queried via [DescribeAlarmMetrics](https://www.tencentcloud.com/document/product/248/39322) and the supported events via [DescribeAlarmEvents](https://www.tencentcloud.com/document/product/248/39324).Note: this field may return null, indicating that no valid value is obtained.",
+													Description: "指标名称 or 事件名称 The supported metrics can be queried via [DescribeAlarmMetrics](https://www.tencentcloud.com/document/product/248/39322) and the supported events via [DescribeAlarmEvents](https://www.tencentcloud.com/document/product/248/39324).Note: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"period": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Statistical period in seconds. The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+													Description: "Statistical 周期 （秒）。 The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"operator": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Operatorintelligent = intelligent detection without thresholdeq = equal toge = greater than or equal togt = greater thanle = less than or equal tolt = less thanne = not equal today_increase = day-on-day increaseday_decrease = day-on-day decreaseday_wave = day-on-day fluctuationweek_increase = week-on-week increaseweek_decrease = week-on-week decreaseweek_wave = week-on-week fluctuationcycle_increase = cyclical increasecycle_decrease = cyclical decreasecycle_wave = cyclical fluctuationre = regex matchThe valid values can be queried via [DescribeAlarmMetrics](https://www.tencentcloud.com/document/product/248/39322)Note: this field may return null, indicating that no valid value is obtained.",
+													Description: "Operatorintelligent = intelligent detection without thresholdeq = equal toge = greater than or equal togt = greater thanle = less than or equal tolt = less thanne = not equal today_increase = day-on-day increaseday_decrease = day-on-day decreaseday_wave = day-on-day fluctuationweek_increase = week-on-week increaseweek_decrease = week-on-week decreaseweek_wave = week-on-week fluctuationcycle_increase = cyclical increasecycle_decrease = cyclical decreasecycle_wave = cyclical fluctuationre = regex matchThe valid values can be queried via [DescribeAlarmMetrics](https://www.tencentcloud.com/document/product/248/39322)Note: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Threshold. The valid value range can be queried via [DescribeAlarmMetrics](https://www.tencentcloud.com/document/product/248/39322)Note: this field may return null, indicating that no valid value is obtained.",
+													Description: "Threshold. The valid 值 range can be queried via [DescribeAlarmMetrics](https://www.tencentcloud.com/document/product/248/39322)Note: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"continue_period": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of periods. 1: continue for one period; 2: continue for two periods; and so on. The valid values can be queried via [DescribeAlarmMetrics](https://www.tencentcloud.com/document/product/248/39322)Note: this field may return null, indicating that no valid value is obtained.",
+													Description: "数量 periods. 1: continue for one 周期; 2: continue for two periods; and so on. The valid values can be queried via [DescribeAlarmMetrics](https://www.tencentcloud.com/document/product/248/39322)Note: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"notice_frequency": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Alarm interval in seconds. Valid values: 0 (do not repeat), 300 (alarm once every 5 minutes), 600 (alarm once every 10 minutes), 900 (alarm once every 15 minutes), 1800 (alarm once every 30 minutes), 3600 (alarm once every hour), 7200 (alarm once every 2 hours), 10800 (alarm once every 3 hours), 21600 (alarm once every 6 hours), 43200 (alarm once every 12 hours), 86400 (alarm once every dayNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Alarm interval （秒）。 有效值：0 (do not repeat)，300 (alarm once every 5 minutes)，600 (alarm once every 10 minutes)，900 (alarm once every 15 minutes)，1800 (alarm once every 30 minutes)，3600 (alarm once every hour)，7200 (alarm once every 2 hours)，10800 (alarm once every 3 hours)，21600 (alarm once every 6 hours)，43200 (alarm once every 12 hours)，86400 (alarm once every dayNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"is_power_notice": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Whether the alarm frequency increases exponentially. Valid values: 0 (no), 1 (yesNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "是否alarm frequency increases exponentially. 有效值：0 (no)，1 (yesNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"filter": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Filter condition for one single trigger rulNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Filter condition for one single trigger rulNote: this field may return null，indicating that no valid values can be obtained。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"type": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Filter condition type. Valid values: DIMENSION (uses dimensions for filteringNote: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Filter 条件类型 有效值：DIMENSION (uses dimensions for filteringNote: this field may return null，indicating that no valid values can be obtained。",
 															},
 															"dimensions": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "JSON string generated by serializing the AlarmPolicyDimension two-dimensional array. The one-dimensional arrays are in OR relationship, and the elements in a one-dimensional array are in AND relationshiNote: this field may return null, indicating that no valid values can be obtained.",
+																Description: "JSON string generated by serializing the AlarmPolicyDimension two-dimensional array. The one-dimensional arrays are in OR relationship，and the elements in a one-dimensional array are in AND relationshiNote: this field may return null，indicating that no valid values can be obtained。",
 															},
 														},
 													},
@@ -331,63 +331,63 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 												"description": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Metric display name, which is used in the output parameteNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Metric display 名称，which is used in the output parameteNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"unit": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Unit, which is used in the output parameteNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Unit，which is used in the output parameteNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"rule_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Trigger condition type. STATIC: static threshold; dynamic: dynamic threshold. If you do not specify this parameter when creating or editing a policy, STATIC is used by defaultNote: this field may return null, indicating that no valid value is obtained.",
+													Description: "Trigger 条件类型 STATIC: static threshold; dynamic: dynamic threshold. If you do not 指定this parameter when creating or editing a policy，STATIC is used by defaultNote: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"is_advanced": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Whether it is an advanced metric. 0: No; 1: YesNote: This field may return null, indicating that no valid values can be obtained.",
+													Description: "是否为an advanced metric. 0: No; 1: Yes注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"is_open": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Whether the advanced metric feature is enabled. 0: No; 1: YesNote: This field may return null, indicating that no valid values can be obtained.",
+													Description: "是否advanced metric feature is 已启用 0: No; 1: Yes注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"product_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Integration center product IDNote: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Integration center product ID注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"value_max": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Maximum valuNote: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Maximum valu注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"value_min": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Minimum valuNote: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Minimum valu注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"hierarchical_value": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "The configuration of alarm level thresholNote: This field may return null, indicating that no valid values can be obtained.",
+													Description: "The configuration of alarm 级别 threshol注意：此字段可能返回 null，表示无法获取有效值。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"remind": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Threshold for the Remind leveNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Threshold for the Remind leve注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"warn": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Threshold for the Warn leveNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Threshold for the Warn leve注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"serious": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Threshold for the Serious leveNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Threshold for the Serious leve注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 														},
 													},
@@ -398,7 +398,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 									"complex_expression": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The judgment expression of composite alarm trigger conditions, which is valid when the value of IsUnionRule is 2. This parameter is used to determine that an alarm condition is met only when the expression values are True for multiple trigger conditionsNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The judgment expression of composite alarm trigger conditions，which is valid when the 值 of IsUnionRule is 2. This parameter is 用于determine that an alarm condition is met only when the expression values are True for multiple trigger conditions注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -406,65 +406,65 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 						"event_condition": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Event trigger conditioNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Event trigger conditioNote: this field may return null，indicating that no valid values can be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rules": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Alarm trigger condition lisNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Alarm trigger condition lisNote: this field may return null，indicating that no valid values can be obtained。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"metric_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Metric name or event name. The supported metrics can be queried via DescribeAlarmMetrics and the supported events via DescribeAlarmEventsNote: this field may return null, indicating that no valid value is obtained.",
+													Description: "指标名称 or 事件名称 The supported metrics can be queried via DescribeAlarmMetrics and the supported events via DescribeAlarmEventsNote: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"period": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Statistical period in seconds. The valid values can be queried via DescribeAlarmMetricsNote: this field may return null, indicating that no valid value is obtained.",
+													Description: "Statistical 周期 （秒）。 The valid values can be queried via DescribeAlarmMetricsNote: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"operator": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Statistical period in seconds. The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.Operator	String	No	Operatorintelligent = intelligent detection without thresholdeq = equal toge = greater than or equal togt = greater thanle = less than or equal tolt = less thanne = not equal today_increase = day-on-day increaseday_decrease = day-on-day decreaseday_wave = day-on-day fluctuationweek_increase = week-on-week increaseweek_decrease = week-on-week decreaseweek_wave = week-on-week fluctuationcycle_increase = cyclical increasecycle_decrease = cyclical decreasecycle_wave = cyclical fluctuationre = regex matchThe valid values can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+													Description: "Statistical 周期 （秒）。 The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained.操作者	String	No	Operatorintelligent = intelligent detection without thresholdeq = equal toge = greater than or equal togt = greater thanle = less than or equal tolt = less thanne = not equal today_increase = day-on-day increaseday_decrease = day-on-day decreaseday_wave = day-on-day fluctuationweek_increase = week-on-week increaseweek_decrease = week-on-week decreaseweek_wave = week-on-week fluctuationcycle_increase = cyclical increasecycle_decrease = cyclical decreasecycle_wave = cyclical fluctuationre = regex matchThe valid values can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Threshold. The valid value range can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+													Description: "Threshold. The valid 值 range can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"continue_period": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of periods. 1: continue for one period; 2: continue for two periods; and so on. The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+													Description: "数量 periods. 1: continue for one 周期; 2: continue for two periods; and so on. The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"notice_frequency": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Alarm interval in seconds. Valid values: 0 (do not repeat), 300 (alarm once every 5 minutes), 600 (alarm once every 10 minutes), 900 (alarm once every 15 minutes), 1800 (alarm once every 30 minutes), 3600 (alarm once every hour), 7200 (alarm once every 2 hours), 10800 (alarm once every 3 hours), 21600 (alarm once every 6 hours), 43200 (alarm once every 12 hours), 86400 (alarm once every day)Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Alarm interval （秒）。 有效值：0 (do not repeat)，300 (alarm once every 5 minutes)，600 (alarm once every 10 minutes)，900 (alarm once every 15 minutes)，1800 (alarm once every 30 minutes)，3600 (alarm once every hour)，7200 (alarm once every 2 hours)，10800 (alarm once every 3 hours)，21600 (alarm once every 6 hours)，43200 (alarm once every 12 hours)，86400 (alarm once every day)Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"is_power_notice": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Whether the alarm frequency increases exponentially. Valid values: 0 (no), 1 (yes)Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "是否alarm frequency increases exponentially. 有效值：0 (no)，1 (yes)Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"filter": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Filter condition for one single trigger ruleNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Filter condition for one single trigger ruleNote: this field may return null，indicating that no valid values can be obtained。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"type": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Filter condition type. Valid values: DIMENSION (uses dimensions for filtering)Note: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Filter 条件类型 有效值：DIMENSION (uses dimensions for filtering)Note: this field may return null，indicating that no valid values can be obtained。",
 															},
 															"dimensions": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "JSON string generated by serializing the AlarmPolicyDimension two-dimensional array. The one-dimensional arrays are in OR relationship, and the elements in a one-dimensional array are in AND relationshipNote: this field may return null, indicating that no valid values can be obtained.",
+																Description: "JSON string generated by serializing the AlarmPolicyDimension two-dimensional array. The one-dimensional arrays are in OR relationship，and the elements in a one-dimensional array are in AND relationshipNote: this field may return null，indicating that no valid values can be obtained。",
 															},
 														},
 													},
@@ -472,63 +472,63 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 												"description": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Metric display name, which is used in the output parameterNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Metric display 名称，which is used in the output parameterNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"unit": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Unit, which is used in the output parameterNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Unit，which is used in the output parameterNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"rule_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Trigger condition type. STATIC: static threshold; dynamic: dynamic threshold. If you do not specify this parameter when creating or editing a policy, STATIC is used by default.Note: this field may return null, indicating that no valid value is obtained.",
+													Description: "Trigger 条件类型 STATIC: static threshold; dynamic: dynamic threshold. If you do not 指定this parameter when creating or editing a policy，STATIC is used by default.Note: this field may return null，indicating that no valid 值 is obtained。",
 												},
 												"is_advanced": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Whether it is an advanced metric. 0: No; 1: Yes.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "是否为an advanced metric. 0: No; 1: Yes.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"is_open": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Whether the advanced metric feature is enabled. 0: No; 1: Yes.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "是否advanced metric feature is 已启用 0: No; 1: Yes.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"product_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Integration center product ID.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Integration center product ID.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"value_max": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Maximum valueNote: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Maximum value注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"value_min": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Minimum valueNote: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Minimum value注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"hierarchical_value": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "The configuration of alarm level thresholdNote: This field may return null, indicating that no valid values can be obtained.",
+													Description: "The configuration of alarm 级别 threshold注意：此字段可能返回 null，表示无法获取有效值。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"remind": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Threshold for the Remind levelNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Threshold for the Remind level注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"warn": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Threshold for the Warn levelNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Threshold for the Warn level注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"serious": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Threshold for the Serious levelNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Threshold for the Serious level注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 														},
 													},
@@ -545,59 +545,59 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Notification rule ID listNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Notification rule ID listNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"notices": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Notification rule listNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Notification rule listNote: this field may return null，indicating that no valid values can be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Alarm notification template IDNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Alarm notification template IDNote: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Alarm notification template nameNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Alarm notification template nameNote: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"updated_at": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Last modified timeNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Last modified timeNote: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"updated_by": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Last modified byNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Last modified byNote: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"notice_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Alarm notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Alarm notification 类型 有效值：ALARM (for unresolved alarms)，OK (for resolved alarms)，ALL (for all alarms)Note: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"user_notices": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "User notification listNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "用户 notification listNote: this field may return null，indicating that no valid values can be obtained。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"receiver_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Recipient type. Valid values: USER (user), GROUP (user group)Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Recipient 类型 有效值：USER (用户)，GROUP (用户 group)Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"start_time": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Notification start time, which is expressed by the number of seconds since 00:00:00. Value range: 0-86399Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Notification 开始时间，which is expressed by the 数量 seconds since 00:00:00. 取值范围：0-86399Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"end_time": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Notification end time, which is expressed by the number of seconds since 00:00:00. Value range: 0-86399Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Notification 结束时间，which is expressed by the 数量 seconds since 00:00:00. 取值范围：0-86399Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"notice_way": {
 													Type: schema.TypeSet,
@@ -605,7 +605,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "Notification channel list. Valid values: EMAIL (email), SMS (SMS), CALL (phone), WECHAT (WeChat), RTX (WeCom)Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Notification channel list. 有效值：EMAIL (email)，SMS (SMS)，CALL (phone)，WECHAT (WeChat)，RTX (WeCom)注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"user_ids": {
 													Type: schema.TypeSet,
@@ -613,7 +613,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 														Type: schema.TypeInt,
 													},
 													Computed:    true,
-													Description: "User uid listNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "用户 uid listNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"group_ids": {
 													Type: schema.TypeSet,
@@ -621,7 +621,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 														Type: schema.TypeInt,
 													},
 													Computed:    true,
-													Description: "User group ID listNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "用户 组 ID listNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"phone_order": {
 													Type: schema.TypeSet,
@@ -629,32 +629,32 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 														Type: schema.TypeInt,
 													},
 													Computed:    true,
-													Description: "Phone polling listNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Phone polling listNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"phone_circle_times": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of phone pollings. Value range: 1-5Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "数量 phone pollings. 取值范围：1-5Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"phone_inner_interval": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Call interval in seconds within one polling. Value range: 60-900Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Call interval （秒） within one polling. 取值范围：60-900Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"phone_circle_interval": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Polling interval in seconds. Value range: 60-900Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Polling interval （秒）。 取值范围：60-900Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"need_phone_arrive_notice": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Whether receipt notification is required. Valid values: 0 (no), 1 (yes)Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Whether receipt notification 为必填项. 有效值：0 (no)，1 (yes)Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"phone_call_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Dial type. SYNC (simultaneous dial), CIRCLE (polled dial). Default value: CIRCLE.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Dial 类型 SYNC (simultaneous dial)，CIRCLE (polled dial). 默认值：CIRCLE.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"weekday": {
 													Type: schema.TypeSet,
@@ -662,7 +662,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 														Type: schema.TypeInt,
 													},
 													Computed:    true,
-													Description: "Notification cycle. The values 1-7 indicate Monday to Sunday.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Notification cycle. The values 1-7 indicate Monday to Sunday.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"on_call_form_ids": {
 													Type: schema.TypeSet,
@@ -670,7 +670,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "List of schedule IDsNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+													Description: "列表 schedule IDsNote: u200dThis field may return null，indicating that no valid values can be obtained。",
 												},
 											},
 										},
@@ -678,33 +678,33 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 									"url_notices": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Callback notification listNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Callback notification listNote: this field may return null，indicating that no valid values can be obtained。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"url": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Callback URL, which can contain up to 256 charactersNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Callback URL，which can contain up to 256 charactersNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"is_valid": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Whether verification is passed. Valid values: 0 (no), 1 (yes)Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Whether verification is passed. 有效值：0 (no)，1 (yes)Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"validation_code": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Verification codeNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Verification codeNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"start_time": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Start time of the notification in seconds, which is calculated from 00:00:00.Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "开始时间 of the notification （秒）， which is calculated from 00:00:00.Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"end_time": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "End time of the notification in seconds, which is calculated from 00:00:00.Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "结束时间 of the notification （秒）， which is calculated from 00:00:00.Note: this field may return null，indicating that no valid values can be obtained。",
 												},
 												"weekday": {
 													Type: schema.TypeSet,
@@ -712,7 +712,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 														Type: schema.TypeInt,
 													},
 													Computed:    true,
-													Description: "Notification cycle. The values 1-7 indicate Monday to Sunday.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Notification cycle. The values 1-7 indicate Monday to Sunday.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -720,12 +720,12 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 									"is_preset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether it is the system default notification template. Valid values: 0 (no), 1 (yes)Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "是否为the system default notification template. 有效值：0 (no)，1 (yes)Note: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"notice_language": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Notification language. Valid values: zh-CN (Chinese), en-US (English)Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Notification 语言 有效值：zh-CN (Chinese)，en-US (English)Note: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"policy_ids": {
 										Type: schema.TypeSet,
@@ -733,38 +733,38 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "List of IDs of the alarm policies bound to alarm notification templateNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "列表 IDs of the alarm policies bound to alarm notification templateNote: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"amp_consumer_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Backend AMP consumer ID.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Backend AMP consumer ID.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"cls_notices": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Channel to push alarm notifications to CLS.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Channel to push alarm notifications to CLS.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"region": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Region.",
+													Description: "地域",
 												},
 												"log_set_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Logset ID.",
+													Description: "Logset ID。",
 												},
 												"topic_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Topic ID.",
+													Description: "Topic ID。",
 												},
 												"enable": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Status. Valid values: 0 (disabled), 1 (enabled). Default value: 1 (enabled). This parameter can be left empty.",
+													Description: "状态 有效值：0 (已禁用)，1 (已启用). 默认值：1 (已启用). This parameter can be left empty。",
 												},
 											},
 										},
@@ -772,18 +772,18 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 									"tags": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Tags bound to a notification templateNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "标签 bound to a notification template注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Tag key.",
+													Description: "标签键",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Tag value.",
+													Description: "标签值",
 												},
 											},
 										},
@@ -794,18 +794,18 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 						"trigger_tasks": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Triggered task listNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Triggered task listNote: this field may return null，indicating that no valid values can be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Triggered task type. Valid value: AS (auto scaling)Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Triggered task 类型 Valid 值: AS (auto scaling)Note: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"task_config": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration information in JSON format, such as {Key1:Value1,Key2:Value2}Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Configuration information in JSON 格式，such as {Key1:Value1,Key2:Value2}Note: this field may return null，indicating that no valid values can be obtained。",
 									},
 								},
 							},
@@ -813,81 +813,81 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 						"conditions_temp": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Template policy groupNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Template policy groupNote: this field may return null，indicating that no valid values can be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"template_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Template nameNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+										Description: "Template nameNote: u200dThis field may return null，indicating that no valid values can be obtained。",
 									},
 									"condition": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Metric trigger conditionNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Metric trigger conditionNote: this field may return null，indicating that no valid values can be obtained。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"is_union_rule": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Judgment condition of an alarm trigger condition (0: Any; 1: All; 2: Composite). When the value is set to 2 (i.e., composite trigger conditions), this parameter should be used together with ComplexExpression.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Judgment condition of an alarm trigger condition (0: Any; 1: All; 2: Composite). When the 值 is set to 2 (i.e.，composite trigger conditions)，this parameter should be used together with ComplexExpression.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"rules": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Alarm trigger condition listNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Alarm trigger condition listNote: this field may return null，indicating that no valid values can be obtained。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"metric_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Metric name or event name. The supported metrics can be queried via DescribeAlarmMetrics and the supported events via DescribeAlarmEvents.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "指标名称 or 事件名称 The supported metrics can be queried via DescribeAlarmMetrics and the supported events via DescribeAlarmEvents.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"period": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Statistical period in seconds. The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "Statistical 周期 （秒）。 The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"operator": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Operatorintelligent = intelligent detection without thresholdeq = equal toge = greater than or equal togt = greater thanle = less than or equal tolt = less thanne = not equal today_increase = day-on-day increaseday_decrease = day-on-day decreaseday_wave = day-on-day fluctuationweek_increase = week-on-week increaseweek_decrease = week-on-week decreaseweek_wave = week-on-week fluctuationcycle_increase = cyclical increasecycle_decrease = cyclical decreasecycle_wave = cyclical fluctuationre = regex matchThe valid values can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "Operatorintelligent = intelligent detection without thresholdeq = equal toge = greater than or equal togt = greater thanle = less than or equal tolt = less thanne = not equal today_increase = day-on-day increaseday_decrease = day-on-day decreaseday_wave = day-on-day fluctuationweek_increase = week-on-week increaseweek_decrease = week-on-week decreaseweek_wave = week-on-week fluctuationcycle_increase = cyclical increasecycle_decrease = cyclical decreasecycle_wave = cyclical fluctuationre = regex matchThe valid values can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"value": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Threshold. The valid value range can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "Threshold. The valid 值 range can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"continue_period": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Number of periods. 1: continue for one period; 2: continue for two periods; and so on. The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "数量 periods. 1: continue for one 周期; 2: continue for two periods; and so on. The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"notice_frequency": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Alarm interval in seconds. Valid values: 0 (do not repeat), 300 (alarm once every 5 minutes), 600 (alarm once every 10 minutes), 900 (alarm once every 15 minutes), 1800 (alarm once every 30 minutes), 3600 (alarm once every hour), 7200 (alarm once every 2 hours), 10800 (alarm once every 3 hours), 21600 (alarm once every 6 hours), 43200 (alarm once every 12 hours), 86400 (alarm once every day)Note: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Alarm interval （秒）。 有效值：0 (do not repeat)，300 (alarm once every 5 minutes)，600 (alarm once every 10 minutes)，900 (alarm once every 15 minutes)，1800 (alarm once every 30 minutes)，3600 (alarm once every hour)，7200 (alarm once every 2 hours)，10800 (alarm once every 3 hours)，21600 (alarm once every 6 hours)，43200 (alarm once every 12 hours)，86400 (alarm once every day)Note: this field may return null，indicating that no valid values can be obtained。",
 															},
 															"is_power_notice": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Whether the alarm frequency increases exponentially. Valid values: 0 (no), 1 (yes)Note: this field may return null, indicating that no valid values can be obtained.",
+																Description: "是否alarm frequency increases exponentially. 有效值：0 (no)，1 (yes)Note: this field may return null，indicating that no valid values can be obtained。",
 															},
 															"filter": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Filter condition for one single trigger ruleNote: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Filter condition for one single trigger ruleNote: this field may return null，indicating that no valid values can be obtained。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Filter condition type. Valid values: DIMENSION (uses dimensions for filtering)Note: this field may return null, indicating that no valid values can be obtained.",
+																			Description: "Filter 条件类型 有效值：DIMENSION (uses dimensions for filtering)Note: this field may return null，indicating that no valid values can be obtained。",
 																		},
 																		"dimensions": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "JSON string generated by serializing the AlarmPolicyDimension two-dimensional array. The one-dimensional arrays are in OR relationship, and the elements in a one-dimensional array are in AND relationshipNote: this field may return null, indicating that no valid values can be obtained.",
+																			Description: "JSON string generated by serializing the AlarmPolicyDimension two-dimensional array. The one-dimensional arrays are in OR relationship，and the elements in a one-dimensional array are in AND relationshipNote: this field may return null，indicating that no valid values can be obtained。",
 																		},
 																	},
 																},
@@ -895,63 +895,63 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 															"description": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Metric display name, which is used in the output parameterNote: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Metric display 名称，which is used in the output parameterNote: this field may return null，indicating that no valid values can be obtained。",
 															},
 															"unit": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Unit, which is used in the output parameterNote: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Unit，which is used in the output parameterNote: this field may return null，indicating that no valid values can be obtained。",
 															},
 															"rule_type": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Trigger condition type. STATIC: static threshold; dynamic: dynamic threshold. If you do not specify this parameter when creating or editing a policy, STATIC is used by default.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "Trigger 条件类型 STATIC: static threshold; dynamic: dynamic threshold. If you do not 指定this parameter when creating or editing a policy，STATIC is used by default.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"is_advanced": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Whether it is an advanced metric. 0: No; 1: Yes.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "是否为an advanced metric. 0: No; 1: Yes.注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"is_open": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Whether the advanced metric feature is enabled. 0: No; 1: Yes.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "是否advanced metric feature is 已启用 0: No; 1: Yes.注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"product_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Integration center product ID.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Integration center product ID.注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"value_max": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "Maximum valueNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Maximum value注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"value_min": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "Minimum valueNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Minimum value注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"hierarchical_value": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "The configuration of alarm level thresholdNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "The configuration of alarm 级别 threshold注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"remind": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Threshold for the Remind levelNote: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "Threshold for the Remind level注意：此字段可能返回 null，表示无法获取有效值。",
 																		},
 																		"warn": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Threshold for the Warn levelNote: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "Threshold for the Warn level注意：此字段可能返回 null，表示无法获取有效值。",
 																		},
 																		"serious": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Threshold for the Serious levelNote: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "Threshold for the Serious level注意：此字段可能返回 null，表示无法获取有效值。",
 																		},
 																	},
 																},
@@ -962,7 +962,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 												"complex_expression": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The judgment expression of composite alarm trigger conditions, which is valid when the value of IsUnionRule is 2. This parameter is used to determine that an alarm condition is met only when the expression values are True for multiple trigger conditions.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "The judgment expression of composite alarm trigger conditions，which is valid when the 值 of IsUnionRule is 2. This parameter is 用于determine that an alarm condition is met only when the expression values are True for multiple trigger conditions.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -970,65 +970,65 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 									"event_condition": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Event trigger conditionNote: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Event trigger conditionNote: this field may return null，indicating that no valid values can be obtained。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"rules": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Alarm trigger condition listNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Alarm trigger condition listNote: this field may return null，indicating that no valid values can be obtained。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"metric_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Metric name or event name. The supported metrics can be queried via DescribeAlarmMetrics and the supported events via DescribeAlarmEvents.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "指标名称 or 事件名称 The supported metrics can be queried via DescribeAlarmMetrics and the supported events via DescribeAlarmEvents.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"period": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Statistical period in seconds. The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "Statistical 周期 （秒）。 The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"operator": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Operatorintelligent = intelligent detection without thresholdeq = equal toge = greater than or equal togt = greater thanle = less than or equal tolt = less thanne = not equal today_increase = day-on-day increaseday_decrease = day-on-day decreaseday_wave = day-on-day fluctuationweek_increase = week-on-week increaseweek_decrease = week-on-week decreaseweek_wave = week-on-week fluctuationcycle_increase = cyclical increasecycle_decrease = cyclical decreasecycle_wave = cyclical fluctuationre = regex matchThe valid values can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "Operatorintelligent = intelligent detection without thresholdeq = equal toge = greater than or equal togt = greater thanle = less than or equal tolt = less thanne = not equal today_increase = day-on-day increaseday_decrease = day-on-day decreaseday_wave = day-on-day fluctuationweek_increase = week-on-week increaseweek_decrease = week-on-week decreaseweek_wave = week-on-week fluctuationcycle_increase = cyclical increasecycle_decrease = cyclical decreasecycle_wave = cyclical fluctuationre = regex matchThe valid values can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"value": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Threshold. The valid value range can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "Threshold. The valid 值 range can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"continue_period": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Number of periods. 1: continue for one period; 2: continue for two periods; and so on. The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "数量 periods. 1: continue for one 周期; 2: continue for two periods; and so on. The valid values can be queried via DescribeAlarmMetrics.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"notice_frequency": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Alarm interval in seconds. Valid values: 0 (do not repeat), 300 (alarm once every 5 minutes), 600 (alarm once every 10 minutes), 900 (alarm once every 15 minutes), 1800 (alarm once every 30 minutes), 3600 (alarm once every hour), 7200 (alarm once every 2 hours), 10800 (alarm once every 3 hours), 21600 (alarm once every 6 hours), 43200 (alarm once every 12 hours), 86400 (alarm once every day)Note: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Alarm interval （秒）。 有效值：0 (do not repeat)，300 (alarm once every 5 minutes)，600 (alarm once every 10 minutes)，900 (alarm once every 15 minutes)，1800 (alarm once every 30 minutes)，3600 (alarm once every hour)，7200 (alarm once every 2 hours)，10800 (alarm once every 3 hours)，21600 (alarm once every 6 hours)，43200 (alarm once every 12 hours)，86400 (alarm once every day)Note: this field may return null，indicating that no valid values can be obtained。",
 															},
 															"is_power_notice": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Whether the alarm frequency increases exponentially. Valid values: 0 (no), 1 (yes)Note: this field may return null, indicating that no valid values can be obtained.",
+																Description: "是否alarm frequency increases exponentially. 有效值：0 (no)，1 (yes)Note: this field may return null，indicating that no valid values can be obtained。",
 															},
 															"filter": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Filter condition for one single trigger ruleNote: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Filter condition for one single trigger ruleNote: this field may return null，indicating that no valid values can be obtained。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Filter condition type. Valid values: DIMENSION (uses dimensions for filtering)Note: this field may return null, indicating that no valid values can be obtained.",
+																			Description: "Filter 条件类型 有效值：DIMENSION (uses dimensions for filtering)Note: this field may return null，indicating that no valid values can be obtained。",
 																		},
 																		"dimensions": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "JSON string generated by serializing the AlarmPolicyDimension two-dimensional array. The one-dimensional arrays are in OR relationship, and the elements in a one-dimensional array are in AND relationshipNote: this field may return null, indicating that no valid values can be obtained.",
+																			Description: "JSON string generated by serializing the AlarmPolicyDimension two-dimensional array. The one-dimensional arrays are in OR relationship，and the elements in a one-dimensional array are in AND relationshipNote: this field may return null，indicating that no valid values can be obtained。",
 																		},
 																	},
 																},
@@ -1036,63 +1036,63 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 															"description": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Metric display name, which is used in the output parameterNote: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Metric display 名称，which is used in the output parameterNote: this field may return null，indicating that no valid values can be obtained。",
 															},
 															"unit": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Unit, which is used in the output parameterNote: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Unit，which is used in the output parameterNote: this field may return null，indicating that no valid values can be obtained。",
 															},
 															"rule_type": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Trigger condition type. STATIC: static threshold; dynamic: dynamic threshold. If you do not specify this parameter when creating or editing a policy, STATIC is used by default.Note: this field may return null, indicating that no valid value is obtained.",
+																Description: "Trigger 条件类型 STATIC: static threshold; dynamic: dynamic threshold. If you do not 指定this parameter when creating or editing a policy，STATIC is used by default.Note: this field may return null，indicating that no valid 值 is obtained。",
 															},
 															"is_advanced": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Whether it is an advanced metric. 0: No; 1: Yes.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "是否为an advanced metric. 0: No; 1: Yes.注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"is_open": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Whether the advanced metric feature is enabled. 0: No; 1: Yes.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "是否advanced metric feature is 已启用 0: No; 1: Yes.注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"product_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Integration center product ID.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Integration center product ID.注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"value_max": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "Maximum valueNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Maximum value注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"value_min": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "Minimum valueNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Minimum value注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 															"hierarchical_value": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "The configuration of alarm level thresholdNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "The configuration of alarm 级别 threshold注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"remind": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Threshold for the Remind levelNote: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "Threshold for the Remind level注意：此字段可能返回 null，表示无法获取有效值。",
 																		},
 																		"warn": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Threshold for the Warn levelNote: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "Threshold for the Warn level注意：此字段可能返回 null，表示无法获取有效值。",
 																		},
 																		"serious": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Threshold for the Serious levelNote: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "Threshold for the Serious level注意：此字段可能返回 null，表示无法获取有效值。",
 																		},
 																	},
 																},
@@ -1109,17 +1109,17 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 						"last_edit_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Uin of the last modifying userNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Uin of the last modifying userNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Update timeNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Update timeNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"insert_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creation timeNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Creation timeNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"region": {
 							Type: schema.TypeSet,
@@ -1127,88 +1127,88 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "RegionNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "RegionNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"namespace_show_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace display nameNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Namespace display nameNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"is_default": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether it is the default policy. Valid values: 1 (yes), 0 (no)Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "是否为the default policy. 有效值：1 (yes)，0 (no)Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"can_set_default": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the default policy can be set. Valid values: 1 (yes), 0 (no)Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "是否default policy can be set. 有效值：1 (yes)，0 (no)Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"instance_group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance group IDNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Instance group IDNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"instance_sum": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total number of instances in instance groupNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Total 数量 instances in instance groupNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"instance_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance group nameNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Instance group nameNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"rule_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Trigger condition type. Valid values: STATIC (static threshold), DYNAMIC (dynamic)Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Trigger 条件类型 有效值：STATIC (static threshold)，DYNAMIC (dynamic)Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"origin_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject，UnBindingAllPolicyObject，UnBindingPolicyObject)Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"tag_instances": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "TagNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Tag注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag keyNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "标签 key注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag valueNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "标签 value注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"instance_sum": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of instancesNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "数量 instances注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"service_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Service type, for example, CVMNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Service 类型，for example，CVM注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"region_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Region IDNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "地域 ID注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"binding_status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Binding status. 2: bound; 1: bindingNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Binding 状态 2: bound; 1: binding注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"tag_status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Tag status. 2: existent; 1: nonexistentNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "标签 状态 2: existent; 1: nonexistent注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -1216,43 +1216,43 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 						"filter_dimensions_param": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Information on the filter dimension associated with a policy.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Information on the filter dimension associated with a policy.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_one_click": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether it is a quick alarm policy.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否为a quick alarm policy.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"one_click_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the quick alarm policy is enabled.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否quick alarm policy is 已启用注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"advanced_metric_number": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of advanced metrics.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The 数量 advanced metrics.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_bind_all": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the policy is associated with all objectsNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否policy is associated with all objects注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Policy tagNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Policy tag注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -1264,7 +1264,7 @@ func DataSourceTencentCloudMonitorAlarmPolicy() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

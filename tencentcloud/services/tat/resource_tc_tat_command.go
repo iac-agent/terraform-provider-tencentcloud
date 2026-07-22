@@ -27,43 +27,43 @@ func ResourceTencentCloudTatCommand() *schema.Resource {
 			"command_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].",
+				Description: "命令名称 The 名称 can be up to 60 bytes，and contain [a-z]，[A-Z]，[0-9] and [_-.]。",
 			},
 
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Command content. The maximum length is 64 KB.",
+				Description: "Command 内容 The maximum length is 64 KB。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command description. The maximum length is 120 characters.",
+				Description: "命令描述 The maximum length is 120 characters。",
 			},
 
 			"command_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command type. `SHELL`, `POWERSHELL` and `BAT` are supported. The default value is `SHELL`.",
+				Description: "命令类型 `SHELL`，`POWERSHELL` and `BAT` are supported. The 默认值为 `SHELL`。",
 			},
 
 			"working_directory": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command execution path. The default value is /root for `SHELL` commands and C:/Program Files/qcloudtat_agent/workdir for `POWERSHELL` commands.",
+				Description: "Command execution 路径 The 默认值为 /root for `SHELL` commands and C:/Program Files/qcloudtat_agent/workdir for `POWERSHELL` commands。",
 			},
 
 			"timeout": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Command timeout period. Default value: 60 seconds. Value range: [1, 86400].",
+				Description: "Command timeout 周期 默认值：60 seconds. 取值范围：[1，86400]。",
 			},
 
 			"enable_parameter": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable the custom parameter feature.This cannot be modified once created.Default value: `false`.",
+				Description: "是否enable the custom parameter feature.This cannot be modified once created.默认值：`false`。",
 			},
 
 			"default_parameters": {
@@ -75,18 +75,18 @@ func ResourceTencentCloudTatCommand() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Tags bound to the command. At most 10 tags are allowed.",
+				Description: "标签 bound to the command. At most 10 标签 are allowed。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -95,43 +95,43 @@ func ResourceTencentCloudTatCommand() *schema.Resource {
 			"username": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The username used to execute the command on the CVM or Lighthouse instance.The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. By default, the root user is used to execute commands on Linux and the System user is used on Windows.",
+				Description: "The 用户名 用于execute the command on the CVM or Lighthouse instance.The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general 用户 By default，the root 用户 is 用于execute commands on Linux and the System 用户 is used on Windows。",
 			},
 
 			"output_cos_bucket_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.",
+				Description: "The COS 存储桶 URL for uploading logs. The URL must start with `https`，such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`。",
 			},
 
 			"output_cos_key_prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The COS bucket directory where the logs are saved. Check below for the rules of the directory name.1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.2. Use a slash (/) to create a subdirectory.3. Consecutive dots (.) and slashes (/) are not allowed. It can not start with a slash (/).",
+				Description: "The COS 存储桶 directory where the logs are saved. Check below for the rules of the directory 名称1. It must be a combination of number，letters，and visible characters. Up to 60 characters are allowed.2. Use a slash (/) to create a subdirectory.3. Consecutive dots (.) and slashes (/) are not allowed. It can not start with a slash (/)。",
 			},
 
 			"created_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Command creation time.",
+				Description: "Command 创建时间。",
 			},
 
 			"updated_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Command update time.",
+				Description: "Command 更新时间。",
 			},
 
 			"formatted_description": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Formatted description of the command. This parameter is an empty string for user commands and contains values for public commands.",
+				Description: "Formatted 描述 command. This parameter is an empty string for 用户 commands and 包含values for public commands。",
 			},
 
 			"created_by": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Command creator. `TAT` indicates a public command and `USER` indicates a personal command.",
+				Description: "Command 创建者 `TAT` 表示a public command and `USER` 表示a personal command。",
 			},
 		},
 	}

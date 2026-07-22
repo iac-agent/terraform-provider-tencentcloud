@@ -19,64 +19,64 @@ func DataSourceTencentCloudCynosdbClusterDetailDatabases() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"db_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Database Name.",
+				Description: "数据库名称。",
 			},
 			"db_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Database information note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "数据库信息说明：该字段可能返回null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database Name.",
+							Description: "数据库名称。",
 						},
 						"character_set": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Character Set Type.",
+							Description: "字符集类型。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database Status.",
+							Description: "数据库状态。",
 						},
 						"collate_rule": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Capture Rules.",
+							Description: "捕获规则。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "数据库说明：该字段可能返回null，表示无法获取到有效值。",
 						},
 						"user_host_privileges": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "User permission note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "用户权限说明：该字段可能返回null，表示无法获取到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"db_user_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DbUserName.",
+										Description: "数据库用户名。",
 									},
 									"db_host": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Database host.",
+										Description: "数据库主机。",
 									},
 									"db_privilege": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "User permission note: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "用户权限说明：该字段可能返回null，表示无法获取到有效值。",
 									},
 								},
 							},
@@ -84,32 +84,32 @@ func DataSourceTencentCloudCynosdbClusterDetailDatabases() *schema.Resource {
 						"db_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Database ID note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "数据库ID 注意：该字段可能返回null，表示无法获取有效值。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "创建时注意：该字段可能返回null，表示无法获取有效值。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "更新时间注意：该字段可能返回null，表示无法获取到有效值。",
 						},
 						"app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "User appid note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "用户appid注意：该字段可能返回null，表示无法获取有效值。",
 						},
 						"uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User Uin note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "用户 Uin 注意：该字段可能返回null，表示无法获取有效值。",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster Id note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Cluster Id 注意：该字段可能返回null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -117,7 +117,7 @@ func DataSourceTencentCloudCynosdbClusterDetailDatabases() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

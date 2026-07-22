@@ -28,13 +28,13 @@ func ResourceTencentCloudCynosdbReloadProxyNode() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "cluster id.",
+				Description: "集群 ID。",
 			},
 			"proxy_group_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "proxy group id.",
+				Description: "代理组 ID。",
 			},
 		},
 	}

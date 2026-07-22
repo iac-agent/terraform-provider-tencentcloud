@@ -64,29 +64,29 @@ func VodWatermarkResource() *schema.Resource {
 			"definition": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Watermarking template ID.",
+				Description: "Watermarking 模板 ID",
 			},
 			"text_content": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 100),
-				Description:  "Text content of up to `100` characters. This needs to be entered only when the watermark type is text. Note: this field may return null, indicating that no valid values can be obtained.",
+				Description:  "Text 内容 of up to `100` characters. This needs to be entered only when the watermark 类型 is text. Note: this field may return null，indicating that no valid values can be obtained。",
 			},
 			"svg_content": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 2000000),
-				Description:  "SVG content of up to `2000000` characters. This needs to be entered only when the watermark type is `SVG`. Note: this field may return null, indicating that no valid values can be obtained.",
+				Description:  "SVG 内容 of up to `2000000` characters. This needs to be entered only when the watermark 类型 is `SVG`. Note: this field may return null，indicating that no valid values can be obtained。",
 			},
 			"start_time_offset": {
 				Type:        schema.TypeFloat,
 				Optional:    true,
-				Description: "Start time offset of a watermark in seconds. If this parameter is left blank or `0` is entered, the watermark will appear upon the first video frame. If this parameter is left blank or `0` is entered, the watermark will appear upon the first video frame; If this value is greater than `0` (e.g., n), the watermark will appear at second n after the first video frame; If this value is smaller than `0` (e.g., -n), the watermark will appear at second n before the last video frame.",
+				Description: "开始时间 偏移量 of a watermark （秒）。 If this parameter is left blank or `0` is entered，the watermark will appear upon the first video frame. If this parameter is left blank or `0` is entered，the watermark will appear upon the first video frame; If this 值 is greater than `0` (e.g.，n)，the watermark will appear at second n after the first video frame; If this 值 is smaller than `0` (e.g.，-n)，the watermark will appear at second n before the last video frame。",
 			},
 			"end_time_offset": {
 				Type:        schema.TypeFloat,
 				Optional:    true,
-				Description: "End time offset of a watermark in seconds. If this parameter is left blank or `0` is entered, the watermark will exist till the last video frame; If this value is greater than `0` (e.g., n), the watermark will exist till second n; If this value is smaller than `0` (e.g., -n), the watermark will exist till second n before the last video frame.",
+				Description: "结束时间 偏移量 of a watermark （秒）。 If this parameter is left blank or `0` is entered，the watermark will exist till the last video frame; If this 值 is greater than `0` (e.g.，n)，the watermark will exist till second n; If this 值 is smaller than `0` (e.g.，-n)，the watermark will exist till second n before the last video frame。",
 			},
 		},
 	}

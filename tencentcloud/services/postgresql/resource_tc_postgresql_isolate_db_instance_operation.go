@@ -25,7 +25,7 @@ func ResourceTencentCloudPostgresqlIsolateDbInstanceOperation() *schema.Resource
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of resource IDs. Note that currently you cannot isolate multiple instances at the same time. Only one instance ID can be passed in here.",
+				Description: "列表 resource IDs. Note that currently you cannot isolate multiple instances at the same time. Only one instance ID can be passed in here。",
 			},
 		},
 	}

@@ -21,79 +21,79 @@ func DataSourceTencentCloudCosBatchs() *schema.Resource {
 			"uin": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Uin.",
+				Description: "Uin。",
 			},
 			"appid": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Appid.",
+				Description: "Appid。",
 			},
 			"job_statuses": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The task status information you need to query. If you do not specify a task status, COS returns the status of all tasks that have been executed, including those that are in progress. If you specify a task status, COS returns the task in the specified state. Optional task states include: Active, Cancelled, Cancelling, Complete, Completing, Failed, Failing, New, Paused, Pausing, Preparing, Ready, Suspended.",
+				Description: "The task 状态 information you need to query. If you do not 指定a task 状态，COS 返回status of all tasks that have been executed，including those that are in progress. If you 指定a task 状态，COS 返回task in the specified state. 可选 task states include: 活跃，Cancelled，Cancelling，Complete，Completing，Failed，Failing，New，Paused，Pausing，Preparing，Ready，Suspended。",
 			},
 			"jobs": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Multiple batch processing task information.",
+				Description: "Multiple batch processing task information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"creation_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Job creation time.",
+							Description: "Job 创建时间。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mission description. The length is limited to 0-256 bytes.",
+							Description: "Mission 描述 The length is limited to 0-256 bytes。",
 						},
 						"job_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Job ID. The length is limited to 1-64 bytes.",
+							Description: "作业 ID The length is limited to 1-64 bytes。",
 						},
 						"operation": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Actions performed on objects in a batch processing job. For example, COSPutObjectCopy.",
+							Description: "Actions performed on objects in a batch processing job. For example，COSPutObjectCopy。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Mission priority. Tasks with higher values will be given priority. The priority size is limited to 0-2147483647.",
+							Description: "Mission 优先级 Tasks with higher values will be given 优先级 The 优先级 size is limited to 0-2147483647。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task execution status. Legal parameter values include Active, Cancelled, Cancelling, Complete, Completing, Failed, Failing, New, Paused, Pausing, Preparing, Ready, Suspended.",
+							Description: "Task execution 状态 Legal parameter values include 活跃，Cancelled，Cancelling，Complete，Completing，Failed，Failing，New，Paused，Pausing，Preparing，Ready，Suspended。",
 						},
 						"termination_date": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The end time of the batch processing job.",
+							Description: "The 结束时间 of the batch processing job。",
 						},
 						"progress_summary": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Summary of the status of task implementation. Describe the total number of operations performed in this task, the number of successful operations, and the number of failed operations.",
+							Description: "Summary of 状态 task implementation. Describe the total 数量 operations performed in this task，the 数量 successful operations，and the 数量 failed operations。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"number_of_tasks_failed": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The current failed Operand.",
+										Description: "The current failed Operand。",
 									},
 									"number_of_tasks_succeeded": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The current successful Operand.",
+										Description: "The current successful Operand。",
 									},
 									"total_number_of_tasks": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Total Operand.",
+										Description: "Total Operand。",
 									},
 								},
 							},
@@ -104,7 +104,7 @@ func DataSourceTencentCloudCosBatchs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

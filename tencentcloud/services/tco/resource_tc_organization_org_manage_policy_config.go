@@ -27,7 +27,7 @@ func ResourceTencentCloudOrganizationOrgManagePolicyConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Organization ID.",
+				Description: "Organization ID。",
 			},
 
 			"policy_type": {
@@ -35,7 +35,7 @@ func ResourceTencentCloudOrganizationOrgManagePolicyConfig() *schema.Resource {
 				ForceNew:    true,
 				Default:     ServiceControlPolicyType,
 				Type:        schema.TypeString,
-				Description: "Policy type. Default value is SERVICE_CONTROL_POLICY.\nValid values:\n  - `SERVICE_CONTROL_POLICY`: Service control policy.\n  - `TAG_POLICY`: Tag policy.",
+				Description: "Policy 类型 默认值为 SERVICE_CONTROL_POLICY.\nValid values:\n  - `SERVICE_CONTROL_POLICY`: Service control policy.\n  - `TAG_POLICY`: 标签 policy。",
 			},
 		},
 	}

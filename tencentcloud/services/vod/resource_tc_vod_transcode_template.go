@@ -27,25 +27,25 @@ func ResourceTencentCloudVodTranscodeTemplate() *schema.Resource {
 			"container": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The container format. Valid values: `mp4`, `flv`, `hls`, `mp3`, `flac`, `ogg`, `m4a`, `wav` ( `mp3`, `flac`, `ogg`, `m4a`, and `wav` are audio file formats).",
+				Description: "The container 格式 有效值：`mp4`，`flv`，`hls`，`mp3`，`flac`，`ogg`，`m4a`，`wav` ( `mp3`，`flac`，`ogg`，`m4a`，and `wav` are audio file formats)。",
 			},
 
 			"sub_app_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.",
+				Description: "The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25，2023，if they want to access resources in a VOD application (whether it's the default application or a newly created one)，they must fill in this field with the application ID。",
 			},
 
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Transcoding template name. Length limit: 64 characters.",
+				Description: "Transcoding 模板名称 Length 限制: 64 characters。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Template description. Length limit: 256 characters.",
+				Description: "模板描述 Length 限制: 256 characters。",
 			},
 
 			"remove_video": {
@@ -60,70 +60,70 @@ func ResourceTencentCloudVodTranscodeTemplate() *schema.Resource {
 			"remove_audio": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to remove audio data. Valid values:0: retain 1: remove Default value: 0.",
+				Description: "是否remove audio data. Valid values:0: retain 1: remove 默认值：0。",
 			},
 
 			"video_template": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Video stream configuration parameter. This field is required when `RemoveVideo` is 0.",
+				Description: "Video stream configuration parameter. This field 为必填项 when `RemoveVideo` is 0。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The video codec. Valid values:libx264: H.264; libx265: H.265; av1: AOMedia Video 1; H.266: H.266. The AOMedia Video 1 and H.266 codecs can only be used for MP4 files. Only CRF is supported for H.266 currently.",
+							Description: "The video codec. Valid values:libx264: H.264; libx265: H.265; av1: AOMedia Video 1; H.266: H.266. The AOMedia Video 1 and H.266 codecs can only be 用于MP4 files. Only CRF is supported for H.266 currently。",
 						},
 						"fps": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Video frame rate in Hz. Value range: [0,100].If the value is 0, the frame rate will be the same as that of the source video.",
+							Description: "Video frame rate in Hz. 取值范围：[0,100].If the 值 is 0，the frame rate will be the same as that of the 来源 video。",
 						},
 						"bitrate": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Bitrate of video stream in Kbps. Value range: 0 and [128, 35,000].If the value is 0, the bitrate of the video will be the same as that of the source video.",
+							Description: "Bitrate of video stream in Kbps. 取值范围：0 and [128，35,000].If the 值 is 0，the bitrate of the video will be the same as that of the 来源 video。",
 						},
 						"resolution_adaptive": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Resolution adaption. Valid values:open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.Default value: open.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Resolution adaption. Valid values:open: 已启用 In this case，`Width` represents the long side of a video，while `Height` the short side;close: 已禁用 In this case，`Width` represents the width of a video，while `Height` the height.默认值：open.Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"width": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The maximum video width (or long side) in pixels. Value range: 0 and [128, 8192].If both `Width` and `Height` are 0, the output resolution will be the same as that of the source video.If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.If neither `Width` nor `Height` is 0, the specified width and height will be used.Default value: 0.",
+							Description: "The maximum video width (or long side) in pixels. 取值范围：0 and [128，8192].If both `Width` and `Height` are 0，the output resolution will be the same as that of the 来源 video.If `Width` is 0 and `Height` is not，the video width will be proportionally scaled.If `Width` is not 0 and `Height` is，the video height will be proportionally scaled.If neither `Width` nor `Height` is 0，the specified width and height will be used.默认值：0。",
 						},
 						"height": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The maximum video height (or short side) in pixels. Value range: 0 and [128, 8192].If both `Width` and `Height` are 0, the output resolution will be the same as that of the source video.If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.If neither `Width` nor `Height` is 0, the specified width and height will be used.Default value: 0.",
+							Description: "The maximum video height (or short side) in pixels. 取值范围：0 and [128，8192].If both `Width` and `Height` are 0，the output resolution will be the same as that of the 来源 video.If `Width` is 0 and `Height` is not，the video width will be proportionally scaled.If `Width` is not 0 and `Height` is，the video height will be proportionally scaled.If neither `Width` nor `Height` is 0，the specified width and height will be used.默认值：0。",
 						},
 						"fill_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Fill type, the way of processing a screenshot when the configured aspect ratio is different from that of the source video. Valid values:stretch: stretches the video image frame by frame to fill the screen. The video image may become squashed or stretched after transcoding.black: fills the uncovered area with black color, without changing the image&#39;s aspect ratio.white: fills the uncovered area with white color, without changing the image&#39;s aspect ratio.gauss: applies Gaussian blur to the uncovered area, without changing the image&#39;s aspect ratio.Default value: black.",
+							Description: "Fill 类型，the way of processing a screenshot when the configured aspect ratio is different from that of the 来源 video. Valid values:stretch: stretches the video image frame by frame to fill the screen. The video image may become squashed or stretched after transcoding.black: fills the uncovered area with black color，without changing the image&#39;s aspect ratio.white: fills the uncovered area with white color，without changing the image&#39;s aspect ratio.gauss: applies Gaussian blur to the uncovered area，without changing the image&#39;s aspect ratio.默认值：black。",
 						},
 						"vcrf": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The video constant rate factor (CRF). Value range: 1-51.If this parameter is specified, CRF encoding will be used and the bitrate parameter will be ignored.If `Codec` is `H.266`, this parameter is required (`28` is recommended).We don't recommend using this parameter unless you have special requirements.",
+							Description: "The video constant rate factor (CRF). 取值范围：1-51.If this parameter is specified，CRF encoding will be used and the bitrate parameter will be ignored.If `Codec` is `H.266`，this parameter 为必填项 (`28` is recommended).We don't recommend using this parameter unless you have special requirements。",
 						},
 						"gop": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "I-frame interval in frames. Valid values: 0 and 1-100000.When this parameter is set to 0 or left empty, `Gop` will be automatically set.",
+							Description: "I-frame interval in frames. 有效值：0 and 1-100000.When this parameter is set to 0 or left empty，`Gop` will be automatically set。",
 						},
 						"preserve_hdr_switch": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to output an HDR (high dynamic range) video if the source video is HDR. Valid values:ON: If the source video is HDR, output an HDR video; if not, output an SDR (standard dynamic range) video.OFF: Output an SDR video regardless of whether the source video is HDR.Default value: OFF.",
+							Description: "是否output an HDR (high dynamic range) video if the 来源 video is HDR. Valid values:ON: If the 来源 video is HDR，output an HDR video; if not，output an SDR (standard dynamic range) video.OFF: Output an SDR video regardless of 是否source video is HDR.默认值：OFF。",
 						},
 						"codec_tag": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The codec tag. This parameter is valid only if the H.265 codec is used. Valid values:hvc1hev1Default value: hvc1.",
+							Description: "The codec 标签 This parameter is valid only if the H.265 codec is used. Valid values:hvc1hev1默认值：hvc1。",
 						},
 					},
 				},
@@ -133,28 +133,28 @@ func ResourceTencentCloudVodTranscodeTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.",
+				Description: "Audio stream configuration parameter. This field 为必填项 when `RemoveAudio` is 0。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The audio codec.If `Container` is `mp3`, the valid value is:`libmp3lame`If `Container` is `ogg` or `flac`, the valid value is:`flac`If `Container` is `m4a`, the valid values are:`libfdk_aac``libmp3lame``ac3`If `Container` is `mp4` or `flv`, the valid values are:`libfdk_aac` (Recommended for MP4)`libmp3lame` (Recommended for FLV)`mp2`If `Container` is `hls`, the valid value is:`libfdk_aac`If `Format` is `HLS` or `MPEG-DASH`, the valid value is:`libfdk_aac`If `Container` is `wav`, the valid value is:`pcm16`.",
+							Description: "The audio codec.If `Container` is `mp3`，the valid 值 is:`libmp3lame`If `Container` is `ogg` or `flac`，the valid 值 is:`flac`If `Container` is `m4a`，the valid values are:`libfdk_aac``libmp3lame``ac3`If `Container` is `mp4` or `flv`，the valid values are:`libfdk_aac` (Recommended for MP4)`libmp3lame` (Recommended for FLV)`mp2`If `Container` is `hls`，the valid 值 is:`libfdk_aac`If `格式` is `HLS` or `MPEG-DASH`，the valid 值 is:`libfdk_aac`If `Container` is `wav`，the valid 值 is:`pcm16`。",
 						},
 						"bitrate": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Audio stream bitrate in Kbps. Value range: 0 and [26, 256].If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.",
+							Description: "Audio stream bitrate in Kbps. 取值范围：0 and [26，256].If the 值 is 0，the bitrate of the audio stream will be the same as that of the original audio。",
 						},
 						"sample_rate": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The audio sample rate. Valid values:`16000` (valid only if `Codec` is `pcm16`)`32000``44100``48000`Unit: Hz.",
+							Description: "The audio sample rate. Valid values:`16000` (valid only if `Codec` is `pcm16`)`32000``44100``48000`单位：Hz。",
 						},
 						"audio_channel": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Audio channel system. Valid values:1: mono-channel2: dual-channel6: stereoYou cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).Default value: 2.",
+							Description: "Audio channel system. Valid values:1: mono-channel2: dual-channel6: stereoYou cannot set the sound channel as stereo for media files in container formats for audios (FLAC，OGG，MP3，M4A).默认值：2。",
 						},
 					},
 				},
@@ -164,18 +164,18 @@ func ResourceTencentCloudVodTranscodeTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "TESHD transcoding parameter.",
+				Description: "TESHD transcoding parameter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "TESHD transcoding type. Valid values: TEHD-100, OFF (default).",
+							Description: "TESHD transcoding 类型 有效值：TEHD-100，OFF (default)。",
 						},
 						"max_video_bitrate": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Maximum bitrate, which is valid when `Type` is `TESHD`.If this parameter is left blank or 0 is entered, there will be no upper limit for bitrate.",
+							Description: "Maximum bitrate，which is valid when `类型` is `TESHD`.If this parameter is left blank or 0 is entered，there will be no upper 限制 for bitrate。",
 						},
 					},
 				},
@@ -184,7 +184,7 @@ func ResourceTencentCloudVodTranscodeTemplate() *schema.Resource {
 			"segment_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The segment type. This parameter is valid only if `Container` is `hls`. Valid values: `ts`: TS segment; `fmp4`: fMP4 segment Default: `ts`.",
+				Description: "The segment 类型 This parameter is valid only if `Container` is `hls`. 有效值：`ts`: TS segment; `fmp4`: fMP4 segment 默认值：`ts`。",
 			},
 		},
 	}

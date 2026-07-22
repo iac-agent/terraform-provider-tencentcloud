@@ -27,13 +27,13 @@ func ResourceTencentCloudMonitorTmpGrafanaConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"config": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "JSON encoded string.",
+				Description: "JSON encoded string。",
 			},
 		},
 	}

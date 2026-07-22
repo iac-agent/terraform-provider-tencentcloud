@@ -24,67 +24,67 @@ func ResourceTencentCloudBhResource() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Deployment region.",
+				Description: "Deployment 地域",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "VPC ID for deploying the bastion host.",
+				Description: "私有网络 ID for deploying the bastion 主机",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Subnet ID for deploying the bastion host.",
+				Description: "子网 ID for deploying the bastion 主机",
 			},
 
 			"resource_edition": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Resource type. Values: standard/pro.",
+				Description: "资源类型 Values: standard/pro。",
 			},
 
 			"resource_node": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Number of resource nodes.",
+				Description: "数量 resource nodes。",
 			},
 
 			"time_unit": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Billing cycle.",
+				Description: "Billing cycle。",
 			},
 
 			"time_span": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Billing duration.",
+				Description: "Billing duration。",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Billing mode, 1 for prepaid.",
+				Description: "Billing 模式，1 for prepaid。",
 			},
 
 			"auto_renew_flag": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Auto-renewal.",
+				Description: "Auto-renewal。",
 			},
 
 			"deploy_zone": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Deployment zone.",
+				Description: "Deployment 可用区",
 			},
 
 			"trial": {
@@ -92,7 +92,7 @@ func ResourceTencentCloudBhResource() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "0 for non-trial version, 1 for trial version.",
+				Description: "0 for non-trial 版本，1 for trial 版本",
 			},
 
 			"share_clb": {
@@ -100,7 +100,7 @@ func ResourceTencentCloudBhResource() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Whether to share CLB, 0: not shared, 1: shared.",
+				Description: "是否share CLB，0: not shared，1: shared。",
 			},
 
 			// deploy params
@@ -108,14 +108,14 @@ func ResourceTencentCloudBhResource() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "CIDR block of the bastion host.",
+				Description: "CIDR block of the bastion 主机",
 			},
 
 			"vpc_cidr_block": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The network segment corresponding to the VPC that needs to activate the service.",
+				Description: "The network segment corresponding to the VPC that needs to activate the service。",
 			},
 
 			"web_access": {
@@ -123,7 +123,7 @@ func ResourceTencentCloudBhResource() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "0 - Disable web access bastion host; 1 - Enable web access bastion host.",
+				Description: "0 - Disable web access bastion 主机; 1 - Enable web access bastion 主机",
 			},
 
 			"client_access": {
@@ -131,42 +131,42 @@ func ResourceTencentCloudBhResource() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "0 - Disable client access to the bastion host; 1 - Enable client access to the bastion host.",
+				Description: "0 - Disable client access to the bastion 主机; 1 - Enable client access to the bastion 主机",
 			},
 
 			"intranet_access": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "0 - Disable internal network access bastion host; 1 - Enable internal network access bastion host.",
+				Description: "0 - Disable internal network access bastion 主机; 1 - Enable internal network access bastion 主机",
 			},
 
 			"external_access": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "0 - Disable public network access to the bastion host; 1 - Enable public network access to the bastion host.",
+				Description: "0 - Disable public network access to the bastion 主机; 1 - Enable public network access to the bastion 主机",
 			},
 
 			// computed
 			"resource_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Resource instance ID.",
+				Description: "Resource instance ID。",
 			},
 
 			"public_ip_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Public IP address list of the bastion host instance.",
+				Description: "公网 IP 地址 列表 the bastion 主机 instance。",
 			},
 
 			"private_ip_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Private IP address list of the bastion host instance.",
+				Description: "内网 IP 地址 列表 the bastion 主机 instance。",
 			},
 		},
 	}

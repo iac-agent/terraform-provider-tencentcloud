@@ -20,50 +20,50 @@ func DataSourceTencentCloudSesReceivers() *schema.Resource {
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Group status (`1`: to be uploaded; `2`: uploading; `3`: uploaded). To query groups in all states, do not pass in this parameter.",
+				Description: "Group 状态 (`1`: to be uploaded; `2`: uploading; `3`: uploaded). To query groups in all states，do not pass in this parameter。",
 			},
 
 			"key_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Group name keyword for fuzzy query.",
+				Description: "组名称 keyword for fuzzy query。",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Data record.",
+				Description: "Data record。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"receiver_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Recipient group ID.",
+							Description: "Recipient 组 ID",
 						},
 						"receivers_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Recipient group name.",
+							Description: "Recipient 组名称",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total number of recipient email addresses.",
+							Description: "Total 数量 recipient email addresses。",
 						},
 						"desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Recipient group descriptionNote: This field may return `null`, indicating that no valid value can be found.",
+							Description: "Recipient group descriptionNote: This field may return `null`，indicating that no valid 值 can be found。",
 						},
 						"receivers_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Group status (`1`: to be uploaded; `2` uploading; `3` uploaded)Note: This field may return `null`, indicating that no valid value can be found.",
+							Description: "Group 状态 (`1`: to be uploaded; `2` uploading; `3` uploaded)Note: This field may return `null`，indicating that no valid 值 can be found。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time, such as 2021-09-28 16:40:35.",
+							Description: "创建时间，such as 2021-09-28 16:40:35。",
 						},
 					},
 				},
@@ -72,7 +72,7 @@ func DataSourceTencentCloudSesReceivers() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -20,124 +20,124 @@ func DataSourceTencentCloudBiProject() *schema.Resource {
 			"page_no": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Page number.",
+				Description: "页码",
 			},
 
 			"keyword": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Retrieve fuzzy fields.",
+				Description: "Retrieve fuzzy fields。",
 			},
 
 			"all_page": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to display all, if true, ignore paging.",
+				Description: "是否display all，if true，ignore paging。",
 			},
 
 			"module_collection": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Role information, can be ignored.",
+				Description: "角色 information，can be ignored。",
 			},
 
 			"extra": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Additional information(Note: This field may return null, indicating that no valid value can be obtained).",
+				Description: "Additional information(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 			},
 
 			"msg": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Interface information(Note: This field may return null, indicating that no valid value can be obtained).",
+				Description: "Interface information(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Array(Note: This field may return null, indicating that no valid value can be obtained).",
+				Description: "Array(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project id.",
+							Description: "项目 ID",
 						},
 						"logo": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project logo(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Project logo(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project name(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "项目名称(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"color_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Logo colour(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Logo colour(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"created_user": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Created by(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Created by(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"created_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Created at(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Created at(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"member_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Member count(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Member count(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"page_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Page count(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Page count(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"last_modify_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last modified report and presentation names(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Last modified report and presentation names(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"source": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Interface call source(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Interface call 来源(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"apply": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Apply(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Apply(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"updated_user": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Updated by(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Updated by(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Updated by(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Updated by(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"corp_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Enterprise id(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Enterprise id(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"mark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remark(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "备注(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"seed": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Obfuscated field(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Obfuscated field(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"auth_list": {
 							Type: schema.TypeSet,
@@ -145,54 +145,54 @@ func DataSourceTencentCloudBiProject() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "List of permissions within the project(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "列表 permissions within the project(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"panel_scope": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Default kanban(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Default kanban(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"is_external_manage": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Determine whether it is hosted(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Determine whether it is hosted(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"manage_platform": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Hosting platform name(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Hosting platform 名称(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 						},
 						"config_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Customized parameters, this parameter can be ignored(Note: This field may return null, indicating that no valid value can be obtained).",
+							Description: "Customized parameters，this parameter can be ignored(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"module_group": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Module group(Note: This field may return null, indicating that no valid value can be obtained).",
+										Description: "模块 group(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 									},
 									"components": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Components(Note: This field may return null, indicating that no valid value can be obtained).",
+										Description: "Components(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"module_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Module id(Note: This field may return null, indicating that no valid value can be obtained).",
+													Description: "模块 id(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 												},
 												"include_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Include type(Note: This field may return null, indicating that no valid value can be obtained).",
+													Description: "Include 类型(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 												},
 												"params": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Extra parameters(Note: This field may return null, indicating that no valid value can be obtained).",
+													Description: "Extra parameters(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 												},
 											},
 										},
@@ -207,7 +207,7 @@ func DataSourceTencentCloudBiProject() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

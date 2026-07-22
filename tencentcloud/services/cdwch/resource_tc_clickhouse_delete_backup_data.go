@@ -22,14 +22,14 @@ func ResourceTencentCloudClickhouseDeleteBackupData() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"back_up_job_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Back up job id.",
+				Description: "Back up 作业 ID",
 			},
 		},
 	}

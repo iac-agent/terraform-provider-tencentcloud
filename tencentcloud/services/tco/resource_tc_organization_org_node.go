@@ -28,36 +28,36 @@ func ResourceTencentCloudOrganizationOrgNode() *schema.Resource {
 			"parent_node_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Parent node ID.",
+				Description: "Parent 节点 ID",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Node name.",
+				Description: "节点名称",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Notes.",
+				Description: "Notes。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Node creation time.",
+				Description: "Node 创建时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Node update time.",
+				Description: "Node 更新时间。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

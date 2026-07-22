@@ -19,57 +19,57 @@ func DataSourceTencentCloudScfFunctionVersions() *schema.Resource {
 			"function_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function Name.",
+				Description: "Function 名称",
 			},
 
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The namespace where the function locates.",
+				Description: "The namespace where the function locates。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.",
+				Description: "It 指定是否return the results in ascending or 降序 The 值 is `ASC` or `DESC`。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.",
+				Description: "It 指定sorting 顺序 of the results according to a specified field，such as `AddTime`，`ModTime`。",
 			},
 
 			"versions": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Function version listNote: This field may return null, indicating that no valid values is found.",
+				Description: "Function 版本 listNote: This field may return null，indicating that no valid values is found。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Function version name.",
+							Description: "Function 版本 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version descriptionNote: This field may return null, indicating that no valid values is found.",
+							Description: "版本 descriptionNote: This field may return null，indicating that no valid values is found。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The creation timeNote: This field may return null, indicating that no valid value was found.",
+							Description: "The creation time注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"mod_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update timeNote: This field may return null, indicating that no valid value was found.",
+							Description: "Update time注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version statusNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "版本 statusNote: this field may return `null`，indicating that no valid values can be obtained。",
 						},
 					},
 				},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudScfFunctionVersions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

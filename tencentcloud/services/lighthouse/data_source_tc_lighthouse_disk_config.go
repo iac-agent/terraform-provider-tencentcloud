@@ -19,13 +19,13 @@ func DataSourceTencentCloudLighthouseDiskConfig() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter list.zoneFilter by availability zone.Type: StringRequired: no.",
+				Description: "Filter list.zoneFilter by availability 可用区类型: StringRequired: no。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudLighthouseDiskConfig() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter value of field.",
+							Description: "过滤值 of field。",
 						},
 					},
 				},
@@ -42,38 +42,38 @@ func DataSourceTencentCloudLighthouseDiskConfig() *schema.Resource {
 			"disk_config_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of cloud disk configurations.",
+				Description: "列表 cloud disk configurations。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability zone.",
+							Description: "Availability 可用区",
 						},
 						"disk_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud disk type.",
+							Description: "Cloud disk 类型",
 						},
 						"disk_sales_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud disk sale status.",
+							Description: "Cloud disk sale 状态",
 						},
 						"max_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum cloud disk size.",
+							Description: "Maximum cloud disk size。",
 						},
 						"min_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum cloud disk size.",
+							Description: "Minimum cloud disk size。",
 						},
 						"disk_step_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cloud disk increment.",
+							Description: "Cloud disk increment。",
 						},
 					},
 				},
@@ -82,7 +82,7 @@ func DataSourceTencentCloudLighthouseDiskConfig() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

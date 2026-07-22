@@ -19,19 +19,19 @@ func DataSourceTencentCloudClickhouseInstanceShards() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster instance ID.",
+				Description: "Cluster instance ID。",
 			},
 
 			"instance_shards_list": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Instance shard information.",
+				Description: "Instance shard information。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

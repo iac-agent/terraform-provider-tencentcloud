@@ -17,42 +17,42 @@ func TencentMysqlSellType() map[string]*schema.Schema {
 		"cdb_type": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Instance type, the possible value ranges are: `UNIVERSAL` (universal type), `EXCLUSIVE` (exclusive type), `BASIC` (basic type), `BASIC_V2` (basic type v2).",
+			Description: "实例类型，可能的取值范围有：`UNIVERSAL`（通用类型）、`EXCLUSIVE`（独占类型）、`BASIC`（基本类型）、`BASIC_V2`（基本类型 v2）。",
 		},
 		"cpu": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Number of CPU cores.",
+			Description: "CPU 核心数。",
 		},
 		"mem_size": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Memory size (in MB).",
+			Description: "内存大小（以 MB 为单位）。",
 		},
 		"min_volume_size": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Minimum disk size (in GB).",
+			Description: "最小磁盘大小（以 GB 为单位）。",
 		},
 		"max_volume_size": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Maximum disk size (in GB).",
+			Description: "最大磁盘大小（以 GB 为单位）。",
 		},
 		"volume_step": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Disk increment (in GB).",
+			Description: "磁盘增量（以 GB 为单位）。",
 		},
 		"qps": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Queries per second.",
+			Description: "每秒查询数。",
 		},
 		"info": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Application Scenario Description.",
+			Description: "应用场景描述。",
 		},
 	}
 }
@@ -62,28 +62,28 @@ func TencentMysqlZoneConfig() map[string]*schema.Schema {
 		"name": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "The name of available zone which is equal to a specific datacenter.",
+			Description: "可用区域的名称，相当于特定数据中心。",
 		},
 		"is_default": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Indicates whether the current DC is the default DC for the region. Possible returned values: `0` - no; `1` - yes.",
+			Description: "指示当前DC是否为该区域的默认DC。可能的返回值：`0` - 否； `1` - 是的。",
 		},
 		"is_support_disaster_recovery": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Indicates whether recovery is supported: `0` - No; `1` - Yes.",
+			Description: "指示是否支持恢复：`0` - 否； `1` - 是的。",
 		},
 		"is_support_vpc": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Indicates whether VPC is supported: `0` - No; `1` - Yes.",
+			Description: "指示是否支持 VPC：`0` - 否； `1` - 是的。",
 		},
 		"engine_versions": {
 			Type:        schema.TypeList,
 			Elem:        &schema.Schema{Type: schema.TypeString},
 			Computed:    true,
-			Description: "The version number of the database engine to use. Supported versions include `5.5`/`5.6`/`5.7`.",
+			Description: "要使用的数据库引擎的版本号。支持的版本包括`5.5`/`5.6`/`5.7`。",
 		},
 		"pay_type": {
 			Type:        schema.TypeList,
@@ -100,41 +100,41 @@ func TencentMysqlZoneConfig() map[string]*schema.Schema {
 			Type:        schema.TypeList,
 			Elem:        &schema.Schema{Type: schema.TypeInt},
 			Computed:    true,
-			Description: "Data replication mode. `0` - Async replication; `1` - Semisync replication; `2` - Strongsync replication.",
+			Description: "数据复制模式。 `0` - 异步复制； `1` - 半同步复制； `2` - 强同步复制。",
 		},
 		"disaster_recovery_zones": {
 			Type:        schema.TypeList,
 			Elem:        &schema.Schema{Type: schema.TypeString},
 			Computed:    true,
-			Description: "Information about available zones of recovery.",
+			Description: "有关可用恢复区域的信息。",
 		},
 		"slave_deploy_modes": {
 			Type:        schema.TypeList,
 			Elem:        &schema.Schema{Type: schema.TypeInt},
 			Computed:    true,
-			Description: "Availability zone deployment method. Available values: `0` - Single availability zone; `1` - Multiple availability zones.",
+			Description: "可用区部署方式。可用值：“0”-单个可用区； `1` - 多个可用区。",
 		},
 		"first_slave_zones": {
 			Type:        schema.TypeList,
 			Elem:        &schema.Schema{Type: schema.TypeString},
 			Computed:    true,
-			Description: "Zone information about first slave instance.",
+			Description: "有关第一个从属实例的区域信息。",
 		},
 		"second_slave_zones": {
 			Type:        schema.TypeList,
 			Elem:        &schema.Schema{Type: schema.TypeString},
 			Computed:    true,
-			Description: "Zone information about second slave instance.",
+			Description: "有关第二个从属实例的区域信息。",
 		},
 		"remote_ro_zones": {
 			Type:        schema.TypeList,
 			Elem:        &schema.Schema{Type: schema.TypeString},
 			Computed:    true,
-			Description: "Zone information about remote ro instance.",
+			Description: "有关远程 ro 实例的区域信息。",
 		},
 		"sells": {Type: schema.TypeList,
 			Computed:    true,
-			Description: "A list of supported instance types for sell:",
+			Description: "支持出售的实例类型列表：",
 			Elem: &schema.Resource{
 				Schema: TencentMysqlSellType(),
 			},
@@ -149,18 +149,18 @@ func DataSourceTencentCloudMysqlZoneConfig() *schema.Resource {
 			"region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Region parameter, which is used to identify the region to which the data you want to work with belongs.",
+				Description: "地域 参数，用于标识要处理的数据所属的区域。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "用于存储结果。",
 			},
 			// Computed values
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of zone config. Each element contains the following attributes:",
+				Description: "区域配置列表。每个元素包含以下属性：",
 				Elem: &schema.Resource{
 					Schema: TencentMysqlZoneConfig(),
 				},

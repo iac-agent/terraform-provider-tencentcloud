@@ -17,19 +17,19 @@ func DataSourceTencentCloudPrivateDnsPrivateZoneList() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filters.",
+				Description: "filters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "name.",
+							Description: "名称",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "values.",
+							Description: "values。",
 						},
 					},
 				},
@@ -37,59 +37,59 @@ func DataSourceTencentCloudPrivateDnsPrivateZoneList() *schema.Resource {
 			"private_zone_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Private Zone Set.",
+				Description: "Private 可用区 Set。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "PrivateZone ID.",
+							Description: "PrivateZone ID。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Owner Uin.",
+							Description: "所有者 Uin。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain.",
+							Description: "域名",
 						},
 						"created_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 						"updated_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"record_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Record count.",
+							Description: "Record count。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 						"vpc_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Vpc list.",
+							Description: "Vpc list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"uniq_vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Vpc Id.",
+										Description: "私有网络 ID",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region.",
+										Description: "地域",
 									},
 								},
 							},
@@ -97,28 +97,28 @@ func DataSourceTencentCloudPrivateDnsPrivateZoneList() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Private domain bound VPC status, not associated with vpc: SUSPEND, associated with VPC: ENABLED, associated with VPC failed: FAILED.",
+							Description: "Private 域名 bound VPC 状态，not associated with vpc: SUSPEND，associated with VPC: ENABLED，associated with VPC failed: FAILED。",
 						},
 						"dns_forward_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name recursive resolution status: enabled: ENABLED, disabled, DISABLED.",
+							Description: "域名 名称 recursive resolution 状态: 已启用: ENABLED，已禁用，DISABLED。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "tags.",
+							Description: "标签",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -126,23 +126,23 @@ func DataSourceTencentCloudPrivateDnsPrivateZoneList() *schema.Resource {
 						"account_vpc_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "VPC list of bound associated accounts.",
+							Description: "VPC 列表 bound associated accounts。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"uin": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "uin.",
+										Description: "uin。",
 									},
 									"uniq_vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Vpc Id.",
+										Description: "私有网络 ID",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region.",
+										Description: "地域",
 									},
 								},
 							},
@@ -150,48 +150,48 @@ func DataSourceTencentCloudPrivateDnsPrivateZoneList() *schema.Resource {
 						"is_custom_tld": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Custom TLD.",
+							Description: "Custom TLD。",
 						},
 						"cname_speedup_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CNAME acceleration status: enabled: ENABLED, off, DISABLED.",
+							Description: "CNAME acceleration 状态: 已启用: ENABLED，off，DISABLED。",
 						},
 						"forward_rule_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Forwarding rule name.",
+							Description: "Forwarding rule 名称",
 						},
 						"forward_rule_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Forwarding rule type: from cloud to cloud, DOWN; From cloud to cloud, UP, currently only supports DOWN.",
+							Description: "Forwarding rule 类型: from cloud to cloud，DOWN; From cloud to cloud，UP，currently only supports DOWN。",
 						},
 						"forward_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Forwarded address.",
+							Description: "Forwarded 地址",
 						},
 						"end_point_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End point name.",
+							Description: "End point 名称",
 						},
 						"deleted_vpc_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of deleted VPCs.",
+							Description: "列表 deleted VPCs。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"uniq_vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Vpc Id.",
+										Description: "私有网络 ID",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region.",
+										Description: "地域",
 									},
 								},
 							},
@@ -202,7 +202,7 @@ func DataSourceTencentCloudPrivateDnsPrivateZoneList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

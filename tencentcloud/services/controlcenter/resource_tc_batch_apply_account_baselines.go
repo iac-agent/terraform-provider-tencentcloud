@@ -25,25 +25,25 @@ func ResourceTencentCloudBatchApplyAccountBaselines() *schema.Resource {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Member account UIN, which is also the UIN of the account to which the baseline is applied.",
+				Description: "Member 账号 UIN，which is also the UIN of the 账号 to which the baseline is applied。",
 				Elem:        &schema.Schema{Type: schema.TypeInt},
 			},
 			"baseline_config_items": {
 				Type:        schema.TypeList,
 				Required:    true,
 				ForceNew:    true,
-				Description: "List of baseline item configuration information.",
+				Description: "列表 baseline item configuration information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identifier": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "A unique identifier for an Account Factory baseline item, which can only contain English letters, digits, and @,._[]-:()+=. It must be 2-128 characters long.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "A unique identifier for an 账号 Factory baseline item，which can only contain English letters，digits，and @,._[]-:()+=. It must be 2-128 characters long.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"configuration": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Account Factory baseline item configuration. Different items have different parameters.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "账号 Factory baseline item configuration. Different items have different parameters.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

@@ -29,49 +29,49 @@ func ResourceTencentCloudClsCosRecharge() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "topic id.",
+				Description: "主题 ID。",
 			},
 
 			"logset_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "logset id.",
+				Description: "日志集 ID。",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "recharge name.",
+				Description: "充值名称。",
 			},
 
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "cos bucket.",
+				Description: "cos桶。",
 			},
 
 			"bucket_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "cos bucket region.",
+				Description: "cos桶区。",
 			},
 
 			"prefix": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "cos file prefix.",
+				Description: "cos 文件前缀。",
 			},
 
 			"log_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "log type.",
+				Description: "日志类型。",
 			},
 
 			"compress": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "supported gzip, lzop, snappy.",
+				Description: "支持 gzip、lzop、snappy。",
 			},
 
 			"extract_rule_info": {
@@ -79,33 +79,33 @@ func ResourceTencentCloudClsCosRecharge() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Computed:    true,
-				Description: "extract rule info.",
+				Description: "提取规则信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "time key.",
+							Description: "时间键。",
 						},
 						"time_format": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "time format.",
+							Description: "时间格式。",
 						},
 						"delimiter": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "log delimiter.",
+							Description: "日志分隔符。",
 						},
 						"log_regex": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "log regex.",
+							Description: "记录正则表达式。",
 						},
 						"begin_regex": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "begin line regex.",
+							Description: "开始行正则表达式。",
 						},
 						"keys": {
 							Type: schema.TypeSet,
@@ -113,23 +113,23 @@ func ResourceTencentCloudClsCosRecharge() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "key list.",
+							Description: "关键清单。",
 						},
 						"filter_key_regex": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "rules that need to filter logs.",
+							Description: "需要过滤日志的规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "need filter log key.",
+										Description: "需要过滤日志键。",
 									},
 									"regex": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "need filter log regex.",
+										Description: "需要过滤日志正则表达式。",
 									},
 								},
 							},
@@ -137,68 +137,68 @@ func ResourceTencentCloudClsCosRecharge() *schema.Resource {
 						"un_match_up_load_switch": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "whether to upload the parsing failure log.",
+							Description: "是否上传解析失败日志。",
 						},
 						"un_match_log_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "parsing failure log key.",
+							Description: "解析失败日志键。",
 						},
 						"backtracking": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "backtracking data volume in incremental acquisition mode.",
+							Description: "增量采集模式下回溯数据量。",
 						},
 						"is_gbk": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "gbk encoding.",
+							Description: "gbk编码。",
 						},
 						"json_standard": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "is standard json.",
+							Description: "是标准的json。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "syslog protocol.",
+							Description: "系统日志协议。",
 						},
 						"address": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "syslog address.",
+							Description: "系统日志地址。",
 						},
 						"parse_protocol": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "parse protocol.",
+							Description: "解析协议。",
 						},
 						"metadata_type": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "metadata type.",
+							Description: "元数据类型。",
 						},
 						"path_regex": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "metadata path regex.",
+							Description: "元数据路径正则表达式。",
 						},
 						"meta_tags": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "metadata tag list.",
+							Description: "元数据标签列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "metadata key.",
+										Description: "元数据密钥。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "metadata value.",
+										Description: "元数据值。",
 									},
 								},
 							},

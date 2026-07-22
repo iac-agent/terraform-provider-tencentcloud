@@ -17,18 +17,18 @@ func DataSourceTencentCloudClsNoticeContents() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions. Supported filter names: name (notice content template name), noticeContentId (notice content template ID). Each request supports up to 10 filters, and each filter value list supports up to 100 values.",
+				Description: "过滤条件。支持的过滤器名称：名称（通知内容模板名称）、noticeContentId（通知内容模板ID）。每个请求最多支持 10 个过滤器，每个过滤器值列表最多支持 100 个值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter field name. Valid values: name, noticeContentId.",
+							Description: "过滤字段名称。有效值：名称、noticeContentId。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Filter field values.",
+							Description: "过滤字段值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -40,80 +40,80 @@ func DataSourceTencentCloudClsNoticeContents() *schema.Resource {
 			"notice_content_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Notice content template list.",
+				Description: "通知内容模板列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"notice_content_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Notice content template ID.",
+							Description: "通知内容模板 ID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Notice content template name.",
+							Description: "注意内容模板名称。",
 						},
 						"type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Language type. 0: Chinese, 1: English.",
+							Description: "语言类型。 0：中文，1：英文。",
 						},
 						"flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Template flag. 0: user-defined, 1: system built-in.",
+							Description: "模板标志。 0：用户自定义，1：系统内置。",
 						},
 						"uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creator primary account ID.",
+							Description: "创建者主帐户 ID。",
 						},
 						"sub_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creator/modifier sub-account ID.",
+							Description: "创建者/修改者子账户ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creation time (Unix timestamp in seconds).",
+							Description: "创建时间（Unix 时间戳，以秒为单位）。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Update time (Unix timestamp in seconds).",
+							Description: "更新时间（Unix 时间戳，以秒为单位）。",
 						},
 						"notice_contents": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Notice content template details.",
+							Description: "注意内容模板详细信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Channel type. Valid values: Email, Sms, WeChat, Phone, WeCom, DingTalk, Lark, Http.",
+										Description: "通道类型。有效值：Email、短信、微信、电话、微信、钉钉、Lark、Http。",
 									},
 									"trigger_content": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Alarm trigger notification content template.",
+										Description: "报警触发通知内容模板。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"title": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Notification content template title.",
+													Description: "通知内容模板标题。",
 												},
 												"content": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Notification content template body.",
+													Description: "通知内容模板主体。",
 												},
 												"headers": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Request headers (only for custom callback channel).",
+													Description: "请求标头（仅适用于自定义回调通道）。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -124,23 +124,23 @@ func DataSourceTencentCloudClsNoticeContents() *schema.Resource {
 									"recovery_content": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Alarm recovery notification content template.",
+										Description: "报警恢复通知内容模板。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"title": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Notification content template title.",
+													Description: "通知内容模板标题。",
 												},
 												"content": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Notification content template body.",
+													Description: "通知内容模板主体。",
 												},
 												"headers": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Request headers (only for custom callback channel).",
+													Description: "请求标头（仅适用于自定义回调通道）。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -158,7 +158,7 @@ func DataSourceTencentCloudClsNoticeContents() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

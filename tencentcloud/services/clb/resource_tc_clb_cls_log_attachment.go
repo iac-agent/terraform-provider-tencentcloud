@@ -27,21 +27,21 @@ func ResourceTencentCloudClbClsLogAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "CLB instance ID.",
+				Description: "CLB实例ID。",
 			},
 
 			"log_set_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Logset ID of the Cloud Log Service (CLS).<li>When adding or updating a log topic, call the [DescribeLogsets](https://intl.cloud.tencent.com/document/product/614/58624?from_cn_redirect=1) API to obtain the logset ID.</li><li>When deleting a log topic, set this parameter to null.</li>.",
+				Description: "云日志服务（CLS）的日志集ID。<li>添加或更新日志主题时，调用[DescribeLogsets](https://intl.cloud.tencent.com/document/product/614/58624?from_cn_redirect=1) API获取日志集ID。</li><li>删除日志主题时，将此参数设置为空。</li>。",
 			},
 
 			"log_topic_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Log topic ID of the CLS.<li>When adding or updating a log topic, call the [DescribeTopics](https://intl.cloud.tencent.com/document/product/614/56454?from_cn_redirect=1) API to obtain the log topic ID.</li><li>When deleting a log topic, set this parameter to null.</li>.",
+				Description: "CLS的日志主题ID。<li>添加或更新日志主题时，调用[DescribeTopics](https://intl.cloud.tencent.com/document/product/614/56454?from_cn_redirect=1)接口获取日志主题ID。</li><li>删除日志主题时，将此参数设置为空。</li>。",
 			},
 
 			// "log_type": {
@@ -49,7 +49,7 @@ func ResourceTencentCloudClbClsLogAttachment() *schema.Resource {
 			// 	Optional:    true,
 			// 	ForceNew:    true,
 			// 	Computed:    true,
-			// 	Description: "Log type:\n<li>`ACCESS`: access logs</li>\n<li>`HEALTH`: health check logs</li>\nDefault: `ACCESS`.",
+			// 	Description: "日志类型：\n<li>`ACCESS`：访问日志</li>\n<li>`HEALTH`：健康检查日志</li>\n默认：`ACCESS`。",
 			// },
 		},
 	}

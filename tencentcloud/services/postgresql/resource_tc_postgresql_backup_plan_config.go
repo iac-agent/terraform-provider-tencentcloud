@@ -28,25 +28,25 @@ func ResourceTencentCloudPostgresqlBackupPlanConfig() *schema.Resource {
 			"db_instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"min_backup_start_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The earliest time to start a backup.",
+				Description: "The earliest time to start a backup。",
 			},
 
 			"max_backup_start_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The latest time to start a backup.",
+				Description: "The latest time to start a backup。",
 			},
 
 			"base_backup_retention_period": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Backup retention period in days. Value range:7-1830.",
+				Description: "Backup retention 周期 in days. 值 range:7-1830。",
 			},
 
 			"backup_period": {
@@ -55,7 +55,7 @@ func ResourceTencentCloudPostgresqlBackupPlanConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Backup cycle, which means on which days each week the instance will be backed up. The parameter value should be the lowercase names of the days of the week.",
+				Description: "Backup cycle，which means on which days each week the instance will be backed up. The parameter 值 should be the lowercase names of the days of the week。",
 			},
 		},
 	}

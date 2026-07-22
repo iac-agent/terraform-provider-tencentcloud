@@ -19,7 +19,7 @@ func DataSourceTencentCloudTsfApplicationPublicConfig() *schema.Resource {
 			"config_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Config ID. Query all items if not passed, high priority.",
+				Description: "配置 ID. Query all items 如果未传入，high 优先级",
 			},
 
 			"config_id_list": {
@@ -28,97 +28,97 @@ func DataSourceTencentCloudTsfApplicationPublicConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Config ID list. Query all items if not passed, low priority.",
+				Description: "配置 ID list. Query all items 如果未传入，low 优先级",
 			},
 
 			"config_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Config name. Exact query. Query all items if not passed.",
+				Description: "配置 名称 Exact query. Query all items 如果未传入。",
 			},
 
 			"config_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Config version. Exact query. Query all items if not passed.",
+				Description: "配置 版本 Exact query. Query all items 如果未传入。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Paginated global configuration  list. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Paginated global configuration  list. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "TsfPageConfig.",
+							Description: "TsfPageConfig。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Config list.",
+							Description: "配置 list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Config ID. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "配置 ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Config name. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "配置 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Config version. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "配置 版本 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_version_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Config version description. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "配置 版本 描述 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Config value. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "配置 值 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Config type. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "配置 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"creation_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CreationTime. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "CreationTime. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"application_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application Id. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "application Id. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"application_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application Id. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "application Id. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"delete_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "delete flag, true: allow delete; false: delete prohibit.",
+										Description: "delete flag，true: allow delete; false: delete prohibit。",
 									},
 									"last_update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "last update time.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "last 更新时间.  注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_version_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "config version count.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "配置 版本 count.  注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -130,7 +130,7 @@ func DataSourceTencentCloudTsfApplicationPublicConfig() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

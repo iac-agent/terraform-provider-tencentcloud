@@ -18,36 +18,36 @@ func DataSourceTencentCloudWafOwaspRules() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Domain to be queried.",
+				Description: "域名 to be queried。",
 			},
 
 			"by": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specifies the field used to sort. valid values: RuleId, ModifyTime.",
+				Description: "指定field 用于sort. 有效值：RuleId，ModifyTime。",
 			},
 
 			"order": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting method. supports asc, desc.",
+				Description: "Sorting method. supports asc，desc。",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Specifies the criteria, support RuleId, TypeId, Desc, CveID, Status, and VulLevel.",
+				Description: "指定criteria，support RuleId，TypeId，Desc，CveID，状态，and VulLevel。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field name, used for filtering\nFilter the sub-order number (value) by DealName.",
+							Description: "Field 名称，用于filtering\nFilter the sub-顺序 number (值) by DealName。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Values after filtering.",
+							Description: "Values after filtering。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -55,7 +55,7 @@ func DataSourceTencentCloudWafOwaspRules() *schema.Resource {
 						"exact_match": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Exact search or not.",
+							Description: "Exact search or not。",
 						},
 					},
 				},
@@ -64,63 +64,63 @@ func DataSourceTencentCloudWafOwaspRules() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of rules.",
+				Description: "列表 rules。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Rule ID.",
+							Description: "Rule ID。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule description.",
+							Description: "Rule 描述",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Rule switch. valid values: 0 (disabled), 1 (enabled), 2 (observation only).",
+							Description: "Rule switch. 有效值：0 (已禁用)，1 (已启用)，2 (observation only)。",
 						},
 						"level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Protection level of the rule. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).",
+							Description: "Protection 级别 of the rule. 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
 						},
 						"vul_level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Threat level. valid values: 0 (unknown), 100 (low risk), 200 (medium risk), 300 (high risk), 400 (critical).",
+							Description: "Threat 级别 有效值：0 (unknown)，100 (low risk)，200 (medium risk)，300 (high risk)，400 (critical)。",
 						},
 						"cve_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CVE ID.",
+							Description: "CVE ID。",
 						},
 						"type_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Specifies the rule type ID.",
+							Description: "指定rule 类型 ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"locked": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the user is locked.",
+							Description: "是否user is locked。",
 						},
 						"reason": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Reason for modification\n\n0: none (compatibility records are empty).\n1: avoid false positives due to business characteristics.\n2: reporting of rule-based false positives.\n3: gray release of core business rules.\n4: others.",
+							Description: "Reason for modification\n\n0: none (compatibility records are empty).\n1: avoid false positives due to business characteristics.\n2: reporting of rule-based false positives.\n3: gray release of core business rules.\n4: others。",
 						},
 					},
 				},
@@ -129,7 +129,7 @@ func DataSourceTencentCloudWafOwaspRules() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

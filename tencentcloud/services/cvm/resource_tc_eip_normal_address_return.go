@@ -23,7 +23,7 @@ func ResourceTencentCloudEipNormalAddressReturn() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The IP address of the EIP, example: 101.35.139.183.",
+				Description: "The IP 地址 of the EIP，example: 101.35.139.183。",
 			},
 		},
 	}

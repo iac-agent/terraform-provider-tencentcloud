@@ -18,13 +18,13 @@ func DataSourceTencentCloudProducts() *schema.Resource {
 			"product_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Product list.",
+				Description: "Product list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Product name, e.g. `cvm`.",
+							Description: "Product 名称，e.g. `cvm`。",
 						},
 					},
 				},
@@ -33,7 +33,7 @@ func DataSourceTencentCloudProducts() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

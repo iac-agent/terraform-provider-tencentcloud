@@ -27,65 +27,65 @@ func ResourceTencentCloudTsfLaneRule() *schema.Resource {
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Rule id.",
+				Description: "Rule id。",
 			},
 
 			"rule_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "lane rule name.",
+				Description: "lane rule 名称",
 			},
 
 			"remark": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Lane rule notes.",
+				Description: "Lane rule notes。",
 			},
 
 			"rule_tag_list": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "list of swimlane rule labels.",
+				Description: "列表 swimlane rule labels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "label ID.",
+							Description: "标签 ID。",
 						},
 						"tag_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "label name.",
+							Description: "标签 名称",
 						},
 						"tag_operator": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "label operator.",
+							Description: "标签 操作者",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "tag value.",
+							Description: "标签值",
 						},
 						"lane_rule_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "lane rule ID.",
+							Description: "lane rule ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "creation time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "update time.",
+							Description: "更新时间。",
 						},
 					},
 				},
@@ -94,37 +94,37 @@ func ResourceTencentCloudTsfLaneRule() *schema.Resource {
 			"rule_tag_relationship": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "lane rule label relationship.",
+				Description: "lane rule 标签 relationship。",
 			},
 
 			"lane_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "lane ID.",
+				Description: "lane ID。",
 			},
 
 			"priority": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Priority.",
+				Description: "优先级",
 			},
 
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "open state, true/false, default: false.",
+				Description: "open state，true/false，默认值：false。",
 			},
 
 			"create_time": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "creation time.",
+				Description: "创建时间。",
 			},
 
 			"update_time": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "update time.",
+				Description: "更新时间。",
 			},
 
 			"program_id_list": {
@@ -133,7 +133,7 @@ func ResourceTencentCloudTsfLaneRule() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Program id list.",
+				Description: "Program id list。",
 			},
 		},
 	}

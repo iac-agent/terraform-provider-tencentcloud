@@ -28,32 +28,32 @@ func ResourceTencentCloudVpcEndPoint() *schema.Resource {
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of vpc instance.",
+				Description: "ID vpc instance。",
 			},
 
 			"subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of subnet instance.",
+				Description: "ID subnet instance。",
 			},
 
 			"end_point_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Name of endpoint.",
+				Description: "名称 endpoint。",
 			},
 
 			"end_point_service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of endpoint service.",
+				Description: "ID endpoint service。",
 			},
 
 			"end_point_vip": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "VIP of endpoint ip.",
+				Description: "VIP of endpoint ip。",
 			},
 
 			"security_groups_ids": {
@@ -61,31 +61,31 @@ func ResourceTencentCloudVpcEndPoint() *schema.Resource {
 				Type:        schema.TypeList,
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Ordered security groups associated with the endpoint.",
+				Description: "Ordered security groups associated with the endpoint。",
 			},
 
 			"end_point_owner": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "APPID.",
+				Description: "APPID。",
 			},
 
 			"state": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "state of end point.",
+				Description: "state of end point。",
 			},
 
 			"create_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Create Time.",
+				Description: "Create Time。",
 			},
 
 			"cdc_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "CDC instance ID.",
+				Description: "CDC 实例 ID",
 			},
 		},
 	}

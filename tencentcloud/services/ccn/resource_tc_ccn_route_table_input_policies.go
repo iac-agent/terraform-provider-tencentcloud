@@ -29,51 +29,51 @@ func ResourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CCN Instance ID.",
+				Description: "CCN 实例 ID",
 			},
 			"route_table_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CCN Route table ID.",
+				Description: "CCN Route table ID。",
 			},
 			"policies": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Routing reception strategy.",
+				Description: "Routing reception strategy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Routing behavior, `accept` allows, `drop` rejects.",
+							Description: "Routing behavior，`accept` allows，`drop` rejects。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Policy description.",
+							Description: "Policy 描述",
 						},
 						"route_conditions": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Routing conditions.",
+							Description: "Routing conditions。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Condition type. Example value: `instance-type`, `instance-region`, `instance-id`, `cidr-block`.",
+										Description: "条件类型 Example 值: `instance-类型`，`instance-地域`，`instance-id`，`cidr-block`。",
 									},
 									"values": {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "List of conditional values. Example value:\n `instance-type`: `VPC`, `VPNGW`, `DIRECTCONNECT`\n `instance-region`: `ap-guangzhou`\n `instance-id`: `vpc-axrsmmrv`, `dcg-oxad32f7`, `vpngw-33p5vnwd`\n `cidr-block`: `172.0.0.0/8`.",
+										Description: "列表 conditional values. Example 值:\n `instance-类型`: `VPC`，`VPNGW`，`DIRECTCONNECT`\n `instance-地域`: `ap-guangzhou`\n `instance-id`: `vpc-axrsmmrv`，`dcg-oxad32f7`，`vpngw-33p5vnwd`\n `cidr-block`: `172.0.0.0/8`。",
 									},
 									"match_pattern": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Matching mode, `1` precise matching, `0` fuzzy matching.",
+										Description: "Matching 模式，`1` precise matching，`0` fuzzy matching。",
 									},
 								},
 							},

@@ -19,82 +19,82 @@ func DataSourceTencentCloudWedataDataBackfillInstances() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"data_backfill_plan_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Backfill plan Id.",
+				Description: "Backfill plan Id。",
 			},
 
 			"task_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Task ID.",
+				Description: "任务 ID",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "All backfill  instances under one backfill  plan.",
+				Description: "All backfill  instances under one backfill  plan。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"page_number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Page number.",
+							Description: "页码",
 						},
 						"page_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Pagination size.",
+							Description: "Pagination size。",
 						},
 						"total_page_number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total pages.",
+							Description: "总页数",
 						},
 						"total_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total number of records.",
+							Description: "Total 数量 records。",
 						},
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Specifies the backfill instance list.",
+							Description: "指定backfill instance list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"task_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task name.",
+										Description: "Task 名称",
 									},
 									"task_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task ID.",
+										Description: "任务 ID",
 									},
 									"cur_run_date": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Specifies the instance data time.",
+										Description: "指定instance data time。",
 									},
 									"state": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Execution status.",
+										Description: "Execution 状态",
 									},
 									"start_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Start time.\n\n",
+										Description: "开始时间.\n\n",
 									},
 									"end_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "End time.\n\n",
+										Description: "结束时间.\n\n",
 									},
 									"cost_time": {
 										Type:        schema.TypeString,
@@ -111,7 +111,7 @@ func DataSourceTencentCloudWedataDataBackfillInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

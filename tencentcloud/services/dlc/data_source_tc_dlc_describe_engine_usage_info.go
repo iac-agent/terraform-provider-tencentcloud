@@ -19,25 +19,25 @@ func DataSourceTencentCloudDlcDescribeEngineUsageInfo() *schema.Resource {
 			"data_engine_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The data engine ID.",
+				Description: "The data engine ID。",
 			},
 
 			"used": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The used cluster spec.",
+				Description: "The used cluster spec。",
 			},
 
 			"available": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The available cluster spec.",
+				Description: "The available cluster spec。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

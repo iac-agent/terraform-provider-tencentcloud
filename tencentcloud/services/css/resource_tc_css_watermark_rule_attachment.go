@@ -28,40 +28,40 @@ func ResourceTencentCloudCssWatermarkRuleAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "rule domain name.",
+				Description: "rule 域名 名称",
 			},
 
 			"app_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "rule app name.",
+				Description: "rule app 名称",
 			},
 
 			"stream_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "rule stream name.",
+				Description: "rule stream 名称",
 			},
 
 			"template_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The template Id can be acquired by the Id of `tencentcloud_css_watermark`.",
+				Description: "The template Id can be acquired by the Id of `tencentcloud_css_watermark`。",
 			},
 
 			"create_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "create time.",
+				Description: "创建时间。",
 			},
 
 			"update_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

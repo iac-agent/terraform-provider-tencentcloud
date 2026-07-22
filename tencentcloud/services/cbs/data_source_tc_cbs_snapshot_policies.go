@@ -21,66 +21,66 @@ func DataSourceTencentCloudCbsSnapshotPolicies() *schema.Resource {
 			"snapshot_policy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the snapshot policy to be queried.",
+				Description: "ID snapshot policy to be queried。",
 			},
 			"snapshot_policy_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the snapshot policy to be queried.",
+				Description: "名称 snapshot policy to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"snapshot_policy_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of snapshot policy. Each element contains the following attributes:",
+				Description: "A 列表 snapshot policy. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"snapshot_policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the snapshot policy.",
+							Description: "ID snapshot policy。",
 						},
 						"snapshot_policy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the snapshot policy.",
+							Description: "名称 snapshot policy。",
 						},
 						"repeat_weekdays": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Computed:    true,
-							Description: "Trigger days of periodic snapshot.",
+							Description: "Trigger days of periodic snapshot。",
 						},
 						"repeat_hours": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Computed:    true,
-							Description: "Trigger hours of periodic snapshot.",
+							Description: "Trigger hours of periodic snapshot。",
 						},
 						"retention_days": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Retention days of the snapshot.",
+							Description: "Retention days of the snapshot。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Status of the snapshot policy.",
+							Description: "状态 snapshot policy。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the snapshot policy.",
+							Description: "创建时间 of the snapshot policy。",
 						},
 						"attached_storage_ids": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "Storage IDs that the snapshot policy attached.",
+							Description: "Storage IDs that the snapshot policy attached。",
 						},
 					},
 				},

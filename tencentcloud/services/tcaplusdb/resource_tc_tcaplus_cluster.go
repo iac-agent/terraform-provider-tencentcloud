@@ -29,25 +29,25 @@ func ResourceTencentCloudTcaplusCluster() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(TCAPLUS_IDL_TYPES),
-				Description:  "IDL type of the TcaplusDB cluster. Valid values: `PROTO` and `TDR`.",
+				Description:  "IDL 类型 TcaplusDB cluster. 有效值：`PROTO` and `TDR`。",
 			},
 			"cluster_name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 30),
-				Description:  "Name of the TcaplusDB cluster. Name length should be between 1 and 30.",
+				Description:  "名称 TcaplusDB cluster. 名称 length should be between 1 and 30。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "VPC id of the TcaplusDB cluster.",
+				Description: "VPC ID TcaplusDB cluster。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Subnet id of the TcaplusDB cluster.",
+				Description: "子网 ID TcaplusDB cluster。",
 			},
 			"password": {
 				Type:      schema.TypeString,
@@ -82,51 +82,51 @@ func ResourceTencentCloudTcaplusCluster() *schema.Resource {
 					}
 					return
 				},
-				Description: "Password of the TcaplusDB cluster. Password length should be between 12 and 16. The password must be a *mix* of uppercase letters (A-Z), lowercase *letters* (a-z) and *numbers* (0-9).",
+				Description: "密码 of the TcaplusDB cluster. 密码 length should be between 12 and 16. The 密码 must be a *mix* of uppercase letters (A-Z)，lowercase *letters* (a-z) and *numbers* (0-9)。",
 			},
 			"old_password_expire_last": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      3600,
 				ValidateFunc: tccommon.ValidateIntegerMin(300),
-				Description:  "Expiration time of old password after password update, unit: second.",
+				Description:  "过期时间 of old 密码 after 密码 update，unit: second。",
 			},
 
 			// Computed values.
 			"network_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Network type of the TcaplusDB cluster.",
+				Description: "Network 类型 TcaplusDB cluster。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of the TcaplusDB cluster.",
+				Description: "创建时间 of the TcaplusDB cluster。",
 			},
 			"password_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Password status of the TcaplusDB cluster. Valid values: `unmodifiable`, `modifiable`. `unmodifiable`. which means the password can not be changed in this moment; `modifiable`, which means the password can be changed in this moment.",
+				Description: "密码 状态 TcaplusDB cluster. 有效值：`unmodifiable`，`modifiable`. `unmodifiable`. which means the 密码 can not be changed in this moment; `modifiable`，which means the 密码 can be changed in this moment。",
 			},
 			"api_access_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Access ID of the TcaplusDB cluster.For TcaplusDB SDK connect.",
+				Description: "Access ID TcaplusDB cluster.For TcaplusDB SDK connect。",
 			},
 			"api_access_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Access IP of the TcaplusDB cluster.For TcaplusDB SDK connect.",
+				Description: "Access IP of the TcaplusDB cluster.For TcaplusDB SDK connect。",
 			},
 			"api_access_port": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Access port of the TcaplusDB cluster.For TcaplusDB SDK connect.",
+				Description: "Access 端口 of the TcaplusDB cluster.For TcaplusDB SDK connect。",
 			},
 			"old_password_expire_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Expiration time of the old password. If `password_status` is `unmodifiable`, it means the old password has not yet expired.",
+				Description: "过期时间 of the old 密码 If `password_status` is `unmodifiable`，it means the old 密码 has not yet expired。",
 			},
 		},
 	}

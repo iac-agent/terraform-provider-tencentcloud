@@ -28,73 +28,73 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Site name. When accessing CNAME/NS, please pass the second-level domain (example.com) as the site name; when accessing without a domain name, please leave this value empty.",
+				Description: "站点名称 When accessing CNAME/NS，please pass the second-级别 域名 (example.com) as the 站点名称; when accessing without a 域名 名称，please leave this 值 empty。",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Site access type. The value of this parameter is as follows, and the default is partial if not filled in:partial: CNAME access; full: NS access; noDomainAccess: No domain access.",
+				Description: "Site access 类型 The 值 of this parameter is as follows，and the 默认为 partial 如果未填写 in:partial: CNAME access; full: NS access; noDomainAccess: No 域名 access。",
 			},
 
 			"alias_zone_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Alias site identifier. Limit the input to a combination of numbers, English, - and _, within 20 characters. For details, refer to the alias site identifier. If there is no such usage scenario, leave this field empty.",
+				Description: "Alias site identifier. 限制 the input to a combination of numbers，English，- and _，within 20 characters. For details，refer to the alias site identifier. If there is no such usage scenario，leave this field empty。",
 			},
 
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "When the Type value is partial/full, the acceleration region of the L7 domain name. The following are the values of this parameter, and the default value is overseas if not filled in. When the Type value is noDomainAccess, please leave this value empty:\n  - global: Global availability zone.\n  - mainland: Chinese mainland availability zone.\n  - overseas: Global availability zone (excluding Chinese mainland).",
+				Description: "When the 类型 值 is partial/full，the acceleration 地域 of the L7 域名 名称 The following are the values of this parameter，and the 默认值为 overseas 如果未填写 in. When the 类型 值 is noDomainAccess，please leave this 值 empty:\n  - global: Global availability 可用区\n  - mainland: Chinese mainland availability 可用区\n  - overseas: Global availability 可用区 (excluding Chinese mainland)。",
 			},
 
 			"plan_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The target Plan ID to be bound. When you have an existing Plan in your account, you can fill in this parameter to directly bind the site to the Plan. If you do not have a Plan that can be bound at the moment, please go to the console to purchase a Plan to complete the site creation.",
+				Description: "The target Plan ID to be bound. When you have an existing Plan in your 账号，you can fill in this parameter to directly bind the site to the Plan. If you do not have a Plan that can be bound at the moment，please go to the console to purchase a Plan to complete the site creation。",
 			},
 
 			"paused": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Indicates whether the site is disabled.",
+				Description: "表示是否site is 已禁用",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Site status. Valid values: `active`: NS is switched; `pending`: NS is not switched; `moved`: NS is moved; `deactivated`: this site is blocked.",
+				Description: "Site 状态 有效值：`活跃`: NS is switched; `pending`: NS is not switched; `moved`: NS is moved; `deactivated`: this site is blocked。",
 			},
 
 			"ownership_verification": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Ownership verification information. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Ownership verification information. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dns_verification": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "CNAME access, using DNS to resolve the information required for authentication. For details, please refer to [Site/Domain Name Ownership Verification ](https://cloud.tencent.com/document/product/1552/70789#7af6ecf8-afca-4e35-8811-b5797ed1bde5). Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "CNAME access，using DNS to resolve the information 必填 for authentication. For details，please refer to [Site/域名 名称 Ownership Verification ](https://cloud.tencent.com/document/product/1552/70789#7af6ecf8-afca-4e35-8811-b5797ed1bde5). 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"subdomain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Host record.",
+										Description: "主机 record。",
 									},
 									"record_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Record type.",
+										Description: "Record 类型",
 									},
 									"record_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Record the value.",
+										Description: "Record the 值",
 									},
 								},
 							},
@@ -106,7 +106,7 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 			"name_servers": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "NS list allocated by Tencent Cloud.",
+				Description: "NS list allocated by Tencent Cloud。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -116,38 +116,38 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Resource region for tag operations. Resources that are not region-specific can ignore this parameter. Defaults to the provider configured region.",
+				Description: "Resource 地域 for 标签 operations. Resources that are not 地域-specific can ignore this parameter. 默认为 the provider configured 地域",
 			},
 
 			"service_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Service type for tag operations. Defaults to teo.",
+				Description: "Service 类型 for 标签 operations. 默认为 teo。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 
 			"work_mode_infos": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Configuration group work mode. Each configuration module of the site can enable version control mode or immediate effect mode according to the configuration group dimension. For details, please refer to [Version Management](https://cloud.tencent.com/document/product/1552/113690).",
+				Description: "Configuration group work 模式 Each configuration 模块 of the site can enable 版本 control 模式 or immediate effect 模式 according to the configuration group dimension. For details，please refer to [版本 Management](https://cloud.tencent.com/document/product/1552/113690)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_group_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration group type. Valid values: `l7_acceleration`: L7 acceleration configuration group; `edge_functions`: Edge functions configuration group.",
+							Description: "Configuration group 类型 有效值：`l7_acceleration`: L7 acceleration configuration group; `edge_functions`: Edge functions configuration group。",
 						},
 						"work_mode": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Work mode. Valid values: `immediate_effect`: Immediate effect mode; `version_control`: Version control mode.",
+							Description: "Work 模式 有效值：`immediate_effect`: Immediate effect 模式; `version_control`: 版本 control 模式",
 						},
 					},
 				},

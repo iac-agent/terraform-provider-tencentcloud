@@ -28,12 +28,12 @@ func ResourceTencentCloudCynosdbUpgradeProxyVersion() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"dst_proxy_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database Agent Upgrade Version.",
+				Description: "数据库代理升级版本。",
 			},
 		},
 	}

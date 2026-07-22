@@ -19,60 +19,60 @@ func DataSourceTencentCloudCynosdbDescribeInstanceErrorLogs() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance Id.",
+				Description: "实例 ID。",
 			},
 			"start_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "start time.",
+				Description: "开始时间。",
 			},
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "End time.",
+				Description: "结束时间。",
 			},
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort fields with Timestamp enumeration values.",
+				Description: "使用 时间戳 枚举值对字段进行排序。",
 			},
 			"order_by_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort type, with ASC and DESC enumeration values.",
+				Description: "排序类型，具有 ASC 和 DESC 枚举值。",
 			},
 			"log_levels": {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Log levels, including error, warning, and note, support simultaneous search of multiple levels.",
+				Description: "日志级别包括错误、警告、注释，支持多级别同时搜索。",
 			},
 			"key_words": {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Keywords, supports fuzzy search.",
+				Description: "关键词，支持模糊搜索。",
 			},
 			"error_logs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Error log list note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "错误日志列表注意：该字段可能返回null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timestamp": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Log timestamp note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "日志时间戳说明：该字段可能返回null，表示无法获取到有效值。",
 						},
 						"level": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log level note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "日志级别说明：该字段可能返回null，表示无法获取到有效值。",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Note to log content: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "日志内容注意：该字段可能返回null，表示无法获取到有效值。",
 						},
 					},
 				},
@@ -80,7 +80,7 @@ func DataSourceTencentCloudCynosdbDescribeInstanceErrorLogs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,59 +19,59 @@ func DataSourceTencentCloudDnspodRecordAnalytics() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The domain to query for resolution volume.",
+				Description: "The 域名 to query for resolution volume。",
 			},
 
 			"start_date": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The start date of the query, format: YYYY-MM-DD.",
+				Description: "The start date of the query，格式: YYYY-MM-DD。",
 			},
 
 			"end_date": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The end date of the query, format: YYYY-MM-DD.",
+				Description: "The end date of the query，格式: YYYY-MM-DD。",
 			},
 
 			"subdomain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The subdomain to query for resolution volume.",
+				Description: "The subdomain to query for resolution volume。",
 			},
 
 			"dns_format": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "DATE: Statistics by day dimension, HOUR: Statistics by hour dimension.",
+				Description: "DATE: Statistics by day dimension，HOUR: Statistics by hour dimension。",
 			},
 
 			"domain_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Domain ID. The parameter DomainId has a higher priority than the parameter Domain. If the parameter DomainId is passed, the parameter Domain will be ignored. You can find all Domains and DomainIds through the DescribeDomainList interface.",
+				Description: "域名 ID. The parameter DomainId has a higher 优先级 than the parameter 域名 If the parameter DomainId is passed，the parameter 域名 will be ignored. You can find all Domains and DomainIds through the DescribeDomainList interface。",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The subtotal of the resolution volume for the current statistical dimension.",
+				Description: "The subtotal of the resolution volume for the current statistical dimension。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The subtotal of the resolution volume for the current statistical dimension.",
+							Description: "The subtotal of the resolution volume for the current statistical dimension。",
 						},
 						"date_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "For daily statistics, it is the statistical date.",
+							Description: "For daily statistics，it is the statistical date。",
 						},
 						"hour_key": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "For hourly statistics, it is the hour of the current time for statistics (0-23), e.g., when HourKey is 23, the statistical period is the resolution volume from 22:00 to 23:00. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "For hourly statistics，it is the hour of the current time for statistics (0-23)，e.g.，when HourKey is 23，the statistical 周期 is the resolution volume from 22:00 to 23:00. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -80,38 +80,38 @@ func DataSourceTencentCloudDnspodRecordAnalytics() *schema.Resource {
 			"info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Subdomain resolution statistics query information.",
+				Description: "Subdomain resolution statistics query information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dns_format": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DATE: Daily statistics, HOUR: Hourly statistics.",
+							Description: "DATE: Daily statistics，HOUR: Hourly statistics。",
 						},
 						"dns_total": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total resolution count for the current statistical period.",
+							Description: "Total resolution count for the current statistical 周期",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The domain currently being queried.",
+							Description: "The 域名 currently being queried。",
 						},
 						"start_date": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Start date of the current statistical period.",
+							Description: "Start date of the current statistical 周期",
 						},
 						"end_date": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End date of the current statistical period.",
+							Description: "End date of the current statistical 周期",
 						},
 						"subdomain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The subdomain currently being analyzed.",
+							Description: "The subdomain currently being analyzed。",
 						},
 					},
 				},
@@ -120,44 +120,44 @@ func DataSourceTencentCloudDnspodRecordAnalytics() *schema.Resource {
 			"alias_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Subdomain alias resolution statistics information.",
+				Description: "Subdomain alias resolution statistics information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Subdomain resolution statistics query information.",
+							Description: "Subdomain resolution statistics query information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dns_format": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DATE: Daily statistics, HOUR: Hourly statistics.",
+										Description: "DATE: Daily statistics，HOUR: Hourly statistics。",
 									},
 									"dns_total": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Total resolution count for the current statistical period.",
+										Description: "Total resolution count for the current statistical 周期",
 									},
 									"domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The domain currently being queried.",
+										Description: "The 域名 currently being queried。",
 									},
 									"start_date": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Start date of the current statistical period.",
+										Description: "Start date of the current statistical 周期",
 									},
 									"end_date": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "End date of the current statistical period.",
+										Description: "End date of the current statistical 周期",
 									},
 									"subdomain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The subdomain currently being analyzed.",
+										Description: "The subdomain currently being analyzed。",
 									},
 								},
 							},
@@ -165,23 +165,23 @@ func DataSourceTencentCloudDnspodRecordAnalytics() *schema.Resource {
 						"data": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The subtotal of the resolution volume for the current statistical dimension.",
+							Description: "The subtotal of the resolution volume for the current statistical dimension。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The subtotal of the resolution volume for the current statistical dimension.",
+										Description: "The subtotal of the resolution volume for the current statistical dimension。",
 									},
 									"date_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "For daily statistics, it is the statistical date.",
+										Description: "For daily statistics，it is the statistical date。",
 									},
 									"hour_key": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "For hourly statistics, it is the hour of the current time for statistics (0-23), e.g., when HourKey is 23, the statistical period is the resolution volume from 22:00 to 23:00. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "For hourly statistics，it is the hour of the current time for statistics (0-23)，e.g.，when HourKey is 23，the statistical 周期 is the resolution volume from 22:00 to 23:00. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -193,7 +193,7 @@ func DataSourceTencentCloudDnspodRecordAnalytics() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

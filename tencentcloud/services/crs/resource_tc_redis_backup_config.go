@@ -27,7 +27,7 @@ func ResourceTencentCloudRedisBackupConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "ID of a redis instance to which the policy will be applied.",
+				Description: "ID redis instance to which the policy will be applied。",
 			},
 			"backup_time": {
 				Type:     schema.TypeString,
@@ -42,7 +42,7 @@ func ResourceTencentCloudRedisBackupConfig() *schema.Resource {
 					"18:00-19:00", "19:00-20:00", "20:00-21:00",
 					"21:00-22:00", "22:00-23:00", "23:00-00:00",
 				}),
-				Description: "Specifys what time the backup action should take place. And the time interval should be one hour.",
+				Description: "Specifys what time the backup 操作 should take place. And the 时间间隔 should be one hour。",
 			},
 			"backup_period": {
 				Type:        schema.TypeSet,
@@ -50,7 +50,7 @@ func ResourceTencentCloudRedisBackupConfig() *schema.Resource {
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Deprecated:  "It has been deprecated from version 1.58.2. It makes no difference to online config at all",
-				Description: "Specifys which day the backup action should take place. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.",
+				Description: "Specifys which day the backup 操作 should take place. 有效值：`Monday`，`Tuesday`，`Wednesday`，`Thursday`，`Friday`，`Saturday` and `Sunday`。",
 			},
 		},
 	}

@@ -21,13 +21,13 @@ func ResourceTencentCloudPostgresqlApplyParameterTemplateOperation() *schema.Res
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 			"template_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Template ID.",
+				Description: "模板 ID",
 			},
 		},
 	}

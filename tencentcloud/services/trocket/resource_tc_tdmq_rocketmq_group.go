@@ -29,93 +29,93 @@ func ResourceTencentCloudTdmqRocketmqGroup() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Group name (8-64 characters).",
+				Description: "组名称 (8-64 characters)。",
 			},
 
 			"namespace": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Namespace. Currently, only one namespace is supported.",
+				Description: "Namespace. Currently，only one namespace is supported。",
 			},
 
 			"read_enable": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to enable consumption.",
+				Description: "是否enable consumption。",
 			},
 
 			"broadcast_enable": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to enable broadcast consumption.",
+				Description: "是否enable broadcast consumption。",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remarks (up to 128 characters).",
+				Description: "备注 (up to 128 characters)。",
 			},
 
 			"consumer_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The number of online consumers.",
+				Description: "The 数量 online consumers。",
 			},
 
 			"tps": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Consumption TPS.",
+				Description: "Consumption TPS。",
 			},
 
 			"total_accumulative": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The total number of heaped messages.",
+				Description: "The total 数量 heaped messages。",
 			},
 
 			"consumption_mode": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "`0`: Cluster consumption mode; `1`: Broadcast consumption mode; `-1`: Unknown.",
+				Description: "`0`: Cluster consumption 模式; `1`: Broadcast consumption 模式; `-1`: Unknown。",
 			},
 
 			"retry_partition_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The number of partitions in a retry topic.",
+				Description: "The 数量 partitions in a retry topic。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Creation time in milliseconds.",
+				Description: "创建时间 （毫秒）。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Modification time in milliseconds.",
+				Description: "修改时间 （毫秒）。",
 			},
 
 			"client_protocol": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Client protocol.",
+				Description: "Client 协议",
 			},
 
 			"consumer_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Consumer type. Enumerated values: ACTIVELY or PASSIVELY.",
+				Description: "Consumer 类型 Enumerated values: ACTIVELY or PASSIVELY。",
 			},
 		},
 	}

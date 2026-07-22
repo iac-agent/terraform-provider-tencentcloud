@@ -28,14 +28,14 @@ func ResourceTencentCloudWafLogPostClsFlow() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The region where the CLS is delivered. The default value is ap-shanghai.",
+				Description: "The 地域 where the CLS is delivered. The 默认值为 ap-shanghai。",
 			},
 
 			"logset_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The name of the log set where the delivered CLS is located. The default value is waf_post_logset.",
+				Description: "The 名称 log set where the delivered CLS is located. The 默认值为 waf_post_logset。",
 			},
 
 			"log_type": {
@@ -43,38 +43,38 @@ func ResourceTencentCloudWafLogPostClsFlow() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
-				Description:  "1- Access log, 2- Attack log, the default is access log.",
+				Description:  "1- Access log，2- Attack log，the 默认为 access log。",
 			},
 
 			"log_topic_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The name of the log subject where the submitted CLS is located. The default value is waf_post_logtopic.",
+				Description: "The 名称 log subject where the submitted CLS is located. The 默认值为 waf_post_logtopic。",
 			},
 
 			"flow_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Unique ID for post cls flow.",
+				Description: "Unique ID for post cls flow。",
 			},
 
 			"logset_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "CLS logset ID.",
+				Description: "CLS logset ID。",
 			},
 
 			"log_topic_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "CLS log topic ID.",
+				Description: "CLS 日志主题 ID",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Status 0- Off 1- On.",
+				Description: "状态 0- Off 1- On。",
 			},
 		},
 	}

@@ -19,144 +19,144 @@ func DataSourceTencentCloudWedataOpsWorkflows() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"folder_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "File ID.",
+				Description: "File ID。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow status filter: `ALL_RUNNING`: All scheduled, `ALL_FREEZED`: All paused, `ALL_STOPPTED`: All offline, `PART_RUNNING`: Partially scheduled, `ALL_NO_RUNNING`: All unscheduled, `ALL_INVALID`: All invalid.",
+				Description: "Workflow 状态 filter: `ALL_RUNNING`: All scheduled，`ALL_FREEZED`: All paused，`ALL_STOPPTED`: All offline，`PART_RUNNING`: Partially scheduled，`ALL_NO_RUNNING`: All unscheduled，`ALL_INVALID`: All invalid。",
 			},
 
 			"owner_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Responsible person ID.",
+				Description: "Responsible person ID。",
 			},
 
 			"workflow_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow type filter, supported values: `Cycle` or `Manual`. By default, only `Cycle` is queried.",
+				Description: "Workflow 类型 filter，支持的值：`Cycle` or `Manual`. By default，only `Cycle` is queried。",
 			},
 
 			"key_word": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow keyword filter, supports fuzzy matching by workflow ID/name.",
+				Description: "Workflow keyword filter，supports fuzzy matching by workflow ID/名称",
 			},
 
 			"sort_item": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting field, optional values: `CreateTime`, `TaskCount`.",
+				Description: "Sorting field，可选 values: `CreateTime`，`TaskCount`。",
 			},
 
 			"sort_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting order, `DESC` or `ASC`, uppercase.",
+				Description: "Sorting 顺序，`DESC` or `ASC`，uppercase。",
 			},
 
 			"create_user_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Creator ID.",
+				Description: "创建者 ID。",
 			},
 
 			"modify_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Update time, format yyyy-MM-dd HH:mm:ss.",
+				Description: "更新时间，格式 yyyy-MM-dd HH:mm:ss。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Creation time, format yyyy-MM-dd HH:mm:ss.",
+				Description: "创建时间，格式 yyyy-MM-dd HH:mm:ss。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Record list.",
+				Description: "Record list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Task count.",
+							Description: "Task count。",
 						},
 						"folder_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "File name.",
+							Description: "File 名称",
 						},
 						"folder_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow file ID.",
+							Description: "Workflow file ID。",
 						},
 						"workflow_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow ID.",
+							Description: "Workflow ID。",
 						},
 						"workflow_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow name.",
+							Description: "Workflow 名称",
 						},
 						"workflow_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow type: - `Cycle`: Periodic; - `Manual`: Manual.",
+							Description: "Workflow 类型: - `Cycle`: Periodic; - `Manual`: Manual。",
 						},
 						"workflow_desc": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow description.",
+							Description: "Workflow 描述",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Responsible person's user ID, multiple IDs separated by ';'.",
+							Description: "Responsible person's 用户 ID，multiple IDs separated by ';'。",
 						},
 						"project_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Project ID.",
+							Description: "项目 ID",
 						},
 						"project_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Project name.",
+							Description: "项目名称",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow status: `ALL_RUNNING`: All scheduled; `ALL_FREEZED`: All paused; `ALL_STOPPTED`: All offline; `PART_RUNNING`: Partially scheduled; `ALL_NO_RUNNING`: All unscheduled; `ALL_INVALID`: All invalid.",
+							Description: "Workflow 状态: `ALL_RUNNING`: All scheduled; `ALL_FREEZED`: All paused; `ALL_STOPPTED`: All offline; `PART_RUNNING`: Partially scheduled; `ALL_NO_RUNNING`: All unscheduled; `ALL_INVALID`: All invalid。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow creation time.",
+							Description: "Workflow 创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Last update time, including development and production changes.",
+							Description: "Last 更新时间，including development and production changes。",
 						},
 						"update_user_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Last updated by, including development and production changes.",
+							Description: "Last updated by，including development and production changes。",
 						},
 					},
 				},
@@ -165,7 +165,7 @@ func DataSourceTencentCloudWedataOpsWorkflows() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

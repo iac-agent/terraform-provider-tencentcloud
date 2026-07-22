@@ -20,39 +20,39 @@ func DataSourceTencentCloudTCRNamespaces() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the instance that the namespace belongs to.",
+				Description: "ID instance that the namespace belongs to。",
 			},
 			"namespace_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the TCR namespace to query.",
+				Description: "ID TCR namespace to query。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			// Computed values
 			"namespace_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the dedicated TCR namespaces.",
+				Description: "Information 列表 the dedicated TCR namespaces。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of TCR namespace.",
+							Description: "名称 TCR namespace。",
 						},
 						"is_public": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicate that the namespace is public or not.",
+							Description: "Indicate that the namespace is public or not。",
 						},
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID of TCR namespace.",
+							Description: "ID TCR namespace。",
 						},
 					},
 				},

@@ -29,33 +29,33 @@ func ResourceTencentCloudClbCustomizedConfigAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of Customized Config.",
+				Description: "自定义配置ID",
 			},
 			"bind_list": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Associated server or location.",
+				Description: "关联的服务器或位置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"load_balancer_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Clb ID.",
+							Description: "俱乐部 ID。",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Listener ID.",
+							Description: "听众 ID。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Domain.",
+							Description: "领域。",
 						},
 						"location_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Location ID.",
+							Description: "位置 ID。",
 						},
 					},
 				},

@@ -28,30 +28,30 @@ func ResourceTencentCloudTeoSecurityIpGroup() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Site ID.",
+				Description: "站点 ID",
 			},
 
 			"ip_group": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "IP group information, replace all when modifying.",
+				Description: "IP group information，replace all when modifying。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Group ID.",
+							Description: "组 ID",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Group name.",
+							Description: "组名称",
 						},
 						"content": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "IP group content. Only supports IP and IP mask.",
+							Description: "IP group 内容 Only supports IP and IP mask。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

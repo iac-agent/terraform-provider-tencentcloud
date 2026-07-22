@@ -25,13 +25,13 @@ func ResourceTencentCloudConfigRecorderConfig() *schema.Resource {
 			"status": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to enable resource monitoring. true: enable (OpenConfigRecorder), false: disable (CloseConfigRecorder).",
+				Description: "是否enable resource monitoring. true: enable (OpenConfigRecorder)，false: disable (CloseConfigRecorder)。",
 			},
 
 			"resource_types": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Resource type list to monitor (e.g. QCS::CAM::Group, QCS::CVM::Instance).",
+				Description: "资源类型 list to monitor (e.g. QCS::CAM::Group，QCS::CVM::Instance)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -41,25 +41,25 @@ func ResourceTencentCloudConfigRecorderConfig() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Recorder creation time.",
+				Description: "Recorder 创建时间。",
 			},
 
 			"trigger_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of snapshots taken today.",
+				Description: "数量 snapshots taken today。",
 			},
 
 			"open_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of times monitoring was opened today.",
+				Description: "数量 times monitoring was opened today。",
 			},
 
 			"update_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of monitoring range updates today.",
+				Description: "数量 monitoring range updates today。",
 			},
 		},
 	}

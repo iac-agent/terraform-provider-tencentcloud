@@ -31,25 +31,25 @@ func ResourceTencentCloudAntiddosDdosGeoIpBlockConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"ddos_geo_ip_block_config": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "DDoS region blocking configuration, configuration ID cannot be empty when filling in parameters.",
+				Description: "DDoS 地域 blocking configuration，configuration ID cannot be empty when filling in parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Region type, value [oversea (overseas) China (domestic) customized (custom region)].",
+							Description: "地域 类型，值 [oversea (overseas) China (domestic) customized (custom 地域)]。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Blocking action, value [drop (intercept) trans (release)].",
+							Description: "Blocking 操作，值 [drop (intercept) trans (release)]。",
 						},
 						"area_list": {
 							Type: schema.TypeSet,
@@ -57,7 +57,7 @@ func ResourceTencentCloudAntiddosDdosGeoIpBlockConfig() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Optional:    true,
-							Description: "When RegionType is customized, an AreaList must be filled in, with a maximum of 128 entries;.",
+							Description: "When RegionType is customized，an AreaList must be filled in，with a maximum of 128 entries;。",
 						},
 					},
 				},

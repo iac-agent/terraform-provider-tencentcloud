@@ -25,7 +25,7 @@ func ResourceTencentCloudMysqlDrInstanceToMater() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Disaster recovery instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+				Description: "容灾实例ID，格式为“cdb-c1nl9rpv”。与腾讯数据库控制台显示的实例ID相同。",
 			},
 		},
 	}

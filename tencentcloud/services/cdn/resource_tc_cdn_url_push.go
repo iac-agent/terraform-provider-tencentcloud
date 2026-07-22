@@ -28,37 +28,37 @@ func ResourceTencentCloudUrlPush() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "List of url to push. NOTE: urls need include protocol prefix `http://` or `https://`.",
+				Description: "列表 URL to push. NOTE: urls need include 协议 prefix `http://` or `https://`。",
 			},
 			"redo": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Change to push again. NOTE: this argument only works while resource update, if set to `0` or null will not be triggered.",
+				Description: "Change to push again. NOTE: this argument only works while resource update，if set to `0` or null will not be triggered。",
 			},
 			"area": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specify push area. NOTE: only push same area cache contents.",
+				Description: "指定push area. NOTE: only push same area cache contents。",
 			},
 			"user_agent": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specify `User-Agent` HTTP header, default: `TencentCdn`.",
+				Description: "指定`用户-Agent` HTTP header，默认值：`TencentCdn`。",
 			},
 			"layer": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Layer to push.",
+				Description: "Layer to push。",
 			},
 			"parse_m3u8": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to recursive parse m3u8 files.",
+				Description: "是否recursive parse m3u8 files。",
 			},
 			"task_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Push task id.",
+				Description: "Push 任务 ID",
 			},
 			// Plan to support
 			//"disable_range": {
@@ -69,43 +69,43 @@ func ResourceTencentCloudUrlPush() *schema.Resource {
 			"push_history": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "logs of latest push task.",
+				Description: "logs of latest push task。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Push task id.",
+							Description: "Push 任务 ID",
 						},
 						"url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Push url.",
+							Description: "Push URL",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Push status of `fail`, `done`, `process` or `invalid` (4xx, 5xx response).",
+							Description: "Push 状态 `fail`，`done`，`process` or `invalid` (4xx，5xx response)。",
 						},
 						"percent": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Push progress in percent.",
+							Description: "Push progress in percent。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Push task create time.",
+							Description: "Push task 创建时间。",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Push tag area in `mainland`, `overseas` or `global`.",
+							Description: "Push 标签 area in `mainland`，`overseas` or `global`。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Push task update time.",
+							Description: "Push task 更新时间。",
 						},
 					},
 				},

@@ -25,35 +25,35 @@ func ResourceTencentCloudVpcPrivateNatGateway() *schema.Resource {
 			"nat_gateway_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Private network gateway name.",
+				Description: "Private network gateway 名称",
 			},
 
 			"vpc_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Private Cloud instance ID. This parameter is required when creating a VPC type private network NAT gateway or a private network NAT gateway of private network gateway.",
+				Description: "Private Cloud instance ID. This parameter 为必填项 when creating a VPC 类型 private network NAT gateway or a private network NAT gateway of private network gateway。",
 			},
 
 			"cross_domain": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Cross-domain parameters. Cross-domain binding of VPCs is supported only when the value is True.",
+				Description: "Cross-域名 parameters. Cross-域名 binding of VPCs is supported only when the 值 is True。",
 			},
 
 			"vpc_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "VPC type private network NAT gateway. Only when the value is True will a VPC type private network NAT gateway be created.",
+				Description: "VPC 类型 private network NAT gateway. Only when the 值 is True will a VPC 类型 private network NAT gateway be created。",
 			},
 
 			"ccn_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Cloud Connect Network type The Cloud Connect Network instance ID required to be bound to the private network NAT gateway.",
+				Description: "Cloud Connect Network 类型 The Cloud Connect Network instance ID 必填 to be bound to the private network NAT gateway。",
 			},
 		},
 	}

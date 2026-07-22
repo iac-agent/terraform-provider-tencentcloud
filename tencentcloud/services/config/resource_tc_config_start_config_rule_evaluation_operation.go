@@ -22,14 +22,14 @@ func ResourceTencentCloudConfigStartConfigRuleEvaluationOperation() *schema.Reso
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Config rule ID to trigger evaluation for.",
+				Description: "配置 rule ID to trigger evaluation for。",
 			},
 
 			"compliance_pack_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Compliance pack ID to trigger evaluation for.",
+				Description: "Compliance pack ID to trigger evaluation for。",
 			},
 		},
 	}

@@ -28,12 +28,12 @@ func ResourceTencentCloudRouteTableAssociation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Subnet instance ID, such as `subnet-3x5lf5q0`. This can be queried using the DescribeSubnets API.",
+				Description: "子网实例 ID，such as `subnet-3x5lf5q0`. This can be queried using the DescribeSubnets API。",
 			},
 			"route_table_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The route table instance ID, such as `rtb-azd4dt1c`.",
+				Description: "The route table instance ID，such as `rtb-azd4dt1c`。",
 			},
 		},
 	}

@@ -28,38 +28,38 @@ func ResourceTencentCloudTeoCustomizeErrorPage() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Custom error page name. The name must be 2-30 characters long.",
+				Description: "Custom 错误 page 名称 The 名称 must be 2-30 characters long。",
 			},
 
 			"content_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Custom error page type, with values:<li>text/html; </li><li>application/json;</li><li>text/plain;</li><li>text/xml.</li>.",
+				Description: "Custom 错误 page 类型，with values:<li>text/html; </li><li>application/json;</li><li>text/plain;</li><li>text/xml.</li>。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom error page description, not exceeding 60 characters.",
+				Description: "Custom 错误 page 描述，not exceeding 60 characters。",
 			},
 
 			"content": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom error page content, not exceeding 2 KB.",
+				Description: "Custom 错误 page 内容，not exceeding 2 KB。",
 			},
 
 			// computed
 			"page_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Page ID.",
+				Description: "Page ID。",
 			},
 		},
 	}

@@ -29,20 +29,20 @@ func ResourceTencentCloudCiBucketPicStyle() *schema.Resource {
 				ForceNew:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateCosBucketName,
-				Description:  "bucket name.",
+				Description:  "存储桶名称",
 			},
 			"style_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "style name, style names are case-sensitive, and a combination of uppercase and lowercase letters, numbers, and `$ + _ ( )` is supported.",
+				Description: "style 名称，style names are case-sensitive，and a combination of uppercase and lowercase letters，numbers，and `$ + _ ( )` is supported。",
 			},
 
 			"style_body": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "style details, example: mageMogr2/grayscale/1.",
+				Description: "style details，example: mageMogr2/grayscale/1。",
 			},
 		},
 	}

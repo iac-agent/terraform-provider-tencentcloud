@@ -30,37 +30,37 @@ func ResourceTencentCloudDcdbDbInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The availability zone distribution of shard nodes can be filled with up to two availability zones. When the shard specification is one master and two slaves, two of the nodes are in the first availability zone.Note that the current availability zone that can be sold needs to be pulled through the DescribeDCDBSaleInfo interface.",
+				Description: "The availability 可用区 distribution of shard nodes can be filled with up to two availability zones. When the shard specification is one master and two slaves，two of the nodes are in the first availability 可用区Note that the current availability 可用区 that can be sold needs to be pulled through the DescribeDCDBSaleInfo interface。",
 			},
 
 			"period": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The length of time you want to buy, unit: month.",
+				Description: "The length of time you want to buy，unit: month。",
 			},
 
 			"shard_memory": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Shard memory size, unit: GB, can pass DescribeShardSpec Query the instance specification to obtain.",
+				Description: "Shard memory size，unit: GB，can pass DescribeShardSpec Query the instance specification to obtain。",
 			},
 
 			"shard_storage": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: " Shard storage size, unit: GB, can pass DescribeShardSpec  Query the instance specification to obtain.",
+				Description: " Shard storage size，unit: GB，can pass DescribeShardSpec  Query the instance specification to obtain。",
 			},
 
 			"shard_node_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: " Number of single shard nodes, can pass DescribeShardSpec  Query the instance specification to obtain.",
+				Description: " 数量 single shard nodes，can pass DescribeShardSpec  Query the instance specification to obtain。",
 			},
 
 			"shard_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of instance fragments, the optional range is 2-8, and new fragments can be added to a maximum of 64 fragments by upgrading the instance.",
+				Description: "The 数量 instance fragments，the 可选 range is 2-8，and new fragments can be added to a maximum of 64 fragments by upgrading the instance。",
 			},
 
 			// "count": {
@@ -72,31 +72,31 @@ func ResourceTencentCloudDcdbDbInstance() *schema.Resource {
 			"project_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Project ID, which can be obtained by viewing the project list, if not passed, it will be associated with the default project.",
+				Description: "项目 ID，which can be obtained by viewing the project list，如果未传入，it will be associated with the default project。",
 			},
 
 			"vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Virtual private network ID, if not passed or passed empty, it means that it is created as a basic network.",
+				Description: "Virtual private network ID，如果未传入 or passed empty，it means that it is created as a basic network。",
 			},
 
 			"subnet_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Virtual private network subnet ID, required when VpcId is not empty.",
+				Description: "Virtual private network subnet ID，必填 when VpcId is not empty。",
 			},
 
 			"db_version_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: " Database engine version, currently available: 8.0.18, 10.1.9, 5.7.17.  8.0.18 - MySQL 8.0.18;  10.1.9 - Mariadb 10.1.9;  5.7.17 - Percona 5.7.17  If not filled, the default is 5.7.17, which means Percona 5.7.17.",
+				Description: " Database engine 版本，currently available: 8.0.18，10.1.9，5.7.17.  8.0.18 - MySQL 8.0.18;  10.1.9 - Mariadb 10.1.9;  5.7.17 - Percona 5.7.17  如果未填写，the 默认为 5.7.17，which means Percona 5.7.17。",
 			},
 
 			"auto_voucher": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to automatically use vouchers for payment, not used by default.",
+				Description: "是否automatically use vouchers for payment，not used by default。",
 			},
 
 			"voucher_ids": {
@@ -105,62 +105,62 @@ func ResourceTencentCloudDcdbDbInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Voucher ID list, currently only supports specifying one voucher.",
+				Description: "Voucher ID list，currently only supports specifying one voucher。",
 			},
 
 			"instance_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Instance name, you can set the name of the instance independently through this field.",
+				Description: "实例名称，you can set the 名称 instance independently through this field。",
 			},
 
 			"ipv6_flag": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to support IPv6.",
+				Description: "是否support IPv6。",
 			},
 
 			"extranet_access": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to open the extranet access.",
+				Description: "是否open the extranet access。",
 			},
 
 			"vip": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The field is required to specify VIP.",
+				Description: "The field 为必填项 to 指定VIP。",
 			},
 
 			"vipv6": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The field is required to specify VIPv6.",
+				Description: "The field 为必填项 to 指定VIPv6。",
 			},
 
 			"vport": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Intranet port.",
+				Description: "Intranet 端口",
 			},
 
 			"resource_tags": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Array of tag key-value pairs.",
+				Description: "数组 标签键-值 pairs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The key of tag.",
+							Description: "The 键 of 标签",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The value of tag.",
+							Description: "The 值 of 标签",
 						},
 					},
 				},
@@ -169,18 +169,18 @@ func ResourceTencentCloudDcdbDbInstance() *schema.Resource {
 			"init_params": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: " parameter list. The optional values of this interface are:  character_set_server (character set, must be passed),  lower_case_table_names (table name is case sensitive, must be passed, 0 - sensitive; 1 - insensitive),  innodb_page_size (innodb data page, default 16K),  sync_mode ( Synchronous mode: 0 - asynchronous; 1 - strong synchronous; 2 - strong synchronous degenerate. The default is strong synchronous degenerate) .",
+				Description: " parameter list. The 可选 values of this interface are:  character_set_server (character set，must be passed)， lower_case_table_names (table 名称 is case sensitive，must be passed，0 - sensitive; 1 - insensitive)， innodb_page_size (innodb data page，default 16K)， sync_mode ( Synchronous 模式: 0 - asynchronous; 1 - strong synchronous; 2 - strong synchronous degenerate. The 默认为 strong synchronous degenerate) 。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The name of parameter.",
+							Description: "名称 parameter。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The value of parameter.",
+							Description: "The 值 of parameter。",
 						},
 					},
 				},
@@ -189,19 +189,19 @@ func ResourceTencentCloudDcdbDbInstance() *schema.Resource {
 			"dcn_region": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "DCN source region.",
+				Description: "DCN 来源 地域",
 			},
 
 			"dcn_instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "DCN source instance ID.",
+				Description: "DCN 来源 instance ID。",
 			},
 
 			"auto_renew_flag": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: " Automatic renewal flag, 0 means the default state (the user has not set it, that is, the initial state is manual renewal, and the user has activated the prepaid non-stop privilege and will also perform automatic renewal).  1 means automatic renewal, 2 means no automatic renewal (user setting).  if the business has no concept of renewal or automatic renewal is not required, it needs to be set to 0.",
+				Description: " Automatic renewal flag，0 means the default state (the 用户 has not set it，that is，the initial state is manual renewal，and the 用户 has activated the prepaid non-stop privilege and will also perform automatic renewal).  1 means automatic renewal，2 means no automatic renewal (用户 setting).  if the business has no concept of renewal or automatic renewal 不是必填项，it needs to be set to 0。",
 			},
 
 			"security_group_ids": {
@@ -210,7 +210,7 @@ func ResourceTencentCloudDcdbDbInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Security group ids, the security group can be passed in the form of an array, compatible with the previous SecurityGroupId parameter.",
+				Description: "Security group ids，the security group can be passed in the form of an array，compatible with the previous SecurityGroupId parameter。",
 			},
 		},
 	}

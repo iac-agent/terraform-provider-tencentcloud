@@ -19,7 +19,7 @@ func DataSourceTencentCloudVpcRouteConflicts() *schema.Resource {
 			"route_table_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Routing table instance ID, for example:rtb-azd4dt1c.",
+				Description: "Routing table instance ID，for example:rtb-azd4dt1c。",
 			},
 
 			"destination_cidr_blocks": {
@@ -28,90 +28,90 @@ func DataSourceTencentCloudVpcRouteConflicts() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of conflicting destinations to check for.",
+				Description: "列表 conflicting destinations to check for。",
 			},
 
 			"route_conflict_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "route conflict list.",
+				Description: "route conflict list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"route_table_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "route table id.",
+							Description: "route table id。",
 						},
 						"destination_cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "destination cidr block.",
+							Description: "destination cidr block。",
 						},
 						"conflict_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "route conflict list.",
+							Description: "route conflict list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"destination_cidr_block": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Destination Cidr Block, like 112.20.51.0/24.",
+										Description: "Destination Cidr Block，like 112.20.51.0/24。",
 									},
 									"gateway_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "next gateway type.",
+										Description: "next gateway 类型",
 									},
 									"gateway_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "next hop id.",
+										Description: "next hop id。",
 									},
 									"route_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "route id.",
+										Description: "route id。",
 									},
 									"route_description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "route description.",
+										Description: "route 描述",
 									},
 									"enabled": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "if enabled.",
+										Description: "if 已启用",
 									},
 									"route_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "routr type.",
+										Description: "routr 类型",
 									},
 									"route_table_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "route table id.",
+										Description: "route table id。",
 									},
 									"destination_ipv6_cidr_block": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Destination of Ipv6 Cidr Block.",
+										Description: "Destination of Ipv6 Cidr Block。",
 									},
 									"route_item_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "unique policy id.",
+										Description: "unique policy id。",
 									},
 									"published_to_vbc": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "if published To ccn.",
+										Description: "if published To ccn。",
 									},
 									"created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "create time.",
+										Description: "创建时间。",
 									},
 								},
 							},
@@ -123,7 +123,7 @@ func DataSourceTencentCloudVpcRouteConflicts() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

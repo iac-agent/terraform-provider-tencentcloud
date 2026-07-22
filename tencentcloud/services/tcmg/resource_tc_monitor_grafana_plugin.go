@@ -29,20 +29,20 @@ func ResourceTencentCloudMonitorGrafanaPlugin() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Grafana instance id.",
+				Description: "Grafana 实例 ID",
 			},
 
 			"plugin_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Plugin id.",
+				Description: "Plugin id。",
 			},
 
 			"version": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Plugin version.",
+				Description: "Plugin 版本",
 			},
 		},
 	}

@@ -21,23 +21,23 @@ func ResourceTencentCloudKmsExternalKey() *schema.Resource {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Default:     KMS_WRAPPING_ALGORITHM_RSAES_PKCS1_V1_5,
-			Description: "The algorithm for encrypting key material. Available values include `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1` and `RSAES_OAEP_SHA_256`. Default value is `RSAES_PKCS1_V1_5`.",
+			Description: "The algorithm for encrypting 键 material. Available values include `RSAES_PKCS1_V1_5`，`RSAES_OAEP_SHA_1` and `RSAES_OAEP_SHA_256`. 默认值为 `RSAES_PKCS1_V1_5`。",
 		},
 		"key_material_base64": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Sensitive:   true,
-			Description: "The base64-encoded key material encrypted with the public_key. For regions using the national secret version, the length of the imported key material is required to be 128 bits, and for regions using the FIPS version, the length of the imported key material is required to be 256 bits.",
+			Description: "The base64-encoded 键 material encrypted with the public_key. For regions using the national secret 版本，the length of the imported 键 material 为必填项 to be 128 bits，and for regions using the FIPS 版本，the length of the imported 键 material 为必填项 to be 256 bits。",
 		},
 		"valid_to": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "This value means the effective timestamp of the key material, 0 means it does not expire. Need to be greater than the current timestamp, the maximum support is 2147443200.",
+			Description: "This 值 means the effective 时间戳 of the 键 material，0 means it does not expire. Need to be greater than the current 时间戳，the maximum support is 2147443200。",
 		},
 		"hsm_cluster_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "The HSM cluster ID corresponding to KMS Advanced Edition (only valid for KMS Exclusive/Managed Edition service instances).",
+			Description: "The HSM cluster ID corresponding to KMS Advanced Edition (only valid for KMS Exclusive/Managed Edition service instances)。",
 		},
 	}
 

@@ -26,31 +26,31 @@ func DataSourceTencentCloudUserInfo() *schema.Resource {
 			"app_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current account App ID.",
+				Description: "Current 账号 App ID。",
 			},
 
 			"uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current account UIN.",
+				Description: "Current 账号 UIN。",
 			},
 
 			"owner_uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current account OwnerUIN.",
+				Description: "Current 账号 OwnerUIN。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current account Name. NOTE: only support subaccount.",
+				Description: "Current 账号 名称 NOTE: only support subaccount。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used for save results.",
+				Description: "用于save results。",
 			},
 		},
 	}

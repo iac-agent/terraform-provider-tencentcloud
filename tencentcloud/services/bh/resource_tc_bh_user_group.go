@@ -26,21 +26,21 @@ func ResourceTencentCloudBhUserGroup() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "User group name, maximum length 32 characters.",
+				Description: "用户 组名称，maximum length 32 characters。",
 			},
 
 			"department_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Department ID to which the user group belongs, e.g.: 1.2.3.",
+				Description: "Department ID to which the 用户 group belongs，e.g.: 1.2.3。",
 			},
 
 			// computed
 			"user_group_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "User group ID.",
+				Description: "用户 组 ID",
 			},
 		},
 	}

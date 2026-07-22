@@ -19,29 +19,29 @@ func DataSourceTencentCloudScfAsyncEventStatus() *schema.Resource {
 			"invoke_request_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the async execution request.",
+				Description: "ID async execution request。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Async event status.",
+				Description: "Async event 状态",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Async event status. Values: `RUNNING` (running); `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed).",
+							Description: "Async event 状态 Values: `RUNNING` (running); `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed)。",
 						},
 						"status_code": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Request status code.",
+							Description: "Request 状态 代码",
 						},
 						"invoke_request_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Async execution request ID.",
+							Description: "Async execution 请求 ID",
 						},
 					},
 				},
@@ -50,7 +50,7 @@ func DataSourceTencentCloudScfAsyncEventStatus() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

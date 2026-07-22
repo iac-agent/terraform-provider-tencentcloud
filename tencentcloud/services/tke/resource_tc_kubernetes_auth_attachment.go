@@ -27,49 +27,49 @@ func ResourceTencentCloudKubernetesAuthAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of clusters.",
+				Description: "ID clusters。",
 			},
 
 			"use_tke_default": {
 				Type:          schema.TypeBool,
 				Optional:      true,
 				ConflictsWith: []string{"issuer", "jwks_uri"},
-				Description:   "If set to `true`, the issuer and jwks_uri will be generated automatically by tke, please do not set issuer and jwks_uri.",
+				Description:   "If set to `true`，the issuer and jwks_uri will be generated automatically by tke，please do not set issuer and jwks_uri。",
 			},
 
 			"issuer": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"use_tke_default"},
-				Description:   "Specify service-account-issuer. If use_tke_default is set to `true`, please do not set this field.",
+				Description:   "指定service-账号-issuer. If use_tke_默认为 set to `true`，please do not set this field。",
 			},
 
 			"jwks_uri": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"use_tke_default"},
-				Description:   "Specify service-account-jwks-uri. If use_tke_default is set to `true`, please do not set this field.",
+				Description:   "指定service-账号-jwks-uri. If use_tke_默认为 set to `true`，please do not set this field。",
 			},
 
 			"auto_create_discovery_anonymous_auth": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "If set to `true`, the rbac rule will be created automatically which allow anonymous user to access '/.well-known/openid-configuration' and '/openid/v1/jwks'.",
+				Description: "If set to `true`，the rbac rule will be created automatically which allow anonymous 用户 to access '/.well-known/openid-configuration' and '/openid/v1/jwks'。",
 			},
 
 			"auto_create_oidc_config": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Creating an identity provider.",
+				Description: "Creating an identity provider。",
 			},
 
 			"auto_create_client_id": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
-				Description: "Creating ClientId of the identity provider.",
+				Description: "Creating ClientId of the identity provider。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -79,19 +79,19 @@ func ResourceTencentCloudKubernetesAuthAttachment() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Creating the PodIdentityWebhook component. if `auto_create_oidc_config` is true, this field must set true.",
+				Description: "Creating the PodIdentityWebhook component. if `auto_create_oidc_config` is true，this field must set true。",
 			},
 
 			"tke_default_issuer": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The default issuer of tke. If use_tke_default is set to `true`, this parameter will be set to the default value.",
+				Description: "The default issuer of tke. If use_tke_默认为 set to `true`，this parameter will be set to the 默认值",
 			},
 
 			"tke_default_jwks_uri": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The default jwks_uri of tke. If use_tke_default is set to `true`, this parameter will be set to the default value.",
+				Description: "The default jwks_uri of tke. If use_tke_默认为 set to `true`，this parameter will be set to the 默认值",
 			},
 		},
 	}

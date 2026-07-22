@@ -17,38 +17,38 @@ func DataSourceTencentCloudCfwVpcFwSwitches() *schema.Resource {
 			"vpc_ins_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Firewall instance id.",
+				Description: "Firewall 实例 ID",
 			},
 			"switch_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Switch list.",
+				Description: "Switch list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Firewall switch ID.",
+							Description: "Firewall switch ID。",
 						},
 						"switch_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Firewall switch name.",
+							Description: "Firewall switch 名称",
 						},
 						"switch_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "switch mode.",
+							Description: "switch 模式",
 						},
 						"enable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Switch status 0: off, 1: on.",
+							Description: "Switch 状态 0: off，1: on。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Switch status 0: normal, 1: switching.",
+							Description: "Switch 状态 0: normal，1: switching。",
 						},
 					},
 				},
@@ -56,7 +56,7 @@ func DataSourceTencentCloudCfwVpcFwSwitches() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

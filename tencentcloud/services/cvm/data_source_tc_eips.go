@@ -23,79 +23,79 @@ func DataSourceTencentCloudEips() *schema.Resource {
 			"eip_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the EIP to be queried.",
+				Description: "ID EIP to be queried。",
 			},
 			"eip_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the EIP to be queried.",
+				Description: "名称 EIP to be queried。",
 			},
 			"public_ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The elastic ip address.",
+				Description: "The elastic ip 地址",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "The tags of EIP.",
+				Description: "The 标签 of EIP。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			"eip_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of EIP. Each element contains the following attributes:",
+				Description: "An information 列表 EIP. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"eip_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the EIP.",
+							Description: "ID EIP。",
 						},
 						"eip_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the EIP.",
+							Description: "名称 EIP。",
 						},
 						"eip_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the EIP.",
+							Description: "类型 EIP。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The EIP current status.",
+							Description: "The EIP current 状态",
 						},
 						"public_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The elastic ip address.",
+							Description: "The elastic ip 地址",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The instance id to bind with the EIP.",
+							Description: "The 实例 ID to bind with the EIP。",
 						},
 						"eni_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The eni id to bind with the EIP.",
+							Description: "The eni id to bind with the EIP。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of the EIP.",
+							Description: "创建时间 of the EIP。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Tags of the EIP.",
+							Description: "标签 of the EIP。",
 						},
 					},
 				},

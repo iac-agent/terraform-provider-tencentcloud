@@ -29,13 +29,13 @@ func ResourceTencentCloudVpcPrivateNatGatewayTranslationNatRule() *schema.Resour
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Private NAT gateway unique ID, such as: `intranat-xxxxxxxx`.",
+				Description: "Private NAT gateway unique ID，such as: `intranat-xxxxxxxx`。",
 			},
 
 			"translation_nat_rules": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Translation rule object array.",
+				Description: "Translation rule object array。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"translation_direction": {
@@ -51,17 +51,17 @@ func ResourceTencentCloudVpcPrivateNatGatewayTranslationNatRule() *schema.Resour
 						"translation_ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Translation IP, when translation rule type is transport layer, it is an IP pool.",
+							Description: "Translation IP，when translation rule 类型 is transport layer，it is an IP pool。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Translation rule description.",
+							Description: "Translation rule 描述",
 						},
 						"original_ip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Source IP, valid when translation rule type is network layer.",
+							Description: "来源 IP，valid when translation rule 类型 is network layer。",
 						},
 					},
 				},

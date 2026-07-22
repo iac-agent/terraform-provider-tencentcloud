@@ -26,14 +26,14 @@ func ResourceTencentCloudWafInstanceAttackLogPostConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Waf instance ID.",
+				Description: "Waf instance ID。",
 			},
 
 			"attack_log_post": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "Attack log delivery switch. 0- Disable, 1- Enable.",
+				Description:  "Attack log delivery switch. 0- Disable，1- Enable。",
 			},
 		},
 	}

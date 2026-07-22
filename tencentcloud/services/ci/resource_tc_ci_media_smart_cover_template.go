@@ -29,46 +29,46 @@ func ResourceTencentCloudCiMediaSmartCoverTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "The 模板名称 only supports `Chinese`，`English`，`numbers`，`_`，`-` and `*`。",
 			},
 
 			"smart_cover": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Smart Cover Parameters.",
+				Description: "Smart Cover Parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"format": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image Format, value jpg, png, webp.",
+							Description: "Image 格式，值 jpg，png，webp。",
 						},
 						"width": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Width, value range: [128, 4096], unit: px, if only Width is set, Height is calculated according to the original ratio of the video.",
+							Description: "Width，取值范围：[128，4096]，unit: px，if only Width is set，Height is calculated according to the original ratio of the video。",
 						},
 						"height": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Height, value range: [128, 4096], unit: px, if only Height is set, Width is calculated according to the original video ratio.",
+							Description: "Height，取值范围：[128，4096]，unit: px，if only Height is set，Width is calculated according to the original video ratio。",
 						},
 						"count": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Number of screenshots, [1,10].",
+							Description: "数量 screenshots，[1,10]。",
 						},
 						"delete_duplicates": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "cover deduplication, true/false.",
+							Description: "cover deduplication，true/false。",
 						},
 					},
 				},

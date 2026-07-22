@@ -27,13 +27,13 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 			"dv_auth_method": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Specify DV authorize method. Available values: `DNS_AUTO` - automatic DNS auth, `DNS` - manual DNS auth, `FILE` - auth by file.",
+				Description: "指定DV authorize method. 可用值：`DNS_AUTO` - automatic DNS auth，`DNS` - manual DNS auth，`FILE` - auth by file。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Specify domain name.",
+				Description: "指定domain 名称",
 			},
 			"package_type": {
 				Type:        schema.TypeString,
@@ -43,12 +43,12 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 			"contact_email": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Email address.",
+				Description: "Email 地址",
 			},
 			"contact_phone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Phone number.",
+				Description: "Phone number。",
 			},
 			"validity_period": {
 				Type:        schema.TypeString,
@@ -58,7 +58,7 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 			"csr_encrypt_algo": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specify CSR encrypt algorithm, only support `RSA` for now.",
+				Description: "指定CSR encrypt algorithm，only support `RSA` for now。",
 			},
 			"csr_key_parameter": {
 				Type:        schema.TypeString,
@@ -69,104 +69,104 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Sensitive:   true,
-				Description: "Specify CSR key password.",
+				Description: "指定CSR 键 密码",
 			},
 			"alias": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specify alias for remark.",
+				Description: "指定alias for 备注",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "ID of projects which this certification belong to.",
+				Description: "ID projects which this certification belong to。",
 			},
 			"old_certificate_id": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "Specify old certificate ID, used for re-apply.",
+				Description: "指定old 证书 ID，用于re-apply。",
 			},
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Certificate status. 0 = Approving, 1 = Approved, 2 = Approve failed, 3 = expired, 4 = DNS record added, 5 = OV/EV Certificate and confirm letter needed, 6 = Order canceling, 7 = Order canceled, 8 = Submitted and confirm letter needed, 9 = Revoking, 10 = Revoked, 11 = re-applying, 12 = Revoke and confirm letter needed, 13 = Free SSL and confirm letter needed.",
+				Description: "Certificate 状态 0 = Approving，1 = Approved，2 = Approve failed，3 = expired，4 = DNS record added，5 = OV/EV Certificate and confirm letter needed，6 = 顺序 canceling，7 = 顺序 canceled，8 = Submitted and confirm letter needed，9 = Revoking，10 = Revoked，11 = re-applying，12 = Revoke and confirm letter needed，13 = Free SSL and confirm letter needed。",
 			},
 			"status_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate status name.",
+				Description: "Certificate 状态 名称",
 			},
 			"status_msg": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate status message.",
+				Description: "Certificate 状态 消息",
 			},
 			"product_zh_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Product zh name.",
+				Description: "Product zh 名称",
 			},
 			"vulnerability_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Vulnerability status.",
+				Description: "Vulnerability 状态",
 			},
 			"cert_begin_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate begin time.",
+				Description: "Certificate 开始时间。",
 			},
 			"cert_end_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate end time.",
+				Description: "Certificate 结束时间。",
 			},
 			"insert_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate insert time.",
+				Description: "Certificate insert time。",
 			},
 			"certificate_private_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate private key.",
+				Description: "Certificate private 键",
 			},
 			"certificate_public_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate public key.",
+				Description: "Certificate public 键",
 			},
 			"renewable": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Indicates whether the certificate renewable.",
+				Description: "表示是否certificate renewable。",
 			},
 			"deployable": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Indicates whether the certificate deployable.",
+				Description: "表示是否certificate deployable。",
 			},
 			"dv_auths": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "DV certification information.",
+				Description: "DV certification information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dv_auth_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DV authentication key.",
+							Description: "DV authentication 键",
 						},
 						"dv_auth_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DV authentication value.",
+							Description: "DV authentication 值",
 						},
 						"dv_auth_verify_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DV authentication type.",
+							Description: "DV authentication 类型",
 						},
 					},
 				},

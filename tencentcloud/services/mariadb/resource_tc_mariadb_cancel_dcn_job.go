@@ -25,7 +25,7 @@ func ResourceTencentCloudMariadbCancelDcnJob() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 		},
 	}

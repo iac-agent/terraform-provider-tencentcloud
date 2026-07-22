@@ -19,50 +19,50 @@ func DataSourceTencentCloudTcrReplicationInstanceCreateTasks() *schema.Resource 
 			"replication_registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "synchronization instance Id, see RegistryId in DescribeReplicationInstances.",
+				Description: "synchronization instance Id，see RegistryId in DescribeReplicationInstances。",
 			},
 
 			"replication_region_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "synchronization instance region Id, see ReplicationRegionId in DescribeReplicationInstances.",
+				Description: "synchronization instance 地域 Id，see ReplicationRegionId in DescribeReplicationInstances。",
 			},
 
 			"task_detail": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "task details.",
+				Description: "task details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task name.",
+							Description: "task 名称",
 						},
 						"task_uuid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task UUID.",
+							Description: "task UUID。",
 						},
 						"task_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task status.",
+							Description: "task 状态",
 						},
 						"task_message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task status information. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Task 状态 information. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task start name.",
+							Description: "task start 名称",
 						},
 						"finished_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task end time. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "task 结束时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -71,13 +71,13 @@ func DataSourceTencentCloudTcrReplicationInstanceCreateTasks() *schema.Resource 
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "overall task status.",
+				Description: "overall task 状态",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

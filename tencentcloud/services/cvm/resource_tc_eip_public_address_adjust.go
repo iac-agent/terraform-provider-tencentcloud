@@ -24,13 +24,13 @@ func ResourceTencentCloudEipPublicAddressAdjust() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "A unique ID that identifies the CVM instance. The unique ID of CVM is in the form:`ins-osckfnm7`.",
+				Description: "A unique ID that identifies the CVM instance. The unique ID CVM is in the form:`ins-osckfnm7`。",
 			},
 			"address_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "A unique ID that identifies an EIP instance. The unique ID of EIP is in the form:`eip-erft45fu`.",
+				Description: "A unique ID that identifies an EIP instance. The unique ID EIP is in the form:`eip-erft45fu`。",
 			},
 		},
 	}

@@ -26,13 +26,13 @@ func ResourceTencentCloudMonitorBindingAlarmReceiver() *schema.Resource {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Policy group ID for binding receivers.",
+				Description: "Policy 组 ID for binding receivers。",
 			},
 			"receivers": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "A list of receivers(will overwrite the configuration of the server or other resources). Each element contains the following attributes:",
+				Description: "A 列表 receivers(will overwrite the configuration of the server or other resources). Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"start_time": {
@@ -40,14 +40,14 @@ func ResourceTencentCloudMonitorBindingAlarmReceiver() *schema.Resource {
 							Optional:     true,
 							Default:      0,
 							ValidateFunc: tccommon.ValidateIntegerInRange(0, 86399),
-							Description:  "Alarm period start time. Valid value ranges: (0~86399). which removes the date after it is converted to Beijing time as a Unix timestamp, for example 7200 means '10:0:0'.",
+							Description:  "Alarm 周期 开始时间. Valid 值 ranges: (0~86399). which removes the date after it is converted to Beijing time as a Unix 时间戳，for example 7200 means '10:0:0'。",
 						},
 						"end_time": {
 							Type:         schema.TypeInt,
 							Optional:     true,
 							Default:      86400,
 							ValidateFunc: tccommon.ValidateIntegerInRange(0, 86399),
-							Description:  "End of alarm period. Meaning with `start_time`.",
+							Description:  "End of alarm 周期 Meaning with `start_time`。",
 						},
 						"notify_way": {
 							Type:        schema.TypeList,
@@ -66,13 +66,13 @@ func ResourceTencentCloudMonitorBindingAlarmReceiver() *schema.Resource {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Optional:    true,
-							Description: "Alarm receive group ID list.",
+							Description: "Alarm receive 组 ID list。",
 						},
 						"receiver_user_list": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Optional:    true,
-							Description: "Alarm receiver ID list.",
+							Description: "Alarm receiver ID list。",
 						},
 						"receive_language": {
 							Type:         schema.TypeString,

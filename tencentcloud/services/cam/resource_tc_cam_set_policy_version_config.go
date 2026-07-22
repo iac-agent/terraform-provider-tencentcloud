@@ -28,13 +28,13 @@ func ResourceTencentCloudCamSetPolicyVersionConfig() *schema.Resource {
 			"policy_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Policy ID.",
+				Description: "Policy ID。",
 			},
 
 			"version_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The policy version number, which can be obtained from ListPolicyVersions.",
+				Description: "The policy 版本 number，which can be obtained from ListPolicyVersions。",
 			},
 		},
 	}

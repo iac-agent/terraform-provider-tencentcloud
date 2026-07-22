@@ -28,43 +28,43 @@ func ResourceTencentCloudTsfTask() *schema.Resource {
 			"task_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "task ID.",
+				Description: "task ID。",
 			},
 
 			"task_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "task name, task length 64 characters.",
+				Description: "task 名称，task length 64 characters。",
 			},
 
 			"task_content": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "task content, length limit 65536 bytes.",
+				Description: "task 内容，length 限制 65536 bytes。",
 			},
 
 			"execute_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "execution type, unicast/broadcast.",
+				Description: "execution 类型，unicast/broadcast。",
 			},
 
 			"task_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "task type, java.",
+				Description: "task 类型，java。",
 			},
 
 			"time_out": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "task timeout, time unit ms.",
+				Description: "task timeout，time unit ms。",
 			},
 
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "deployment group ID.",
+				Description: "deployment 组 ID",
 			},
 
 			"task_rule": {
@@ -72,23 +72,23 @@ func ResourceTencentCloudTsfTask() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "trigger rule.",
+				Description: "trigger rule。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "trigger rule type, Cron/Repeat.",
+							Description: "trigger rule 类型，Cron/Repeat。",
 						},
 						"expression": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cron type rule, cron expression.",
+							Description: "Cron 类型 rule，cron expression。",
 						},
 						"repeat_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "time interval, in milliseconds.",
+							Description: "时间间隔，（毫秒）。",
 						},
 					},
 				},
@@ -98,39 +98,39 @@ func ResourceTencentCloudTsfTask() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "number of retries, 0 &amp;lt;= RetryCount&amp;lt;= 10.",
+				Description: "数量 retries，0 &amp;lt;= RetryCount&amp;lt;= 10。",
 			},
 
 			"retry_interval": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "retry interval, 0 &amp;lt;= RetryInterval &amp;lt;= 600000, time unit ms.",
+				Description: "重试间隔，0 &amp;lt;= RetryInterval &amp;lt;= 600000，time unit ms。",
 			},
 
 			"shard_count": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "number of shards.",
+				Description: "数量 shards。",
 			},
 
 			"shard_arguments": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Fragmentation parameters.",
+				Description: "Fragmentation parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"shard_key": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Sharding parameter KEY, integer, range [1,1000].",
+							Description: "Sharding parameter KEY，integer，range [1,1000]。",
 						},
 						"shard_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Shard parameter VALUE.",
+							Description: "Shard parameter VALUE。",
 						},
 					},
 				},
@@ -140,14 +140,14 @@ func ResourceTencentCloudTsfTask() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "the operator to judge the success of the task.",
+				Description: "the 操作者 to judge the success of the task。",
 			},
 
 			"success_ratio": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The threshold for judging the success rate of the task, such as 100.",
+				Description: "The threshold for judging the success rate of the task，such as 100。",
 			},
 
 			"advance_settings": {
@@ -155,13 +155,13 @@ func ResourceTencentCloudTsfTask() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "advanced settings.",
+				Description: "advanced settings。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"sub_task_concurrency": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Subtask single-machine concurrency limit, the default value is 2.",
+							Description: "Subtask single-machine 并发 限制，the 默认值为 2。",
 						},
 					},
 				},
@@ -171,13 +171,13 @@ func ResourceTencentCloudTsfTask() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "task parameters, the length limit is 10000 characters.",
+				Description: "task parameters，the length 限制 is 10000 characters。",
 			},
 
 			"task_state": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Whether to enable the task, ENABLED/DISABLED.",
+				Description: "是否enable the task，ENABLED/DISABLED。",
 			},
 
 			"belong_flow_ids": {
@@ -186,19 +186,19 @@ func ResourceTencentCloudTsfTask() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "ID of the workflow to which it belongs.",
+				Description: "ID workflow to which it belongs。",
 			},
 
 			"task_log_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "task history ID.",
+				Description: "task history ID。",
 			},
 
 			"trigger_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "trigger type.",
+				Description: "trigger 类型",
 			},
 
 			"program_id_list": {
@@ -207,7 +207,7 @@ func ResourceTencentCloudTsfTask() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Program id list.",
+				Description: "Program id list。",
 			},
 		},
 	}

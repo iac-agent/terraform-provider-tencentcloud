@@ -20,36 +20,36 @@ func DataSourceTencentCloudDcdbDatabaseTables() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID instance。",
 			},
 
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database name, obtained through the DescribeDatabases api.",
+				Description: "Database 名称，obtained through the DescribeDatabases api。",
 			},
 
 			"table": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Table name, obtained through the DescribeDatabaseObjects api.",
+				Description: "Table 名称，obtained through the DescribeDatabaseObjects api。",
 			},
 
 			"cols": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Column information.",
+				Description: "Column information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"col": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "The name of column.",
+							Description: "名称 column。",
 						},
 						"type": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Column type.",
+							Description: "Column 类型",
 						},
 					},
 				},
@@ -58,7 +58,7 @@ func DataSourceTencentCloudDcdbDatabaseTables() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

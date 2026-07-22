@@ -26,77 +26,77 @@ func ResourceTencentCloudClsConfig() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Collection configuration name.",
+				Description: "集合配置名称。",
 			},
 			"output": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log topic ID (TopicId) of collection configuration.",
+				Description: "采集配置的日志主题ID（TopicId）。",
 			},
 			"path": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log collection path containing the filename. Required for document collection.",
+				Description: "包含文件名的日志收集路径。需要收集文件。",
 			},
 			"log_type": {
 				Type:     schema.TypeString,
 				Optional: true,
-				Description: "Type of the log to be collected. Valid values: json_log: log in JSON format; delimiter_log: log in delimited format; minimalist_log: minimalist log; multiline_log: log in multi-line format; " +
+				Description: "需要收集的日志类型。有效值： json_log：JSON格式日志； delimiter_log：以分隔格式记录； imalist_log：极简日志； multiline_log：以多行格式记录；" +
 					"fullregex_log: log in full regex format. Default value: minimalist_log.",
 			},
 			"extract_rule": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Extraction rule. If ExtractRule is set, LogType must be set.",
+				Description: "提取规则。如果设置了ExtractRule，则必须设置LogType。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Time field key name. time_key and time_format must appear in pair.",
+							Description: "时间字段键名称。 time_key 和 time_format 必须成对出现。",
 						},
 						"time_format": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Time field format. For more information, please see the output parameters of the time format description of the strftime function in C language.",
+							Description: "时间字段格式。更多信息请参见C语言strftime函数时间格式说明的输出参数。",
 						},
 						"delimiter": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Delimiter for delimited log, which is valid only if log_type is delimiter_log.",
+							Description: "分隔日志的分隔符，仅当log_type为delimiter_log时有效。",
 						},
 						"log_regex": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Full log matching rule, which is valid only if log_type is fullregex_log.",
+							Description: "全日志匹配规则，仅当log_type为fullregex_log时有效。",
 						},
 						"begin_regex": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "First-Line matching rule, which is valid only if log_type is multiline_log or fullregex_log.",
+							Description: "首行匹配规则，仅当log_type为multiline_log或fullregex_log时有效。",
 						},
 						"keys": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Key name of each extracted field. An empty key indicates to discard the field. This parameter is valid only if log_type is delimiter_log. json_log logs use the key of JSON itself.",
+							Description: "每个提取字段的键名称。空键表示放弃该字段。该参数仅当log_type为delimiter_log时有效。 json_log 日志使用 JSON 本身的密钥。",
 						},
 						"filter_key_regex": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Log keys to be filtered and the corresponding regex.",
+							Description: "记录要过滤的键和相应的正则表达式。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Log key to be filtered.",
+										Description: "要过滤的日志键。",
 									},
 									"regex": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Filter rule regex corresponding to key.",
+										Description: "key对应的过滤规则正则表达式。",
 									},
 								},
 							},
@@ -104,68 +104,68 @@ func ResourceTencentCloudClsConfig() *schema.Resource {
 						"un_match_up_load_switch": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to upload the logs that failed to be parsed. Valid values: true: yes; false: no.",
+							Description: "是否上传解析失败的日志。有效值：true：是；假：没有。",
 						},
 						"un_match_log_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Unmatched log key. Required when UnMatchUpLoadSwitch is true.",
+							Description: "不匹配的日志密钥。当 UnMatchUpLoadSwitch 为 true 时必需。",
 						},
 						"backtracking": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Size of the data to be rewound in incremental collection mode. Default value: -1 (full collection).",
+							Description: "增量采集模式下回滚的数据大小。默认值：-1（完整集合）。",
 						},
 						"is_gbk": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "GBK encoding. Default 0. Note: - Currently, when the value is 0, it means UTF-8 encoding.",
+							Description: "GBK编码。默认 0。 注意： - 目前，当值为 0 时，表示 UTF-8 编码。",
 						},
 						"json_standard": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "standard json. Default 0.",
+							Description: "标准 json。默认 0。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "syslog protocol, tcp or udp. The value can be tcp or udp. It is effective only when LogType is service_syslog. Other types do not need to be filled in.",
+							Description: "系统日志协议、tcp 或 udp。该值可以是 tcp 或 udp。仅当LogType为service_syslog时有效。其他类型无需填写。",
 						},
 						"address": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "syslog system log collection specifies the address and port that the collector listens to. This parameter is only valid when LogType is service_syslog. It does not need to be filled in for other types.",
+							Description: "syslog系统日志采集指定采集器监听的地址和端口。该参数仅当LogType为service_syslog时有效。其他类型无需填写。",
 						},
 						"parse_protocol": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "parse protocol. This parameter is only valid when LogType is service_syslog. It does not need to be filled in for other types.",
+							Description: "解析协议。该参数仅当LogType为service_syslog时有效。其他类型无需填写。",
 						},
 						"metadata_type": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "metadata type. 0: Do not use metadata information; 1: Use machine group metadata; 2: Use user-defined metadata; 3: Use collection configuration path. Note: COS import does not support this field.",
+							Description: "元数据类型。 0：不使用元数据信息； 1：使用机器组元数据； 2：使用用户定义的元数据； 3：使用采集配置路径。注意：COS 导入不支持该字段。",
 						},
 						"path_regex": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "metadata path regex.",
+							Description: "元数据路径正则表达式。",
 						},
 						"meta_tags": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "metadata tags. Note: - Required when MetadataType is 2. - COS import does not support this field.",
+							Description: "元数据标签。注： - MetadataType 为 2 时必填。 - COS 导入不支持该字段。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "tag key.",
+										Description: "标签键。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "tag value.",
+										Description: "标签值。",
 									},
 								},
 							},
@@ -176,18 +176,18 @@ func ResourceTencentCloudClsConfig() *schema.Resource {
 			"exclude_paths": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Collection path blocklist.",
+				Description: "收集路径阻止列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Type. Valid values: File, Path.",
+							Description: "类型。有效值：文件、路径。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Specific content corresponding to Type.",
+							Description: "具体内容对应Type。",
 						},
 					},
 				},
@@ -195,7 +195,7 @@ func ResourceTencentCloudClsConfig() *schema.Resource {
 			"user_define_rule": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom collection rule, which is a serialized JSON string. Required when LogType is user_define_log.",
+				Description: "自定义采集规则，是序列化的JSON字符串。 LogType为user_define_log时必填。",
 			},
 		},
 	}

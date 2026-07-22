@@ -20,19 +20,19 @@ func DataSourceTencentCloudMysqlErrorLog() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Start timestamp. For example 1585142640.",
+				Description: "开始时间戳。例如 1585142640。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "End timestamp. For example 1585142640.",
+				Description: "结束时间戳。例如 1585142640。",
 			},
 
 			"key_words": {
@@ -41,30 +41,30 @@ func DataSourceTencentCloudMysqlErrorLog() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "A list of keywords to match, up to 15 keywords are supported.",
+				Description: "要匹配的关键字列表，最多支持 15 个关键字。",
 			},
 
 			"inst_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Only valid when the instance is the master instance or disaster recovery instance, the optional value: slave, which means to pull the log of the slave machine.",
+				Description: "仅当实例为主实例或灾备实例时有效，可选值：slave，表示拉取从机的日志。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The records returned.",
+				Description: "记录返回。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timestamp": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The time the error occurred.",
+							Description: "错误发生的时间。",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "error details.",
+							Description: "错误详细信息。",
 						},
 					},
 				},
@@ -73,7 +73,7 @@ func DataSourceTencentCloudMysqlErrorLog() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

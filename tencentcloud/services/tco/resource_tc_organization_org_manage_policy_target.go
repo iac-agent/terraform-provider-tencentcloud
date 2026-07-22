@@ -27,21 +27,21 @@ func ResourceTencentCloudOrganizationOrgManagePolicyTarget() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Binding target ID of the policy. Member Uin or Department ID.",
+				Description: "Binding target ID policy. Member Uin or Department ID。",
 			},
 
 			"target_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Target type.\nValid values:\n  - `NODE`: Department.\n  - `MEMBER`: Check Member.",
+				Description: "Target 类型\nValid values:\n  - `NODE`: Department.\n  - `MEMBER`: Check Member。",
 			},
 
 			"policy_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Policy Id.",
+				Description: "Policy Id。",
 			},
 
 			"policy_type": {
@@ -49,7 +49,7 @@ func ResourceTencentCloudOrganizationOrgManagePolicyTarget() *schema.Resource {
 				ForceNew:    true,
 				Default:     ServiceControlPolicyType,
 				Type:        schema.TypeString,
-				Description: "Policy type. Default value is SERVICE_CONTROL_POLICY.\nValid values:\n  - `SERVICE_CONTROL_POLICY`: Service control policy.\n  - `TAG_POLICY`: Tag policy.",
+				Description: "Policy 类型 默认值为 SERVICE_CONTROL_POLICY.\nValid values:\n  - `SERVICE_CONTROL_POLICY`: Service control policy.\n  - `TAG_POLICY`: 标签 policy。",
 			},
 		},
 	}

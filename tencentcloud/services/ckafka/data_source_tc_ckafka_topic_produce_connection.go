@@ -19,35 +19,35 @@ func DataSourceTencentCloudCkafkaTopicProduceConnection() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"topic_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "TopicName.",
+				Description: "TopicName。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "link information return result set.",
+				Description: "link information return 结果 set。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip_addr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ip address.",
+							Description: "ip 地址",
 						},
 						"time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "connect time.",
+							Description: "connect time。",
 						},
 						"is_un_support_version": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Is the supported version.",
+							Description: "Is the supported 版本",
 						},
 					},
 				},
@@ -56,7 +56,7 @@ func DataSourceTencentCloudCkafkaTopicProduceConnection() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

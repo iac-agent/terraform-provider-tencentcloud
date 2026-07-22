@@ -26,31 +26,31 @@ func ResourceTencentCloudCssPlayAuthKeyConfig() *schema.Resource {
 			"domain_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain Name.",
+				Description: "域名 名称",
 			},
 
 			"enable": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Enable or not, 0: Close, 1: Enable. No transfer means that the current value is not modified.",
+				Description: "Enable or not，0: Close，1: Enable. No transfer means that the 当前值 is not modified。",
 			},
 
 			"auth_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Authentication key. No transfer means that the current value is not modified.",
+				Description: "Authentication 键 No transfer means that the 当前值 is not modified。",
 			},
 
 			"auth_delta": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Valid time, unit: second. No transfer means that the current value is not modified.",
+				Description: "Valid time，unit: second. No transfer means that the 当前值 is not modified。",
 			},
 
 			"auth_back_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Alternate key for authentication. No transfer means that the current value is not modified.",
+				Description: "Alternate 键 for authentication. No transfer means that the 当前值 is not modified。",
 			},
 		},
 	}

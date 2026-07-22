@@ -29,19 +29,19 @@ func ResourceTencentCloudDnspodCustomLine() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The Name of custom line.",
+				Description: "The 名称 custom line。",
 			},
 
 			"area": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The IP segment of custom line, split with `-`.",
+				Description: "The IP segment of custom line，split with `-`。",
 			},
 		},
 	}

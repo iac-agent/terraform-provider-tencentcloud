@@ -23,7 +23,7 @@ func ResourceTencentCloudElasticsearchRestartNodesOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"node_names": {
@@ -33,7 +33,7 @@ func ResourceTencentCloudElasticsearchRestartNodesOperation() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of node names.",
+				Description: "列表 node names。",
 			},
 
 			"force_restart": {
@@ -41,21 +41,21 @@ func ResourceTencentCloudElasticsearchRestartNodesOperation() *schema.Resource {
 				Default:     0,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to force a restart.",
+				Description: "是否force a restart。",
 			},
 
 			"restart_mode": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Optional restart mode in-place,blue-green, which means restart and blue-green restart, respectively. The default is in-place.",
+				Description: "可选 restart 模式 in-place,blue-green，which means restart and blue-green restart，respectively. The 默认为 in-place。",
 			},
 
 			"is_offline": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Node status, used in blue-green mode; off-line node blue-green is risky.",
+				Description: "Node 状态，used in blue-green 模式; off-line node blue-green is risky。",
 			},
 		},
 	}

@@ -19,55 +19,55 @@ func DataSourceTencentCloudTsfUsableUnitNamespaces() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "search by namespace id or namespace Name.",
+				Description: "search by namespace id or namespace 名称",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "namespace object list.",
+				Description: "namespace object list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "total count.",
+							Description: "总数",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "namespace list.",
+							Description: "namespace list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "namespace id.",
+										Description: "namespace id。",
 									},
 									"namespace_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "namespace name.",
+										Description: "namespace 名称",
 									},
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Unit namespace ID. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Unit namespace ID. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"gateway_instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Gateway instance id Note: This field may return null, indicating that no valid value was found.",
+										Description: "Gateway 实例 ID 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Create time. Note: This field may return null, indicating that no valid value was found.",
+										Description: "创建时间. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"updated_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Update time. Note: This field may return null, indicating that no valid value was found.",
+										Description: "更新时间. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},
@@ -79,7 +79,7 @@ func DataSourceTencentCloudTsfUsableUnitNamespaces() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

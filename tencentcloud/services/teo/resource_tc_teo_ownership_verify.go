@@ -22,19 +22,19 @@ func ResourceTencentCloudTeoOwnershipVerify() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Verify domain name.",
+				Description: "Verify 域名 名称",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Ownership verification results. `success`: verification successful; `fail`: verification failed.",
+				Description: "Ownership verification results. `success`: verification successful; `fail`: verification failed。",
 			},
 
 			"result": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "When the verification result is failed, this field will return the reason.",
+				Description: "When the verification 结果 is failed，this field will return the reason。",
 			},
 		},
 	}

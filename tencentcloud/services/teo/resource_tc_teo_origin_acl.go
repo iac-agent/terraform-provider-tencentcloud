@@ -33,7 +33,7 @@ func ResourceTencentCloudTeoOriginAcl() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Specifies the site ID.",
+				Description: "指定site ID。",
 			},
 
 			"l7_hosts": {
@@ -41,7 +41,7 @@ func ResourceTencentCloudTeoOriginAcl() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "The list of L7 acceleration domains that require enabling the origin ACLs. This list must be empty when the request parameter L7EnableMode is set to 'all'.",
+				Description: "The 列表 L7 acceleration domains that require enabling the origin ACLs. This list must be empty when the request parameter L7EnableMode is set to 'all'。",
 			},
 
 			"l4_proxy_ids": {
@@ -49,7 +49,7 @@ func ResourceTencentCloudTeoOriginAcl() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "he list of L4 proxy Instances that require enabling origin ACLs. This list must be empty when the request parameter L4EnableMode is set to 'all'.",
+				Description: "he 列表 L4 proxy Instances that require enabling origin ACLs. This list must be empty when the request parameter L4EnableMode is set to 'all'。",
 			},
 		},
 	}

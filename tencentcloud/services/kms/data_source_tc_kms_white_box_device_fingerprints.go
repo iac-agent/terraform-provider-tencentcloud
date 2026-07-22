@@ -19,23 +19,23 @@ func DataSourceTencentCloudKmsWhiteBoxDeviceFingerprints() *schema.Resource {
 			"key_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Globally unique identifier for the white box key.",
+				Description: "Globally unique identifier for the white box 键",
 			},
 			"list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Device fingerprint list.",
+				Description: "Device fingerprint list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identity": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "identity.",
+							Description: "identity。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description.",
+							Description: "描述",
 						},
 					},
 				},
@@ -43,7 +43,7 @@ func DataSourceTencentCloudKmsWhiteBoxDeviceFingerprints() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

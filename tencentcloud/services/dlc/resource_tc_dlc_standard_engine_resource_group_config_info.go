@@ -27,7 +27,7 @@ func ResourceTencentCloudDlcStandardEngineResourceGroupConfigInfo() *schema.Reso
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Standard engine resource group name.",
+				Description: "Standard engine resource 组名称",
 			},
 
 			"static_conf_context": {
@@ -35,24 +35,24 @@ func ResourceTencentCloudDlcStandardEngineResourceGroupConfigInfo() *schema.Reso
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Static config context.",
+				Description: "Static 配置 context。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"params": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Collection of bound working groups.",
+							Description: "Collection of bound working groups。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_item": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration item.",
+										Description: "Configuration item。",
 									},
 									"config_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration value.",
+										Description: "Configuration 值",
 									},
 								},
 							},
@@ -66,24 +66,24 @@ func ResourceTencentCloudDlcStandardEngineResourceGroupConfigInfo() *schema.Reso
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Dynamic config context.",
+				Description: "Dynamic 配置 context。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"params": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Collection of bound working groups.",
+							Description: "Collection of bound working groups。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_item": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration item.",
+										Description: "Configuration item。",
 									},
 									"config_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration value.",
+										Description: "Configuration 值",
 									},
 								},
 							},

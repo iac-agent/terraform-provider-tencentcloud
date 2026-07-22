@@ -18,74 +18,74 @@ func DataSourceTencentCloudGaapDomainErrorPageInfoList() *schema.Resource {
 			"listener_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the layer7 listener to be queried.",
+				Description: "ID layer7 listener to be queried。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "HTTP domain to be queried.",
+				Description: "HTTP 域名 to be queried。",
 			},
 			"ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Set:         schema.HashString,
-				Description: "List of the error page info ID to be queried.",
+				Description: "列表 the 错误 page info ID to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"error_page_info_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of error page info detail. Each element contains the following attributes:",
+				Description: "An information 列表 错误 page info detail. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the error page info.",
+							Description: "ID 错误 page info。",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the layer7 listener.",
+							Description: "ID layer7 listener。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "HTTP domain.",
+							Description: "HTTP 域名",
 						},
 						"error_codes": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
-							Description: "Original error codes.",
+							Description: "Original 错误 codes。",
 						},
 						"body": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "New response body.",
+							Description: "New response body。",
 						},
 						"new_error_codes": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "New error code.",
+							Description: "New 错误码",
 						},
 						"clear_headers": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Response headers to be removed.",
+							Description: "Response headers to be removed。",
 						},
 						"set_headers": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Response headers to be set.",
+							Description: "Response headers to be set。",
 						},
 					},
 				},

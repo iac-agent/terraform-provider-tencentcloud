@@ -18,34 +18,34 @@ func DataSourceTencentCloudTeoEnvironments() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 
 			"env_infos": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Environment list.",
+				Description: "Environment list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"env_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Environment ID.",
+							Description: "Environment ID。",
 						},
 						"env_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Environment type. Valid values: production (Production environment), staging (Test environment).",
+							Description: "Environment 类型 有效值：production (Production environment)，staging (Test environment)。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Environment status. Valid values: creating (Being created), running (The environment is stable, with version changes allowed), version_deploying (The version is currently being deployed, with no more changes allowed).",
+							Description: "Environment 状态 有效值：creating (Being created)，running (The environment is stable，with 版本 changes allowed)，version_deploying (The 版本 is currently being deployed，with no more changes allowed)。",
 						},
 						"scope": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Effective scope of the configuration in the current environment. Valid values: ALL (It takes effect on the entire network when EnvType is set to production), It returns the IP address of the test node for host binding during testing when EnvType is set to staging.",
+							Description: "Effective 范围 of the configuration in the current environment. 有效值：ALL (It takes effect on the entire network when EnvType is set to production)，It 返回IP 地址 of the test node for 主机 binding during testing when EnvType is set to staging。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -53,43 +53,43 @@ func DataSourceTencentCloudTeoEnvironments() *schema.Resource {
 						"current_config_group_version_infos": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "For the effective versions of each configuration group in the current environment, there are two possible scenarios based on the value of Status: When Status is set to version_deploying, the returned value of this field represents the previously effective version. In other words, during the deployment of the new version, the effective version is the one that was in effect before any changes were made. When Status is set to running, the value returned by this field is the currently effective version.",
+							Description: "For the effective versions of each configuration group in the current environment，there are two possible scenarios based on the 值 of 状态: When 状态 is set to version_deploying，the returned 值 of this field represents the previously effective 版本 In other words，during the deployment of the new 版本，the effective 版本 is the one that was in effect before any changes were made. When 状态 is set to running，the 值 returned by this field is the currently effective 版本",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"version_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Version ID.",
+										Description: "版本 ID。",
 									},
 									"version_number": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version No.",
+										Description: "版本 No。",
 									},
 									"group_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuraration group ID.",
+										Description: "Configuraration 组 ID",
 									},
 									"group_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuration group type. Valid values: l7_acceleration (L7 acceleration configuration group), edge_functions (Edge function configuration group).",
+										Description: "Configuration group 类型 有效值：l7_acceleration (L7 acceleration configuration group)，edge_functions (Edge function configuration group)。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version description.",
+										Description: "版本 描述",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version status. Valid values: creating (Being created), inactive (Not effective), active (Effective).",
+										Description: "版本 状态 有效值：creating (Being created)，inactive (Not effective)，活跃 (Effective)。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+										Description: "版本 创建时间. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
 									},
 								},
 							},
@@ -97,12 +97,12 @@ func DataSourceTencentCloudTeoEnvironments() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+							Description: "创建时间. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Update time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+							Description: "更新时间. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
 						},
 					},
 				},
@@ -111,7 +111,7 @@ func DataSourceTencentCloudTeoEnvironments() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

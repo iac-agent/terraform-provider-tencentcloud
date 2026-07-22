@@ -27,20 +27,20 @@ func ResourceTencentCloudVpcNetDetect() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "`VPC` instance `ID`. Such as:`vpc-12345678`.",
+				Description: "`VPC` instance `ID`. Such as:`vpc-12345678`。",
 			},
 
 			"subnet_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Subnet instance ID. Such as:subnet-12345678.",
+				Description: "子网实例 ID Such as:subnet-12345678。",
 			},
 
 			"net_detect_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Network probe name, the maximum length cannot exceed 60 bytes.",
+				Description: "Network probe 名称，the maximum length cannot exceed 60 bytes。",
 			},
 
 			"detect_destination_ip": {
@@ -49,25 +49,25 @@ func ResourceTencentCloudVpcNetDetect() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "An array of probe destination IPv4 addresses. Up to two.",
+				Description: "An 数组 probe destination IPv4 addresses. Up to two。",
 			},
 
 			"next_hop_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The next hop type, currently we support the following types: `VPN`: VPN gateway; `DIRECTCONNECT`: private line gateway; `PEERCONNECTION`: peer connection; `NAT`: NAT gateway; `NORMAL_CVM`: normal cloud server; `CCN`: cloud networking gateway; `NONEXTHOP`: no next hop.",
+				Description: "The next hop 类型，currently we support the following types: `VPN`: VPN gateway; `DIRECTCONNECT`: private line gateway; `PEERCONNECTION`: peer connection; `NAT`: NAT gateway; `NORMAL_CVM`: normal cloud server; `CCN`: cloud networking gateway; `NONEXTHOP`: no next hop。",
 			},
 
 			"next_hop_destination": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The destination gateway of the next hop, the value is related to the next hop type. If the next hop type is VPN, and the value is the VPN gateway ID, such as: vpngw-12345678; If the next hop type is DIRECTCONNECT, and the value is the private line gateway ID, such as: dcg-12345678; If the next hop type is PEERCONNECTION, which takes the value of the peer connection ID, such as: pcx-12345678; If the next hop type is NAT, and the value is Nat gateway, such as: nat-12345678; If the next hop type is NORMAL_CVM, which takes the IPv4 address of the cloud server, such as: 10.0.0.12; If the next hop type is CCN, and the value is the cloud network ID, such as: ccn-12345678; If the next hop type is NONEXTHOP, and the specified network probe is a network probe without a next hop.",
+				Description: "The destination gateway of the next hop，the 值 is related to the next hop 类型 If the next hop 类型 is VPN，and the 值 is the VPN 网关 ID，such as: vpngw-12345678; If the next hop 类型 is DIRECTCONNECT，and the 值 is the private line gateway ID，such as: dcg-12345678; If the next hop 类型 is PEERCONNECTION，which takes the 值 of the peer connection ID，such as: pcx-12345678; If the next hop 类型 is NAT，and the 值 is Nat gateway，such as: nat-12345678; If the next hop 类型 is NORMAL_CVM，which takes the IPv4 地址 of the cloud server，such as: 10.0.0.12; If the next hop 类型 is CCN，and the 值 is the cloud network ID，such as: ccn-12345678; If the next hop 类型 is NONEXTHOP，and the specified network probe is a network probe without a next hop。",
 			},
 
 			"net_detect_description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Network probe description.",
+				Description: "Network probe 描述",
 			},
 		},
 	}

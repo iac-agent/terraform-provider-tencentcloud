@@ -22,73 +22,73 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "The IDs of the schemes to query. Array length limit: 100.",
+				Description: "The IDs of the schemes to query. Array length 限制: 100。",
 			},
 
 			"trigger_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The trigger type. Valid values:`CosFileUpload`: The scheme is triggered when a file is uploaded to Tencent Cloud Object Storage (COS).`AwsS3FileUpload`: The scheme is triggered when a file is uploaded to AWS S3.If you do not specify this parameter or leave it empty, all schemes will be returned regardless of the trigger type.",
+				Description: "The trigger 类型 Valid values:`CosFileUpload`: The scheme is triggered when a file is uploaded to Tencent Cloud Object Storage (COS).`AwsS3FileUpload`: The scheme is triggered when a file is uploaded to AWS S3.If you do not 指定this parameter or leave it empty，all schemes will be returned regardless of the trigger 类型",
 			},
 
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The scheme status. Valid values:`Enabled`, `Disabled`. If you do not specify this parameter, all schemes will be returned regardless of the status.",
+				Description: "The scheme 状态 Valid values:`已启用`，`已禁用`. If you do not 指定this parameter，all schemes will be returned regardless of the 状态",
 			},
 
 			"schedule_info_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The information of the schemes.",
+				Description: "The information of the schemes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"schedule_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The scheme ID.",
+							Description: "The scheme ID。",
 						},
 						"schedule_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The scheme name.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The scheme 名称注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The scheme status. Valid values:`Enabled``Disabled`Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The scheme 状态 Valid values:`已启用``已禁用`注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"trigger": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The trigger of the scheme.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The trigger of the scheme.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The trigger type. Valid values:`CosFileUpload`: Tencent Cloud COS trigger.`AwsS3FileUpload`: AWS S3 trigger. Currently, this type is only supported for transcoding tasks and schemes (not supported for workflows).",
+										Description: "The trigger 类型 Valid values:`CosFileUpload`: Tencent Cloud COS trigger.`AwsS3FileUpload`: AWS S3 trigger. Currently，this 类型 is only supported for transcoding tasks and schemes (not supported for workflows)。",
 									},
 									"cos_file_upload_trigger": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "This parameter is required and valid when `Type` is `CosFileUpload`, indicating the COS trigger rule.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "This parameter 为必填项 and valid when `类型` is `CosFileUpload`，indicating the COS trigger rule.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"bucket": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Name of the COS bucket bound to a workflow, such as `TopRankVideo-125xxx88`.",
+													Description: "名称 COS 存储桶 bound to a workflow，such as `TopRankVideo-125xxx88`。",
 												},
 												"region": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Region of the COS bucket bound to a workflow, such as `ap-chongiqng`.",
+													Description: "地域 of the COS 存储桶 bound to a workflow，such as `ap-chongiqng`。",
 												},
 												"dir": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Input path directory bound to a workflow, such as `/movie/201907/`. If this parameter is left empty, the `/` root directory will be used.",
+													Description: "Input 路径 directory bound to a workflow，such as `/movie/201907/`. 如果此参数为空，the `/` root directory will be used。",
 												},
 												"formats": {
 													Type: schema.TypeSet,
@@ -96,7 +96,7 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "Format list of files that can trigger a workflow, such as [mp4, flv, mov]. If this parameter is left empty, files in all formats can trigger the workflow.",
+													Description: "格式 列表 files that can trigger a workflow，such as [mp4，flv，mov]. 如果此参数为空，files in all formats can trigger the workflow。",
 												},
 											},
 										},
@@ -104,23 +104,23 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 									"aws_s3_file_upload_trigger": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The AWS S3 trigger. This parameter is valid and required if `Type` is `AwsS3FileUpload`.Note: Currently, the key for the AWS S3 bucket, the trigger SQS queue, and the callback SQS queue must be the same.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The AWS S3 trigger. This parameter is valid and 必填 if `类型` is `AwsS3FileUpload`.Note: Currently，the 键 for the AWS S3 存储桶，the trigger SQS queue，and the callback SQS queue must be the same.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"s3_bucket": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The AWS S3 bucket bound to the scheme.",
+													Description: "The AWS S3 存储桶 bound to the scheme。",
 												},
 												"s3_region": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The region of the AWS S3 bucket.",
+													Description: "The 地域 of the AWS S3 存储桶",
 												},
 												"dir": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The bucket directory bound. It must be an absolute path that starts and ends with `/`, such as `/movie/201907/`. If you do not specify this, the root directory will be bound.	.",
+													Description: "The 存储桶 directory bound. It must be an absolute 路径 that starts and ends with `/`，such as `/movie/201907/`. If you do not 指定this，the root directory will be bound.	。",
 												},
 												"formats": {
 													Type: schema.TypeSet,
@@ -128,43 +128,43 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "The file formats that will trigger the scheme, such as [mp4, flv, mov]. If you do not specify this, the upload of files in any format will trigger the scheme.	.",
+													Description: "The file formats that will trigger the scheme，such as [mp4，flv，mov]. If you do not 指定this，the upload of files in any 格式 will trigger the scheme.	。",
 												},
 												"s3_secret_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The key ID of the AWS S3 bucket.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "The 键 ID AWS S3 存储桶注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"s3_secret_key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The key of the AWS S3 bucket.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "The 键 of the AWS S3 存储桶注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"aws_sqs": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "The SQS queue of the AWS S3 bucket.Note: The queue must be in the same region as the bucket.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "The SQS queue of the AWS S3 存储桶Note: The queue must be in the same 地域 as the 存储桶注意：此字段可能返回 null，表示无法获取有效值。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"sqs_region": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The region of the SQS queue.",
+																Description: "The 地域 of the SQS queue。",
 															},
 															"sqs_queue_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The name of the SQS queue.",
+																Description: "The 名称 SQS queue。",
 															},
 															"s3_secret_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The key ID required to read from/write to the SQS queue.",
+																Description: "The 键 ID 必填 to read from/write to the SQS queue。",
 															},
 															"s3_secret_key": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The key required to read from/write to the SQS queue.",
+																Description: "The 键 必填 to read from/write to the SQS queue。",
 															},
 														},
 													},
@@ -178,13 +178,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 						"activities": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The subtasks of the scheme.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The subtasks of the scheme.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"activity_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The subtask type.`input`: The start.`output`: The end.`action-trans`: Transcoding.`action-samplesnapshot`: Sampled screencapturing.`action-AIAnalysis`: Content analysis.`action-AIRecognition`: Content recognition.`action-aiReview`: Content moderation.`action-animated-graphics`: Animated screenshot generation.`action-image-sprite`: Image sprite generation.`action-snapshotByTimeOffset`: Time point screencapturing.`action-adaptive-substream`: Adaptive bitrate streaming.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The subtask 类型`input`: The start.`output`: The end.`操作-trans`: Transcoding.`操作-samplesnapshot`: Sampled screencapturing.`操作-AIAnalysis`: 内容 analysis.`操作-AIRecognition`: 内容 recognition.`操作-aiReview`: 内容 moderation.`操作-animated-graphics`: Animated screenshot generation.`操作-image-sprite`: Image sprite generation.`操作-snapshotByTimeOffset`: Time point screencapturing.`操作-adaptive-substream`: Adaptive bitrate streaming.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"reardrive_index": {
 										Type: schema.TypeSet,
@@ -192,96 +192,96 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Computed:    true,
-										Description: "The indexes of the subsequent actions.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The indexes of the subsequent actions.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"activity_para": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The parameters of a subtask.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The parameters of a subtask.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"transcode_task": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "A transcoding task.",
+													Description: "A transcoding task。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"definition": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "ID of a video transcoding template.",
+																Description: "ID video transcoding template。",
 															},
 															"raw_parameter": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Custom video transcoding parameter, which is valid if `Definition` is 0.This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the transcoding parameter preferably.",
+																Description: "Custom video transcoding parameter，which is valid if `Definition` is 0.This parameter is used in highly customized scenarios. We recommend you use `Definition` to 指定transcoding parameter preferably。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"container": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.",
+																			Description: "Container. 有效值：mp4; flv; hls; mp3; flac; ogg; m4a. Among them，mp3，flac，ogg，and m4a are for audio files。",
 																		},
 																		"remove_video": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Whether to remove video data. Valid values:0: retain;1: remove.Default value: 0.",
+																			Description: "是否remove video data. Valid values:0: retain;1: remove.默认值：0。",
 																		},
 																		"remove_audio": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Whether to remove audio data. Valid values:0: retain;1: remove.Default value: 0.",
+																			Description: "是否remove audio data. Valid values:0: retain;1: remove.默认值：0。",
 																		},
 																		"video_template": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "Video stream configuration parameter. This field is required when `RemoveVideo` is 0.",
+																			Description: "Video stream configuration parameter. This field 为必填项 when `RemoveVideo` is 0。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"codec": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The video codec. Valid values:`libx264`: H.264`libx265`: H.265`av1`: AOMedia Video 1Note: You must specify a resolution (not higher than 640 x 480) if the H.265 codec is used.Note: You can only use the AOMedia Video 1 codec for MP4 files.",
+																						Description: "The video codec. Valid values:`libx264`: H.264`libx265`: H.265`av1`: AOMedia Video 1Note: You must 指定a resolution (not higher than 640 x 480) if the H.265 codec is used.Note: You can only use the AOMedia Video 1 codec for MP4 files。",
 																					},
 																					"fps": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "The video frame rate (Hz). Value range: [0, 100].If the value is 0, the frame rate will be the same as that of the source video.Note: For adaptive bitrate streaming, the value range of this parameter is [0, 60].",
+																						Description: "The video frame rate (Hz). 取值范围：[0，100].If the 值 is 0，the frame rate will be the same as that of the 来源 video.Note: For adaptive bitrate streaming，the 值 range of this parameter is [0，60]。",
 																					},
 																					"bitrate": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "The video bitrate (Kbps). Value range: 0 and [128, 35000].If the value is 0, the bitrate of the video will be the same as that of the source video.",
+																						Description: "The video bitrate (Kbps). 取值范围：0 and [128，35000].If the 值 is 0，the bitrate of the video will be the same as that of the 来源 video。",
 																					},
 																					"resolution_adaptive": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Resolution adaption. Valid values:open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.close: Disabled. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.Default value: open.Note: When resolution adaption is enabled, `Width` cannot be smaller than `Height`.",
+																						Description: "Resolution adaption. Valid values:open: 已启用 When resolution adaption is 已启用，`Width` 表示long side of a video，while `Height` 表示short side.close: 已禁用 When resolution adaption is 已禁用，`Width` 表示width of a video，while `Height` 表示height.默认值：open.Note: When resolution adaption is 已启用，`Width` cannot be smaller than `Height`。",
 																					},
 																					"width": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;If both `Width` and `Height` are not 0, the custom resolution will be used.Default value: 0.",
+																						Description: "Maximum 值 of the width (or long side) of a video stream （像素）。 取值范围：0 and [128，4,096].If both `Width` and `Height` are 0，the resolution will be the same as that of the 来源 video;If `Width` is 0，but `Height` is not 0，`Width` will be proportionally scaled;If `Width` is not 0，but `Height` is 0，`Height` will be proportionally scaled;If both `Width` and `Height` are not 0，the custom resolution will be used.默认值：0。",
 																					},
 																					"height": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;If both `Width` and `Height` are not 0, the custom resolution will be used.Default value: 0.",
+																						Description: "Maximum 值 of the height (or short side) of a video stream （像素）。 取值范围：0 and [128，4,096].If both `Width` and `Height` are 0，the resolution will be the same as that of the 来源 video;If `Width` is 0，but `Height` is not 0，`Width` will be proportionally scaled;If `Width` is not 0，but `Height` is 0，`Height` will be proportionally scaled;If both `Width` and `Height` are not 0，the custom resolution will be used.默认值：0。",
 																					},
 																					"gop": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Frame interval between I keyframes. Value range: 0 and [1,100000].If this parameter is 0 or left empty, the system will automatically set the GOP length.",
+																						Description: "Frame interval between I keyframes. 取值范围：0 and [1,100000].If this parameter is 0 or left empty，the system will automatically set the GOP length。",
 																					},
 																					"fill_type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The fill mode, which indicates how a video is resized when the video&#39;s original aspect ratio is different from the target aspect ratio. Valid values:stretch: Stretch the image frame by frame to fill the entire screen. The video image may become squashed or stretched after transcoding.black: Keep the image&#39;s original aspect ratio and fill the blank space with black bars.white: Keep the image&#39;s original aspect ratio and fill the blank space with white bars.gauss: Keep the image&#39;s original aspect ratio and apply Gaussian blur to the blank space.Default value: black.Note: Only `stretch` and `black` are supported for adaptive bitrate streaming.",
+																						Description: "The fill 模式，which 表示how a video is resized when the video&#39;s original aspect ratio is different from the target aspect ratio. Valid values:stretch: Stretch the image frame by frame to fill the entire screen. The video image may become squashed or stretched after transcoding.black: Keep the image&#39;s original aspect ratio and fill the blank space with black bars.white: Keep the image&#39;s original aspect ratio and fill the blank space with white bars.gauss: Keep the image&#39;s original aspect ratio and apply Gaussian blur to the blank space.默认值：black.Note: Only `stretch` and `black` are supported for adaptive bitrate streaming。",
 																					},
 																					"vcrf": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "The control factor of video constant bitrate. Value range: [1, 51]If this parameter is specified, CRF (a bitrate control method) will be used for transcoding. (Video bitrate will no longer take effect.)It is not recommended to specify this parameter if there are no special requirements.",
+																						Description: "The control factor of video constant bitrate. 取值范围：[1，51]If this parameter is specified，CRF (a bitrate control method) will be 用于transcoding. (Video bitrate will no longer take effect.)It is not recommended to 指定this parameter if there are no special requirements。",
 																					},
 																				},
 																			},
@@ -289,28 +289,28 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"audio_template": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.",
+																			Description: "Audio stream configuration parameter. This field 为必填项 when `RemoveAudio` is 0。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"codec": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Audio stream codec.When the outer `Container` parameter is `mp3`, the valid value is:libmp3lame.When the outer `Container` parameter is `ogg` or `flac`, the valid value is:flac.When the outer `Container` parameter is `m4a`, the valid values include:libfdk_aac;libmp3lame;ac3.When the outer `Container` parameter is `mp4` or `flv`, the valid values include:libfdk_aac: more suitable for mp4;libmp3lame: more suitable for flv.When the outer `Container` parameter is `hls`, the valid values include:libfdk_aac;libmp3lame.",
+																						Description: "Audio stream codec.When the outer `Container` parameter is `mp3`，the valid 值 is:libmp3lame.When the outer `Container` parameter is `ogg` or `flac`，the valid 值 is:flac.When the outer `Container` parameter is `m4a`，the valid values include:libfdk_aac;libmp3lame;ac3.When the outer `Container` parameter is `mp4` or `flv`，the valid values include:libfdk_aac: more suitable for mp4;libmp3lame: more suitable for flv.When the outer `Container` parameter is `hls`，the valid values include:libfdk_aac;libmp3lame。",
 																					},
 																					"bitrate": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Audio stream bitrate in Kbps. Value range: 0 and [26, 256].If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.",
+																						Description: "Audio stream bitrate in Kbps. 取值范围：0 and [26，256].If the 值 is 0，the bitrate of the audio stream will be the same as that of the original audio。",
 																					},
 																					"sample_rate": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Audio stream sample rate. Valid values:32,00044,10048,000In Hz.",
+																						Description: "Audio stream sample rate. Valid values:32,00044,10048,000In Hz。",
 																					},
 																					"audio_channel": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Audio channel system. Valid values:1: Mono2: Dual6: StereoWhen the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.Default value: 2.",
+																						Description: "Audio channel system. Valid values:1: Mono2: Dual6: StereoWhen the media is packaged in audio 格式 (FLAC，OGG，MP3，M4A)，the sound channel cannot be set to stereo.默认值：2。",
 																					},
 																				},
 																			},
@@ -318,18 +318,18 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"tehd_config": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "TESHD transcoding parameter.",
+																			Description: "TESHD transcoding parameter。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "TESHD type. Valid values:`TEHD-100`: TESHD-100. If this parameter is left empty, TESHD will not be enabled.",
+																						Description: "TESHD 类型 Valid values:`TEHD-100`: TESHD-100. 如果此参数为空，TESHD will not be 已启用",
 																					},
 																					"max_video_bitrate": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Maximum bitrate, which is valid when `Type` is `TESHD`. If this parameter is left empty or 0 is entered, there will be no upper limit for bitrate.",
+																						Description: "Maximum bitrate，which is valid when `类型` is `TESHD`. 如果此参数为空 or 0 is entered，there will be no upper 限制 for bitrate。",
 																					},
 																				},
 																			},
@@ -340,79 +340,79 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"override_parameter": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Video transcoding custom parameter, which is valid when `Definition` is not 0.When any parameters in this structure are entered, they will be used to override corresponding parameters in templates.This parameter is used in highly customized scenarios. We recommend you only use `Definition` to specify the transcoding parameter.Note: this field may return `null`, indicating that no valid value was found.",
+																Description: "Video transcoding custom parameter，which is valid when `Definition` is not 0.When any parameters in this structure are entered，they will be 用于override corresponding parameters in templates.This parameter is used in highly customized scenarios. We recommend you only use `Definition` to 指定transcoding parameter.Note: this field may return `null`，indicating that no valid 值 was found。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"container": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, and m4a; mp3, flac, ogg, and m4a are formats of audio files.",
+																			Description: "Container 格式 有效值：mp4，flv，hls，mp3，flac，ogg，and m4a; mp3，flac，ogg，and m4a are formats of audio files。",
 																		},
 																		"remove_video": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Whether to remove video data. Valid values:0: retain1: remove.",
+																			Description: "是否remove video data. Valid values:0: retain1: remove。",
 																		},
 																		"remove_audio": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Whether to remove audio data. Valid values:0: retain1: remove.",
+																			Description: "是否remove audio data. Valid values:0: retain1: remove。",
 																		},
 																		"video_template": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "Video stream configuration parameter.",
+																			Description: "Video stream configuration parameter。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"codec": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The video codec. Valid values:libx264: H.264libx265: H.265av1: AOMedia Video 1Note: You must specify a resolution (not higher than 640 x 480) if the H.265 codec is used.Note: You can only use the AOMedia Video 1 codec for MP4 files.",
+																						Description: "The video codec. Valid values:libx264: H.264libx265: H.265av1: AOMedia Video 1Note: You must 指定a resolution (not higher than 640 x 480) if the H.265 codec is used.Note: You can only use the AOMedia Video 1 codec for MP4 files。",
 																					},
 																					"fps": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Video frame rate in Hz. Value range: [0, 100].If the value is 0, the frame rate will be the same as that of the source video.",
+																						Description: "Video frame rate in Hz. 取值范围：[0，100].If the 值 is 0，the frame rate will be the same as that of the 来源 video。",
 																					},
 																					"bitrate": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].If the value is 0, the bitrate of the video will be the same as that of the source video.",
+																						Description: "Bitrate of a video stream in Kbps. 取值范围：0 and [128，35,000].If the 值 is 0，the bitrate of the video will be the same as that of the 来源 video。",
 																					},
 																					"resolution_adaptive": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Resolution adaption. Valid values:open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.close: Disabled. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.Note: When resolution adaption is enabled, `Width` cannot be smaller than `Height`.",
+																						Description: "Resolution adaption. Valid values:open: 已启用 When resolution adaption is 已启用，`Width` 表示long side of a video，while `Height` 表示short side.close: 已禁用 When resolution adaption is 已禁用，`Width` 表示width of a video，while `Height` 表示height.Note: When resolution adaption is 已启用，`Width` cannot be smaller than `Height`。",
 																					},
 																					"width": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;If both `Width` and `Height` are not 0, the custom resolution will be used.",
+																						Description: "Maximum 值 of the width (or long side) of a video stream （像素）。 取值范围：0 and [128，4,096].If both `Width` and `Height` are 0，the resolution will be the same as that of the 来源 video;If `Width` is 0，but `Height` is not 0，`Width` will be proportionally scaled;If `Width` is not 0，but `Height` is 0，`Height` will be proportionally scaled;If both `Width` and `Height` are not 0，the custom resolution will be used。",
 																					},
 																					"height": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].",
+																						Description: "Maximum 值 of the height (or short side) of a video stream （像素）。 取值范围：0 and [128，4,096]。",
 																					},
 																					"gop": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Frame interval between I keyframes. Value range: 0 and [1,100000]. If this parameter is 0, the system will automatically set the GOP length.",
+																						Description: "Frame interval between I keyframes. 取值范围：0 and [1,100000]. If this parameter is 0，the system will automatically set the GOP length。",
 																					},
 																					"fill_type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Fill type. Fill refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported: stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot shorter or longer;black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.",
+																						Description: "Fill 类型 Fill refers to the way of processing a screenshot when its aspect ratio is different from that of the 来源 video. The following fill types are supported: stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the 来源 video，which may make the screenshot shorter or longer;black: fill with black. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with black color blocks.white: fill with white. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with white color blocks.gauss: fill with Gaussian blur. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with Gaussian blur。",
 																					},
 																					"vcrf": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "The control factor of video constant bitrate. Value range: [0, 51]. This parameter will be disabled if you enter `0`.It is not recommended to specify this parameter if there are no special requirements.",
+																						Description: "The control factor of video constant bitrate. 取值范围：[0，51]. This parameter will be 已禁用 if you enter `0`.It is not recommended to 指定this parameter if there are no special requirements。",
 																					},
 																					"content_adapt_stream": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Whether to enable adaptive encoding. Valid values:0: Disable1: EnableDefault value: 0. If this parameter is set to `1`, multiple streams with different resolutions and bitrates will be generated automatically. The highest resolution, bitrate, and quality of the streams are determined by the values of `width` and `height`, `Bitrate`, and `Vcrf` in `VideoTemplate` respectively. If these parameters are not set in `VideoTemplate`, the highest resolution generated will be the same as that of the source video, and the highest video quality will be close to VMAF 95. To use this parameter or learn about the billing details of adaptive encoding, please contact your sales rep.",
+																						Description: "是否enable adaptive encoding. Valid values:0: Disable1: Enable默认值：0. If this parameter is set to `1`，multiple streams with different resolutions and bitrates will be generated automatically. The highest resolution，bitrate，and quality of the streams are determined by the values of `width` and `height`，`Bitrate`，and `Vcrf` in `VideoTemplate` respectively. If these parameters are not set in `VideoTemplate`，the highest resolution generated will be the same as that of the 来源 video，and the highest video quality will be close to VMAF 95. To use this parameter or learn about the billing details of adaptive encoding，please contact your sales rep。",
 																					},
 																				},
 																			},
@@ -420,28 +420,28 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"audio_template": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "Audio stream configuration parameter.",
+																			Description: "Audio stream configuration parameter。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"codec": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Audio stream codec.When the outer `Container` parameter is `mp3`, the valid value is:libmp3lame.When the outer `Container` parameter is `ogg` or `flac`, the valid value is:flac.When the outer `Container` parameter is `m4a`, the valid values include:libfdk_aac;libmp3lame;ac3.When the outer `Container` parameter is `mp4` or `flv`, the valid values include:libfdk_aac: More suitable for mp4;libmp3lame: More suitable for flv;mp2.When the outer `Container` parameter is `hls`, the valid values include:libfdk_aac;libmp3lame.",
+																						Description: "Audio stream codec.When the outer `Container` parameter is `mp3`，the valid 值 is:libmp3lame.When the outer `Container` parameter is `ogg` or `flac`，the valid 值 is:flac.When the outer `Container` parameter is `m4a`，the valid values include:libfdk_aac;libmp3lame;ac3.When the outer `Container` parameter is `mp4` or `flv`，the valid values include:libfdk_aac: More suitable for mp4;libmp3lame: More suitable for flv;mp2.When the outer `Container` parameter is `hls`，the valid values include:libfdk_aac;libmp3lame。",
 																					},
 																					"bitrate": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.",
+																						Description: "Audio stream bitrate in Kbps. 取值范围：0 and [26，256]. If the 值 is 0，the bitrate of the audio stream will be the same as that of the original audio。",
 																					},
 																					"sample_rate": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Audio stream sample rate. Valid values:32,00044,10048,000In Hz.",
+																						Description: "Audio stream sample rate. Valid values:32,00044,10048,000In Hz。",
 																					},
 																					"audio_channel": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "Audio channel system. Valid values:1: Mono2: Dual6: StereoWhen the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.",
+																						Description: "Audio channel system. Valid values:1: Mono2: Dual6: StereoWhen the media is packaged in audio 格式 (FLAC，OGG，MP3，M4A)，the sound channel cannot be set to stereo。",
 																					},
 																					"stream_selects": {
 																						Type: schema.TypeSet,
@@ -449,7 +449,7 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																							Type: schema.TypeInt,
 																						},
 																						Computed:    true,
-																						Description: "The audio tracks to retain. All audio tracks are retained by default.",
+																						Description: "The audio tracks to retain. All audio tracks are retained by default。",
 																					},
 																				},
 																			},
@@ -457,18 +457,18 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"tehd_config": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The TSC transcoding parameters.Note: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "The TSC transcoding parameters.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The TSC type. Valid values:`TEHD-100`: TSC-100 (video TSC). `TEHD-200`: TSC-200 (audio TSC). If this parameter is left blank, no modification will be made.Note: This field may return null, indicating that no valid values can be obtained.",
+																						Description: "The TSC 类型 Valid values:`TEHD-100`: TSC-100 (video TSC). `TEHD-200`: TSC-200 (audio TSC). If this parameter is left blank，no modification will be made.注意：此字段可能返回 null，表示无法获取有效值。",
 																					},
 																					"max_video_bitrate": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "The maximum video bitrate. If this parameter is not specified, no modifications will be made.Note: This field may return null, indicating that no valid values can be obtained.",
+																						Description: "The maximum video bitrate. If this parameter is not specified，no modifications will be made.注意：此字段可能返回 null，表示无法获取有效值。",
 																					},
 																				},
 																			},
@@ -476,38 +476,38 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"subtitle_template": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The subtitle settings.Note: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "The subtitle settings.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"path": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The URL of the subtitles to add to the video.Note: This field may return null, indicating that no valid values can be obtained.",
+																						Description: "The URL of the subtitles to add to the video.注意：此字段可能返回 null，表示无法获取有效值。",
 																					},
 																					"stream_index": {
 																						Type:        schema.TypeInt,
 																						Computed:    true,
-																						Description: "The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.Note: This field may return null, indicating that no valid values can be obtained.",
+																						Description: "The subtitle track to add to the video. If both `路径` and `StreamIndex` are specified，`路径` will be used. You need to 指定at least one of the two parameters.注意：此字段可能返回 null，表示无法获取有效值。",
 																					},
 																					"font_type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The font. Valid values:`hei.ttf`: Heiti.`song.ttf`: Songti.`simkai.ttf`: Kaiti.`arial.ttf`: Arial.The default is `hei.ttf`.Note: This field may return null, indicating that no valid values can be obtained.",
+																						Description: "The font. Valid values:`hei.ttf`: Heiti.`song.ttf`: Songti.`simkai.ttf`: Kaiti.`arial.ttf`: Arial.The 默认为 `hei.ttf`.注意：此字段可能返回 null，表示无法获取有效值。",
 																					},
 																					"font_size": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The font size (pixels). If this is not specified, the font size in the subtitle file will be used.Note: This field may return null, indicating that no valid values can be obtained.",
+																						Description: "The font size (pixels). If this is not specified，the font size in the subtitle file will be used.注意：此字段可能返回 null，表示无法获取有效值。",
 																					},
 																					"font_color": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).Note: This field may return null, indicating that no valid values can be obtained.",
+																						Description: "The font color in 0xRRGGBB 格式 默认值：0xFFFFFF (white).注意：此字段可能返回 null，表示无法获取有效值。",
 																					},
 																					"font_alpha": {
 																						Type:        schema.TypeFloat,
 																						Computed:    true,
-																						Description: "The text transparency. Value range: 0-1.`0`: Fully transparent.`1`: Fully opaque.Default value: 1.Note: This field may return null, indicating that no valid values can be obtained.",
+																						Description: "The text transparency. 取值范围：0-1.`0`: Fully transparent.`1`: Fully opaque.默认值：1.注意：此字段可能返回 null，表示无法获取有效值。",
 																					},
 																				},
 																			},
@@ -515,34 +515,34 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"addon_audio_stream": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The information of the external audio track to add.Note: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "The information of the external audio track to add.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The input type. Valid values:`COS`: A COS bucket address. `URL`: A URL. `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.",
+																						Description: "The input 类型 Valid values:`COS`: A COS 存储桶 地址 `URL`: A URL `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
 																					},
 																					"cos_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+																						Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"bucket": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+																									Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 																								},
 																								"region": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The region of the COS bucket, such as `ap-chongqing`.",
+																									Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 																								},
 																								"object": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+																									Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 																								},
 																							},
 																						},
@@ -550,13 +550,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																					"url_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+																						Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"url": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "URL of a video.",
+																									Description: "URL of a video。",
 																								},
 																							},
 																						},
@@ -564,33 +564,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																					"s3_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																						Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"s3_bucket": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The AWS S3 bucket.",
+																									Description: "The AWS S3 存储桶",
 																								},
 																								"s3_region": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The region of the AWS S3 bucket.",
+																									Description: "The 地域 of the AWS S3 存储桶",
 																								},
 																								"s3_object": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The path of the AWS S3 object.",
+																									Description: "The 路径 of the AWS S3 object。",
 																								},
 																								"s3_secret_id": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The key ID required to access the AWS S3 object.",
+																									Description: "The 键 ID 必填 to access the AWS S3 object。",
 																								},
 																								"s3_secret_key": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The key required to access the AWS S3 object.",
+																									Description: "The 键 必填 to access the AWS S3 object。",
 																								},
 																							},
 																						},
@@ -601,50 +601,50 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"std_ext_info": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "An extended field for transcoding.Note: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "An extended field for transcoding.注意：此字段可能返回 null，表示无法获取有效值。",
 																		},
 																		"add_on_subtitles": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The subtitle file to add.Note: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "The subtitle file to add.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The mode. Valid values:`subtitle-stream`: Add a subtitle track.`close-caption-708`: Embed EA-708 subtitles in SEI frames.`close-caption-608`: Embed CEA-608 subtitles in SEI frames.Note: This field may return null, indicating that no valid values can be obtained.",
+																						Description: "The 模式 Valid values:`subtitle-stream`: Add a subtitle track.`close-caption-708`: Embed EA-708 subtitles in SEI frames.`close-caption-608`: Embed CEA-608 subtitles in SEI frames.注意：此字段可能返回 null，表示无法获取有效值。",
 																					},
 																					"subtitle": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The subtitle file.Note: This field may return null, indicating that no valid values can be obtained.",
+																						Description: "The subtitle file.注意：此字段可能返回 null，表示无法获取有效值。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"type": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The input type. Valid values:`COS`: A COS bucket address. `URL`: A URL. `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.",
+																									Description: "The input 类型 Valid values:`COS`: A COS 存储桶 地址 `URL`: A URL `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
 																								},
 																								"cos_input_info": {
 																									Type:        schema.TypeList,
 																									Computed:    true,
-																									Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+																									Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 																									Elem: &schema.Resource{
 																										Schema: map[string]*schema.Schema{
 																											"bucket": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+																												Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 																											},
 																											"region": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The region of the COS bucket, such as `ap-chongqing`.",
+																												Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 																											},
 																											"object": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+																												Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 																											},
 																										},
 																									},
@@ -652,13 +652,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																								"url_input_info": {
 																									Type:        schema.TypeList,
 																									Computed:    true,
-																									Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+																									Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 																									Elem: &schema.Resource{
 																										Schema: map[string]*schema.Schema{
 																											"url": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "URL of a video.",
+																												Description: "URL of a video。",
 																											},
 																										},
 																									},
@@ -666,33 +666,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																								"s3_input_info": {
 																									Type:        schema.TypeList,
 																									Computed:    true,
-																									Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																									Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																									Elem: &schema.Resource{
 																										Schema: map[string]*schema.Schema{
 																											"s3_bucket": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The AWS S3 bucket.",
+																												Description: "The AWS S3 存储桶",
 																											},
 																											"s3_region": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The region of the AWS S3 bucket.",
+																												Description: "The 地域 of the AWS S3 存储桶",
 																											},
 																											"s3_object": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The path of the AWS S3 object.",
+																												Description: "The 路径 of the AWS S3 object。",
 																											},
 																											"s3_secret_id": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The key ID required to access the AWS S3 object.",
+																												Description: "The 键 ID 必填 to access the AWS S3 object。",
 																											},
 																											"s3_secret_key": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The key required to access the AWS S3 object.",
+																												Description: "The 键 必填 to access the AWS S3 object。",
 																											},
 																										},
 																									},
@@ -709,77 +709,77 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"watermark_set": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "List of up to 10 image or text watermarks.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "列表 up to 10 image or text watermarks.注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"definition": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "ID of a watermarking template.",
+																			Description: "ID watermarking template。",
 																		},
 																		"raw_parameter": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "Custom watermark parameter, which is valid if `Definition` is 0.This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the watermark parameter preferably.Custom watermark parameter is not available for screenshot.",
+																			Description: "Custom watermark parameter，which is valid if `Definition` is 0.This parameter is used in highly customized scenarios. We recommend you use `Definition` to 指定watermark parameter preferably.Custom watermark parameter is not available for screenshot。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Watermark type. Valid values:image: image watermark.",
+																						Description: "Watermark 类型 Valid values:image: image watermark。",
 																					},
 																					"coordinate_origin": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Origin position, which currently can only be:TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text.Default value: TopLeft.",
+																						Description: "Origin position，which currently can only be:TopLeft: the origin of coordinates is in the top-left corner of the video，and the origin of the watermark is in the top-left corner of the image or text.默认值：TopLeft。",
 																					},
 																					"x_pos": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.Default value: 0 px.",
+																						Description: "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %，the `XPos` of the watermark will be the specified percentage of the video width; for example，`10%` means that `XPos` is 10% of the video width;If the string ends in px，the `XPos` of the watermark will be the specified px; for example，`100px` means that `XPos` is 100 px.默认值：0 px。",
 																					},
 																					"y_pos": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.Default value: 0 px.",
+																						Description: "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %，the `YPos` of the watermark will be the specified percentage of the video height; for example，`10%` means that `YPos` is 10% of the video height;If the string ends in px，the `YPos` of the watermark will be the specified px; for example，`100px` means that `YPos` is 100 px.默认值：0 px。",
 																					},
 																					"image_template": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "Image watermark template. This field is required when `Type` is `image` and is invalid when `Type` is `text`.",
+																						Description: "Image watermark template. This field 为必填项 when `类型` is `image` and is invalid when `类型` is `text`。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"image_content": {
 																									Type:        schema.TypeList,
 																									Computed:    true,
-																									Description: "Input content of watermark image. JPEG and PNG images are supported.",
+																									Description: "Input 内容 of watermark image. JPEG and PNG images are supported。",
 																									Elem: &schema.Resource{
 																										Schema: map[string]*schema.Schema{
 																											"type": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The input type. Valid values:`COS`: A COS bucket address. `URL`: A URL. `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.",
+																												Description: "The input 类型 Valid values:`COS`: A COS 存储桶 地址 `URL`: A URL `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
 																											},
 																											"cos_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+																												Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"bucket": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+																															Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 																														},
 																														"region": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The region of the COS bucket, such as `ap-chongqing`.",
+																															Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 																														},
 																														"object": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+																															Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 																														},
 																													},
 																												},
@@ -787,13 +787,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																											"url_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+																												Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"url": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "URL of a video.",
+																															Description: "URL of a video。",
 																														},
 																													},
 																												},
@@ -801,33 +801,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																											"s3_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																												Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"s3_bucket": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The AWS S3 bucket.",
+																															Description: "The AWS S3 存储桶",
 																														},
 																														"s3_region": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The region of the AWS S3 bucket.",
+																															Description: "The 地域 of the AWS S3 存储桶",
 																														},
 																														"s3_object": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The path of the AWS S3 object.",
+																															Description: "The 路径 of the AWS S3 object。",
 																														},
 																														"s3_secret_id": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The key ID required to access the AWS S3 object.",
+																															Description: "The 键 ID 必填 to access the AWS S3 object。",
 																														},
 																														"s3_secret_key": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The key required to access the AWS S3 object.",
+																															Description: "The 键 必填 to access the AWS S3 object。",
 																														},
 																													},
 																												},
@@ -838,17 +838,17 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																								"width": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Watermark width. % and px formats are supported:If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.Default value: 10%.",
+																									Description: "Watermark width. % and px formats are supported:If the string ends in %，the `Width` of the watermark will be the specified percentage of the video width; for example，`10%` means that `Width` is 10% of the video width;If the string ends in px，the `Width` of the watermark will be in px; for example，`100px` means that `Width` is 100 px.默认值：10%。",
 																								},
 																								"height": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Watermark height. % and px formats are supported:If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px.Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.",
+																									Description: "Watermark height. % and px formats are supported:If the string ends in %，the `Height` of the watermark will be the specified percentage of the video height; for example，`10%` means that `Height` is 10% of the video height;If the string ends in px，the `Height` of the watermark will be in px; for example，`100px` means that `Height` is 100 px.默认值：0 px，which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image。",
 																								},
 																								"repeat_type": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Repeat type of an animated watermark. Valid values:`once`: no longer appears after watermark playback ends.`repeat_last_frame`: stays on the last frame after watermark playback ends.`repeat` (default): repeats the playback until the video ends.",
+																									Description: "Repeat 类型 an animated watermark. Valid values:`once`: no longer appears after watermark playback ends.`repeat_last_frame`: stays on the last frame after watermark playback ends.`repeat` (default): repeats the playback until the video ends。",
 																								},
 																							},
 																						},
@@ -859,22 +859,22 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"text_content": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Text content of up to 100 characters. This field is required only when the watermark type is text.Text watermark is not available for screenshot.",
+																			Description: "Text 内容 of up to 100 characters. This field 为必填项 only when the watermark 类型 is text.Text watermark is not available for screenshot。",
 																		},
 																		"svg_content": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.SVG watermark is not available for screenshot.",
+																			Description: "SVG 内容 of up to 2,000,000 characters. This field 为必填项 only when the watermark 类型 is `SVG`.SVG watermark is not available for screenshot。",
 																		},
 																		"start_time_offset": {
 																			Type:        schema.TypeFloat,
 																			Computed:    true,
-																			Description: "Start time offset of a watermark in seconds. If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame.If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame;If this value is greater than 0 (e.g., n), the watermark will appear at second n after the first video frame;If this value is smaller than 0 (e.g., -n), the watermark will appear at second n before the last video frame.",
+																			Description: "开始时间 偏移量 of a watermark （秒）。 如果此参数为空 or 0 is entered，the watermark will appear upon the first video frame.如果此参数为空 or 0 is entered，the watermark will appear upon the first video frame;If this 值 is greater than 0 (e.g.，n)，the watermark will appear at second n after the first video frame;If this 值 is smaller than 0 (e.g.，-n)，the watermark will appear at second n before the last video frame。",
 																		},
 																		"end_time_offset": {
 																			Type:        schema.TypeFloat,
 																			Computed:    true,
-																			Description: "End time offset of a watermark in seconds.If this parameter is left empty or 0 is entered, the watermark will exist till the last video frame;If this value is greater than 0 (e.g., n), the watermark will exist till second n;If this value is smaller than 0 (e.g., -n), the watermark will exist till second n before the last video frame.",
+																			Description: "结束时间 偏移量 of a watermark （秒）。如果此参数为空 or 0 is entered，the watermark will exist till the last video frame;If this 值 is greater than 0 (e.g.，n)，the watermark will exist till second n;If this 值 is smaller than 0 (e.g.，-n)，the watermark will exist till second n before the last video frame。",
 																		},
 																	},
 																},
@@ -882,43 +882,43 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"mosaic_set": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "List of blurs. Up to 10 ones can be supported.",
+																Description: "列表 blurs. Up to 10 ones can be supported。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"coordinate_origin": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Origin position, which currently can only be:TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the blur is in the top-left corner of the image or text.Default value: TopLeft.",
+																			Description: "Origin position，which currently can only be:TopLeft: the origin of coordinates is in the top-left corner of the video，and the origin of the blur is in the top-left corner of the image or text.默认值：TopLeft。",
 																		},
 																		"x_pos": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "The horizontal position of the origin of the blur relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %, the `XPos` of the blur will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;If the string ends in px, the `XPos` of the blur will be the specified px; for example, `100px` means that `XPos` is 100 px.Default value: 0 px.",
+																			Description: "The horizontal position of the origin of the blur relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %，the `XPos` of the blur will be the specified percentage of the video width; for example，`10%` means that `XPos` is 10% of the video width;If the string ends in px，the `XPos` of the blur will be the specified px; for example，`100px` means that `XPos` is 100 px.默认值：0 px。",
 																		},
 																		"y_pos": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Vertical position of the origin of blur relative to the origin of coordinates of video. % and px formats are supported:If the string ends in %, the `YPos` of the blur will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;If the string ends in px, the `YPos` of the blur will be the specified px; for example, `100px` means that `YPos` is 100 px.Default value: 0 px.",
+																			Description: "Vertical position of the origin of blur relative to the origin of coordinates of video. % and px formats are supported:If the string ends in %，the `YPos` of the blur will be the specified percentage of the video height; for example，`10%` means that `YPos` is 10% of the video height;If the string ends in px，the `YPos` of the blur will be the specified px; for example，`100px` means that `YPos` is 100 px.默认值：0 px。",
 																		},
 																		"width": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Blur width. % and px formats are supported:If the string ends in %, the `Width` of the blur will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;If the string ends in px, the `Width` of the blur will be in px; for example, `100px` means that `Width` is 100 px.Default value: 10%.",
+																			Description: "Blur width. % and px formats are supported:If the string ends in %，the `Width` of the blur will be the specified percentage of the video width; for example，`10%` means that `Width` is 10% of the video width;If the string ends in px，the `Width` of the blur will be in px; for example，`100px` means that `Width` is 100 px.默认值：10%。",
 																		},
 																		"height": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Blur height. % and px formats are supported:If the string ends in %, the `Height` of the blur will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;If the string ends in px, the `Height` of the blur will be in px; for example, `100px` means that `Height` is 100 px.Default value: 10%.",
+																			Description: "Blur height. % and px formats are supported:If the string ends in %，the `Height` of the blur will be the specified percentage of the video height; for example，`10%` means that `Height` is 10% of the video height;If the string ends in px，the `Height` of the blur will be in px; for example，`100px` means that `Height` is 100 px.默认值：10%。",
 																		},
 																		"start_time_offset": {
 																			Type:        schema.TypeFloat,
 																			Computed:    true,
-																			Description: "Start time offset of blur in seconds. If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame.If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame;If this value is greater than 0 (e.g., n), the blur will appear at second n after the first video frame;If this value is smaller than 0 (e.g., -n), the blur will appear at second n before the last video frame.",
+																			Description: "开始时间 偏移量 of blur （秒）。 如果此参数为空 or 0 is entered，the blur will appear upon the first video frame.如果此参数为空 or 0 is entered，the blur will appear upon the first video frame;If this 值 is greater than 0 (e.g.，n)，the blur will appear at second n after the first video frame;If this 值 is smaller than 0 (e.g.，-n)，the blur will appear at second n before the last video frame。",
 																		},
 																		"end_time_offset": {
 																			Type:        schema.TypeFloat,
 																			Computed:    true,
-																			Description: "End time offset of blur in seconds.If this parameter is left empty or 0 is entered, the blur will exist till the last video frame;If this value is greater than 0 (e.g., n), the blur will exist till second n;If this value is smaller than 0 (e.g., -n), the blur will exist till second n before the last video frame.",
+																			Description: "结束时间 偏移量 of blur （秒）。如果此参数为空 or 0 is entered，the blur will exist till the last video frame;If this 值 is greater than 0 (e.g.，n)，the blur will exist till second n;If this 值 is smaller than 0 (e.g.，-n)，the blur will exist till second n before the last video frame。",
 																		},
 																	},
 																},
@@ -926,39 +926,39 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"start_time_offset": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "Start time offset of a transcoded video, in seconds.If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.",
+																Description: "开始时间 偏移量 of a transcoded video，（秒）。如果此参数为空 or set to 0，the transcoded video will start at the same time as the original video.If this parameter is set to a positive number (n for example)，the transcoded video will start at the nth second of the original video.If this parameter is set to a negative number (-n for example)，the transcoded video will start at the nth second before the end of the original video。",
 															},
 															"end_time_offset": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "End time offset of a transcoded video, in seconds.If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.",
+																Description: "结束时间 偏移量 of a transcoded video，（秒）。如果此参数为空 or set to 0，the transcoded video will end at the same time as the original video.If this parameter is set to a positive number (n for example)，the transcoded video will end at the nth second of the original video.If this parameter is set to a negative number (-n for example)，the transcoded video will end at the nth second before the end of the original video。",
 															},
 															"output_storage": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Target 存储桶 of an 输出文件 如果此参数为空，the `OutputStorage` 值 of the upper folder will be inherited.注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "The storage type for a media processing output file. Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.",
+																			Description: "The storage 类型 for a media processing 输出文件 Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This 类型 is only supported for AWS tasks，and the 输出存储桶 must be in the same 地域 as the 存储桶 of the 来源 file。",
 																		},
 																		"cos_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The location to save the output object in COS. This parameter is valid and required when `Type` is COS.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The location to save the output object in COS. This parameter is valid and 必填 when `类型` is COS.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The bucket to which the output file of media processing is saved, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 存储桶 to which the 输出文件 of media processing is saved，such as `TopRankVideo-125xxx88`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																					"region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the output bucket, such as `ap-chongqing`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 地域 of the 输出存储桶，such as `ap-chongqing`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																				},
 																			},
@@ -966,28 +966,28 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"s3_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The AWS S3 存储桶 to save the 输出文件 This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"s3_bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The AWS S3 bucket.",
+																						Description: "The AWS S3 存储桶",
 																					},
 																					"s3_region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the AWS S3 bucket.",
+																						Description: "The 地域 of the AWS S3 存储桶",
 																					},
 																					"s3_secret_id": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key ID required to upload files to the AWS S3 object.",
+																						Description: "The 键 ID 必填 to upload files to the AWS S3 object。",
 																					},
 																					"s3_secret_key": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key required to upload files to the AWS S3 object.",
+																						Description: "The 键 必填 to upload files to the AWS S3 object。",
 																					},
 																				},
 																			},
@@ -998,38 +998,38 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"output_object_path": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Path to a primary output file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}.{format}`.",
+																Description: "路径 to a primary 输出文件，which can be a relative 路径 or an absolute 路径 如果此参数为空，the following relative 路径 will be used by 默认值：`{inputName}_transcode_{definition}.{格式}`。",
 															},
 															"segment_object_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Path to an output file part (the path to ts during transcoding to HLS), which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}_{number}.{format}`.",
+																Description: "路径 to an 输出文件 part (the 路径 to ts during transcoding to HLS)，which can only be a relative 路径 如果此参数为空，the following relative 路径 will be used by 默认值：`{inputName}_transcode_{definition}_{number}.{格式}`。",
 															},
 															"object_number_format": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Rule of the `{number}` variable in the output path after transcoding.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Rule of the `{number}` variable in the 输出路径 after transcoding.注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"initial_value": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Start value of the `{number}` variable. Default value: 0.",
+																			Description: "Start 值 of the `{number}` variable. 默认值：0。",
 																		},
 																		"increment": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Increment of the `{number}` variable. Default value: 1.",
+																			Description: "Increment of the `{number}` variable. 默认值：1。",
 																		},
 																		"min_length": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Minimum length of the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. Default value: 1.",
+																			Description: "最小长度the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. 默认值：1。",
 																		},
 																		"place_holder": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Placeholder used when the `{number}` variable length is below the minimum requirement. Default value: 0.",
+																			Description: "Placeholder used when the `{number}` variable length is below the minimum requirement. 默认值：0。",
 																		},
 																	},
 																},
@@ -1037,40 +1037,40 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"head_tail_parameter": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Opening and closing credits parametersNote: this field may return `null`, indicating that no valid value was found.",
+																Description: "Opening and closing credits parametersNote: this field may return `null`，indicating that no valid 值 was found。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"head_set": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "Opening credits list.",
+																			Description: "Opening credits list。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The input type. Valid values:`COS`: A COS bucket address. `URL`: A URL. `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.",
+																						Description: "The input 类型 Valid values:`COS`: A COS 存储桶 地址 `URL`: A URL `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
 																					},
 																					"cos_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+																						Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"bucket": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+																									Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 																								},
 																								"region": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The region of the COS bucket, such as `ap-chongqing`.",
+																									Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 																								},
 																								"object": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+																									Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 																								},
 																							},
 																						},
@@ -1078,13 +1078,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																					"url_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+																						Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"url": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "URL of a video.",
+																									Description: "URL of a video。",
 																								},
 																							},
 																						},
@@ -1092,33 +1092,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																					"s3_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																						Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"s3_bucket": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The AWS S3 bucket.",
+																									Description: "The AWS S3 存储桶",
 																								},
 																								"s3_region": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The region of the AWS S3 bucket.",
+																									Description: "The 地域 of the AWS S3 存储桶",
 																								},
 																								"s3_object": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The path of the AWS S3 object.",
+																									Description: "The 路径 of the AWS S3 object。",
 																								},
 																								"s3_secret_id": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The key ID required to access the AWS S3 object.",
+																									Description: "The 键 ID 必填 to access the AWS S3 object。",
 																								},
 																								"s3_secret_key": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The key required to access the AWS S3 object.",
+																									Description: "The 键 必填 to access the AWS S3 object。",
 																								},
 																							},
 																						},
@@ -1129,34 +1129,34 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"tail_set": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "Closing credits list.",
+																			Description: "Closing credits list。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The input type. Valid values:`COS`: A COS bucket address. `URL`: A URL. `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.",
+																						Description: "The input 类型 Valid values:`COS`: A COS 存储桶 地址 `URL`: A URL `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
 																					},
 																					"cos_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+																						Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"bucket": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+																									Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 																								},
 																								"region": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The region of the COS bucket, such as `ap-chongqing`.",
+																									Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 																								},
 																								"object": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+																									Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 																								},
 																							},
 																						},
@@ -1164,13 +1164,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																					"url_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+																						Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"url": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "URL of a video.",
+																									Description: "URL of a video。",
 																								},
 																							},
 																						},
@@ -1178,33 +1178,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																					"s3_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																						Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"s3_bucket": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The AWS S3 bucket.",
+																									Description: "The AWS S3 存储桶",
 																								},
 																								"s3_region": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The region of the AWS S3 bucket.",
+																									Description: "The 地域 of the AWS S3 存储桶",
 																								},
 																								"s3_object": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The path of the AWS S3 object.",
+																									Description: "The 路径 of the AWS S3 object。",
 																								},
 																								"s3_secret_id": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The key ID required to access the AWS S3 object.",
+																									Description: "The 键 ID 必填 to access the AWS S3 object。",
 																								},
 																								"s3_secret_key": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The key required to access the AWS S3 object.",
+																									Description: "The 键 必填 to access the AWS S3 object。",
 																								},
 																							},
 																						},
@@ -1221,50 +1221,50 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 												"animated_graphic_task": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "An animated screenshot generation task.",
+													Description: "An animated screenshot generation task。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"definition": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Animated image generating template ID.",
+																Description: "Animated image generating 模板 ID",
 															},
 															"start_time_offset": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "Start time of an animated image in a video in seconds.",
+																Description: "开始时间 of an animated image in a video （秒）。",
 															},
 															"end_time_offset": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "End time of an animated image in a video in seconds.",
+																Description: "结束时间 of an animated image in a video （秒）。",
 															},
 															"output_storage": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Target bucket of a generated animated image file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Target 存储桶 of a generated animated image file. 如果此参数为空，the `OutputStorage` 值 of the upper folder will be inherited.注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "The storage type for a media processing output file. Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.",
+																			Description: "The storage 类型 for a media processing 输出文件 Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This 类型 is only supported for AWS tasks，and the 输出存储桶 must be in the same 地域 as the 存储桶 of the 来源 file。",
 																		},
 																		"cos_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The location to save the output object in COS. This parameter is valid and required when `Type` is COS.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The location to save the output object in COS. This parameter is valid and 必填 when `类型` is COS.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The bucket to which the output file of media processing is saved, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 存储桶 to which the 输出文件 of media processing is saved，such as `TopRankVideo-125xxx88`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																					"region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the output bucket, such as `ap-chongqing`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 地域 of the 输出存储桶，such as `ap-chongqing`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																				},
 																			},
@@ -1272,28 +1272,28 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"s3_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The AWS S3 存储桶 to save the 输出文件 This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"s3_bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The AWS S3 bucket.",
+																						Description: "The AWS S3 存储桶",
 																					},
 																					"s3_region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the AWS S3 bucket.",
+																						Description: "The 地域 of the AWS S3 存储桶",
 																					},
 																					"s3_secret_id": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key ID required to upload files to the AWS S3 object.",
+																						Description: "The 键 ID 必填 to upload files to the AWS S3 object。",
 																					},
 																					"s3_secret_key": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key required to upload files to the AWS S3 object.",
+																						Description: "The 键 必填 to upload files to the AWS S3 object。",
 																					},
 																				},
 																			},
@@ -1304,7 +1304,7 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"output_object_path": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Output path to a generated animated image file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_animatedGraphic_{definition}.{format}`.",
+																Description: "输出路径 to a generated animated image file，which can be a relative 路径 or an absolute 路径 如果此参数为空，the following relative 路径 will be used by 默认值：`{inputName}_animatedGraphic_{definition}.{格式}`。",
 															},
 														},
 													},
@@ -1312,13 +1312,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 												"snapshot_by_time_offset_task": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "A time point screencapturing task.",
+													Description: "A time point screencapturing task。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"definition": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "ID of a time point screencapturing template.",
+																Description: "ID time point screencapturing template。",
 															},
 															"ext_time_offset_set": {
 																Type: schema.TypeSet,
@@ -1326,82 +1326,82 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																	Type: schema.TypeString,
 																},
 																Computed:    true,
-																Description: "List of screenshot time points in the format of `s` or `%`:If the string ends in `s`, it means that the time point is in seconds; for example, `3.5s` means that the time point is the 3.5th second;If the string ends in `%`, it means that the time point is the specified percentage of the video duration; for example, `10%` means that the time point is 10% of the video duration.",
+																Description: "列表 screenshot time points in the 格式 of `s` or `%`:If the string ends in `s`，it means that the time point is in seconds; for example，`3.5s` means that the time point is the 3.5th second;If the string ends in `%`，it means that the time point is the specified percentage of the video duration; for example，`10%` means that the time point is 10% of the video duration。",
 															},
 															"watermark_set": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "List of up to 10 image or text watermarks.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "列表 up to 10 image or text watermarks.注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"definition": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "ID of a watermarking template.",
+																			Description: "ID watermarking template。",
 																		},
 																		"raw_parameter": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "Custom watermark parameter, which is valid if `Definition` is 0.This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the watermark parameter preferably.Custom watermark parameter is not available for screenshot.",
+																			Description: "Custom watermark parameter，which is valid if `Definition` is 0.This parameter is used in highly customized scenarios. We recommend you use `Definition` to 指定watermark parameter preferably.Custom watermark parameter is not available for screenshot。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Watermark type. Valid values:image: image watermark.",
+																						Description: "Watermark 类型 Valid values:image: image watermark。",
 																					},
 																					"coordinate_origin": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Origin position, which currently can only be:TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text.Default value: TopLeft.",
+																						Description: "Origin position，which currently can only be:TopLeft: the origin of coordinates is in the top-left corner of the video，and the origin of the watermark is in the top-left corner of the image or text.默认值：TopLeft。",
 																					},
 																					"x_pos": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.Default value: 0 px.",
+																						Description: "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %，the `XPos` of the watermark will be the specified percentage of the video width; for example，`10%` means that `XPos` is 10% of the video width;If the string ends in px，the `XPos` of the watermark will be the specified px; for example，`100px` means that `XPos` is 100 px.默认值：0 px。",
 																					},
 																					"y_pos": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.Default value: 0 px.",
+																						Description: "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %，the `YPos` of the watermark will be the specified percentage of the video height; for example，`10%` means that `YPos` is 10% of the video height;If the string ends in px，the `YPos` of the watermark will be the specified px; for example，`100px` means that `YPos` is 100 px.默认值：0 px。",
 																					},
 																					"image_template": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "Image watermark template. This field is required when `Type` is `image` and is invalid when `Type` is `text`.",
+																						Description: "Image watermark template. This field 为必填项 when `类型` is `image` and is invalid when `类型` is `text`。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"image_content": {
 																									Type:        schema.TypeList,
 																									Computed:    true,
-																									Description: "Input content of watermark image. JPEG and PNG images are supported.",
+																									Description: "Input 内容 of watermark image. JPEG and PNG images are supported。",
 																									Elem: &schema.Resource{
 																										Schema: map[string]*schema.Schema{
 																											"type": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The input type. Valid values:`COS`: A COS bucket address. `URL`: A URL. `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.",
+																												Description: "The input 类型 Valid values:`COS`: A COS 存储桶 地址 `URL`: A URL `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
 																											},
 																											"cos_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+																												Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"bucket": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+																															Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 																														},
 																														"region": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The region of the COS bucket, such as `ap-chongqing`.",
+																															Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 																														},
 																														"object": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+																															Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 																														},
 																													},
 																												},
@@ -1409,13 +1409,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																											"url_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+																												Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"url": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "URL of a video.",
+																															Description: "URL of a video。",
 																														},
 																													},
 																												},
@@ -1423,33 +1423,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																											"s3_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																												Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"s3_bucket": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The AWS S3 bucket.",
+																															Description: "The AWS S3 存储桶",
 																														},
 																														"s3_region": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The region of the AWS S3 bucket.",
+																															Description: "The 地域 of the AWS S3 存储桶",
 																														},
 																														"s3_object": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The path of the AWS S3 object.",
+																															Description: "The 路径 of the AWS S3 object。",
 																														},
 																														"s3_secret_id": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The key ID required to access the AWS S3 object.",
+																															Description: "The 键 ID 必填 to access the AWS S3 object。",
 																														},
 																														"s3_secret_key": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The key required to access the AWS S3 object.",
+																															Description: "The 键 必填 to access the AWS S3 object。",
 																														},
 																													},
 																												},
@@ -1460,17 +1460,17 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																								"width": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Watermark width. % and px formats are supported:If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.Default value: 10%.",
+																									Description: "Watermark width. % and px formats are supported:If the string ends in %，the `Width` of the watermark will be the specified percentage of the video width; for example，`10%` means that `Width` is 10% of the video width;If the string ends in px，the `Width` of the watermark will be in px; for example，`100px` means that `Width` is 100 px.默认值：10%。",
 																								},
 																								"height": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Watermark height. % and px formats are supported:If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px.Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.",
+																									Description: "Watermark height. % and px formats are supported:If the string ends in %，the `Height` of the watermark will be the specified percentage of the video height; for example，`10%` means that `Height` is 10% of the video height;If the string ends in px，the `Height` of the watermark will be in px; for example，`100px` means that `Height` is 100 px.默认值：0 px，which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image。",
 																								},
 																								"repeat_type": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Repeat type of an animated watermark. Valid values:`once`: no longer appears after watermark playback ends.`repeat_last_frame`: stays on the last frame after watermark playback ends.`repeat` (default): repeats the playback until the video ends.",
+																									Description: "Repeat 类型 an animated watermark. Valid values:`once`: no longer appears after watermark playback ends.`repeat_last_frame`: stays on the last frame after watermark playback ends.`repeat` (default): repeats the playback until the video ends。",
 																								},
 																							},
 																						},
@@ -1481,22 +1481,22 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"text_content": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Text content of up to 100 characters. This field is required only when the watermark type is text.Text watermark is not available for screenshot.",
+																			Description: "Text 内容 of up to 100 characters. This field 为必填项 only when the watermark 类型 is text.Text watermark is not available for screenshot。",
 																		},
 																		"svg_content": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.SVG watermark is not available for screenshot.",
+																			Description: "SVG 内容 of up to 2,000,000 characters. This field 为必填项 only when the watermark 类型 is `SVG`.SVG watermark is not available for screenshot。",
 																		},
 																		"start_time_offset": {
 																			Type:        schema.TypeFloat,
 																			Computed:    true,
-																			Description: "Start time offset of a watermark in seconds. If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame.If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame;If this value is greater than 0 (e.g., n), the watermark will appear at second n after the first video frame;If this value is smaller than 0 (e.g., -n), the watermark will appear at second n before the last video frame.",
+																			Description: "开始时间 偏移量 of a watermark （秒）。 如果此参数为空 or 0 is entered，the watermark will appear upon the first video frame.如果此参数为空 or 0 is entered，the watermark will appear upon the first video frame;If this 值 is greater than 0 (e.g.，n)，the watermark will appear at second n after the first video frame;If this 值 is smaller than 0 (e.g.，-n)，the watermark will appear at second n before the last video frame。",
 																		},
 																		"end_time_offset": {
 																			Type:        schema.TypeFloat,
 																			Computed:    true,
-																			Description: "End time offset of a watermark in seconds.If this parameter is left empty or 0 is entered, the watermark will exist till the last video frame;If this value is greater than 0 (e.g., n), the watermark will exist till second n;If this value is smaller than 0 (e.g., -n), the watermark will exist till second n before the last video frame.",
+																			Description: "结束时间 偏移量 of a watermark （秒）。如果此参数为空 or 0 is entered，the watermark will exist till the last video frame;If this 值 is greater than 0 (e.g.，n)，the watermark will exist till second n;If this 值 is smaller than 0 (e.g.，-n)，the watermark will exist till second n before the last video frame。",
 																		},
 																	},
 																},
@@ -1504,29 +1504,29 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"output_storage": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Target bucket of a generated time point screenshot file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Target 存储桶 of a generated time point screenshot file. 如果此参数为空，the `OutputStorage` 值 of the upper folder will be inherited.注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "The storage type for a media processing output file. Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.",
+																			Description: "The storage 类型 for a media processing 输出文件 Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This 类型 is only supported for AWS tasks，and the 输出存储桶 must be in the same 地域 as the 存储桶 of the 来源 file。",
 																		},
 																		"cos_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The location to save the output object in COS. This parameter is valid and required when `Type` is COS.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The location to save the output object in COS. This parameter is valid and 必填 when `类型` is COS.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The bucket to which the output file of media processing is saved, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 存储桶 to which the 输出文件 of media processing is saved，such as `TopRankVideo-125xxx88`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																					"region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the output bucket, such as `ap-chongqing`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 地域 of the 输出存储桶，such as `ap-chongqing`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																				},
 																			},
@@ -1534,28 +1534,28 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"s3_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The AWS S3 存储桶 to save the 输出文件 This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"s3_bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The AWS S3 bucket.",
+																						Description: "The AWS S3 存储桶",
 																					},
 																					"s3_region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the AWS S3 bucket.",
+																						Description: "The 地域 of the AWS S3 存储桶",
 																					},
 																					"s3_secret_id": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key ID required to upload files to the AWS S3 object.",
+																						Description: "The 键 ID 必填 to upload files to the AWS S3 object。",
 																					},
 																					"s3_secret_key": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key required to upload files to the AWS S3 object.",
+																						Description: "The 键 必填 to upload files to the AWS S3 object。",
 																					},
 																				},
 																			},
@@ -1566,33 +1566,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"output_object_path": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Output path to a generated time point screenshot, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`.",
+																Description: "输出路径 to a generated time point screenshot，which can be a relative 路径 or an absolute 路径 如果此参数为空，the following relative 路径 will be used by 默认值：`{inputName}_snapshotByTimeOffset_{definition}_{number}.{格式}`。",
 															},
 															"object_number_format": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Rule of the `{number}` variable in the time point screenshot output path.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Rule of the `{number}` variable in the time point screenshot 输出路径注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"initial_value": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Start value of the `{number}` variable. Default value: 0.",
+																			Description: "Start 值 of the `{number}` variable. 默认值：0。",
 																		},
 																		"increment": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Increment of the `{number}` variable. Default value: 1.",
+																			Description: "Increment of the `{number}` variable. 默认值：1。",
 																		},
 																		"min_length": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Minimum length of the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. Default value: 1.",
+																			Description: "最小长度the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. 默认值：1。",
 																		},
 																		"place_holder": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Placeholder used when the `{number}` variable length is below the minimum requirement. Default value: 0.",
+																			Description: "Placeholder used when the `{number}` variable length is below the minimum requirement. 默认值：0。",
 																		},
 																	},
 																},
@@ -1603,88 +1603,88 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 												"sample_snapshot_task": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "A sampled screencapturing task.",
+													Description: "A sampled screencapturing task。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"definition": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Sampled screencapturing template ID.",
+																Description: "Sampled screencapturing 模板 ID",
 															},
 															"watermark_set": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "List of up to 10 image or text watermarks.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "列表 up to 10 image or text watermarks.注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"definition": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "ID of a watermarking template.",
+																			Description: "ID watermarking template。",
 																		},
 																		"raw_parameter": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "Custom watermark parameter, which is valid if `Definition` is 0.This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the watermark parameter preferably.Custom watermark parameter is not available for screenshot.",
+																			Description: "Custom watermark parameter，which is valid if `Definition` is 0.This parameter is used in highly customized scenarios. We recommend you use `Definition` to 指定watermark parameter preferably.Custom watermark parameter is not available for screenshot。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Watermark type. Valid values:image: image watermark.",
+																						Description: "Watermark 类型 Valid values:image: image watermark。",
 																					},
 																					"coordinate_origin": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Origin position, which currently can only be:TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text.Default value: TopLeft.",
+																						Description: "Origin position，which currently can only be:TopLeft: the origin of coordinates is in the top-left corner of the video，and the origin of the watermark is in the top-left corner of the image or text.默认值：TopLeft。",
 																					},
 																					"x_pos": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.Default value: 0 px.",
+																						Description: "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %，the `XPos` of the watermark will be the specified percentage of the video width; for example，`10%` means that `XPos` is 10% of the video width;If the string ends in px，the `XPos` of the watermark will be the specified px; for example，`100px` means that `XPos` is 100 px.默认值：0 px。",
 																					},
 																					"y_pos": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.Default value: 0 px.",
+																						Description: "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %，the `YPos` of the watermark will be the specified percentage of the video height; for example，`10%` means that `YPos` is 10% of the video height;If the string ends in px，the `YPos` of the watermark will be the specified px; for example，`100px` means that `YPos` is 100 px.默认值：0 px。",
 																					},
 																					"image_template": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "Image watermark template. This field is required when `Type` is `image` and is invalid when `Type` is `text`.",
+																						Description: "Image watermark template. This field 为必填项 when `类型` is `image` and is invalid when `类型` is `text`。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"image_content": {
 																									Type:        schema.TypeList,
 																									Computed:    true,
-																									Description: "Input content of watermark image. JPEG and PNG images are supported.",
+																									Description: "Input 内容 of watermark image. JPEG and PNG images are supported。",
 																									Elem: &schema.Resource{
 																										Schema: map[string]*schema.Schema{
 																											"type": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The input type. Valid values:`COS`: A COS bucket address. `URL`: A URL. `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.",
+																												Description: "The input 类型 Valid values:`COS`: A COS 存储桶 地址 `URL`: A URL `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
 																											},
 																											"cos_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+																												Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"bucket": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+																															Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 																														},
 																														"region": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The region of the COS bucket, such as `ap-chongqing`.",
+																															Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 																														},
 																														"object": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+																															Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 																														},
 																													},
 																												},
@@ -1692,13 +1692,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																											"url_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+																												Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"url": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "URL of a video.",
+																															Description: "URL of a video。",
 																														},
 																													},
 																												},
@@ -1706,33 +1706,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																											"s3_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																												Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"s3_bucket": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The AWS S3 bucket.",
+																															Description: "The AWS S3 存储桶",
 																														},
 																														"s3_region": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The region of the AWS S3 bucket.",
+																															Description: "The 地域 of the AWS S3 存储桶",
 																														},
 																														"s3_object": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The path of the AWS S3 object.",
+																															Description: "The 路径 of the AWS S3 object。",
 																														},
 																														"s3_secret_id": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The key ID required to access the AWS S3 object.",
+																															Description: "The 键 ID 必填 to access the AWS S3 object。",
 																														},
 																														"s3_secret_key": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The key required to access the AWS S3 object.",
+																															Description: "The 键 必填 to access the AWS S3 object。",
 																														},
 																													},
 																												},
@@ -1743,17 +1743,17 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																								"width": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Watermark width. % and px formats are supported:If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.Default value: 10%.",
+																									Description: "Watermark width. % and px formats are supported:If the string ends in %，the `Width` of the watermark will be the specified percentage of the video width; for example，`10%` means that `Width` is 10% of the video width;If the string ends in px，the `Width` of the watermark will be in px; for example，`100px` means that `Width` is 100 px.默认值：10%。",
 																								},
 																								"height": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Watermark height. % and px formats are supported:If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px.Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.",
+																									Description: "Watermark height. % and px formats are supported:If the string ends in %，the `Height` of the watermark will be the specified percentage of the video height; for example，`10%` means that `Height` is 10% of the video height;If the string ends in px，the `Height` of the watermark will be in px; for example，`100px` means that `Height` is 100 px.默认值：0 px，which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image。",
 																								},
 																								"repeat_type": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Repeat type of an animated watermark. Valid values:`once`: no longer appears after watermark playback ends.`repeat_last_frame`: stays on the last frame after watermark playback ends.`repeat` (default): repeats the playback until the video ends.",
+																									Description: "Repeat 类型 an animated watermark. Valid values:`once`: no longer appears after watermark playback ends.`repeat_last_frame`: stays on the last frame after watermark playback ends.`repeat` (default): repeats the playback until the video ends。",
 																								},
 																							},
 																						},
@@ -1764,22 +1764,22 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"text_content": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Text content of up to 100 characters. This field is required only when the watermark type is text.Text watermark is not available for screenshot.",
+																			Description: "Text 内容 of up to 100 characters. This field 为必填项 only when the watermark 类型 is text.Text watermark is not available for screenshot。",
 																		},
 																		"svg_content": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.SVG watermark is not available for screenshot.",
+																			Description: "SVG 内容 of up to 2,000,000 characters. This field 为必填项 only when the watermark 类型 is `SVG`.SVG watermark is not available for screenshot。",
 																		},
 																		"start_time_offset": {
 																			Type:        schema.TypeFloat,
 																			Computed:    true,
-																			Description: "Start time offset of a watermark in seconds. If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame.If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame;If this value is greater than 0 (e.g., n), the watermark will appear at second n after the first video frame;If this value is smaller than 0 (e.g., -n), the watermark will appear at second n before the last video frame.",
+																			Description: "开始时间 偏移量 of a watermark （秒）。 如果此参数为空 or 0 is entered，the watermark will appear upon the first video frame.如果此参数为空 or 0 is entered，the watermark will appear upon the first video frame;If this 值 is greater than 0 (e.g.，n)，the watermark will appear at second n after the first video frame;If this 值 is smaller than 0 (e.g.，-n)，the watermark will appear at second n before the last video frame。",
 																		},
 																		"end_time_offset": {
 																			Type:        schema.TypeFloat,
 																			Computed:    true,
-																			Description: "End time offset of a watermark in seconds.If this parameter is left empty or 0 is entered, the watermark will exist till the last video frame;If this value is greater than 0 (e.g., n), the watermark will exist till second n;If this value is smaller than 0 (e.g., -n), the watermark will exist till second n before the last video frame.",
+																			Description: "结束时间 偏移量 of a watermark （秒）。如果此参数为空 or 0 is entered，the watermark will exist till the last video frame;If this 值 is greater than 0 (e.g.，n)，the watermark will exist till second n;If this 值 is smaller than 0 (e.g.，-n)，the watermark will exist till second n before the last video frame。",
 																		},
 																	},
 																},
@@ -1787,29 +1787,29 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"output_storage": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Target bucket of a sampled screenshot. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Target 存储桶 of a sampled screenshot. 如果此参数为空，the `OutputStorage` 值 of the upper folder will be inherited.注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "The storage type for a media processing output file. Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.",
+																			Description: "The storage 类型 for a media processing 输出文件 Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This 类型 is only supported for AWS tasks，and the 输出存储桶 must be in the same 地域 as the 存储桶 of the 来源 file。",
 																		},
 																		"cos_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The location to save the output object in COS. This parameter is valid and required when `Type` is COS.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The location to save the output object in COS. This parameter is valid and 必填 when `类型` is COS.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The bucket to which the output file of media processing is saved, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 存储桶 to which the 输出文件 of media processing is saved，such as `TopRankVideo-125xxx88`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																					"region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the output bucket, such as `ap-chongqing`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 地域 of the 输出存储桶，such as `ap-chongqing`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																				},
 																			},
@@ -1817,28 +1817,28 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"s3_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The AWS S3 存储桶 to save the 输出文件 This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"s3_bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The AWS S3 bucket.",
+																						Description: "The AWS S3 存储桶",
 																					},
 																					"s3_region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the AWS S3 bucket.",
+																						Description: "The 地域 of the AWS S3 存储桶",
 																					},
 																					"s3_secret_id": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key ID required to upload files to the AWS S3 object.",
+																						Description: "The 键 ID 必填 to upload files to the AWS S3 object。",
 																					},
 																					"s3_secret_key": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key required to upload files to the AWS S3 object.",
+																						Description: "The 键 必填 to upload files to the AWS S3 object。",
 																					},
 																				},
 																			},
@@ -1849,33 +1849,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"output_object_path": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Output path to a generated sampled screenshot, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_sampleSnapshot_{definition}_{number}.{format}`.",
+																Description: "输出路径 to a generated sampled screenshot，which can be a relative 路径 or an absolute 路径 如果此参数为空，the following relative 路径 will be used by 默认值：`{inputName}_sampleSnapshot_{definition}_{number}.{格式}`。",
 															},
 															"object_number_format": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Rule of the `{number}` variable in the sampled screenshot output path.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Rule of the `{number}` variable in the sampled screenshot 输出路径注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"initial_value": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Start value of the `{number}` variable. Default value: 0.",
+																			Description: "Start 值 of the `{number}` variable. 默认值：0。",
 																		},
 																		"increment": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Increment of the `{number}` variable. Default value: 1.",
+																			Description: "Increment of the `{number}` variable. 默认值：1。",
 																		},
 																		"min_length": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Minimum length of the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. Default value: 1.",
+																			Description: "最小长度the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. 默认值：1。",
 																		},
 																		"place_holder": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Placeholder used when the `{number}` variable length is below the minimum requirement. Default value: 0.",
+																			Description: "Placeholder used when the `{number}` variable length is below the minimum requirement. 默认值：0。",
 																		},
 																	},
 																},
@@ -1886,40 +1886,40 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 												"image_sprite_task": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "An image sprite generation task.",
+													Description: "An image sprite generation task。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"definition": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "ID of an image sprite generating template.",
+																Description: "ID an image sprite generating template。",
 															},
 															"output_storage": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Target bucket of a generated image sprite. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Target 存储桶 of a generated image sprite. 如果此参数为空，the `OutputStorage` 值 of the upper folder will be inherited.注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "The storage type for a media processing output file. Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.",
+																			Description: "The storage 类型 for a media processing 输出文件 Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This 类型 is only supported for AWS tasks，and the 输出存储桶 must be in the same 地域 as the 存储桶 of the 来源 file。",
 																		},
 																		"cos_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The location to save the output object in COS. This parameter is valid and required when `Type` is COS.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The location to save the output object in COS. This parameter is valid and 必填 when `类型` is COS.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The bucket to which the output file of media processing is saved, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 存储桶 to which the 输出文件 of media processing is saved，such as `TopRankVideo-125xxx88`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																					"region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the output bucket, such as `ap-chongqing`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 地域 of the 输出存储桶，such as `ap-chongqing`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																				},
 																			},
@@ -1927,28 +1927,28 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"s3_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The AWS S3 存储桶 to save the 输出文件 This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"s3_bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The AWS S3 bucket.",
+																						Description: "The AWS S3 存储桶",
 																					},
 																					"s3_region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the AWS S3 bucket.",
+																						Description: "The 地域 of the AWS S3 存储桶",
 																					},
 																					"s3_secret_id": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key ID required to upload files to the AWS S3 object.",
+																						Description: "The 键 ID 必填 to upload files to the AWS S3 object。",
 																					},
 																					"s3_secret_key": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key required to upload files to the AWS S3 object.",
+																						Description: "The 键 必填 to upload files to the AWS S3 object。",
 																					},
 																				},
 																			},
@@ -1959,38 +1959,38 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"output_object_path": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Output path to a generated image sprite file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}_{number}.{format}`.",
+																Description: "输出路径 to a generated image sprite file，which can be a relative 路径 or an absolute 路径 如果此参数为空，the following relative 路径 will be used by 默认值：`{inputName}_imageSprite_{definition}_{number}.{格式}`。",
 															},
 															"web_vtt_object_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Output path to the WebVTT file after an image sprite is generated, which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}.{format}`.",
+																Description: "输出路径 to the WebVTT file after an image sprite is generated，which can only be a relative 路径 如果此参数为空，the following relative 路径 will be used by 默认值：`{inputName}_imageSprite_{definition}.{格式}`。",
 															},
 															"object_number_format": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Rule of the `{number}` variable in the image sprite output path.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Rule of the `{number}` variable in the image sprite 输出路径注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"initial_value": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Start value of the `{number}` variable. Default value: 0.",
+																			Description: "Start 值 of the `{number}` variable. 默认值：0。",
 																		},
 																		"increment": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Increment of the `{number}` variable. Default value: 1.",
+																			Description: "Increment of the `{number}` variable. 默认值：1。",
 																		},
 																		"min_length": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "Minimum length of the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. Default value: 1.",
+																			Description: "最小长度the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. 默认值：1。",
 																		},
 																		"place_holder": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Placeholder used when the `{number}` variable length is below the minimum requirement. Default value: 0.",
+																			Description: "Placeholder used when the `{number}` variable length is below the minimum requirement. 默认值：0。",
 																		},
 																	},
 																},
@@ -2001,88 +2001,88 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 												"adaptive_dynamic_streaming_task": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "An adaptive bitrate streaming task.",
+													Description: "An adaptive bitrate streaming task。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"definition": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Adaptive bitrate streaming template ID.",
+																Description: "Adaptive bitrate streaming 模板 ID",
 															},
 															"watermark_set": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "List of up to 10 image or text watermarks.",
+																Description: "列表 up to 10 image or text watermarks。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"definition": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "ID of a watermarking template.",
+																			Description: "ID watermarking template。",
 																		},
 																		"raw_parameter": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "Custom watermark parameter, which is valid if `Definition` is 0.This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the watermark parameter preferably.Custom watermark parameter is not available for screenshot.",
+																			Description: "Custom watermark parameter，which is valid if `Definition` is 0.This parameter is used in highly customized scenarios. We recommend you use `Definition` to 指定watermark parameter preferably.Custom watermark parameter is not available for screenshot。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Watermark type. Valid values:image: image watermark.",
+																						Description: "Watermark 类型 Valid values:image: image watermark。",
 																					},
 																					"coordinate_origin": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "Origin position, which currently can only be:TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text.Default value: TopLeft.",
+																						Description: "Origin position，which currently can only be:TopLeft: the origin of coordinates is in the top-left corner of the video，and the origin of the watermark is in the top-left corner of the image or text.默认值：TopLeft。",
 																					},
 																					"x_pos": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.Default value: 0 px.",
+																						Description: "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %，the `XPos` of the watermark will be the specified percentage of the video width; for example，`10%` means that `XPos` is 10% of the video width;If the string ends in px，the `XPos` of the watermark will be the specified px; for example，`100px` means that `XPos` is 100 px.默认值：0 px。",
 																					},
 																					"y_pos": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.Default value: 0 px.",
+																						Description: "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:If the string ends in %，the `YPos` of the watermark will be the specified percentage of the video height; for example，`10%` means that `YPos` is 10% of the video height;If the string ends in px，the `YPos` of the watermark will be the specified px; for example，`100px` means that `YPos` is 100 px.默认值：0 px。",
 																					},
 																					"image_template": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "Image watermark template. This field is required when `Type` is `image` and is invalid when `Type` is `text`.",
+																						Description: "Image watermark template. This field 为必填项 when `类型` is `image` and is invalid when `类型` is `text`。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"image_content": {
 																									Type:        schema.TypeList,
 																									Computed:    true,
-																									Description: "Input content of watermark image. JPEG and PNG images are supported.",
+																									Description: "Input 内容 of watermark image. JPEG and PNG images are supported。",
 																									Elem: &schema.Resource{
 																										Schema: map[string]*schema.Schema{
 																											"type": {
 																												Type:        schema.TypeString,
 																												Computed:    true,
-																												Description: "The input type. Valid values:`COS`: A COS bucket address. `URL`: A URL. `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.",
+																												Description: "The input 类型 Valid values:`COS`: A COS 存储桶 地址 `URL`: A URL `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
 																											},
 																											"cos_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+																												Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"bucket": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+																															Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 																														},
 																														"region": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The region of the COS bucket, such as `ap-chongqing`.",
+																															Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 																														},
 																														"object": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+																															Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 																														},
 																													},
 																												},
@@ -2090,13 +2090,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																											"url_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+																												Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"url": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "URL of a video.",
+																															Description: "URL of a video。",
 																														},
 																													},
 																												},
@@ -2104,33 +2104,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																											"s3_input_info": {
 																												Type:        schema.TypeList,
 																												Computed:    true,
-																												Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																												Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																												Elem: &schema.Resource{
 																													Schema: map[string]*schema.Schema{
 																														"s3_bucket": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The AWS S3 bucket.",
+																															Description: "The AWS S3 存储桶",
 																														},
 																														"s3_region": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The region of the AWS S3 bucket.",
+																															Description: "The 地域 of the AWS S3 存储桶",
 																														},
 																														"s3_object": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The path of the AWS S3 object.",
+																															Description: "The 路径 of the AWS S3 object。",
 																														},
 																														"s3_secret_id": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The key ID required to access the AWS S3 object.",
+																															Description: "The 键 ID 必填 to access the AWS S3 object。",
 																														},
 																														"s3_secret_key": {
 																															Type:        schema.TypeString,
 																															Computed:    true,
-																															Description: "The key required to access the AWS S3 object.",
+																															Description: "The 键 必填 to access the AWS S3 object。",
 																														},
 																													},
 																												},
@@ -2141,17 +2141,17 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																								"width": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Watermark width. % and px formats are supported:If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.Default value: 10%.",
+																									Description: "Watermark width. % and px formats are supported:If the string ends in %，the `Width` of the watermark will be the specified percentage of the video width; for example，`10%` means that `Width` is 10% of the video width;If the string ends in px，the `Width` of the watermark will be in px; for example，`100px` means that `Width` is 100 px.默认值：10%。",
 																								},
 																								"height": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Watermark height. % and px formats are supported:If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px.Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.",
+																									Description: "Watermark height. % and px formats are supported:If the string ends in %，the `Height` of the watermark will be the specified percentage of the video height; for example，`10%` means that `Height` is 10% of the video height;If the string ends in px，the `Height` of the watermark will be in px; for example，`100px` means that `Height` is 100 px.默认值：0 px，which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image。",
 																								},
 																								"repeat_type": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "Repeat type of an animated watermark. Valid values:`once`: no longer appears after watermark playback ends.`repeat_last_frame`: stays on the last frame after watermark playback ends.`repeat` (default): repeats the playback until the video ends.",
+																									Description: "Repeat 类型 an animated watermark. Valid values:`once`: no longer appears after watermark playback ends.`repeat_last_frame`: stays on the last frame after watermark playback ends.`repeat` (default): repeats the playback until the video ends。",
 																								},
 																							},
 																						},
@@ -2162,22 +2162,22 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"text_content": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Text content of up to 100 characters. This field is required only when the watermark type is text.Text watermark is not available for screenshot.",
+																			Description: "Text 内容 of up to 100 characters. This field 为必填项 only when the watermark 类型 is text.Text watermark is not available for screenshot。",
 																		},
 																		"svg_content": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.SVG watermark is not available for screenshot.",
+																			Description: "SVG 内容 of up to 2,000,000 characters. This field 为必填项 only when the watermark 类型 is `SVG`.SVG watermark is not available for screenshot。",
 																		},
 																		"start_time_offset": {
 																			Type:        schema.TypeFloat,
 																			Computed:    true,
-																			Description: "Start time offset of a watermark in seconds. If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame.If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame;If this value is greater than 0 (e.g., n), the watermark will appear at second n after the first video frame;If this value is smaller than 0 (e.g., -n), the watermark will appear at second n before the last video frame.",
+																			Description: "开始时间 偏移量 of a watermark （秒）。 如果此参数为空 or 0 is entered，the watermark will appear upon the first video frame.如果此参数为空 or 0 is entered，the watermark will appear upon the first video frame;If this 值 is greater than 0 (e.g.，n)，the watermark will appear at second n after the first video frame;If this 值 is smaller than 0 (e.g.，-n)，the watermark will appear at second n before the last video frame。",
 																		},
 																		"end_time_offset": {
 																			Type:        schema.TypeFloat,
 																			Computed:    true,
-																			Description: "End time offset of a watermark in seconds.If this parameter is left empty or 0 is entered, the watermark will exist till the last video frame;If this value is greater than 0 (e.g., n), the watermark will exist till second n;If this value is smaller than 0 (e.g., -n), the watermark will exist till second n before the last video frame.",
+																			Description: "结束时间 偏移量 of a watermark （秒）。如果此参数为空 or 0 is entered，the watermark will exist till the last video frame;If this 值 is greater than 0 (e.g.，n)，the watermark will exist till second n;If this 值 is smaller than 0 (e.g.，-n)，the watermark will exist till second n before the last video frame。",
 																		},
 																	},
 																},
@@ -2185,29 +2185,29 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"output_storage": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "Target bucket of an output file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.Note: this field may return null, indicating that no valid values can be obtained.",
+																Description: "Target 存储桶 of an 输出文件 after being transcoded to adaptive bitrate streaming. 如果此参数为空，the `OutputStorage` 值 of the upper folder will be inherited.Note: this field may return null，indicating that no valid values can be obtained。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "The storage type for a media processing output file. Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.",
+																			Description: "The storage 类型 for a media processing 输出文件 Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This 类型 is only supported for AWS tasks，and the 输出存储桶 must be in the same 地域 as the 存储桶 of the 来源 file。",
 																		},
 																		"cos_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The location to save the output object in COS. This parameter is valid and required when `Type` is COS.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The location to save the output object in COS. This parameter is valid and 必填 when `类型` is COS.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The bucket to which the output file of media processing is saved, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 存储桶 to which the 输出文件 of media processing is saved，such as `TopRankVideo-125xxx88`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																					"region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the output bucket, such as `ap-chongqing`. If this parameter is left empty, the value of the upper layer will be inherited.",
+																						Description: "The 地域 of the 输出存储桶，such as `ap-chongqing`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 																					},
 																				},
 																			},
@@ -2215,28 +2215,28 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																		"s3_output_storage": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																			Description: "The AWS S3 存储桶 to save the 输出文件 This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"s3_bucket": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The AWS S3 bucket.",
+																						Description: "The AWS S3 存储桶",
 																					},
 																					"s3_region": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The region of the AWS S3 bucket.",
+																						Description: "The 地域 of the AWS S3 存储桶",
 																					},
 																					"s3_secret_id": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key ID required to upload files to the AWS S3 object.",
+																						Description: "The 键 ID 必填 to upload files to the AWS S3 object。",
 																					},
 																					"s3_secret_key": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The key required to upload files to the AWS S3 object.",
+																						Description: "The 键 必填 to upload files to the AWS S3 object。",
 																					},
 																				},
 																			},
@@ -2247,60 +2247,60 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 															"output_object_path": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The relative or absolute output path of the manifest file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}.{format}`.",
+																Description: "The relative or absolute 输出路径 of the manifest file after being transcoded to adaptive bitrate streaming. 如果此参数为空，a relative 路径 in the following 格式 will be used by 默认值：`{inputName}_adaptiveDynamicStreaming_{definition}.{格式}`。",
 															},
 															"sub_stream_object_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The relative output path of the substream file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.",
+																Description: "The relative 输出路径 of the substream file after being transcoded to adaptive bitrate streaming. 如果此参数为空，a relative 路径 in the following 格式 will be used by 默认值：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{格式}`。",
 															},
 															"segment_object_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The relative output path of the segment file after being transcoded to adaptive bitrate streaming (in HLS format only). If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.",
+																Description: "The relative 输出路径 of the segment file after being transcoded to adaptive bitrate streaming (in HLS 格式 only). 如果此参数为空，a relative 路径 in the following 格式 will be used by 默认值：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{格式}`。",
 															},
 															"add_on_subtitles": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "The subtitle file to add.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "The subtitle file to add.注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "The mode. Valid values:`subtitle-stream`: Add a subtitle track.`close-caption-708`: Embed EA-708 subtitles in SEI frames.`close-caption-608`: Embed CEA-608 subtitles in SEI frames.Note: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "The 模式 Valid values:`subtitle-stream`: Add a subtitle track.`close-caption-708`: Embed EA-708 subtitles in SEI frames.`close-caption-608`: Embed CEA-608 subtitles in SEI frames.注意：此字段可能返回 null，表示无法获取有效值。",
 																		},
 																		"subtitle": {
 																			Type:        schema.TypeList,
 																			Computed:    true,
-																			Description: "The subtitle file.Note: This field may return null, indicating that no valid values can be obtained.",
+																			Description: "The subtitle file.注意：此字段可能返回 null，表示无法获取有效值。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"type": {
 																						Type:        schema.TypeString,
 																						Computed:    true,
-																						Description: "The input type. Valid values:`COS`: A COS bucket address. `URL`: A URL. `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.",
+																						Description: "The input 类型 Valid values:`COS`: A COS 存储桶 地址 `URL`: A URL `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
 																					},
 																					"cos_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+																						Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"bucket": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+																									Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 																								},
 																								"region": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The region of the COS bucket, such as `ap-chongqing`.",
+																									Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 																								},
 																								"object": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+																									Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 																								},
 																							},
 																						},
@@ -2308,13 +2308,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																					"url_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+																						Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"url": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "URL of a video.",
+																									Description: "URL of a video。",
 																								},
 																							},
 																						},
@@ -2322,33 +2322,33 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 																					"s3_input_info": {
 																						Type:        schema.TypeList,
 																						Computed:    true,
-																						Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+																						Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"s3_bucket": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The AWS S3 bucket.",
+																									Description: "The AWS S3 存储桶",
 																								},
 																								"s3_region": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The region of the AWS S3 bucket.",
+																									Description: "The 地域 of the AWS S3 存储桶",
 																								},
 																								"s3_object": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The path of the AWS S3 object.",
+																									Description: "The 路径 of the AWS S3 object。",
 																								},
 																								"s3_secret_id": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The key ID required to access the AWS S3 object.",
+																									Description: "The 键 ID 必填 to access the AWS S3 object。",
 																								},
 																								"s3_secret_key": {
 																									Type:        schema.TypeString,
 																									Computed:    true,
-																									Description: "The key required to access the AWS S3 object.",
+																									Description: "The 键 必填 to access the AWS S3 object。",
 																								},
 																							},
 																						},
@@ -2365,13 +2365,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 												"ai_content_review_task": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "A content moderation task.",
+													Description: "A 内容 moderation task。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"definition": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Video content audit template ID.",
+																Description: "Video 内容 audit 模板 ID",
 															},
 														},
 													},
@@ -2379,18 +2379,18 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 												"ai_analysis_task": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "A content analysis task.",
+													Description: "A 内容 analysis task。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"definition": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Video content analysis template ID.",
+																Description: "Video 内容 analysis 模板 ID",
 															},
 															"extended_parameter": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "An extended parameter, whose value is a stringfied JSON.Note: This parameter is for customers with special requirements. It needs to be customized offline.Note: This field may return null, indicating that no valid values can be obtained.",
+																Description: "An extended parameter，whose 值 is a stringfied JSON.Note: This parameter is for customers with special requirements. It needs to be customized offline.注意：此字段可能返回 null，表示无法获取有效值。",
 															},
 														},
 													},
@@ -2398,13 +2398,13 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 												"ai_recognition_task": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "A content recognition task.",
+													Description: "A 内容 recognition task。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"definition": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Intelligent video recognition template ID.",
+																Description: "Intelligent video recognition 模板 ID",
 															},
 														},
 													},
@@ -2418,29 +2418,29 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 						"output_storage": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The bucket to save the output file.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The 存储桶 to save the 输出文件注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The storage type for a media processing output file. Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.",
+										Description: "The storage 类型 for a media processing 输出文件 Valid values:`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This 类型 is only supported for AWS tasks，and the 输出存储桶 must be in the same 地域 as the 存储桶 of the 来源 file。",
 									},
 									"cos_output_storage": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The location to save the output object in COS. This parameter is valid and required when `Type` is COS.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "The location to save the output object in COS. This parameter is valid and 必填 when `类型` is COS.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"bucket": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The bucket to which the output file of media processing is saved, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the value of the upper layer will be inherited.",
+													Description: "The 存储桶 to which the 输出文件 of media processing is saved，such as `TopRankVideo-125xxx88`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 												},
 												"region": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The region of the output bucket, such as `ap-chongqing`. If this parameter is left empty, the value of the upper layer will be inherited.",
+													Description: "The 地域 of the 输出存储桶，such as `ap-chongqing`. 如果此参数为空，the 值 of the upper layer will be inherited。",
 												},
 											},
 										},
@@ -2448,28 +2448,28 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 									"s3_output_storage": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "The AWS S3 存储桶 to save the 输出文件 This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"s3_bucket": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The AWS S3 bucket.",
+													Description: "The AWS S3 存储桶",
 												},
 												"s3_region": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The region of the AWS S3 bucket.",
+													Description: "The 地域 of the AWS S3 存储桶",
 												},
 												"s3_secret_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The key ID required to upload files to the AWS S3 object.",
+													Description: "The 键 ID 必填 to upload files to the AWS S3 object。",
 												},
 												"s3_secret_key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The key required to upload files to the AWS S3 object.",
+													Description: "The 键 必填 to upload files to the AWS S3 object。",
 												},
 											},
 										},
@@ -2480,74 +2480,74 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 						"output_dir": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The directory to save the output file.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The directory to save the 输出文件注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"task_notify_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The notification configuration.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The notification configuration.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cmq_model": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The CMQ or TDMQ-CMQ model. Valid values: Queue, Topic.",
+										Description: "The CMQ or TDMQ-CMQ model. 有效值：Queue，Topic。",
 									},
 									"cmq_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The CMQ or TDMQ-CMQ region, such as `sh` (Shanghai) or `bj` (Beijing).",
+										Description: "The CMQ or TDMQ-CMQ 地域，such as `sh` (Shanghai) or `bj` (Beijing)。",
 									},
 									"topic_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.",
+										Description: "The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`。",
 									},
 									"queue_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.",
+										Description: "The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`。",
 									},
 									"notify_mode": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.",
+										Description: "Workflow notification method. 有效值：Finish，Change. 如果此参数为空，`Finish` will be used。",
 									},
 									"notify_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The notification type. Valid values:`CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.`TDMQ-CMQ`: Message queue`URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.`SCF`: This notification type is not recommended. You need to configure it in the SCF console.`AWS-SQS`: AWS queue. This type is only supported for AWS tasks, and the queue must be in the same region as the AWS bucket.Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.",
+										Description: "The notification 类型 Valid values:`CMQ`: This 值 is no longer used. Please use `TDMQ-CMQ` instead.`TDMQ-CMQ`: 消息 queue`URL`: If `NotifyType` is set to `URL`，HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are 用于the callbacks. The packet 包含response parameters of the `ParseNotification` API.`SCF`: This notification 类型 is not recommended. You need to configure it in the SCF console.`AWS-SQS`: AWS queue. This 类型 is only supported for AWS tasks，and the queue must be in the same 地域 as the AWS 存储桶Note: If you do not pass this parameter or pass in an empty string，`CMQ` will be used. To use a different notification 类型，指定this parameter accordingly。",
 									},
 									"notify_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "HTTP callback URL, required if `NotifyType` is set to `URL`.",
+										Description: "HTTP callback URL，必填 if `NotifyType` is set to `URL`。",
 									},
 									"aws_sqs": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The AWS SQS queue. This parameter is required if `NotifyType` is `AWS-SQS`.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The AWS SQS queue. This parameter 为必填项 if `NotifyType` is `AWS-SQS`.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"sqs_region": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The region of the SQS queue.",
+													Description: "The 地域 of the SQS queue。",
 												},
 												"sqs_queue_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The name of the SQS queue.",
+													Description: "The 名称 SQS queue。",
 												},
 												"s3_secret_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The key ID required to read from/write to the SQS queue.",
+													Description: "The 键 ID 必填 to read from/write to the SQS queue。",
 												},
 												"s3_secret_key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The key required to read from/write to the SQS queue.",
+													Description: "The 键 必填 to read from/write to the SQS queue。",
 												},
 											},
 										},
@@ -2558,17 +2558,17 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The 创建时间 in [ISO date 格式](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last updated time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The last updated time in [ISO date 格式](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The resource ID. If there is no associated resource ID, fill it with the account's main resource ID.",
+							Description: "The resource ID. If there is no associated resource ID，fill it with the 账号's main resource ID。",
 						},
 					},
 				},
@@ -2577,7 +2577,7 @@ func DataSourceTencentCloudMpsSchedules() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

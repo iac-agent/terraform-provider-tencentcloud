@@ -27,50 +27,50 @@ func ResourceTencentCloudVpcIpv6EniAddress() *schema.Resource {
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "VPC `ID`, in the form of `vpc-m6dyj72l`.",
+				Description: "VPC `ID`，in the form of `vpc-m6dyj72l`。",
 			},
 
 			"network_interface_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ENI instance `ID`, in the form of `eni-m6dyj72l`.",
+				Description: "ENI instance `ID`，in the form of `eni-m6dyj72l`。",
 			},
 
 			"ipv6_addresses": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "The specified `IPv6` address list, up to 10 can be specified at a time. Combined with the input parameter `Ipv6AddressCount` to calculate the quota. Mandatory one with Ipv6AddressCount.",
+				Description: "The specified `IPv6` 地址 list，up to 10 can be specified at a time. Combined with the input parameter `Ipv6AddressCount` to calculate the quota. Mandatory one with Ipv6AddressCount。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"address": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "`IPv6` address, in the form of: `3402:4e00:20:100:0:8cd9:2a67:71f3`.",
+							Description: "`IPv6` 地址，in the form of: `3402:4e00:20:100:0:8cd9:2a67:71f3`。",
 						},
 						"primary": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to master `IP`.",
+							Description: "是否master `IP`。",
 						},
 						"address_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "`EIP` instance `ID`, such as:`eip-hxlqja90`.",
+							Description: "`EIP` instance `ID`，such as:`eip-hxlqja90`。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Description.",
+							Description: "描述",
 						},
 						"is_wan_ip_blocked": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether the public network IP is blocked.",
+							Description: "是否public network IP is blocked。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "`IPv6` address status: `PENDING`: pending, `MIGRATING`: migrating, `DELETING`: deleting, `AVAILABLE`: available.",
+							Description: "`IPv6` 地址 状态: `PENDING`: pending，`MIGRATING`: migrating，`DELETING`: deleting，`AVAILABLE`: available。",
 						},
 					},
 				},

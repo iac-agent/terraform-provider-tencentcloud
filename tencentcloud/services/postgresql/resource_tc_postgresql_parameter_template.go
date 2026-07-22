@@ -27,45 +27,45 @@ func ResourceTencentCloudPostgresqlParameterTemplate() *schema.Resource {
 			"template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Template name, which can contain 1-60 letters, digits, and symbols (-_./()+=:@).",
+				Description: "模板名称，which can contain 1-60 letters，digits，and symbols (-_./()+=:@)。",
 			},
 
 			"db_major_version": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The major database version number, such as 11, 12, 13.",
+				Description: "The major database 版本 number，such as 11，12，13。",
 			},
 
 			"db_engine": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Database engine, such as postgresql, mssql_compatible.",
+				Description: "Database engine，such as postgresql，mssql_compatible。",
 			},
 
 			"template_description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Parameter template description, which can contain 1-60 letters, digits, and symbols (-_./()+=:@).",
+				Description: "Parameter 模板描述，which can contain 1-60 letters，digits，and symbols (-_./()+=:@)。",
 			},
 
 			"modify_param_entry_set": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeSet,
-				Description: "The set of parameters that need to be modified or added. Note: the same parameter cannot appear in the set of modifying and adding and deleting at the same time.",
+				Description: "The set of parameters that need to be modified or added. Note: the same parameter cannot appear in the set of modifying and adding and deleting at the same time。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The parameter name.",
+							Description: "The parameter 名称",
 						},
 						"expected_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Modify the parameter value. The input parameters are passed in the form of strings, for example: decimal `0.1`, integer `1000`, enumeration `replica`.",
+							Description: "Modify the parameter 值 The input parameters are passed in the form of strings，for example: decimal `0.1`，integer `1000`，enumeration `replica`。",
 						},
 					},
 				},
@@ -77,7 +77,7 @@ func ResourceTencentCloudPostgresqlParameterTemplate() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "The set of parameters that need to be deleted.",
+				Description: "The set of parameters that need to be deleted。",
 			},
 		},
 	}

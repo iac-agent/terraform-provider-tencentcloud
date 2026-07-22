@@ -18,20 +18,20 @@ func DataSourceTencentCloudClsLogsets() *schema.Resource {
 				Optional:    true,
 				MaxItems:    10,
 				Type:        schema.TypeList,
-				Description: "Query by filter.",
+				Description: "通过过滤器查询。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Fields that need to be filtered. Support: `logsetName`, `logsetId`, `tagKey`, `tag:tagKey`.",
+							Description: "需要过滤的字段。支持：`logsetName`、`logsetId`、`tagKey`、`标签:tagKey`。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
 							MaxItems:    5,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "The values that need to be filtered.",
+							Description: "需要过滤的值。",
 						},
 					},
 				},
@@ -40,44 +40,44 @@ func DataSourceTencentCloudClsLogsets() *schema.Resource {
 			"logsets": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "logset lists.",
+				Description: "日志集列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"logset_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Logset Id.",
+							Description: "日志集 ID。",
 						},
 						"logset_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Logset name.",
+							Description: "日志集名称。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创造时间。",
 						},
 						"assumer_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud product identification, when the log set is created by another cloud product, this field will display the cloud product name, such as CDN, TKE.",
+							Description: "云产品标识，当日志集是由其他云产品创建时，该字段会显示云产品名称，例如CDN、TKE。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Tags.",
+							Description: "标签。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值。",
 									},
 								},
 							},
@@ -85,12 +85,12 @@ func DataSourceTencentCloudClsLogsets() *schema.Resource {
 						"topic_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Topic count.",
+							Description: "话题数。",
 						},
 						"role_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "If `assumer_name` is not empty, it indicates the service role that created the log set.",
+							Description: "如果“assumer_name”不为空，则表示创建日志集的服务角色。",
 						},
 					},
 				},
@@ -98,7 +98,7 @@ func DataSourceTencentCloudClsLogsets() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

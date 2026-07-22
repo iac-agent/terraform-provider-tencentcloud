@@ -25,56 +25,56 @@ func ResourceTencentCloudSslReplaceCertificateOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID.",
+				Description: "证书 ID",
 			},
 
 			"valid_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Verification type: DNS_AUTO = automatic DNS verification (this verification type is only supported for domain names that are resolved by Tencent Cloud and have normal resolution status), DNS = manual DNS verification, FILE = file verification.",
+				Description: "Verification 类型: DNS_AUTO = automatic DNS verification (this verification 类型 is only supported for 域名 names that are resolved by Tencent Cloud and have normal resolution 状态)，DNS = manual DNS verification，FILE = file verification。",
 			},
 
 			"csr_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Type, default Original. Available options: Original = original certificate CSR, Upload = manual upload, Online = online generation.",
+				Description: "类型，default Original. Available options: Original = original certificate CSR，Upload = manual upload，Online = online generation。",
 			},
 
 			"csr_content": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CSR Content.",
+				Description: "CSR 内容",
 			},
 
 			"csr_key_password": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "KEY Password.",
+				Description: "KEY 密码",
 			},
 
 			"reason": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Reason for reissue.",
+				Description: "Reason for reissue。",
 			},
 
 			"cert_csr_encrypt_algo": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CSR encryption method, optional: RSA, ECC, SM2. (Selectable only if CsrType is Online), default is RSA.",
+				Description: "CSR encryption method，可选: RSA，ECC，SM2. (Selectable only if CsrType is Online)，默认为 RSA。",
 			},
 
 			"cert_csr_key_parameter": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CSR encryption parameter, when CsrEncryptAlgo is RSA, you can choose 2048, 4096, etc., and the default is 2048; when CsrEncryptAlgo is ECC, you can choose prime256v1, secp384r1, etc., and the default is prime256v1;.",
+				Description: "CSR encryption parameter，when CsrEncryptAlgo is RSA，you can choose 2048，4096，etc.，and the 默认为 2048; when CsrEncryptAlgo is ECC，you can choose prime256v1，secp384r1，etc.，and the 默认为 prime256v1;。",
 			},
 		},
 	}

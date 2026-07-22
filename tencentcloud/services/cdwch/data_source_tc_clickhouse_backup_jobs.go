@@ -20,61 +20,61 @@ func DataSourceTencentCloudClickhouseBackupJobs() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"begin_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Begin time.",
+				Description: "开始时间。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "End time.",
+				Description: "结束时间。",
 			},
 
 			"back_up_jobs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Back up jobs.",
+				Description: "Back up jobs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Back up job id.",
+							Description: "Back up 作业 ID",
 						},
 						"snapshot": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Back up job name.",
+							Description: "Back up 作业名称",
 						},
 						"back_up_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Back up type.",
+							Description: "Back up 类型",
 						},
 						"back_up_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Back up size.",
+							Description: "Back up size。",
 						},
 						"back_up_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Back up create time.",
+							Description: "Back up 创建时间。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Back up expire time.",
+							Description: "Back up expire time。",
 						},
 						"job_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Job status.",
+							Description: "Job 状态",
 						},
 					},
 				},
@@ -83,7 +83,7 @@ func DataSourceTencentCloudClickhouseBackupJobs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

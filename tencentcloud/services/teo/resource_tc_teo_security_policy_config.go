@@ -28,63 +28,63 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 
 			"security_policy": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Security policy configuration. it is recommended to use for custom policies and managed rule configurations of Web protection. it supports configuring security policies with expression grammar.",
+				Description: "Security policy configuration. it is recommended to use for custom policies and managed rule configurations of Web protection. it supports configuring security policies with expression grammar。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"custom_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Custom rule configuration.",
+							Description: "Custom rule configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rules": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Deprecated:  "It has been deprecated from version 1.81.184. Please use `precise_match_rules` or `basic_access_rules` instead.",
-										Description: "List of custom rule definitions. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the parameter value of CustomRules in the SecurityPolicy parameter is not specified: keep the existing custom rule configuration without modification.",
+										Description: "列表 custom rule definitions. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the parameter 值 of CustomRules in the SecurityPolicy parameter is not specified: keep the existing custom rule configuration without modification。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The name of the custom rule.",
+													Description: "The 名称 custom rule。",
 												},
 												"condition": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The specific content of the custom rule must comply with the expression grammar. please refer to the product document for detailed specifications.",
+													Description: "The specific 内容 of the custom rule must comply with the expression grammar. please refer to the product document for detailed specifications。",
 												},
 												"action": {
 													Type:        schema.TypeList,
 													Required:    true,
 													MaxItems:    1,
-													Description: "Execution actions for custom rules. the Name parameter value of SecurityAction supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>ReturnCustomPage: block using a specified page;</li> <li>Redirect: Redirect to URL;</li> <li>BlockIP: IP blocking;</li> <li>JSChallenge: JavaScript challenge;</li> <li>ManagedChallenge: managed challenge;</li> <li>Allow: Allow.</li>.",
+													Description: "Execution actions for custom rules. the 名称 parameter 值 of SecurityAction supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>ReturnCustomPage: block using a specified page;</li> <li>Redirect: Redirect to URL;</li> <li>BlockIP: IP blocking;</li> <li>JSChallenge: JavaScript challenge;</li> <li>ManagedChallenge: managed challenge;</li> <li>Allow: Allow.</li>。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Specific actions for safe execution. valid values:.\n<li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>Disabled: Disabled</li> <li>Allow: Allow</li>.",
+																Description: "Specific actions for safe execution. valid values:.\n<li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>已禁用: 已禁用</li> <li>Allow: Allow</li>。",
 															},
 															"block_ip_action_parameters": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is BlockIP.",
+																Description: "Additional parameter when 名称 is BlockIP。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"duration": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Penalty duration for blocking ips. supported units: <li>s: second, value range 1-120;</li> <li>m: minute, value range 1-120;</li> <li>h: hour, value range 1-48.</li>.",
+																			Description: "Penalty duration for blocking ips. supported units: <li>s: second，值 range 1-120;</li> <li>m: minute，值 range 1-120;</li> <li>h: hour，值 range 1-48.</li>。",
 																		},
 																	},
 																},
@@ -93,18 +93,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is ReturnCustomPage.",
+																Description: "Additional parameter when 名称 is ReturnCustomPage。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response status code.",
+																			Description: "Response 状态 代码",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response custom page ID.",
+																			Description: "Response custom page ID。",
 																		},
 																	},
 																},
@@ -113,13 +113,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is Redirect.",
+																Description: "Additional parameter when 名称 is Redirect。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"url": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Redirect URL.",
+																			Description: "Redirect URL",
 																		},
 																	},
 																},
@@ -130,23 +130,23 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"enabled": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Indicates whether the custom rule is enabled. valid values: <li>on: enabled</li> <li>off: disabled</li>.",
+													Description: "表示是否custom rule is 已启用 有效值：<li>on: 已启用</li> <li>off: 已禁用</li>。",
 												},
 												"id": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "The ID of a custom rule. <br> the rule ID supports different rule configuration operations: <br> - add a new rule: ID is empty or the ID parameter is not specified; <br> - modify an existing rule: specify the rule ID that needs to be updated/modified; <br> - delete an existing rule: existing Rules not included in the Rules list of the CustomRules parameter will be deleted.",
+													Description: "ID a custom rule. <br> the rule ID supports different rule configuration operations: <br> - add a new rule: ID is empty or the ID parameter is not specified; <br> - modify an existing rule: 指定rule ID that needs to be updated/modified; <br> - delete an existing rule: existing Rules not included in the Rules 列表 the CustomRules parameter will be deleted。",
 												},
 												"rule_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Type of custom rule. valid values: <li>BasicAccessRule: basic access control;</li> <li>PreciseMatchRule: exact matching rule, default;</li> <li>ManagedAccessRule: expert customized rule, for output only.</li> the default value is PreciseMatchRule.",
+													Description: "类型 custom rule. 有效值：<li>BasicAccessRule: basic access control;</li> <li>PreciseMatchRule: exact matching rule，default;</li> <li>ManagedAccessRule: expert customized rule，for output only.</li> the 默认值为 PreciseMatchRule。",
 												},
 												"priority": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Customizes the priority of rules. value range: 0-100. it defaults to 0. only supports `rule_type` is `PreciseMatchRule`.",
+													Description: "Customizes the 优先级 of rules. 取值范围：0-100. it 默认为 0. only supports `rule_type` is `PreciseMatchRule`。",
 												},
 											},
 										},
@@ -154,42 +154,42 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 									"precise_match_rules": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "List of custom rule definitions. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the parameter value of CustomRules in the SecurityPolicy parameter is not specified: keep the existing custom rule configuration without modification.",
+										Description: "列表 custom rule definitions. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the parameter 值 of CustomRules in the SecurityPolicy parameter is not specified: keep the existing custom rule configuration without modification。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The name of the custom rule.",
+													Description: "The 名称 custom rule。",
 												},
 												"condition": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The specific content of the custom rule must comply with the expression grammar. please refer to the product document for detailed specifications.",
+													Description: "The specific 内容 of the custom rule must comply with the expression grammar. please refer to the product document for detailed specifications。",
 												},
 												"action": {
 													Type:        schema.TypeList,
 													Required:    true,
 													MaxItems:    1,
-													Description: "Execution actions for custom rules. the Name parameter value of SecurityAction supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>ReturnCustomPage: block using a specified page;</li> <li>Redirect: Redirect to URL;</li> <li>BlockIP: IP blocking;</li> <li>JSChallenge: JavaScript challenge;</li> <li>ManagedChallenge: managed challenge;</li> <li>Allow: Allow.</li>.",
+													Description: "Execution actions for custom rules. the 名称 parameter 值 of SecurityAction supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>ReturnCustomPage: block using a specified page;</li> <li>Redirect: Redirect to URL;</li> <li>BlockIP: IP blocking;</li> <li>JSChallenge: JavaScript challenge;</li> <li>ManagedChallenge: managed challenge;</li> <li>Allow: Allow.</li>。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Specific actions for safe execution. valid values:.\n<li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>Disabled: Disabled</li> <li>Allow: Allow</li>.",
+																Description: "Specific actions for safe execution. valid values:.\n<li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>已禁用: 已禁用</li> <li>Allow: Allow</li>。",
 															},
 															"block_ip_action_parameters": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is BlockIP.",
+																Description: "Additional parameter when 名称 is BlockIP。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"duration": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Penalty duration for blocking ips. supported units: <li>s: second, value range 1-120;</li> <li>m: minute, value range 1-120;</li> <li>h: hour, value range 1-48.</li>.",
+																			Description: "Penalty duration for blocking ips. supported units: <li>s: second，值 range 1-120;</li> <li>m: minute，值 range 1-120;</li> <li>h: hour，值 range 1-48.</li>。",
 																		},
 																	},
 																},
@@ -198,18 +198,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is ReturnCustomPage.",
+																Description: "Additional parameter when 名称 is ReturnCustomPage。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response status code.",
+																			Description: "Response 状态 代码",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response custom page ID.",
+																			Description: "Response custom page ID。",
 																		},
 																	},
 																},
@@ -218,13 +218,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is Redirect.",
+																Description: "Additional parameter when 名称 is Redirect。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"url": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Redirect URL.",
+																			Description: "Redirect URL",
 																		},
 																	},
 																},
@@ -235,22 +235,22 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"enabled": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Indicates whether the custom rule is enabled. valid values: <li>on: enabled</li> <li>off: disabled</li>.",
+													Description: "表示是否custom rule is 已启用 有效值：<li>on: 已启用</li> <li>off: 已禁用</li>。",
 												},
 												"id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The ID of a custom rule. <br> the rule ID supports different rule configuration operations: <br> - add a new rule: ID is empty or the ID parameter is not specified; <br> - modify an existing rule: specify the rule ID that needs to be updated/modified; <br> - delete an existing rule: existing Rules not included in the Rules list of the CustomRules parameter will be deleted.",
+													Description: "ID a custom rule. <br> the rule ID supports different rule configuration operations: <br> - add a new rule: ID is empty or the ID parameter is not specified; <br> - modify an existing rule: 指定rule ID that needs to be updated/modified; <br> - delete an existing rule: existing Rules not included in the Rules 列表 the CustomRules parameter will be deleted。",
 												},
 												"rule_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Type of custom rule. valid values: <li>BasicAccessRule: basic access control;</li> <li>PreciseMatchRule: exact matching rule, default;</li> <li>ManagedAccessRule: expert customized rule, for output only.</li> the default value is PreciseMatchRule.",
+													Description: "类型 custom rule. 有效值：<li>BasicAccessRule: basic access control;</li> <li>PreciseMatchRule: exact matching rule，default;</li> <li>ManagedAccessRule: expert customized rule，for output only.</li> the 默认值为 PreciseMatchRule。",
 												},
 												"priority": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Customizes the priority of rules. value range: 0-100. it defaults to 0. only supports `rule_type` is `PreciseMatchRule`.",
+													Description: "Customizes the 优先级 of rules. 取值范围：0-100. it 默认为 0. only supports `rule_type` is `PreciseMatchRule`。",
 												},
 											},
 										},
@@ -258,42 +258,42 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 									"basic_access_rules": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "List of custom rule definitions. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the parameter value of CustomRules in the SecurityPolicy parameter is not specified: keep the existing custom rule configuration without modification.",
+										Description: "列表 custom rule definitions. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the parameter 值 of CustomRules in the SecurityPolicy parameter is not specified: keep the existing custom rule configuration without modification。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The name of the custom rule.",
+													Description: "The 名称 custom rule。",
 												},
 												"condition": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The specific content of the custom rule must comply with the expression grammar. please refer to the product document for detailed specifications.",
+													Description: "The specific 内容 of the custom rule must comply with the expression grammar. please refer to the product document for detailed specifications。",
 												},
 												"action": {
 													Type:        schema.TypeList,
 													Required:    true,
 													MaxItems:    1,
-													Description: "Execution actions for custom rules. the Name parameter value of SecurityAction supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>ReturnCustomPage: block using a specified page;</li> <li>Redirect: Redirect to URL;</li> <li>BlockIP: IP blocking;</li> <li>JSChallenge: JavaScript challenge;</li> <li>ManagedChallenge: managed challenge;</li> <li>Allow: Allow.</li>.",
+													Description: "Execution actions for custom rules. the 名称 parameter 值 of SecurityAction supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>ReturnCustomPage: block using a specified page;</li> <li>Redirect: Redirect to URL;</li> <li>BlockIP: IP blocking;</li> <li>JSChallenge: JavaScript challenge;</li> <li>ManagedChallenge: managed challenge;</li> <li>Allow: Allow.</li>。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Specific actions for safe execution. valid values:.\n<li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>Disabled: Disabled</li> <li>Allow: Allow</li>.",
+																Description: "Specific actions for safe execution. valid values:.\n<li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>已禁用: 已禁用</li> <li>Allow: Allow</li>。",
 															},
 															"block_ip_action_parameters": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is BlockIP.",
+																Description: "Additional parameter when 名称 is BlockIP。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"duration": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Penalty duration for blocking ips. supported units: <li>s: second, value range 1-120;</li> <li>m: minute, value range 1-120;</li> <li>h: hour, value range 1-48.</li>.",
+																			Description: "Penalty duration for blocking ips. supported units: <li>s: second，值 range 1-120;</li> <li>m: minute，值 range 1-120;</li> <li>h: hour，值 range 1-48.</li>。",
 																		},
 																	},
 																},
@@ -302,18 +302,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is ReturnCustomPage.",
+																Description: "Additional parameter when 名称 is ReturnCustomPage。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response status code.",
+																			Description: "Response 状态 代码",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response custom page ID.",
+																			Description: "Response custom page ID。",
 																		},
 																	},
 																},
@@ -322,13 +322,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is Redirect.",
+																Description: "Additional parameter when 名称 is Redirect。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"url": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Redirect URL.",
+																			Description: "Redirect URL",
 																		},
 																	},
 																},
@@ -339,22 +339,22 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"enabled": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Indicates whether the custom rule is enabled. valid values: <li>on: enabled</li> <li>off: disabled</li>.",
+													Description: "表示是否custom rule is 已启用 有效值：<li>on: 已启用</li> <li>off: 已禁用</li>。",
 												},
 												"id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The ID of a custom rule. <br> the rule ID supports different rule configuration operations: <br> - add a new rule: ID is empty or the ID parameter is not specified; <br> - modify an existing rule: specify the rule ID that needs to be updated/modified; <br> - delete an existing rule: existing Rules not included in the Rules list of the CustomRules parameter will be deleted.",
+													Description: "ID a custom rule. <br> the rule ID supports different rule configuration operations: <br> - add a new rule: ID is empty or the ID parameter is not specified; <br> - modify an existing rule: 指定rule ID that needs to be updated/modified; <br> - delete an existing rule: existing Rules not included in the Rules 列表 the CustomRules parameter will be deleted。",
 												},
 												"rule_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Type of custom rule. valid values: <li>BasicAccessRule: basic access control;</li> <li>PreciseMatchRule: exact matching rule, default;</li> <li>ManagedAccessRule: expert customized rule, for output only.</li> the default value is PreciseMatchRule.",
+													Description: "类型 custom rule. 有效值：<li>BasicAccessRule: basic access control;</li> <li>PreciseMatchRule: exact matching rule，default;</li> <li>ManagedAccessRule: expert customized rule，for output only.</li> the 默认值为 PreciseMatchRule。",
 												},
 												"priority": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Customizes the priority of rules. value range: 0-100. it defaults to 0. only supports `rule_type` is `PreciseMatchRule`.",
+													Description: "Customizes the 优先级 of rules. 取值范围：0-100. it 默认为 0. only supports `rule_type` is `PreciseMatchRule`。",
 												},
 											},
 										},
@@ -367,40 +367,40 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Managed rule configuration.",
+							Description: "Managed rule configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"enabled": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Indicates whether the managed rule is enabled. valid values: <li>on: enabled. all managed rules take effect as configured;</li> <li>off: disabled. all managed rules do not take effect.</li>.",
+										Description: "表示是否managed rule is 已启用 有效值：<li>on: 已启用 all managed rules take effect as configured;</li> <li>off: 已禁用 all managed rules do not take effect.</li>。",
 									},
 									"detection_only": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Indicates whether the evaluation mode is Enabled. it is valid only when the Enabled parameter is set to on. valid values: <li>on: Enabled. all managed rules take effect in observation mode.</li> <li>off: disabled. all managed rules take effect according to the actual configuration.</li>.",
+										Description: "表示是否evaluation 模式 is 已启用 it is valid only when the 已启用 parameter is set to on. 有效值：<li>on: 已启用 all managed rules take effect in observation 模式</li> <li>off: 已禁用 all managed rules take effect according to the actual configuration.</li>。",
 									},
 									"semantic_analysis": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether the managed rule semantic analysis option is Enabled is valid only when the Enabled parameter is on. valid values: <li>on: enable. perform semantic analysis on requests before processing them;</li> <li>off: disable. process requests directly without semantic analysis.</li> <br/>default off.",
+										Description: "是否managed rule semantic analysis option is 已启用 is valid only when the 已启用 parameter is on. 有效值：<li>on: enable. perform semantic analysis on requests before processing them;</li> <li>off: disable. process requests directly without semantic analysis.</li> <br/>default off。",
 									},
 									"auto_update": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Managed rule automatic update option.",
+										Description: "Managed rule automatic update option。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"auto_update_to_latest_version": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Indicates whether to enable automatic update to the latest version. valid values: <li>on: enabled</li> <li>off: disabled</li>.",
+													Description: "表示是否enable automatic update to the latest 版本 有效值：<li>on: 已启用</li> <li>off: 已禁用</li>。",
 												},
 												"ruleset_version": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The currently used version, in the format compliant with ISO 8601 standard, such as 2023-12-21T12:00:32Z. it is empty by default and is only an output parameter.",
+													Description: "The currently used 版本，in the 格式 compliant with ISO 8601 standard，such as 2023-12-21T12:00:32Z. it is empty by default and is only an output parameter。",
 												},
 											},
 										},
@@ -409,42 +409,42 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 										Type:        schema.TypeSet,
 										Optional:    true,
 										Computed:    true,
-										Description: "Configuration of the managed rule group. if this structure is passed as an empty array or the GroupId is not included in the list, it will be processed based on the default method.",
+										Description: "Configuration of the managed rule group. if this structure is passed as an empty array or the GroupId is not included in the list，it will be processed based on the default method。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"group_id": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Group name of the managed rule. if the rule group for the configuration is not specified, it will be processed based on the default configuration. refer to product documentation for the specific value of GroupId.",
+													Description: "组名称 of the managed rule. if the rule group for the configuration is not specified，it will be processed based on the default configuration. refer to product documentation for the specific 值 of GroupId。",
 												},
 												"sensitivity_level": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Protection level of the managed rule group. valid values: <li>loose: lenient, only contains ultra-high risk rules. at this point, configure Action, and RuleActions configuration is invalid;</li> <li>normal: normal, contains ultra-high risk and high-risk rules. at this point, configure Action, and RuleActions configuration is invalid;</li> <li>strict: strict, contains ultra-high risk, high-risk and medium-risk rules. at this point, configure Action, and RuleActions configuration is invalid;</li> <li>extreme: super strict, contains ultra-high risk, high-risk, medium-risk and low-risk rules. at this point, configure Action, and RuleActions configuration is invalid;</li> <li>custom: custom, refined strategy. configure the disposal method for each individual rule. at this point, the Action field is invalid. use RuleActions to configure the refined strategy for each individual rule.</li>.",
+													Description: "Protection 级别 of the managed rule group. 有效值：<li>loose: lenient，only 包含ultra-high risk rules. at this point，configure 操作，and RuleActions configuration is invalid;</li> <li>normal: normal，包含ultra-high risk and high-risk rules. at this point，configure 操作，and RuleActions configuration is invalid;</li> <li>strict: strict，包含ultra-high risk，high-risk and medium-risk rules. at this point，configure 操作，and RuleActions configuration is invalid;</li> <li>extreme: super strict，包含ultra-high risk，high-risk，medium-risk and low-risk rules. at this point，configure 操作，and RuleActions configuration is invalid;</li> <li>custom: custom，refined strategy. configure the disposal method for each individual rule. at this point，the 操作 field is invalid. use RuleActions to configure the refined strategy for each individual rule.</li>。",
 												},
 												"action": {
 													Type:        schema.TypeList,
 													Required:    true,
 													MaxItems:    1,
-													Description: "Handling actions for managed rule groups. the Name parameter value of SecurityAction supports: <li>Deny: block and respond with an interception page;</li> <li>Monitor: observe, do not process requests and record security events in logs;</li> <li>Disabled: not enabled, do not scan requests and skip this rule.</li>.",
+													Description: "Handling actions for managed rule groups. the 名称 parameter 值 of SecurityAction supports: <li>Deny: block and respond with an interception page;</li> <li>Monitor: observe，do not process requests and record security events in logs;</li> <li>已禁用: not 已启用，do not scan requests and skip this rule.</li>。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Specific actions for safe execution. valid values:.\n<li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>Disabled: Disabled</li> <li>Allow: Allow</li>.",
+																Description: "Specific actions for safe execution. valid values:.\n<li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>已禁用: 已禁用</li> <li>Allow: Allow</li>。",
 															},
 															"block_ip_action_parameters": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is BlockIP.",
+																Description: "Additional parameter when 名称 is BlockIP。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"duration": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Penalty duration for blocking ips. supported units: <li>s: second, value range 1-120;</li> <li>m: minute, value range 1-120;</li> <li>h: hour, value range 1-48.</li>.",
+																			Description: "Penalty duration for blocking ips. supported units: <li>s: second，值 range 1-120;</li> <li>m: minute，值 range 1-120;</li> <li>h: hour，值 range 1-48.</li>。",
 																		},
 																	},
 																},
@@ -453,18 +453,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is ReturnCustomPage.",
+																Description: "Additional parameter when 名称 is ReturnCustomPage。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response status code.",
+																			Description: "Response 状态 代码",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response custom page ID.",
+																			Description: "Response custom page ID。",
 																		},
 																	},
 																},
@@ -473,13 +473,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameter when Name is Redirect.",
+																Description: "Additional parameter when 名称 is Redirect。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"url": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Redirect URL.",
+																			Description: "Redirect URL",
 																		},
 																	},
 																},
@@ -490,37 +490,37 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"rule_actions": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Specific configuration of rule items under the managed rule group. the configuration is effective only when SensitivityLevel is custom.",
+													Description: "Specific configuration of rule items under the managed rule group. the configuration is effective only when SensitivityLevel is custom。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"rule_id": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Specific items under the managed rule group, which are used to rewrite the configuration content of this individual rule item. refer to product documentation for details.",
+																Description: "Specific items under the managed rule group，which are 用于rewrite the configuration 内容 of this individual rule item. refer to product documentation for details。",
 															},
 															"action": {
 																Type:        schema.TypeList,
 																Required:    true,
 																MaxItems:    1,
-																Description: "Specify the handling action for the managed rule item in RuleId. the Name parameter value of SecurityAction supports: <li>Deny: block and respond with an interception page;</li> <li>Monitor: observe, do not process the request and record the security event in logs;</li> <li>Disabled: Disabled, do not scan the request and skip this rule.</li>.",
+																Description: "指定handling 操作 for the managed rule item in RuleId. the 名称 parameter 值 of SecurityAction supports: <li>Deny: block and respond with an interception page;</li> <li>Monitor: observe，do not process the request and record the security event in logs;</li> <li>已禁用: 已禁用，do not scan the request and skip this rule.</li>。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"name": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Specific actions for safe execution. valid values:.\n<li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>Disabled: Disabled</li> <li>Allow: Allow</li>.",
+																			Description: "Specific actions for safe execution. valid values:.\n<li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>已禁用: 已禁用</li> <li>Allow: Allow</li>。",
 																		},
 																		"block_ip_action_parameters": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Additional parameter when Name is BlockIP.",
+																			Description: "Additional parameter when 名称 is BlockIP。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"duration": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Penalty duration for blocking ips. supported units: <li>s: second, value range 1-120;</li> <li>m: minute, value range 1-120;</li> <li>h: hour, value range 1-48.</li>.",
+																						Description: "Penalty duration for blocking ips. supported units: <li>s: second，值 range 1-120;</li> <li>m: minute，值 range 1-120;</li> <li>h: hour，值 range 1-48.</li>。",
 																					},
 																				},
 																			},
@@ -529,18 +529,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Additional parameter when Name is ReturnCustomPage.",
+																			Description: "Additional parameter when 名称 is ReturnCustomPage。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"response_code": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Response status code.",
+																						Description: "Response 状态 代码",
 																					},
 																					"error_page_id": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Response custom page ID.",
+																						Description: "Response custom page ID。",
 																					},
 																				},
 																			},
@@ -549,13 +549,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Additional parameter when Name is Redirect.",
+																			Description: "Additional parameter when 名称 is Redirect。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"url": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Redirect URL.",
+																						Description: "Redirect URL",
 																					},
 																				},
 																			},
@@ -569,44 +569,44 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"meta_data": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Managed rule group information, for output only.",
+													Description: "Managed rule group information，for output only。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"group_detail": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Managed rule group description, for output only.",
+																Description: "Managed rule group 描述，for output only。",
 															},
 															"group_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Managed rule group name, for output only.",
+																Description: "Managed rule 组名称，for output only。",
 															},
 															"rule_details": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "All sub-rule information under the current managed rule group, for output only.",
+																Description: "All sub-rule information under the current managed rule group，for output only。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"rule_id": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Managed rule Id.",
+																			Description: "Managed rule Id。",
 																		},
 																		"risk_level": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Protection level of managed rules. valid values: <li>low: low risk. this rule has a relatively low risk and is applicable to access scenarios in a very strict control environment. this level of rule may generate considerable false alarms.</li> <li>medium: medium risk. this means the risk of this rule is normal and it is suitable for protection scenarios with stricter requirements.</li> <li>high: high risk. this indicates that the risk of this rule is relatively high and it will not generate false alarms in most scenarios.</li> <li>extreme: ultra-high risk. this represents that the risk of this rule is extremely high and it will not generate false alarms basically.</li>.",
+																			Description: "Protection 级别 of managed rules. 有效值：<li>low: low risk. this rule has a relatively low risk and is applicable to access scenarios in a very strict control environment. this 级别 of rule may generate considerable false alarms.</li> <li>medium: medium risk. this means the risk of this rule is normal and it is suitable for protection scenarios with stricter requirements.</li> <li>high: high risk. this 表示that the risk of this rule is relatively high and it will not generate false alarms in most scenarios.</li> <li>extreme: ultra-high risk. this represents that the risk of this rule is extremely high and it will not generate false alarms basically.</li>。",
 																		},
 																		"description": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Rule description.",
+																			Description: "Rule 描述",
 																		},
 																		"tags": {
 																			Type:        schema.TypeSet,
 																			Computed:    true,
-																			Description: "Rule tag. some types of rules do not have tags.",
+																			Description: "Rule 标签 some types of rules do not have 标签",
 																			Elem: &schema.Schema{
 																				Type: schema.TypeString,
 																			},
@@ -614,7 +614,7 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																		"rule_version": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Rule ownership version.",
+																			Description: "Rule ownership 版本",
 																		},
 																	},
 																},
@@ -633,74 +633,74 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "HTTP DDOS protection configuration.",
+							Description: "HTTP DDOS protection configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"adaptive_frequency_control": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Specific configuration of adaptive frequency control.",
+										Description: "Specific configuration of adaptive frequency control。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"enabled": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Whether adaptive frequency control is enabled. The possible values are: <li>on: enabled; </li><li>off: disabled. </li>.",
+													Description: "Whether adaptive frequency control is 已启用 The possible values are: <li>on: 已启用; </li><li>off: 已禁用 </li>。",
 												},
 												"sensitivity": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The restriction level of adaptive frequency control. When Enabled is on, this field is required. The values are: <li>Loose: loose; </li><li>Moderate: moderate; </li><li>Strict: strict. </li>.",
+													Description: "The restriction 级别 of adaptive frequency control. When 已启用 is on，this field 为必填项. The values are: <li>Loose: loose; </li><li>Moderate: moderate; </li><li>Strict: strict. </li>。",
 												},
 												"action": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "The handling method of adaptive frequency control. When Enabled is on, this field is required. SecurityAction's Name value supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li><li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge. </li>.",
+													Description: "The handling method of adaptive frequency control. When 已启用 is on，this field 为必填项. SecurityAction's 名称 值 supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li><li>Challenge: Challenge，where ChallengeActionParameters.名称 only supports JSChallenge. </li>。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The specific action of security execution. The values are:\n<li>Deny: intercept, block the request to access site resources;</li>\n<li>Monitor: observe, only record logs;</li>\n<li>Redirect: redirect to URL;</li>\n<li>Disabled: disabled, do not enable the specified rule;</li>\n<li>Allow: allow access, but delay processing requests;</li>\n<li>Challenge: challenge, respond to challenge content;</li>\n<li>BlockIP: to be abandoned, IP ban;</li>\n<li>ReturnCustomPage: to be abandoned, use the specified page to intercept;</li>\n<li>JSChallenge: to be abandoned, JavaScript challenge;</li>\n<li>ManagedChallenge: to be abandoned, managed challenge.</li>.",
+																Description: "The specific 操作 of security execution. The values are:\n<li>Deny: intercept，block the request to access site resources;</li>\n<li>Monitor: observe，only record logs;</li>\n<li>Redirect: redirect to URL;</li>\n<li>已禁用: 已禁用，do not enable the specified rule;</li>\n<li>Allow: allow access，but 延迟 processing requests;</li>\n<li>Challenge: challenge，respond to challenge 内容;</li>\n<li>BlockIP: to be abandoned，IP ban;</li>\n<li>ReturnCustomPage: to be abandoned，use the specified page to intercept;</li>\n<li>JSChallenge: to be abandoned，JavaScript challenge;</li>\n<li>ManagedChallenge: to be abandoned，managed challenge.</li>。",
 															},
 															"deny_action_parameters": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Deny.",
+																Description: "Additional parameters when 名称 is Deny。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"block_ip": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to extend the blocking of source IP. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nWhen enabled, the client IP that triggers the rule will be blocked continuously. When this option is enabled, the BlockIpDuration parameter must be specified at the same time.\nNote: This option cannot be enabled at the same time as the ReturnCustomPage or Stall options.",
+																			Description: "是否extend the blocking of 来源 IP. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nWhen 已启用，the 客户端 IP that triggers the rule will be blocked continuously. When this option is 已启用，the BlockIpDuration parameter must be specified at the same time.\nNote: This option cannot be 已启用 at the same time as the ReturnCustomPage or Stall options。",
 																		},
 																		"block_ip_duration": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "When BlockIP is on, the IP blocking duration.",
+																			Description: "When BlockIP is on，the IP blocking duration。",
 																		},
 																		"return_custom_page": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to use custom pages. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nAfter enabling, use custom page content to intercept (respond to) requests. When enabling this option, you must specify the ResponseCode and ErrorPageId parameters at the same time.\nNote: This option cannot be enabled at the same time as the BlockIp or Stall options.",
+																			Description: "是否use custom pages. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nAfter enabling，use custom page 内容 to intercept (respond to) requests. When enabling this option，you must 指定ResponseCode and ErrorPageId parameters at the same time.\nNote: This option cannot be 已启用 at the same time as the BlockIp or Stall options。",
 																		},
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Customize the status code of the page.",
+																			Description: "Customize the 状态 代码 of the page。",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The PageId of the custom page.",
+																			Description: "The PageId of the custom page。",
 																		},
 																		"stall": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to ignore the request source suspension. The value is:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nAfter enabling, it will no longer respond to requests in the current connection session and will not actively disconnect. It is used to fight against crawlers and consume client connection resources.\nNote: This option cannot be enabled at the same time as the BlockIp or ReturnCustomPage options.",
+																			Description: "是否ignore the 请求来源 suspension. The 值 is:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nAfter enabling，it will no longer respond to requests in the current connection session and will not actively disconnect. It is 用于fight against crawlers and consume client connection resources.\nNote: This option cannot be 已启用 at the same time as the BlockIp or ReturnCustomPage options。",
 																		},
 																	},
 																},
@@ -709,13 +709,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Redirect.",
+																Description: "Additional parameters when 名称 is Redirect。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"url": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The URL to redirect.",
+																			Description: "The URL to redirect。",
 																		},
 																	},
 																},
@@ -724,23 +724,23 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Challenge.",
+																Description: "Additional parameters when 名称 is Challenge。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"challenge_option": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The specific challenge action to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>.",
+																			Description: "The specific challenge 操作 to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>。",
 																		},
 																		"interval": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The time interval for repeating the challenge. When Name is InterstitialChallenge/InlineChallenge, this field is required. The default value is 300s. Supported units are: <li>s: seconds, value range 1 to 60; </li><li>m: minutes, value range 1 to 60; </li><li>h: hours, value range 1 to 24. </li>.",
+																			Description: "The 时间间隔 for repeating the challenge. When 名称 is InterstitialChallenge/InlineChallenge，this field 为必填项. The 默认值为 300s. Supported units are: <li>s: seconds，值 range 1 to 60; </li><li>m: minutes，值 range 1 to 60; </li><li>h: hours，值 range 1 to 24. </li>。",
 																		},
 																		"attester_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Client authentication method ID. This field is required when Name is InterstitialChallenge/InlineChallenge.",
+																			Description: "Client authentication method ID. This field 为必填项 when 名称 is InterstitialChallenge/InlineChallenge。",
 																		},
 																	},
 																},
@@ -749,13 +749,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "To be deprecated, additional parameter when Name is BlockIP.",
+																Description: "待废弃， additional parameter when 名称 is BlockIP。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"duration": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The penalty duration for banning an IP. Supported units are: <li>s: seconds, value range 1 to 120; </li><li>m: minutes, value range 1 to 120; </li><li>h: hours, value range 1 to 48. </li>.",
+																			Description: "The penalty duration for banning an IP. Supported units are: <li>s: seconds，值 range 1 to 120; </li><li>m: minutes，值 range 1 to 120; </li><li>h: hours，值 range 1 to 48. </li>。",
 																		},
 																	},
 																},
@@ -764,18 +764,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "To be deprecated, additional parameter when Name is ReturnCustomPage.",
+																Description: "待废弃， additional parameter when 名称 is ReturnCustomPage。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response status code.",
+																			Description: "Response 状态 代码",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The custom page ID of the response.",
+																			Description: "The custom page ID response。",
 																		},
 																	},
 																},
@@ -790,62 +790,62 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Specific configuration of intelligent client filtering.",
+										Description: "Specific configuration of intelligent client filtering。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"enabled": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Whether smart client filtering is enabled. The possible values are: <li>on: enabled; </li><li>off: disabled. </li>.",
+													Description: "Whether smart client filtering is 已启用 The possible values are: <li>on: 已启用; </li><li>off: 已禁用 </li>。",
 												},
 												"action": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "The method of intelligent client filtering. When Enabled is on, this field is required. SecurityAction Name value supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li><li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge. </li>.",
+													Description: "The method of intelligent client filtering. When 已启用 is on，this field 为必填项. SecurityAction 名称 值 supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li><li>Challenge: Challenge，where ChallengeActionParameters.名称 only supports JSChallenge. </li>。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The specific action of security execution. The values are:\n<li>Deny: intercept, block the request to access site resources;</li>\n<li>Monitor: observe, only record logs;</li>\n<li>Redirect: redirect to URL;</li>\n<li>Disabled: disabled, do not enable the specified rule;</li>\n<li>Allow: allow access, but delay processing requests;</li>\n<li>Challenge: challenge, respond to challenge content;</li>\n<li>BlockIP: to be abandoned, IP ban;</li>\n<li>ReturnCustomPage: to be abandoned, use the specified page to intercept;</li>\n<li>JSChallenge: to be abandoned, JavaScript challenge;</li>\n<li>ManagedChallenge: to be abandoned, managed challenge.</li>.",
+																Description: "The specific 操作 of security execution. The values are:\n<li>Deny: intercept，block the request to access site resources;</li>\n<li>Monitor: observe，only record logs;</li>\n<li>Redirect: redirect to URL;</li>\n<li>已禁用: 已禁用，do not enable the specified rule;</li>\n<li>Allow: allow access，but 延迟 processing requests;</li>\n<li>Challenge: challenge，respond to challenge 内容;</li>\n<li>BlockIP: to be abandoned，IP ban;</li>\n<li>ReturnCustomPage: to be abandoned，use the specified page to intercept;</li>\n<li>JSChallenge: to be abandoned，JavaScript challenge;</li>\n<li>ManagedChallenge: to be abandoned，managed challenge.</li>。",
 															},
 															"deny_action_parameters": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Deny.",
+																Description: "Additional parameters when 名称 is Deny。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"block_ip": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to extend the blocking of source IP. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nWhen enabled, the client IP that triggers the rule will be blocked continuously. When this option is enabled, the BlockIpDuration parameter must be specified at the same time.\nNote: This option cannot be enabled at the same time as the ReturnCustomPage or Stall options.",
+																			Description: "是否extend the blocking of 来源 IP. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nWhen 已启用，the 客户端 IP that triggers the rule will be blocked continuously. When this option is 已启用，the BlockIpDuration parameter must be specified at the same time.\nNote: This option cannot be 已启用 at the same time as the ReturnCustomPage or Stall options。",
 																		},
 																		"block_ip_duration": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "When BlockIP is on, the IP blocking duration.",
+																			Description: "When BlockIP is on，the IP blocking duration。",
 																		},
 																		"return_custom_page": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to use custom pages. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nAfter enabling, use custom page content to intercept (respond to) requests. When enabling this option, you must specify the ResponseCode and ErrorPageId parameters at the same time.\nNote: This option cannot be enabled at the same time as the BlockIp or Stall options.",
+																			Description: "是否use custom pages. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nAfter enabling，use custom page 内容 to intercept (respond to) requests. When enabling this option，you must 指定ResponseCode and ErrorPageId parameters at the same time.\nNote: This option cannot be 已启用 at the same time as the BlockIp or Stall options。",
 																		},
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Customize the status code of the page.",
+																			Description: "Customize the 状态 代码 of the page。",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The PageId of the custom page.",
+																			Description: "The PageId of the custom page。",
 																		},
 																		"stall": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to ignore the request source suspension. The value is:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nAfter enabling, it will no longer respond to requests in the current connection session and will not actively disconnect. It is used to fight against crawlers and consume client connection resources.\nNote: This option cannot be enabled at the same time as the BlockIp or ReturnCustomPage options.",
+																			Description: "是否ignore the 请求来源 suspension. The 值 is:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nAfter enabling，it will no longer respond to requests in the current connection session and will not actively disconnect. It is 用于fight against crawlers and consume client connection resources.\nNote: This option cannot be 已启用 at the same time as the BlockIp or ReturnCustomPage options。",
 																		},
 																	},
 																},
@@ -854,13 +854,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Redirect.",
+																Description: "Additional parameters when 名称 is Redirect。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"url": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The URL to redirect.",
+																			Description: "The URL to redirect。",
 																		},
 																	},
 																},
@@ -869,23 +869,23 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Challenge.",
+																Description: "Additional parameters when 名称 is Challenge。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"challenge_option": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The specific challenge action to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>.",
+																			Description: "The specific challenge 操作 to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>。",
 																		},
 																		"interval": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The time interval for repeating the challenge. When Name is InterstitialChallenge/InlineChallenge, this field is required. The default value is 300s. Supported units are: <li>s: seconds, value range 1 to 60; </li><li>m: minutes, value range 1 to 60; </li><li>h: hours, value range 1 to 24. </li>.",
+																			Description: "The 时间间隔 for repeating the challenge. When 名称 is InterstitialChallenge/InlineChallenge，this field 为必填项. The 默认值为 300s. Supported units are: <li>s: seconds，值 range 1 to 60; </li><li>m: minutes，值 range 1 to 60; </li><li>h: hours，值 range 1 to 24. </li>。",
 																		},
 																		"attester_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Client authentication method ID. This field is required when Name is InterstitialChallenge/InlineChallenge.",
+																			Description: "Client authentication method ID. This field 为必填项 when 名称 is InterstitialChallenge/InlineChallenge。",
 																		},
 																	},
 																},
@@ -894,13 +894,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "To be deprecated, additional parameter when Name is BlockIP.",
+																Description: "待废弃， additional parameter when 名称 is BlockIP。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"duration": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The penalty duration for banning an IP. Supported units are: <li>s: seconds, value range 1 to 120; </li><li>m: minutes, value range 1 to 120; </li><li>h: hours, value range 1 to 48. </li>.",
+																			Description: "The penalty duration for banning an IP. Supported units are: <li>s: seconds，值 range 1 to 120; </li><li>m: minutes，值 range 1 to 120; </li><li>h: hours，值 range 1 to 48. </li>。",
 																		},
 																	},
 																},
@@ -909,18 +909,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "To be deprecated, additional parameter when Name is ReturnCustomPage.",
+																Description: "待废弃， additional parameter when 名称 is ReturnCustomPage。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response status code.",
+																			Description: "Response 状态 代码",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The custom page ID of the response.",
+																			Description: "The custom page ID response。",
 																		},
 																	},
 																},
@@ -935,62 +935,62 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Specific configuration of traffic fraud prevention.",
+										Description: "Specific configuration of traffic fraud prevention。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"enabled": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Whether the anti-theft feature (only applicable to mainland China) is enabled. The possible values are: <li>on: enabled; </li><li>off: disabled. </li>.",
+													Description: "是否anti-theft feature (only applicable to mainland China) is 已启用 The possible values are: <li>on: 已启用; </li><li>off: 已禁用 </li>。",
 												},
 												"action": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "The method for preventing traffic fraud (only applicable to mainland China). When Enabled is on, this field is required. SecurityAction Name value supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li><li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge. </li>.",
+													Description: "The method for preventing traffic fraud (only applicable to mainland China). When 已启用 is on，this field 为必填项. SecurityAction 名称 值 supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li><li>Challenge: Challenge，where ChallengeActionParameters.名称 only supports JSChallenge. </li>。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The specific action of security execution. The values are:\n<li>Deny: intercept, block the request to access site resources;</li>\n<li>Monitor: observe, only record logs;</li>\n<li>Redirect: redirect to URL;</li>\n<li>Disabled: disabled, do not enable the specified rule;</li>\n<li>Allow: allow access, but delay processing requests;</li>\n<li>Challenge: challenge, respond to challenge content;</li>\n<li>BlockIP: to be abandoned, IP ban;</li>\n<li>ReturnCustomPage: to be abandoned, use the specified page to intercept;</li>\n<li>JSChallenge: to be abandoned, JavaScript challenge;</li>\n<li>ManagedChallenge: to be abandoned, managed challenge.</li>.",
+																Description: "The specific 操作 of security execution. The values are:\n<li>Deny: intercept，block the request to access site resources;</li>\n<li>Monitor: observe，only record logs;</li>\n<li>Redirect: redirect to URL;</li>\n<li>已禁用: 已禁用，do not enable the specified rule;</li>\n<li>Allow: allow access，but 延迟 processing requests;</li>\n<li>Challenge: challenge，respond to challenge 内容;</li>\n<li>BlockIP: to be abandoned，IP ban;</li>\n<li>ReturnCustomPage: to be abandoned，use the specified page to intercept;</li>\n<li>JSChallenge: to be abandoned，JavaScript challenge;</li>\n<li>ManagedChallenge: to be abandoned，managed challenge.</li>。",
 															},
 															"deny_action_parameters": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Deny.",
+																Description: "Additional parameters when 名称 is Deny。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"block_ip": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to extend the blocking of source IP. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nWhen enabled, the client IP that triggers the rule will be blocked continuously. When this option is enabled, the BlockIpDuration parameter must be specified at the same time.\nNote: This option cannot be enabled at the same time as the ReturnCustomPage or Stall options.",
+																			Description: "是否extend the blocking of 来源 IP. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nWhen 已启用，the 客户端 IP that triggers the rule will be blocked continuously. When this option is 已启用，the BlockIpDuration parameter must be specified at the same time.\nNote: This option cannot be 已启用 at the same time as the ReturnCustomPage or Stall options。",
 																		},
 																		"block_ip_duration": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "When BlockIP is on, the IP blocking duration.",
+																			Description: "When BlockIP is on，the IP blocking duration。",
 																		},
 																		"return_custom_page": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to use custom pages. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nAfter enabling, use custom page content to intercept (respond to) requests. When enabling this option, you must specify the ResponseCode and ErrorPageId parameters at the same time.\nNote: This option cannot be enabled at the same time as the BlockIp or Stall options.",
+																			Description: "是否use custom pages. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nAfter enabling，use custom page 内容 to intercept (respond to) requests. When enabling this option，you must 指定ResponseCode and ErrorPageId parameters at the same time.\nNote: This option cannot be 已启用 at the same time as the BlockIp or Stall options。",
 																		},
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Customize the status code of the page.",
+																			Description: "Customize the 状态 代码 of the page。",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The PageId of the custom page.",
+																			Description: "The PageId of the custom page。",
 																		},
 																		"stall": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to ignore the request source suspension. The value is:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nAfter enabling, it will no longer respond to requests in the current connection session and will not actively disconnect. It is used to fight against crawlers and consume client connection resources.\nNote: This option cannot be enabled at the same time as the BlockIp or ReturnCustomPage options.",
+																			Description: "是否ignore the 请求来源 suspension. The 值 is:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nAfter enabling，it will no longer respond to requests in the current connection session and will not actively disconnect. It is 用于fight against crawlers and consume client connection resources.\nNote: This option cannot be 已启用 at the same time as the BlockIp or ReturnCustomPage options。",
 																		},
 																	},
 																},
@@ -999,13 +999,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Redirect.",
+																Description: "Additional parameters when 名称 is Redirect。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"url": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The URL to redirect.",
+																			Description: "The URL to redirect。",
 																		},
 																	},
 																},
@@ -1014,23 +1014,23 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Challenge.",
+																Description: "Additional parameters when 名称 is Challenge。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"challenge_option": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The specific challenge action to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>.",
+																			Description: "The specific challenge 操作 to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>。",
 																		},
 																		"interval": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The time interval for repeating the challenge. When Name is InterstitialChallenge/InlineChallenge, this field is required. The default value is 300s. Supported units are: <li>s: seconds, value range 1 to 60; </li><li>m: minutes, value range 1 to 60; </li><li>h: hours, value range 1 to 24. </li>.",
+																			Description: "The 时间间隔 for repeating the challenge. When 名称 is InterstitialChallenge/InlineChallenge，this field 为必填项. The 默认值为 300s. Supported units are: <li>s: seconds，值 range 1 to 60; </li><li>m: minutes，值 range 1 to 60; </li><li>h: hours，值 range 1 to 24. </li>。",
 																		},
 																		"attester_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Client authentication method ID. This field is required when Name is InterstitialChallenge/InlineChallenge.",
+																			Description: "Client authentication method ID. This field 为必填项 when 名称 is InterstitialChallenge/InlineChallenge。",
 																		},
 																	},
 																},
@@ -1039,13 +1039,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "To be deprecated, additional parameter when Name is BlockIP.",
+																Description: "待废弃， additional parameter when 名称 is BlockIP。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"duration": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The penalty duration for banning an IP. Supported units are: <li>s: seconds, value range 1 to 120; </li><li>m: minutes, value range 1 to 120; </li><li>h: hours, value range 1 to 48. </li>.",
+																			Description: "The penalty duration for banning an IP. Supported units are: <li>s: seconds，值 range 1 to 120; </li><li>m: minutes，值 range 1 to 120; </li><li>h: hours，值 range 1 to 48. </li>。",
 																		},
 																	},
 																},
@@ -1054,18 +1054,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "To be deprecated, additional parameter when Name is ReturnCustomPage.",
+																Description: "待废弃， additional parameter when 名称 is ReturnCustomPage。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response status code.",
+																			Description: "Response 状态 代码",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The custom page ID of the response.",
+																			Description: "The custom page ID response。",
 																		},
 																	},
 																},
@@ -1080,62 +1080,62 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Specific configuration of slow attack protection.",
+										Description: "Specific configuration of slow attack protection。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"enabled": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Whether slow attack protection is enabled. The possible values are: <li>on: enabled; </li><li>off: disabled. </li>.",
+													Description: "Whether slow attack protection is 已启用 The possible values are: <li>on: 已启用; </li><li>off: 已禁用 </li>。",
 												},
 												"action": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "The handling method of slow attack protection. When Enabled is on, this field is required. SecurityAction Name value supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li>.",
+													Description: "The handling method of slow attack protection. When 已启用 is on，this field 为必填项. SecurityAction 名称 值 supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li>。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The specific action of security execution. The values are:\n<li>Deny: intercept, block the request to access site resources;</li>\n<li>Monitor: observe, only record logs;</li>\n<li>Redirect: redirect to URL;</li>\n<li>Disabled: disabled, do not enable the specified rule;</li>\n<li>Allow: allow access, but delay processing requests;</li>\n<li>Challenge: challenge, respond to challenge content;</li>\n<li>BlockIP: to be abandoned, IP ban;</li>\n<li>ReturnCustomPage: to be abandoned, use the specified page to intercept;</li>\n<li>JSChallenge: to be abandoned, JavaScript challenge;</li>\n<li>ManagedChallenge: to be abandoned, managed challenge.</li>.",
+																Description: "The specific 操作 of security execution. The values are:\n<li>Deny: intercept，block the request to access site resources;</li>\n<li>Monitor: observe，only record logs;</li>\n<li>Redirect: redirect to URL;</li>\n<li>已禁用: 已禁用，do not enable the specified rule;</li>\n<li>Allow: allow access，but 延迟 processing requests;</li>\n<li>Challenge: challenge，respond to challenge 内容;</li>\n<li>BlockIP: to be abandoned，IP ban;</li>\n<li>ReturnCustomPage: to be abandoned，use the specified page to intercept;</li>\n<li>JSChallenge: to be abandoned，JavaScript challenge;</li>\n<li>ManagedChallenge: to be abandoned，managed challenge.</li>。",
 															},
 															"deny_action_parameters": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Deny.",
+																Description: "Additional parameters when 名称 is Deny。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"block_ip": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to extend the blocking of source IP. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nWhen enabled, the client IP that triggers the rule will be blocked continuously. When this option is enabled, the BlockIpDuration parameter must be specified at the same time.\nNote: This option cannot be enabled at the same time as the ReturnCustomPage or Stall options.",
+																			Description: "是否extend the blocking of 来源 IP. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nWhen 已启用，the 客户端 IP that triggers the rule will be blocked continuously. When this option is 已启用，the BlockIpDuration parameter must be specified at the same time.\nNote: This option cannot be 已启用 at the same time as the ReturnCustomPage or Stall options。",
 																		},
 																		"block_ip_duration": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "When BlockIP is on, the IP blocking duration.",
+																			Description: "When BlockIP is on，the IP blocking duration。",
 																		},
 																		"return_custom_page": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to use custom pages. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nAfter enabling, use custom page content to intercept (respond to) requests. When enabling this option, you must specify the ResponseCode and ErrorPageId parameters at the same time.\nNote: This option cannot be enabled at the same time as the BlockIp or Stall options.",
+																			Description: "是否use custom pages. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nAfter enabling，use custom page 内容 to intercept (respond to) requests. When enabling this option，you must 指定ResponseCode and ErrorPageId parameters at the same time.\nNote: This option cannot be 已启用 at the same time as the BlockIp or Stall options。",
 																		},
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Customize the status code of the page.",
+																			Description: "Customize the 状态 代码 of the page。",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The PageId of the custom page.",
+																			Description: "The PageId of the custom page。",
 																		},
 																		"stall": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to ignore the request source suspension. The value is:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nAfter enabling, it will no longer respond to requests in the current connection session and will not actively disconnect. It is used to fight against crawlers and consume client connection resources.\nNote: This option cannot be enabled at the same time as the BlockIp or ReturnCustomPage options.",
+																			Description: "是否ignore the 请求来源 suspension. The 值 is:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nAfter enabling，it will no longer respond to requests in the current connection session and will not actively disconnect. It is 用于fight against crawlers and consume client connection resources.\nNote: This option cannot be 已启用 at the same time as the BlockIp or ReturnCustomPage options。",
 																		},
 																	},
 																},
@@ -1144,13 +1144,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Redirect.",
+																Description: "Additional parameters when 名称 is Redirect。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"url": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The URL to redirect.",
+																			Description: "The URL to redirect。",
 																		},
 																	},
 																},
@@ -1159,23 +1159,23 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Challenge.",
+																Description: "Additional parameters when 名称 is Challenge。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"challenge_option": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The specific challenge action to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>.",
+																			Description: "The specific challenge 操作 to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>。",
 																		},
 																		"interval": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The time interval for repeating the challenge. When Name is InterstitialChallenge/InlineChallenge, this field is required. The default value is 300s. Supported units are: <li>s: seconds, value range 1 to 60; </li><li>m: minutes, value range 1 to 60; </li><li>h: hours, value range 1 to 24. </li>.",
+																			Description: "The 时间间隔 for repeating the challenge. When 名称 is InterstitialChallenge/InlineChallenge，this field 为必填项. The 默认值为 300s. Supported units are: <li>s: seconds，值 range 1 to 60; </li><li>m: minutes，值 range 1 to 60; </li><li>h: hours，值 range 1 to 24. </li>。",
 																		},
 																		"attester_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Client authentication method ID. This field is required when Name is InterstitialChallenge/InlineChallenge.",
+																			Description: "Client authentication method ID. This field 为必填项 when 名称 is InterstitialChallenge/InlineChallenge。",
 																		},
 																	},
 																},
@@ -1184,13 +1184,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "To be deprecated, additional parameter when Name is BlockIP.",
+																Description: "待废弃， additional parameter when 名称 is BlockIP。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"duration": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The penalty duration for banning an IP. Supported units are: <li>s: seconds, value range 1 to 120; </li><li>m: minutes, value range 1 to 120; </li><li>h: hours, value range 1 to 48. </li>.",
+																			Description: "The penalty duration for banning an IP. Supported units are: <li>s: seconds，值 range 1 to 120; </li><li>m: minutes，值 range 1 to 120; </li><li>h: hours，值 range 1 to 48. </li>。",
 																		},
 																	},
 																},
@@ -1199,18 +1199,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "To be deprecated, additional parameter when Name is ReturnCustomPage.",
+																Description: "待废弃， additional parameter when 名称 is ReturnCustomPage。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response status code.",
+																			Description: "Response 状态 代码",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The custom page ID of the response.",
+																			Description: "The custom page ID response。",
 																		},
 																	},
 																},
@@ -1222,23 +1222,23 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Specific configuration of the minimum rate threshold for text transmission. This field is required when Enabled is on.",
+													Description: "Specific configuration of the minimum rate threshold for text transmission. This field 为必填项 when 已启用 is on。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"minimal_avg_transfer_rate_threshold": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Minimum text transmission rate threshold. The unit only supports bps.",
+																Description: "Minimum text transmission rate threshold. The unit only supports bps。",
 															},
 															"counting_period": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The minimum text transmission rate statistics time range, the possible values are: <li>10s: 10 seconds; </li><li>30s: 30 seconds; </li><li>60s: 60 seconds; </li><li>120s: 120 seconds. </li>.",
+																Description: "The minimum text transmission rate statistics time range，the possible values are: <li>10s: 10 seconds; </li><li>30s: 30 seconds; </li><li>60s: 60 seconds; </li><li>120s: 120 seconds. </li>。",
 															},
 															"enabled": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Whether the text transmission minimum rate threshold is enabled. The possible values are: <li>on: enabled; </li><li>off: disabled. </li>.",
+																Description: "是否text transmission minimum rate threshold is 已启用 The possible values are: <li>on: 已启用; </li><li>off: 已禁用 </li>。",
 															},
 														},
 													},
@@ -1247,18 +1247,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Specific configuration of the text transmission timeout. When Enabled is on, this field is required.",
+													Description: "Specific configuration of the text transmission timeout. When 已启用 is on，this field 为必填项。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"idle_timeout": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The text transmission timeout period is between 5 and 120, and the unit only supports seconds (s).",
+																Description: "The text transmission timeout 周期 is between 5 and 120，and the unit only supports seconds (s)。",
 															},
 															"enabled": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Whether the text transmission timeout is enabled. The possible values are: <li>on: enabled; </li><li>off: disabled. </li>.",
+																Description: "是否text transmission timeout is 已启用 The possible values are: <li>on: 已启用; </li><li>off: 已禁用 </li>。",
 															},
 														},
 													},
@@ -1273,35 +1273,35 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Rate limiting rule configuration.",
+							Description: "Rate limiting rule configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rules": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "A list of precise rate limiting definitions. When using ModifySecurityPolicy to modify the Web protection configuration: <br> <li> If the Rules parameter is not specified, or the Rules parameter length is zero: clear all precise rate limiting configurations. </li>. <li> If the RateLimitingRules parameter value is not specified in the SecurityPolicy parameter: keep the existing custom rule configuration and do not modify it. </li>.",
+										Description: "A 列表 precise rate limiting definitions. When using ModifySecurityPolicy to modify the Web protection configuration: <br> <li> If the Rules parameter is not specified，or the Rules parameter length is zero: clear all precise rate limiting configurations. </li>. <li> If the RateLimitingRules parameter 值 is not specified in the SecurityPolicy parameter: keep the existing custom rule configuration and do not modify it. </li>。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"id": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "The ID of the precise rate limit. <br>The rule ID can support different rule configuration operations: <br> <li> <b>Add</b> a new rule: the ID is empty or the ID parameter is not specified; </li><li> <b>Modify</b> an existing rule: specify the rule ID to be updated/modified; </li><li> <b>Delete</b> an existing rule: in the RateLimitingRules parameter, the existing rules not included in the Rules list will be deleted. </li>.",
+													Description: "The ID precise rate 限制 <br>The rule ID can support different rule configuration operations: <br> <li> <b>Add</b> a new rule: the ID is empty or the ID parameter is not specified; </li><li> <b>Modify</b> an existing rule: 指定rule ID to be updated/modified; </li><li> <b>Delete</b> an existing rule: in the RateLimitingRules parameter，the existing rules not included in the Rules list will be deleted. </li>。",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The name of the precise rate limit.",
+													Description: "The 名称 precise rate 限制",
 												},
 												"condition": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The specific content of the precise rate limit must conform to the expression syntax. For detailed specifications, see the product documentation.",
+													Description: "The specific 内容 of the precise rate 限制 must conform to the expression syntax. For detailed specifications，see the product documentation。",
 												},
 												"count_by": {
 													Type:        schema.TypeSet,
 													Optional:    true,
-													Description: "The matching method of the rate threshold request feature. When Enabled is on, this field is required. <br /><br />When there are multiple conditions, multiple conditions will be combined for statistical calculation. The number of conditions cannot exceed 5. The possible values are: <br/><li><b>http.request.ip</b>: client IP; </li><li><b>http.request.xff_header_ip</b>: client IP (matching XFF header first); </li><li><b>http.request.uri.path</b>: requested access path; </li><li><b>http.request.cookies['session']</b>: cookie named session, where session can be replaced by the parameter you specify; </li><li><b>http.request.headers['user-agent']</b>: HTTP header named user-agent, where user-agent can be replaced by the parameter you specify; </li><li><b>http.request.ja3</b>: requested JA3 fingerprint; </li><li><b>http.request.uri.query['test']</b>: URL query parameter named test, where test can be replaced by the parameter you specify. </li>.",
+													Description: "The matching method of the rate threshold request feature. When 已启用 is on，this field 为必填项. <br /><br />When there are multiple conditions，multiple conditions will be combined for statistical calculation. The 数量 conditions cannot exceed 5. The possible values are: <br/><li><b>http.request.ip</b>: 客户端 IP; </li><li><b>http.request.xff_header_ip</b>: 客户端 IP (matching XFF header first); </li><li><b>http.request.uri.路径</b>: requested access 路径; </li><li><b>http.request.cookies['session']</b>: cookie named session，where session can be replaced by the parameter you specify; </li><li><b>http.request.headers['用户-agent']</b>: HTTP header named 用户-agent，where 用户-agent can be replaced by the parameter you specify; </li><li><b>http.request.ja3</b>: requested JA3 fingerprint; </li><li><b>http.request.uri.query['test']</b>: URL query parameter named test，where test can be replaced by the parameter you specify. </li>。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -1309,66 +1309,66 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"max_request_threshold": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "The cumulative number of interceptions within the time range of the precise rate limit, ranging from 1 to 100000.",
+													Description: "The cumulative 数量 interceptions within the time range of the precise rate 限制，ranging from 1 to 100000。",
 												},
 												"counting_period": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The statistical time window, the possible values are: <li>1s: 1 second; </li><li>5s: 5 seconds; </li><li>10s: 10 seconds; </li><li>20s: 20 seconds; </li><li>30s: 30 seconds; </li><li>40s: 40 seconds; </li><li>50s: 50 seconds; </li><li>1m: 1 minute; </li><li>2m: 2 minutes; </li><li>5m: 5 minutes; </li><li>10m: 10 minutes; </li><li>1h: 1 hour. </li>.",
+													Description: "The statistical time window，the possible values are: <li>1s: 1 second; </li><li>5s: 5 seconds; </li><li>10s: 10 seconds; </li><li>20s: 20 seconds; </li><li>30s: 30 seconds; </li><li>40s: 40 seconds; </li><li>50s: 50 seconds; </li><li>1m: 1 minute; </li><li>2m: 2 minutes; </li><li>5m: 5 minutes; </li><li>10m: 10 minutes; </li><li>1h: 1 hour. </li>。",
 												},
 												"action_duration": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Action The duration of the action. The supported units are: <li>s: seconds, with a value of 1 to 120; </li><li>m: minutes, with a value of 1 to 120; </li><li>h: hours, with a value of 1 to 48; </li><li>d: days, with a value of 1 to 30. </li>.",
+													Description: "操作 The duration of the 操作 The supported units are: <li>s: seconds，with a 值 of 1 to 120; </li><li>m: minutes，with a 值 of 1 to 120; </li><li>h: hours，with a 值 of 1 to 48; </li><li>d: days，with a 值 of 1 to 30. </li>。",
 												},
 												"action": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "The precise rate limit handling method. The values are: <li>Monitor: Observe; </li><li>Deny: Intercept, where DenyActionParameters.Name supports Deny and ReturnCustomPage; </li><li>Challenge: Challenge, where ChallengeActionParameters.Name supports JSChallenge and ManagedChallenge; </li><li>Redirect: Redirect to URL; </li>.",
+													Description: "The precise rate 限制 handling method. The values are: <li>Monitor: Observe; </li><li>Deny: Intercept，where DenyActionParameters.名称 supports Deny and ReturnCustomPage; </li><li>Challenge: Challenge，where ChallengeActionParameters.名称 supports JSChallenge and ManagedChallenge; </li><li>Redirect: Redirect to URL; </li>。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The specific action of security execution. The values are:\n<li>Deny: intercept, block the request to access site resources;</li>\n<li>Monitor: observe, only record logs;</li>\n<li>Redirect: redirect to URL;</li>\n<li>Disabled: disabled, do not enable the specified rule;</li>\n<li>Allow: allow access, but delay processing requests;</li>\n<li>Challenge: challenge, respond to challenge content;</li>\n<li>BlockIP: to be abandoned, IP ban;</li>\n<li>ReturnCustomPage: to be abandoned, use the specified page to intercept;</li>\n<li>JSChallenge: to be abandoned, JavaScript challenge;</li>\n<li>ManagedChallenge: to be abandoned, managed challenge.</li>.",
+																Description: "The specific 操作 of security execution. The values are:\n<li>Deny: intercept，block the request to access site resources;</li>\n<li>Monitor: observe，only record logs;</li>\n<li>Redirect: redirect to URL;</li>\n<li>已禁用: 已禁用，do not enable the specified rule;</li>\n<li>Allow: allow access，but 延迟 processing requests;</li>\n<li>Challenge: challenge，respond to challenge 内容;</li>\n<li>BlockIP: to be abandoned，IP ban;</li>\n<li>ReturnCustomPage: to be abandoned，use the specified page to intercept;</li>\n<li>JSChallenge: to be abandoned，JavaScript challenge;</li>\n<li>ManagedChallenge: to be abandoned，managed challenge.</li>。",
 															},
 															"deny_action_parameters": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Deny.",
+																Description: "Additional parameters when 名称 is Deny。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"block_ip": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to extend the blocking of source IP. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nWhen enabled, the client IP that triggers the rule will be blocked continuously. When this option is enabled, the BlockIpDuration parameter must be specified at the same time.\nNote: This option cannot be enabled at the same time as the ReturnCustomPage or Stall options.",
+																			Description: "是否extend the blocking of 来源 IP. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nWhen 已启用，the 客户端 IP that triggers the rule will be blocked continuously. When this option is 已启用，the BlockIpDuration parameter must be specified at the same time.\nNote: This option cannot be 已启用 at the same time as the ReturnCustomPage or Stall options。",
 																		},
 																		"block_ip_duration": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "When BlockIP is on, the IP blocking duration.",
+																			Description: "When BlockIP is on，the IP blocking duration。",
 																		},
 																		"return_custom_page": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to use custom pages. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nAfter enabling, use custom page content to intercept (respond to) requests. When enabling this option, you must specify the ResponseCode and ErrorPageId parameters at the same time.\nNote: This option cannot be enabled at the same time as the BlockIp or Stall options.",
+																			Description: "是否use custom pages. The possible values are:\n<li>on: on;</li>\n<li>off: off.</li>\nAfter enabling，use custom page 内容 to intercept (respond to) requests. When enabling this option，you must 指定ResponseCode and ErrorPageId parameters at the same time.\nNote: This option cannot be 已启用 at the same time as the BlockIp or Stall options。",
 																		},
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Customize the status code of the page.",
+																			Description: "Customize the 状态 代码 of the page。",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The PageId of the custom page.",
+																			Description: "The PageId of the custom page。",
 																		},
 																		"stall": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Whether to ignore the request source suspension. The value is:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nAfter enabling, it will no longer respond to requests in the current connection session and will not actively disconnect. It is used to fight against crawlers and consume client connection resources.\nNote: This option cannot be enabled at the same time as the BlockIp or ReturnCustomPage options.",
+																			Description: "是否ignore the 请求来源 suspension. The 值 is:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nAfter enabling，it will no longer respond to requests in the current connection session and will not actively disconnect. It is 用于fight against crawlers and consume client connection resources.\nNote: This option cannot be 已启用 at the same time as the BlockIp or ReturnCustomPage options。",
 																		},
 																	},
 																},
@@ -1377,13 +1377,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Redirect.",
+																Description: "Additional parameters when 名称 is Redirect。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"url": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The URL to redirect.",
+																			Description: "The URL to redirect。",
 																		},
 																	},
 																},
@@ -1392,23 +1392,23 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Additional parameters when Name is Challenge.",
+																Description: "Additional parameters when 名称 is Challenge。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"challenge_option": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The specific challenge action to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>.",
+																			Description: "The specific challenge 操作 to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>。",
 																		},
 																		"interval": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The time interval for repeating the challenge. When Name is InterstitialChallenge/InlineChallenge, this field is required. The default value is 300s. Supported units are: <li>s: seconds, value range 1 to 60; </li><li>m: minutes, value range 1 to 60; </li><li>h: hours, value range 1 to 24. </li>.",
+																			Description: "The 时间间隔 for repeating the challenge. When 名称 is InterstitialChallenge/InlineChallenge，this field 为必填项. The 默认值为 300s. Supported units are: <li>s: seconds，值 range 1 to 60; </li><li>m: minutes，值 range 1 to 60; </li><li>h: hours，值 range 1 to 24. </li>。",
 																		},
 																		"attester_id": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Client authentication method ID. This field is required when Name is InterstitialChallenge/InlineChallenge.",
+																			Description: "Client authentication method ID. This field 为必填项 when 名称 is InterstitialChallenge/InlineChallenge。",
 																		},
 																	},
 																},
@@ -1417,13 +1417,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "To be deprecated, additional parameter when Name is BlockIP.",
+																Description: "待废弃， additional parameter when 名称 is BlockIP。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"duration": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The penalty duration for banning an IP. Supported units are: <li>s: seconds, value range 1 to 120; </li><li>m: minutes, value range 1 to 120; </li><li>h: hours, value range 1 to 48. </li>.",
+																			Description: "The penalty duration for banning an IP. Supported units are: <li>s: seconds，值 range 1 to 120; </li><li>m: minutes，值 range 1 to 120; </li><li>h: hours，值 range 1 to 48. </li>。",
 																		},
 																	},
 																},
@@ -1432,18 +1432,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "To be deprecated, additional parameter when Name is ReturnCustomPage.",
+																Description: "待废弃， additional parameter when 名称 is ReturnCustomPage。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"response_code": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Response status code.",
+																			Description: "Response 状态 代码",
 																		},
 																		"error_page_id": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The custom page ID of the response.",
+																			Description: "The custom page ID response。",
 																		},
 																	},
 																},
@@ -1454,12 +1454,12 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"priority": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "The priority of precise rate limiting ranges from 0 to 100, and the default is 0.",
+													Description: "The 优先级 of precise rate limiting ranges from 0 to 100，and the 默认为 0。",
 												},
 												"enabled": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Whether the precise rate limit rule is enabled. The possible values are: <li>on: enabled; </li><li>off: disabled. </li>.",
+													Description: "是否precise rate 限制 rule is 已启用 The possible values are: <li>on: 已启用; </li><li>off: 已禁用 </li>。",
 												},
 											},
 										},
@@ -1471,45 +1471,45 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Exception rule configuration.",
+							Description: "Exception rule configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rules": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Definition list of exception rules. When using ModifySecurityPolicy to modify the Web protection configuration: <li>If the Rules parameter is not specified, or the length of the Rules parameter is zero: clear all exception rule configurations. </li>.<li>If the ExceptionRules parameter value is not specified in the SecurityPolicy parameter: keep the existing exception rule configurations and do not modify them. </li>.",
+										Description: "Definition 列表 exception rules. When using ModifySecurityPolicy to modify the Web protection configuration: <li>If the Rules parameter is not specified，or the length of the Rules parameter is zero: clear all exception rule configurations. </li>.<li>If the ExceptionRules parameter 值 is not specified in the SecurityPolicy parameter: keep the existing exception rule configurations and do not modify them. </li>。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"id": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "The ID of the exception rule. <br>The rule ID can support different rule configuration operations: <br> <li> <b>Add</b> a new rule: the ID is empty or the ID parameter is not specified; </li><li> <b>Modify</b> an existing rule: specify the rule ID to be updated/modified; </li><li> <b>Delete</b> an existing rule: in the ExceptionRules parameter, the existing rules not included in the Rules list will be deleted. </li>.",
+													Description: "The ID exception rule. <br>The rule ID can support different rule configuration operations: <br> <li> <b>Add</b> a new rule: the ID is empty or the ID parameter is not specified; </li><li> <b>Modify</b> an existing rule: 指定rule ID to be updated/modified; </li><li> <b>Delete</b> an existing rule: in the ExceptionRules parameter，the existing rules not included in the Rules list will be deleted. </li>。",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The name of the exception rule.",
+													Description: "The 名称 exception rule。",
 												},
 												"condition": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The specific content of the exception rule must comply with the expression syntax. For detailed specifications, see the product documentation.",
+													Description: "The specific 内容 of the exception rule must comply with the expression syntax. For detailed specifications，see the product documentation。",
 												},
 												"skip_scope": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Exception rule execution options, the values are: <li>WebSecurityModules: Specifies the security protection module for the exception rule. </li>.<li>ManagedRules: Specifies the managed rules. </li>.",
+													Description: "Exception rule execution options，the values are: <li>WebSecurityModules: 指定security protection 模块 for the exception rule. </li>.<li>ManagedRules: 指定managed rules. </li>。",
 												},
 												"skip_option": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The specific type of the skipped request. The possible values are: <li>SkipOnAllRequestFields: skip all requests; </li><li>SkipOnSpecifiedRequestFields: skip specified request fields. </li>. This option is only valid when SkipScope is ManagedRules.",
+													Description: "The specific 类型 skipped request. The possible values are: <li>SkipOnAllRequestFields: skip all requests; </li><li>SkipOnSpecifiedRequestFields: skip specified request fields. </li>. This option is only valid when SkipScope is ManagedRules。",
 												},
 												"web_security_modules_for_exception": {
 													Type:        schema.TypeSet,
 													Optional:    true,
-													Description: "Specifies the security protection module for the exception rule. It is valid only when SkipScope is WebSecurityModules. The possible values are: <li>websec-mod-managed-rules: managed rules; </li><li>websec-mod-rate-limiting: rate limiting; </li><li>websec-mod-custom-rules: custom rules; </li><li>websec-mod-adaptive-control: adaptive frequency control, intelligent client filtering, slow attack protection, traffic theft protection; </li><li>websec-mod-bot: Bot management. </li>.",
+													Description: "指定security protection 模块 for the exception rule. It is valid only when SkipScope is WebSecurityModules. The possible values are: <li>websec-mod-managed-rules: managed rules; </li><li>websec-mod-rate-limiting: rate limiting; </li><li>websec-mod-custom-rules: custom rules; </li><li>websec-mod-adaptive-control: adaptive frequency control，intelligent client filtering，slow attack protection，traffic theft protection; </li><li>websec-mod-bot: Bot management. </li>。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -1517,7 +1517,7 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"managed_rules_for_exception": {
 													Type:        schema.TypeSet,
 													Optional:    true,
-													Description: "Specifies the specific managed rule for the exception rule. This is only valid when SkipScope is ManagedRules and ManagedRuleGroupsForException cannot be specified.",
+													Description: "指定specific managed rule for the exception rule. This is only valid when SkipScope is ManagedRules and ManagedRuleGroupsForException cannot be specified。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -1525,7 +1525,7 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"managed_rule_groups_for_exception": {
 													Type:        schema.TypeSet,
 													Optional:    true,
-													Description: "Specifies the managed rule group for the exception rule. This is only valid when SkipScope is ManagedRules and ManagedRulesForException cannot be specified.",
+													Description: "指定managed rule group for the exception rule. This is only valid when SkipScope is ManagedRules and ManagedRulesForException cannot be specified。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -1533,7 +1533,7 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"request_fields_for_exception": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Specifies the specific configuration of the exception rule to skip the specified request field. This is only valid when SkipScope is ManagedRules and SkipOption is SkipOnSpecifiedRequestFields.",
+													Description: "指定specific configuration of the exception rule to skip the specified request field. This is only valid when SkipScope is ManagedRules and SkipOption is SkipOnSpecifiedRequestFields。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"scope": {
@@ -1544,12 +1544,12 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 															"condition": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The expression of the specific field to be skipped must conform to the expression syntax. <br />\nCondition supports expression configuration syntax: <li> Written according to the matching condition expression syntax of the rule, supporting references to key and value. </li>.<li> Supports in, like operators, and and logical combinations. </li>.\nFor example: <li>${key} in ['x-trace-id']: parameter name is equal to x-trace-id. </li>.<li>${key} in ['x-trace-id'] and ${value} like ['Bearer *']: parameter name is equal to x-trace-id and the parameter value wildcard matches Bearer *. </li>.",
+																Description: "The expression of the specific field to be skipped must conform to the expression syntax. <br />\nCondition supports expression configuration syntax: <li> Written according to the matching condition expression syntax of the rule，supporting references to 键 and 值 </li>.<li> Supports in，like operators，and and logical combinations. </li>.\nFor example: <li>${键} in ['x-trace-id']: parameter 名称 is equal to x-trace-id. </li>.<li>${键} in ['x-trace-id'] and ${值} like ['Bearer *']: parameter 名称 is equal to x-trace-id and the parameter 值 wildcard matches Bearer *. </li>。",
 															},
 															"target_field": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "When the Scope parameter uses different values, the supported values in the TargetField expression are as follows:\n<li> body.json: supports key and value</li>\n<li> cookie: supports key and value</li>\n<li> header: supports key and value</li>\n<li> uri.query: supports key and value</li>\n<li> uri: supports path, query and fullpath</li>\n<li> body: supports fullbody and multipart</li>.",
+																Description: "When the 范围 parameter uses different values，the supported values in the TargetField expression are as follows:\n<li> body.json: supports 键 and 值</li>\n<li> cookie: supports 键 and 值</li>\n<li> header: supports 键 and 值</li>\n<li> uri.query: supports 键 and 值</li>\n<li> uri: supports 路径，query and fullpath</li>\n<li> body: supports fullbody and multipart</li>。",
 															},
 														},
 													},
@@ -1557,7 +1557,7 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 												"enabled": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Whether the exception rule is enabled. The values are: <li>on: enabled</li><li>off: disabled</li>.",
+													Description: "是否exception rule is 已启用 The values are: <li>on: 已启用</li><li>off: 已禁用</li>。",
 												},
 											},
 										},
@@ -1569,106 +1569,106 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Bot management configuration.",
+							Description: "Bot management configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"enabled": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Whether Bot management is enabled. valid values: <li>on: enabled</li> <li>off: disabled</li>.",
+										Description: "Whether Bot management is 已启用 有效值：<li>on: 已启用</li> <li>off: 已禁用</li>。",
 									},
 									"custom_rules": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Bot custom rules configuration.",
+										Description: "Bot custom rules configuration。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"rules": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "List of Bot custom rules.",
+													Description: "列表 Bot custom rules。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Rule ID. add a new rule when ID is empty; modify an existing rule when ID is specified; existing rules not included in the list will be deleted.",
+																Description: "Rule ID. add a new rule when ID is empty; modify an existing rule when ID is specified; existing rules not included in the list will be deleted。",
 															},
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Rule name.",
+																Description: "Rule 名称",
 															},
 															"enabled": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Whether the rule is enabled. valid values: <li>on: enabled</li> <li>off: disabled</li>.",
+																Description: "是否rule is 已启用 有效值：<li>on: 已启用</li> <li>off: 已禁用</li>。",
 															},
 															"priority": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Priority of the rule. value range: 1-100, default 50.",
+																Description: "优先级 of the rule. 取值范围：1-100，default 50。",
 															},
 															"condition": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Match condition expression. must comply with the expression grammar.",
+																Description: "Match condition expression. must comply with the expression grammar。",
 															},
 															"action": {
 																Type:        schema.TypeList,
 																Required:    true,
-																Description: "Weighted action list. all weights must sum to 100.",
+																Description: "Weighted 操作 list. all weights must sum to 100。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"security_action": {
 																			Type:        schema.TypeList,
 																			Required:    true,
 																			MaxItems:    1,
-																			Description: "Security action configuration.",
+																			Description: "Security 操作 configuration。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"name": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.",
+																						Description: "操作 名称 有效值：Deny，Monitor，Allow，Challenge，已禁用，Redirect，Trans。",
 																					},
 																					"deny_action_parameters": {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Additional parameters when Name is Deny.",
+																						Description: "Additional parameters when 名称 is Deny。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"block_ip": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Whether to enable IP ban extension. valid values: on/off.",
+																									Description: "是否enable IP ban extension. 有效值：on/off。",
 																								},
 																								"block_ip_duration": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "IP ban duration. required when BlockIp is on.",
+																									Description: "IP ban duration. 必填 when BlockIp is on。",
 																								},
 																								"return_custom_page": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Whether to use custom page. valid values: on/off.",
+																									Description: "是否use custom page. 有效值：on/off。",
 																								},
 																								"response_code": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Custom page response status code.",
+																									Description: "Custom page response 状态 代码",
 																								},
 																								"error_page_id": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Custom page ID.",
+																									Description: "Custom page ID。",
 																								},
 																								"stall": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Whether to stall connection. valid values: on/off.",
+																									Description: "是否stall connection. 有效值：on/off。",
 																								},
 																							},
 																						},
@@ -1677,13 +1677,13 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Additional parameters when Name is Redirect.",
+																						Description: "Additional parameters when 名称 is Redirect。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"url": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Redirect target URL.",
+																									Description: "Redirect target URL",
 																								},
 																							},
 																						},
@@ -1692,18 +1692,18 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Additional parameters when Name is Allow.",
+																						Description: "Additional parameters when 名称 is Allow。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"min_delay_time": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Minimum delay response time.",
+																									Description: "Minimum 延迟 response time。",
 																								},
 																								"max_delay_time": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Maximum delay response time.",
+																									Description: "Maximum 延迟 response time。",
 																								},
 																							},
 																						},
@@ -1712,23 +1712,23 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Additional parameters when Name is Challenge.",
+																						Description: "Additional parameters when 名称 is Challenge。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"challenge_option": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.",
+																									Description: "Challenge 类型 有效值：InterstitialChallenge，InlineChallenge，JSChallenge，ManagedChallenge。",
 																								},
 																								"interval": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Repeat challenge interval.",
+																									Description: "Repeat challenge interval。",
 																								},
 																								"attester_id": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Client attestation method ID.",
+																									Description: "Client attestation method ID。",
 																								},
 																							},
 																						},
@@ -1739,7 +1739,7 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																		"weight": {
 																			Type:        schema.TypeInt,
 																			Required:    true,
-																			Description: "Action weight. value range: 10-100, must be multiples of 10, sum of all weights must equal 100.",
+																			Description: "操作 权重 取值范围：10-100，must be multiples of 10，sum of all weights must equal 100。",
 																		},
 																	},
 																},
@@ -1754,40 +1754,40 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Basic Bot settings configuration that applies to all domains.",
+										Description: "Basic Bot settings configuration that applies to all domains。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"source_idc": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "IDC source IP configuration.",
+													Description: "IDC 来源 IP configuration。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"base_action": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Default action for IDC source requests.",
+																Description: "Default 操作 for IDC 来源 requests。",
 																Elem:        securityActionSchemaForBotManagement(),
 															},
 															"action_overrides": {
 																Type:        schema.TypeList,
 																Optional:    true,
-																Description: "Action overrides for specific IDC source rule IDs.",
+																Description: "操作 overrides for specific IDC 来源 rule IDs。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"ids": {
 																			Type:        schema.TypeList,
 																			Required:    true,
-																			Description: "Rule IDs to override.",
+																			Description: "Rule IDs to override。",
 																			Elem:        &schema.Schema{Type: schema.TypeString},
 																		},
 																		"action": {
 																			Type:        schema.TypeList,
 																			Required:    true,
 																			MaxItems:    1,
-																			Description: "Override action.",
+																			Description: "Override 操作",
 																			Elem:        securityActionSchemaForBotManagement(),
 																		},
 																	},
@@ -1800,33 +1800,33 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Search engine bot configuration.",
+													Description: "Search engine bot configuration。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"base_action": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Default action for search engine bot requests.",
+																Description: "Default 操作 for search engine bot requests。",
 																Elem:        securityActionSchemaForBotManagement(),
 															},
 															"action_overrides": {
 																Type:        schema.TypeList,
 																Optional:    true,
-																Description: "Action overrides for specific search engine bot rule IDs.",
+																Description: "操作 overrides for specific search engine bot rule IDs。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"ids": {
 																			Type:        schema.TypeList,
 																			Required:    true,
-																			Description: "Rule IDs to override.",
+																			Description: "Rule IDs to override。",
 																			Elem:        &schema.Schema{Type: schema.TypeString},
 																		},
 																		"action": {
 																			Type:        schema.TypeList,
 																			Required:    true,
 																			MaxItems:    1,
-																			Description: "Override action.",
+																			Description: "Override 操作",
 																			Elem:        securityActionSchemaForBotManagement(),
 																		},
 																	},
@@ -1839,33 +1839,33 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Known Bot category configuration.",
+													Description: "Known Bot category configuration。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"base_action": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Default action for known bot category requests.",
+																Description: "Default 操作 for known bot category requests。",
 																Elem:        securityActionSchemaForBotManagement(),
 															},
 															"action_overrides": {
 																Type:        schema.TypeList,
 																Optional:    true,
-																Description: "Action overrides for specific known bot category rule IDs.",
+																Description: "操作 overrides for specific known bot category rule IDs。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"ids": {
 																			Type:        schema.TypeList,
 																			Required:    true,
-																			Description: "Rule IDs to override.",
+																			Description: "Rule IDs to override。",
 																			Elem:        &schema.Schema{Type: schema.TypeString},
 																		},
 																		"action": {
 																			Type:        schema.TypeList,
 																			Required:    true,
 																			MaxItems:    1,
-																			Description: "Override action.",
+																			Description: "Override 操作",
 																			Elem:        securityActionSchemaForBotManagement(),
 																		},
 																	},
@@ -1878,45 +1878,45 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "IP threat intelligence configuration.",
+													Description: "IP threat intelligence configuration。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"enabled": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Whether IP reputation is enabled. valid values: on/off.",
+																Description: "Whether IP reputation is 已启用 有效值：on/off。",
 															},
 															"ip_reputation_group": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "IP reputation group configuration.",
+																Description: "IP reputation group configuration。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"base_action": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Default action for IP reputation requests.",
+																			Description: "Default 操作 for IP reputation requests。",
 																			Elem:        securityActionSchemaForBotManagement(),
 																		},
 																		"action_overrides": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
-																			Description: "Action overrides for specific IP reputation rule IDs.",
+																			Description: "操作 overrides for specific IP reputation rule IDs。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"ids": {
 																						Type:        schema.TypeList,
 																						Required:    true,
-																						Description: "Rule IDs to override.",
+																						Description: "Rule IDs to override。",
 																						Elem:        &schema.Schema{Type: schema.TypeString},
 																					},
 																					"action": {
 																						Type:        schema.TypeList,
 																						Required:    true,
 																						MaxItems:    1,
-																						Description: "Override action.",
+																						Description: "Override 操作",
 																						Elem:        securityActionSchemaForBotManagement(),
 																					},
 																				},
@@ -1932,52 +1932,52 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Bot intelligence analysis configuration.",
+													Description: "Bot intelligence analysis configuration。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"enabled": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Whether Bot intelligence is enabled. valid values: on/off.",
+																Description: "Whether Bot intelligence is 已启用 有效值：on/off。",
 															},
 															"id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Rule ID (output only).",
+																Description: "Rule ID (output only)。",
 															},
 															"bot_ratings": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Bot rating-based action configuration.",
+																Description: "Bot rating-based 操作 configuration。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"high_risk_bot_requests_action": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Action for high risk Bot requests.",
+																			Description: "操作 for high risk Bot requests。",
 																			Elem:        securityActionSchemaForBotManagement(),
 																		},
 																		"likely_bot_requests_action": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Action for likely Bot requests.",
+																			Description: "操作 for likely Bot requests。",
 																			Elem:        securityActionSchemaForBotManagement(),
 																		},
 																		"verified_bot_requests_action": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Action for verified Bot requests.",
+																			Description: "操作 for verified Bot requests。",
 																			Elem:        securityActionSchemaForBotManagement(),
 																		},
 																		"human_requests_action": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Action for human requests.",
+																			Description: "操作 for human requests。",
 																			Elem:        securityActionSchemaForBotManagement(),
 																		},
 																	},
@@ -1993,78 +1993,78 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Client attestation rules configuration (beta feature, requires a support ticket).",
+										Description: "Client attestation rules configuration (beta feature，requires a support ticket)。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"rules": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "List of client attestation rules.",
+													Description: "列表 client attestation rules。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Rule ID.",
+																Description: "Rule ID。",
 															},
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Rule name.",
+																Description: "Rule 名称",
 															},
 															"enabled": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Whether the rule is enabled. valid values: on/off.",
+																Description: "是否rule is 已启用 有效值：on/off。",
 															},
 															"priority": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Priority of the rule. value range: 0-100, default 0.",
+																Description: "优先级 of the rule. 取值范围：0-100，default 0。",
 															},
 															"condition": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Match condition expression.",
+																Description: "Match condition expression。",
 															},
 															"attester_id": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Client attestation option ID.",
+																Description: "Client attestation option ID。",
 															},
 															"device_profiles": {
 																Type:        schema.TypeList,
 																Optional:    true,
-																Description: "Device profiles configuration.",
+																Description: "Device profiles configuration。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"client_type": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Client type. valid values: iOS, Android, WebView, WeChatMiniProgram.",
+																			Description: "Client 类型 有效值：iOS，Android，WebView，WeChatMiniProgram。",
 																		},
 																		"high_risk_min_score": {
 																			Type:        schema.TypeInt,
 																			Optional:    true,
-																			Description: "Minimum score for high risk. value range: 1-99, default 50.",
+																			Description: "Minimum score for high risk. 取值范围：1-99，default 50。",
 																		},
 																		"high_risk_request_action": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Action for high risk requests.",
+																			Description: "操作 for high risk requests。",
 																			Elem:        securityActionSchemaForBotManagement(),
 																		},
 																		"medium_risk_min_score": {
 																			Type:        schema.TypeInt,
 																			Optional:    true,
-																			Description: "Minimum score for medium risk. value range: 1-99, default 15.",
+																			Description: "Minimum score for medium risk. 取值范围：1-99，default 15。",
 																		},
 																		"medium_risk_request_action": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Action for medium risk requests.",
+																			Description: "操作 for medium risk requests。",
 																			Elem:        securityActionSchemaForBotManagement(),
 																		},
 																	},
@@ -2074,7 +2074,7 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Action when attestation is invalid.",
+																Description: "操作 when attestation is invalid。",
 																Elem:        securityActionSchemaForBotManagement(),
 															},
 														},
@@ -2087,70 +2087,70 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Browser impersonation detection configuration.",
+										Description: "Browser impersonation detection configuration。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"rules": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "List of browser impersonation detection rules.",
+													Description: "列表 browser impersonation detection rules。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Rule ID.",
+																Description: "Rule ID。",
 															},
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Rule name.",
+																Description: "Rule 名称",
 															},
 															"enabled": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Whether the rule is enabled. valid values: on/off.",
+																Description: "是否rule is 已启用 有效值：on/off。",
 															},
 															"condition": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Match condition expression.",
+																Description: "Match condition expression。",
 															},
 															"action": {
 																Type:        schema.TypeList,
 																Required:    true,
 																MaxItems:    1,
-																Description: "Browser impersonation detection action.",
+																Description: "Browser impersonation detection 操作",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"bot_session_validation": {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Bot session validation configuration.",
+																			Description: "Bot session validation configuration。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"issue_new_bot_session_cookie": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Whether to issue new Bot session cookie. valid values: on (update+validate), off (validate only).",
+																						Description: "是否issue new Bot session cookie. 有效值：on (update+validate)，off (validate only)。",
 																					},
 																					"max_new_session_trigger_config": {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Trigger threshold for cookie renewal.",
+																						Description: "Trigger threshold for cookie renewal。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"max_new_session_count_interval": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Time window for new session count.",
+																									Description: "Time window for new session count。",
 																								},
 																								"max_new_session_count_threshold": {
 																									Type:        schema.TypeInt,
 																									Optional:    true,
-																									Description: "Cumulative count threshold for new sessions.",
+																									Description: "Cumulative count threshold for new sessions。",
 																								},
 																							},
 																						},
@@ -2159,47 +2159,47 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Action for expired sessions.",
+																						Description: "操作 for expired sessions。",
 																						Elem:        securityActionSchemaForBotManagement(),
 																					},
 																					"session_invalid_action": {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Action for invalid sessions.",
+																						Description: "操作 for invalid sessions。",
 																						Elem:        securityActionSchemaForBotManagement(),
 																					},
 																					"session_rate_control": {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Session rate control configuration.",
+																						Description: "Session rate control configuration。",
 																						Elem: &schema.Resource{
 																							Schema: map[string]*schema.Schema{
 																								"enabled": {
 																									Type:        schema.TypeString,
 																									Optional:    true,
-																									Description: "Whether session rate control is enabled. valid values: on/off.",
+																									Description: "Whether session rate control is 已启用 有效值：on/off。",
 																								},
 																								"high_rate_session_action": {
 																									Type:        schema.TypeList,
 																									Optional:    true,
 																									MaxItems:    1,
-																									Description: "Action for high rate sessions.",
+																									Description: "操作 for high rate sessions。",
 																									Elem:        securityActionSchemaForBotManagement(),
 																								},
 																								"mid_rate_session_action": {
 																									Type:        schema.TypeList,
 																									Optional:    true,
 																									MaxItems:    1,
-																									Description: "Action for medium rate sessions.",
+																									Description: "操作 for medium rate sessions。",
 																									Elem:        securityActionSchemaForBotManagement(),
 																								},
 																								"low_rate_session_action": {
 																									Type:        schema.TypeList,
 																									Optional:    true,
 																									MaxItems:    1,
-																									Description: "Action for low rate sessions.",
+																									Description: "操作 for low rate sessions。",
 																									Elem:        securityActionSchemaForBotManagement(),
 																								},
 																							},
@@ -2212,48 +2212,48 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 																			Type:        schema.TypeList,
 																			Optional:    true,
 																			MaxItems:    1,
-																			Description: "Client behavior detection configuration.",
+																			Description: "Client behavior detection configuration。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"crypto_challenge_intensity": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Proof-of-work intensity. valid values: low, medium, high.",
+																						Description: "Proof-of-work intensity. 有效值：low，medium，high。",
 																					},
 																					"crypto_challenge_delay_before": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Execution delay before challenge. valid range: 0ms-1000ms.",
+																						Description: "Execution 延迟 before challenge. valid range: 0ms-1000ms。",
 																					},
 																					"max_challenge_count_interval": {
 																						Type:        schema.TypeString,
 																						Optional:    true,
-																						Description: "Threshold time window.",
+																						Description: "Threshold time window。",
 																					},
 																					"max_challenge_count_threshold": {
 																						Type:        schema.TypeInt,
 																						Optional:    true,
-																						Description: "Threshold cumulative count. value range: 1-100000000.",
+																						Description: "Threshold cumulative count. 取值范围：1-100000000。",
 																					},
 																					"challenge_not_finished_action": {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Action when JS challenge not finished.",
+																						Description: "操作 when JS challenge not finished。",
 																						Elem:        securityActionSchemaForBotManagement(),
 																					},
 																					"challenge_timeout_action": {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Action on challenge timeout.",
+																						Description: "操作 on challenge timeout。",
 																						Elem:        securityActionSchemaForBotManagement(),
 																					},
 																					"bot_client_action": {
 																						Type:        schema.TypeList,
 																						Optional:    true,
 																						MaxItems:    1,
-																						Description: "Action for Bot client.",
+																						Description: "操作 for Bot client。",
 																						Elem:        securityActionSchemaForBotManagement(),
 																					},
 																				},
@@ -2280,21 +2280,21 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 				Optional:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ZoneDefaultPolicy", "Template", "Host"}),
-				Description:  "Security policy type. the following parameter values can be used: <li>ZoneDefaultPolicy: used to specify a site-level policy;</li> <li>Template: used to specify a policy Template. you need to simultaneously specify the TemplateId parameter;</li> <li>Host: used to specify a domain-level policy (note: when using a domain name to specify a dns service policy, only dns services or policy templates that have applied a domain-level policy are supported).</li>.",
+				Description:  "Security policy 类型 the following parameter values can be used: <li>ZoneDefaultPolicy: 用于指定a site-级别 policy;</li> <li>Template: 用于指定a policy Template. you need to simultaneously 指定TemplateId parameter;</li> <li>主机: 用于指定a 域名-级别 policy (note: when using a 域名 名称 to 指定a dns service policy，only dns services or policy templates that have applied a 域名-级别 policy are supported).</li>。",
 			},
 
 			"host": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Specifies the specified domain. when the Entity parameter value is Host, use the domain-level policy specified by this parameter. for example: use www.example.com to configure the domain-level policy of the domain.",
+				Description: "指定specified 域名 when the Entity parameter 值 is 主机，use the 域名-级别 policy specified by this parameter. for example: use www.example.com to configure the 域名-级别 policy of the 域名",
 			},
 
 			"template_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Specify the policy Template ID. use this parameter to specify the ID of the policy Template when the Entity parameter value is Template.",
+				Description: "指定policy 模板 ID use this parameter to 指定ID of the policy Template when the Entity parameter 值 is Template。",
 			},
 		},
 	}
@@ -2306,44 +2306,44 @@ func securityActionSchemaForBotManagement() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.",
+				Description: "操作 名称 有效值：Deny，Monitor，Allow，Challenge，已禁用，Redirect，Trans。",
 			},
 			"deny_action_parameters": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Additional parameters when Name is Deny.",
+				Description: "Additional parameters when 名称 is Deny。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"block_ip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to enable IP ban extension. valid values: on/off.",
+							Description: "是否enable IP ban extension. 有效值：on/off。",
 						},
 						"block_ip_duration": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "IP ban duration.",
+							Description: "IP ban duration。",
 						},
 						"return_custom_page": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to use custom page. valid values: on/off.",
+							Description: "是否use custom page. 有效值：on/off。",
 						},
 						"response_code": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Custom page response status code.",
+							Description: "Custom page response 状态 代码",
 						},
 						"error_page_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Custom page ID.",
+							Description: "Custom page ID。",
 						},
 						"stall": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to stall connection. valid values: on/off.",
+							Description: "是否stall connection. 有效值：on/off。",
 						},
 					},
 				},
@@ -2352,13 +2352,13 @@ func securityActionSchemaForBotManagement() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Additional parameters when Name is Redirect.",
+				Description: "Additional parameters when 名称 is Redirect。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"url": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Redirect target URL.",
+							Description: "Redirect target URL",
 						},
 					},
 				},
@@ -2367,18 +2367,18 @@ func securityActionSchemaForBotManagement() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Additional parameters when Name is Allow.",
+				Description: "Additional parameters when 名称 is Allow。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"min_delay_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Minimum delay response time.",
+							Description: "Minimum 延迟 response time。",
 						},
 						"max_delay_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Maximum delay response time.",
+							Description: "Maximum 延迟 response time。",
 						},
 					},
 				},
@@ -2387,23 +2387,23 @@ func securityActionSchemaForBotManagement() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Additional parameters when Name is Challenge.",
+				Description: "Additional parameters when 名称 is Challenge。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"challenge_option": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.",
+							Description: "Challenge 类型 有效值：InterstitialChallenge，InlineChallenge，JSChallenge，ManagedChallenge。",
 						},
 						"interval": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Repeat challenge interval.",
+							Description: "Repeat challenge interval。",
 						},
 						"attester_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Client attestation method ID.",
+							Description: "Client attestation method ID。",
 						},
 					},
 				},

@@ -19,13 +19,13 @@ func DataSourceTencentCloudClbExclusiveClusters() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter to query the list of AZ resources as detailed below: cluster-type - String - Required: No - (Filter condition) Filter by cluster type, such as TGW. cluster-id - String - Required: No - (Filter condition) Filter by cluster ID, such as tgw-xxxxxxxx. cluster-name - String - Required: No - (Filter condition) Filter by cluster name, such as test-xxxxxx. cluster-tag - String - Required: No - (Filter condition) Filter by cluster tag, such as TAG-xxxxx. vip - String - Required: No - (Filter condition) Filter by vip in the cluster, such as x.x.x.x. network - String - Required: No - (Filter condition) Filter by cluster network type, such as Public or Private. zone - String - Required: No - (Filter condition) Filter by cluster zone, such as ap-guangzhou-1. isp - String - Required: No - (Filter condition) Filter by TGW cluster isp type, such as BGP. loadblancer-id - String - Required: No - (Filter condition) Filter by loadblancer-id in the cluste, such as lb-xxxxxxxx.",
+				Description: "过滤查询可用区资源列表，具体如下： cluster-类型 - 字符串 - 必填：否 - （过滤条件）按集群类型过滤，如TGW。 cluster-id - String - 必填：否 - （过滤条件）按集群 ID 过滤，如 tgw-xxxxxxxx。 cluster-名称 - String - 必填：否 - （过滤条件）按集群名称过滤，如test-xxxxxx。 cluster-标签 - String - 必填：否 - （过滤条件）按集群标签过滤，如 TAG-xxxxx。 VIP - String - 必填：否 - （过滤条件）按集群中的vip进行过滤，如x.x.x.x。 network - 字符串 - 必需：否 - （过滤条件）按集群网络类型过滤，例如公共或专用。 可用区 - 字符串 - 必填：否 - （过滤条件）按集群区域过滤，如 ap-guangzhou-1。 isp - 字符串 - 必需：否 - （过滤条件）按 TGW 集群 isp 类型过滤，例如 BGP。 loadblancer-id - 字符串 - 必填：否 - （过滤条件）按集群中的 loadblancer-id 进行过滤，如 lb-xxxxxxxx。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter name.",
+							Description: "过滤器名称。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudClbExclusiveClusters() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter value array.",
+							Description: "过滤值数组。",
 						},
 					},
 				},
@@ -42,113 +42,113 @@ func DataSourceTencentCloudClbExclusiveClusters() *schema.Resource {
 			"cluster_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "cluster list.",
+				Description: "集群列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cluster ID.",
+							Description: "集群ID。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cluster name.",
+							Description: "集群名称。",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cluster type: TGW, STGW, VPCGW.",
+							Description: "集群类型：TGW、STGW、VPCGW。",
 						},
 						"cluster_tag": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dedicated layer-7 tag. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "专用第 7 层标签。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: ".",
+							Description: "。",
 						},
 						"network": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cluster network type.",
+							Description: "集群网络类型。",
 						},
 						"max_conn": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of connections.",
+							Description: "最大连接数。",
 						},
 						"max_in_flow": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum incoming Bandwidth.",
+							Description: "最大传入带宽。",
 						},
 						"max_in_pkg": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum incoming packet.",
+							Description: "最大传入数据包。",
 						},
 						"max_out_flow": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum output bandwidth.",
+							Description: "最大输出带宽。",
 						},
 						"max_out_pkg": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum output packet.",
+							Description: "最大输出数据包。",
 						},
 						"max_new_conn": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of new connections.",
+							Description: "最大新连接数。",
 						},
 						"http_max_new_conn": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of new http connections.",
+							Description: "新 http 连接的最大数量。",
 						},
 						"https_max_new_conn": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of new https connections.",
+							Description: "新 https 连接的最大数量。",
 						},
 						"http_qps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Http Qps.",
+							Description: "Http Qps。",
 						},
 						"https_qps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Https Qps.",
+							Description: "https Qps。",
 						},
 						"resource_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The total number of resources in the cluster.",
+							Description: "集群中的资源总数。",
 						},
 						"idle_resource_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The total number of free resources in the cluster.",
+							Description: "集群中可用资源的总数。",
 						},
 						"load_balance_director_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total number of forwarders in the cluster.",
+							Description: "集群中转发器的总数。",
 						},
 						"isp": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Isp: BGP, CMCC,CUCC,CTCC,INTERNAL.",
+							Description: "ISP：BGP、CMCC、CUCC、CTCC、内部。",
 						},
 						"clusters_zone": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Availability zone where the cluster is located.",
+							Description: "集群所在可用区。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"master_zone": {
@@ -157,7 +157,7 @@ func DataSourceTencentCloudClbExclusiveClusters() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Availability master zone where the cluster is located.",
+										Description: "集群所在的可用性主域。",
 									},
 									"slave_zone": {
 										Type: schema.TypeSet,
@@ -165,7 +165,7 @@ func DataSourceTencentCloudClbExclusiveClusters() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Availability slave zone where the cluster is located.",
+										Description: "集群所在的可用从区。",
 									},
 								},
 							},
@@ -173,12 +173,12 @@ func DataSourceTencentCloudClbExclusiveClusters() *schema.Resource {
 						"clusters_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "clusters version.",
+							Description: "集群版本。",
 						},
 						"disaster_recovery_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster disaster recovery type:SINGLE-ZONE, DISASTER-RECOVERY, MUTUAL-DISASTER-RECOVERY.",
+							Description: "集群容灾类型：SINGLE-ZONE、DISASTER-RECOVERY、MUTUAL-DISASTER-RECOVERY。",
 						},
 					},
 				},
@@ -187,7 +187,7 @@ func DataSourceTencentCloudClbExclusiveClusters() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

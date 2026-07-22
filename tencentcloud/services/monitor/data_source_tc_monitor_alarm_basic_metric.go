@@ -19,13 +19,13 @@ func DataSourceTencentCloudMonitorAlarmBasicMetric() *schema.Resource {
 			"namespace": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The business namespace is different for each cloud product. To obtain the business namespace, please go to the product monitoring indicator documents, such as the namespace of the cloud server, which can be found in [Cloud Server Monitoring Indicators](https://cloud.tencent.com/document/product/248/6843 ).",
+				Description: "The business namespace is different for each cloud product. To obtain the business namespace，please go to the product monitoring indicator documents，such as the namespace of the cloud server，which can be found in [Cloud Server Monitoring Indicators](https://cloud.tencent.com/document/product/248/6843 )。",
 			},
 
 			"metric_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Indicator names are different for each cloud product. To obtain indicator names, please go to the monitoring indicator documents of each product, such as the indicator names of cloud servers, which can be found in [Cloud Server Monitoring Indicators]( https://cloud.tencent.com/document/product/248/6843).",
+				Description: "Indicator names are different for each cloud product. To obtain indicator names，please go to the monitoring indicator documents of each product，such as the indicator names of cloud servers，which can be found in [Cloud Server Monitoring Indicators]( https://cloud.tencent.com/document/product/248/6843)。",
 			},
 
 			"dimensions": {
@@ -34,34 +34,34 @@ func DataSourceTencentCloudMonitorAlarmBasicMetric() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Optional parameters, filtered by dimension.",
+				Description: "可选 parameters，filtered by dimension。",
 			},
 
 			"metric_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of indicator descriptions obtained from query.",
+				Description: "列表 indicator descriptions obtained from query。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespaces, each cloud product will have a namespace.",
+							Description: "Namespaces，each cloud product will have a namespace。",
 						},
 						"metric_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Indicator Name.",
+							Description: "Indicator 名称",
 						},
 						"unit": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Units used for indicators.",
+							Description: "Units 用于indicators。",
 						},
 						"unit_cname": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Units used for indicators.",
+							Description: "Units 用于indicators。",
 						},
 						"period": {
 							Type: schema.TypeSet,
@@ -69,18 +69,18 @@ func DataSourceTencentCloudMonitorAlarmBasicMetric() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "The statistical period supported by the indicator, in seconds, such as 60, 300.",
+							Description: "The statistical 周期 supported by the indicator，（秒）， such as 60，300。",
 						},
 						"periods": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Indicator method within the statistical cycle.",
+							Description: "Indicator method within the statistical cycle。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"period": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cycle.",
+										Description: "Cycle。",
 									},
 									"stat_type": {
 										Type: schema.TypeSet,
@@ -88,7 +88,7 @@ func DataSourceTencentCloudMonitorAlarmBasicMetric() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Statistical methods.",
+										Description: "Statistical methods。",
 									},
 								},
 							},
@@ -96,18 +96,18 @@ func DataSourceTencentCloudMonitorAlarmBasicMetric() *schema.Resource {
 						"meaning": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Explanation of the meaning of statistical indicators.",
+							Description: "Explanation of the meaning of statistical indicators。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"en": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Explanation of indicators in English.",
+										Description: "Explanation of indicators in English。",
 									},
 									"zh": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Chinese interpretation of indicators.",
+										Description: "Chinese interpretation of indicators。",
 									},
 								},
 							},
@@ -115,7 +115,7 @@ func DataSourceTencentCloudMonitorAlarmBasicMetric() *schema.Resource {
 						"dimensions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Dimension description information.",
+							Description: "Dimension 描述 information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dimensions": {
@@ -124,7 +124,7 @@ func DataSourceTencentCloudMonitorAlarmBasicMetric() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Dimension name array.",
+										Description: "Dimension 名称 array。",
 									},
 								},
 							},
@@ -132,12 +132,12 @@ func DataSourceTencentCloudMonitorAlarmBasicMetric() *schema.Resource {
 						"metric_c_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Indicator Chinese Name.",
+							Description: "Indicator Chinese 名称",
 						},
 						"metric_e_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Indicator English name.",
+							Description: "Indicator English 名称",
 						},
 					},
 				},
@@ -146,7 +146,7 @@ func DataSourceTencentCloudMonitorAlarmBasicMetric() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

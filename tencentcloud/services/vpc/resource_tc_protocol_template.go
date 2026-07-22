@@ -23,7 +23,7 @@ func ResourceTencentCloudProtocolTemplate() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of the protocol template.",
+				Description: "名称 协议 template。",
 			},
 			"protocols": {
 				Type: schema.TypeSet,
@@ -32,7 +32,7 @@ func ResourceTencentCloudProtocolTemplate() *schema.Resource {
 					ValidateFunc: tccommon.ValidateLowCase,
 				},
 				Required:    true,
-				Description: "Protocol list. Valid protocols are  `tcp`, `udp`, `icmp`, `gre`. Single port(tcp:80), multi-port(tcp:80,443), port range(tcp:3306-20000), all(tcp:all) format are support. Protocol `icmp` and `gre` cannot specify port.",
+				Description: "协议 list. Valid protocols are  `tcp`，`udp`，`icmp`，`gre`. Single 端口(tcp:80)，multi-端口(tcp:80,443)，端口 range(tcp:3306-20000)，all(tcp:all) 格式 are support. 协议 `icmp` and `gre` cannot 指定port。",
 			},
 		},
 	}

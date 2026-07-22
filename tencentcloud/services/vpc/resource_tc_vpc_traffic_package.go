@@ -27,25 +27,25 @@ func ResourceTencentCloudVpcTrafficPackage() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Traffic Package Amount, eg: 10,20,50,512,1024,5120,51200,60,300,600,3072,6144,30720,61440,307200.",
+				Description: "Traffic Package Amount，eg: 10,20,50,512,1024,5120,51200,60,300,600,3072,6144,30720,61440,307200。",
 			},
 
 			"remaining_amount": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Remaining amount.",
+				Description: "Remaining amount。",
 			},
 
 			"used_amount": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Used amount.",
+				Description: "Used amount。",
 			},
 
 			"created_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Created time.",
+				Description: "Created time。",
 			},
 		},
 	}

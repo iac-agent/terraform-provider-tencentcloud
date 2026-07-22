@@ -19,13 +19,13 @@ func DataSourceTencentCloudOrganizationOrgFinancialByMember() *schema.Resource {
 			"month": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query for the start month. Format:yyyy-mm, for example:2021-01.",
+				Description: "Query for the start month. 格式:yyyy-mm，for example:2021-01。",
 			},
 
 			"end_month": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query for the end month. Format:yyyy-mm, for example:2021-01.The default value is the `Month`.",
+				Description: "Query for the end month. 格式:yyyy-mm，for example:2021-01.The 默认值为 the `Month`。",
 			},
 
 			"member_uins": {
@@ -34,7 +34,7 @@ func DataSourceTencentCloudOrganizationOrgFinancialByMember() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Member uin list. Up to 100.",
+				Description: "Member uin list. Up to 100。",
 			},
 
 			"product_codes": {
@@ -43,40 +43,40 @@ func DataSourceTencentCloudOrganizationOrgFinancialByMember() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Product code list. Up to 100.",
+				Description: "Product 代码 list. Up to 100。",
 			},
 
 			"total_cost": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Total cost of the member.",
+				Description: "Total cost of the member。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Member financial detail.",
+				Description: "Member financial detail。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"member_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Member uin.",
+							Description: "Member uin。",
 						},
 						"member_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Member name.",
+							Description: "Member 名称",
 						},
 						"total_cost": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Total cost of the member.",
+							Description: "Total cost of the member。",
 						},
 						"ratio": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The percentage of the organization total cost that is accounted for by the member.",
+							Description: "The percentage of the organization total cost that is accounted for by the member。",
 						},
 					},
 				},
@@ -85,7 +85,7 @@ func DataSourceTencentCloudOrganizationOrgFinancialByMember() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

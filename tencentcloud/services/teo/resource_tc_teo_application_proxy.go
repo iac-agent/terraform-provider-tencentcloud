@@ -58,70 +58,70 @@ func ResourceTencentCloudTeoApplicationProxy() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Site ID.",
+				Description: "站点 ID",
 			},
 
 			"proxy_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Proxy ID.",
+				Description: "Proxy ID。",
 			},
 
 			"proxy_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "When `ProxyType` is hostname, `ProxyName` is the domain or subdomain name.When `ProxyType` is instance, `ProxyName` is the name of proxy application.",
+				Description: "When `ProxyType` is hostname，`ProxyName` is the 域名 or subdomain 名称When `ProxyType` is instance，`ProxyName` is 名称 proxy application。",
 			},
 
 			"proxy_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Layer 4 proxy mode. Valid values:- `hostname`: subdomain mode.- `instance`: instance mode.",
+				Description: "Layer 4 proxy 模式 Valid values:- `hostname`: subdomain 模式- `instance`: instance 模式",
 			},
 
 			"plat_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Scheduling mode.- `ip`: Anycast IP.- `domain`: CNAME.",
+				Description: "Scheduling 模式- `ip`: Anycast IP.- `域名`: CNAME。",
 			},
 
 			"area": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Acceleration area. Valid values: `mainland`, `overseas`.",
+				Description: "Acceleration area. 有效值：`mainland`，`overseas`。",
 			},
 
 			"security_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "- `0`: Disable security protection.- `1`: Enable security protection.",
+				Description: "- `0`: Disable security protection.- `1`: Enable security protection。",
 			},
 
 			"accelerate_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "- `0`: Disable acceleration.- `1`: Enable acceleration.",
+				Description: "- `0`: Disable acceleration.- `1`: Enable acceleration。",
 			},
 
 			"session_persist_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Session persistence duration. Value range: 30-3600 (in seconds), default value is 600.",
+				Description: "Session persistence duration. 取值范围：30-3600 (in seconds)，默认值为 600。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Status of this application proxy. Valid values to set is `online` and `offline`.- `online`: Enable.- `offline`: Disable.- `progress`: Deploying.- `stopping`: Deactivating.- `fail`: Deploy or deactivate failed.",
+				Description: "状态 this application proxy. Valid values to set is `online` and `offline`.- `online`: Enable.- `offline`: Disable.- `progress`: Deploying.- `stopping`: Deactivating.- `fail`: Deploy or deactivate failed。",
 			},
 
 			"ban_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Application proxy block status. Valid values: `banned`, `banning`, `recover`, `recovering`.",
+				Description: "Application proxy block 状态 有效值：`banned`，`banning`，`recover`，`recovering`。",
 			},
 
 			"schedule_value": {
@@ -130,13 +130,13 @@ func ResourceTencentCloudTeoApplicationProxy() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Computed:    true,
-				Description: "Scheduling information.",
+				Description: "Scheduling information。",
 			},
 
 			"host_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "When `ProxyType` is hostname, this field is the ID of the subdomain.",
+				Description: "When `ProxyType` is hostname，this field is the ID subdomain。",
 			},
 
 			"ipv6": {
@@ -144,13 +144,13 @@ func ResourceTencentCloudTeoApplicationProxy() *schema.Resource {
 				MaxItems:    1,
 				Optional:    true,
 				Computed:    true,
-				Description: "IPv6 access configuration.",
+				Description: "IPv6 access configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "- `on`: Enable.- `off`: Disable.",
+							Description: "- `on`: Enable.- `off`: Disable。",
 						},
 					},
 				},
@@ -159,7 +159,7 @@ func ResourceTencentCloudTeoApplicationProxy() *schema.Resource {
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last modification date.",
+				Description: "Last modification date。",
 			},
 		},
 	}

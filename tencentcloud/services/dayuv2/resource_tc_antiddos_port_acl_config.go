@@ -30,7 +30,7 @@ func ResourceTencentCloudAntiddosPortAclConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceIdList.",
+				Description: "InstanceIdList。",
 			},
 
 			"acl_config": {
@@ -38,43 +38,43 @@ func ResourceTencentCloudAntiddosPortAclConfig() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Port ACL Policy.",
+				Description: "端口 ACL Policy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"forward_protocol": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Protocol type, can take TCP, udp, all values.",
+							Description: "协议 类型，can take TCP，udp，all values。",
 						},
 						"d_port_start": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Starting from port, with a range of 0~65535 values.",
+							Description: "Starting from 端口，with a range of 0~65535 values。",
 						},
 						"d_port_end": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "end from port, with a range of 0~65535 values.",
+							Description: "end from 端口，with a range of 0~65535 values。",
 						},
 						"s_port_start": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Starting from the source port, with a value range of 0~65535.",
+							Description: "Starting from the 来源 端口，with a 值 range of 0~65535。",
 						},
 						"s_port_end": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "end from the source port, with a value range of 0~65535.",
+							Description: "end from the 来源 端口，with a 值 range of 0~65535。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Action, can take values: drop, transmit, forward.",
+							Description: "操作，can take values: drop，transmit，forward。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The policy priority, the smaller the number, the higher the level, and the higher the matching of the rule, with values ranging from 1 to 1000. Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "The policy 优先级，the smaller the number，the higher the 级别，and the higher the matching of the rule，with values ranging from 1 to 1000. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

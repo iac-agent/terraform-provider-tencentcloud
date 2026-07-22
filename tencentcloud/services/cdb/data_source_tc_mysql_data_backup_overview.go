@@ -19,85 +19,85 @@ func DataSourceTencentCloudMysqlDataBackupOverview() *schema.Resource {
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The type of cloud database product to be queried, currently only supports `mysql`.",
+				Description: "查询的云数据库产品类型，目前仅支持`mysql`。",
 			},
 
 			"data_backup_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total data backup capacity of the current region (including automatic backup and manual backup, in bytes).",
+				Description: "当前区域的数据备份总容量（包括自动备份和手动备份，单位为字节）。",
 			},
 
 			"data_backup_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of data backups in the current region.",
+				Description: "当前区域的数据备份总数。",
 			},
 
 			"auto_backup_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total automatic backup capacity of the current region.",
+				Description: "当前区域的自动备份总容量。",
 			},
 
 			"auto_backup_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of automatic backups in the current region.",
+				Description: "当前区域自动备份的总数。",
 			},
 
 			"manual_backup_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total manual backup capacity of the current region.",
+				Description: "当前区域的手动备份总容量。",
 			},
 
 			"manual_backup_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of manual backups in the current region.",
+				Description: "当前区域的手动备份总数。",
 			},
 
 			"remote_backup_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total capacity of remote backup.",
+				Description: "远程备份总容量。",
 			},
 
 			"remote_backup_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of remote backups.",
+				Description: "远程备份总数。",
 			},
 
 			"data_backup_archive_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total capacity of the current regional archive backup.",
+				Description: "当前区域归档备份的总容量。",
 			},
 
 			"data_backup_archive_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of archive backups in the current region.",
+				Description: "当前区域中的存档备份总数。",
 			},
 
 			"data_backup_standby_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total backup capacity of the current regional standard storage.",
+				Description: "当前区域标准存储的备份总容量。",
 			},
 
 			"data_backup_standby_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of standard storage backups in the current region.",
+				Description: "当前区域中标准存储备份的总数。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

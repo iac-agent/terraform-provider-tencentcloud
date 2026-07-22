@@ -28,21 +28,21 @@ func ResourceTencentCloudWedataSqlScript() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Script name.",
+				Description: "Script 名称",
 			},
 
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Parent folder path, /aaa/bbb/ccc, root directory is empty string or /.",
+				Description: "Parent folder 路径，/aaa/bbb/ccc，root directory is empty string or /。",
 			},
 
 			"script_config": {
@@ -50,38 +50,38 @@ func ResourceTencentCloudWedataSqlScript() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Data exploration script configuration.",
+				Description: "Data exploration script configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"datasource_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data source ID.",
+							Description: "数据源 ID",
 						},
 						"datasource_env": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data source environment.",
+							Description: "Data 来源 environment。",
 						},
 						"compute_resource": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Computing resource.",
+							Description: "计算资源",
 						},
 						"executor_group_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Execution resource group.",
+							Description: "Execution resource group。",
 						},
 						"params": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Advanced runtime parameters, variable substitution, map-json String,String.",
+							Description: "Advanced runtime parameters，variable substitution，map-json String,String。",
 						},
 						"advance_config": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Advanced settings, execution configuration parameters, map-json String,String. Encoded in Base64.",
+							Description: "Advanced settings，execution configuration parameters，map-json String,String. Encoded in Base64。",
 						},
 					},
 				},
@@ -90,7 +90,7 @@ func ResourceTencentCloudWedataSqlScript() *schema.Resource {
 			"script_content": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Script content, if there is a value.",
+				Description: "Script 内容，if there is a 值",
 			},
 
 			"access_scope": {
@@ -98,20 +98,20 @@ func ResourceTencentCloudWedataSqlScript() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Permission scope: SHARED, PRIVATE.",
+				Description: "Permission 范围: SHARED，PRIVATE。",
 			},
 
 			// computed
 			"script_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Script ID.",
+				Description: "Script ID。",
 			},
 
 			"path": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The full path of the node, /aaa/bbb/ccc.ipynb, consists of the names of each node.",
+				Description: "The full 路径 of the node，/aaa/bbb/ccc.ipynb，consists of the names of each node。",
 			},
 		},
 	}

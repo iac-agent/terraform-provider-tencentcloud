@@ -25,19 +25,19 @@ func ResourceTencentCloudWedataResourceFolder() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Absolute path of parent folder, value example/wedata/test, root directory, please use/.",
+				Description: "Absolute 路径 of parent folder，值 example/wedata/test，root directory，please use/。",
 			},
 
 			"folder_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Folder name.",
+				Description: "Folder 名称",
 			},
 		},
 	}

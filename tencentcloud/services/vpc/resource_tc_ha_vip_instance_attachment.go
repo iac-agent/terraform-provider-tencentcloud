@@ -27,19 +27,19 @@ func ResourceTencentCloudHaVipInstanceAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The unique ID of the slave machine or network card to which HaVip is bound.",
+				Description: "The unique ID slave machine or network card to which HaVip is bound。",
 			},
 			"ha_vip_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Unique ID of the HaVip instance.",
+				Description: "Unique ID HaVip instance。",
 			},
 			"instance_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The type of HaVip binding. Values:CVM, ENI.",
+				Description: "类型 HaVip binding. Values:CVM，ENI。",
 			},
 		},
 	}

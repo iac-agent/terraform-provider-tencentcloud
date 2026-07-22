@@ -19,13 +19,13 @@ func DataSourceTencentCloudMonitorStatisticData() *schema.Resource {
 			"module": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Module, whose value is fixed at monitor.",
+				Description: "模块，whose 值 is fixed at monitor。",
 			},
 
 			"namespace": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace. Valid values: QCE, TKE2.",
+				Description: "Namespace. 有效值：QCE，TKE2。",
 			},
 
 			"metric_names": {
@@ -34,24 +34,24 @@ func DataSourceTencentCloudMonitorStatisticData() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Metric name list.",
+				Description: "指标名称 list。",
 			},
 
 			"conditions": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Dimension condition. The = and in operators are supported.",
+				Description: "Dimension condition. The = and in operators are supported。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Dimension.",
+							Description: "Dimension。",
 						},
 						"operator": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Operator. Valid values: eq (equal to), ne (not equal to), in.",
+							Description: "操作者 有效值：eq (equal to)，ne (not equal to)，in。",
 						},
 						"value": {
 							Type: schema.TypeSet,
@@ -59,7 +59,7 @@ func DataSourceTencentCloudMonitorStatisticData() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Dimension value. If Operator is eq or ne, only the first element will be used.",
+							Description: "Dimension 值 If 操作者 is eq or ne，only the first element will be used。",
 						},
 					},
 				},
@@ -68,19 +68,19 @@ func DataSourceTencentCloudMonitorStatisticData() *schema.Resource {
 			"period": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Statistical period in seconds. Default value: 300. Optional values: 60, 300, 3,600, and 86,400.Due to the storage period limit, the statistical period is subject to the time range of statistics:60s: The time range is less than 12 hours, and the timespan between StartTime and the current time cannot exceed 15 days.300s: The time range is less than three days, and the timespan between StartTime and the current time cannot exceed 31 days.3,600s: The time range is less than 30 days, and the timespan between StartTime and the current time cannot exceed 93 days.86,400s: The time range is less than 186 days, and the timespan between StartTime and the current time cannot exceed 186 days.",
+				Description: "Statistical 周期 （秒）。 默认值：300. 可选值：60，300，3,600，and 86,400.Due to the storage 周期 限制，the statistical 周期 is subject to the time range of statistics:60s: The time range is less than 12 hours，and the timespan between StartTime and the current time cannot exceed 15 days.300s: The time range is less than three days，and the timespan between StartTime and the current time cannot exceed 31 days.3,600s: The time range is less than 30 days，and the timespan between StartTime and the current time cannot exceed 93 days.86,400s: The time range is less than 186 days，and the timespan between StartTime and the current time cannot exceed 186 days。",
 			},
 
 			"start_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Start time, which is the current time by default, such as 2020-12-08T19:51:23+08:00.",
+				Description: "开始时间，which is the current time by default，such as 2020-12-08T19:51:23+08:00。",
 			},
 
 			"end_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "End time, which is the current time by default, such as 2020-12-08T19:51:23+08:00.",
+				Description: "结束时间，which is the current time by default，such as 2020-12-08T19:51:23+08:00。",
 			},
 
 			"group_bys": {
@@ -89,41 +89,41 @@ func DataSourceTencentCloudMonitorStatisticData() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "GroupBy by the specified dimension.",
+				Description: "GroupBy by the specified dimension。",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Monitoring data.",
+				Description: "Monitoring data。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"metric_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Metric name.",
+							Description: "指标名称",
 						},
 						"points": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Monitoring data point.",
+							Description: "Monitoring data point。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dimensions": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Combination of instance object dimensions.",
+										Description: "Combination of instance object dimensions。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance dimension name.",
+													Description: "Instance dimension 名称",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Instance dimension value.",
+													Description: "Instance dimension 值",
 												},
 											},
 										},
@@ -131,18 +131,18 @@ func DataSourceTencentCloudMonitorStatisticData() *schema.Resource {
 									"values": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Data point list.",
+										Description: "Data point list。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"timestamp": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Time point when this monitoring data point is generated.",
+													Description: "Time point when this monitoring data point is generated。",
 												},
 												"value": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Monitoring data point valueNote: this field may return null, indicating that no valid values can be obtained.",
+													Description: "Monitoring data point valueNote: this field may return null，indicating that no valid values can be obtained。",
 												},
 											},
 										},
@@ -157,7 +157,7 @@ func DataSourceTencentCloudMonitorStatisticData() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

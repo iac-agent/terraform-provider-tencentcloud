@@ -21,63 +21,63 @@ func DataSourceTencentCloudCamRoles() *schema.Resource {
 			"role_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the CAM role to be queried.",
+				Description: "ID CAM 角色 to be queried。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The description of the CAM role to be queried.",
+				Description: "The 描述 CAM 角色 to be queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the CAM policy to be queried.",
+				Description: "名称 CAM policy to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"role_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of CAM roles. Each element contains the following attributes:",
+				Description: "A 列表 CAM roles. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of CAM role.",
+							Description: "Id of CAM 角色",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of CAM role.",
+							Description: "名称 CAM 角色",
 						},
 						"document": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy document of CAM role.",
+							Description: "Policy document of CAM 角色",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of CAM role.",
+							Description: "描述 CAM 角色",
 						},
 						"console_login": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicate whether the CAM role can be login or not.",
+							Description: "Indicate 是否CAM 角色 can be login or not。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The create time of the CAM role.",
+							Description: "The 创建时间 of the CAM 角色",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last update time of the CAM role.",
+							Description: "The last 更新时间 of the CAM 角色",
 						},
 					},
 				},

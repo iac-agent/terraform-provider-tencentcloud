@@ -27,55 +27,55 @@ func ResourceTencentCloudCssCallbackTemplate() *schema.Resource {
 			"template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Template name.Maximum length: 255 bytes. Only `Chinese`, `English`, `numbers`, `_`, `-` are supported.",
+				Description: "模板名称Maximum length: 255 bytes. Only `Chinese`，`English`，`numbers`，`_`，`-` are supported。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Description information.Maximum length: 1024 bytes.Only `Chinese`, `English`, `numbers`, `_`, `-` are supported.",
+				Description: "描述 information.Maximum length: 1024 bytes.Only `Chinese`，`English`，`numbers`，`_`，`-` are supported。",
 			},
 
 			"stream_begin_notify_url": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Launch callback URL.",
+				Description: "Launch callback URL",
 			},
 
 			"stream_end_notify_url": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cutoff callback URL.",
+				Description: "Cutoff callback URL",
 			},
 
 			"record_notify_url": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Recording callback URL.",
+				Description: "Recording callback URL",
 			},
 
 			"snapshot_notify_url": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot callback URL.",
+				Description: "Snapshot callback URL",
 			},
 
 			"porn_censorship_notify_url": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "PornCensorship callback URL.",
+				Description: "PornCensorship callback URL",
 			},
 
 			"callback_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Callback Key, public callback URL.",
+				Description: "Callback 键，public callback URL",
 			},
 
 			"push_exception_notify_url": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Streaming Exception Callback URL.",
+				Description: "Streaming Exception Callback URL",
 			},
 		},
 	}

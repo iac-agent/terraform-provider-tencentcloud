@@ -28,27 +28,27 @@ func ResourceTencentCloudDlcWorkGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Working group name.",
+				Description: "Working 组名称",
 			},
 
 			"work_group_description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Working group description.",
+				Description: "Working group 描述",
 			},
 
 			"user_ids": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Collection of IDs of users to be bound to working groups.",
+				Description: "Collection of IDs of users to be bound to working groups。",
 			},
 
 			// computed
 			"work_group_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Working group ID.",
+				Description: "Working 组 ID",
 			},
 		},
 	}

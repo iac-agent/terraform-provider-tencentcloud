@@ -28,28 +28,28 @@ func ResourceTencentCloudRedisUpgradeProxyVersionOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID instance。",
 			},
 
 			"current_proxy_version": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Current proxy version.",
+				Description: "Current proxy 版本",
 			},
 
 			"upgrade_proxy_version": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Upgradeable redis proxy version.",
+				Description: "Upgradeable redis proxy 版本",
 			},
 
 			"instance_type_upgrade_now": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Switch mode:1 - Upgrade now0 - Maintenance window upgrade.",
+				Description: "Switch 模式:1 - Upgrade now0 - Maintenance window upgrade。",
 			},
 		},
 	}

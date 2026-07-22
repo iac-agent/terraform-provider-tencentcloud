@@ -18,55 +18,55 @@ func DataSourceTencentCloudRegions() *schema.Resource {
 			"product": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Product name to query, e.g. `cvm`. Use `tencentcloud_products` to get available product names.",
+				Description: "Product 名称 to query，e.g. `cvm`. Use `tencentcloud_products` to get available product names。",
 			},
 
 			"scene": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Scene control parameter. `0` or not set means do not query optional business whitelist; `1` means query optional business whitelist.",
+				Description: "Scene control parameter. `0` or not set means do not query 可选 business whitelist; `1` means query 可选 business whitelist。",
 			},
 
 			"region_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Region list.",
+				Description: "地域 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region identifier, e.g. `ap-guangzhou`.",
+							Description: "地域 identifier，e.g. `ap-guangzhou`。",
 						},
 						"region_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region name, e.g. `South China (Guangzhou)`.",
+							Description: "地域名称，e.g. `South China (Guangzhou)`。",
 						},
 						"region_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region availability status, e.g. `AVAILABLE`.",
+							Description: "地域 availability 状态，e.g. `AVAILABLE`。",
 						},
 						"region_type_m_c": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Console type, null when called via API.",
+							Description: "Console 类型，null when called via API。",
 						},
 						"location_m_c": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region description in different languages.",
+							Description: "地域 描述 in different languages。",
 						},
 						"region_name_m_c": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region description displayed in console.",
+							Description: "地域 描述 displayed in console。",
 						},
 						"region_id_m_c": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region ID for console.",
+							Description: "地域 ID for console。",
 						},
 					},
 				},
@@ -75,7 +75,7 @@ func DataSourceTencentCloudRegions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

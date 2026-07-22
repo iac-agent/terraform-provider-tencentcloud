@@ -26,25 +26,25 @@ func ResourceTencentCloudPrivateDnsForwardRule() *schema.Resource {
 			"rule_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Forwarding rule name.",
+				Description: "Forwarding rule 名称",
 			},
 
 			"rule_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Forwarding rule type. DOWN: From cloud to off-cloud; UP: From off-cloud to cloud.",
+				Description: "Forwarding rule 类型 DOWN: From cloud to off-cloud; UP: From off-cloud to cloud。",
 			},
 
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Private domain ID, which can be viewed on the private domain list page.",
+				Description: "Private 域名 ID，which can be viewed on the private 域名 list page。",
 			},
 
 			"end_point_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Endpoint ID.",
+				Description: "Endpoint ID。",
 			},
 		},
 	}

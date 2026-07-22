@@ -23,14 +23,14 @@ func ResourceTencentCloudMysqlReloadBalanceProxyNode() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Proxy id.",
+				Description: "代理 ID。",
 			},
 
 			"proxy_address_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Proxy address id.",
+				Description: "代理地址 ID。",
 			},
 		},
 	}

@@ -22,7 +22,7 @@ func ResourceTencentCloudTcssRefreshTaskOperation() *schema.Resource {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Cluster Id list.",
+				Description: "Cluster Id list。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -32,7 +32,7 @@ func ResourceTencentCloudTcssRefreshTaskOperation() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Whether to sync list only.",
+				Description: "是否sync list only。",
 			},
 		},
 	}

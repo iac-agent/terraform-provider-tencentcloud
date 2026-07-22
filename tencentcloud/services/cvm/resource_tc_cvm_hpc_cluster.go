@@ -27,19 +27,19 @@ func ResourceTencentCloudCvmHpcCluster() *schema.Resource {
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Available zone.",
+				Description: "Available 可用区",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Name of Hpc Cluster.",
+				Description: "名称 Hpc Cluster。",
 			},
 
 			"remark": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Remark of Hpc Cluster.",
+				Description: "备注 of Hpc Cluster。",
 			},
 		},
 	}

@@ -29,71 +29,71 @@ func ResourceTencentCloudCiMediaSpeechRecognitionTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "The 模板名称 only supports `Chinese`，`English`，`numbers`，`_`，`-` and `*`。",
 			},
 
 			"speech_recognition": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "audio configuration.",
+				Description: "audio configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"engine_model_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Engine model type, divided into phone scene and non-phone scene, phone scene: 8k_zh: phone 8k Chinese Mandarin general (can be used for dual-channel audio), 8k_zh_s: phone 8k Chinese Mandarin speaker separation (only for monophonic audio), 8k_en: Telephone 8k English; non-telephone scene: 16k_zh: 16k Mandarin Chinese, 16k_zh_video: 16k audio and video field, 16k_en: 16k English, 16k_ca: 16k Cantonese, 16k_ja: 16k Japanese, 16k_zh_edu: Chinese education, 16k_en_edu: English education, 16k_zh_medical: medical, 16k_th: Thai, 16k_zh_dialect: multi-dialect, supports 23 dialects.",
+							Description: "Engine model 类型，divided into phone scene and non-phone scene，phone scene: 8k_zh: phone 8k Chinese Mandarin general (can be 用于dual-channel audio)，8k_zh_s: phone 8k Chinese Mandarin speaker separation (only for monophonic audio)，8k_en: Telephone 8k English; non-telephone scene: 16k_zh: 16k Mandarin Chinese，16k_zh_video: 16k audio and video field，16k_en: 16k English，16k_ca: 16k Cantonese，16k_ja: 16k Japanese，16k_zh_edu: Chinese education，16k_en_edu: English education，16k_zh_medical: medical，16k_th: Thai，16k_zh_dialect: multi-dialect，supports 23 dialects。",
 						},
 						"channel_num": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Number of voice channels: 1 means mono. EngineModelType supports only mono for non-telephone scenarios, and 2 means dual channels (only 8k_zh engine model supports dual channels, which should correspond to both sides of the call).",
+							Description: "数量 voice channels: 1 means mono. EngineModelType supports only mono for non-telephone scenarios，and 2 means dual channels (only 8k_zh engine model supports dual channels，which should correspond to both sides of the call)。",
 						},
 						"res_text_format": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Recognition result return form: 0 means the recognition result text (including segmented time stamps), 1 is the detailed recognition result at the word level granularity, without punctuation, and includes the speech rate value (a list of word time stamps, generally used to generate subtitle scenes), 2 Detailed recognition results at word-level granularity (including punctuation and speech rate values)..",
+							Description: "Recognition 结果 return form: 0 means the recognition 结果 text (including segmented time stamps)，1 is the detailed recognition 结果 at the word 级别 granularity，without punctuation，and includes the speech rate 值 (a 列表 word time stamps，generally 用于generate subtitle scenes)，2 Detailed recognition results at word-级别 granularity (including punctuation and speech rate values).。",
 						},
 						"filter_dirty": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to filter dirty words (currently supports Mandarin Chinese engine): 0 means not to filter dirty words, 1 means to filter dirty words, 2 means to replace dirty words with *, the default value is 0.",
+							Description: "是否filter dirty words (currently supports Mandarin Chinese engine): 0 means not to filter dirty words，1 means to filter dirty words，2 means to replace dirty words with *，the 默认值为 0。",
 						},
 						"filter_modal": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to pass modal particles (currently supports Mandarin Chinese engine): 0 means not to filter modal particles, 1 means partial filtering, 2 means strict filtering, and the default value is 0.",
+							Description: "是否pass modal particles (currently supports Mandarin Chinese engine): 0 means not to filter modal particles，1 means partial filtering，2 means strict filtering，and the 默认值为 0。",
 						},
 						"convert_num_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to perform intelligent conversion of Arabic numerals (currently supports Mandarin Chinese engine): 0 means no conversion, directly output Chinese numbers, 1 means intelligently convert to Arabic numerals according to the scene, 3 means enable math-related digital conversion, the default value is 0.",
+							Description: "是否perform intelligent conversion of Arabic numerals (currently supports Mandarin Chinese engine): 0 means no conversion，directly output Chinese numbers，1 means intelligently convert to Arabic numerals according to the scene，3 means enable math-related digital conversion，the 默认值为 0。",
 						},
 						"speaker_diarization": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to enable speaker separation: 0 means not enabled, 1 means enabled (only supports 8k_zh, 16k_zh, 16k_zh_video, monophonic audio), the default value is 0, Note: 8K telephony scenarios suggest using dual-channel to distinguish between the two parties, set ChannelNum=2 is enough, no need to enable speaker separation.",
+							Description: "是否enable speaker separation: 0 means not 已启用，1 means 已启用 (only supports 8k_zh，16k_zh，16k_zh_video，monophonic audio)，the 默认值为 0，Note: 8K telephony scenarios suggest using dual-channel to distinguish between the two parties，set ChannelNum=2 is enough，no need to enable speaker separation。",
 						},
 						"speaker_number": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The number of speakers to be separated (need to be used in conjunction with enabling speaker separation), value range: 0-10, 0 means automatic separation (currently only supports <= 6 people), 1-10 represents the number of specified speakers to be separated. The default value is 0.",
+							Description: "The 数量 speakers to be separated (need to be used in conjunction with enabling speaker separation)，取值范围：0-10，0 means automatic separation (currently only supports <= 6 people)，1-10 represents the 数量 specified speakers to be separated. The 默认值为 0。",
 						},
 						"filter_punc": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to filter punctuation (currently supports Mandarin Chinese engine): 0 means no filtering, 1 means filtering end-of-sentence punctuation, 2 means filtering all punctuation, the default value is 0.",
+							Description: "是否filter punctuation (currently supports Mandarin Chinese engine): 0 means no filtering，1 means filtering end-of-sentence punctuation，2 means filtering all punctuation，the 默认值为 0。",
 						},
 						"output_file_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Output file type, optional txt, srt. The default is txt.",
+							Description: "输出文件 类型，可选 txt，srt. The 默认为 txt。",
 						},
 					},
 				},

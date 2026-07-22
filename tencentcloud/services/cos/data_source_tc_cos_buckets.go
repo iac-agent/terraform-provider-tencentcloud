@@ -22,65 +22,65 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 			"bucket_prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "A prefix string to filter results by bucket name.",
+				Description: "A prefix string to filter results by 存储桶名称",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags to filter bucket.",
+				Description: "标签 to filter 存储桶",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"bucket_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of bucket. Each element contains the following attributes:",
+				Description: "A 列表 存储桶 Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"bucket": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Bucket name, the format likes `<bucket>-<appid>`.",
+							Description: "存储桶名称，the 格式 likes `<存储桶>-<appid>`。",
 						},
 						"cors_rules": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A list of CORS rule configurations.",
+							Description: "A 列表 CORS rule configurations。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"allowed_origins": {
 										Type:        schema.TypeList,
 										Computed:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Specifies which origins are allowed.",
+										Description: "指定which origins are allowed。",
 									},
 									"allowed_methods": {
 										Type:        schema.TypeList,
 										Computed:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.",
+										Description: "指定which methods are allowed. Can be GET，PUT，POST，DELETE or HEAD。",
 									},
 									"allowed_headers": {
 										Type:        schema.TypeList,
 										Computed:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Specifies which headers are allowed.",
+										Description: "指定which headers are allowed。",
 									},
 									"max_age_seconds": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Specifies time in seconds that browser can cache the response for a preflight request.",
+										Description: "指定time （秒） that browser can cache the response for a preflight request。",
 									},
 									"expose_headers": {
 										Type:        schema.TypeList,
 										Computed:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Specifies expose header in the response.",
+										Description: "指定expose header in the response。",
 									},
 								},
 							},
@@ -88,34 +88,34 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 						"lifecycle_rules": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The lifecycle configuration of a bucket.",
+							Description: "The lifecycle configuration of a 存储桶",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"filter_prefix": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Object key prefix identifying one or more objects to which the rule applies.",
+										Description: "Object 键 prefix identifying one or more objects to which the rule applies。",
 									},
 									"transition": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Specifies a period in the object's transitions.",
+										Description: "指定a 周期 in the object's transitions。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"date": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Specifies the date after which you want the corresponding action to take effect.",
+													Description: "指定date after which you want the corresponding 操作 to take effect。",
 												},
 												"days": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Specifies the number of days after object creation when the specific rule action takes effect.",
+													Description: "指定number of days after object creation when the specific rule 操作 takes effect。",
 												},
 												"storage_class": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Specifies the storage class to which you want the object to transition. Available values include STANDARD, STANDARD_IA and ARCHIVE.",
+													Description: "指定storage class to which you want the object to transition. Available values include STANDARD，STANDARD_IA and ARCHIVE。",
 												},
 											},
 										},
@@ -123,18 +123,18 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 									"expiration": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Specifies a period in the object's expire.",
+										Description: "指定a 周期 in the object's expire。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"date": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Specifies the date after which you want the corresponding action to take effect.",
+													Description: "指定date after which you want the corresponding 操作 to take effect。",
 												},
 												"days": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Specifies the number of days after object creation when the specific rule action takes effect.",
+													Description: "指定number of days after object creation when the specific rule 操作 takes effect。",
 												},
 											},
 										},
@@ -142,18 +142,18 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 									"non_current_transition": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Specifies when to transition objects of non current versions and the target storage class.",
+										Description: "指定when to transition objects of non current versions and the target storage class。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"non_current_days": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of days after non current object creation when the specific rule action takes effect.",
+													Description: "数量 days after non current object creation when the specific rule 操作 takes effect。",
 												},
 												"storage_class": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Specifies the storage class to which you want the non current object to transition. Available values include STANDARD, STANDARD_IA and ARCHIVE.",
+													Description: "指定storage class to which you want the non current object to transition. Available values include STANDARD，STANDARD_IA and ARCHIVE。",
 												},
 											},
 										},
@@ -161,13 +161,13 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 									"non_current_expiration": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Specifies when non current object versions shall expire.",
+										Description: "指定when non current object versions shall expire。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"non_current_days": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of days after non current object creation when the specific rule action takes effect. The maximum value is 3650.",
+													Description: "数量 days after non current object creation when the specific rule 操作 takes effect. The maximum 值 is 3650。",
 												},
 											},
 										},
@@ -175,13 +175,13 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 									"abort_incomplete_multipart_upload": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Set the maximum time a multipart upload is allowed to remain running.",
+										Description: "Set the maximum time a multipart upload is allowed to remain running。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"days_after_initiation": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Specifies the number of days after the multipart upload starts that the upload must be completed. The maximum value is 3650.",
+													Description: "指定number of days after the multipart upload starts that the upload must be completed. The maximum 值 is 3650。",
 												},
 											},
 										},
@@ -192,18 +192,18 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 						"website": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A list of one element containing configuration parameters used when the bucket is used as a website.",
+							Description: "A 列表 one element containing configuration parameters used when the 存储桶 is used as a website。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"index_document": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "COS returns this index document when requests are made to the root domain or any of the subfolders.",
+										Description: "COS 返回this 索引 document when requests are made to the root 域名 or any of the subfolders。",
 									},
 									"error_document": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "An absolute path to the document to return in case of a 4XX error.",
+										Description: "An absolute 路径 to the document to return in case of a 4XX 错误",
 									},
 								},
 							},
@@ -211,48 +211,48 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 						"origin_pull_rules": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Bucket Origin-Pull rules.",
+							Description: "存储桶 Origin-Pull rules。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"priority": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Priority of origin-pull rules, do not set the same value for multiple rules.",
+										Description: "优先级 of origin-pull rules，do not set the same 值 for multiple rules。",
 									},
 									"sync_back_to_source": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "If `true`, COS will not return 3XX status code when pulling data from an origin server. Currently available zone: ap-beijing, ap-shanghai, ap-singapore, ap-mumbai.",
+										Description: "If `true`，COS will not return 3XX 状态 代码 when pulling data from an origin server. Currently available 可用区: ap-beijing，ap-shanghai，ap-singapore，ap-mumbai。",
 									},
 									"back_to_source_mode": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Back to source mode. Allow value: Proxy, Mirror, Redirect.",
+										Description: "Back to 来源 模式 Allow 值: Proxy，Mirror，Redirect。",
 									},
 									"prefix": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Triggers the origin-pull rule when the requested file name matches this prefix.",
+										Description: "Triggers the origin-pull rule when the requested file 名称 matches this prefix。",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "the protocol used for COS to access the specified origin server. The available value include `HTTP`, `HTTPS` and `FOLLOW`.",
+										Description: "the 协议 用于COS to access the specified origin server. The available 值 include `HTTP`，`HTTPS` and `FOLLOW`。",
 									},
 									"host": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Allows only a domain name or IP address. You can optionally append a port number to the address.",
+										Description: "Allows only a 域名 名称 or IP 地址 You can optionally append a 端口 number to the 地址",
 									},
 									"follow_query_string": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Specifies whether to pass through COS request query string when accessing the origin server.",
+										Description: "指定是否pass through COS request query string when accessing the origin server。",
 									},
 									"follow_redirection": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Specifies whether to follow 3XX redirect to another origin server to pull data from.",
+										Description: "指定是否follow 3XX redirect to another origin server to pull data from。",
 									},
 									//"copy_origin_data": {
 									//	Type:		 schema.TypeBool,
@@ -263,13 +263,13 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 									"follow_http_headers": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Specifies the pass through headers when accessing the origin server.",
+										Description: "指定pass through headers when accessing the origin server。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"custom_http_headers": {
 										Type:        schema.TypeMap,
 										Computed:    true,
-										Description: "Specifies the custom headers that you can add for COS to access your origin server.",
+										Description: "指定custom headers that you can add for COS to access your origin server。",
 									},
 									//"redirect_prefix": {
 									//	Type:		schema.TypeString,
@@ -287,23 +287,23 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 						"origin_domain_rules": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Bucket origin domain rules.",
+							Description: "存储桶 origin 域名 rules。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Specify domain host.",
+										Description: "指定domain 主机",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Specify origin domain type, available values: `REST`, `WEBSITE`, `ACCELERATE`, default: `REST`.",
+										Description: "指定origin 域名 类型，可用值：`REST`，`WEBSITE`，`ACCELERATE`，默认值：`REST`。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Domain status, default: `ENABLED`.",
+										Description: "域名 状态，默认值：`ENABLED`。",
 									},
 								},
 							},
@@ -311,22 +311,22 @@ func DataSourceTencentCloudCosBuckets() *schema.Resource {
 						"acl": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Bucket access control configurations.",
+							Description: "存储桶 access control configurations。",
 						},
 						"acl_body": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Bucket verbose acl configurations.",
+							Description: "存储桶 verbose acl configurations。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "The tags of a bucket.",
+							Description: "The 标签 of a 存储桶",
 						},
 						"cos_bucket_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The URL of this cos bucket.",
+							Description: "The URL of this COS 存储桶",
 						},
 					},
 				},

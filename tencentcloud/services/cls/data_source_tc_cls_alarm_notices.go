@@ -18,18 +18,18 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions. Maximum 10 filters, each with up to 5 values. Multiple values within the same filter use OR logic, multiple filters use AND logic.",
+				Description: "过滤条件。最多 10 个过滤器，每个过滤器最多有 5 个值。同一过滤器内的多个值使用 OR 逻辑，多个过滤器使用 AND 逻辑。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter field name. Supported values: `name` (alarm notice group name), `alarmNoticeId` (alarm notice ID), `uid` (receiver user ID), `groupId` (receiver user group ID), `deliverFlag` (delivery status: 1-not enabled, 2-enabled, 3-abnormal).",
+							Description: "过滤字段名称。支持的值：“名称”（告警通知组名称）、“alarmNoticeId”（告警通知 ID）、“uid”（接收方用户 ID）、“groupId”（接收方用户组 ID）、“deliverFlag”（下发状态：1-未启用、2-启用、3-异常）。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter field values.",
+							Description: "过滤字段值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -41,50 +41,50 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 			"has_alarm_shield_count": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to query alarm shield count statistics. Default is false.",
+				Description: "是否查询报警屏蔽计数统计。默认为 false。",
 			},
 
 			"alarm_notices": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of alarm notice configurations.",
+				Description: "报警通知配置列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm notice name.",
+							Description: "报警通知名称。",
 						},
 						"alarm_notice_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm notice ID.",
+							Description: "报警通知ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创作时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last update time.",
+							Description: "最后更新时间。",
 						},
 						"notice_receivers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of notice receivers.",
+							Description: "通知接收者列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"receiver_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Receiver type. Can be Uin or Group.",
+										Description: "接收器类型。可以是 Uin 或 Group。",
 									},
 									"receiver_ids": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Receiver IDs.",
+										Description: "接收者 ID。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -92,7 +92,7 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 									"receiver_channels": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Notification channels (Email, Sms, WeChat, Phone).",
+										Description: "通知渠道（电子邮件、短信、微信、电话）。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -100,17 +100,17 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 									"start_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Allowed notification start time.",
+										Description: "允许的通知开始时间。",
 									},
 									"end_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Allowed notification end time.",
+										Description: "允许的通知结束时间。",
 									},
 									"index": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Index order.",
+										Description: "索引顺序。",
 									},
 								},
 							},
@@ -118,28 +118,28 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 						"web_callbacks": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of webhook callbacks.",
+							Description: "Webhook 回调列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Callback URL.",
+										Description: "回调网址。",
 									},
 									"callback_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Callback type. WeCom or Http or DingTalk or Lark or Webhook.",
+										Description: "回调类型。 WeCom 或 Http 或钉钉或 Lark 或 Webhook。",
 									},
 									"method": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "HTTP method. GET or POST.",
+										Description: "HTTP 方法。获取或发布。",
 									},
 									"headers": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Request headers.",
+										Description: "请求标头。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -147,12 +147,12 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 									"body": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Request body.",
+										Description: "请求正文。",
 									},
 									"index": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Index order.",
+										Description: "索引顺序。",
 									},
 								},
 							},
@@ -160,18 +160,18 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Tag list.",
+							Description: "标签列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值。",
 									},
 								},
 							},
@@ -179,29 +179,29 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 						"jump_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Jump domain for alarm callback.",
+							Description: "报警回调跳转域。",
 						},
 						"notice_rules": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of notice rules.",
+							Description: "通知规则列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"notice_receivers": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Notice receivers for this rule.",
+										Description: "请通知接收者此规则。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"receiver_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Receiver type.",
+													Description: "接收器类型。",
 												},
 												"receiver_ids": {
 													Type:        schema.TypeSet,
 													Computed:    true,
-													Description: "Receiver IDs.",
+													Description: "接收者 ID。",
 													Elem: &schema.Schema{
 														Type: schema.TypeInt,
 													},
@@ -209,7 +209,7 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 												"receiver_channels": {
 													Type:        schema.TypeSet,
 													Computed:    true,
-													Description: "Notification channels.",
+													Description: "通知渠道。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -217,17 +217,17 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 												"start_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Start time.",
+													Description: "开始时间。",
 												},
 												"end_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "End time.",
+													Description: "结束时间。",
 												},
 												"index": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Index.",
+													Description: "指数。",
 												},
 											},
 										},
@@ -235,28 +235,28 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 									"web_callbacks": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Webhook callbacks for this rule.",
+										Description: "此规则的 Webhook 回调。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"url": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Callback URL.",
+													Description: "回调网址。",
 												},
 												"callback_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Callback type.",
+													Description: "回调类型。",
 												},
 												"method": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "HTTP method.",
+													Description: "HTTP 方法。",
 												},
 												"headers": {
 													Type:        schema.TypeSet,
 													Computed:    true,
-													Description: "Headers.",
+													Description: "标头。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -264,12 +264,12 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 												"body": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Body.",
+													Description: "身体。",
 												},
 												"index": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Index.",
+													Description: "指数。",
 												},
 											},
 										},
@@ -277,22 +277,22 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 									"repeat_interval": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Repeat interval in minutes.",
+										Description: "重复间隔以分钟为单位。",
 									},
 									"time_range_start": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Effective start time (24-hour format HH:mm:ss).",
+										Description: "有效开始时间（24 小时格式 HH:mm:ss）。",
 									},
 									"time_range_end": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Effective end time (24-hour format HH:mm:ss).",
+										Description: "有效结束时间（24 小时格式 HH:mm:ss）。",
 									},
 									"notify_way": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Notification ways.",
+										Description: "通知方式。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -300,12 +300,12 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 									"receiver_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Receiver type.",
+										Description: "接收器类型。",
 									},
 									"day_of_week": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Days of week (0-6, 0 is Sunday).",
+										Description: "一周中的天数（0-6，0 是星期日）。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -313,7 +313,7 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 									"jump_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Jump domain.",
+										Description: "跳转域。",
 									},
 								},
 							},
@@ -321,28 +321,28 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 						"deliver_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Delivery status (0: delivered, 1: not delivered).",
+							Description: "发货状态（0：已发货，1：未发货）。",
 						},
 						"deliver_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Delivery flag (1: not enabled, 2: enabled, 3: abnormal).",
+							Description: "发送标志（1：未使能，2：使能，3：异常）。",
 						},
 						"alarm_shield_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Alarm shield status (0: not shielded, 1: shielded).",
+							Description: "报警屏蔽状态（0：不屏蔽，1：屏蔽）。",
 						},
 						"alarm_shield_count": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Alarm shield count statistics.",
+							Description: "报警屏蔽计数统计。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"total_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Total count of shielded alarms.",
+										Description: "屏蔽告警总数。",
 									},
 								},
 							},
@@ -351,7 +351,7 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 						"callback_prioritize": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether webhook callback takes priority.",
+							Description: "webhook 回调是否优先。",
 						},
 					},
 				},
@@ -360,7 +360,7 @@ func DataSourceTencentCloudClsAlarmNotices() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -28,7 +28,7 @@ func ResourceTencentCloudPrivateDnsZoneVpcAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "PrivateZone ID.",
+				Description: "PrivateZone ID。",
 			},
 			"vpc_set": {
 				Optional:     true,
@@ -36,20 +36,20 @@ func ResourceTencentCloudPrivateDnsZoneVpcAttachment() *schema.Resource {
 				MaxItems:     1,
 				ExactlyOneOf: []string{"account_vpc_set"},
 				Type:         schema.TypeList,
-				Description:  "New add vpc info.",
+				Description:  "New add vpc info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Uniq Vpc Id.",
+							Description: "Uniq 私有网络 ID",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Vpc region.",
+							Description: "Vpc 地域",
 						},
 					},
 				},
@@ -60,26 +60,26 @@ func ResourceTencentCloudPrivateDnsZoneVpcAttachment() *schema.Resource {
 				MaxItems:     1,
 				ExactlyOneOf: []string{"vpc_set"},
 				Type:         schema.TypeList,
-				Description:  "New add account vpc info.",
+				Description:  "New add 账号 vpc info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Uniq Vpc Id.",
+							Description: "Uniq 私有网络 ID",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Vpc region.",
+							Description: "Vpc 地域",
 						},
 						"uin": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Vpc owner uin. To grant role authorization to this account.",
+							Description: "Vpc 所有者 uin. To grant 角色 authorization to this 账号",
 						},
 					},
 				},

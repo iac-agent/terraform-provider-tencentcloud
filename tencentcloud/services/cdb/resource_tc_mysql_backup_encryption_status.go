@@ -26,13 +26,13 @@ func ResourceTencentCloudMysqlBackupEncryptionStatus() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, in the format: cdb-XXXX. Same instance ID as displayed in the ApsaraDB for Console page.",
+				Description: "实例ID，格式为：cdb-XXXX。与云数据库控制台页面显示的实例ID相同。",
 			},
 
 			"encryption_status": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Whether physical backup encryption is enabled for the instance. Possible values are `on`, `off`.",
+				Description: "实例是否启用物理备份加密。可能的值为“on”、“off”。",
 			},
 		},
 	}

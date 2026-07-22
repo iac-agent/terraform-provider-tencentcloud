@@ -29,52 +29,52 @@ func ResourceTencentCloudCiMediaVideoMontageTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "The 模板名称 only supports `Chinese`，`English`，`numbers`，`_`，`-` and `*`。",
 			},
 
 			"duration": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Collection duration 1: Default automatic analysis duration, 2: The unit is seconds, 3: Support float format, execution accuracy is accurate to milliseconds.",
+				Description: "Collection duration 1: Default automatic analysis duration，2: The unit is seconds，3: Support float 格式，execution accuracy is accurate to milliseconds。",
 			},
 
 			"audio": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "audio parameters, the target file does not require Audio information, need to set Audio.Remove to true.",
+				Description: "audio parameters，the target file does not require Audio information，need to set Audio.Remove to true。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Codec format, value aac, mp3.",
+							Description: "Codec 格式，值 aac，mp3。",
 						},
 						"samplerate": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Sampling Rate- Unit: Hz- Optional 11025, 22050, 32000, 44100, 48000, 96000- Different packages, mp3 supports different sampling rates, as shown in the table below.",
+							Description: "Sampling Rate- 单位：Hz- 可选 11025，22050，32000，44100，48000，96000- Different packages，mp3 supports different sampling rates，as shown in the table below。",
 						},
 						"bitrate": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Original audio bit rate, unit: Kbps, Value range: [8, 1000].",
+							Description: "Original audio bit rate，unit: Kbps，取值范围：[8，1000]。",
 						},
 						"channels": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "number of channels- When Codec is set to aac, support 1, 2, 4, 5, 6, 8- When Codec is set to mp3, support 1, 2.",
+							Description: "数量 channels- When Codec is set to aac，support 1，2，4，5，6，8- When Codec is set to mp3，support 1，2。",
 						},
 						"remove": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to delete the source audio stream, the value is true, false.",
+							Description: "是否delete the 来源 audio stream，the 值 is true，false。",
 						},
 					},
 				},
@@ -84,43 +84,43 @@ func ResourceTencentCloudCiMediaVideoMontageTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "video information, do not upload Video, which is equivalent to deleting video information.",
+				Description: "video information，do not upload Video，which is equivalent to deleting video information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Codec format `H.264`.",
+							Description: "Codec 格式 `H.264`。",
 						},
 						"width": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "width, value range: [128, 4096], Unit: px, If only Width is set, Height is calculated according to the original ratio of the video, must be even.",
+							Description: "width，取值范围：[128，4096]，单位：px，If only Width is set，Height is calculated according to the original ratio of the video，must be even。",
 						},
 						"height": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "High, value range: [128, 4096], Unit: px, If only Height is set, Width is calculated according to the original ratio of the video, must be even.",
+							Description: "High，取值范围：[128，4096]，单位：px，If only Height is set，Width is calculated according to the original ratio of the video，must be even。",
 						},
 						"bitrate": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Bit rate of video output file, value range: [10, 50000], unit: Kbps, auto means adaptive bit rate.",
+							Description: "Bit rate of video 输出文件，取值范围：[10，50000]，unit: Kbps，auto means adaptive bit rate。",
 						},
 						"fps": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Frame rate, value range: (0, 60], Unit: fps.",
+							Description: "Frame rate，取值范围：(0，60]，单位：fps。",
 						},
 						"crf": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Bit rate-quality control factor, value range: (0, 51], If Crf is set, the setting of Bitrate will be invalid, When Bitrate is empty, the default is 25.",
+							Description: "Bit rate-quality control factor，取值范围：(0，51]，If Crf is set，the setting of Bitrate will be invalid，When Bitrate is empty，the 默认为 25。",
 						},
 						"remove": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to delete the source audio stream, the value is true, false.",
+							Description: "是否delete the 来源 audio stream，the 值 is true，false。",
 						},
 					},
 				},
@@ -130,13 +130,13 @@ func ResourceTencentCloudCiMediaVideoMontageTemplate() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "container format.",
+				Description: "container 格式",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"format": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Container format: mp4, flv, hls, ts, mkv.",
+							Description: "Container 格式: mp4，flv，hls，ts，mkv。",
 						},
 					},
 				},
@@ -145,60 +145,60 @@ func ResourceTencentCloudCiMediaVideoMontageTemplate() *schema.Resource {
 			"audio_mix": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "mixing parameters.",
+				Description: "mixing parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"audio_source": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The media address of the audio track that needs to be mixed.",
+							Description: "The media 地址 of the audio track that needs to be mixed。",
 						},
 						"mix_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Mixing mode Repeat: background sound loop, Once: The background sound is played once.",
+							Description: "Mixing 模式 Repeat: background sound loop，Once: The background sound is played once。",
 						},
 						"replace": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to replace the original audio of the Input media file with the mixed audio track media.",
+							Description: "是否replace the original audio of the Input media file with the mixed audio track media。",
 						},
 						"effect_config": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Mix Fade Configuration.",
+							Description: "Mix Fade Configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"enable_start_fadein": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "enable fade in.",
+										Description: "enable fade in。",
 									},
 									"start_fadein_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Fade in duration, greater than 0, support floating point numbers.",
+										Description: "Fade in duration，greater than 0，support floating point numbers。",
 									},
 									"enable_end_fadeout": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "enable fade out.",
+										Description: "enable fade out。",
 									},
 									"end_fadeout_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "fade out time, greater than 0, support floating point numbers.",
+										Description: "fade out time，greater than 0，support floating point numbers。",
 									},
 									"enable_bgm_fade": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Enable bgm conversion fade in.",
+										Description: "Enable bgm conversion fade in。",
 									},
 									"bgm_fade_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "bgm transition fade-in duration, support floating point numbers.",
+										Description: "bgm transition fade-in duration，support floating point numbers。",
 									},
 								},
 							},

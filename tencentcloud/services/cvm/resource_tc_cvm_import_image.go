@@ -25,85 +25,85 @@ func ResourceTencentCloudCvmImportImage() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "OS architecture of the image to be imported, `x86_64` or `i386`.",
+				Description: "OS architecture of the image to be imported，`x86_64` or `i386`。",
 			},
 
 			"os_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "OS type of the image to be imported. You can call `DescribeImportImageOs` to obtain the list of supported operating systems.",
+				Description: "OS 类型 image to be imported. You can call `DescribeImportImageOs` to obtain the 列表 supported operating systems。",
 			},
 
 			"os_version": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "OS version of the image to be imported. You can call `DescribeImportImageOs` to obtain the list of supported operating systems.",
+				Description: "OS 版本 of the image to be imported. You can call `DescribeImportImageOs` to obtain the 列表 supported operating systems。",
 			},
 
 			"image_url": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Address on COS where the image to be imported is stored.",
+				Description: "地址 on COS where the image to be imported is stored。",
 			},
 
 			"image_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Image name.",
+				Description: "Image 名称",
 			},
 
 			"image_description": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Image description.",
+				Description: "Image 描述",
 			},
 
 			"dry_run": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Dry run to check the parameters without performing the operation.",
+				Description: "Dry run to check the parameters without performing the operation。",
 			},
 
 			"force": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to force import the image.",
+				Description: "是否force import the image。",
 			},
 
 			"tag_specification": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Tag description list. This parameter is used to bind a tag to a custom image.",
+				Description: "标签描述列表 This parameter is 用于bind a 标签 to a custom image。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource type. Valid values: instance (CVM), host (CDH), image (for image), and keypair (for key). Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "资源类型 有效值：instance (CVM)，主机 (CDH)，image (for image)，and keypair (for 键). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Tag pairs Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "标签 pairs 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -116,14 +116,14 @@ func ResourceTencentCloudCvmImportImage() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The license type used to activate the OS after importing an image. Valid values: TencentCloud: Tencent Cloud official license BYOL: Bring Your Own License.",
+				Description: "The license 类型 用于activate the OS after importing an image. 有效值：TencentCloud: Tencent Cloud official license BYOL: Bring Your Own License。",
 			},
 
 			"boot_mode": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Boot mode.",
+				Description: "Boot 模式",
 			},
 		},
 	}

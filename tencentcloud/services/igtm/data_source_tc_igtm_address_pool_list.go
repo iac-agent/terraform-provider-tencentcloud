@@ -18,18 +18,18 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Alert filter conditions.",
+				Description: "Alert filter conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter field name, supported list as follows:\n- PoolName: Address pool name.\n- MonitorId: Monitor ID. This is a required parameter, failure to provide will cause interface query failure.",
+							Description: "过滤字段名称，supported list as follows:\n- PoolName: 地址 pool 名称\n- MonitorId: Monitor ID. This is a 必填 parameter，failure to provide will cause interface query failure。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter field value.",
+							Description: "过滤字段值",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -37,7 +37,7 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable fuzzy query, only supports filter field name as domain.\nWhen fuzzy query is enabled, maximum Value length is 1, otherwise maximum Value length is 5. (Reserved field, currently not used).",
+							Description: "是否enable fuzzy query，only supports 过滤字段名称 as 域名\nWhen fuzzy query is 已启用，maximum 值 length is 1，otherwise maximum 值 length is 5. (Reserved field，currently not used)。",
 						},
 					},
 				},
@@ -46,69 +46,69 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 			"address_pool_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Resource group list.",
+				Description: "Resource group list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"pool_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Address pool ID.",
+							Description: "地址 pool ID。",
 						},
 						"pool_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Address pool name.",
+							Description: "地址 pool 名称",
 						},
 						"addr_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Address pool address type: IPV4, IPV6, DOMAIN.",
+							Description: "地址 pool 地址 类型: IPV4，IPV6，DOMAIN。",
 						},
 						"traffic_strategy": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Traffic strategy: WEIGHT load balancing, ALL resolve all.",
+							Description: "Traffic strategy: WEIGHT load balancing，ALL resolve all。",
 						},
 						"monitor_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Monitor ID.",
+							Description: "Monitor ID。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "OK normal, DOWN failure, WARN risk, UNKNOWN unknown.",
+							Description: "OK normal，DOWN failure，WARN risk，UNKNOWN unknown。",
 						},
 						"address_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Address count.",
+							Description: "地址 count。",
 						},
 						"monitor_group_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Probe point count.",
+							Description: "Probe point count。",
 						},
 						"monitor_task_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Detection task count.",
+							Description: "Detection task count。",
 						},
 						"instance_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Instance related information.",
+							Description: "Instance related information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance ID.",
+										Description: "实例 ID",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance name.",
+										Description: "实例名称",
 									},
 								},
 							},
@@ -116,48 +116,48 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 						"address_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Address pool address information.",
+							Description: "地址 pool 地址 information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"addr": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Address value: only supports IPv4, IPv6 and domain name formats;\nLoopback addresses, reserved addresses, internal network addresses and Tencent reserved network segments are not supported.",
+										Description: "地址 值: only supports IPv4，IPv6 and 域名 名称 formats;\nLoopback addresses，reserved addresses，internal network addresses and Tencent reserved network segments are not supported。",
 									},
 									"is_enable": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Whether to enable: DISABLED disabled; ENABLED enabled.",
+										Description: "是否enable: DISABLED 已禁用; ENABLED 已启用",
 									},
 									"address_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Address ID.",
+										Description: "地址 ID。",
 									},
 									"location": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Address name.",
+										Description: "地址 名称",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "OK normal, DOWN failure, WARN risk, UNKNOWN detecting, UNMONITORED unknown.",
+										Description: "OK normal，DOWN failure，WARN risk，UNKNOWN detecting，UNMONITORED unknown。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Weight, required when traffic strategy is WEIGHT; range 1-100.",
+										Description: "权重，必填 when traffic strategy is WEIGHT; range 1-100。",
 									},
 									"created_on": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Creation time.",
+										Description: "创建时间。",
 									},
 									"updated_on": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Modification time.",
+										Description: "修改时间。",
 									},
 								},
 							},
@@ -165,12 +165,12 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 						"created_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"updated_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 					},
 				},
@@ -179,7 +179,7 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

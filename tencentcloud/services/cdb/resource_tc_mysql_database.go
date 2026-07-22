@@ -29,21 +29,21 @@ func ResourceTencentCloudMysqlDatabase() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of `cdb-c1nl9rpv`,  which is the same as the one displayed in the TencentDB console.",
+				Description: "实例ID，格式为“cdb-c1nl9rpv”，与腾讯数据库控制台显示的一致。",
 			},
 
 			"db_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Name of Database.",
+				Description: "数据库名称。",
 			},
 
 			"character_set_name": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"utf8", "gbk", "latin1", "utf8mb4"}),
-				Description:  "Character set. Valid values:  `utf8`, `gbk`, `latin1`, `utf8mb4`.",
+				Description: "字符集。有效值：`utf8`、`gbk`、`latin1`、`utf8mb4`。",
 			},
 		},
 	}

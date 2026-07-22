@@ -18,49 +18,49 @@ func DataSourceTencentCloudControlcenterAccountFactoryBaselineItems() *schema.Re
 			"baseline_items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Account factory baseline list.",
+				Description: "账号 factory baseline list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specifies the unique identifier for account factory baseline item, can only contain `english letters`, `digits`, and `@,._[]-:()()[]+=.`, with a length of 2-128 characters.",
+							Description: "指定unique identifier for 账号 factory baseline item，can only contain `english letters`，`digits`，and `@,._[]-:()()[]+=.`，with a length of 2-128 characters。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Baseline item name. specifies a unique name for the feature item. supports a combination of english letters, numbers, chinese characters, and symbols @, &, _, [, ], -. valid values: 1-25 chinese or english characters.",
+							Description: "Baseline item 名称 指定a unique 名称 for the feature item. supports a combination of english letters，numbers，chinese characters，and symbols @，&，_，[，]，-. 有效值：1-25 chinese or english characters。",
 						},
 						"name_en": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Baseline item english name. specifies a unique name for the baseline item. supports a combination of english letters, digits, spaces, and symbols @, &, _, [], -. valid values: 1-64 english characters.",
+							Description: "Baseline item english 名称 指定a unique 名称 for the baseline item. supports a combination of english letters，digits，spaces，and symbols @，&，_，[]，-. 有效值：1-64 english characters。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Baseline item weight. the smaller the value, the higher the weight. value range equal to or greater than 0.",
+							Description: "Baseline item 权重 the smaller the 值，the higher the 权重 值 range equal to or greater than 0。",
 						},
 						"required": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Specifies whether the baseline item is required (1: required; 0: optional).",
+							Description: "指定是否baseline item 为必填项 (1: 必填; 0: 可选)。",
 						},
 						"depends_on": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Baseline item dependency. value range of N depends on the count of other baseline items it relies on.",
+							Description: "Baseline item dependency. 值 range of N depends on the count of other baseline items it relies on。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Dependency type. valid values: LandingZoneSetUp or AccountFactorySetUp. LandingZoneSetUp refers to the dependency of landingZone. AccountFactorySetUp refers to the dependency of account factory.",
+										Description: "Dependency 类型 有效值：LandingZoneSetUp or AccountFactorySetUp. LandingZoneSetUp refers to the dependency of landingZone. AccountFactorySetUp refers to the dependency of 账号 factory。",
 									},
 									"identifier": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Specifies the unique identifier for the feature item, can only contain `english letters`, `digits`, and `@,._[]-:()()[]+=.`, with a length of 2-128 characters.",
+										Description: "指定unique identifier for the feature item，can only contain `english letters`，`digits`，and `@,._[]-:()()[]+=.`，with a length of 2-128 characters。",
 									},
 								},
 							},
@@ -68,22 +68,22 @@ func DataSourceTencentCloudControlcenterAccountFactoryBaselineItems() *schema.Re
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Baseline description, with a length of 2 to 256 english or chinese characters. it is empty by default.",
+							Description: "Baseline 描述，with a length of 2 to 256 english or chinese characters. it is empty by default。",
 						},
 						"description_en": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Baseline item english description, with a length of 2 to 1024 english characters. it is empty by default.",
+							Description: "Baseline item english 描述，with a length of 2 to 1024 english characters. it is empty by default。",
 						},
 						"classify": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Baseline classification. length: 2-32 english or chinese characters. values cannot be empty.",
+							Description: "Baseline classification. length: 2-32 english or chinese characters. values cannot be empty。",
 						},
 						"classify_en": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Baseline english classification, with a length of 2-64 english characters. cannot be empty.",
+							Description: "Baseline english classification，with a length of 2-64 english characters. cannot be empty。",
 						},
 					},
 				},
@@ -92,7 +92,7 @@ func DataSourceTencentCloudControlcenterAccountFactoryBaselineItems() *schema.Re
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -22,137 +22,137 @@ func DataSourceTencentCloudMongodbInstances() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the Mongodb instance to be queried.",
+				Description: "ID Mongodb instance to be queried。",
 			},
 			"instance_name_prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name prefix of the Mongodb instance.",
+				Description: "名称 prefix of the Mongodb instance。",
 			},
 			"cluster_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(MONGODB_CLUSTER_TYPE),
-				Description:  "Type of Mongodb cluster, and available values include replica set cluster(expressed with `REPLSET`), sharding cluster(expressed with `SHARD`).",
+				Description:  "类型 Mongodb cluster，and available values include replica set cluster(expressed with `REPLSET`)，sharding cluster(expressed with `SHARD`)。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the Mongodb instance to be queried.",
+				Description: "标签 of the Mongodb instance to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "用于存储结果。",
 			},
 
 			// computed
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of instances. Each element contains the following attributes:",
+				Description: "A 列表 instances. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the Mongodb instance.",
+							Description: "ID Mongodb instance。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the Mongodb instance.",
+							Description: "名称 Mongodb instance。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID of the project which the instance belongs.",
+							Description: "ID project which the instance belongs。",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of Mongodb cluster.",
+							Description: "类型 Mongodb cluster。",
 						},
 						"available_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The available zone of the Mongodb.",
+							Description: "The available 可用区 of the Mongodb。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the VPC.",
+							Description: "ID VPC。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the subnet.",
+							Description: "ID subnet。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Status of the Mongodb, and available values include pending initialization(expressed with 0),  processing(expressed with 1), running(expressed with 2) and expired(expressed with -2).",
+							Description: "状态 Mongodb，and available values include pending initialization(expressed with 0)， processing(expressed with 1)，running(expressed with 2) and expired(expressed with -2)。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP of the Mongodb instance.",
+							Description: "IP of the Mongodb instance。",
 						},
 						"vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "IP port of the Mongodb instance.",
+							Description: "IP 端口 of the Mongodb instance。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of the Mongodb instance.",
+							Description: "创建时间 of the Mongodb instance。",
 						},
 						"engine_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version of the Mongodb engine.",
+							Description: "版本 of the Mongodb engine。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of cpu's core.",
+							Description: "数量 cpu's core。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size.",
+							Description: "Memory size。",
 						},
 						"volume": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Disk size.",
+							Description: "Disk size。",
 						},
 						"machine_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of Mongodb instance.",
+							Description: "类型 Mongodb instance。",
 						},
 						"shard_quantity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of sharding.",
+							Description: "数量 sharding。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Tags of the Mongodb instance.",
+							Description: "标签 of the Mongodb instance。",
 						},
 						// payment
 						"charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The charge type of instance.",
+							Description: "The charge 类型 instance。",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Auto renew flag.",
+							Description: "Auto 续费标识",
 						},
 					},
 				},

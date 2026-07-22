@@ -27,14 +27,14 @@ func ResourceTencentCloudLighthouseKeyPairAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Key pair ID.",
+				Description: "键 pair ID。",
 			},
 
 			"instance_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 		},
 	}

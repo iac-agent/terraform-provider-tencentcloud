@@ -19,13 +19,13 @@ func DataSourceTencentCloudClbClusterResources() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions to query cluster. cluster-id - String - Required: No - (Filter condition) Filter by cluster ID, such as tgw-12345678. vip - String - Required: No - (Filter condition) Filter by loadbalancer vip, such as 192.168.0.1. loadblancer-id - String - Required: No - (Filter condition) Filter by loadblancer ID, such as lbl-12345678. idle - String - Required: No - (Filter condition) Filter by Whether load balancing is idle, such as True, False.",
+				Description: "过滤查询集群的条件。 cluster-id - String - 必填：否 - （过滤条件）按集群 ID 过滤，如 tgw-12345678。 VIP - 字符串 - 必填：否 - （过滤条件）按负载均衡器 VIP 过滤，例如 192.168.0.1。 loadblancer-id - 字符串 - 必填：否 - （过滤条件）按 loadblancer ID 过滤，例如 lbl-12345678。 idle - String - 必填：否 - （过滤条件）过滤条件 负载均衡是否空闲，如True、False。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter name.",
+							Description: "过滤器名称。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudClbClusterResources() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter values.",
+							Description: "过滤值。",
 						},
 					},
 				},
@@ -42,43 +42,43 @@ func DataSourceTencentCloudClbClusterResources() *schema.Resource {
 			"cluster_resource_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Cluster resource set.",
+				Description: "集群资源集。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster ID.",
+							Description: "集群 ID。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "vip.",
+							Description: "贵宾。",
 						},
 						"load_balancer_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Loadbalance Id.",
+							Description: "负载平衡 ID。",
 						},
 						"idle": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Is it idle.",
+							Description: "是不是闲着呢。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cluster name.",
+							Description: "集群名称。",
 						},
 						"isp": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Isp.",
+							Description: "等离子。",
 						},
 						"clusters_zone": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "clusters zone.",
+							Description: "集群区。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"master_zone": {
@@ -87,7 +87,7 @@ func DataSourceTencentCloudClbClusterResources() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Availability master zone where the cluster is located.",
+										Description: "集群所在的可用性主域。",
 									},
 									"slave_zone": {
 										Type: schema.TypeSet,
@@ -95,7 +95,7 @@ func DataSourceTencentCloudClbClusterResources() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Availability slave zone where the cluster is located.",
+										Description: "集群所在的可用从区。",
 									},
 								},
 							},
@@ -107,7 +107,7 @@ func DataSourceTencentCloudClbClusterResources() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

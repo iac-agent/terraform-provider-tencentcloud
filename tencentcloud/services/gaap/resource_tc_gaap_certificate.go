@@ -24,53 +24,53 @@ func ResourceTencentCloudGaapCertificate() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"BASIC", "CLIENT", "SERVER", "REALSERVER", "PROXY"}),
-				Description:  "Type of the certificate. Valid value: `BASIC`, `CLIENT`, `SERVER`, `REALSERVER` and `PROXY`. `BASIC` means basic certificate; `CLIENT` means client CA certificate; `SERVER` means server SSL certificate; `REALSERVER` means realserver CA certificate; `PROXY` means proxy SSL certificate.",
+				Description:  "类型 certificate. Valid 值: `BASIC`，`CLIENT`，`SERVER`，`REALSERVER` and `PROXY`. `BASIC` means basic certificate; `CLIENT` means client CA certificate; `SERVER` means server SSL certificate; `REALSERVER` means realserver CA certificate; `PROXY` means proxy SSL certificate。",
 			},
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Content of the certificate, and URL encoding. When the certificate is basic authentication, use the `user:xxx password:xxx` format, where the password is encrypted with `htpasswd` or `openssl`; When the certificate is `CA` or `SSL`, the format is `pem`.",
+				Description: "内容 of the certificate，and URL encoding. When the certificate is basic authentication，use the `用户:xxx 密码:xxx` 格式，where the 密码 is encrypted with `htpasswd` or `openssl`; When the certificate is `CA` or `SSL`，the 格式 is `pem`。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "Name of the certificate.",
+				Description: "名称 certificate。",
 			},
 			"key": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
 				Sensitive:   true,
-				Description: "Key of the `SSL` certificate.",
+				Description: "键 of the `SSL` certificate。",
 			},
 
 			// computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of the certificate.",
+				Description: "创建时间 of the certificate。",
 			},
 			"begin_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Beginning time of the certificate.",
+				Description: "Beginning time of the certificate。",
 			},
 			"end_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Ending time of the certificate.",
+				Description: "Ending time of the certificate。",
 			},
 			"issuer_cn": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Issuer name of the certificate.",
+				Description: "Issuer 名称 certificate。",
 			},
 			"subject_cn": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Subject name of the certificate.",
+				Description: "Subject 名称 certificate。",
 			},
 		},
 	}

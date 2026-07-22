@@ -22,7 +22,7 @@ func ResourceTencentCloudAsProtectInstances() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Launch configuration ID.",
+				Description: "启动配置 ID",
 			},
 
 			"instance_ids": {
@@ -32,14 +32,14 @@ func ResourceTencentCloudAsProtectInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of cvm instances to remove.",
+				Description: "列表 cvm instances to remove。",
 			},
 
 			"protected_from_scale_in": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "If instances need protect.",
+				Description: "If instances need protect。",
 			},
 		},
 	}

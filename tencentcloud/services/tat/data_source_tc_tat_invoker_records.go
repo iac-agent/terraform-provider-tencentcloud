@@ -22,39 +22,39 @@ func DataSourceTencentCloudTatInvokerRecords() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of invoker IDs. Up to 100 IDs are allowed.",
+				Description: "列表 invoker IDs. Up to 100 IDs are allowed。",
 			},
 
 			"invoker_record_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Execution history of an invoker.",
+				Description: "Execution history of an invoker。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"invoker_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Invoker ID.",
+							Description: "Invoker ID。",
 						},
 						"invoke_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Execution time.",
+							Description: "执行时间。",
 						},
 						"reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Execution reason.",
+							Description: "Execution reason。",
 						},
 						"invocation_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command execution ID.",
+							Description: "Command execution ID。",
 						},
 						"result": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Trigger result.",
+							Description: "Trigger 结果",
 						},
 					},
 				},
@@ -63,7 +63,7 @@ func DataSourceTencentCloudTatInvokerRecords() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -26,49 +26,49 @@ func ResourceTencentCloudCynosdbResourcePackage() *schema.Resource {
 			"instance_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance Type.",
+				Description: "实例类型。",
 			},
 
 			"package_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Resource package usage region China - common in mainland China, overseas - common in Hong Kong, Macao, Taiwan, and overseas.",
+				Description: "资源包使用地区 中国-中国大陆通用，海外-港澳台、海外通用。",
 			},
 
 			"package_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Resource package type: CCU computing resource package, DISK storage resource package.",
+				Description: "资源包类型：CCU计算资源包、DISK存储资源包。",
 			},
 
 			"package_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Resource package version base basic version, common general version, enterprise enterprise version.",
+				Description: "资源包版本基础基础版、普通通用版、企业企业版。",
 			},
 
 			"package_spec": {
 				Required:    true,
 				Type:        schema.TypeFloat,
-				Description: "Resource package size, calculated in 10000 units; Storage resources: GB.",
+				Description: "资源包大小，以10000个单位计算；存储资源：GB。",
 			},
 
 			"expire_day": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Validity period of resource package, in days.",
+				Description: "资源包有效期，单位为天。",
 			},
 
 			"package_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of purchased resource packs.",
+				Description: "购买的资源包数量。",
 			},
 
 			"package_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Resource Package Name.",
+				Description: "资源包名称。",
 			},
 		},
 	}

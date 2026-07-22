@@ -17,43 +17,43 @@ func DataSourceTencentCloudMysqlInstanceInfo() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID。",
 			},
 
 			"instance_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "instance name.",
+				Description: "实例名称。",
 			},
 
 			"encryption": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Whether to enable encryption, YES is enabled, NO is not enabled.",
+				Description: "是否启用加密，YES 启用，NO 不启用。",
 			},
 
 			"key_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The key ID used for encryption.",
+				Description: "用于加密的密钥 ID。",
 			},
 
 			"key_region": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The region where the key is located.",
+				Description: "密钥所在的区域。",
 			},
 
 			"default_kms_region": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The default region of the KMS service used by the current CDB backend service.",
+				Description: "当前CDB后端服务使用的KMS服务的默认区域。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

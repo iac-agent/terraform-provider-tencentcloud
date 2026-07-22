@@ -19,53 +19,53 @@ func DataSourceTencentCloudWafUserDomains() *schema.Resource {
 			"users_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Domain infos.",
+				Description: "域名 infos。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"appid": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "User appid.",
+							Description: "用户 appid。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name.",
+							Description: "域名 名称",
 						},
 						"domain_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain unique id.",
+							Description: "域名 unique id。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance unique id.",
+							Description: "Instance unique id。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"edition": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance type, sparta-waf represents SAAS WAF, clb-waf represents CLB WAF.",
+							Description: "实例类型，sparta-waf represents SAAS WAF，clb-waf represents CLB WAF。",
 						},
 						"level": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance level infoNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Instance 级别 info注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"write_config": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Switch for accessing log fieldsNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Switch for accessing log fields注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cls": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CLS switch 1: write, 0: do not writeNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "CLS switch 1: write，0: do not write注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -73,7 +73,7 @@ func DataSourceTencentCloudWafUserDomains() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

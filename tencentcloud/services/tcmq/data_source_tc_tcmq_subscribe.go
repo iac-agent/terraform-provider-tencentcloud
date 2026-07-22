@@ -19,64 +19,64 @@ func DataSourceTencentCloudTcmqSubscribe() *schema.Resource {
 			"topic_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Topic name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
+				Description: "Topic 名称，which must be unique in the same topic under the same 账号 in the same 地域 It can contain up to 64 letters，digits，and hyphens and must begin with a letter。",
 			},
 
 			"offset": {
 				Default:     0,
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Starting position of the list of topics to be returned on the current page in case of paginated return. If a value is entered, limit is required. If this parameter is left empty, 0 will be used by default.",
+				Description: "Starting position of the 列表 topics to be returned on the current page in case of paginated return. If a 值 is entered，限制 为必填项. 如果此参数为空，0 will be used by default。",
 			},
 
 			"limit": {
 				Default:     20,
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
+				Description: "数量 topics to be returned per page in case of paginated return. If this parameter is not passed in，20 will be used by default. Maximum 值: 50。",
 			},
 
 			"subscription_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fuzzy search by SubscriptionName.",
+				Description: "Fuzzy search by SubscriptionName。",
 			},
 
 			"subscription_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Set of subscription attributes.",
+				Description: "Set of subscription attributes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"subscription_name": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Subscription name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
+							Description: "Subscription 名称，which must be unique in the same topic under the same 账号 in the same 地域 It can contain up to 64 letters，digits，and hyphens and must begin with a letter。",
 						},
 						"subscription_id": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Subscription ID, which will be used during monitoring data pull.",
+							Description: "Subscription ID，which will be used during monitoring data pull。",
 						},
 						"topic_owner": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Subscription owner APPID.",
+							Description: "Subscription 所有者 APPID。",
 						},
 						"msg_count": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Number of messages to be delivered in the subscription.",
+							Description: "数量 messages to be delivered in the subscription。",
 						},
 						"last_modify_time": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Time when the subscription attribute is last modified. A Unix timestamp accurate down to the millisecond will be returned.",
+							Description: "Time when the subscription attribute is last modified. A Unix 时间戳 accurate down to the millisecond will be returned。",
 						},
 						"create_time": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Subscription creation time. A Unix timestamp accurate down to the millisecond will be returned.",
+							Description: "Subscription 创建时间. A Unix 时间戳 accurate down to the millisecond will be returned。",
 						},
 						"binding_key": {
 							Computed: true,
@@ -84,12 +84,12 @@ func DataSourceTencentCloudTcmqSubscribe() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "Filtering policy for subscribing to and receiving messages.",
+							Description: "Filtering policy for subscribing to and receiving messages。",
 						},
 						"endpoint": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Endpoint that receives notifications, which varies by `protocol`: for HTTP, the endpoint must start with `http://`, and the `host` can be a domain or IP; for `queue`, `queueName` should be entered.",
+							Description: "Endpoint that receives notifications，which varies by `协议`: for HTTP，the endpoint must start with `http://`，and the `主机` can be a 域名 or IP; for `queue`，`queueName` should be entered。",
 						},
 						"filter_tags": {
 							Computed: true,
@@ -97,22 +97,22 @@ func DataSourceTencentCloudTcmqSubscribe() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "Filtering policy selected when a subscription is created:If `filterType` is 1, `filterTag` will be used for filtering. If `filterType` is 2, `bindingKey` will be used for filtering.",
+							Description: "Filtering policy selected when a subscription is created:If `filterType` is 1，`filterTag` will be 用于filtering. If `filterType` is 2，`bindingKey` will be 用于filtering。",
 						},
 						"protocol": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Subscription protocol. Currently, two protocols are supported: HTTP and queue. To use the HTTP protocol, you need to build your own web server to receive messages. With the queue protocol, messages are automatically pushed to a CMQ queue and you can pull them concurrently.",
+							Description: "Subscription 协议 Currently，two protocols are supported: HTTP and queue. To use the HTTP 协议，you need to build your own web server to receive messages. With the queue 协议，messages are automatically pushed to a CMQ queue and you can pull them concurrently。",
 						},
 						"notify_strategy": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "CMQ push server retry policy in case an error occurs while pushing a message to `Endpoint`. Valid values: 1. `BACKOFF_RETRY`: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message; 2. `EXPONENTIAL_DECAY_RETRY`: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: `EXPONENTIAL_DECAY_RETRY`.",
+							Description: "CMQ push server retry policy in case an 错误 occurs while pushing a 消息 to `Endpoint`. 有效值：1. `BACKOFF_RETRY`: backoff retry，which is to retry at a fixed interval，discard the 消息 after a certain 数量 retries，and continue to push the next 消息; 2. `EXPONENTIAL_DECAY_RETRY`: exponential decay retry，which is to retry at an exponentially increasing interval，such as 1s，2s，4s，8s，and so on. As a 消息 can be retained in a topic for one day，failed messages will be discarded at most after one day of retry. 默认值：`EXPONENTIAL_DECAY_RETRY`。",
 						},
 						"notify_content_format": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Push content format. Valid values: 1. `JSON`; 2. `SIMPLIFIED`, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `http`, both options are acceptable, and the default value is `JSON`.",
+							Description: "Push 内容 格式 有效值：1. `JSON`; 2. `SIMPLIFIED`，i.e.，the raw 格式 If `协议` is `queue`，this 值 must be `SIMPLIFIED`. If `协议` is `http`，both options are acceptable，and the 默认值为 `JSON`。",
 						},
 					},
 				},
@@ -121,7 +121,7 @@ func DataSourceTencentCloudTcmqSubscribe() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

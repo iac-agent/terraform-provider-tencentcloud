@@ -28,26 +28,26 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Alarm notice name.",
+				Description: "报警通知名称。",
 			},
 
 			"type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Notice type. Value: Trigger, Recovery, All.",
+				Description: "通知类型。值：触发、恢复、全部。",
 			},
 
 			"notice_receivers": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Notice receivers.",
+				Description: "通知接收者。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"receiver_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Receiver type, Uin or Group.",
+							Description: "接收器类型、Uin 或 Group。",
 						},
 						"receiver_ids": {
 							Type: schema.TypeSet,
@@ -55,7 +55,7 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Required:    true,
-							Description: "Receiver id list.",
+							Description: "接收者 ID 列表。",
 						},
 						"receiver_channels": {
 							Type: schema.TypeSet,
@@ -63,28 +63,28 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Receiver channels, Value: Email, Sms, WeChat, Phone.",
+							Description: "接收渠道，值：邮件、短信、微信、电话。",
 						},
 						"notice_content_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Notice content ID.",
+							Description: "通知内容 ID。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Start time allowed to receive messages.",
+							Description: "允许接收消息的开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "End time allowed to receive messages.",
+							Description: "允许接收消息的结束时间。",
 						},
 						"index": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Index. The input parameter is invalid, but the output parameter is valid.",
+							Description: "指数。输入参数无效，但输出参数有效。",
 						},
 					},
 				},
@@ -93,50 +93,50 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 			"web_callbacks": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Callback info.",
+				Description: "回调信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"callback_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Callback type, Values: Http, WeCom, DingTalk, Lark.",
+							Description: "回调类型，取值：Http、WeCom、钉钉、飞书。",
 						},
 						"url": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Callback url.",
+							Description: "回调网址。",
 						},
 						"web_callback_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Integration configuration ID.",
+							Description: "集成配置 ID。",
 						},
 						"method": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Method, POST or PUT.",
+							Description: "方法、POST 或 PUT。",
 						},
 						"notice_content_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Notice content ID.",
+							Description: "通知内容 ID。",
 						},
 						"remind_type": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Remind type. 0: Do not remind; 1: Specified person; 2: Everyone.",
+							Description: "提醒类型。 0：不提醒； 1：指定人； 2：大家。",
 						},
 						"mobiles": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Telephone list.",
+							Description: "电话清单。",
 						},
 						"user_ids": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "User ID list.",
+							Description: "用户 ID 列表。",
 						},
 						"headers": {
 							Type: schema.TypeSet,
@@ -145,19 +145,19 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 							},
 							Optional:    true,
 							Deprecated:  "This parameter is deprecated. Please use `notice_content_id`.",
-							Description: "Request headers.",
+							Description: "请求标头。",
 						},
 						"body": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Deprecated:  "This parameter is deprecated. Please use `notice_content_id`.",
-							Description: "Request body.",
+							Description: "请求正文。",
 						},
 						"index": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Index. The input parameter is invalid, but the output parameter is valid.",
+							Description: "指数。输入参数无效，但输出参数有效。",
 						},
 					},
 				},
@@ -166,50 +166,50 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 			"jump_domain": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Jump domain. Must start with http:// or https://, cannot end with /.",
+				Description: "跳转域。必须以 http:// 或 https:// 开头，不能以 / 结尾。",
 			},
 
 			"deliver_status": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Deliver log switch. Valid values: 1 (off, default), 2 (on). When set to 2, deliver_config is required.",
+				Description: "交付日志开关。有效值：1（关闭，默认）、2（打开）。当设置为2时，需要deliver_config。",
 			},
 
 			"alarm_shield_status": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Alarm shield status (no-login operation). Valid values: 1 (off), 2 (on, default).",
+				Description: "报警屏蔽状态（无登录操作）。有效值：1（关闭）、2（打开，默认）。",
 			},
 
 			"callback_prioritize": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Callback prioritize. true: use custom callback params from notice content template; false: use params from alarm policy.",
+				Description: "回调优先。 true：使用通知内容模板中的自定义回调参数； false：使用警报策略中的参数。",
 			},
 
 			"deliver_config": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Deliver log configuration. Required when deliver_status is 2.",
+				Description: "下发日志配置。当 Deliver_status 为 2 时需要。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Region of the target log topic. e.g. ap-guangzhou.",
+							Description: "目标日志主题的区域。例如ap-广州。",
 						},
 						"topic_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Target log topic ID.",
+							Description: "目标日志主题ID。",
 						},
 						"scope": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Deliver data scope. 0: all logs (default); 1: only alarm trigger and recovery logs.",
+							Description: "提供数据范围。 0：所有日志（默认）； 1：仅报警触发和恢复日志。",
 						},
 					},
 				},
@@ -218,24 +218,24 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 			"notice_rules": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Notice rules (advanced mode). Mutually exclusive with type/notice_receivers/web_callbacks (simple mode).",
+				Description: "注意规则（高级模式）。与 类型/notice_receivers/web_callbacks 互斥（简单模式）。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Matching rule JSON string.",
+							Description: "匹配规则 JSON 字符串。",
 						},
 						"notice_receivers": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Notice receivers for this rule.",
+							Description: "请通知接收者此规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"receiver_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Receiver type, Uin or Group.",
+										Description: "接收器类型、Uin 或 Group。",
 									},
 									"receiver_ids": {
 										Type:     schema.TypeSet,
@@ -243,7 +243,7 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
-										Description: "Receiver id list.",
+										Description: "接收者 ID 列表。",
 									},
 									"receiver_channels": {
 										Type:     schema.TypeSet,
@@ -251,28 +251,28 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
-										Description: "Receiver channels, Value: Email, Sms, WeChat, Phone.",
+										Description: "接收渠道，值：邮件、短信、微信、电话。",
 									},
 									"notice_content_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Notice content ID.",
+										Description: "通知内容 ID。",
 									},
 									"start_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Start time allowed to receive messages.",
+										Description: "允许接收消息的开始时间。",
 									},
 									"end_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "End time allowed to receive messages.",
+										Description: "允许接收消息的结束时间。",
 									},
 									"index": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Index. The input parameter is invalid, but the output parameter is valid.",
+										Description: "指数。输入参数无效，但输出参数有效。",
 									},
 								},
 							},
@@ -280,69 +280,69 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 						"web_callbacks": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Web callbacks for this rule.",
+							Description: "此规则的 Web 回调。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"callback_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Callback type, Values: Http, WeCom, DingTalk, Lark.",
+										Description: "回调类型，取值：Http、WeCom、钉钉、飞书。",
 									},
 									"url": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Callback url.",
+										Description: "回调网址。",
 									},
 									"web_callback_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Integration configuration ID.",
+										Description: "集成配置 ID。",
 									},
 									"method": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Method, POST or PUT.",
+										Description: "方法、POST 或 PUT。",
 									},
 									"notice_content_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Notice content ID.",
+										Description: "通知内容 ID。",
 									},
 									"remind_type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Remind type. 0: Do not remind; 1: Specified person; 2: Everyone.",
+										Description: "提醒类型。 0：不提醒； 1：指定人； 2：大家。",
 									},
 									"mobiles": {
 										Type:        schema.TypeSet,
 										Optional:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Telephone list.",
+										Description: "电话清单。",
 									},
 									"user_ids": {
 										Type:        schema.TypeSet,
 										Optional:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "User ID list.",
+										Description: "用户 ID 列表。",
 									},
 									"headers": {
 										Type:        schema.TypeSet,
 										Optional:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
 										Deprecated:  "This parameter is deprecated. Please use `notice_content_id`.",
-										Description: "Request headers.",
+										Description: "请求标头。",
 									},
 									"body": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Deprecated:  "This parameter is deprecated. Please use `notice_content_id`.",
-										Description: "Request body.",
+										Description: "请求正文。",
 									},
 									"index": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Index. The input parameter is invalid, but the output parameter is valid.",
+										Description: "指数。输入参数无效，但输出参数有效。",
 									},
 								},
 							},
@@ -350,35 +350,35 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 						"escalate": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Alarm escalate switch. true: enable; false: disable (default).",
+							Description: "报警升级开关。 true：启用； false：禁用（默认）。",
 						},
 						"type": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Alarm escalate condition. 1: unclaimed and unresolved (default); 2: unresolved.",
+							Description: "警报升级情况。 1：无人认领且未解决（默认）； 2：未解决。",
 						},
 						"interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Alarm escalate interval in minutes. Range: [1, 14400].",
+							Description: "警报升级间隔（以分钟为单位）。范围：[1，14400]。",
 						},
 						"escalate_notices": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    5,
-							Description: "Alarm escalate notice chain, ordered from level 1 to level 5 (max). Each element represents the next escalation level.",
+							Description: "警报升级通知链，从 1 级到 5 级（最高）排序。每个元素代表下一个升级级别。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"notice_receivers": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Notice receivers for this escalation level.",
+										Description: "通知此升级级别的接收者。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"receiver_type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Receiver type, Uin or Group.",
+													Description: "接收器类型、Uin 或 Group。",
 												},
 												"receiver_ids": {
 													Type:     schema.TypeSet,
@@ -386,7 +386,7 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 													Elem: &schema.Schema{
 														Type: schema.TypeInt,
 													},
-													Description: "Receiver id list.",
+													Description: "接收者 ID 列表。",
 												},
 												"receiver_channels": {
 													Type:     schema.TypeSet,
@@ -394,28 +394,28 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
-													Description: "Receiver channels, Value: Email, Sms, WeChat, Phone.",
+													Description: "接收渠道，值：邮件、短信、微信、电话。",
 												},
 												"notice_content_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Notice content ID.",
+													Description: "通知内容 ID。",
 												},
 												"start_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Start time allowed to receive messages.",
+													Description: "允许接收消息的开始时间。",
 												},
 												"end_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "End time allowed to receive messages.",
+													Description: "允许接收消息的结束时间。",
 												},
 												"index": {
 													Type:        schema.TypeInt,
 													Optional:    true,
 													Computed:    true,
-													Description: "Index. The input parameter is invalid, but the output parameter is valid.",
+													Description: "指数。输入参数无效，但输出参数有效。",
 												},
 											},
 										},
@@ -423,69 +423,69 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 									"web_callbacks": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Web callbacks for this escalation level.",
+										Description: "此升级级别的 Web 回调。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"callback_type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Callback type, Values: Http, WeCom, DingTalk, Lark.",
+													Description: "回调类型，取值：Http、WeCom、钉钉、飞书。",
 												},
 												"url": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Callback url.",
+													Description: "回调网址。",
 												},
 												"web_callback_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Integration configuration ID.",
+													Description: "集成配置 ID。",
 												},
 												"method": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Method, POST or PUT.",
+													Description: "方法、POST 或 PUT。",
 												},
 												"notice_content_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Notice content ID.",
+													Description: "通知内容 ID。",
 												},
 												"remind_type": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Remind type. 0: Do not remind; 1: Specified person; 2: Everyone.",
+													Description: "提醒类型。 0：不提醒； 1：指定人； 2：大家。",
 												},
 												"mobiles": {
 													Type:        schema.TypeSet,
 													Optional:    true,
 													Elem:        &schema.Schema{Type: schema.TypeString},
-													Description: "Telephone list.",
+													Description: "电话清单。",
 												},
 												"user_ids": {
 													Type:        schema.TypeSet,
 													Optional:    true,
 													Elem:        &schema.Schema{Type: schema.TypeString},
-													Description: "User ID list.",
+													Description: "用户 ID 列表。",
 												},
 												"headers": {
 													Type:        schema.TypeSet,
 													Optional:    true,
 													Elem:        &schema.Schema{Type: schema.TypeString},
 													Deprecated:  "This parameter is deprecated. Please use `notice_content_id`.",
-													Description: "Request headers.",
+													Description: "请求标头。",
 												},
 												"body": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Deprecated:  "This parameter is deprecated. Please use `notice_content_id`.",
-													Description: "Request body.",
+													Description: "请求正文。",
 												},
 												"index": {
 													Type:        schema.TypeInt,
 													Optional:    true,
 													Computed:    true,
-													Description: "Index. The input parameter is invalid, but the output parameter is valid.",
+													Description: "指数。输入参数无效，但输出参数有效。",
 												},
 											},
 										},
@@ -493,17 +493,17 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 									"escalate": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether to continue escalating from this level. true: enable; false: disable.",
+										Description: "是否从此级别继续升级。 true：启用； false：禁用。",
 									},
 									"type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Escalate condition. 1: unclaimed and unresolved (default); 2: unresolved.",
+										Description: "升级情况。 1：无人认领且未解决（默认）； 2：未解决。",
 									},
 									"interval": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Escalate interval in minutes. Range: [1, 14400].",
+										Description: "以分钟为单位升级间隔。范围：[1，14400]。",
 									},
 								},
 							},
@@ -515,7 +515,7 @@ func ResourceTencentCloudClsAlarmNotice() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表。",
 			},
 		},
 	}

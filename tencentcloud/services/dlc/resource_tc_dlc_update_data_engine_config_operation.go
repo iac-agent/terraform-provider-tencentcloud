@@ -23,14 +23,14 @@ func ResourceTencentCloudDlcUpdateDataEngineConfigOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Engine unique id.",
+				Description: "Engine unique id。",
 			},
 
 			"data_engine_config_command": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Engine configuration command, supports UpdateSparkSQLLakefsPath (update native table configuration), UpdateSparkSQLResultPath (update result path configuration).",
+				Description: "Engine configuration command，supports UpdateSparkSQLLakefsPath (update native table configuration)，UpdateSparkSQLResultPath (update 结果 路径 configuration)。",
 			},
 		},
 	}

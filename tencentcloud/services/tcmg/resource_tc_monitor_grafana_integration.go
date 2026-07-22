@@ -27,34 +27,34 @@ func ResourceTencentCloudMonitorGrafanaIntegration() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "grafana instance id.",
+				Description: "grafana 实例 ID",
 			},
 
 			"integration_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "integration id.",
+				Description: "integration id。",
 			},
 
 			"kind": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "integration json schema kind.",
+				Description: "integration json schema kind。",
 			},
 
 			"content": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "generated json string of given integration json schema.",
+				Description: "generated json string of given integration json schema。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "integration desc.",
+				Description: "integration desc。",
 			},
 		},
 	}

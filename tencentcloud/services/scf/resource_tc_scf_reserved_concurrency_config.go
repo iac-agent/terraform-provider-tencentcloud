@@ -28,14 +28,14 @@ func ResourceTencentCloudScfReservedConcurrencyConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Specifies the function of which you want to configure the reserved quota.",
+				Description: "指定function of which you want to configure the reserved quota。",
 			},
 
 			"reserved_concurrency_mem": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Reserved memory quota of the function. Note: the upper limit for the total reserved quota of the function is the user's total concurrency memory minus 12800.",
+				Description: "Reserved memory quota of the function. Note: the upper 限制 for the total reserved quota of the function is the 用户's total 并发 memory minus 12800。",
 			},
 
 			"namespace": {
@@ -43,7 +43,7 @@ func ResourceTencentCloudScfReservedConcurrencyConfig() *schema.Resource {
 				ForceNew:    true,
 				Default:     "default",
 				Type:        schema.TypeString,
-				Description: "Function namespace. Default value: default.",
+				Description: "Function namespace. 默认值：default。",
 			},
 		},
 	}

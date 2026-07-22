@@ -26,30 +26,30 @@ func ResourceTencentCloudMongodbStandbyInstance() *schema.Resource {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Required:    true,
-			Description: "Indicates the region of main instance.",
+			Description: "表示region of main instance。",
 		},
 		"father_instance_id": {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Required:    true,
-			Description: "Indicates the main instance ID of standby instances.",
+			Description: "表示main instance ID standby instances。",
 		},
 		"available_zone": {
 			Type:        schema.TypeString,
 			Required:    true,
 			ForceNew:    true,
-			Description: "The available zone of the Mongodb standby instance. NOTE: must not be same with father instance's.",
+			Description: "The available 可用区 of the Mongodb standby instance. NOTE: must not be same with father instance's。",
 		},
 		// computed from father instance
 		"engine_version": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Version of the standby Mongodb instance and must be same as the version of main instance.",
+			Description: "版本 of the standby Mongodb instance and must be same as the 版本 of main instance。",
 		},
 		"machine_type": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Type of standby Mongodb instance and must be same as the type of main instance.",
+			Description: "类型 standby Mongodb instance and must be same as 类型 main instance。",
 		},
 	}
 	basic := TencentMongodbBasicInfo()

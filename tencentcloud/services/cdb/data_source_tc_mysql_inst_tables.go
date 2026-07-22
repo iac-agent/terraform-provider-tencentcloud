@@ -18,19 +18,19 @@ func DataSourceTencentCloudMysqlInstTables() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The instance ID, in the format: cdb-c1nl9rpv, is the same as the instance ID displayed on the cloud database console page.",
+				Description: "实例ID与云数据库控制台页面显示的实例ID一致，格式为：cdb-c1nl9rpv。",
 			},
 
 			"database": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The name of the database.",
+				Description: "数据库的名称。",
 			},
 
 			"table_regexp": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Match the regular expression of the database table name, the rules are the same as MySQL official website.",
+				Description: "匹配数据库表名的正则表达式，规则与MySQL官网相同。",
 			},
 
 			"items": {
@@ -39,13 +39,13 @@ func DataSourceTencentCloudMysqlInstTables() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The returned database table information.",
+				Description: "返回的数据库表信息。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

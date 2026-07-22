@@ -25,14 +25,14 @@ func ResourceTencentCloudAsScaleOutInstances() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Scaling group ID.",
+				Description: "Scaling 组 ID",
 			},
 
 			"scale_out_number": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of instances to be added.",
+				Description: "数量 instances to be added。",
 			},
 		},
 	}

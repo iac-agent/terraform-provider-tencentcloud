@@ -19,36 +19,36 @@ func DataSourceTencentCloudSslDescribeHostLighthouseInstanceList() *schema.Resou
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID to be deployed.",
+				Description: "证书 ID to be deployed。",
 			},
 
 			"resource_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Deploy resource type Lighthous.",
+				Description: "Deploy 资源类型 Lighthous。",
 			},
 
 			"is_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to query the cache, 1: Yes; 0: No, the default is the query cache, the cache is half an hour.",
+				Description: "是否query the cache，1: Yes; 0: No，the 默认为 the query cache，the cache is half an hour。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "List of filter parameters.",
+				Description: "列表 filter parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"filter_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter key.",
+							Description: "过滤参数键",
 						},
 						"filter_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter value.",
+							Description: "过滤参数值",
 						},
 					},
 				},
@@ -57,18 +57,18 @@ func DataSourceTencentCloudSslDescribeHostLighthouseInstanceList() *schema.Resou
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Lighthouse instance listNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Lighthouse instance listNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Example name.",
+							Description: "Example 名称",
 						},
 						"ip": {
 							Type: schema.TypeSet,
@@ -76,7 +76,7 @@ func DataSourceTencentCloudSslDescribeHostLighthouseInstanceList() *schema.Resou
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "IP address.",
+							Description: "IP 地址",
 						},
 						"domain": {
 							Type: schema.TypeSet,
@@ -84,7 +84,7 @@ func DataSourceTencentCloudSslDescribeHostLighthouseInstanceList() *schema.Resou
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Optional domain name.",
+							Description: "可选 域名 名称",
 						},
 					},
 				},
@@ -93,7 +93,7 @@ func DataSourceTencentCloudSslDescribeHostLighthouseInstanceList() *schema.Resou
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

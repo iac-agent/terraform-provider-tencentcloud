@@ -26,19 +26,19 @@ func ResourceTencentCloudSecurityGroupLiteRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the security group.",
+				Description: "ID security group。",
 			},
 			"ingress": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Ingress rules set. A rule must match the following format: [action]#[source]#[port]#[protocol]. The available value of 'action' is `ACCEPT` and `DROP`. The 'source' can be an IP address network, segment, security group ID and Address Template ID. The 'port' valid format is `80`, `80,443`, `80-90` or `ALL`. The available value of 'protocol' is `TCP`, `UDP`, `ICMP`, `ALL` and `ppm(g?)-xxxxxxxx`. When 'protocol' is `ICMP` or `ALL`, the 'port' must be `ALL`.",
+				Description: "Ingress rules set. A rule must match the following 格式: [操作]#[来源]#[端口]#[协议]. The available 值 of '操作' is `ACCEPT` and `DROP`. The '来源' can be an IP 地址 network，segment，security 组 ID and 地址 模板 ID The '端口' valid 格式 is `80`，`80,443`，`80-90` or `ALL`. The available 值 of '协议' is `TCP`，`UDP`，`ICMP`，`ALL` and `ppm(g?)-xxxxxxxx`. When '协议' is `ICMP` or `ALL`，the '端口' must be `ALL`。",
 			},
 			"egress": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Egress rules set. A rule must match the following format: [action]#[source]#[port]#[protocol]. The available value of 'action' is `ACCEPT` and `DROP`. The 'source' can be an IP address network, segment, security group ID and Address Template ID. The 'port' valid format is `80`, `80,443`, `80-90` or `ALL`. The available value of 'protocol' is `TCP`, `UDP`, `ICMP`, `ALL` and `ppm(g?)-xxxxxxxx`. When 'protocol' is `ICMP` or `ALL`, the 'port' must be `ALL`.",
+				Description: "Egress rules set. A rule must match the following 格式: [操作]#[来源]#[端口]#[协议]. The available 值 of '操作' is `ACCEPT` and `DROP`. The '来源' can be an IP 地址 network，segment，security 组 ID and 地址 模板 ID The '端口' valid 格式 is `80`，`80,443`，`80-90` or `ALL`. The available 值 of '协议' is `TCP`，`UDP`，`ICMP`，`ALL` and `ppm(g?)-xxxxxxxx`. When '协议' is `ICMP` or `ALL`，the '端口' must be `ALL`。",
 			},
 		},
 	}

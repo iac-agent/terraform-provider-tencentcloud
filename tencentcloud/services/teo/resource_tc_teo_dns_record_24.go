@@ -28,13 +28,13 @@ func ResourceTencentCloudTeoDnsRecord24() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id.",
+				Description: "可用区 ID",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "DNS record name. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.",
+				Description: "DNS record 名称 if the 域名 名称 is in chinese，korean，or japanese，it needs to be converted to punycode before input。",
 			},
 
 			"type": {
@@ -55,41 +55,41 @@ func ResourceTencentCloudTeoDnsRecord24() *schema.Resource {
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "DNS record content. fill in the corresponding content according to the type value. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.",
+				Description: "DNS record 内容 fill in the corresponding 内容 according to the 类型 值 if the 域名 名称 is in chinese，korean，or japanese，it needs to be converted to punycode before input。",
 			},
 
 			"location": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Optional:    true,
-				Description: "DNS record resolution route. if not specified, the default is DEFAULT, which means the default resolution route and is effective in all regions.\n\n- resolution route configuration is only applicable when type (dns record type) is A, AAAA, or CNAME.\n- resolution route configuration is only applicable to standard version and enterprise edition packages. for valid values, please refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).",
+				Description: "DNS record resolution route. 如果未指定，the 默认为 DEFAULT，which means the default resolution route and is effective in all regions.\n\n- resolution route configuration is only applicable when 类型 (dns record 类型) is A，AAAA，or CNAME.\n- resolution route configuration is only applicable to standard 版本 and enterprise edition packages. for valid values，please refer to: [resolution routes and corresponding 代码 enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1)。",
 			},
 
 			"ttl": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Cache time. users can specify a value range of 60-86400. the smaller the value, the faster the modification records will take effect in all regions. default value: 300. unit: seconds.",
+				Description: "Cache time. users can 指定a 值 range of 60-86400. the smaller the 值，the faster the modification records will take effect in all regions. 默认值：300. unit: seconds。",
 			},
 
 			"weight": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "DNS record weight. users can specify a value range of -1 to 100. a value of 0 means no resolution. if not specified, the default is -1, which means no weight is set. weight configuration is only applicable when type (dns record type) is A, AAAA, or CNAME. note: for the same subdomain, different dns records with the same resolution route should either all have weights set or none have weights set.",
+				Description: "DNS record 权重 users can 指定a 值 range of -1 to 100. a 值 of 0 means no resolution. 如果未指定，the 默认为 -1，which means no 权重 is set. 权重 configuration is only applicable when 类型 (dns record 类型) is A，AAAA，or CNAME. note: for the same subdomain，different dns records with the same resolution route should either all have weights set or none have weights set。",
 			},
 
 			"priority": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "MX record priority, which takes effect only when type (dns record type) is MX. the smaller the value, the higher the priority. users can specify a value range of 0-50. the default value is 0 if not specified.",
+				Description: "MX record 优先级，which takes effect only when 类型 (dns record 类型) is MX. the smaller the 值，the higher the 优先级 users can 指定a 值 range of 0-50. the 默认值为 0 如果未指定。",
 			},
 
 			"record_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "DNS record id.",
+				Description: "DNS record id。",
 			},
 
 			"status": {
@@ -103,35 +103,35 @@ func ResourceTencentCloudTeoDnsRecord24() *schema.Resource {
 			"created_on": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "创建时间。",
 			},
 
 			"modified_on": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Modify time.",
+				Description: "修改时间。",
 			},
 
 			"dns_records": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "DNS record list.",
+				Description: "DNS record list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Zone id. note: ZoneId is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.",
+							Description: "可用区 ID note: ZoneId is only used as an output parameter，and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed，it will be ignored。",
 						},
 						"record_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record id.",
+							Description: "DNS record id。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record name.",
+							Description: "DNS record 名称",
 						},
 						"type": {
 							Type:     schema.TypeString,
@@ -149,42 +149,42 @@ func ResourceTencentCloudTeoDnsRecord24() *schema.Resource {
 						"location": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record resolution route. if not specified, the default is DEFAULT, which means the default resolution route and is effective in all regions. resolution route configuration is only applicable when type (dns record type) is A, AAAA, or CNAME. for valid values, please refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).",
+							Description: "DNS record resolution route. 如果未指定，the 默认为 DEFAULT，which means the default resolution route and is effective in all regions. resolution route configuration is only applicable when 类型 (dns record 类型) is A，AAAA，or CNAME. for valid values，please refer to: [resolution routes and corresponding 代码 enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1)。",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record content. fill in the corresponding content according to the type value.",
+							Description: "DNS record 内容 fill in the corresponding 内容 according to the 类型 值",
 						},
 						"ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cache time. value range 60-86400. the smaller the value, the faster the modification records will take effect in all regions. unit: seconds.",
+							Description: "Cache time. 值 range 60-86400. the smaller the 值，the faster the modification records will take effect in all regions. unit: seconds。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "DNS record weight. value range -1 to 100. -1 means no weight is assigned, 0 means no resolution. weight configuration is only applicable when type (dns record type) is A, AAAA, or CNAME.",
+							Description: "DNS record 权重 值 range -1 to 100. -1 means no 权重 is assigned，0 means no resolution. 权重 configuration is only applicable when 类型 (dns record 类型) is A，AAAA，or CNAME。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "MX record priority. value range 0-50. the smaller the value, the higher the priority.",
+							Description: "MX record 优先级 值 range 0-50. the smaller the 值，the higher the 优先级",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record resolution status. valid values: enable: has taken effect; disable: has been disabled. note: Status is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.",
+							Description: "DNS record resolution 状态 有效值：enable: has taken effect; disable: has been 已禁用 note: 状态 is only used as an output parameter，and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed，it will be ignored。",
 						},
 						"created_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time. note: CreatedOn is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.",
+							Description: "创建时间. note: CreatedOn is only used as an output parameter，and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed，it will be ignored。",
 						},
 						"modified_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Modify time. note: ModifiedOn is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.",
+							Description: "修改时间. note: ModifiedOn is only used as an output parameter，and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed，it will be ignored。",
 						},
 					},
 				},

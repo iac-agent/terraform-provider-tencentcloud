@@ -22,79 +22,79 @@ func DataSourceTencentCloudLighthouseInstanceTrafficPackage() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Instance ID list.",
+				Description: "实例 ID list。",
 			},
 
 			"offset": {
 				Optional:    true,
 				Default:     0,
 				Type:        schema.TypeInt,
-				Description: "Offset. Default value is 0.",
+				Description: "偏移量 默认值为 0。",
 			},
 
 			"limit": {
 				Optional:    true,
 				Default:     20,
 				Type:        schema.TypeInt,
-				Description: "Number of returned results. Default value is 20. Maximum value is 100.",
+				Description: "数量 returned results. 默认值为 20. Maximum 值 is 100。",
 			},
 
 			"instance_traffic_package_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of details of instance traffic packages.",
+				Description: "列表 details of instance traffic packages。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"traffic_package_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of traffic package details.",
+							Description: "列表 traffic package details。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"traffic_package_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Traffic packet ID.",
+										Description: "Traffic packet ID。",
 									},
 									"traffic_used": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Traffic has been used during the effective period of the traffic packet, in bytes.",
+										Description: "Traffic has been used during the effective 周期 of the traffic packet，in bytes。",
 									},
 									"traffic_package_total": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The total traffic in bytes during the effective period of the traffic packet.",
+										Description: "The total traffic in bytes during the effective 周期 of the traffic packet。",
 									},
 									"traffic_package_remaining": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The remaining traffic during the effective period of the traffic packet, in bytes.",
+										Description: "The remaining traffic during the effective 周期 of the traffic packet，in bytes。",
 									},
 									"traffic_overflow": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The amount of traffic that exceeds the quota of the traffic packet during the effective period of the traffic packet, in bytes.",
+										Description: "The amount of traffic that exceeds the quota of the traffic packet during the effective 周期 of the traffic packet，in bytes。",
 									},
 									"start_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The start time of the effective cycle of the traffic packet. Expressed according to the ISO8601 standard, and using UTC time. The format is YYYY-MM-DDThh:mm:ssZ.",
+										Description: "The 开始时间 of the effective cycle of the traffic packet. Expressed according to the ISO8601 standard，and using UTC time. The 格式 is YYYY-MM-DDThh:mm:ssZ。",
 									},
 									"end_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The end time of the effective period of the traffic packet. Expressed according to the ISO8601 standard, and using UTC time. The format is YYYY-MM-DDThh:mm:ssZ.",
+										Description: "The 结束时间 of the effective 周期 of the traffic packet. Expressed according to the ISO8601 standard，and using UTC time. The 格式 is YYYY-MM-DDThh:mm:ssZ。",
 									},
 									"deadline": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The expiration time of the traffic package. Expressed according to the ISO8601 standard, and using UTC time. The format is YYYY-MM-DDThh:mm:ssZ..",
+										Description: "The 过期时间 of the traffic package. Expressed according to the ISO8601 standard，and using UTC time. The 格式 is YYYY-MM-DDThh:mm:ssZ.。",
 									},
 									"status": {
 										Type:     schema.TypeString,
@@ -113,7 +113,7 @@ func DataSourceTencentCloudLighthouseInstanceTrafficPackage() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

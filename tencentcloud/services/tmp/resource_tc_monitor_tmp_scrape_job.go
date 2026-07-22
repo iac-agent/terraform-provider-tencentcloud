@@ -29,19 +29,19 @@ func ResourceTencentCloudMonitorTmpScrapeJob() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"agent_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Agent id.",
+				Description: "Agent id。",
 			},
 
 			"config": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Job content.",
+				Description: "Job 内容",
 			},
 		},
 	}

@@ -24,33 +24,33 @@ func ResourceTencentCloudMysqlRoInstanceIp() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Read-only instance ID, in the format: cdbro-3i70uj0k, which is the same as the read-only instance ID displayed on the cloud database console page.",
+				Description: "只读实例ID，格式为：cdbro-3i70uj0k，与云数据库控制台页面显示的只读实例ID相同。",
 			},
 
 			"uniq_subnet_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Subnet descriptor, for example: subnet-1typ0s7d.",
+				Description: "子网描述符，例如：subnet-1typ0s7d。",
 			},
 
 			"uniq_vpc_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "vpc descriptor, for example: vpc-a23yt67j, if this field is passed, UniqSubnetId must be passed.",
+				Description: "vpc描述符，例如：vpc-a23yt67j，如果传递该字段，则必须传递UniqSubnetId。",
 			},
 
 			"ro_vip": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Intranet IP address of the read-only instance.",
+				Description: "只读实例的内网IP地址。",
 			},
 
 			"ro_vport": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Intranet port number of the read-only instance.",
+				Description: "只读实例的内网端口号。",
 			},
 		},
 	}

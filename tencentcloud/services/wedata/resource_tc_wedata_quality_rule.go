@@ -30,83 +30,83 @@ func ResourceTencentCloudWedataQualityRule() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 
 			"create_rule_scene": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Rule creation scene. Valid values: `1` (single table multiple rules). Other business scenarios are not currently supported.",
+				Description: "Rule creation scene. 有效值：`1` (single table multiple rules). Other business scenarios are not currently supported。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule name.",
+				Description: "Rule 名称",
 			},
 			"type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Rule type. Valid values: `1` (system template), `2` (custom template), `3` (custom SQL).",
+				Description: "Rule 类型 有效值：`1` (system template)，`2` (custom template)，`3` (custom SQL)。",
 			},
 			"datasource_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Data source ID.",
+				Description: "数据源 ID",
 			},
 			"database_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Database name.",
+				Description: "Database 名称",
 			},
 			"compare_rule": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Alarm trigger condition.",
+				Description: "Alarm trigger condition。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Comparison condition list.",
+							Description: "Comparison condition list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"compare_type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Comparison type (required). Valid values: `1` (fixed value), `2` (fluctuation value), `3` (numerical range comparison), `4` (enumeration range comparison), `5` (no comparison), `6` (field data correlation), `7` (fairness).",
+										Description: "比较类型 (必填). 有效值：`1` (fixed 值)，`2` (fluctuation 值)，`3` (numerical range comparison)，`4` (enumeration range comparison)，`5` (no comparison)，`6` (field data correlation)，`7` (fairness)。",
 									},
 									"operator": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Comparison operator type (conditionally required). Required when CompareType belongs to {1,2,6,7}. Valid values: `<`, `<=`, `==`, `=>`, `>`, `!=`, `IRLCRO` (within interval, left closed right open), `IRLORC` (within interval, left open right closed), `IRLCRC` (within interval, left closed right closed), `IRLORO` (within interval, left open right open), `NRLCRO` (not within interval, left closed right open), `NRLORC` (not within interval, left open right closed), `NRLCRC` (not within interval, left closed right closed), `NRLORO` (not within interval, left open right open).",
+										Description: "比较运算符 类型 (conditionally 必填). 必填 when CompareType belongs to {1,2,6,7}. 有效值：`<`，`<=`，`==`，`=>`，`>`，`!=`，`IRLCRO` (within interval，left closed right open)，`IRLORC` (within interval，left open right closed)，`IRLCRC` (within interval，left closed right closed)，`IRLORO` (within interval，left open right open)，`NRLCRO` (not within interval，left closed right open)，`NRLORC` (not within interval，left open right closed)，`NRLCRC` (not within interval，left closed right closed)，`NRLORO` (not within interval，left open right open)。",
 									},
 									"value_compute_type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Quality statistics value type (conditionally required). Required when CompareType belongs to {2,3,7}. When compareType = 2 (fluctuation value): `1` = absolute value (ABS), `2` = ascending (ASCEND), `3` = descending (DESCEND). When compareType = 3 (numerical range): `4` = within range (WITH_IN_RANGE), `5` = out of range (OUT_OF_RANGE). When compareType = 7 (fairness): `6` = fairness rate (FAIRNESS_RATE), `7` = fairness gap (FAIRNESS_GAP).",
+										Description: "Quality statistics 值 类型 (conditionally 必填). 必填 when CompareType belongs to {2,3,7}. When compareType = 2 (fluctuation 值): `1` = absolute 值 (ABS)，`2` = ascending (ASCEND)，`3` = descending (DESCEND). When compareType = 3 (numerical range): `4` = within range (WITH_IN_RANGE)，`5` = out of range (OUT_OF_RANGE). When compareType = 7 (fairness): `6` = fairness rate (FAIRNESS_RATE)，`7` = fairness gap (FAIRNESS_GAP)。",
 									},
 									"value_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Comparison threshold list (required).",
+										Description: "Comparison threshold list (必填)。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"value_type": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Threshold type (required). Valid values: `1` (low threshold), `2` (high threshold), `3` (normal threshold), `4` (enumeration value).",
+													Description: "Threshold 类型 (必填). 有效值：`1` (low threshold)，`2` (high threshold)，`3` (normal threshold)，`4` (enumeration 值)。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Threshold value (required).",
+													Description: "Threshold 值 (必填)。",
 												},
 											},
 										},
@@ -117,12 +117,12 @@ func ResourceTencentCloudWedataQualityRule() *schema.Resource {
 						"cycle_step": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Periodic template default cycle in seconds.",
+							Description: "Periodic template default cycle （秒）。",
 						},
 						"compute_expression": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "`o` represents OR, `a` represents AND, numbers represent items index.",
+							Description: "`o` represents OR，`a` represents AND，numbers represent items 索引",
 						},
 					},
 				},
@@ -130,12 +130,12 @@ func ResourceTencentCloudWedataQualityRule() *schema.Resource {
 			"alarm_level": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Alarm trigger level. Valid values: `1` (low), `2` (medium), `3` (high).",
+				Description: "Alarm trigger 级别 有效值：`1` (low)，`2` (medium)，`3` (high)。",
 			},
 			"source_engine_types": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Supported execution engine list for this rule. Valid values: `1` (MYSQL), `2` (HIVE), `4` (SPARK), `8` (LIVY), `16` (DLC), `32` (GBASE), `64` (TCHouse-P), `128` (DORIS), `256` (TCHouse-D), `512` (EMR_STARROCKS), `1024` (TCHouse-X).",
+				Description: "Supported execution engine list for this rule. 有效值：`1` (MYSQL)，`2` (HIVE)，`4` (SPARK)，`8` (LIVY)，`16` (DLC)，`32` (GBASE)，`64` (TCHouse-P)，`128` (DORIS)，`256` (TCHouse-D)，`512` (EMR_STARROCKS)，`1024` (TCHouse-X)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -143,134 +143,134 @@ func ResourceTencentCloudWedataQualityRule() *schema.Resource {
 			"table_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Table name. Either TableId or TableName must be provided.",
+				Description: "Table 名称 Either TableId or TableName must be provided。",
 			},
 			"rule_template_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Rule template ID. Required when Type is not equal to 3 (custom SQL).",
+				Description: "Rule 模板 ID 必填 when 类型 is not equal to 3 (custom SQL)。",
 			},
 			"quality_dim": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Quality dimension of the rule. Required when Type=3 (custom SQL). Valid values: `1` (accuracy), `2` (uniqueness), `3` (completeness), `4` (consistency), `5` (timeliness), `6` (validity).",
+				Description: "Quality dimension of the rule. 必填 when 类型=3 (custom SQL). 有效值：`1` (accuracy)，`2` (uniqueness)，`3` (completeness)，`4` (consistency)，`5` (timeliness)，`6` (validity)。",
 			},
 			"rule_group_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Rule group ID.",
+				Description: "Rule 组 ID",
 			},
 			"table_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Data table ID. Either TableId or TableName must be provided.",
+				Description: "Data table ID. Either TableId or TableName must be provided。",
 			},
 			"source_object_data_type_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Source data object (table, field, etc.) detailed type. Required when Type=1 (system template). For table corresponds to fixed value `table` (template is table-level). For field corresponds to field type: int, string, etc. (template is field-level).",
+				Description: "来源 data object (table，field，etc.) detailed 类型 必填 when 类型=1 (system template). For table corresponds to fixed 值 `table` (template is table-级别). For field corresponds to field 类型: int，string，etc. (template is field-级别)。",
 			},
 			"source_object_value": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Source data object (table, field, etc.) name. Required when Type=1 (system template).",
+				Description: "来源 data object (table，field，etc.) 名称 必填 when 类型=1 (system template)。",
 			},
 			"condition_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Detection range. Required when Type=1 (system template) or 2 (custom template). Valid values: `1` (full table), `2` (conditional scan). Note: When CompareType is 2 (fluctuation value) or using user-defined template containing filter condition ${FILTER}, detection range must be 2 (conditional scan).",
+				Description: "Detection range. 必填 when 类型=1 (system template) or 2 (custom template). 有效值：`1` (full table)，`2` (conditional scan). Note: When CompareType is 2 (fluctuation 值) or using 用户-defined template containing filter condition ${FILTER}，detection range must be 2 (conditional scan)。",
 			},
 			"condition_expression": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Conditional scan WHERE condition expression. Required when ConditionType=2 (conditional scan).",
+				Description: "Conditional scan WHERE condition expression. 必填 when ConditionType=2 (conditional scan)。",
 			},
 			"custom_sql": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom SQL. Required when Type=3 (custom SQL).",
+				Description: "Custom SQL. 必填 when 类型=3 (custom SQL)。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule description.",
+				Description: "Rule 描述",
 			},
 			"database_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Database ID.",
+				Description: "Database ID。",
 			},
 			"target_database_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target database ID.",
+				Description: "Target database ID。",
 			},
 			"target_table_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target table ID.",
+				Description: "Target table ID。",
 			},
 			"target_condition_expr": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target filter condition expression.",
+				Description: "Target filter condition expression。",
 			},
 			"rel_condition_expr": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Source field and target field association condition ON expression. Required only for field data correlation rules (ruleTemplate qualityDim=4 (consistency) and subQualityDim=3 (field data correlation)). Example: sourceTable.model_id=targetTable.model_id.",
+				Description: "来源 field and target field association condition ON expression. 必填 only for field data correlation rules (ruleTemplate qualityDim=4 (consistency) and subQualityDim=3 (field data correlation)). Example: sourceTable.model_id=targetTable.model_id。",
 			},
 			"field_config": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Custom template SQL expression field replacement parameters. Required when Type=2 (custom template).",
+				Description: "Custom template SQL expression field replacement parameters. 必填 when 类型=2 (custom template)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"where_config": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "WHERE variables.",
+							Description: "WHERE variables。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"field_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Field key.",
+										Description: "Field 键",
 									},
 									"field_value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Field value.",
+										Description: "Field 值",
 									},
 									"field_data_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Field data type.",
+										Description: "Field data 类型",
 									},
 									"value_config": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Field value variable information.",
+										Description: "Field 值 variable information。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"field_key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Field value key.",
+													Description: "Field 值 键",
 												},
 												"field_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Field value.",
+													Description: "Field 值",
 												},
 												"field_data_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Field data type.",
+													Description: "Field data 类型",
 												},
 											},
 										},
@@ -281,76 +281,76 @@ func ResourceTencentCloudWedataQualityRule() *schema.Resource {
 						"table_config": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Database and table variables.",
+							Description: "Database and table variables。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Database ID.",
+										Description: "Database ID。",
 									},
 									"database_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Database name.",
+										Description: "Database 名称",
 									},
 									"table_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Table ID.",
+										Description: "Table ID。",
 									},
 									"table_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Table name.",
+										Description: "Table 名称",
 									},
 									"table_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Table key.",
+										Description: "Table 键",
 									},
 									"field_config": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Field variables.",
+										Description: "Field variables。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"field_key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Field key.",
+													Description: "Field 键",
 												},
 												"field_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Field value.",
+													Description: "Field 值",
 												},
 												"field_data_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Field data type.",
+													Description: "Field data 类型",
 												},
 												"value_config": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Field value variable information.",
+													Description: "Field 值 variable information。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"field_key": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Field value key.",
+																Description: "Field 值 键",
 															},
 															"field_value": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Field value.",
+																Description: "Field 值",
 															},
 															"field_data_type": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Field data type.",
+																Description: "Field data 类型",
 															},
 														},
 													},
@@ -367,48 +367,48 @@ func ResourceTencentCloudWedataQualityRule() *schema.Resource {
 			"target_object_value": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target field name CITY.",
+				Description: "Target field 名称 CITY。",
 			},
 			"index": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Index to distinguish different data when adding.",
+				Description: "索引 to distinguish different data when adding。",
 			},
 			"schema_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Schema name.",
+				Description: "Schema 名称",
 			},
 			"target_schema_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target schema name. Required only for system template field data correlation rules and when data source is TCHouse-P (ruleTemplate qualityDim=4 and subQualityDim=3). Used for cross-table data validation and association.",
+				Description: "Target schema 名称 必填 only for system template field data correlation rules and when data 来源 is TCHouse-P (ruleTemplate qualityDim=4 and subQualityDim=3). 用于cross-table data validation and association。",
 			},
 			"target_database_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target database name. Required only for system template field data correlation rules (ruleTemplate qualityDim=4 and subQualityDim=3). Used for cross-table data validation and association.",
+				Description: "Target database 名称 必填 only for system template field data correlation rules (ruleTemplate qualityDim=4 and subQualityDim=3). 用于cross-table data validation and association。",
 			},
 			"target_table_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target table name. Required only for system template field data correlation rules (ruleTemplate qualityDim=4 and subQualityDim=3). Used for cross-table data validation and association.",
+				Description: "Target table 名称 必填 only for system template field data correlation rules (ruleTemplate qualityDim=4 and subQualityDim=3). 用于cross-table data validation and association。",
 			},
 			"task_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task ID.",
+				Description: "任务 ID",
 			},
 			"catalog_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Data catalog name, mainly used for DLC data source.",
+				Description: "Data catalog 名称，mainly 用于DLC data 来源",
 			},
 			"target_catalog_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target data catalog name. Required only for system template field data correlation rules and when data source is DLC (ruleTemplate qualityDim=4 and subQualityDim=3). Used for cross-table data validation and association.",
+				Description: "Target data catalog 名称 必填 only for system template field data correlation rules and when data 来源 is DLC (ruleTemplate qualityDim=4 and subQualityDim=3). 用于cross-table data validation and association。",
 			},
 		},
 	}

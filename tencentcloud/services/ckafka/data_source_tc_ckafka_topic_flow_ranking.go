@@ -19,68 +19,68 @@ func DataSourceTencentCloudCkafkaTopicFlowRanking() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"ranking_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Ranking type. `PRO`: topic production flow, `CON`: topic consumption traffic.",
+				Description: "Ranking 类型 `PRO`: topic production flow，`CON`: topic consumption traffic。",
 			},
 
 			"begin_date": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "BeginDate.",
+				Description: "BeginDate。",
 			},
 
 			"end_date": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "EndDate.",
+				Description: "EndDate。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "result.",
+				Description: "结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"topic_flow": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "TopicFlow.",
+							Description: "TopicFlow。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"topic_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "topicId.",
+										Description: "topicId。",
 									},
 									"topic_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "topicName.",
+										Description: "topicName。",
 									},
 									"partition_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "partitionNum.",
+										Description: "partitionNum。",
 									},
 									"replica_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ReplicaNum.",
+										Description: "ReplicaNum。",
 									},
 									"topic_traffic": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "TopicTraffic.",
+										Description: "TopicTraffic。",
 									},
 									"message_heap": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Topic MessageHeap.",
+										Description: "Topic MessageHeap。",
 									},
 								},
 							},
@@ -88,18 +88,18 @@ func DataSourceTencentCloudCkafkaTopicFlowRanking() *schema.Resource {
 						"consume_speed": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "ConsumeSpeed.",
+							Description: "ConsumeSpeed。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"consumer_group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ConsumerGroupName.",
+										Description: "ConsumerGroupName。",
 									},
 									"speed": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Speed.",
+										Description: "Speed。",
 									},
 								},
 							},
@@ -107,38 +107,38 @@ func DataSourceTencentCloudCkafkaTopicFlowRanking() *schema.Resource {
 						"topic_message_heap": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "TopicMessageHeapRanking.",
+							Description: "TopicMessageHeapRanking。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"topic_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "topicId.",
+										Description: "topicId。",
 									},
 									"topic_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "topicName.",
+										Description: "topicName。",
 									},
 									"partition_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "PartitionNum.",
+										Description: "PartitionNum。",
 									},
 									"replica_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ReplicaNum.",
+										Description: "ReplicaNum。",
 									},
 									"topic_traffic": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "TopicTraffic.",
+										Description: "TopicTraffic。",
 									},
 									"message_heap": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Topic MessageHeap.",
+										Description: "Topic MessageHeap。",
 									},
 								},
 							},
@@ -150,7 +150,7 @@ func DataSourceTencentCloudCkafkaTopicFlowRanking() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

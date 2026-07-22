@@ -18,29 +18,29 @@ func DataSourceTencentCloudOrganizationOrgShareArea() *schema.Resource {
 			"lang": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Language.default zh.\nValid values:\n  - `zh`: Chinese.\n  - `en`: English.",
+				Description: "语言default zh.\nValid values:\n  - `zh`: Chinese.\n  - `en`: English。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Area list.",
+				Description: "Area list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region name.",
+							Description: "地域名称",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region identifier.",
+							Description: "地域 identifier。",
 						},
 						"area_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Region ID.",
+							Description: "地域 ID",
 						},
 					},
 				},
@@ -49,7 +49,7 @@ func DataSourceTencentCloudOrganizationOrgShareArea() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

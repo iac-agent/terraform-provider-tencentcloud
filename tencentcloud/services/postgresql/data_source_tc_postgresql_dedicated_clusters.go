@@ -19,18 +19,18 @@ func DataSourceTencentCloudPostgresqlDedicatedClusters() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Querying based on one or more filtering criteria, the currently supported filtering criteria are: dedicated-cluster-id: filtering by dedicated cluster ID.",
+				Description: "Querying based on one or more filtering criteria，the currently supported filtering criteria are: dedicated-cluster-id: filtering by 专用集群 ID",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Filter name.",
+							Description: "过滤名称",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Filter values.",
+							Description: "Filter values。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 					},
@@ -40,28 +40,28 @@ func DataSourceTencentCloudPostgresqlDedicatedClusters() *schema.Resource {
 			"dedicated_cluster_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Dedicated cluster set info.",
+				Description: "Dedicated cluster set info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dedicated_cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Dedicated cluster ID.",
+							Description: "Dedicated cluster ID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Name.",
+							Description: "名称",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Zone.",
+							Description: "可用区",
 						},
 						"standby_dedicated_cluster_set": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Disaster recovery cluster.",
+							Description: "Disaster recovery cluster。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -69,37 +69,37 @@ func DataSourceTencentCloudPostgresqlDedicatedClusters() *schema.Resource {
 						"instance_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Instance count.",
+							Description: "Instance count。",
 						},
 						"cpu_total": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Cpu total.",
+							Description: "Cpu total。",
 						},
 						"cpu_available": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of available CPUs.",
+							Description: "数量 available CPUs。",
 						},
 						"mem_total": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Total amount of memory.",
+							Description: "Total amount of memory。",
 						},
 						"mem_available": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Available Memory.",
+							Description: "Available Memory。",
 						},
 						"disk_total": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Total number of disks.",
+							Description: "Total 数量 disks。",
 						},
 						"disk_available": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Disk availability.",
+							Description: "Disk availability。",
 						},
 					},
 				},
@@ -107,7 +107,7 @@ func DataSourceTencentCloudPostgresqlDedicatedClusters() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

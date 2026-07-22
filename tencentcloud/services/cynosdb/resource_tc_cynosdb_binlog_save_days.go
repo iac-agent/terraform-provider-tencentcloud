@@ -27,13 +27,13 @@ func ResourceTencentCloudCynosdbBinlogSaveDays() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"binlog_save_days": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Binlog retention days.",
+				Description: "二进制日志保留天数。",
 			},
 		},
 	}

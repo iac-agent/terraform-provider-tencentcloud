@@ -24,13 +24,13 @@ func ResourceTencentCloudTsfEnableUnitRule() *schema.Resource {
 			"rule_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "api ID.",
+				Description: "api ID。",
 			},
 
 			"switch": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "switch, on: `enabled`, off: `disabled`.",
+				Description: "switch，on: `已启用`，off: `已禁用`。",
 			},
 		},
 	}

@@ -18,18 +18,18 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions.",
+				Description: "Filter conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter field name, supported list as follows:\n- InstanceId: IGTM instance ID.\n- Domain: IGTM instance domain.\n- MonitorId: Monitor ID.\n- PoolId: Pool ID. This is a required parameter, not passing it will cause interface query failure.",
+							Description: "过滤字段名称，supported list as follows:\n- 实例 ID: IGTM instance ID.\n- 域名: IGTM instance 域名\n- MonitorId: Monitor ID.\n- PoolId: Pool ID. This is a 必填 parameter，not passing it will cause interface query failure。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter field value.",
+							Description: "过滤字段值",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -37,7 +37,7 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable fuzzy query, only supports filter field name as domain.\nWhen fuzzy query is enabled, maximum Value length is 1, otherwise maximum Value length is 5. (Reserved field, not currently used).",
+							Description: "是否enable fuzzy query，only supports 过滤字段名称 as 域名\nWhen fuzzy query is 已启用，maximum 值 length is 1，otherwise maximum 值 length is 5. (Reserved field，not currently used)。",
 						},
 					},
 				},
@@ -46,108 +46,108 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 			"instance_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance list.",
+				Description: "Instance list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource ID.",
+							Description: "资源 ID",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Business domain.",
+							Description: "Business 域名",
 						},
 						"access_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cname domain access method\nCUSTOM: Custom access domain\nSYSTEM: System access domain.",
+							Description: "Cname 域名 access method\nCUSTOM: Custom access 域名\nSYSTEM: System access 域名",
 						},
 						"access_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Access domain.",
+							Description: "Access 域名",
 						},
 						"access_sub_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Access subdomain.",
+							Description: "Access subdomain。",
 						},
 						"global_ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Global record expiration time.",
+							Description: "Global record 过期时间。",
 						},
 						"package_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package type\nFREE: Free version\nSTANDARD: Standard version\nULTIMATE: Ultimate version.",
+							Description: "Package 类型\nFREE: Free 版本\nSTANDARD: Standard 版本\nULTIMATE: Ultimate 版本",
 						},
 						"working_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance running status\nNORMAL: Healthy\nFAULTY: At risk\nDOWN: Down\nUNKNOWN: Unknown.",
+							Description: "Instance running 状态\nNORMAL: Healthy\nFAULTY: At risk\nDOWN: Down\nUNKNOWN: Unknown。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance status, ENABLED: Normal, DISABLED: Disabled.",
+							Description: "实例状态，ENABLED: Normal，DISABLED: 已禁用",
 						},
 						"is_cname_configured": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether cname access: true accessed; false not accessed.",
+							Description: "Whether cname access: true accessed; false not accessed。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 						"strategy_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Strategy count.",
+							Description: "Strategy count。",
 						},
 						"address_pool_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Bound address pool count.",
+							Description: "Bound 地址 pool count。",
 						},
 						"monitor_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Bound monitor count.",
+							Description: "Bound monitor count。",
 						},
 						"pool_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Address pool ID.",
+							Description: "地址 pool ID。",
 						},
 						"pool_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Address pool name.",
+							Description: "地址 pool 名称",
 						},
 						"created_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance creation time.",
+							Description: "Instance 创建时间。",
 						},
 						"updated_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance update time.",
+							Description: "Instance 更新时间。",
 						},
 					},
 				},
@@ -156,13 +156,13 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 			"system_access_enabled": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether system domain access is supported: true supported; false not supported.",
+				Description: "Whether system 域名 access is supported: true supported; false not supported。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

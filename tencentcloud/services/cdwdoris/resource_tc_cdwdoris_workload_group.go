@@ -29,40 +29,40 @@ func ResourceTencentCloudCdwdorisWorkloadGroup() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 			"workload_group": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Resource group configuration.",
+				Description: "Resource group configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"workload_group_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Workload group name. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Workload 组名称 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cpu_share": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "CPU weight. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "CPU 权重 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"memory_limit": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Memory limit, the sum of the memory limit values of all resource groups should be less than or equal to 100. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Memory 限制，the sum of the memory 限制 values of all resource groups should be less than or equal to 100. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"enable_memory_over_commit": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to allow over-allocation. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "是否allow over-allocation. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cpu_hard_limit": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cpu hard limit. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Cpu hard 限制 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

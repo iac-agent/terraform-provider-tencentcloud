@@ -27,17 +27,17 @@ func ResourceTencentCloudMariadbBackupTime() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 			"start_backup_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start time of daily backup window in the format of `mm:ss`, such as 22:00.",
+				Description: "开始时间 of daily backup window in the 格式 of `mm:ss`，such as 22:00。",
 			},
 			"end_backup_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End time of daily backup window in the format of `mm:ss`, such as 23:59.",
+				Description: "结束时间 of daily backup window in the 格式 of `mm:ss`，such as 23:59。",
 			},
 		},
 	}

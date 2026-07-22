@@ -18,70 +18,70 @@ func DataSourceTencentCloudCamPolicyDetail() *schema.Resource {
 			"policy_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Policy ID.",
+				Description: "Policy ID。",
 			},
 
 			"policy_info": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Policy detail information.",
+				Description: "Policy detail information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy name.",
+							Description: "Policy 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy description.",
+							Description: "Policy 描述",
 						},
 						"type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Policy type. 1 means custom policy, 2 means preset policy.",
+							Description: "Policy 类型 1 means custom policy，2 means preset policy。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Time the policy was created.",
+							Description: "Time the policy was created。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Time the policy was last updated.",
+							Description: "Time the policy was last updated。",
 						},
 						"policy_document": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy document.",
+							Description: "Policy document。",
 						},
 						"preset_alias": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Preset policy alias. Note: this field may return null.",
+							Description: "Preset policy alias. Note: this field may return null。",
 						},
 						"is_service_linked_role_policy": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the policy is a service-linked role policy. 0 means no, 1 means yes.",
+							Description: "是否policy is a service-linked 角色 policy. 0 means no，1 means yes。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Tags associated with the policy.",
+							Description: "标签 associated with the policy。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -93,7 +93,7 @@ func DataSourceTencentCloudCamPolicyDetail() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

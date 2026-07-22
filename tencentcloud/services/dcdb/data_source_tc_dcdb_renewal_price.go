@@ -19,37 +19,37 @@ func DataSourceTencentCloudDcdbRenewalPrice() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"period": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Renewal duration, default: 1 month.",
+				Description: "Renewal duration，默认值：1 month。",
 			},
 
 			"amount_unit": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Price unit. Valid values: `pent` (cent), `microPent` (microcent).",
+				Description: "Price unit. 有效值：`pent` (cent)，`microPent` (microcent)。",
 			},
 
 			"original_price": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Original price. Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description. Currency: CNY (Chinese site), USD (international site).",
+				Description: "Original price. 单位：Cent (default). If the request parameter 包含`AmountUnit`，see `AmountUnit` 描述 Currency: CNY (Chinese site)，USD (international site)。",
 			},
 
 			"price": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The actual price may be different from the original price due to discounts. Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description. Currency: CNY (Chinese site), USD (international site).",
+				Description: "The actual price may be different from the original price due to discounts. 单位：Cent (default). If the request parameter 包含`AmountUnit`，see `AmountUnit` 描述 Currency: CNY (Chinese site)，USD (international site)。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

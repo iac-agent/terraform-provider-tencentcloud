@@ -29,70 +29,70 @@ func ResourceTencentCloudTemLogConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "environment ID.",
+				Description: "environment ID。",
 			},
 
 			"application_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "application ID.",
+				Description: "application ID。",
 			},
 
 			"workload_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "application ID, which is combined by environment ID and application ID, like `en-o5edaepv#app-3j29aa2p`.",
+				Description: "application ID，which is combined by environment ID and application ID，like `en-o5edaepv#app-3j29aa2p`。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "appConfig name.",
+				Description: "appConfig 名称",
 			},
 
 			"logset_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "logset.",
+				Description: "logset。",
 			},
 
 			"topic_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "topic.",
+				Description: "topic。",
 			},
 
 			"input_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "container_stdout or container_file.",
+				Description: "container_stdout or container_file。",
 			},
 
 			"log_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "minimalist_log or multiline_log.",
+				Description: "minimalist_log or multiline_log。",
 			},
 
 			"beginning_regex": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "regex pattern.",
+				Description: "regex pattern。",
 			},
 
 			"log_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "directory if container_file.",
+				Description: "directory if container_file。",
 			},
 
 			"file_pattern": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "file name pattern if container_file.",
+				Description: "file 名称 pattern if container_file。",
 			},
 		},
 	}

@@ -20,169 +20,169 @@ func DataSourceTencentCloudDcdbSlowLogs() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of `tdsqlshard-ow728lmc`.",
+				Description: "实例 ID in the 格式 of `tdsqlshard-ow728lmc`。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query start time in the format of 2016-07-23 14:55:20.",
+				Description: "Query 开始时间 in the 格式 of 2016-07-23 14:55:20。",
 			},
 
 			"shard_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance shard ID in the format of `shard-rc754ljk`.",
+				Description: "Instance shard ID in the 格式 of `shard-rc754ljk`。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query end time in the format of 2016-08-22 14:55:20.",
+				Description: "Query 结束时间 in the 格式 of 2016-08-22 14:55:20。",
 			},
 
 			"db": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Specific name of the database to be queried.",
+				Description: "Specific 名称 database to be queried。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting metric. Valid values: query_time_sum, query_count.",
+				Description: "Sorting metric. 有效值：query_time_sum，query_count。",
 			},
 
 			"order_by_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting order. Valid values: desc, asc.",
+				Description: "Sorting 顺序 有效值：desc，asc。",
 			},
 
 			"slave": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Query slow queries from either the primary or the replica. Valid values: 0 (primary), 1 (replica).",
+				Description: "Query slow queries from either the primary or the replica. 有效值：0 (primary)，1 (replica)。",
 			},
 
 			"lock_time_sum": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Total statement lock time.",
+				Description: "Total statement lock time。",
 			},
 
 			"query_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total number of statement queries.",
+				Description: "Total 数量 statement queries。",
 			},
 
 			"query_time_sum": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Total statement query time.",
+				Description: "Total statement query time。",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Slow query log data.",
+				Description: "Slow query log data。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"check_sum": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Statement checksum for querying details.",
+							Description: "Statement checksum for querying details。",
 						},
 						"db": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name.",
+							Description: "Database 名称",
 						},
 						"finger_print": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Abstracted SQL statement.",
+							Description: "Abstracted SQL statement。",
 						},
 						"lock_time_avg": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Average lock time.",
+							Description: "Average lock time。",
 						},
 						"lock_time_max": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Maximum lock time.",
+							Description: "Maximum lock time。",
 						},
 						"lock_time_min": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Minimum lock time.",
+							Description: "Minimum lock time。",
 						},
 						"lock_time_sum": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Total lock time.",
+							Description: "Total lock time。",
 						},
 						"query_count": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Number of queries.",
+							Description: "数量 queries。",
 						},
 						"query_time_avg": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Average query time.",
+							Description: "Average query time。",
 						},
 						"query_time_max": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Maximum query time.",
+							Description: "Maximum query time。",
 						},
 						"query_time_min": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Minimum query time.",
+							Description: "Minimum query time。",
 						},
 						"query_time_sum": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Total query time.",
+							Description: "Total query time。",
 						},
 						"rows_examined_sum": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Number of scanned rows.",
+							Description: "数量 scanned rows。",
 						},
 						"rows_sent_sum": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Number of sent rows.",
+							Description: "数量 sent rows。",
 						},
 						"ts_max": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last execution time.",
+							Description: "Last 执行时间。",
 						},
 						"ts_min": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "First execution time.",
+							Description: "First 执行时间。",
 						},
 						"user": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Account.",
+							Description: "账号",
 						},
 						"example_sql": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sample SQLNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Sample SQL注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Host address of account.",
+							Description: "主机地址 of 账号",
 						},
 					},
 				},
@@ -191,7 +191,7 @@ func DataSourceTencentCloudDcdbSlowLogs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

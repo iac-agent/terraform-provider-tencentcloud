@@ -19,129 +19,129 @@ func DataSourceTencentCloudMariadbDcnDetail() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 			"dcn_details": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "DCN synchronization details.",
+				Description: "DCN synchronization details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region where the instance resides.",
+							Description: "地域 where the instance resides。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability zone where the instance resides.",
+							Description: "Availability 可用区 where the instance resides。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance IP address.",
+							Description: "Instance IP 地址",
 						},
 						"vipv6": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance IPv6 address.",
+							Description: "Instance IPv6 地址",
 						},
 						"vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance port.",
+							Description: "实例端口",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance status.",
+							Description: "实例状态",
 						},
 						"status_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance status description.",
+							Description: "实例状态 描述",
 						},
 						"dcn_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "DCN flag. Valid values: `1` (primary), `2` (disaster recovery).",
+							Description: "DCN flag. 有效值：`1` (primary)，`2` (disaster recovery)。",
 						},
 						"dcn_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "DCN status. Valid values: `0` (none), `1` (creating), `2` (syncing), `3` (disconnected).",
+							Description: "DCN 状态 有效值：`0` (none)，`1` (creating)，`2` (syncing)，`3` (disconnected)。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of CPU cores of the instance.",
+							Description: "CPU 核数 of the instance。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance memory capacity in GB.",
+							Description: "Instance memory capacity （GB）。",
 						},
 						"storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance storage capacity in GB.",
+							Description: "Instance storage capacity （GB）。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Billing mode.",
+							Description: "Billing 模式",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of the instance in the format of 2006-01-02 15:04:05.",
+							Description: "创建时间 of the instance in the 格式 of 2006-01-02 15:04:05。",
 						},
 						"period_end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Expiration time of the instance in the format of 2006-01-02 15:04:05.",
+							Description: "过期时间 of the instance in the 格式 of 2006-01-02 15:04:05。",
 						},
 						"instance_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery instance), `4` (dedicated disaster recovery instance).",
+							Description: "实例类型 有效值：`1` (dedicated primary instance)，`2` (non-dedicated primary instance)，`3` (non-dedicated disaster recovery instance)，`4` (dedicated disaster recovery instance)。",
 						},
 						"replica_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Configuration information of DCN replication. This field is null for a primary instance.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Configuration information of DCN replication. This field is null for a primary instance.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"ro_replication_mode": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DCN running status. Valid values: `START` (running), `STOP` (pause)Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "DCN running 状态 有效值：`START` (running)，`STOP` (pause)注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"delay_replication_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Delayed replication type. Valid values: `DEFAULT` (no delay), `DUE_TIME` (specified replication time)Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Delayed replication 类型 有效值：`DEFAULT` (no 延迟)，`DUE_TIME` (specified replication time)注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"due_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Specified time for delayed replicationNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Specified time for delayed replication注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"replication_delay": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of seconds to delay the replicationNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 数量 seconds to 延迟 the replication注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -149,18 +149,18 @@ func DataSourceTencentCloudMariadbDcnDetail() *schema.Resource {
 						"replica_status": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "DCN replication status. This field is null for the primary instance.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "DCN replication 状态 This field is null for the primary instance.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DCN running status. Valid values: `START` (running), `STOP` (pause).Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "DCN running 状态 有效值：`START` (running)，`STOP` (pause).注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"delay": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The current delay, which takes the delay value of the replica instance.",
+										Description: "The current 延迟，which takes the 延迟 值 of the replica instance。",
 									},
 								},
 							},
@@ -168,7 +168,7 @@ func DataSourceTencentCloudMariadbDcnDetail() *schema.Resource {
 						"encrypt_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether KMS is enabled.",
+							Description: "Whether KMS is 已启用",
 						},
 					},
 				},
@@ -176,7 +176,7 @@ func DataSourceTencentCloudMariadbDcnDetail() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

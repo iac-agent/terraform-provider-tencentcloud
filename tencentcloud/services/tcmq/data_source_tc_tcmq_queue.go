@@ -20,20 +20,20 @@ func DataSourceTencentCloudTcmqQueue() *schema.Resource {
 				Default:     0,
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Starting position of a queue list to be returned on the current page in case of paginated return. If a value is entered, limit must be specified. If this parameter is left empty, 0 will be used by default.",
+				Description: "Starting position of a queue list to be returned on the current page in case of paginated return. If a 值 is entered，限制 must be specified. 如果此参数为空，0 will be used by default。",
 			},
 
 			"limit": {
 				Default:     20,
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
+				Description: "The 数量 queues to be returned per page in case of paginated return. If this parameter is not passed in，20 will be used by default. Maximum 值: 50。",
 			},
 
 			"queue_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter by QueueName.",
+				Description: "Filter by QueueName。",
 			},
 
 			"queue_name_list": {
@@ -42,25 +42,25 @@ func DataSourceTencentCloudTcmqQueue() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by CMQ queue name.",
+				Description: "Filter by CMQ queue 名称",
 			},
 
 			"is_tag_filter": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "For filtering by tag, this parameter must be set to `true`.",
+				Description: "For filtering by 标签，this parameter must be set to `true`。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter. Currently, you can filter by tag. The tag name must be prefixed with `tag:`, such as `tag: owner`, `tag: environment`, or `tag: business`.",
+				Description: "Filter. Currently，you can filter by 标签 The 标签 名称 must be prefixed with `标签:`，such as `标签: 所有者`，`标签: environment`，or `标签: business`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Filter parameter name.",
+							Description: "Filter parameter 名称",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -68,7 +68,7 @@ func DataSourceTencentCloudTcmqQueue() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Value.",
+							Description: "值",
 						},
 					},
 				},
@@ -77,119 +77,119 @@ func DataSourceTencentCloudTcmqQueue() *schema.Resource {
 			"queue_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Queue list.",
+				Description: "Queue list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"queue_id": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Message queue ID.",
+							Description: "消息 queue ID。",
 						},
 						"queue_name": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Message queue name.",
+							Description: "消息 queue 名称",
 						},
 						"qps": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Limit of the number of messages produced per second. The value for consumed messages is 1.1 times this value.",
+							Description: "限制 of the 数量 messages produced per second. The 值 for consumed messages is 1.1 times this 值",
 						},
 						"bps": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Bandwidth limit.",
+							Description: "Bandwidth 限制",
 						},
 						"max_delay_seconds": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Maximum retention period for inflight messages.",
+							Description: "Maximum retention 周期 for inflight messages。",
 						},
 						"max_msg_heap_num": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Maximum number of heaped messages. The value range is 1,000,000-10,000,000 during the beta test and can be 1,000,000-1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.",
+							Description: "最大heaped messages. The 值 range is 1,000,000-10,000,000 during the beta test and can be 1,000,000-1,000,000,000 after the product is officially released. The 默认值为 10,000,000 during the beta test and will be 100,000,000 after the product is officially released。",
 						},
 						"polling_wait_seconds": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Long polling wait time for message reception. Value range: 0-30 seconds. Default value: 0.",
+							Description: "Long polling wait time for 消息 reception. 取值范围：0-30 seconds. 默认值：0。",
 						},
 						"msg_retention_seconds": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "The max period during which a message is retained before it is automatically acknowledged. Value range: 30-43,200 seconds (30 seconds to 12 hours). Default value: 3600 seconds (1 hour).",
+							Description: "The max 周期 during which a 消息 is retained before it is automatically acknowledged. 取值范围：30-43,200 seconds (30 seconds to 12 hours). 默认值：3600 seconds (1 hour)。",
 						},
 						"visibility_timeout": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Message visibility timeout period. Value range: 1-43200 seconds (i.e., 12 hours). Default value: 30.",
+							Description: "消息 visibility timeout 周期 取值范围：1-43200 seconds (i.e.，12 hours). 默认值：30。",
 						},
 						"max_msg_size": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Maximum message length. Value range: 1024-65536 bytes (i.e., 1-64 KB). Default value: 65536.",
+							Description: "Maximum 消息 length. 取值范围：1024-65536 bytes (i.e.，1-64 KB). 默认值：65536。",
 						},
 						"rewind_seconds": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Rewindable time of messages in the queue. Value range: 0-1,296,000s (if message rewind is enabled). The value `0` indicates that message rewind is not enabled.",
+							Description: "Rewindable time of messages in the queue. 取值范围：0-1,296,000s (if 消息 rewind is 已启用). The 值 `0` 表示that 消息 rewind is not 已启用",
 						},
 						"create_time": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Queue creation time. A Unix timestamp accurate down to the millisecond will be returned.",
+							Description: "Queue 创建时间. A Unix 时间戳 accurate down to the millisecond will be returned。",
 						},
 						"last_modify_time": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Time when the queue attribute is last modified. A Unix timestamp accurate down to the millisecond will be returned.",
+							Description: "Time when the queue attribute is last modified. A Unix 时间戳 accurate down to the millisecond will be returned。",
 						},
 						"active_msg_num": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Total number of messages in `Active` status (i.e., unconsumed) in the queue, which is an approximate value.",
+							Description: "Total 数量 messages in `活跃` 状态 (i.e.，unconsumed) in the queue，which is an approximate 值",
 						},
 						"inactive_msg_num": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Total number of messages in `Inactive` status (i.e., being consumed) in the queue, which is an approximate value.",
+							Description: "Total 数量 messages in `Inactive` 状态 (i.e.，being consumed) in the queue，which is an approximate 值",
 						},
 						"delay_msg_num": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Number of delayed messages.",
+							Description: "数量 delayed messages。",
 						},
 						"rewind_msg_num": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Number of retained messages which have been deleted by the `DelMsg` API but are still within their rewind time range.",
+							Description: "数量 retained messages which have been deleted by the `DelMsg` API but are still within their rewind time range。",
 						},
 						"min_msg_time": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Minimum unconsumed time of message in seconds.",
+							Description: "Minimum unconsumed time of 消息 （秒）。",
 						},
 						"transaction": {
 							Computed:    true,
 							Type:        schema.TypeBool,
-							Description: "1: transaction queue; 0: general queue.",
+							Description: "1: transaction queue; 0: general queue。",
 						},
 						"dead_letter_source": {
 							Computed:    true,
 							Type:        schema.TypeList,
-							Description: "Dead letter queue.",
+							Description: "Dead letter queue。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"queue_id": {
 										Computed:    true,
 										Type:        schema.TypeString,
-										Description: "Message queue ID.",
+										Description: "消息 queue ID。",
 									},
 									"queue_name": {
 										Computed:    true,
 										Type:        schema.TypeString,
-										Description: "Message queue name.",
+										Description: "消息 queue 名称",
 									},
 								},
 							},
@@ -197,28 +197,28 @@ func DataSourceTencentCloudTcmqQueue() *schema.Resource {
 						"dead_letter_policy": {
 							Computed:    true,
 							Type:        schema.TypeList,
-							Description: "Dead letter queue policy.",
+							Description: "Dead letter queue policy。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dead_letter_queue": {
 										Computed:    true,
 										Type:        schema.TypeString,
-										Description: "Dead letter queue.",
+										Description: "Dead letter queue。",
 									},
 									"policy": {
 										Computed:    true,
 										Type:        schema.TypeInt,
-										Description: "Dead letter queue policy.",
+										Description: "Dead letter queue policy。",
 									},
 									"max_time_to_live": {
 										Computed:    true,
 										Type:        schema.TypeInt,
-										Description: "Maximum period in seconds before an unconsumed message expires, which is required if `Policy` is 1. Value range: 300-43200. This value should be smaller than `MsgRetentionSeconds` (maximum message retention period).",
+										Description: "Maximum 周期 （秒） before an unconsumed 消息 expires，which 为必填项 if `Policy` is 1. 取值范围：300-43200. This 值 should be smaller than `MsgRetentionSeconds` (maximum 消息 retention 周期)。",
 									},
 									"max_receive_count": {
 										Computed:    true,
 										Type:        schema.TypeInt,
-										Description: "Maximum number of receipts.",
+										Description: "最大receipts。",
 									},
 								},
 							},
@@ -226,18 +226,18 @@ func DataSourceTencentCloudTcmqQueue() *schema.Resource {
 						"transaction_policy": {
 							Computed:    true,
 							Type:        schema.TypeList,
-							Description: "Transaction message policy.",
+							Description: "Transaction 消息 policy。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"first_query_interval": {
 										Computed:    true,
 										Type:        schema.TypeInt,
-										Description: "First lookback time.",
+										Description: "First lookback time。",
 									},
 									"max_query_count": {
 										Computed:    true,
 										Type:        schema.TypeInt,
-										Description: "Maximum number of queries.",
+										Description: "最大queries。",
 									},
 								},
 							},
@@ -245,23 +245,23 @@ func DataSourceTencentCloudTcmqQueue() *schema.Resource {
 						"create_uin": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Creator `Uin`.",
+							Description: "创建者 `Uin`。",
 						},
 						"tags": {
 							Computed:    true,
 							Type:        schema.TypeList,
-							Description: "Associated tag.",
+							Description: "Associated 标签",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Computed:    true,
 										Type:        schema.TypeString,
-										Description: "Value of the tag key.",
+										Description: "值 of the 标签键",
 									},
 									"tag_value": {
 										Computed:    true,
 										Type:        schema.TypeString,
-										Description: "Value of the tag value.",
+										Description: "值 of the 标签值",
 									},
 								},
 							},
@@ -269,37 +269,37 @@ func DataSourceTencentCloudTcmqQueue() *schema.Resource {
 						"trace": {
 							Computed:    true,
 							Type:        schema.TypeBool,
-							Description: "Message trace. true: enabled; false: not enabled.",
+							Description: "消息 trace. true: 已启用; false: not 已启用",
 						},
 						"tenant_id": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Tenant ID.",
+							Description: "Tenant ID。",
 						},
 						"namespace_name": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "Namespace name.",
+							Description: "Namespace 名称",
 						},
 						"status": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Cluster status. `0`: creating; `1`: normal; `2`: terminating; `3`: deleted; `4`: isolated; `5`: creation failed; `6`: deletion failed.",
+							Description: "Cluster 状态 `0`: creating; `1`: normal; `2`: terminating; `3`: deleted; `4`: isolated; `5`: creation failed; `6`: deletion failed。",
 						},
 						"max_unacked_msg_num": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "The maximum number of unacknowledged messages.",
+							Description: "The 最大unacknowledged messages。",
 						},
 						"max_msg_backlog_size": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Maximum size of heaped messages in bytes.",
+							Description: "Maximum size of heaped messages in bytes。",
 						},
 						"retention_size_in_mb": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Queue storage space configured for message rewind. Value range: 1,024-10,240 MB (if message rewind is enabled). The value `0` indicates that message rewind is not enabled.",
+							Description: "Queue storage space configured for 消息 rewind. 取值范围：1,024-10,240 MB (if 消息 rewind is 已启用). The 值 `0` 表示that 消息 rewind is not 已启用",
 						},
 					},
 				},
@@ -308,7 +308,7 @@ func DataSourceTencentCloudTcmqQueue() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

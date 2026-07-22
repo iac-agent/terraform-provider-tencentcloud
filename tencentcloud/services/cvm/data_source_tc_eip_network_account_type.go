@@ -17,13 +17,13 @@ func DataSourceTencentCloudEipNetworkAccountType() *schema.Resource {
 			"network_account_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The network type of the user account, STANDARD is a standard user, LEGACY is a traditional user.",
+				Description: "The network 类型 用户 账号，STANDARD is a standard 用户，LEGACY is a traditional 用户",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

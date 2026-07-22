@@ -22,57 +22,57 @@ func DataSourceTencentCloudMysqlRollbackRangeTime() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "A list of instance IDs, the format of a single instance ID is: cdb-c1nl9rpv. Same instance ID as displayed in the ApsaraDB for Console page.",
+				Description: "实例ID列表，单个实例ID的格式为：cdb-c1nl9rpv。与云数据库控制台页面显示的实例ID相同。",
 			},
 
 			"is_remote_zone": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Whether the clone instance is in the same zone as the source instance, yes: `false`, no: `true`.",
+				Description: "克隆实例是否与源实例在同一个可用区，是：“false”，否：“true”。",
 			},
 
 			"backup_region": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "If the clone instance is not in the same region as the source instance, fill in the region where the clone instance is located, for example: ap-guangzhou.",
+				Description: "如果克隆实例与源实例不在同一地域，则填写克隆实例所在地域，例如：ap-guangzhou。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Returned parameter information.",
+				Description: "返回的参数信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"code": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Query database error code.",
+							Description: "查询数据库错误代码。",
 						},
 						"message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Query database error information.",
+							Description: "查询数据库错误信息。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "A list of instance IDs. The format of a single instance ID is: cdb-c1nl9rpv. Same as the instance ID displayed in the cloud database console page.",
+							Description: "实例 ID 列表。单实例ID的格式为：cdb-c1nl9rpv。与云数据库控制台页面显示的实例ID相同。",
 						},
 						"times": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Retrievable time range.",
+							Description: "可检索时间范围。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"begin": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance rollback start time, time format: 2016-10-29 01:06:04.",
+										Description: "实例回滚开始时间，时间格式：2016-10-29 01:06:04。",
 									},
 									"end": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "End time of instance rollback, time format: 2016-11-02 11:44:47.",
+										Description: "实例回滚结束时间，时间格式：2016-11-02 11:44:47。",
 									},
 								},
 							},
@@ -84,7 +84,7 @@ func DataSourceTencentCloudMysqlRollbackRangeTime() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

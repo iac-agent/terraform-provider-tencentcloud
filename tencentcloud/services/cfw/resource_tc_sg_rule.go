@@ -29,7 +29,7 @@ func ResourceTencentCloudSgRule() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Creates rule data.",
+				Description: "Creates rule data。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"source_content": {
@@ -40,7 +40,7 @@ func ResourceTencentCloudSgRule() *schema.Resource {
 						"source_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Access source type. Valid values: net|template|instance|resourcegroup|tag|region.",
+							Description: "Access 来源 类型 有效值：net|template|instance|resourcegroup|标签|地域",
 						},
 						"dest_content": {
 							Type:        schema.TypeString,
@@ -50,37 +50,37 @@ func ResourceTencentCloudSgRule() *schema.Resource {
 						"dest_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Access destination type. Valid values: net|template|instance|resourcegroup|tag|region.",
+							Description: "Access destination 类型 有效值：net|template|instance|resourcegroup|标签|地域",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Protocol. TCP/UDP/ICMP/ANY.",
+							Description: "协议 TCP/UDP/ICMP/ANY。",
 						},
 						"port": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The port to apply access control rules. Valid values: `-1/-1`: all ports, `80`: port 80.",
+							Description: "The 端口 to apply access control rules. 有效值：`-1/-1`: all ports，`80`: 端口 80。",
 						},
 						"service_template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter template ID of port and protocol type; mutually exclusive with Protocol and Port.",
+							Description: "Parameter 模板 ID 端口 and 协议 类型; mutually exclusive with 协议 and 端口",
 						},
 						"rule_action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The action that Cloud Firewall performs on the traffic. Valid values: `accept`: allow, `drop`: deny.",
+							Description: "The 操作 that Cloud Firewall performs on the traffic. 有效值：`accept`: allow，`drop`: deny。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Description.",
+							Description: "描述",
 						},
 						"order_index": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule priority.",
+							Description: "Rule 优先级",
 						},
 					},
 				},
@@ -90,7 +90,7 @@ func ResourceTencentCloudSgRule() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Rule status. `0` is off, `1` is on. This parameter is not required or is 1 when creating.",
+				Description: "Rule 状态 `0` is off，`1` is on. This parameter 不是必填项 or is 1 when creating。",
 			},
 		},
 	}

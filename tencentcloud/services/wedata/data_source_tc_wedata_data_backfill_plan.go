@@ -19,46 +19,46 @@ func DataSourceTencentCloudWedataDataBackfillPlan() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"data_backfill_plan_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Backfill Plan ID.",
+				Description: "Backfill Plan ID。",
 			},
 
 			"time_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Display time zone, default UTC+8.",
+				Description: "Display 时区，default UTC+8。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Backfill details.",
+				Description: "Backfill details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Project ID.",
+							Description: "项目 ID",
 						},
 						"data_backfill_plan_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Data Backfill Plan ID.",
+							Description: "Data Backfill Plan ID。",
 						},
 						"data_backfill_plan_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Data Backfill Plan Name.",
+							Description: "Data Backfill Plan 名称",
 						},
 						"task_ids": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Set of backfill tasks.",
+							Description: "Set of backfill tasks。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -66,28 +66,28 @@ func DataSourceTencentCloudWedataDataBackfillPlan() *schema.Resource {
 						"data_backfill_range_list": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "List of data configuration for backfill tasks.",
+							Description: "列表 data configuration for backfill tasks。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"start_date": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Start date, format yyyy-MM-dd, indicating start from 00:00:00 of the specified date.",
+										Description: "Start date，格式 yyyy-MM-dd，indicating start from 00:00:00 of the specified date。",
 									},
 									"end_date": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "End date, format yyyy-MM-dd, indicating end at 23:59:59 of the specified date.",
+										Description: "End date，格式 yyyy-MM-dd，indicating end at 23:59:59 of the specified date。",
 									},
 									"execution_start_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Daily start time point within [StartDate, EndDate], format HH:mm, only effective for tasks with hour or sub-hour cycles.",
+										Description: "Daily 开始时间 point within [StartDate，EndDate]，格式 HH:mm，only effective for tasks with hour or sub-hour cycles。",
 									},
 									"execution_end_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Daily end time point within [StartDate, EndDate], format HH:mm, only effective for tasks with hour or sub-hour cycles.",
+										Description: "Daily 结束时间 point within [StartDate，EndDate]，格式 HH:mm，only effective for tasks with hour or sub-hour cycles。",
 									},
 								},
 							},
@@ -95,53 +95,53 @@ func DataSourceTencentCloudWedataDataBackfillPlan() *schema.Resource {
 						"check_parent_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parent task check type, valid values: - NONE - Do not check all - ALL - Check all upstream parent tasks - MAKE_SCOPE - Only check within the tasks selected in (the current backfill plan).",
+							Description: "Parent task check 类型，有效值：- NONE - Do not check all - ALL - Check all upstream parent tasks - MAKE_SCOPE - Only check within the tasks selected in (the current backfill plan)。",
 						},
 						"skip_event_listening": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether the backfill ignores event dependencies.",
+							Description: "是否backfill ignores event dependencies。",
 						},
 						"redefine_parallel_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Custom instance run concurrency, returns null or not returned indicates the task's original self-dependency.",
+							Description: "Custom instance run 并发，返回null or not returned 表示task's original self-dependency。",
 						},
 						"redefine_self_workflow_dependency": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Custom workflow self-dependency, yes or no; if not configured, the workflow's original self-dependency is used.",
+							Description: "Custom workflow self-dependency，yes or no; if not configured，the workflow's original self-dependency is used。",
 						},
 						"scheduler_resource_group_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Scheduler resource group ID.",
+							Description: "Scheduler resource 组 ID",
 						},
 						"integration_resource_group_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Integration resource group ID.",
+							Description: "Integration resource 组 ID",
 						},
 						"redefine_cycle_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Backfill custom generation cycle.",
+							Description: "Backfill custom generation cycle。",
 						},
 						"redefine_param_list": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Custom parameters.",
+							Description: "Custom parameters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"k": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Key name.",
+										Description: "键 名称",
 									},
 									"v": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Value, do not pass SQL (request will be treated as an attack interface). If necessary, Base64 encode and decode the SQL.",
+										Description: "值，do not pass SQL (request will be treated as an attack interface). If necessary，Base64 encode and decode the SQL。",
 									},
 								},
 							},
@@ -149,32 +149,32 @@ func DataSourceTencentCloudWedataDataBackfillPlan() *schema.Resource {
 						"start_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Execution start time of the backfill task.",
+							Description: "Execution 开始时间 of the backfill task。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Execution end time of the backfill task.",
+							Description: "Execution 结束时间 of the backfill task。",
 						},
 						"create_user_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creator user ID.",
+							Description: "创建者 用户 ID。",
 						},
 						"complete_percent": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Backfill plan instance completion percentage.",
+							Description: "Backfill plan instance completion percentage。",
 						},
 						"success_percent": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Backfill plan instance success percentage.",
+							Description: "Backfill plan instance success percentage。",
 						},
 						"data_time_order": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Data time order of backfill instances. Effective only if two conditions are met: 1. Must be same-cycle tasks. 2. Prioritize execution based on dependencies; if no dependency impact, execute according to the configured order. Valid values: - NORMAL: Not set - ORDER: Sequential - REVERSE: Reverse order. Default is NORMAL if not set.",
+							Description: "Data time 顺序 of backfill instances. Effective only if two conditions are met: 1. Must be same-cycle tasks. 2. Prioritize execution based on dependencies; if no dependency impact，execute according to the configured 顺序 有效值：- NORMAL: Not set - ORDER: Sequential - REVERSE: Reverse 顺序 默认为 NORMAL if not set。",
 						},
 					},
 				},
@@ -183,7 +183,7 @@ func DataSourceTencentCloudWedataDataBackfillPlan() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

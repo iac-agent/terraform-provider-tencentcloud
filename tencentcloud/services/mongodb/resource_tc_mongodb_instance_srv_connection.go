@@ -24,14 +24,14 @@ func ResourceTencentCloudMongodbInstanceSrvConnection() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "MongoDB instance ID, for example: cmgo-p8vnipr5.",
+				Description: "MongoDB instance ID，for example: cmgo-p8vnipr5。",
 			},
 
 			"domain": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Custom domain for SRV connection. If not specified during creation, the system will use a default domain. After creation, this field will be populated with the actual domain. To set or modify a custom domain, use this field.",
+				Description: "Custom 域名 for SRV connection. 如果未指定 during creation，the system will use a default 域名 After creation，this field will be populated with the actual 域名 To set or modify a custom 域名，use this field。",
 			},
 		},
 	}

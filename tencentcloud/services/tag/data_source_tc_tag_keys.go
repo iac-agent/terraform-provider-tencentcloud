@@ -17,25 +17,25 @@ func DataSourceTencentCloudTagKeys() *schema.Resource {
 			"create_uin": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Creator `Uin`. If not specified, `Uin` is only used as the query condition.",
+				Description: "创建者 `Uin`. 如果未指定，`Uin` is only used as the query condition。",
 			},
 
 			"show_project": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Whether to show project. Allow values: 0: no, 1: yes.",
+				Description: "是否show project. Allow values: 0: no，1: yes。",
 			},
 
 			"category": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.",
+				Description: "标签 类型 有效值：Custom: custom 标签; System: system 标签; All: all 标签 默认值：All。",
 			},
 
 			"tags": {
 				Type:        schema.TypeSet,
 				Computed:    true,
-				Description: "Tag list.",
+				Description: "标签列表",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -44,7 +44,7 @@ func DataSourceTencentCloudTagKeys() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,7 +19,7 @@ func DataSourceTencentCloudCssXp2pDetailInfoList() *schema.Resource {
 			"query_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The UTC minute granularity query time for querying usage data for a specific minute is in the format: yyyy-mm-ddTHH:MM:00Z. Please refer to the link https://cloud.tencent.com/document/product/266/11732#I.For example, if the local time is 2019-01-08 10:00:00 in Beijing, the corresponding UTC time would be 2019-01-08T10:00:00+08:00.This query supports data from the past six months.",
+				Description: "The UTC minute granularity query time for querying usage data for a specific minute is in the 格式: yyyy-mm-ddTHH:MM:00Z. Please refer to the link https://cloud.tencent.com/document/product/266/11732#I.For example，if the local time is 2019-01-08 10:00:00 in Beijing，the corresponding UTC time would be 2019-01-08T10:00:00+08:00.This query supports data from the past six months。",
 			},
 
 			"type": {
@@ -28,7 +28,7 @@ func DataSourceTencentCloudCssXp2pDetailInfoList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The type array can be used to specify the type of media content to be queried. The two available options are live for live streaming and vod for video on demand. If no type is specified, the query will include both live and VOD content by default.",
+				Description: "The 类型 array can be 用于指定type of media 内容 to be queried. The two available options are live for live streaming and vod for video on demand. If no 类型 is specified，the query will include both live and VOD 内容 by default。",
 			},
 
 			"stream_names": {
@@ -37,7 +37,7 @@ func DataSourceTencentCloudCssXp2pDetailInfoList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The stream array can be used to specify the streams to be queried. If no stream is specified, the query will include all streams by default.",
+				Description: "The stream array can be 用于指定streams to be queried. If no stream is specified，the query will include all streams by default。",
 			},
 
 			"dimension": {
@@ -46,69 +46,69 @@ func DataSourceTencentCloudCssXp2pDetailInfoList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The dimension parameter can be used to specify the dimension for the query. If this parameter is not passed, the query will default to stream-level data. If you pass this parameter, it will only retrieve data for the specified dimension. The available dimension currently supported is AppId dimension, which allows you to query data based on the application ID. Please note that the returned fields will be related to the specified dimension.",
+				Description: "The dimension parameter can be 用于指定dimension for the query. If this parameter is not passed，the query will 默认为 stream-级别 data. If you pass this parameter，it will only retrieve data for the specified dimension. The available dimension currently supported is AppId dimension，which allows you to query data based on the application ID. Please note that the returned fields will be related to the specified dimension。",
 			},
 
 			"data_info_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "P2P streaming statistical information.",
+				Description: "P2P streaming statistical information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cdn_bytes": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CDN traffic.",
+							Description: "CDN traffic。",
 						},
 						"p2p_bytes": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "P2P traffic.",
+							Description: "P2P traffic。",
 						},
 						"stuck_people": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "People count.",
+							Description: "People count。",
 						},
 						"stuck_times": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Count.",
+							Description: "Count。",
 						},
 						"online_people": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Online numbers.",
+							Description: "Online numbers。",
 						},
 						"request": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Request numbers.",
+							Description: "Request numbers。",
 						},
 						"request_success": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Success numbers.",
+							Description: "Success numbers。",
 						},
 						"time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The requested format for time in UTC with one-minute granularity is yyyy-mm-ddTHH:MM:SSZ. This format follows the ISO 8601 standard and is commonly used for representing timestamps in UTC. For more information and examples, you can refer to the link provided: https://cloud.tencent.com/document/product/266/11732#I.",
+							Description: "The requested 格式 for time in UTC with one-minute granularity is yyyy-mm-ddTHH:MM:SSZ. This 格式 follows the ISO 8601 standard and is commonly 用于representing timestamps in UTC. For more information and examples，you can refer to the link provided: https://cloud.tencent.com/document/product/266/11732#I。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type, divided into two categories: live and vod.Note: This field may return null, indicating that no valid value is available.",
+							Description: "类型，divided into two categories: live and vod.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"stream_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Stream ID.Note: This field may return null, indicating that no valid value is available.",
+							Description: "Stream ID.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"app_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "AppId. Note: This field may return null, indicating that no valid value is available.",
+							Description: "AppId. Note: This field may return null，indicating that no valid 值 is available。",
 						},
 					},
 				},
@@ -117,7 +117,7 @@ func DataSourceTencentCloudCssXp2pDetailInfoList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

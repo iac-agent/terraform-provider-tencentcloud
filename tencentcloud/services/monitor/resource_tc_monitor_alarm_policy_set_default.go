@@ -23,14 +23,14 @@ func ResourceTencentCloudMonitorAlarmPolicySetDefault() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Fixed value, as `monitor`.",
+				Description: "Fixed 值，as `monitor`。",
 			},
 
 			"policy_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Policy id.",
+				Description: "Policy id。",
 			},
 		},
 	}

@@ -20,91 +20,91 @@ func DataSourceTencentCloudCcnInstances() *schema.Resource {
 			"ccn_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the CCN to be queried.",
+				Description: "ID CCN to be queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the CCN to be queried.",
+				Description: "名称 CCN to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of CCN.",
+				Description: "Information 列表 CCN。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ccn_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the CCN.",
+							Description: "ID CCN。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the CCN.",
+							Description: "名称 CCN。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the CCN.",
+							Description: "描述 CCN。",
 						},
 						"qos": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service quality of CCN, and the available value include 'PT', 'AU', 'AG'. The default is 'AU'.",
+							Description: "Service quality of CCN，and the available 值 include 'PT'，'AU'，'AG'. The 默认为 'AU'。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "States of instance. The available value include 'ISOLATED'(arrears) and 'AVAILABLE'.",
+							Description: "States of instance. The available 值 include 'ISOLATED'(arrears) and 'AVAILABLE'。",
 						},
 						"charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Billing mode.",
+							Description: "Billing 模式",
 						},
 						"bandwidth_limit_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The speed limit type.",
+							Description: "The speed 限制 类型",
 						},
 						"attachment_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Information list of instance is attached.",
+							Description: "Information 列表 instance is attached。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Type of attached instance network, and available values include VPC, DIRECTCONNECT, BMVPC and VPNGW.",
+										Description: "类型 attached instance network，and available values include VPC，DIRECTCONNECT，BMVPC and VPNGW。",
 									},
 									"instance_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The region that the instance locates at.",
+										Description: "The 地域 that the instance locates at。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of instance is attached.",
+										Description: "ID instance is attached。",
 									},
 									"state": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "States of instance is attached, and available values include PENDING, ACTIVE, EXPIRED, REJECTED, DELETED, FAILED(asynchronous forced disassociation after 2 hours), ATTACHING, DETACHING and DETACHFAILED(asynchronous forced disassociation after 2 hours).",
+										Description: "States of instance is attached，and available values include PENDING，ACTIVE，EXPIRED，REJECTED，DELETED，FAILED(asynchronous forced disassociation after 2 hours)，ATTACHING，DETACHING and DETACHFAILED(asynchronous forced disassociation after 2 hours)。",
 									},
 									"attached_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Time of attaching.",
+										Description: "Time of attaching。",
 									},
 									"cidr_block": {
 										Type:     schema.TypeList,
@@ -112,7 +112,7 @@ func DataSourceTencentCloudCcnInstances() *schema.Resource {
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
-										Description: "A network address block of the instance that is attached.",
+										Description: "A network 地址 block of the instance that is attached。",
 									},
 								},
 							},
@@ -120,7 +120,7 @@ func DataSourceTencentCloudCcnInstances() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of resource.",
+							Description: "创建时间 of resource。",
 						},
 					},
 				},

@@ -25,7 +25,7 @@ func ResourceTencentCloudDasbAssetSyncJobOperationOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Synchronize asset categories, 1- Host assets, 2- Database assets.",
+				Description: "Synchronize asset categories，1- 主机 assets，2- Database assets。",
 			},
 		},
 	}

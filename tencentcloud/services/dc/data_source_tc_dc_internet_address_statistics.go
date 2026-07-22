@@ -19,18 +19,18 @@ func DataSourceTencentCloudDcInternetAddressStatistics() *schema.Resource {
 			"internet_address_statistics": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Statistical Information List of Internet Public Network Addresses.",
+				Description: "Statistical Information 列表 Internet Public Network Addresses。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region.",
+							Description: "地域",
 						},
 						"subnet_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of Internet public network addresses.",
+							Description: "数量 Internet public network addresses。",
 						},
 					},
 				},
@@ -39,7 +39,7 @@ func DataSourceTencentCloudDcInternetAddressStatistics() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

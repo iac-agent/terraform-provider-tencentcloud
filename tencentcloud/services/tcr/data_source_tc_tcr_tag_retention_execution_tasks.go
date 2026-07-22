@@ -19,66 +19,66 @@ func DataSourceTencentCloudTcrTagRetentionExecutionTasks() *schema.Resource {
 			"registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"retention_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "retention id.",
+				Description: "retention id。",
 			},
 
 			"execution_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "execution id.",
+				Description: "execution id。",
 			},
 
 			"retention_task_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "list of version retention tasks.",
+				Description: "列表 版本 retention tasks。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "task id.",
+							Description: "任务 ID",
 						},
 						"execution_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "the rule execution id.",
+							Description: "the rule execution id。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task start time.",
+							Description: "task 开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task end time.",
+							Description: "task 结束时间。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "the execution status of the task: Failed, Succeed, Stopped, InProgress.",
+							Description: "the execution 状态 task: Failed，Succeed，Stopped，InProgress。",
 						},
 						"total": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total number of tags.",
+							Description: "Total 数量 标签",
 						},
 						"retained": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total number of retained tags.",
+							Description: "Total 数量 retained 标签",
 						},
 						"repository": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "repository name.",
+							Description: "repository 名称",
 						},
 					},
 				},
@@ -87,7 +87,7 @@ func DataSourceTencentCloudTcrTagRetentionExecutionTasks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

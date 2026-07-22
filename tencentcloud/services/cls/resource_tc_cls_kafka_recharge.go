@@ -28,50 +28,50 @@ func ResourceTencentCloudClsKafkaRecharge() *schema.Resource {
 			"topic_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "recharge for cls TopicId.",
+				Description: "为cls TopicId充值。",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "kafka recharge name.",
+				Description: "kafka充值名称。",
 			},
 
 			"kafka_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "kafka recharge type, 0 for CKafka, 1 fro user define Kafka.",
+				Description: "kafka充值类型，0为CKafka，1为用户定义的Kafka。",
 			},
 
 			"user_kafka_topics": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "user need recharge kafka topic list.",
+				Description: "用户需要充值kafka主题列表。",
 			},
 
 			"offset": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The translation is: -2: Earliest (default) -1: Latest.",
+				Description: "翻译为：-2：最早（默认）-1：最新。",
 			},
 
 			"kafka_instance": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "CKafka Instance id.",
+				Description: "CKafka 实例 ID。",
 			},
 
 			"server_addr": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Server addr.",
+				Description: "服务器地址",
 			},
 
 			"is_encryption_addr": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "ServerAddr is encryption addr.",
+				Description: "ServerAddr 是加密地址。",
 			},
 
 			"protocol": {
@@ -79,28 +79,28 @@ func ResourceTencentCloudClsKafkaRecharge() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "encryption protocol.",
+				Description: "加密协议。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protocol": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "protocol type.",
+							Description: "协议类型。",
 						},
 						"mechanism": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "encryption type.",
+							Description: "加密类型。",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "username.",
+							Description: "用户名。",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "user password.",
+							Description: "用户密码。",
 						},
 					},
 				},
@@ -109,7 +109,7 @@ func ResourceTencentCloudClsKafkaRecharge() *schema.Resource {
 			"consumer_group_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "user consumer group name.",
+				Description: "用户消费组名称。",
 			},
 
 			"log_recharge_rule": {
@@ -117,68 +117,68 @@ func ResourceTencentCloudClsKafkaRecharge() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "log recharge rule.",
+				Description: "记录充值规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"recharge_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "recharge type.",
+							Description: "充值类型。",
 						},
 						"encoding_format": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "encoding format.",
+							Description: "编码格式。",
 						},
 						"default_time_switch": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "user default time.",
+							Description: "用户默认时间。",
 						},
 						"log_regex": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "log regex.",
+							Description: "记录正则表达式。",
 						},
 						"un_match_log_switch": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "is push parse failed log.",
+							Description: "是推送解析失败日志。",
 						},
 						"un_match_log_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "parse failed log key.",
+							Description: "解析失败的日志键。",
 						},
 						"un_match_log_time_src": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "parse failed log time from.",
+							Description: "解析失败日志时间。",
 						},
 						"default_time_src": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "default time from.",
+							Description: "默认时间从。",
 						},
 						"time_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "time key.",
+							Description: "时间键。",
 						},
 						"time_regex": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "time regex.",
+							Description: "时间正则表达式。",
 						},
 						"time_format": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "time format.",
+							Description: "时间格式。",
 						},
 						"time_zone": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "time zone.",
+							Description: "时区。",
 						},
 						"metadata": {
 							Type:     schema.TypeSet,
@@ -187,7 +187,7 @@ func ResourceTencentCloudClsKafkaRecharge() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "metadata.",
+							Description: "元数据。",
 						},
 						"keys": {
 							Type:     schema.TypeSet,
@@ -196,7 +196,7 @@ func ResourceTencentCloudClsKafkaRecharge() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "log key list.",
+							Description: "记录密钥列表。",
 						},
 					},
 				},

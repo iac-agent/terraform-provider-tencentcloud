@@ -27,70 +27,70 @@ func ResourceTencentCloudIdentityCenterUser() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Zone id.",
+				Description: "可用区 ID",
 			},
 
 			"user_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "User name. It must be unique in space. Modifications are not supported. Format: Contains numbers, English letters and special symbols(`+`, `=`, `,`, `.`, `@`, `-`, `_`). Length: Maximum 64 characters.",
+				Description: "用户 名称 It must be unique in space. Modifications are not supported. 格式: 包含numbers，English letters and special symbols(`+`，`=`，`,`，`.`，`@`，`-`，`_`). Length: Maximum 64 characters。",
 			},
 
 			"first_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The user's last name. Length: Maximum 64 characters.",
+				Description: "The 用户's last 名称 Length: Maximum 64 characters。",
 			},
 
 			"last_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The user's name. Length: Maximum 64 characters.",
+				Description: "The 用户's 名称 Length: Maximum 64 characters。",
 			},
 
 			"display_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The display name of the user. Length: Maximum 256 characters.",
+				Description: "The display 名称 用户 Length: Maximum 256 characters。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "User's description. Length: Maximum 1024 characters.",
+				Description: "用户's 描述 Length: Maximum 1024 characters。",
 			},
 
 			"email": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The user's email address. Must be unique within the catalog. Length: Maximum 128 characters.",
+				Description: "The 用户's email 地址 Must be unique within the catalog. Length: Maximum 128 characters。",
 			},
 
 			"user_status": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The status of the user. Value: Enabled (default): Enabled. Disabled: Disabled.",
+				Description: "The 状态 用户 值: 已启用 (default): 已启用 已禁用: 已禁用",
 			},
 			"user_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "User id.",
+				Description: "用户 id。",
 			},
 			"user_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "User type.",
+				Description: "用户 类型",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time.",
+				Description: "创建时间。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

@@ -18,118 +18,118 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Redis Cluster Ids.",
+				Description: "Redis Cluster Ids。",
 			},
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Cluster status: 1- In process, 2- Running, 3- Isolated.",
+				Description: "Cluster 状态: 1- In process，2- Running，3- Isolated。",
 			},
 			"project_ids": {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Project Ids.",
+				Description: "Project Ids。",
 			},
 			"auto_renew_flag": {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Renewal mode: 0- default state (manual renewal); 1- Automatic renewal; 2- Clearly stating that automatic renewal is not allowed.",
+				Description: "Renewal 模式: 0- default state (manual renewal); 1- Automatic renewal; 2- Clearly stating that automatic renewal is not allowed。",
 			},
 			"cluster_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster name.",
+				Description: "集群名称",
 			},
 			"dedicated_cluster_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Dedicated cluster Id.",
+				Description: "Dedicated cluster Id。",
 			},
 			// computed
 			"resources": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: ".",
+				Description: "。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "User's Appid.",
+							Description: "用户's Appid。",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Region Id.",
+							Description: "地域 ID",
 						},
 						"zone_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "zone Id.",
+							Description: "可用区 Id。",
 						},
 						"redis_cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Redis Cluster Id.",
+							Description: "Redis Cluster Id。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Billing mode, 1-annual and monthly package, 0-quantity based billing.",
+							Description: "Billing 模式，1-annual and monthly package，0-quantity based billing。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project Id.",
+							Description: "项目 ID",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Renewal mode: 0- default state (manual renewal); 1- Automatic renewal; 2- Clearly stating that automatic renewal is not allowed.",
+							Description: "Renewal 模式: 0- default state (manual renewal); 1- Automatic renewal; 2- Clearly stating that automatic renewal is not allowed。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster name.",
+							Description: "集群名称",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance create time.",
+							Description: "Instance 创建时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance expiration time.",
+							Description: "Instance 过期时间。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cluster status: 1- In process, 2- Running, 3- Isolated.",
+							Description: "Cluster 状态: 1- In process，2- Running，3- Isolated。",
 						},
 						"base_bundles": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Basic Control Resource Package.",
+							Description: "Basic Control Resource Package。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource_bundle_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resource bundle name.",
+										Description: "Resource bundle 名称",
 									},
 									"available_memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Saleable memory, unit: GB.",
+										Description: "Saleable memory，unit: GB。",
 									},
 									"count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Resource bundle count.",
+										Description: "Resource bundle count。",
 									},
 								},
 							},
@@ -137,23 +137,23 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 						"resource_bundles": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of Resource Packages.",
+							Description: "列表 Resource Packages。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource_bundle_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resource bundle name.",
+										Description: "Resource bundle 名称",
 									},
 									"available_memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Saleable memory, unit: GB.",
+										Description: "Saleable memory，unit: GB。",
 									},
 									"count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Resource bundle count.",
+										Description: "Resource bundle count。",
 									},
 								},
 							},
@@ -161,7 +161,7 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 						"dedicated_cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dedicated cluster Id.",
+							Description: "Dedicated cluster Id。",
 						},
 					},
 				},
@@ -169,7 +169,7 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

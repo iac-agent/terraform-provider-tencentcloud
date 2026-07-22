@@ -22,7 +22,7 @@ func ResourceTencentCloudDcdbIsolateHourInstanceOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID list.",
+				Description: "实例 ID list。",
 			},
 		},
 	}

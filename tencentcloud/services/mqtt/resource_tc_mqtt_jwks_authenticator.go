@@ -28,37 +28,37 @@ func ResourceTencentCloudMqttJwksAuthenticator() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"endpoint": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "JWKS endpoint.",
+				Description: "JWKS endpoint。",
 			},
 
 			"refresh_interval": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "JWKS refresh interval. unit: s.",
+				Description: "JWKS refresh interval. unit: s。",
 			},
 
 			"text": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "JWKS text.",
+				Description: "JWKS text。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remark.",
+				Description: "备注",
 			},
 
 			"from": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Pass the key of JWT when connecting the device; Username - passed using the username field; Password - Pass using password field.",
+				Description: "Pass the 键 of JWT when connecting the device; 用户名 - passed using the 用户名 field; 密码 - Pass using 密码 field。",
 			},
 		},
 	}

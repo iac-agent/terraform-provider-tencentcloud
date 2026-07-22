@@ -25,7 +25,7 @@ func ResourceTencentCloudElasticsearchSecurityGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance Id.",
+				Description: "实例 ID",
 			},
 
 			"security_group_ids": {
@@ -34,7 +34,7 @@ func ResourceTencentCloudElasticsearchSecurityGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Security group id list.",
+				Description: "安全组 ID list。",
 			},
 		},
 	}

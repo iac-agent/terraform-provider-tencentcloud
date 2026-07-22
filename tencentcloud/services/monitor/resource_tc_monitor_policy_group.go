@@ -30,82 +30,82 @@ func ResourceTencentCloudMonitorPolicyGroup() *schema.Resource {
 			"group_name": {
 				Type:         schema.TypeString,
 				Required:     true,
-				Description:  "Policy group name, length should between 1 and 20.",
+				Description:  "Policy 组名称，length should between 1 and 20。",
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 20),
 			},
 			"policy_view_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Policy view name, eg:`cvm_device`,`BANDWIDTHPACKAGE`, refer to `data.tencentcloud_monitor_policy_conditions(policy_view_name)`.",
+				Description: "Policy view 名称，eg:`cvm_device`,`BANDWIDTHPACKAGE`，refer to `data.tencentcloud_monitor_policy_conditions(policy_view_name)`。",
 			},
 			"remark": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 100),
-				Description:  "Policy group's remark information.",
+				Description:  "Policy group's 备注 information。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
 				Default:     0,
-				Description: "The project id to which the policy group belongs, default is `0`.",
+				Description: "The 项目 ID to which the policy group belongs，默认为 `0`。",
 			},
 			"is_union_rule": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "The and or relation of indicator alarm rule. Valid values: `0`, `1`. `0` represents or rule (if any rule is met, the alarm will be raised), `1` represents and rule (if all rules are met, the alarm will be raised).The default is 0.",
+				Description:  "The and or relation of indicator alarm rule. 有效值：`0`，`1`. `0` represents or rule (if any rule is met，the alarm will be raised)，`1` represents and rule (if all rules are met，the alarm will be raised).The 默认为 0。",
 			},
 			"conditions": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "A list of threshold rules. Each element contains the following attributes:",
+				Description: "A 列表 threshold rules. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"metric_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Id of the metric, refer to `data.tencentcloud_monitor_policy_conditions(metric_id)`.",
+							Description: "Id of the metric，refer to `data.tencentcloud_monitor_policy_conditions(metric_id)`。",
 						},
 						"alarm_notify_type": {
 							Type:         schema.TypeInt,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-							Description:  "Alarm sending convergence type. `0` continuous alarm, `1` index alarm.",
+							Description:  "Alarm sending convergence 类型 `0` continuous alarm，`1` 索引 alarm。",
 						},
 						"alarm_notify_period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Alarm sending cycle per second. <0 does not fire, `0` only fires once, and >0 fires every triggerTime second.",
+							Description: "Alarm sending cycle per second. <0 does not fire，`0` only fires once，and >0 fires every triggerTime second。",
 						},
 						"calc_type": {
 							Type:         schema.TypeInt,
 							Optional:     true,
 							Computed:     true,
 							ValidateFunc: tccommon.ValidateIntegerInRange(1, 12),
-							Description:  "Compare type. Valid value ranges: [1~12]. `1` means more than, `2` means greater than or equal, `3` means less than, `4` means less than or equal to, `5` means equal, `6` means not equal, `7` means days rose, `8` means days fell, `9` means weeks rose, `10` means weeks fell, `11` means period rise, `12` means period fell, refer to `data.tencentcloud_monitor_policy_conditions(calc_type_keys)`.",
+							Description:  "Compare 类型 Valid 值 ranges: [1~12]. `1` means more than，`2` means greater than or equal，`3` means less than，`4` means less than or equal to，`5` means equal，`6` means not equal，`7` means days rose，`8` means days fell，`9` means weeks rose，`10` means weeks fell，`11` means 周期 rise，`12` means 周期 fell，refer to `data.tencentcloud_monitor_policy_conditions(calc_type_keys)`。",
 						},
 						"calc_value": {
 							Type:        schema.TypeFloat,
 							Optional:    true,
 							Computed:    true,
-							Description: "Threshold value, refer to `data.tencentcloud_monitor_policy_conditions(calc_value_*)`.",
+							Description: "Threshold 值，refer to `data.tencentcloud_monitor_policy_conditions(calc_value_*)`。",
 						},
 						"calc_period": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Data aggregation cycle (unit of second), if the metric has a default value can not be filled, refer to `data.tencentcloud_monitor_policy_conditions(period_keys)`.",
+							Description: "Data aggregation cycle (unit of second)，if the metric has a 默认值 can not be filled，refer to `data.tencentcloud_monitor_policy_conditions(period_keys)`。",
 						},
 						"continue_period": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "The rule triggers an alert that lasts for several detection cycles, refer to `data.tencentcloud_monitor_policy_conditions(period_num_keys)`.",
+							Description: "The rule triggers an alert that lasts for several detection cycles，refer to `data.tencentcloud_monitor_policy_conditions(period_num_keys)`。",
 						},
 					},
 				},
@@ -113,24 +113,24 @@ func ResourceTencentCloudMonitorPolicyGroup() *schema.Resource {
 			"event_conditions": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "A list of event rules. Each element contains the following attributes:",
+				Description: "A 列表 event rules. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"event_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The ID of this event metric, refer to `data.tencentcloud_monitor_policy_conditions(event_id).",
+							Description: "ID this event metric，refer to `data.tencentcloud_monitor_policy_conditions(event_id)。",
 						},
 						"alarm_notify_type": {
 							Type:         schema.TypeInt,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-							Description:  "Alarm sending convergence type. `0` continuous alarm, `1` index alarm.",
+							Description:  "Alarm sending convergence 类型 `0` continuous alarm，`1` 索引 alarm。",
 						},
 						"alarm_notify_period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Alarm sending cycle per second. <0 does not fire, `0` only fires once, and >0 fires every triggerTime second.",
+							Description: "Alarm sending cycle per second. <0 does not fire，`0` only fires once，and >0 fires every triggerTime second。",
 						},
 					},
 				},
@@ -139,36 +139,36 @@ func ResourceTencentCloudMonitorPolicyGroup() *schema.Resource {
 			"receivers": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of receivers. Each element contains the following attributes:",
+				Description: "A 列表 receivers. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"receiver_group_list": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Computed:    true,
-							Description: "Alarm receive group ID list.",
+							Description: "Alarm receive 组 ID list。",
 						},
 						"receiver_user_list": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Computed:    true,
-							Description: "Alarm receiver id list.",
+							Description: "Alarm receiver id list。",
 						},
 						"uid_list": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Computed:    true,
-							Description: "The phone alerts the receiver uid.",
+							Description: "The phone alerts the receiver uid。",
 						},
 						"start_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Alarm period start time.Range [0,86400], which removes the date after it is converted to Beijing time as a Unix timestamp, for example 7200 means '10:0:0'.",
+							Description: "Alarm 周期 开始时间.Range [0,86400]，which removes the date after it is converted to Beijing time as a Unix 时间戳，for example 7200 means '10:0:0'。",
 						},
 						"end_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "End of alarm period. Meaning with `start_time`.",
+							Description: "End of alarm 周期 Meaning with `start_time`。",
 						},
 						"notify_way": {
 							Type:        schema.TypeList,
@@ -179,27 +179,27 @@ func ResourceTencentCloudMonitorPolicyGroup() *schema.Resource {
 						"receiver_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Receive type. Valid values: group, user. 'group' (receiving group) or 'user' (receiver).",
+							Description: "Receive 类型 有效值：group，用户 'group' (receiving group) or '用户' (receiver)。",
 						},
 						"round_number": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Telephone alarm number.",
+							Description: "Telephone alarm number。",
 						},
 						"round_interval": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Telephone alarm interval per round (seconds).",
+							Description: "Telephone alarm interval per round (seconds)。",
 						},
 						"person_interval": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Telephone warning to individual interval (seconds).",
+							Description: "Telephone 警告 to individual interval (seconds)。",
 						},
 						"need_send_notice": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Do need a telephone alarm contact prompt. You don't need `0`, you need `1`.",
+							Description: "Do need a telephone alarm contact prompt. You don't need `0`，you need `1`。",
 						},
 						"send_for": {
 							Type:        schema.TypeList,
@@ -216,7 +216,7 @@ func ResourceTencentCloudMonitorPolicyGroup() *schema.Resource {
 						"receive_language": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alert sending language.",
+							Description: "Alert sending 语言",
 						},
 					},
 				},
@@ -224,28 +224,28 @@ func ResourceTencentCloudMonitorPolicyGroup() *schema.Resource {
 			"binding_objects": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list binding objects(list only those in the `provider.region`). Each element contains the following attributes:",
+				Description: "A list binding objects(list only those in the `provider.地域`). Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"unique_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Object unique id.",
+							Description: "Object unique id。",
 						},
 						"dimensions_json": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Represents a collection of dimensions of an object instance, json format.",
+							Description: "Represents a collection of dimensions of an object instance，json 格式",
 						},
 						"is_shielded": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the object is shielded or not, 0 means unshielded and 1 means shielded.",
+							Description: "是否object is shielded or not，0 means unshielded and 1 means shielded。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The region where the object is located.",
+							Description: "The 地域 where the object is located。",
 						},
 					},
 				},
@@ -254,23 +254,23 @@ func ResourceTencentCloudMonitorPolicyGroup() *schema.Resource {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Computed:    true,
-				Description: "A list of dimensions for this policy group.",
+				Description: "A 列表 dimensions for this policy group。",
 			},
 			"support_regions": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Computed:    true,
-				Description: "Support regions this policy group.",
+				Description: "Support regions this policy group。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The policy group update time.",
+				Description: "The policy group 更新时间。",
 			},
 			"last_edit_uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Recently edited user uin.",
+				Description: "Recently edited 用户 uin。",
 			},
 		},
 	}

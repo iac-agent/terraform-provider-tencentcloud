@@ -27,20 +27,20 @@ func ResourceTencentCloudMysqlIsolateInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cdb-c1nl9rpv, which is the same as the instance ID displayed on the cloud database console page, and you can use the [query instance list] (https://cloud.tencent.com/document/api/236/15872) interface Gets the value of the field InstanceId in the output parameter.",
+				Description: "实例ID，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同，可以通过【查询实例列表】（https://cloud.tencent.com/document/api/236/15872）接口获取输出参数中InstanceId字段的值。",
 			},
 
 			"operate": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"isolate", "recover"}),
-				Description:  "Manipulate instance, `isolate` - isolate instance, `recover`- recover isolated instance.",
+				Description: "操作实例，“isolate”- 隔离实例，“recover”- 恢复隔离的实例。",
 			},
 
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Instance status.",
+				Description: "实例状态。",
 			},
 		},
 	}

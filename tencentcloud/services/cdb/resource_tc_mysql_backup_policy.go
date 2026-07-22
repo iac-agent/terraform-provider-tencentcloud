@@ -23,49 +23,49 @@ func ResourceTencentCloudMysqlBackupPolicy() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Instance ID to which policies will be applied.",
+				Description: "将应用策略的实例 ID。",
 			},
 			"retention_period": {
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateIntegerInRange(7, 1830),
 				Optional:     true,
 				Default:      7,
-				Description:  "The retention time of backup files, in days. The minimum value is 7 days and the maximum value is 1830 days. And default value is `7`.",
+				Description: "备份文件的保留时间，以天为单位。最小值为 7 天，最大值为 1830 天。默认值为“7”。",
 			},
 			"backup_model": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      MYSQL_ALLOW_BACKUP_MODEL[0],
 				ValidateFunc: tccommon.ValidateAllowedStringValue(MYSQL_ALLOW_BACKUP_MODEL),
-				Description:  "Backup method. Supported values include: `physical` - physical backup; `snapshot` - snapshot backup. Multi node only support `physical`, Single node only support `snapshot`.",
+				Description: "备份方法。支持的值包括： `physical` - 物理备份； `快照` - 快照备份。多节点仅支持“物理”，单节点仅支持“快照”。",
 			},
 			"backup_time": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      MYSQL_ALLOW_BACKUP_TIME[0],
 				ValidateFunc: tccommon.ValidateAllowedStringValue(MYSQL_ALLOW_BACKUP_TIME),
-				Description:  "Instance backup time, in the format of 'HH:mm-HH:mm'. Time setting interval is four hours. Default to `02:00-06:00`. The following value can be supported: `02:00-06:00`, `06:00-10:00`, `10:00-14:00`, `14:00-18:00`, `18:00-22:00`, and `22:00-02:00`.",
+				Description: "实例备份时间，格式为“HH:mm-HH:mm”。时间设置间隔为四小时。默认为“02:00-06:00”。可以支持以下值：`02:00-06:00`、`06:00-10:00`、`10:00-14:00`、`14:00-18:00`、`18:00-22:00`和`22:00-02:00`。",
 			},
 
 			"binlog_period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Binlog retention time, in days. The minimum value is 7 days and the maximum value is 1830 days. This value cannot be set greater than the backup file retention time.",
+				Description: "Binlog 保留时间，以天为单位。最小值为 7 天，最大值为 1830 天。该值不能设置大于备份文件保留时间。",
 			},
 
 			"enable_binlog_standby": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "off",
-				Description: "Whether to enable the log backup standard storage policy, `off` - close, `on` - open, the default is off.",
+				Description: "是否启用日志备份标准存储策略，“off”-关闭，“on”-打开，默认关闭。",
 			},
 
 			"binlog_standby_days": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "The standard starting number of days for log backup storage. The log backup will be converted when it reaches the standard starting number of days for storage. The minimum is 30 days and must not be greater than the number of days for log backup retention.",
+				Description: "日志备份存储的标准起始天数。当日志备份达到标准起始存储天数时将进行转换。最短为 30 天，且不得大于日志备份保留天数。",
 			},
 		},
 	}

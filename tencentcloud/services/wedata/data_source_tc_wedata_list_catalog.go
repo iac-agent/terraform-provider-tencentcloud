@@ -18,19 +18,19 @@ func DataSourceTencentCloudWedataListCatalog() *schema.Resource {
 			"parent_catalog_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Parent catalog ID.",
+				Description: "Parent catalog ID。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Catalog record list.",
+				Description: "Catalog record list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Catalog name.",
+							Description: "Catalog 名称",
 						},
 					},
 				},
@@ -39,7 +39,7 @@ func DataSourceTencentCloudWedataListCatalog() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -27,37 +27,37 @@ func ResourceTencentCloudClsDashboard() *schema.Resource {
 			"dashboard_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Dashboard name, which must be unique within the account.",
+				Description: "仪表板名称，该名称在帐户内必须是唯一的。",
 			},
 
 			"data": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Dashboard configuration data in JSON format. If not specified, an empty dashboard will be created.",
+				Description: "JSON 格式的仪表板配置数据。如果未指定，将创建一个空仪表板。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag key-value pairs. Maximum of 10 tags.",
+				Description: "标记键值对。最多 10 个标签。",
 			},
 
 			"dashboard_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Dashboard ID (globally unique identifier).",
+				Description: "仪表板 ID（全局唯一标识符）。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "创作时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last update time.",
+				Description: "最后更新时间。",
 			},
 		},
 	}

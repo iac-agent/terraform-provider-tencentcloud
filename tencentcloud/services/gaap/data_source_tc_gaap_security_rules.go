@@ -21,29 +21,29 @@ func DataSourceTencentCloudGaapSecurityRules() *schema.Resource {
 			"policy_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the security policy to be queried.",
+				Description: "ID security policy to be queried。",
 			},
 			"rule_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the security policy rules to be queried.",
+				Description: "ID security policy rules to be queried。",
 			},
 			"action": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ACCEPT", "DROP"}),
-				Description:  "Policy of the rule to be queried.",
+				Description:  "Policy of the rule to be queried。",
 			},
 			"cidr_ip": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateCidrIp,
-				Description:  "A network address block of the request source to be queried.",
+				Description:  "A network 地址 block of the 请求来源 to be queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the security policy rule to be queried.",
+				Description: "名称 security policy rule to be queried。",
 			},
 			"port": {
 				Type:     schema.TypeString,
@@ -58,56 +58,56 @@ func DataSourceTencentCloudGaapSecurityRules() *schema.Resource {
 					}
 					return
 				},
-				Description: "Port of the security policy rule to be queried.",
+				Description: "端口 of the security policy rule to be queried。",
 			},
 			"protocol": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ALL", "TCP", "UDP"}),
-				Description:  "Protocol of the security policy rule to be queried.",
+				Description:  "协议 of the security policy rule to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"rules": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of security policy rule. Each element contains the following attributes:",
+				Description: "An information 列表 security policy rule. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the security policy rule.",
+							Description: "ID security policy rule。",
 						},
 						"cidr_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "A network address block of the request source.",
+							Description: "A network 地址 block of the 请求来源",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the security policy rule.",
+							Description: "名称 security policy rule。",
 						},
 						"port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Port of the security policy rule.",
+							Description: "端口 of the security policy rule。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Protocol of the security policy rule.",
+							Description: "协议 of the security policy rule。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy of the rule.",
+							Description: "Policy of the rule。",
 						},
 					},
 				},

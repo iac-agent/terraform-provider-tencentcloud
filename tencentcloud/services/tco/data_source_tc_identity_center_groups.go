@@ -18,7 +18,7 @@ func DataSourceTencentCloudIdentityCenterGroups() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Space ID.",
+				Description: "Space ID。",
 			},
 
 			"filter": {
@@ -30,13 +30,13 @@ func DataSourceTencentCloudIdentityCenterGroups() *schema.Resource {
 			"group_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "User group type. Manual: manually created; Synchronized: externally imported.",
+				Description: "用户 group 类型 Manual: manually created; Synchronized: externally imported。",
 			},
 
 			"filter_users": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Filtered user. IsSelected=1 will be returned for the user group associated with this user.",
+				Description: "Filtered 用户 IsSelected=1 will be returned for the 用户 group associated with this 用户",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -45,60 +45,60 @@ func DataSourceTencentCloudIdentityCenterGroups() *schema.Resource {
 			"sort_field": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting field, which currently only supports CreateTime. The default is the CreateTime field.",
+				Description: "Sorting field，which currently only supports CreateTime. The 默认为 the CreateTime field。",
 			},
 
 			"sort_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting type. Desc: descending order; Asc: ascending order. It should be set along with SortField.",
+				Description: "Sorting 类型 Desc: 降序; Asc: 升序 It should be set along with SortField。",
 			},
 
 			"groups": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "User group list.",
+				Description: "用户 group list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "User group name.",
+							Description: "用户 组名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "User group description.",
+							Description: "用户 group 描述",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Creation time of the user group.",
+							Description: "创建时间 of the 用户 group。",
 						},
 						"group_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "User group type. Manual: manually created; Synchronized: externally imported.",
+							Description: "用户 group 类型 Manual: manually created; Synchronized: externally imported。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Modification time of the user group.",
+							Description: "修改时间 of the 用户 group。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "User group ID.",
+							Description: "用户 组 ID",
 						},
 						"member_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of group members.",
+							Description: "数量 group members。",
 						},
 						"is_selected": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "If the input parameter FilterUsers is provided, return true when the user is in the user group; otherwise, return false.",
+							Description: "If the input parameter FilterUsers is provided，return true when the 用户 is in the 用户 group; otherwise，return false。",
 						},
 					},
 				},
@@ -107,7 +107,7 @@ func DataSourceTencentCloudIdentityCenterGroups() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

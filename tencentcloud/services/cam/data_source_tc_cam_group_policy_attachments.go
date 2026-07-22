@@ -22,65 +22,65 @@ func DataSourceTencentCloudCamGroupPolicyAttachments() *schema.Resource {
 			"group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the attached CAM group to be queried.",
+				Description: "ID attached CAM group to be queried。",
 			},
 			"policy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of CAM policy to be queried.",
+				Description: "ID CAM policy to be queried。",
 			},
 			"create_mode": {
 				Type:     schema.TypeInt,
 				Optional: true,
 
-				Description: "Mode of creation of the CAM user policy attachment. 1 means the cam policy attachment is created by production, and the others indicate syntax strategy ways.",
+				Description: "模式 of creation of the CAM 用户 policy attachment. 1 means the cam policy attachment is created by production，and the others indicate syntax strategy ways。",
 			},
 			"policy_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CAM_POLICY_CREATE_STRATEGY),
-				Description:  "Type of the policy strategy. 'User' means customer strategy and 'QCS' means preset strategy.",
+				Description:  "类型 policy strategy. '用户' means customer strategy and 'QCS' means preset strategy。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"group_policy_attachment_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of CAM group policy attachments. Each element contains the following attributes:",
+				Description: "A 列表 CAM group policy attachments. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of CAM group.",
+							Description: "ID CAM group。",
 						},
 						"policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of CAM group.",
+							Description: "名称 CAM group。",
 						},
 						"create_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Mode of Creation of the CAM group policy attachment. 1 means the cam policy attachment is created by production, and the others indicate syntax strategy ways.",
+							Description: "模式 of Creation of the CAM group policy attachment. 1 means the cam policy attachment is created by production，and the others indicate syntax strategy ways。",
 						},
 						"policy_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the policy strategy. 'User' means customer strategy and 'QCS' means preset strategy.",
+							Description: "类型 policy strategy. '用户' means customer strategy and 'QCS' means preset strategy。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the CAM group policy attachment.",
+							Description: "创建时间 of the CAM group policy attachment。",
 						},
 						"policy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the policy.",
+							Description: "名称 policy。",
 						},
 					},
 				},

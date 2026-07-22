@@ -23,14 +23,14 @@ func ResourceTencentCloudDtsSyncJobResizeOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Synchronization instance id (i.e. identifies a synchronization job).",
+				Description: "Synchronization 实例 ID (i.e. identifies a synchronization job)。",
 			},
 
 			"new_instance_class": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Task specification.",
+				Description: "Task specification。",
 			},
 		},
 	}

@@ -27,12 +27,12 @@ func ResourceTencentCloudAPIGatewayUsagePlan() *schema.Resource {
 			"usage_plan_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Custom usage plan name.",
+				Description: "Custom usage plan 名称",
 			},
 			"usage_plan_desc": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom usage plan description.",
+				Description: "Custom usage plan 描述",
 			},
 			"max_request_num": {
 				Type:     schema.TypeInt,
@@ -44,7 +44,7 @@ func ResourceTencentCloudAPIGatewayUsagePlan() *schema.Resource {
 					}
 					return tccommon.ValidateIntegerInRange(1, 99999999)(i, s)
 				},
-				Description: "Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is -1, which indicates no limit.",
+				Description: "Total 数量 requests allowed. 有效值：-1，[1,99999999]. The 默认值为 -1，which 表示no 限制",
 			},
 			"max_request_num_pre_sec": {
 				Type:     schema.TypeInt,
@@ -56,75 +56,75 @@ func ResourceTencentCloudAPIGatewayUsagePlan() *schema.Resource {
 					}
 					return tccommon.ValidateIntegerInRange(1, 2000)(i, s)
 				},
-				Description: "Limit of requests per second. Valid values: -1, [1,2000]. The default value is -1, which indicates no limit.",
+				Description: "限制 of requests per second. 有效值：-1，[1,2000]. The 默认值为 -1，which 表示no 限制",
 			},
 			// Computed values.
 			"modify_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
+				Description: "最后修改时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
+				Description: "创建时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
 			},
 			"attach_api_keys": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Computed:    true,
-				Description: "Attach API keys list.",
+				Description: "Attach API keys list。",
 			},
 			"attach_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Attach service and API list.",
+				Description: "Attach service and API list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The service ID.",
+							Description: "The 服务 ID",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The service name.",
+							Description: "The 服务名称",
 						},
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API ID, this value is empty if attach service.",
+							Description: "The API ID，this 值 is empty if attach service。",
 						},
 						"api_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API name, this value is empty if attach service.",
+							Description: "The API 名称，this 值 is empty if attach service。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API path, this value is empty if attach service.",
+							Description: "The API 路径，this 值 is empty if attach service。",
 						},
 						"method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API method, this value is empty if attach service.",
+							Description: "The API method，this 值 is empty if attach service。",
 						},
 						"environment": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The environment name.",
+							Description: "The environment 名称",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
+							Description: "最后修改时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
+							Description: "创建时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
 						},
 					},
 				},

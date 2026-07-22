@@ -24,14 +24,14 @@ func ResourceTencentCloudLighthouseApplyInstanceSnapshot() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"snapshot_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot ID.",
+				Description: "Snapshot ID。",
 			},
 		},
 	}

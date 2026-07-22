@@ -29,18 +29,18 @@ func ResourceTencentCloudCssPlayDomainCertAttachment() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The playback domains to bind and whether to enable HTTPS for them. If `CloudCertId` is unspecified, and a domain is already bound with a certificate, this API will only update the HTTPS configuration of the domain.",
+				Description: "The playback domains to bind and 是否enable HTTPS for them. If `CloudCertId` is unspecified，and a 域名 is already bound with a certificate，this API will only update the HTTPS configuration of the 域名",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "domain name.",
+							Description: "域名 名称",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Whether to enable the https rule for the domain name. 1: enable, 0: disabled, -1: remain unchanged.",
+							Description: "是否enable the https rule for the 域名 名称 1: enable，0: 已禁用，-1: remain unchanged。",
 						},
 					},
 				},
@@ -49,32 +49,32 @@ func ResourceTencentCloudCssPlayDomainCertAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Tencent cloud ssl certificate Id. Refer to `tencentcloud_ssl_certificate` to create or obtain the resource ID.",
+				Description: "Tencent cloud ssl certificate Id. Refer to `tencentcloud_ssl_certificate` to create or obtain the resource ID。",
 			},
 			"certificate_alias": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "certificate remarks. Synonymous with CertName.",
+				Description: "certificate 备注 Synonymous with CertName。",
 			},
 			"cert_type": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "certificate type. 0: Self-owned certificate, 1: Tencent Cloud ssl managed certificate.",
+				Description: "certificate 类型 0: Self-owned certificate，1: Tencent Cloud ssl managed certificate。",
 			},
 			"cert_expire_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "certificate expiration time.",
+				Description: "certificate 过期时间。",
 			},
 			"cert_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "certificate ID.",
+				Description: "证书 ID",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The time when the rule was last updated.",
+				Description: "The time when the rule was last updated。",
 			},
 		},
 	}

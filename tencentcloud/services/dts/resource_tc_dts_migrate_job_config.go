@@ -25,19 +25,19 @@ func ResourceTencentCloudDtsMigrateJobConfig() *schema.Resource {
 			"job_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "job id.",
+				Description: "作业 ID",
 			},
 
 			"complete_mode": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "complete mode, optional value is waitForSync or immediately.",
+				Description: "complete 模式，可选 值 is waitForSync or immediately。",
 			},
 
 			"action": {
 				Required:     true,
 				Type:         schema.TypeString,
-				Description:  "The operation want to perform. Valid values are: `pause`, `continue`, `complete`, `recover`,`stop`.",
+				Description:  "The operation want to perform. 有效值：`pause`，`continue`，`complete`，`recover`,`stop`。",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{DTS_MIGRATE_ACTION_PAUSE, DTS_MIGRATE_ACTION_CONTINUE, DTS_MIGRATE_ACTION_COMPLETE, DTS_MIGRATE_ACTION_RECOVER, DTS_MIGRATE_ACTION_STOP, DTS_MIGRATE_ACTION_ISOLATE}),
 			},
 		},

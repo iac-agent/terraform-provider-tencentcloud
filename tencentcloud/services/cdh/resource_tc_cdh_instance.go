@@ -30,25 +30,25 @@ func ResourceTencentCloudCdhInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The available zone for the CDH instance.",
+				Description: "The available 可用区 for the CDH instance。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "The project the instance belongs to, default to 0.",
+				Description: "The project the instance belongs to，默认为 0。",
 			},
 			"host_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The type of the CDH instance.",
+				Description: "The 类型 CDH instance。",
 			},
 			"host_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The name of the CDH instance. The max length of host_name is 60.",
+				Description: "The 名称 CDH instance. The max length of host_name is 60。",
 			},
 			// payment
 			"charge_type": {
@@ -56,41 +56,41 @@ func ResourceTencentCloudCdhInstance() *schema.Resource {
 				Optional:     true,
 				Default:      CDH_CHARGE_TYPE_PREPAID,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{CDH_CHARGE_TYPE_PREPAID}),
-				Description:  "The charge type of instance. Valid values are `PREPAID`. The default is `PREPAID`.",
+				Description:  "The charge 类型 instance. Valid values are `PREPAID`. The 默认为 `PREPAID`。",
 			},
 			"prepaid_period": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(CDH_PREPAID_PERIOD),
-				Description:  "The tenancy (time unit is month) of the prepaid instance, NOTE: it only works when charge_type is set to `PREPAID`. Valid values are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.",
+				Description:  "The tenancy (time unit is month) of the prepaid instance，NOTE: it only works when charge_type is set to `PREPAID`. Valid values are `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，`36`。",
 			},
 			"prepaid_renew_flag": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CDH_PREPAID_RENEW_FLAG),
-				Description:  "Auto renewal flag. Valid values: `NOTIFY_AND_AUTO_RENEW`: notify upon expiration and renew automatically, `NOTIFY_AND_MANUAL_RENEW`: notify upon expiration but do not renew automatically, `DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify upon expiration nor renew automatically. Default value: `NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed on a monthly basis if the account balance is sufficient. NOTE: it only works when charge_type is set to `PREPAID`.",
+				Description:  "自动续费标识 有效值：`NOTIFY_AND_AUTO_RENEW`: notify upon expiration and renew automatically，`NOTIFY_AND_MANUAL_RENEW`: notify upon expiration but do not renew automatically，`DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify upon expiration nor renew automatically. 默认值：`NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`，the instance will be automatically renewed on a monthly basis if the 账号 balance is sufficient. NOTE: it only works when charge_type is set to `PREPAID`。",
 			},
 			//computed
 			"host_state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "State of the CDH instance.",
+				Description: "State of the CDH instance。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of the instance.",
+				Description: "创建时间 of the instance。",
 			},
 			"expired_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Expired time of the instance.",
+				Description: "过期时间 of the instance。",
 			},
 			"cvm_instance_ids": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Id of CVM instances that have been created on the CDH instance.",
+				Description: "Id of CVM instances that have been created on the CDH instance。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -98,43 +98,43 @@ func ResourceTencentCloudCdhInstance() *schema.Resource {
 			"host_resource": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of host resource. Each element contains the following attributes:",
+				Description: "An information 列表 主机 resource. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cpu_total_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of total CPU cores of the instance.",
+							Description: "The 数量 total CPU 核数 of the instance。",
 						},
 						"cpu_available_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of available CPU cores of the instance.",
+							Description: "The 数量 available CPU 核数 of the instance。",
 						},
 						"memory_total_size": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Instance memory total capacity, unit in GB.",
+							Description: "Instance memory total capacity，unit （GB）。",
 						},
 						"memory_available_size": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Instance memory available capacity, unit in GB.",
+							Description: "Instance memory available capacity，unit （GB）。",
 						},
 						"disk_total_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance disk total capacity, unit in GB.",
+							Description: "Instance disk total capacity，unit （GB）。",
 						},
 						"disk_available_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance disk available capacity, unit in GB.",
+							Description: "Instance disk available capacity，unit （GB）。",
 						},
 						"disk_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the disk.",
+							Description: "类型 disk。",
 						},
 					},
 				},

@@ -17,19 +17,19 @@ func DataSourceTencentCloudTeoPlans() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions, the upper limit of Filters. Values is 20. The detailed filtering conditions are as follows: <li>plan-type<br>Filter according to [<strong>Package Type</strong>]. <br>Optional types are: <br>plan-trial: Trial Package; <br>plan-personal: Personal Package; <br>plan-basic: Basic Package; <br>plan-standard: Standard Package; <br>plan-enterprise: Enterprise Package. </li><li>plan-id<br>Filter according to [<strong>Package ID</strong>]. The package ID is in the form of: edgeone-268z103ob0sx.</li><li>area<br>Filter according to [<strong>Package Acceleration Region</strong>]. </li>Service area, optional types are: <br>mainland: Mainland China; <br>overseas: Global (excluding Mainland China); <br>global: Global (including Mainland China).<br><li>status<br>Filter by [<strong>Package Status</strong>].<br>The available statuses are:<br>normal: normal status;<br>expiring-soon: about to expire;<br>expired: expired;<br>isolated: isolated.</li>.",
+				Description: "Filter conditions，the upper 限制 of Filters. Values is 20. The detailed filtering conditions are as follows: <li>plan-类型<br>Filter according to [<strong>Package 类型</strong>]. <br>可选 types are: <br>plan-trial: Trial Package; <br>plan-personal: Personal Package; <br>plan-basic: Basic Package; <br>plan-standard: Standard Package; <br>plan-enterprise: Enterprise Package. </li><li>plan-id<br>Filter according to [<strong>Package ID</strong>]. The package ID is in the form of: edgeone-268z103ob0sx.</li><li>area<br>Filter according to [<strong>Package Acceleration 地域</strong>]. </li>Service area，可选 types are: <br>mainland: Mainland China; <br>overseas: Global (excluding Mainland China); <br>global: Global (including Mainland China).<br><li>状态<br>Filter by [<strong>Package 状态</strong>].<br>The available statuses are:<br>normal: normal 状态;<br>expiring-soon: about to expire;<br>expired: expired;<br>isolated: isolated.</li>。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter name.",
+							Description: "过滤名称",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Filter value.",
+							Description: "过滤值",
 						},
 					},
 				},
@@ -38,67 +38,67 @@ func DataSourceTencentCloudTeoPlans() *schema.Resource {
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting field, the values are: <li> enable-time: effective time; </li><li> expire-time: expiration time. </li> If not filled in, the default value enable-time will be used.",
+				Description: "Sorting field，the values are: <li> enable-time: effective time; </li><li> expire-time: 过期时间. </li> 如果未填写 in，the 默认值 enable-time will be used。",
 			},
 
 			"direction": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting direction, the possible values are: <li>asc: sort from small to large; </li><li>desc: sort from large to small. </li>If not filled in, the default value desc will be used.",
+				Description: "Sorting direction，the possible values are: <li>asc: sort from small to large; </li><li>desc: sort from large to small. </li>如果未填写 in，the 默认值 desc will be used。",
 			},
 
 			// computed
 			"plans": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Plan list.",
+				Description: "Plan list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"plan_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plan type. Possible values are: <li>plan-trial: Trial plan; </li><li>plan-personal: Personal plan; </li><li>plan-basic: Basic plan; </li><li>plan-standard: Standard plan; </li><li>plan-enterprise-v2: Enterprise plan; </li><li>plan-enterprise-model-a: Enterprise Model A plan. </li><li>plan-enterprise: Old Enterprise plan. </li>.",
+							Description: "Plan 类型 Possible values are: <li>plan-trial: Trial plan; </li><li>plan-personal: Personal plan; </li><li>plan-basic: Basic plan; </li><li>plan-standard: Standard plan; </li><li>plan-enterprise-v2: Enterprise plan; </li><li>plan-enterprise-model-a: Enterprise Model A plan. </li><li>plan-enterprise: Old Enterprise plan. </li>。",
 						},
 						"plan_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plan ID.",
+							Description: "Plan ID。",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service area, the values are: <li>mainland: Mainland China; </li><li>overseas: Worldwide (excluding Mainland China); </li><li>global: Worldwide (including Mainland China).</li>.",
+							Description: "Service area，the values are: <li>mainland: Mainland China; </li><li>overseas: Worldwide (excluding Mainland China); </li><li>global: Worldwide (including Mainland China).</li>。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package status, the values are: <li>normal: normal status; </li><li>expiring-soon: about to expire; </li><li>expired: expired; </li><li>isolated: isolated; </li><li>overdue-isolated: overdue isolated.</li>.",
+							Description: "Package 状态，the values are: <li>normal: normal 状态; </li><li>expiring-soon: about to expire; </li><li>expired: expired; </li><li>isolated: isolated; </li><li>overdue-isolated: overdue isolated.</li>。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Payment type, possible values: <li>0: post-payment; </li><li>1: pre-payment.</li>.",
+							Description: "Payment 类型，possible values: <li>0: post-payment; </li><li>1: pre-payment.</li>。",
 						},
 						"zones_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Site information bound to the package, including site ID, site name, and site status.",
+							Description: "Site information bound to the package，including site ID，站点名称，and site 状态",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"zone_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Zone ID.",
+										Description: "可用区 ID",
 									},
 									"zone_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Zone name.",
+										Description: "可用区 名称",
 									},
 									"paused": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether the site is disabled. The possible values are: <li>false: not disabled; </li><li>true: disabled.</li>.",
+										Description: "是否site is 已禁用 The possible values are: <li>false: not 已禁用; </li><li>true: 已禁用</li>。",
 									},
 								},
 							},
@@ -106,62 +106,62 @@ func DataSourceTencentCloudTeoPlans() *schema.Resource {
 						"smart_request_capacity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of intelligent acceleration requests in the package, unit: times.",
+							Description: "The 数量 intelligent acceleration requests in the package，unit: times。",
 						},
 						"vau_capacity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "VAU specifications in the package, unit: piece.",
+							Description: "VAU specifications in the package，unit: piece。",
 						},
 						"acc_traffic_capacity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The content acceleration traffic specifications in the package, unit: byte.",
+							Description: "The 内容 acceleration traffic specifications in the package，unit: byte。",
 						},
 						"smart_traffic_capacity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Smart acceleration traffic specifications within the package, unit: byte.",
+							Description: "Smart acceleration traffic specifications within the package，unit: byte。",
 						},
 						"ddos_traffic_capacity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "DDoS protection traffic specifications within the package, unit: bytes.",
+							Description: "DDoS protection traffic specifications within the package，unit: bytes。",
 						},
 						"sec_traffic_capacity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The security flow specification within the package, unit: byte.",
+							Description: "The security flow specification within the package，unit: byte。",
 						},
 						"sec_request_capacity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of secure requests in the package, unit: times.",
+							Description: "The 数量 secure requests in the package，unit: times。",
 						},
 						"l4_traffic_capacity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Layer 4 acceleration traffic specifications within the package, unit: byte.",
+							Description: "Layer 4 acceleration traffic specifications within the package，unit: byte。",
 						},
 						"cross_mlc_traffic_capacity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The optimized traffic specifications of the Chinese mainland network in the package, unit: bytes.",
+							Description: "The optimized traffic specifications of the Chinese mainland network in the package，unit: bytes。",
 						},
 						"bindable": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether the package allows binding of new sites, the values are: <li>true: allows binding of new sites; </li><li>false: does not allow binding of new sites.</li>.",
+							Description: "是否package allows binding of new sites，the values are: <li>true: allows binding of new sites; </li><li>false: does not allow binding of new sites.</li>。",
 						},
 						"enabled_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The package effective time.",
+							Description: "The package effective time。",
 						},
 						"expired_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The expiration date of the package.",
+							Description: "The expiration date of the package。",
 						},
 						"features": {
 							Type: schema.TypeSet,
@@ -169,7 +169,7 @@ func DataSourceTencentCloudTeoPlans() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The functions supported by the package have the following values: <li>ContentAcceleration: content acceleration function; </li><li>SmartAcceleration: smart acceleration function; </li><li>L4: four-layer acceleration function; </li><li>Waf: advanced web protection; </li><li>QUIC: QUIC function; </li><li>CrossMLC: Chinese mainland network optimization function; </li><li>ProcessMedia: media processing function; </li><li>L4DDoS: four-layer DDoS protection function; </li>L7DDoS function will only have one of the following specifications <li>L7DDoS.CM30G; seven-layer DDoS protection function - Chinese mainland 30G minimum bandwidth specification; </li><li>L7DDoS.CM60G; seven-layer DDoS protection function - Chinese mainland 60G minimum bandwidth specification; </li> <li>L7DDoS.CM100G; Layer 7 DDoS protection function - 100G guaranteed bandwidth for mainland China;</li><li>L7DDoS.Anycast300G; Layer 7 DDoS protection function - 300G guaranteed bandwidth for Anycast outside mainland China;</li><li>L7DDoS.AnycastUnlimited; Layer 7 DDoS protection function - unlimited full protection for Anycast outside mainland China;</li><li>L7DDoS.CM30G_Anycast300G; Layer 7 DDoS protection function - 30G guaranteed bandwidth for mainland China </li><li>L7DDoS.CM60G_Anycast300G; Layer 7 DDoS protection function - 60G guaranteed bandwidth in mainland China, 300G guaranteed bandwidth in anycast outside mainland China; </li><li>L7DDoS.CM100G_Anycast300G; Layer 7 DDoS protection function - 100G guaranteed bandwidth in mainland China, 300G guaranteed bandwidth in anycast outside mainland China; </li><li>L7DDoS.CM30G_AnycastUnlimited d; Layer 7 DDoS protection function - 30G guaranteed bandwidth in mainland China, unlimited Anycast protection outside mainland China; </li><li>L7DDoS.CM60G_AnycastUnlimited; Layer 7 DDoS protection function - 60G guaranteed bandwidth in mainland China, unlimited Anycast protection outside mainland China; </li><li>L7DDoS.CM100G_AnycastUnlimited; Layer 7 DDoS protection function - 100G guaranteed bandwidth in mainland China, unlimited Anycast protection outside mainland China; </li>.",
+							Description: "The functions supported by the package have the following values: <li>ContentAcceleration: 内容 acceleration function; </li><li>SmartAcceleration: smart acceleration function; </li><li>L4: four-layer acceleration function; </li><li>Waf: advanced web protection; </li><li>QUIC: QUIC function; </li><li>CrossMLC: Chinese mainland network optimization function; </li><li>ProcessMedia: media processing function; </li><li>L4DDoS: four-layer DDoS protection function; </li>L7DDoS function will only have one of the following specifications <li>L7DDoS.CM30G; seven-layer DDoS protection function - Chinese mainland 30G minimum bandwidth specification; </li><li>L7DDoS.CM60G; seven-layer DDoS protection function - Chinese mainland 60G minimum bandwidth specification; </li> <li>L7DDoS.CM100G; Layer 7 DDoS protection function - 100G guaranteed bandwidth for mainland China;</li><li>L7DDoS.Anycast300G; Layer 7 DDoS protection function - 300G guaranteed bandwidth for Anycast outside mainland China;</li><li>L7DDoS.AnycastUnlimited; Layer 7 DDoS protection function - unlimited full protection for Anycast outside mainland China;</li><li>L7DDoS.CM30G_Anycast300G; Layer 7 DDoS protection function - 30G guaranteed bandwidth for mainland China </li><li>L7DDoS.CM60G_Anycast300G; Layer 7 DDoS protection function - 60G guaranteed bandwidth in mainland China，300G guaranteed bandwidth in anycast outside mainland China; </li><li>L7DDoS.CM100G_Anycast300G; Layer 7 DDoS protection function - 100G guaranteed bandwidth in mainland China，300G guaranteed bandwidth in anycast outside mainland China; </li><li>L7DDoS.CM30G_AnycastUnlimited d; Layer 7 DDoS protection function - 30G guaranteed bandwidth in mainland China，unlimited Anycast protection outside mainland China; </li><li>L7DDoS.CM60G_AnycastUnlimited; Layer 7 DDoS protection function - 60G guaranteed bandwidth in mainland China，unlimited Anycast protection outside mainland China; </li><li>L7DDoS.CM100G_AnycastUnlimited; Layer 7 DDoS protection function - 100G guaranteed bandwidth in mainland China，unlimited Anycast protection outside mainland China; </li>。",
 						},
 					},
 				},
@@ -178,7 +178,7 @@ func DataSourceTencentCloudTeoPlans() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

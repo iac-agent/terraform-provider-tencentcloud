@@ -29,13 +29,13 @@ func ResourceTencentCloudCamAccessKey() *schema.Resource {
 			"target_uin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Specify user Uin, if not filled, the access key is created for the current user by default.",
+				Description: "指定user Uin，如果未填写，the access 键 is created for the current 用户 by default。",
 			},
 			"access_key": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Access_key is the access key identification, required when updating.",
+				Description: "Access_key is the access 键 identification，必填 when updating。",
 			},
 			"pgp_key": {
 				Type:        schema.TypeString,
@@ -47,23 +47,23 @@ func ResourceTencentCloudCamAccessKey() *schema.Resource {
 				Computed:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "Access key (key is only visible when created, please keep it properly).",
+				Description: "Access 键 (键 is only visible when created，please keep it properly)。",
 			},
 			"encrypted_secret_access_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Encrypted secret, base64 encoded, if pgp_key was specified. This attribute is not available for imported resources. The encrypted secret may be decrypted using the command line, for example: terraform output -raw encrypted_secret | base64 --decode | keybase pgp decrypt.",
+				Description: "Encrypted secret，base64 encoded，if pgp_key was specified. This attribute is not available for imported resources. The encrypted secret may be decrypted using the command line，for example: terraform output -raw encrypted_secret | base64 --decode | keybase pgp decrypt。",
 			},
 			"key_fingerprint": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Fingerprint of the PGP key used to encrypt the secret. This attribute is not available for imported resources.",
+				Description: "Fingerprint of the PGP 键 用于encrypt the secret. This attribute is not available for imported resources。",
 			},
 			"status": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Key status, activated (Active) or inactive (Inactive), required when updating.",
+				Description: "键 状态，activated (活跃) or inactive (Inactive)，必填 when updating。",
 			},
 		},
 	}

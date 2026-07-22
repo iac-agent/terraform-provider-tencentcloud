@@ -28,30 +28,30 @@ func ResourceTencentCloudKmsWhiteBoxKey() *schema.Resource {
 			"alias": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "As an alias for the key to be easier to identify and easier to understand, it cannot be empty and is a combination of 1-60 alphanumeric characters - _. The first character must be a letter or number. Alias are not repeatable.",
+				Description: "As an alias for the 键 to be easier to identify and easier to understand，it cannot be empty and is a combination of 1-60 alphanumeric characters - _. The first character must be a letter or number. Alias are not repeatable。",
 			},
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Description of the key, up to 1024 bytes.",
+				Description: "描述 键，up to 1024 bytes。",
 			},
 			"algorithm": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(WHITE_BOX_KEY_ALGORITHM),
-				Description:  "All algorithm types for creating keys, supported values: AES_256, SM4.",
+				Description:  "All algorithm types for creating keys，支持的值：AES_256，SM4。",
 			},
 			"status": {
 				Optional:     true,
 				Type:         schema.TypeString,
 				Default:      WHITE_BOX_KEY_STATUS_ENABLED,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(WHITE_BOX_KEY_STATUS),
-				Description:  "Whether to enable the key. Enabled or Disabled. Default is Enabled.",
+				Description:  "是否enable the 键 已启用 or 已禁用 默认为 已启用",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "The tags of Key.",
+				Description: "The 标签 of 键",
 			},
 		},
 	}

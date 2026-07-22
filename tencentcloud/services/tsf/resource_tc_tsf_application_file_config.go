@@ -24,70 +24,70 @@ func ResourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Config Name.",
+				Description: "配置 名称",
 			},
 
 			"config_version": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Config version.",
+				Description: "配置 版本",
 			},
 
 			"config_file_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Config file name.",
+				Description: "配置 file 名称",
 			},
 
 			"config_file_value": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration file content (the original content encoding needs to be in utf-8 format, if the ConfigFileCode is gbk, it will be converted in the background).",
+				Description: "Configuration file 内容 (the original 内容 encoding needs to be in utf-8 格式，if the ConfigFileCode is gbk，it will be converted in the background)。",
 			},
 
 			"application_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Config file associated application ID.",
+				Description: "配置 file associated application ID。",
 			},
 
 			"config_file_path": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "config release path.",
+				Description: "配置 release 路径",
 			},
 
 			"config_version_desc": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "config version description.",
+				Description: "配置 版本 描述",
 			},
 
 			"config_file_code": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration file encoding, utf-8 or gbk. Note: If you choose gbk, you need the support of a new version of tsf-consul-template (public cloud virtual machines need to use 1.32 tsf-agent, and containers need to obtain the latest tsf-consul-template-docker.tar.gz from the documentation).",
+				Description: "Configuration file encoding，utf-8 or gbk. Note: If you choose gbk，you need the support of a new 版本 of tsf-consul-template (public cloud virtual machines need to use 1.32 tsf-agent，and containers need to obtain the latest tsf-consul-template-docker.tar.gz from the documentation)。",
 			},
 
 			"config_post_cmd": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "post command.",
+				Description: "post command。",
 			},
 
 			"encode_with_base64": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "the config value is encoded with base64 or not.",
+				Description: "the 配置 值 is encoded with base64 or not。",
 			},
 
 			"program_id_list": {
@@ -97,7 +97,7 @@ func ResourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "datasource for auth.",
+				Description: "datasource for auth。",
 			},
 		},
 	}

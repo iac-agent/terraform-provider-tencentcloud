@@ -22,29 +22,29 @@ func DataSourceTencentCloudGaapDomainErrorPageInfos() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Customized error ID list, supporting up to 10.",
+				Description: "Customized 错误 ID list，supporting up to 10。",
 			},
 
 			"error_page_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Custom error response configuration setNote: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Custom 错误 response configuration set注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"error_page_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Configuration ID for error customization response.",
+							Description: "Configuration ID for 错误 customization response。",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Listener ID.",
+							Description: "Listener ID。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "domain name.",
+							Description: "域名 名称",
 						},
 						"error_nos": {
 							Type: schema.TypeSet,
@@ -52,12 +52,12 @@ func DataSourceTencentCloudGaapDomainErrorPageInfos() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "Original error code.",
+							Description: "Original 错误码",
 						},
 						"new_error_no": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "New error codeNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "New 错误 code注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"clear_headers": {
 							Type: schema.TypeSet,
@@ -65,23 +65,23 @@ func DataSourceTencentCloudGaapDomainErrorPageInfos() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Response headers that need to be cleanedNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Response headers that need to be cleaned注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"set_headers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Response header to be setNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Response header to be set注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"header_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "HTTP header name.",
+										Description: "HTTP header 名称",
 									},
 									"header_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "HTTP header value.",
+										Description: "HTTP header 值",
 									},
 								},
 							},
@@ -89,12 +89,12 @@ func DataSourceTencentCloudGaapDomainErrorPageInfos() *schema.Resource {
 						"body": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Response body set (excluding HTTP header)Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Response body set (excluding HTTP header)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Rule status, 0 indicates successNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Rule 状态，0 表示success注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -103,7 +103,7 @@ func DataSourceTencentCloudGaapDomainErrorPageInfos() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

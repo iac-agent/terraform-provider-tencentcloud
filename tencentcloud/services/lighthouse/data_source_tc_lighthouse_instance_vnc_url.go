@@ -19,19 +19,19 @@ func DataSourceTencentCloudLighthouseInstanceVncUrl() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"instance_vnc_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Instance VNC URL.",
+				Description: "Instance VNC URL",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

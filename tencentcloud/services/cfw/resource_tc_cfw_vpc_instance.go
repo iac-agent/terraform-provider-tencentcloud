@@ -27,58 +27,58 @@ func ResourceTencentCloudCfwVpcInstance() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "VPC firewall (group) name.",
+				Description: "VPC firewall (group) 名称",
 			},
 			"mode": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(MODE),
-				Description:  "Mode 0: private network mode; 1: CCN cloud networking mode.",
+				Description:  "模式 0: private network 模式; 1: CCN cloud networking 模式",
 			},
 			"vpc_fw_instances": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "List of firewall instances under firewall (group).",
+				Description: "列表 firewall instances under firewall (group)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"fw_ins_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Firewall instance ID (passed in editing scenario).",
+							Description: "Firewall instance ID (passed in editing scenario)。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Firewall instance name.",
+							Description: "Firewall 实例名称",
 						},
 						"vpc_ids": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "List of VpcIds accessed in private network mode; only used in private network mode.",
+							Description: "列表 VpcIds accessed in private network 模式; only used in private network 模式",
 						},
 						"fw_deploy": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "Deploy regional information.",
+							Description: "Deploy regional information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"deploy_region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Firewall Deployment Region.",
+										Description: "Firewall Deployment 地域",
 									},
 									"width": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Bandwidth, unit: Mbps.",
+										Description: "Bandwidth，unit: Mbps。",
 									},
 									"cross_a_zone": {
 										Type:         schema.TypeInt,
 										Optional:     true,
 										ValidateFunc: tccommon.ValidateAllowedIntValue(CROSS_A_ZONE),
-										Description:  "Off-site disaster recovery 1: use off-site disaster recovery; 0: do not use off-site disaster recovery; if it is empty, off-site disaster recovery will not be used by default.",
+										Description:  "Off-site disaster recovery 1: use off-site disaster recovery; 0: do not use off-site disaster recovery; if it is empty，off-site disaster recovery will not be used by default。",
 									},
 									"zone_set": {
 										Type:        schema.TypeSet,
@@ -86,7 +86,7 @@ func ResourceTencentCloudCfwVpcInstance() *schema.Resource {
 										MinItems:    1,
 										MaxItems:    2,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Zone list.",
+										Description: "可用区 list。",
 									},
 								},
 							},
@@ -99,17 +99,17 @@ func ResourceTencentCloudCfwVpcInstance() *schema.Resource {
 									"gateway_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Gateway ID.",
+										Description: "网关 ID",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Vpc ID.",
+										Description: "Vpc ID。",
 									},
 									"ip_address": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "IP address.",
+										Description: "IP 地址",
 									},
 								},
 							},
@@ -121,24 +121,24 @@ func ResourceTencentCloudCfwVpcInstance() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(SWITCH_MODE),
-				Description:  "Switch mode of firewall instance. 1: Single point intercommunication; 2: Multi-point communication; 4: Custom Routing.",
+				Description:  "Switch 模式 of firewall instance. 1: Single point intercommunication; 2: Multi-point communication; 4: Custom Routing。",
 			},
 			"fw_vpc_cidr": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Default:     "auto",
-				Description: "auto Automatically select the firewall network segment; 10.10.10.0/24 The firewall network segment entered by the user.",
+				Description: "auto Automatically select the firewall network segment; 10.10.10.0/24 The firewall network segment entered by the 用户",
 			},
 			"ccn_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cloud networking id, suitable for cloud networking mode.",
+				Description: "Cloud networking id，suitable for cloud networking 模式",
 			},
 			// computed
 			"fw_group_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Firewall group ID.",
+				Description: "Firewall 组 ID",
 			},
 		},
 	}

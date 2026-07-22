@@ -28,14 +28,14 @@ func ResourceTencentCloudTseWafDomains() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Gateway ID.",
+				Description: "网关 ID",
 			},
 
 			"domain": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The waf protected domain name.",
+				Description: "The waf protected 域名 名称",
 			},
 		},
 	}

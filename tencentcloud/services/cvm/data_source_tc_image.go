@@ -24,19 +24,19 @@ func DataSourceTencentCloudImage() *schema.Resource {
 			"filter": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "One or more name/value pairs to filter.",
+				Description: "One or more 名称/值 pairs to filter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Key of the filter, valid keys: `image-id`, `image-type`, `image-name`.",
+							Description: "键 of the filter，valid keys: `image-id`，`image-类型`，`image-名称`。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Values of the filter.",
+							Description: "Values of the filter。",
 						},
 					},
 				},
@@ -45,28 +45,28 @@ func DataSourceTencentCloudImage() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateNameRegex,
-				Description:  "A regex string to apply to the image list returned by TencentCloud. **NOTE**: it is not wildcard, should look like `image_name_regex = \"^CentOS\\s+6\\.8\\s+64\\w*\"`.",
+				Description: "应用于腾讯云返回的图像列表的正则表达式字符串。 **注意**：它不是通配符，应该类似于 `image_name_regex = \"^CentOS\\s+6\\.8\\s+64\\w*\"`。",
 			},
 			"os_name": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateNotEmpty,
-				Description:  "A string to apply with fuzzy match to the os_name attribute on the image list returned by TencentCloud. **NOTE**: when os_name is provided, highest priority is applied in this field instead of `image_name_regex`.",
+				Description:  "A string to apply with fuzzy match to the os_name attribute on the image list returned by TencentCloud. **NOTE**: when os_name is provided，highest 优先级 is applied in this field instead of `image_name_regex`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"image_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "An image id indicate the uniqueness of a certain image,  which can be used for instance creation or resetting.",
+				Description: "An image id indicate the uniqueness of a certain image， which can be 用于instance creation or resetting。",
 			},
 			"image_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Name of this image.",
+				Description: "名称 this image。",
 			},
 		},
 	}

@@ -22,19 +22,19 @@ func ResourceTencentCloudCcnBandwidthLimit() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the CCN.",
+				Description: "ID CCN。",
 			},
 			"region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Limitation of region.",
+				Description: "Limitation of 地域",
 			},
 			"bandwidth_limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Limitation of bandwidth. Default is `0`.",
+				Description: "Limitation of bandwidth. 默认为 `0`。",
 			},
 			"dst_region": {
 				Type:     schema.TypeString,

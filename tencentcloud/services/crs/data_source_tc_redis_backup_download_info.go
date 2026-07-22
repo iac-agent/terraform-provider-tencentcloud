@@ -20,43 +20,43 @@ func DataSourceTencentCloudRedisBackupDownloadInfo() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID instance。",
 			},
 
 			"backup_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The backup ID, which can be accessed via [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) interface returns the parameter RedisBackupSet to get.",
+				Description: "The backup ID，which can be accessed via [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) interface 返回parameter RedisBackupSet to get。",
 			},
 
 			"limit_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Types of network restrictions for downloading backup files:- NoLimit: There is no limit, and backup files can be downloaded from both Tencent Cloud and internal and external networks.- LimitOnlyIntranet: Only intranet addresses automatically assigned by Tencent Cloud can download backup files.- Customize: refers to a user-defined private network downloadable backup file.",
+				Description: "Types of network restrictions for downloading backup files:- NoLimit: There is no 限制，and backup files can be downloaded from both Tencent Cloud and internal and external networks.- LimitOnlyIntranet: Only intranet addresses automatically assigned by Tencent Cloud can download backup files.- Customize: refers to a 用户-defined private network downloadable backup file。",
 			},
 
 			"vpc_comparison_symbol": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "This parameter only supports entering In, which means that the custom LimitVpc can download the backup file.",
+				Description: "This parameter only supports entering In，which means that the custom LimitVpc can download the backup file。",
 			},
 
 			"ip_comparison_symbol": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Identifies whether the customized LimitIP address can download the backup file.- In: Custom IP addresses are available for download.- NotIn: Custom IPs are not available for download.",
+				Description: "Identifies 是否customized LimitIP 地址 can download the backup file.- In: Custom IP addresses are available for download.- NotIn: Custom IPs are not available for download。",
 			},
 
 			"limit_vpc": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "A custom VPC ID for a downloadable backup file.If the parameter LimitType is **Customize**, you need to configure this parameter.",
+				Description: "A custom 私有网络 ID for a downloadable backup file.If the parameter LimitType is **Customize**，you need to configure this parameter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Customize the region of the VPC to which the backup file is downloaded.",
+							Description: "Customize the 地域 of the VPC to which the backup file is downloaded。",
 						},
 						"vpc_list": {
 							Type: schema.TypeSet,
@@ -64,7 +64,7 @@ func DataSourceTencentCloudRedisBackupDownloadInfo() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Customize the list of VPCs to download backup files.",
+							Description: "Customize the 列表 VPCs to download backup files。",
 						},
 					},
 				},
@@ -76,34 +76,34 @@ func DataSourceTencentCloudRedisBackupDownloadInfo() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "A custom VPC IP address for downloadable backup files.If the parameter LimitType is **Customize**, you need to configure this parameter.",
+				Description: "A custom VPC IP 地址 for downloadable backup files.If the parameter LimitType is **Customize**，you need to configure this parameter。",
 			},
 
 			"backup_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "A list of backup file information.",
+				Description: "A 列表 backup file information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"file_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup file name.",
+							Description: "Backup file 名称",
 						},
 						"file_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The backup file size is in unit B, if it is 0, it is invalid.",
+							Description: "The backup file size is in unit B，if it is 0，it is invalid。",
 						},
 						"download_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup file download address on the Internet (6 hours).",
+							Description: "Backup file download 地址 on the Internet (6 hours)。",
 						},
 						"inner_download_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup file intranet download address (6 hours).",
+							Description: "Backup file intranet download 地址 (6 hours)。",
 						},
 					},
 				},
@@ -112,7 +112,7 @@ func DataSourceTencentCloudRedisBackupDownloadInfo() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -28,14 +28,14 @@ func ResourceTencentCloudKubernetesControlPlaneLog() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"cluster_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cluster type. currently only support tke.",
+				Description: "集群类型 currently only support tke。",
 			},
 
 			"components": {
@@ -43,38 +43,38 @@ func ResourceTencentCloudKubernetesControlPlaneLog() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Component name list. currently supports cluster-autoscaler, kapenter.",
+				Description: "组件名称 list. currently supports cluster-autoscaler，kapenter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Component name.",
+							Description: "组件名称",
 						},
 						"log_level": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
 							Deprecated:  "It has been deprecated from version 1.82.54.",
-							Description: "Log level. for components that support dynamic adjustment, you can specify this parameter when enabling logs.",
+							Description: "Log 级别 for components that support dynamic adjustment，you can 指定this parameter when enabling logs。",
 						},
 						"log_set_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Logset ID. if not specified, auto-create.",
+							Description: "Logset ID. 如果未指定，auto-create。",
 						},
 						"topic_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Log topic ID. if not specified, auto-create.",
+							Description: "日志主题 ID 如果未指定，auto-create。",
 						},
 						"topic_region": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "topic region. this parameter enables cross-region shipping of logs.",
+							Description: "topic 地域 this parameter enables cross-地域 shipping of logs。",
 						},
 					},
 				},
@@ -83,7 +83,7 @@ func ResourceTencentCloudKubernetesControlPlaneLog() *schema.Resource {
 			"delete_log_set_and_topic": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to simultaneously delete the log set and topic. If the log set and topic are used by other collection rules, they will not be deleted. Default is false.",
+				Description: "是否simultaneously delete the log set and topic. If the log set and topic are used by other collection rules，they will not be deleted. 默认为 false。",
 			},
 		},
 	}

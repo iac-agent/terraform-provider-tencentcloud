@@ -23,7 +23,7 @@ func ResourceTencentCloudCvmRenewInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"instance_charge_prepaid": {
@@ -31,18 +31,18 @@ func ResourceTencentCloudCvmRenewInstance() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Prepaid mode, that is, yearly and monthly subscription related parameter settings. Through this parameter, you can specify the renewal duration of the Subscription instance, whether to set automatic renewal, and other attributes. For yearly and monthly subscription instances, this parameter is required.",
+				Description: "Prepaid 模式，that is，yearly and monthly subscription related parameter settings. Through this parameter，you can 指定renewal duration of the Subscription instance，是否set automatic renewal，and other attributes. For yearly and monthly subscription instances，this parameter 为必填项。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Subscription period; unit: month; valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60. Note: This field may return null, indicating that no valid value is found.",
+							Description: "Subscription 周期; unit: month; 有效值：1，2，3，4，5，6，7，8，9，10，11，12，24，36，48，60. Note: This field may return null，indicating that no valid 值 is found。",
 						},
 						"renew_flag": {
 							Type:     schema.TypeString,
 							Optional: true,
-							Description: "Auto renewal flag. Valid values:\n" +
+							Description: "自动更新标志。有效值:\n" +
 								"- `NOTIFY_AND_AUTO_RENEW`: notify upon expiration and renew automatically;\n" +
 								"- `NOTIFY_AND_MANUAL_RENEW`: notify upon expiration but do not renew automatically;\n" +
 								"- `DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify upon expiration nor renew automatically;\n" +
@@ -56,7 +56,7 @@ func ResourceTencentCloudCvmRenewInstance() *schema.Resource {
 				Optional: true,
 				ForceNew: true,
 				Type:     schema.TypeBool,
-				Description: "Whether to renew the elastic data disk. Valid values:\n" +
+				Description: "是否更新弹性数据盘。有效值:\n" +
 					"- `TRUE`: Indicates to renew the subscription instance and renew the attached elastic data disk at the same time\n" +
 					"- `FALSE`: Indicates that the subscription instance will be renewed and the elastic data disk attached to it will not be renewed\n" +
 					"Default value: TRUE.",

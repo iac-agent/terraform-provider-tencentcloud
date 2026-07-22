@@ -24,13 +24,13 @@ func ResourceTencentCloudCvmLaunchTemplateDefaultVersion() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance launch template ID.",
+				Description: "Instance launch 模板 ID",
 			},
 
 			"default_version": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of the version that you want to set as the default version.",
+				Description: "The 数量 the 版本 that you want to set as the default 版本",
 			},
 		},
 	}

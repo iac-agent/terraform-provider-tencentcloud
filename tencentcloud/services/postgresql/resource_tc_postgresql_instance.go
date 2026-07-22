@@ -46,42 +46,42 @@ func ResourceTencentCloudPostgresqlInstance() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "Name of the postgresql instance.",
+				Description:  "名称 postgresql instance。",
 			},
 			"charge_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     COMMON_PAYTYPE_POSTPAID,
-				Description: "Pay type of the postgresql instance. Values `POSTPAID_BY_HOUR` (Default), `PREPAID`. It only support to update the type from `POSTPAID_BY_HOUR` to `PREPAID`.",
+				Description: "Pay 类型 postgresql instance. Values `POSTPAID_BY_HOUR` (Default)，`PREPAID`. It only support to update the 类型 from `POSTPAID_BY_HOUR` to `PREPAID`。",
 			},
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Specify Prepaid period in month. Default `1`. Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This field is valid only when creating a `PREPAID` type instance, or updating the charge type from `POSTPAID_BY_HOUR` to `PREPAID`.",
+				Description: "指定Prepaid 周期 in month. Default `1`. Values: `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，`36`. This field is valid only when creating a `PREPAID` 类型 instance，or updating the 计费类型 from `POSTPAID_BY_HOUR` to `PREPAID`。",
 			},
 			"auto_renew_flag": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Auto renew flag, `1` for enabled. NOTES: Only support prepaid instance.",
+				Description: "Auto 续费标识，`1` for 已启用 NOTES: Only support prepaid instance。",
 			},
 			"auto_voucher": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Whether to use voucher, `1` for enabled.",
+				Description: "是否use voucher，`1` for 已启用",
 			},
 			"voucher_ids": {
 				Type:         schema.TypeList,
 				Optional:     true,
 				RequiredWith: []string{"auto_voucher"},
-				Description:  "Specify Voucher Ids if `auto_voucher` was `1`, only support using 1 vouchers for now.",
+				Description:  "指定Voucher Ids if `auto_voucher` was `1`，only support using 1 vouchers for now。",
 				Elem:         &schema.Schema{Type: schema.TypeString},
 			},
 			"engine_version": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Version of the postgresql database engine. Valid values: `10.4`, `10.17`, `10.23`, `11.8`, `11.12`, `11.22`, `12.4`, `12.7`, `12.18`, `13.3`, `14.2`, `14.11`, `15.1`, `16.0`.",
+				Description: "版本 of the postgresql database engine. 有效值：`10.4`，`10.17`，`10.23`，`11.8`，`11.12`，`11.22`，`12.4`，`12.7`，`12.18`，`13.3`，`14.2`，`14.11`，`15.1`，`16.0`。",
 			},
 			"db_major_vesion": {
 				Type:          schema.TypeString,
@@ -89,7 +89,7 @@ func ResourceTencentCloudPostgresqlInstance() *schema.Resource {
 				Computed:      true,
 				Deprecated:    "`db_major_vesion` will be deprecated, use `db_major_version` instead.",
 				ConflictsWith: []string{"db_major_version"},
-				Description: "PostgreSQL major version number. Valid values: 10, 11, 12, 13, 14, 15, 16. " +
+				Description: "PostgreSQL 主要版本号。有效值：10、11、12、13、14、15、16。" +
 					"If it is specified, an instance running the latest kernel of PostgreSQL DBMajorVersion will be created.",
 			},
 			"db_major_version": {
@@ -97,25 +97,25 @@ func ResourceTencentCloudPostgresqlInstance() *schema.Resource {
 				Optional:      true,
 				Computed:      true,
 				ConflictsWith: []string{"db_major_vesion"},
-				Description: "PostgreSQL major version number. Valid values: 10, 11, 12, 13, 14, 15, 16. " +
+				Description: "PostgreSQL 主要版本号。有效值：10、11、12、13、14、15、16。" +
 					"If it is specified, an instance running the latest kernel of PostgreSQL DBMajorVersion will be created.",
 			},
 			"db_kernel_version": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
-				Description: "PostgreSQL kernel version number. " +
+				Description: "PostgreSQL 内核版本号。" +
 					"If it is specified, an instance running kernel DBKernelVersion will be created. It supports updating the minor kernel version immediately.",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of VPC.",
+				Description: "ID VPC。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of subnet.",
+				Description: "ID subnet。",
 			},
 			"security_groups": {
 				Type:     schema.TypeSet,
@@ -124,41 +124,41 @@ func ResourceTencentCloudPostgresqlInstance() *schema.Resource {
 				Set: func(v interface{}) int {
 					return helper.HashString(v.(string))
 				},
-				Description: "ID of security group. If both vpc_id and subnet_id are not set, this argument should not be set either.",
+				Description: "ID security group. If both vpc_id and subnet_id are not set，this argument should not be set either。",
 			},
 			"storage": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Volume size(in GB). Allowed value must be a multiple of 10. The storage must be set with the limit of `storage_min` and `storage_max` which data source `tencentcloud_postgresql_specinfos` provides.",
+				Description: "Volume size(in GB). Allowed 值 must be a multiple of 10. The storage must be set with the 限制 of `storage_min` and `storage_max` which data 来源 `tencentcloud_postgresql_specinfos` provides。",
 			},
 			"storage_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Storage type of the instance. Valid values: `PHYSICAL_LOCAL_SSD` (default, local SSD), `CLOUD_PREMIUM` (premium cloud disk), `CLOUD_SSD` (cloud SSD), `CLOUD_HSSD` (enhanced cloud SSD). NOTE: This field will force new resource when modified.",
+				Description: "Storage 类型 instance. 有效值：`PHYSICAL_LOCAL_SSD` (default，local SSD)，`CLOUD_PREMIUM` (premium cloud disk)，`CLOUD_SSD` (cloud SSD)，`CLOUD_HSSD` (enhanced cloud SSD). NOTE: This field will force new resource when modified。",
 			},
 			"memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Memory size(in GB). Allowed value must be larger than `memory` that data source `tencentcloud_postgresql_specinfos` provides.",
+				Description: "Memory size(in GB). Allowed 值 must be larger than `memory` that data 来源 `tencentcloud_postgresql_specinfos` provides。",
 			},
 			"cpu": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Number of CPU cores. Allowed value must be equal `cpu` that data source `tencentcloud_postgresql_specinfos` provides.",
+				Description: "CPU 核数 Allowed 值 must be equal `cpu` that data 来源 `tencentcloud_postgresql_specinfos` provides。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "Project id, default value is `0`.",
+				Description: "项目 ID，默认值为 `0`。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Availability zone. NOTE: This field could not be modified, please use `db_node_set` instead of modification. The changes on this field will be suppressed when using the `db_node_set`.",
+				Description: "Availability 可用区 NOTE: This field could not be modified，please use `db_node_set` instead of modification. The changes on this field will be suppressed when using the `db_node_set`。",
 				DiffSuppressFunc: func(k, o, n string, d *schema.ResourceData) bool {
 					if o == "" {
 						return false
@@ -181,14 +181,14 @@ func ResourceTencentCloudPostgresqlInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "root",
-				Description: "Instance root account name. This parameter is optional, Default value is `root`.",
+				Description: "Instance root 账号 名称 This parameter 为可选项，默认值为 `root`。",
 			},
 			"root_password": {
 				Type:         schema.TypeString,
 				Required:     true,
 				Sensitive:    true,
 				ValidateFunc: tccommon.ValidateMysqlPassword,
-				Description:  "Password of root account. This parameter can be specified when you purchase master instances, but it should be ignored when you purchase read-only instances or disaster recovery instances.",
+				Description:  "密码 of root 账号 This parameter can be specified when you purchase master instances，but it should be ignored when you purchase read-only instances or disaster recovery instances。",
 			},
 			"charset": {
 				Type:         schema.TypeString,
@@ -196,60 +196,60 @@ func ResourceTencentCloudPostgresqlInstance() *schema.Resource {
 				Default:      POSTGRESQL_DB_CHARSET_UTF8,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(POSTGRESQL_DB_CHARSET),
-				Description:  "Charset of the root account. Valid values are `UTF8`,`LATIN1`.",
+				Description:  "Charset of the root 账号 Valid values are `UTF8`,`LATIN1`。",
 			},
 			"need_support_tde": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to support data transparent encryption, 1: yes, 0: no (default).",
+				Description: "是否support data transparent encryption，1: yes，0: no (default)。",
 			},
 			"kms_key_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "KeyId of the custom key.",
+				Description: "KeyId of the custom 键",
 			},
 			"kms_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Region of the custom key.",
+				Description: "地域 of the custom 键",
 			},
 			"kms_cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Specify the cluster served by KMS. If KMSClusterId is blank, use the KMS of the default cluster. If you choose to specify a KMS cluster, you need to pass in KMSClusterId.",
+				Description: "指定cluster served by KMS. If KMSClusterId is blank，use the KMS of the default cluster. If you choose to 指定a KMS cluster，you need to pass in KMSClusterId。",
 			},
 			"public_access_switch": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Indicates whether to enable the access to an instance from public network or not.",
+				Description: "表示是否enable the access to an instance from public network or not。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "The available tags within this postgresql.",
+				Description: "The available 标签 within this postgresql。",
 			},
 			"max_standby_archive_delay": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "max_standby_archive_delay applies when WAL data is being read from WAL archive (and is therefore not current). Units are milliseconds if not specified.",
+				Description: "max_standby_archive_delay applies when WAL data is being read from WAL archive (and is therefore not current). Units are milliseconds 如果未指定。",
 			},
 			"max_standby_streaming_delay": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "max_standby_streaming_delay applies when WAL data is being received via streaming replication. Units are milliseconds if not specified.",
+				Description: "max_standby_streaming_delay applies when WAL data is being received via streaming replication. Units are milliseconds 如果未指定。",
 			},
 			"backup_plan": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Specify DB backup plan.",
+				Description: "指定DB backup plan。",
 				MaxItems:    1,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
@@ -257,42 +257,42 @@ func ResourceTencentCloudPostgresqlInstance() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Specify earliest backup start time, format `hh:mm:ss`.",
+							Description: "指定earliest backup 开始时间，格式 `hh:mm:ss`。",
 						},
 						"max_backup_start_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Specify latest backup start time, format `hh:mm:ss`.",
+							Description: "指定latest backup 开始时间，格式 `hh:mm:ss`。",
 						},
 						"base_backup_retention_period": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Specify days of the retention.",
+							Description: "指定days of the retention。",
 						},
 						"backup_period": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "List of backup period per week, available values: `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`. NOTE: At least specify two days.",
+							Description: "列表 backup 周期 per week，可用值：`monday`，`tuesday`，`wednesday`，`thursday`，`friday`，`saturday`，`sunday`. NOTE: At least 指定two days。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"monthly_backup_retention_period": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Specify days of the retention.",
+							Description: "指定days of the retention。",
 						},
 						"monthly_backup_period": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "If it is in monthly dimension, the format is numeric characters, such as [\"1\",\"2\"].",
+							Description: "如果是月维度，则格式为数字字符，如[\"1\",\"2\"]。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"monthly_plan_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monthly plan id.",
+							Description: "Monthly plan id。",
 						},
 					},
 				},
@@ -300,24 +300,24 @@ func ResourceTencentCloudPostgresqlInstance() *schema.Resource {
 			"db_node_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Specify instance node info for disaster migration.",
+				Description: "指定instance node info for disaster migration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Default:     "Standby",
-							Description: "Indicates node type, available values:`Primary`, `Standby`. Default: `Standby`.",
+							Description: "表示node 类型，available values:`Primary`，`Standby`. 默认值：`Standby`。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Indicates the node available zone.",
+							Description: "表示node available 可用区",
 						},
 						"dedicated_cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Dedicated cluster ID.",
+							Description: "Dedicated cluster ID。",
 						},
 					},
 				},
@@ -326,44 +326,44 @@ func ResourceTencentCloudPostgresqlInstance() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Whether to enable instance deletion protection. Default: false.",
+				Description: "是否enable instance 删除保护 默认值：false。",
 			},
 			"wait_switch": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{POSTGRESQL_KERNEL_UPGRADE_IMMEDIATELY, POSTGRESQL_KERNEL_UPGRADE_MAINTAIN_WINDOW}),
-				Description:  "Switch time after instance configurations are modified. `0`: Switch immediately; `2`: Switch during maintenance time window. Default: `0`. Note: This only takes effect when updating the `memory`, `storage`, `cpu`, `db_node_set`, `db_kernel_version` fields.",
+				Description:  "Switch time after instance configurations are modified. `0`: Switch immediately; `2`: Switch during maintenance time window. 默认值：`0`. Note: This only takes effect when updating the `memory`，`storage`，`cpu`，`db_node_set`，`db_kernel_version` fields。",
 			},
 			// Computed values
 			"public_access_host": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Host for public access.",
+				Description: "主机 for public access。",
 			},
 			"public_access_port": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Port for public access.",
+				Description: "端口 for public access。",
 			},
 			"private_access_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "IP for private access.",
+				Description: "IP for private access。",
 			},
 			"private_access_port": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Port for private access.",
+				Description: "端口 for private access。",
 			},
 			"uid": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Uid of the postgresql instance.",
+				Description: "Uid of the postgresql instance。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of the postgresql instance.",
+				Description: "创建时间 of the postgresql instance。",
 			},
 		},
 	}

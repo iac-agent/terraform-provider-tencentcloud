@@ -29,31 +29,31 @@ func ResourceTencentCloudTemAppConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "environment ID.",
+				Description: "environment ID。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "appConfig name.",
+				Description: "appConfig 名称",
 			},
 
 			"config_data": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "payload.",
+				Description: "payload。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "key.",
+							Description: "键",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "value.",
+							Description: "值",
 						},
 					},
 				},

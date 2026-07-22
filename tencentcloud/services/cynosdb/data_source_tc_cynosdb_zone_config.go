@@ -17,61 +17,61 @@ func DataSourceTencentCloudCynosdbZoneConfig() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"list": {
 				Type:        schema.TypeList,
-				Description: "A list of zone. Each element contains the following attributes:",
+				Description: "区域列表。每个元素包含以下属性：",
 				Computed:    true,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance CPU, unit: core.",
+							Description: "实例CPU，单位：核。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance memory, unit: GB.",
+							Description: "实例内存，单位：GB。",
 						},
 						"max_storage_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The maximum available storage for the instance, unit GB.",
+							Description: "实例的最大可用存储空间，单位GB。",
 						},
 						"min_storage_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum available storage of the instance, unit: GB.",
+							Description: "实例的最小可用存储空间，单位：GB。",
 						},
 						"machine_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Machine type.",
+							Description: "机器类型。",
 						},
 						"max_io_bandwidth": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Max io bandwidth.",
+							Description: "最大 io 带宽。",
 						},
 						"zone_stock_infos": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Regional inventory information.",
+							Description: "区域库存信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Availability zone.",
+										Description: "可用区。",
 									},
 									"has_stock": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Has stock.",
+										Description: "有库存。",
 									},
 								},
 							},

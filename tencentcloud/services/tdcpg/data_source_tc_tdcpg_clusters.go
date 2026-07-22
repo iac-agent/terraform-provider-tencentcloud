@@ -20,179 +20,179 @@ func DataSourceTencentCloudTdcpgClusters() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "cluster id.",
+				Description: "集群 ID",
 			},
 
 			"cluster_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "cluster name.",
+				Description: "集群名称",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "cluster status.",
+				Description: "cluster 状态",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "pay mode.",
+				Description: "付费模式",
 			},
 
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "project id, default to 0, means default project.",
+				Description: "项目 ID，默认为 0，means default project。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "cluster list.",
+				Description: "cluster list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cluster id.",
+							Description: "集群 ID",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cluster name.",
+							Description: "集群名称",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region.",
+							Description: "地域",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "zone.",
+							Description: "可用区",
 						},
 						"db_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db version.",
+							Description: "db 版本",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "project id.",
+							Description: "项目 ID",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "status.",
+							Description: "状态",
 						},
 						"status_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "status description.",
+							Description: "状态 描述",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 						"storage_used": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "storage used, unit is GB.",
+							Description: "storage used，unit is GB。",
 						},
 						"storage_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "storage limit, unit is GB.",
+							Description: "storage 限制，unit is GB。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "pay mode.",
+							Description: "付费模式",
 						},
 						"pay_period_end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "pay period expired time.",
+							Description: "pay 周期 过期时间。",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "auto renew flag.",
+							Description: "auto 续费标识",
 						},
 						"db_charset": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db charset.",
+							Description: "db charset。",
 						},
 						"instance_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "instance count.",
+							Description: "instance count。",
 						},
 						"endpoint_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "endpoint set.",
+							Description: "endpoint set。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"endpoint_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "endpoint id.",
+										Description: "endpoint id。",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "cluster id.",
+										Description: "集群 ID",
 									},
 									"endpoint_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "endpoint name.",
+										Description: "endpoint 名称",
 									},
 									"endpoint_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "endpoint type.",
+										Description: "endpoint 类型",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "vpc id.",
+										Description: "私有网络 ID",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "subnet id.",
+										Description: "子网 ID",
 									},
 									"private_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "private ip.",
+										Description: "private ip。",
 									},
 									"private_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "private port.",
+										Description: "private 端口",
 									},
 									"wan_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "wan ip.",
+										Description: "wan ip。",
 									},
 									"wan_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "wan port.",
+										Description: "wan 端口",
 									},
 									"wan_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "wan domain.",
+										Description: "wan 域名",
 									},
 								},
 							},
@@ -200,17 +200,17 @@ func DataSourceTencentCloudTdcpgClusters() *schema.Resource {
 						"db_major_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db major version.",
+							Description: "db major 版本",
 						},
 						"db_kernel_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db kernel version.",
+							Description: "db kernel 版本",
 						},
 						"storage_pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "storage pay mode, optional value is PREPAID or POSTPAID_BY_HOUR.",
+							Description: "storage 付费模式，可选 值 is PREPAID or POSTPAID_BY_HOUR。",
 						},
 					},
 				},
@@ -219,7 +219,7 @@ func DataSourceTencentCloudTdcpgClusters() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

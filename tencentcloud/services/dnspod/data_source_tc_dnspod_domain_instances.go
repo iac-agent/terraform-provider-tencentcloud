@@ -19,74 +19,74 @@ func DataSourceTencentCloudDnspodDomainInstances() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Domain list.",
+				Description: "域名 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The Domain.",
+							Description: "The 域名",
 						},
 						"group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The Group Id of Domain.",
+							Description: "The Group Id of 域名",
 						},
 						"is_mark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether to Mark the Domain.",
+							Description: "是否Mark the 域名",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The status of Domain.",
+							Description: "状态 域名",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The remark of Domain.",
+							Description: "The 备注 of 域名",
 						},
 						"id": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "ID of the domain.",
+							Description: "ID 域名",
 						},
 						"domain_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID of the domain.",
+							Description: "ID 域名",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the domain.",
+							Description: "创建时间 of the 域名",
 						},
 						"slave_dns": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Is secondary DNS enabled.",
+							Description: "Is secondary DNS 已启用",
 						},
 						"record_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of DNS records under this domain.",
+							Description: "数量 DNS records under this 域名",
 						},
 						"grade": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The DNS plan/package grade of the domain (e.g., DP_Free, DP_Plus).",
+							Description: "The DNS plan/package grade of the 域名 (e.g.，DP_Free，DP_Plus)。",
 						},
 						"updated_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last modification time of the domain.",
+							Description: "Last 修改时间 of the 域名",
 						},
 					},
 				},
@@ -95,7 +95,7 @@ func DataSourceTencentCloudDnspodDomainInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

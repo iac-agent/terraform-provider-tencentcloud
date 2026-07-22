@@ -19,28 +19,28 @@ func DataSourceTencentCloudLighthouseRegion() *schema.Resource {
 			"region_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Region information list.",
+				Description: "地域 information list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region name.",
+							Description: "地域名称",
 						},
 						"region_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region description.",
+							Description: "地域 描述",
 						},
 						"region_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region availability status.",
+							Description: "地域 availability 状态",
 						},
 						"is_china_mainland": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the region is in the Chinese mainland.",
+							Description: "是否region is in the Chinese mainland。",
 						},
 					},
 				},
@@ -49,7 +49,7 @@ func DataSourceTencentCloudLighthouseRegion() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -21,132 +21,132 @@ func DataSourceTencentCloudSslCertificates() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the SSL certificate to be queried.",
+				Description: "名称 SSL certificate to be queried。",
 			},
 			"type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Type of the SSL certificate to be queried. Available values includes: `CA` and `SVR`.",
+				Description: "类型 SSL certificate to be queried. Available values includes: `CA` and `SVR`。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the SSL certificate to be queried.",
+				Description: "ID SSL certificate to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"certificates": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of certificate. Each element contains the following attributes:",
+				Description: "An information 列表 certificate. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the SSL certificate.",
+							Description: "ID SSL certificate。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the SSL certificate.",
+							Description: "名称 SSL certificate。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the SSL certificate.",
+							Description: "类型 SSL certificate。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project ID of the SSL certificate.",
+							Description: "项目 ID SSL certificate。",
 						},
 						"cert": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Content of the SSL certificate.",
+							Description: "内容 of the SSL certificate。",
 						},
 						"key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Key of the SSL certificate.",
+							Description: "键 of the SSL certificate。",
 						},
 						"product_zh_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Certificate authority.",
+							Description: "Certificate authority。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Primary domain of the SSL certificate.",
+							Description: "Primary 域名 of the SSL certificate。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Status of the SSL certificate.",
+							Description: "状态 SSL certificate。",
 						},
 						"begin_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Beginning time of the SSL certificate.",
+							Description: "Beginning time of the SSL certificate。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Ending time of the SSL certificate.",
+							Description: "Ending time of the SSL certificate。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of the SSL certificate.",
+							Description: "创建时间 of the SSL certificate。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Account UIN.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "账号 UIN.Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 						"validity_period": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Validity period: unit (month).Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Validity 周期: unit (month).Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 						"subject_names": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "ALL domains included in the SSL certificate. Including the primary domain name.",
+							Description: "ALL domains included in the SSL certificate. Including the primary 域名 名称",
 						},
 						"order_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Order ID returned.",
+							Description: "顺序 ID returned。",
 						},
 						"dv_auths": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "DV certification information.",
+							Description: "DV certification information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dv_auth_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV authentication key.",
+										Description: "DV authentication 键",
 									},
 									"dv_auth_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV authentication value.",
+										Description: "DV authentication 值",
 									},
 									"dv_auth_verify_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DV authentication type.",
+										Description: "DV authentication 类型",
 									},
 								},
 							},

@@ -78,24 +78,24 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 		"instance_name": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "Name of the Mongodb instance.",
+			Description: "名称 Mongodb instance。",
 		},
 		"memory": {
 			Type:         schema.TypeInt,
 			Required:     true,
 			ValidateFunc: tccommon.ValidateIntegerMin(2),
-			Description:  "Memory size. The minimum value is 2, and unit is GB. Memory and volume must be upgraded or degraded simultaneously.",
+			Description:  "Memory size. The minimum 值 is 2，and unit is GB. Memory and volume must be upgraded or degraded simultaneously。",
 		},
 		"volume": {
 			Type:         schema.TypeInt,
 			Required:     true,
 			ValidateFunc: tccommon.ValidateIntegerMin(25),
-			Description:  "Disk size. The minimum value is 25, and unit is GB. Memory and volume must be upgraded or degraded simultaneously.",
+			Description:  "Disk size. The minimum 值 is 25，and unit is GB. Memory and volume must be upgraded or degraded simultaneously。",
 		},
 		"engine_version": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "Refers to version information. The DescribeSpecInfo API can be called to obtain detailed information about the supported versions.\n- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.\n- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.\n- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.\n- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.\n- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.\n- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.\n- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.",
+			Description: "Refers to 版本 information. The DescribeSpecInfo API can be called to obtain detailed information about the supported versions.\n- MONGO_40_WT: 版本 of the MongoDB 4.0 WiredTiger storage engine.\n- MONGO_42_WT: 版本 of the MongoDB 4.2 WiredTiger storage engine.\n- MONGO_44_WT: 版本 of the MongoDB 4.4 WiredTiger storage engine.\n- MONGO_50_WT: 版本 of the MongoDB 5.0 WiredTiger storage engine.\n- MONGO_60_WT: 版本 of the MongoDB 6.0 WiredTiger storage engine.\n- MONGO_70_WT: 版本 of the MongoDB 7.0 WiredTiger storage engine.\n- MONGO_80_WT: 版本 of the MongoDB 8.0 WiredTiger storage engine。",
 		},
 		"machine_type": {
 			Type:     schema.TypeString,
@@ -111,31 +111,31 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 				}
 				return olds == news
 			},
-			Description: "Type of Mongodb instance, and available values include `HIO`(or `GIO` which will be deprecated, represents high IO) and `HIO10G`(or `TGIO` which will be deprecated, represents 10-gigabit high IO).",
+			Description: "类型 Mongodb instance，and available values include `HIO`(or `GIO` which will be 已弃用，represents high IO) and `HIO10G`(or `TGIO` which will be 已弃用，represents 10-gigabit high IO)。",
 		},
 		"available_zone": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "The available zone of the Mongodb.",
+			Description: "The available 可用区 of the Mongodb。",
 		},
 		"vpc_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			ForceNew:    true,
 			Default:     "",
-			Description: "ID of the VPC.",
+			Description: "ID VPC。",
 		},
 		"subnet_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			ForceNew:    true,
-			Description: "ID of the subnet within this VPC. The value is required if `vpc_id` is set.",
+			Description: "ID subnet within this VPC. The 值 为必填项 if `vpc_id` is set。",
 		},
 		"project_id": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Default:     0,
-			Description: "ID of the project which the instance belongs.",
+			Description: "ID project which the instance belongs。",
 		},
 		"security_groups": {
 			Type:     schema.TypeSet,
@@ -146,36 +146,36 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 			Set: func(v interface{}) int {
 				return helper.HashString(v.(string))
 			},
-			Description: "ID of the security group.",
+			Description: "ID security group。",
 		},
 		"password": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Sensitive:   true,
-			Description: "Password of this Mongodb account.",
+			Description: "密码 of this Mongodb 账号",
 		},
 		"tags": {
 			Type:        schema.TypeMap,
 			Optional:    true,
-			Description: "The tags of the Mongodb. Key name `project` is system reserved and can't be used.",
+			Description: "The 标签 of the Mongodb. 键 名称 `project` is system reserved and can't be used。",
 		},
 		"mongos_cpu": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Computed:    true,
-			Description: "Number of mongos cpu.",
+			Description: "数量 mongos cpu。",
 		},
 		"mongos_memory": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Computed:    true,
-			Description: "Mongos memory size in GB.",
+			Description: "Mongos memory size （GB）。",
 		},
 		"mongos_node_num": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Computed:    true,
-			Description: "Number of mongos.",
+			Description: "数量 mongos。",
 		},
 		// payment
 		"charge_type": {
@@ -184,19 +184,19 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 			ForceNew:     true,
 			Default:      MONGODB_CHARGE_TYPE_POSTPAID,
 			ValidateFunc: tccommon.ValidateAllowedStringValue([]string{MONGODB_CHARGE_TYPE_POSTPAID, MONGODB_CHARGE_TYPE_PREPAID}),
-			Description:  "The charge type of instance. Valid values are `PREPAID` and `POSTPAID_BY_HOUR`. Default value is `POSTPAID_BY_HOUR`. Note: TencentCloud International only supports `POSTPAID_BY_HOUR`. Caution that update operation on this field will delete old instances and create new one with new charge type.",
+			Description:  "The charge 类型 instance. Valid values are `PREPAID` and `POSTPAID_BY_HOUR`. 默认值为 `POSTPAID_BY_HOUR`. Note: TencentCloud International only supports `POSTPAID_BY_HOUR`. Caution that update operation on this field will delete old instances and create new one with new 计费类型",
 		},
 		"prepaid_period": {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateAllowedIntValue(MONGODB_PREPAID_PERIOD),
-			Description:  "The tenancy (time unit is month) of the prepaid instance. Valid values are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36. NOTE: it only works when charge_type is set to `PREPAID`.",
+			Description:  "The tenancy (time unit is month) of the prepaid instance. Valid values are 1，2，3，4，5，6，7，8，9，10，11，12，24，36. NOTE: it only works when charge_type is set to `PREPAID`。",
 		},
 		"auto_renew_flag": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Default:     0,
-			Description: "Auto renew flag. Valid values are `0`(NOTIFY_AND_MANUAL_RENEW), `1`(NOTIFY_AND_AUTO_RENEW) and `2`(DISABLE_NOTIFY_AND_MANUAL_RENEW). Default value is `0`. Note: only works for PREPAID instance. Only supports`0` and `1` for creation.",
+			Description: "Auto 续费标识 Valid values are `0`(NOTIFY_AND_MANUAL_RENEW)，`1`(NOTIFY_AND_AUTO_RENEW) and `2`(DISABLE_NOTIFY_AND_MANUAL_RENEW). 默认值为 `0`. Note: only works for PREPAID instance. Only supports`0` and `1` for creation。",
 		},
 		"in_maintenance": {
 			Type:     schema.TypeInt,
@@ -210,22 +210,22 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 		"status": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Status of the Mongodb instance, and available values include pending initialization(expressed with 0),  processing(expressed with 1), running(expressed with 2) and expired(expressed with -2).",
+			Description: "状态 Mongodb instance，and available values include pending initialization(expressed with 0)， processing(expressed with 1)，running(expressed with 2) and expired(expressed with -2)。",
 		},
 		"vip": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "IP of the Mongodb instance.",
+			Description: "IP of the Mongodb instance。",
 		},
 		"vport": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "IP port of the Mongodb instance.",
+			Description: "IP 端口 of the Mongodb instance。",
 		},
 		"create_time": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Creation time of the Mongodb instance.",
+			Description: "创建时间 of the Mongodb instance。",
 		},
 	}
 }

@@ -19,40 +19,40 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecordDetail() *schema.Resource 
 			"deploy_record_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "One -click update record ID.",
+				Description: "One -click update record ID。",
 			},
 
 			"record_detail_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Certificate deployment record listNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Certificate deployment record listNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deploy resource type.",
+							Description: "Deploy 资源类型",
 						},
 						"list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of deployment resources details.",
+							Description: "列表 deployment resources details。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Detailed record ID.",
+										Description: "Detailed record ID。",
 									},
 									"cert_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "New certificate ID.",
+										Description: "New 证书 ID",
 									},
 									"old_cert_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Old certificate ID.",
+										Description: "Old 证书 ID",
 									},
 									"domains": {
 										Type: schema.TypeSet,
@@ -60,97 +60,97 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecordDetail() *schema.Resource 
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "List of deployment domainNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "列表 deployment domainNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"resource_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Deploy resource type.",
+										Description: "Deploy 资源类型",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DeploymentNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "DeploymentNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Deployment state.",
+										Description: "Deployment state。",
 									},
 									"error_msg": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Deployment error messageNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Deployment 错误 messageNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Deployment time.",
+										Description: "Deployment time。",
 									},
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Last update time.",
+										Description: "Last 更新时间。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Deployment instance IDNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Deployment instance IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Deployment example nameNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Deployment example nameNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"listener_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Deploy listener ID (CLB for CLB)Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Deploy listener ID (CLB for CLB)Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"listener_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Deploy listener name (CLB for CLB)Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Deploy listener 名称 (CLB for CLB)Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "protocolNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "protocolNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"sni_switch": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether to turn on SNI (CLB dedicated)Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "是否turn on SNI (CLB dedicated)Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"bucket": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "BUCKET name (COS dedicated)Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "BUCKET 名称 (COS dedicated)Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "portNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "portNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"namespace": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Naming Space (TKE)Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Naming Space (TKE)Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"secret_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Secret Name (TKE for TKE)Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Secret 名称 (TKE for TKE)Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"env_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Environment IDNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "Environment IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 									"t_c_b_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "TCB deployment typeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+										Description: "TCB deployment typeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 									},
 								},
 							},
@@ -158,7 +158,7 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecordDetail() *schema.Resource 
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The total number of deployment resources.",
+							Description: "The total 数量 deployment resources。",
 						},
 					},
 				},
@@ -167,25 +167,25 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecordDetail() *schema.Resource 
 			"success_total_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total successNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Total successNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"failed_total_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total number of failuresNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Total 数量 failuresNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"running_total_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total number of deploymentNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Total 数量 deploymentNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

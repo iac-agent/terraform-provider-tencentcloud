@@ -19,45 +19,45 @@ func DataSourceTencentCloudOceanusResourceRelatedJob() *schema.Resource {
 			"resource_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Resource ID.",
+				Description: "资源 ID",
 			},
 			"desc_by_job_config_create_time": {
 				Optional:     true,
 				Type:         schema.TypeInt,
 				Default:      DESC_BY_JOB_CONFIG_CREATETIME_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(DESC_BY_JOB_CONFIG_CREATETIME),
-				Description:  "Default:0; 1:sort by job version creation time in descending order.",
+				Description:  "Default:0; 1:排序方式 job 版本 创建时间 in 降序",
 			},
 			"resource_config_version": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Resource version number.",
+				Description: "Resource 版本 number。",
 			},
 			"work_space_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace SerialId.",
+				Description: "Workspace SerialId。",
 			},
 			"ref_job_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Associated job information.",
+				Description: "Associated job information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Job ID.",
+							Description: "作业 ID",
 						},
 						"job_config_version": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Job configuration version.",
+							Description: "Job configuration 版本",
 						},
 						"resource_version": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource version.",
+							Description: "Resource 版本",
 						},
 					},
 				},
@@ -65,7 +65,7 @@ func DataSourceTencentCloudOceanusResourceRelatedJob() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

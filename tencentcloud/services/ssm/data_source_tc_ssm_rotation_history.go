@@ -18,18 +18,18 @@ func DataSourceTencentCloudSsmRotationHistory() *schema.Resource {
 			"secret_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Secret name.",
+				Description: "Secret 名称",
 			},
 			"version_ids": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "The number of version numbers. The maximum number of version numbers that can be displayed to users is 10.",
+				Description: "The 数量 版本 numbers. The 最大version numbers that can be displayed to users is 10。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

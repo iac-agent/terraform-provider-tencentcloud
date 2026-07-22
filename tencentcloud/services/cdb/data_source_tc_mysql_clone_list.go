@@ -19,64 +19,64 @@ func DataSourceTencentCloudMysqlCloneList() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query the list of cloning tasks for the specified source instance.",
+				Description: "查询指定源实例的克隆任务列表。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Clone task list.",
+				Description: "克隆任务列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"src_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The source instance Id of the clone task.",
+							Description: "克隆任务的源实例Id。",
 						},
 						"dst_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The newly spawned instance Id of the clone task.",
+							Description: "克隆任务新生成的实例 ID。",
 						},
 						"clone_job_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Id of the task list corresponding to the clone task.",
+							Description: "克隆任务对应的任务列表id。",
 						},
 						"rollback_strategy": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The strategy used by the clone instance includes the following types: timepoint: specify the point-in-time rollback, backupset: specify the backup file rollback.",
+							Description: "克隆实例使用的策略包括以下几种：timepoint：指定时间点回滚，backupset：指定备份文件回滚。",
 						},
 						"rollback_target_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The time point when the clone instance is rolled back.",
+							Description: "克隆实例回滚的时间点。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task start time.",
+							Description: "任务开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task end time.",
+							Description: "任务结束时间。",
 						},
 						"task_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task status, including the following status: initial, running, wait_complete, success, failed.",
+							Description: "任务状态，包括以下状态：initial、running、wait_complete、success、failed。",
 						},
 						"new_region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Id of the region where the cloned instance is located.",
+							Description: "克隆实例所在地域的Id。",
 						},
 						"src_region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Id of the region where the source instance is located.",
+							Description: "源实例所在地域的Id。",
 						},
 					},
 				},
@@ -85,7 +85,7 @@ func DataSourceTencentCloudMysqlCloneList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

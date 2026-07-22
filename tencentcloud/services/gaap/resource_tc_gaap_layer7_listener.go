@@ -29,20 +29,20 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"HTTP", "HTTPS"}),
 				ForceNew:     true,
-				Description:  "Protocol of the layer7 listener. Valid value: `HTTP` and `HTTPS`.",
+				Description:  "协议 of the layer7 listener. Valid 值: `HTTP` and `HTTPS`。",
 			},
 			"name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 30),
-				Description:  "Name of the layer7 listener, the maximum length is 30.",
+				Description:  "名称 layer7 listener，the maximum length is 30。",
 			},
 			"port": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidatePort,
 				ForceNew:     true,
-				Description:  "Port of the layer7 listener.",
+				Description:  "端口 of the layer7 listener。",
 			},
 			"proxy_id": {
 				Type:          schema.TypeString,
@@ -50,7 +50,7 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				ForceNew:      true,
 				ConflictsWith: []string{"group_id"},
 				AtLeastOneOf:  []string{"group_id"},
-				Description:   "ID of the GAAP proxy.",
+				Description:   "ID GAAP proxy。",
 			},
 			"group_id": {
 				Type:          schema.TypeString,
@@ -58,27 +58,27 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				ForceNew:      true,
 				ConflictsWith: []string{"proxy_id"},
 				AtLeastOneOf:  []string{"proxy_id"},
-				Description:   "Group ID.",
+				Description:   "组 ID",
 			},
 			"certificate_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "Certificate ID of the layer7 listener. NOTES: Only supports listeners of `HTTPS` protocol.",
+				Description: "证书 ID layer7 listener. NOTES: Only supports listeners of `HTTPS` 协议",
 			},
 			"forward_protocol": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"HTTP", "HTTPS"}),
 				ForceNew:     true,
-				Description:  "Protocol type of the forwarding. Valid value: `HTTP` and `HTTPS`. NOTES: Only supports listeners of `HTTPS` protocol.",
+				Description:  "协议 类型 forwarding. Valid 值: `HTTP` and `HTTPS`. NOTES: Only supports listeners of `HTTPS` 协议",
 			},
 			"auth_type": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
 				ForceNew:     true,
-				Description:  "Authentication type of the layer7 listener. `0` is one-way authentication and `1` is mutual authentication. NOTES: Only supports listeners of `HTTPS` protocol.",
+				Description:  "Authentication 类型 layer7 listener. `0` is one-way authentication and `1` is mutual authentication. NOTES: Only supports listeners of `HTTPS` 协议",
 			},
 			"client_certificate_id": {
 				Deprecated:    "It has been deprecated from version 1.26.0. Set `client_certificate_ids` instead.",
@@ -86,7 +86,7 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				Optional:      true,
 				Computed:      true,
 				ConflictsWith: []string{"client_certificate_ids"},
-				Description:   "ID of the client certificate. Set only when `auth_type` is specified as mutual authentication. NOTES: Only supports listeners of `HTTPS` protocol.",
+				Description:   "ID client certificate. Set only when `auth_type` is specified as mutual authentication. NOTES: Only supports listeners of `HTTPS` 协议",
 			},
 			"client_certificate_ids": {
 				Type:          schema.TypeSet,
@@ -95,7 +95,7 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				Elem:          &schema.Schema{Type: schema.TypeString},
 				Set:           schema.HashString,
 				ConflictsWith: []string{"client_certificate_id"},
-				Description:   "ID list of the client certificate. Set only when `auth_type` is specified as mutual authentication. NOTES: Only supports listeners of `HTTPS` protocol.",
+				Description:   "ID 列表 the client certificate. Set only when `auth_type` is specified as mutual authentication. NOTES: Only supports listeners of `HTTPS` 协议",
 			},
 			"tls_support_versions": {
 				Type:        schema.TypeSet,
@@ -103,25 +103,25 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Set:         schema.HashString,
-				Description: "TLS version, optional TLSv1, TLSv1.1, TLSv1.2, TLSv1.3.",
+				Description: "TLS 版本，可选 TLSv1，TLSv1.1，TLSv1.2，TLSv1.3。",
 			},
 			"tls_ciphers": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Password Suite, optional GAAP_TLS_CIPHERS_STRICT, GAAP_TLS_CIPHERS_GENERAL, GAAP_TLS_CIPHERS_WIDE(default).",
+				Description: "密码 Suite，可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(default)。",
 			},
 
 			// computed
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Status of the layer7 listener.",
+				Description: "状态 layer7 listener。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of the layer7 listener.",
+				Description: "创建时间 of the layer7 listener。",
 			},
 		},
 	}

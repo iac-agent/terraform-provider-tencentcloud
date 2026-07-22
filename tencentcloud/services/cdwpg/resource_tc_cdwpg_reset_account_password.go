@@ -28,21 +28,21 @@ func ResourceTencentCloudCdwpgResetAccountPassword() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"user_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Username.",
+				Description: "用户名",
 			},
 
 			"new_password": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Sensitive:   true,
-				Description: "New password.",
+				Description: "New 密码",
 			},
 		},
 	}

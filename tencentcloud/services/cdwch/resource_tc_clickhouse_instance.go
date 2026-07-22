@@ -31,72 +31,72 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 			"zone": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Availability zone.",
+				Description: "Availability 可用区",
 			},
 			"ha_flag": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether it is highly available.",
+				Description: "是否为highly available。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Private network.",
+				Description: "Private network。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Subnet.",
+				Description: "Subnet。",
 			},
 			"product_version": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Product version.",
+				Description: "Product 版本",
 			},
 			"instance_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance name.",
+				Description: "实例名称",
 			},
 			"charge_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Billing type: `PREPAID` prepaid, `POSTPAID_BY_HOUR` postpaid.",
+				Description: "Billing 类型: `PREPAID` prepaid，`POSTPAID_BY_HOUR` postpaid。",
 			},
 			"renew_flag": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "PREPAID needs to be passed. Whether to renew automatically. 1 means auto renewal is enabled.",
+				Description: "PREPAID needs to be passed. 是否renew automatically. 1 means auto renewal is 已启用",
 			},
 			"time_span": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Prepaid needs to be delivered, billing time length, how many months.",
+				Description: "Prepaid needs to be delivered，billing time length，how many months。",
 			},
 			"data_spec": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Data spec.",
+				Description: "Data spec。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spec_name": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Spec name.",
+							Description: "Spec 名称",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Data spec count.",
+							Description: "Data spec count。",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Disk size.",
+							Description: "Disk size。",
 						},
 					},
 				},
@@ -105,28 +105,28 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "CLS log set id.",
+				Description: "CLS log set id。",
 			},
 
 			"cos_bucket_name": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "COS bucket name.",
+				Description: "COS 存储桶名称",
 			},
 
 			"mount_disk_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether it is mounted on a bare disk.",
+				Description: "是否为mounted on a bare disk。",
 			},
 
 			"ha_zk": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether ZK is highly available.",
+				Description: "Whether ZK is highly available。",
 			},
 
 			"common_spec": {
@@ -134,25 +134,25 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "ZK node.",
+				Description: "ZK node。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spec_name": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Spec name.",
+							Description: "Spec 名称",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Node count. NOTE: Only support value 3.",
+							Description: "Node count. NOTE: Only support 值 3。",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Disk size.",
+							Description: "Disk size。",
 						},
 					},
 				},
@@ -161,26 +161,26 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 			"secondary_zone_info": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Secondary zone info.",
+				Description: "Secondary 可用区 info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"secondary_zone": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Secondary zone.",
+							Description: "Secondary 可用区",
 						},
 						"secondary_subnet": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Secondary subnet.",
+							Description: "Secondary subnet。",
 						},
 					},
 				},
@@ -189,17 +189,17 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Sensitive:   true,
-				Description: "The password for the default account to log in to the instance. 8-16 characters, including at least three of the following: uppercase letters, lowercase letters, numbers, and special characters `!@#%^*`. The first character cannot be a special character.",
+				Description: "The 密码 for the default 账号 to log in to the instance. 8-16 characters，including at least three of the following: uppercase letters，lowercase letters，numbers，and special characters `!@#%^*`. The first character cannot be a special character。",
 			},
 			"expire_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Expire time.",
+				Description: "Expire time。",
 			},
 			"access_info": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "access address info.",
+				Description: "access 地址 info。",
 			},
 		},
 	}

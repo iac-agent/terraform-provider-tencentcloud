@@ -27,69 +27,69 @@ func ResourceTencentCloudOrganizationMemberAuthPolicyAttachment() *schema.Resour
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Pilicy ID.",
+				Description: "Pilicy ID。",
 			},
 
 			"org_sub_account_uin": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Organization administrator sub-account Uin.",
+				Description: "Organization administrator sub-账号 Uin。",
 			},
 
 			// computed
 			"identity_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Identity ID.",
+				Description: "Identity ID。",
 			},
 
 			"identity_role_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Identity role name.",
+				Description: "Identity 角色 名称",
 			},
 
 			"identity_role_alias_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Identity role alias name.",
+				Description: "Identity 角色 alias 名称",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time.",
+				Description: "创建时间。",
 			},
 
 			"policy_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Policy name.",
+				Description: "Policy 名称",
 			},
 
 			"member_uin": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Member UIN.",
+				Description: "Member UIN。",
 			},
 
 			"member_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Member name.",
+				Description: "Member 名称",
 			},
 
 			"org_sub_account_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Org sub account name.",
+				Description: "Org sub 账号 名称",
 			},
 
 			"bind_type": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Bind type. 1-Subaccount, 2-User Group.",
+				Description: "Bind 类型 1-Subaccount，2-用户 Group。",
 			},
 		},
 	}

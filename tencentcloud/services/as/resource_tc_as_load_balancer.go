@@ -27,40 +27,40 @@ func ResourceTencentCloudAsLoadBalancer() *schema.Resource {
 			"auto_scaling_group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of a scaling group.",
+				Description: "ID scaling group。",
 			},
 
 			"forward_load_balancers": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "List of application load balancers. The maximum number of application-type load balancers bound to each scaling group is 100.",
+				Description: "列表 application load balancers. The 最大application-类型 load balancers bound to each scaling group is 100。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"load_balancer_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Application load balancer instance ID.",
+							Description: "Application load balancer instance ID。",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Application load balancer listener ID.",
+							Description: "Application load balancer listener ID。",
 						},
 						"target_attributes": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "List of TargetAttribute.",
+							Description: "列表 TargetAttribute。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Target port.",
+										Description: "Target 端口",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Target weight.",
+										Description: "Target 权重",
 									},
 								},
 							},
@@ -68,13 +68,13 @@ func ResourceTencentCloudAsLoadBalancer() *schema.Resource {
 						"location_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Application load balancer location ID.",
+							Description: "Application load balancer location ID。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Load balancer instance region. Default value is the region of current auto scaling group. The format is the same as the public parameter Region, for example: ap-guangzhou.",
+							Description: "Load balancer instance 地域 默认值为 the 地域 of current auto scaling group. The 格式 is the same as the public parameter 地域，for example: ap-guangzhou。",
 						},
 					},
 				},

@@ -25,29 +25,29 @@ func ResourceTencentCloudGwlbTargetGroupRegisterInstances() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Target group ID.",
+				Description: "Target 组 ID",
 			},
 
 			"target_group_instances": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Server instance array.",
+				Description: "Server instance array。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"bind_ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Private network IP of target group instance.",
+							Description: "Private network IP of target group instance。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Port of target group instance. Only 6081 is supported.",
+							Description: "端口 of target group instance. Only 6081 is supported。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Weight of target group instance. Only 0 or 16 is supported, and non-0 is uniformly treated as 16.",
+							Description: "权重 of target group instance. Only 0 or 16 is supported，and non-0 is uniformly treated as 16。",
 						},
 					},
 				},

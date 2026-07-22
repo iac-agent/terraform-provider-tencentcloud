@@ -29,52 +29,52 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance Id.",
+				Description: "实例 ID",
 			},
 
 			"alert_rule": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "Alarm notification channels.",
+				Description: "Alarm notification channels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Policy name.",
+							Description: "Policy 名称",
 						},
 						"rules": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "A list of rules.",
+							Description: "A 列表 rules。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Rule name.",
+										Description: "Rule 名称",
 									},
 									"rule": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Prometheus statement.",
+										Description: "Prometheus statement。",
 									},
 									"labels": {
 										Required:    true,
-										Description: "Extra labels.",
+										Description: "Extra labels。",
 										Type:        schema.TypeList,
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Name of map.",
+													Description: "名称 map。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Value of map.",
+													Description: "值 of map。",
 												},
 											},
 										},
@@ -82,33 +82,33 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 									"template": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Alert sending template.",
+										Description: "Alert sending template。",
 									},
 									"for": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Time of duration.",
+										Description: "Time of duration。",
 									},
 									"describe": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "A description of the rule.",
+										Description: "A 描述 rule。",
 									},
 									"annotations": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Refer to annotations in prometheus rule.",
+										Description: "Refer to annotations in prometheus rule。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Name of map.",
+													Description: "名称 map。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Value of map.",
+													Description: "值 of map。",
 												},
 											},
 										},
@@ -116,7 +116,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 									"rule_state": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Alarm rule status.",
+										Description: "Alarm rule 状态",
 									},
 								},
 							},
@@ -124,56 +124,56 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 						"id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Alarm policy ID. Note: This field may return null, indicating that a valid value could not be retrieved.",
+							Description: "告警策略 ID Note: This field may return null，indicating that a valid 值 could not be retrieved。",
 						},
 						"template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "If the alarm is sent from a template, the TemplateId is the template id.",
+							Description: "If the alarm is sent from a template，the TemplateId is the template id。",
 						},
 						"notification": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Alarm channels, which may be returned using null in the template.",
+							Description: "Alarm channels，which may be returned using null in the template。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"enabled": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Whether it is enabled.",
+										Description: "是否为enabled。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The channel type, which defaults to amp, supports the following `amp`, `webhook`, `alertmanager`.",
+										Description: "The channel 类型，which 默认为 amp，supports the following `amp`，`webhook`，`alertmanager`。",
 									},
 									"web_hook": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "If Type is webhook, the field is required. Note: This field may return null, indicating that a valid value could not be retrieved.",
+										Description: "If 类型 is webhook，the field 为必填项. Note: This field may return null，indicating that a valid 值 could not be retrieved。",
 									},
 									"alert_manager": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "If Type is alertmanager, the field is required. Note: This field may return null, indicating that a valid value could not be retrieved..",
+										Description: "If 类型 is alertmanager，the field 为必填项. Note: This field may return null，indicating that a valid 值 could not be retrieved.。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"url": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Alertmanager url.",
+													Description: "Alertmanager URL",
 												},
 												"cluster_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Alertmanager is deployed in the cluster type. Note: This field may return null, indicating that a valid value could not be retrieved.",
+													Description: "Alertmanager is deployed in the 集群类型 Note: This field may return null，indicating that a valid 值 could not be retrieved。",
 												},
 												"cluster_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The ID of the cluster where the alertmanager is deployed. Note: This field may return null, indicating that a valid value could not be retrieved.",
+													Description: "The ID cluster where the alertmanager is deployed. Note: This field may return null，indicating that a valid 值 could not be retrieved。",
 												},
 											},
 										},
@@ -181,17 +181,17 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 									"repeat_interval": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Convergence time.",
+										Description: "Convergence time。",
 									},
 									"time_range_start": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The time from which it takes effect.",
+										Description: "The time from which it takes effect。",
 									},
 									"time_range_end": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Effective end time.",
+										Description: "Effective 结束时间。",
 									},
 									"notify_way": {
 										Type: schema.TypeSet,
@@ -199,7 +199,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Alarm notification method. At present, there are SMS, EMAIL, CALL, WECHAT methods.",
+										Description: "Alarm notification method. At present，there are SMS，EMAIL，CALL，WECHAT methods。",
 									},
 									"receiver_groups": {
 										Type: schema.TypeSet,
@@ -207,7 +207,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Alert Receiving Group (User Group).",
+										Description: "Alert Receiving Group (用户 Group)。",
 									},
 									"phone_notify_order": {
 										Type: schema.TypeSet,
@@ -215,27 +215,27 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Optional:    true,
-										Description: "Telephone alarm sequence.",
+										Description: "Telephone alarm sequence。",
 									},
 									"phone_circle_times": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "PhoneCircleTimes.",
+										Description: "PhoneCircleTimes。",
 									},
 									"phone_inner_interval": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Telephone alarm wheel intervals. Units: Seconds.",
+										Description: "Telephone alarm wheel intervals. 单位：Seconds。",
 									},
 									"phone_circle_interval": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Effective end timeTelephone alarm wheel interval. Units: Seconds.",
+										Description: "Effective end timeTelephone alarm wheel interval. 单位：Seconds。",
 									},
 									"phone_arrive_notice": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Telephone alerts reach notifications.",
+										Description: "Telephone alerts reach notifications。",
 									},
 								},
 							},
@@ -243,12 +243,12 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last modified time.",
+							Description: "最后修改时间。",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "If the alarm policy is derived from the CRD resource definition of the user cluster, the ClusterId is the cluster ID to which it belongs.",
+							Description: "If the alarm policy is derived from the CRD resource definition of the 用户 cluster，the 集群 ID is the cluster ID to which it belongs。",
 						},
 					},
 				},

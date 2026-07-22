@@ -27,26 +27,26 @@ func ResourceTencentCloudClsCkafkaConsumer() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "topic id.",
+				Description: "主题 ID。",
 			},
 
 			"need_content": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "whether to deliver the metadata information of the log.",
+				Description: "是否下发日志的元数据信息。",
 			},
 
 			"content": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "metadata information.",
+				Description: "元数据信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable_tag": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "whether to deliver the TAG info.",
+							Description: "是否下发TAG信息。",
 						},
 						"meta_fields": {
 							Type: schema.TypeSet,
@@ -54,17 +54,17 @@ func ResourceTencentCloudClsCkafkaConsumer() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "metadata info list.",
+							Description: "元数据信息列表。",
 						},
 						"tag_json_not_tiled": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "whether to tiling tag json.",
+							Description: "是否平铺标签json。",
 						},
 						"timestamp_accuracy": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "delivery timestamp precision,1 for second, 2 for millisecond.",
+							Description: "投递时间戳精度，1为秒，2为毫秒。",
 						},
 					},
 				},
@@ -74,38 +74,38 @@ func ResourceTencentCloudClsCkafkaConsumer() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "ckafka info.",
+				Description: "卡夫卡信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "vip.",
+							Description: "贵宾。",
 						},
 						"vport": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "vport.",
+							Description: "v端口。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "instance id.",
+							Description: "实例 ID。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "instance name.",
+							Description: "实例名称。",
 						},
 						"topic_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "topic id of ckafka.",
+							Description: "ckafka 的主题 id。",
 						},
 						"topic_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "topic name of ckafka.",
+							Description: "ckafka 的主题名称。",
 						},
 					},
 				},
@@ -114,7 +114,7 @@ func ResourceTencentCloudClsCkafkaConsumer() *schema.Resource {
 			"compression": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "compression method. 0 for NONE, 2 for SNAPPY, 3 for LZ4.",
+				Description: "压缩方法。 0 表示无，2 表示 SNAPPY，3 表示 LZ4。",
 			},
 		},
 	}

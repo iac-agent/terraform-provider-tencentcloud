@@ -25,24 +25,24 @@ func ResourceTencentCloudMysqlPasswordComplexity() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 
 			"param_list": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "List of parameters to be modified. Every element is a combination of `Name` (parameter name) and `CurrentValue` (new value). Valid values for `Name` of version 8.0: `validate_password.policy`, `validate_password.length`, `validate_password.mixed_case_count`, `validate_password.number_count`, `validate_password.special_char_count`. Valid values for `Name` of version 5.6 and 5.7: `validate_password_policy`, `validate_password_length` `validate_password_mixed_case_count`, `validate_password_number_count`, `validate_password_special_char_count`.",
+				Description: "要修改的参数列表。每个元素都是“名称”（参数名称）和“CurrentValue”（新值）的组合。版本 8.0 的“名称”的有效值：“validate_password.policy”、“validate_password.length”、“validate_password.mixed_case_count”、“validate_password.number_count”、“validate_password.special_char_count”。版本 5.6 和 5.7 的“名称”的有效值：“validate_password_policy”、“validate_password_length”、“validate_password_mixed_case_count”、“validate_password_number_count”、“validate_password_special_char_count”。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter name.",
+							Description: "参数名称。",
 						},
 						"current_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter value.",
+							Description: "参数值。",
 						},
 					},
 				},

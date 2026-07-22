@@ -26,32 +26,32 @@ func ResourceTencentCloudWafObject() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Modifies the object identifier.",
+				Description: "Modifies the object identifier。",
 			},
 
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "New instance ID: considered a successful modification if identical to an already bound instance.",
+				Description: "New instance ID: considered a successful modification if identical to an already bound instance。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "New WAF switch status, considered successful if identical to existing status.",
+				Description: "New WAF switch 状态，considered successful if identical to existing 状态",
 			},
 
 			"proxy": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Whether to enable proxy. 0: do not enable; 1: use the first IP address in XFF as the client IP address; 2: use remote_addr as the client IP address; 3: obtain the client IP address from the specified header field that is given in `ip_headers`.",
+				Description: "是否enable proxy. 0: do not enable; 1: use the first IP 地址 in XFF as the 客户端 IP 地址; 2: use remote_addr as the 客户端 IP 地址; 3: obtain the 客户端 IP 地址 from the specified header field that is given in `ip_headers`。",
 			},
 
 			"ip_headers": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
-				Description: "This parameter indicates a custom header and is required when `proxy` is set to 3.",
+				Description: "This parameter 表示a custom header and 为必填项 when `proxy` is set to 3。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -62,7 +62,7 @@ func ResourceTencentCloudWafObject() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "The ID of the member to whom the listener belongs.",
+				Description: "The ID member to whom the listener belongs。",
 			},
 
 			"member_uin": {
@@ -70,7 +70,7 @@ func ResourceTencentCloudWafObject() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "Uin of the listener member.",
+				Description: "Uin of the listener member。",
 			},
 		},
 	}

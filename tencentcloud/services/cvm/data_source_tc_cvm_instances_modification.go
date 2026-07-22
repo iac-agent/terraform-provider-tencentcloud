@@ -23,18 +23,18 @@ func DataSourceTencentCloudCvmInstancesModification() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "One or more instance ID to be queried. It can be obtained from the InstanceId in the returned value of API DescribeInstances. The maximum number of instances in batch for each request is 20.",
+				Description: "One or more instance ID to be queried. It can be obtained from the 实例 ID in the returned 值 of API DescribeInstances. The 最大instances in batch for each request is 20。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "The upper limit of Filters for each request is 10 and the upper limit for Filter.Values is 2.",
+				Description: "The upper 限制 of Filters for each request is 10 and the upper 限制 for Filter.Values is 2。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Fields to be filtered.",
+							Description: "Fields to be filtered。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudCvmInstancesModification() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Value of the field.",
+							Description: "值 of the field。",
 						},
 					},
 				},
@@ -51,65 +51,65 @@ func DataSourceTencentCloudCvmInstancesModification() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			"instance_type_config_status_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The list of model configurations that can be adjusted by the instance.",
+				Description: "The 列表 model configurations that can be adjusted by the instance。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State description.",
+							Description: "State 描述",
 						},
 						"message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Status description information.",
+							Description: "状态 描述 information。",
 						},
 						"instance_type_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Configuration information.",
+							Description: "Configuration information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Availability zone.",
+										Description: "Availability 可用区",
 									},
 									"instance_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance type.",
+										Description: "实例类型",
 									},
 									"instance_family": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance family.",
+										Description: "Instance family。",
 									},
 									"gpu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of GPU kernels, in cores.",
+										Description: "The 数量 GPU kernels，in cores。",
 									},
 									"cpu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of CPU kernels, in cores.",
+										Description: "The 数量 CPU kernels，in cores。",
 									},
 									"memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Memory capacity (in GB).",
+										Description: "Memory capacity (in GB)。",
 									},
 									"fpga": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of FPGA kernels, in cores.",
+										Description: "The 数量 FPGA kernels，in cores。",
 									},
 								},
 							},

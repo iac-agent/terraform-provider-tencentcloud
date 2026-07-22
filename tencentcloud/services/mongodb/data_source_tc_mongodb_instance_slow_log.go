@@ -18,31 +18,31 @@ func DataSourceTencentCloudMongodbInstanceSlowLog() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page.",
+				Description: "实例 ID，the 格式 is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Slow log start time, format: yyyy-mm-dd hh:mm:ss, such as: 2019-06-01 10:00:00. The time intervalbetween the start and end of the query cannot exceed 24 hours,and only slow logs within the last 7 days are allowed to be queried.",
+				Description: "Slow log 开始时间，格式: yyyy-mm-dd hh:mm:ss，such as: 2019-06-01 10:00:00. The time intervalbetween the start and end of the query cannot exceed 24 hours,and only slow logs within the last 7 days are allowed to be queried。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Slow log termination time, format: yyyy-mm-dd hh:mm:ss, such as: 2019-06-02 12:00:00.The time interval between the start and end of the query cannot exceed 24 hours,and only slow logs within the last 7 days are allowed to be queried.",
+				Description: "Slow log termination time，格式: yyyy-mm-dd hh:mm:ss，such as: 2019-06-02 12:00:00.The 时间间隔 between the start and end of the query cannot exceed 24 hours,and only slow logs within the last 7 days are allowed to be queried。",
 			},
 
 			"slow_ms": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Slow log execution time threshold, return slow logs whose execution time exceeds this threshold,the unit is milliseconds (ms), and the minimum is 100 milliseconds.",
+				Description: "Slow log 执行时间 threshold，return slow logs whose 执行时间 exceeds this threshold,the unit is milliseconds (ms)，and the minimum is 100 milliseconds。",
 			},
 
 			"format": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Slow log return format. By default, the original slow log format is returned,and versions 4.4 and above can be set to json.",
+				Description: "Slow log return 格式 By default，the original slow log 格式 is returned,and versions 4.4 and above can be set to json。",
 			},
 
 			"slow_logs": {
@@ -51,13 +51,13 @@ func DataSourceTencentCloudMongodbInstanceSlowLog() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "details of slow logs.",
+				Description: "details of slow logs。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

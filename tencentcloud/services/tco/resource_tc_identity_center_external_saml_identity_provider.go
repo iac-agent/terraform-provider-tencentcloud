@@ -26,48 +26,48 @@ func ResourceTencentCloudIdentityCenterExternalSamlIdentityProvider() *schema.Re
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Space ID.",
+				Description: "Space ID。",
 			},
 
 			"encoded_metadata_document": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "IdP metadata document (Base64 encoded). Provided by an IdP that supports the SAML 2.0 protocol.",
+				Description: "IdP metadata document (Base64 encoded). Provided by an IdP that supports the SAML 2.0 协议",
 			},
 
 			"sso_status": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "SSO enabling status. Valid values: Enabled, Disabled (default).",
+				Description: "SSO enabling 状态 有效值：已启用，已禁用 (default)。",
 			},
 
 			"entity_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "IdP identifier.",
+				Description: "IdP identifier。",
 			},
 
 			"login_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "IdP login URL.",
+				Description: "IdP login URL",
 			},
 
 			"x509_certificate": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "X509 certificate in PEM format. If this parameter is specified, all existing certificates will be replaced.",
+				Description: "X509 certificate in PEM 格式 If this parameter is specified，all existing certificates will be replaced。",
 			},
 
 			"acs_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Acs url.",
+				Description: "Acs URL",
 			},
 
 			"certificate_ids": {
@@ -76,19 +76,19 @@ func ResourceTencentCloudIdentityCenterExternalSamlIdentityProvider() *schema.Re
 					Type: schema.TypeString,
 				},
 				Computed:    true,
-				Description: "Certificate ids.",
+				Description: "Certificate ids。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time.",
+				Description: "创建时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

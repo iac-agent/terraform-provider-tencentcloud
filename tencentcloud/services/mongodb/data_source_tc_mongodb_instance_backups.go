@@ -19,85 +19,85 @@ func DataSourceTencentCloudMongodbInstanceBackups() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page.",
+				Description: "实例 ID，the 格式 is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page。",
 			},
 
 			"backup_method": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Backup mode, currently supported: 0-logic backup, 1-physical backup, 2-all backups.The default is logical backup.",
+				Description: "Backup 模式，currently supported: 0-logic backup，1-physical backup，2-all backups.The 默认为 logical backup。",
 			},
 
 			"backup_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "backup list.",
+				Description: "backup list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"backup_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Backup mode type.",
+							Description: "Backup 模式 类型",
 						},
 						"backup_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup mode name.",
+							Description: "Backup 模式 名称",
 						},
 						"backup_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remark of backup.",
+							Description: "备注 of backup。",
 						},
 						"backup_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Size of backup(KN).",
+							Description: "Size of backup(KN)。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "start time of backup.",
+							Description: "开始时间 of backup。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "end time of backup.",
+							Description: "结束时间 of backup。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Backup status.",
+							Description: "Backup 状态",
 						},
 						"backup_method": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Backup method.",
+							Description: "Backup method。",
 						},
 						"back_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Backup record ID.",
+							Description: "Backup record ID。",
 						},
 						"delete_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scheduled deletion time for the backup.",
+							Description: "Scheduled deletion time for the backup。",
 						},
 						"backup_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region where the backup is stored (for cross-region backups).",
+							Description: "地域 where the backup is stored (for cross-地域 backups)。",
 						},
 						"restore_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Time point supported for backup restore.",
+							Description: "Time point supported for backup restore。",
 						},
 					},
 				},
@@ -106,7 +106,7 @@ func DataSourceTencentCloudMongodbInstanceBackups() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

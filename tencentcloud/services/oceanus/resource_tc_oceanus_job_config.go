@@ -27,43 +27,43 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 			"job_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Job ID.",
+				Description: "作业 ID",
 			},
 			"entrypoint_class": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Main class.",
+				Description: "Main class。",
 			},
 			"program_args": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Main class parameters.",
+				Description: "Main class parameters。",
 			},
 			"remark": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Remarks.",
+				Description: "备注",
 			},
 			"resource_refs": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Resource reference array.",
+				Description: "Resource reference array。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource ID.",
+							Description: "资源 ID",
 						},
 						"version": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Resource version ID, -1 indicates the latest version.",
+							Description: "Resource 版本 ID，-1 表示latest 版本",
 						},
 						"type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Reference resource type, for example, setting the main resource to 1 represents the jar package where the main class is located.",
+							Description: "Reference 资源类型，for example，setting the main resource to 1 represents the jar package where the main class is located。",
 						},
 					},
 				},
@@ -71,23 +71,23 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 			"default_parallelism": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Job default parallelism.",
+				Description: "Job default parallelism。",
 			},
 			"properties": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "System parameters.",
+				Description: "System parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "System configuration key.",
+							Description: "System configuration 键",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "System configuration value.",
+							Description: "System configuration 值",
 						},
 					},
 				},
@@ -96,73 +96,73 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "COS storage bucket name used by the job.",
+				Description: "COS storage 存储桶名称 used by the job。",
 			},
 			"log_collect": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to collect job logs.",
+				Description: "是否collect job logs。",
 			},
 			"job_manager_spec": {
 				Optional:    true,
 				Type:        schema.TypeFloat,
-				Description: "JobManager specification.",
+				Description: "JobManager specification。",
 			},
 			"task_manager_spec": {
 				Optional:    true,
 				Type:        schema.TypeFloat,
-				Description: "TaskManager specification.",
+				Description: "TaskManager specification。",
 			},
 			"cls_logset_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "CLS logset ID.",
+				Description: "CLS logset ID。",
 			},
 			"cls_topic_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "CLS log topic ID.",
+				Description: "CLS 日志主题 ID",
 			},
 			"log_collect_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Log collection type 2:CLS; 3:COS.",
+				Description: "Log collection 类型 2:CLS; 3:COS。",
 			},
 			"python_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Python version used by the pyflink job at runtime.",
+				Description: "Python 版本 used by the pyflink job at runtime。",
 			},
 			"work_space_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace SerialId.",
+				Description: "Workspace SerialId。",
 			},
 			"log_level": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Log level.",
+				Description: "Log 级别",
 			},
 			"auto_recover": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Oceanus platform job recovery switch 1: on -1: off.",
+				Description: "Oceanus platform job recovery switch 1: on -1: off。",
 			},
 			"clazz_levels": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Class log level.",
+				Description: "Class log 级别",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"clazz": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Java class full pathNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Java class full path注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"level": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Log level TRACE, DEBUG, INFO, WARN, ERRORNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Log 级别 TRACE，DEBUG，INFO，WARN，ERROR注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -170,47 +170,47 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 			"expert_mode_on": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable expert mode.",
+				Description: "是否enable expert 模式",
 			},
 			"expert_mode_configuration": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Expert mode configuration.",
+				Description: "Expert 模式 configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_graph": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Job graphNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Job graph注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"nodes": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Point set of the running graphNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Point set of the running graph注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"id": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Node IDNote: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Node ID注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"description": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Node descriptionNote: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Node description注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Node nameNote: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Node name注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"parallelism": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Node parallelismNote: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Node parallelism注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -218,18 +218,18 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 									"edges": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Edge set of the running graphNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Edge set of the running graph注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"source": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Starting node ID of the edgeNote: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Starting 节点 ID edge注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"target": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Target node ID of the edgeNote: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Target 节点 ID edge注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -240,39 +240,39 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 						"node_config": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Node configurationNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Node configuration注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Node IDNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Node ID注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"parallelism": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Node parallelismNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Node parallelism注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"slot_sharing_group": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Slot sharing groupNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Slot sharing group注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"configuration": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Configuration propertiesNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Configuration properties注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "System configuration key.",
+													Description: "System configuration 键",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "System configuration value.",
+													Description: "System configuration 值",
 												},
 											},
 										},
@@ -280,7 +280,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 									"state_ttl": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "State TTL configuration of the node, separated by semicolonsNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "State TTL configuration of the node，separated by semicolons注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -288,40 +288,40 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 						"slot_sharing_groups": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Slot sharing groupsNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Slot sharing groups注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Name of the SlotSharingGroupNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "名称 SlotSharingGroup注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"spec": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Required:    true,
-										Description: "Specification of the SlotSharingGroupNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Specification of the SlotSharingGroup注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"cpu": {
 													Type:        schema.TypeFloat,
 													Required:    true,
-													Description: "Applicable CPUNote: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Applicable CPU注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"heap_memory": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Default is b, supporting units are b, kb, mb, gbNote: This field may return null, indicating that no valid value can be obtained.",
+													Description: "默认为 b，supporting units are b，kb，mb，gb注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"off_heap_memory": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Default is b, supporting units are b, kb, mb, gbNote: This field may return null, indicating that no valid value can be obtained.",
+													Description: "默认为 b，supporting units are b，kb，mb，gb注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"managed_memory": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Default is b, supporting units are b, kb, mb, gbNote: This field may return null, indicating that no valid value can be obtained.",
+													Description: "默认为 b，supporting units are b，kb，mb，gb注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -329,7 +329,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 									"description": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Description of the SlotSharingGroupNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "描述 SlotSharingGroup注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},

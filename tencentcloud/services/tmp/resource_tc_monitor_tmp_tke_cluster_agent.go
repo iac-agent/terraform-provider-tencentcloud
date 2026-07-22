@@ -27,63 +27,63 @@ func ResourceTencentCloudMonitorTmpTkeClusterAgent() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance Id.",
+				Description: "实例 ID",
 			},
 
 			"agents": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "agent list.",
+				Description: "agent list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Limitation of region.",
+							Description: "Limitation of 地域",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Type of cluster.",
+							Description: "类型 cluster。",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "An id identify the cluster, like `cls-xxxxxx`.",
+							Description: "An id identify the cluster，like `cls-xxxxxx`。",
 						},
 						"enable_external": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether to enable the public network CLB.",
+							Description: "是否enable the public network CLB。",
 						},
 						"in_cluster_pod_config": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Pod configuration for components deployed in the cluster.",
+							Description: "Pod configuration for components deployed in the cluster。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"host_net": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Whether to use HostNetWork.",
+										Description: "是否use HostNetWork。",
 									},
 									"node_selector": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Specify the pod to run the node.",
+										Description: "指定pod to run the node。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The pod configuration name of the component deployed in the cluster.",
+													Description: "The pod configuration 名称 component deployed in the cluster。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Pod configuration values for components deployed in the cluster.",
+													Description: "Pod configuration values for components deployed in the cluster。",
 												},
 											},
 										},
@@ -91,23 +91,23 @@ func ResourceTencentCloudMonitorTmpTkeClusterAgent() *schema.Resource {
 									"tolerations": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Tolerate Stain.",
+										Description: "Tolerate Stain。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The taint key to which the tolerance applies.",
+													Description: "The taint 键 to which the tolerance applies。",
 												},
 												"operator": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "key-value relationship.",
+													Description: "键-值 relationship。",
 												},
 												"effect": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "blemish effect to match.",
+													Description: "blemish effect to match。",
 												},
 											},
 										},
@@ -118,18 +118,18 @@ func ResourceTencentCloudMonitorTmpTkeClusterAgent() *schema.Resource {
 						"external_labels": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "All metrics collected by the cluster will carry these labels.",
+							Description: "All metrics collected by the cluster will carry these labels。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Indicator name.",
+										Description: "Indicator 名称",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Index value.",
+										Description: "索引 值",
 									},
 								},
 							},
@@ -137,28 +137,28 @@ func ResourceTencentCloudMonitorTmpTkeClusterAgent() *schema.Resource {
 						"not_install_basic_scrape": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to install the default collection configuration.",
+							Description: "是否install the default collection configuration。",
 						},
 						"not_scrape": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to collect indicators, true means drop all indicators, false means collect default indicators.",
+							Description: "是否collect indicators，true means drop all indicators，false means collect default indicators。",
 						},
 						"open_default_record": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to enable the default pre-aggregation rule.",
+							Description: "是否enable the default pre-aggregation rule。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "the name of the cluster.",
+							Description: "the 名称 cluster。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "agent state, `normal`, `abnormal`.",
+							Description: "agent state，`normal`，`abnormal`。",
 						},
 					},
 				},

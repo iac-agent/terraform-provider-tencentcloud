@@ -19,34 +19,34 @@ func DataSourceTencentCloudTeoRuleEngineSettings() *schema.Resource {
 			"actions": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Detail info of actions which can be used in rule engine.",
+				Description: "Detail info of actions which can be used in rule engine。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"action": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Action name.",
+							Description: "操作 名称",
 						},
 						"properties": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Action properties.",
+							Description: "操作 properties。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Property name.",
+										Description: "属性名称",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Property value type. Valid values:- `CHOICE`: enum type, must select one of the value in `ChoicesValue`.- `TOGGLE`: switch type, must select one of the value in `ChoicesValue`.- `OBJECT`: object type, the `ChoiceProperties` list all properties of the object.- `CUSTOM_NUM`: integer type.- `CUSTOM_STRING`: string type.",
+										Description: "属性值 类型 Valid values:- `CHOICE`: enum 类型，must select one of the 值 in `ChoicesValue`.- `TOGGLE`: switch 类型，must select one of the 值 in `ChoicesValue`.- `OBJECT`: object 类型，the `ChoiceProperties` list all properties of the object.- `CUSTOM_NUM`: integer 类型- `CUSTOM_STRING`: string 类型",
 									},
 									"choices_value": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "The choices which can be used. This list may be empty.",
+										Description: "The choices which can be used. This list may be empty。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -54,43 +54,43 @@ func DataSourceTencentCloudTeoRuleEngineSettings() *schema.Resource {
 									"min": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Min integer value can bse used when property type is `CUSTOM_NUM`. When `Min` and `Max` both are 0, this field is meaningless.",
+										Description: "Min integer 值 can bse used when property 类型 is `CUSTOM_NUM`. When `Min` and `Max` both are 0，this field is meaningless。",
 									},
 									"max": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Max integer value can bse used when property type is `CUSTOM_NUM`. When `Min` and `Max` both are 0, this field is meaningless.",
+										Description: "Max integer 值 can bse used when property 类型 is `CUSTOM_NUM`. When `Min` and `Max` both are 0，this field is meaningless。",
 									},
 									"is_multiple": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether this property is allowed to set multiple values.",
+										Description: "Whether this property is allowed to set multiple values。",
 									},
 									"is_allow_empty": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether this property is allowed to set empty.",
+										Description: "Whether this property is allowed to set empty。",
 									},
 									"choice_properties": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Associative properties of this property, they are all required. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Associative properties of this property，they are all 必填 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Property name.",
+													Description: "属性名称",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Property value type. Valid values:- `CHOICE`: enum type, must select one of the value in `ChoicesValue`.- `TOGGLE`: switch type, must select one of the value in `ChoicesValue`.- `OBJECT`: object type, the `ChoiceProperties` list all properties of the object.- `CUSTOM_NUM`: integer type.- `CUSTOM_STRING`: string type.",
+													Description: "属性值 类型 Valid values:- `CHOICE`: enum 类型，must select one of the 值 in `ChoicesValue`.- `TOGGLE`: switch 类型，must select one of the 值 in `ChoicesValue`.- `OBJECT`: object 类型，the `ChoiceProperties` list all properties of the object.- `CUSTOM_NUM`: integer 类型- `CUSTOM_STRING`: string 类型",
 												},
 												"choices_value": {
 													Type:        schema.TypeSet,
 													Computed:    true,
-													Description: "The choices which can be used. This list may be empty.",
+													Description: "The choices which can be used. This list may be empty。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -98,43 +98,43 @@ func DataSourceTencentCloudTeoRuleEngineSettings() *schema.Resource {
 												"min": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Min integer value can bse used when property type is `CUSTOM_NUM`. When `Min` and `Max` both are 0, this field is meaningless.",
+													Description: "Min integer 值 can bse used when property 类型 is `CUSTOM_NUM`. When `Min` and `Max` both are 0，this field is meaningless。",
 												},
 												"max": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Max integer value can bse used when property type is `CUSTOM_NUM`. When `Min` and `Max` both are 0, this field is meaningless.",
+													Description: "Max integer 值 can bse used when property 类型 is `CUSTOM_NUM`. When `Min` and `Max` both are 0，this field is meaningless。",
 												},
 												"is_multiple": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether this property is allowed to set multiple values.",
+													Description: "Whether this property is allowed to set multiple values。",
 												},
 												"is_allow_empty": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Whether this property is allowed to set empty.",
+													Description: "Whether this property is allowed to set empty。",
 												},
 												"extra_parameter": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Special parameter. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Special parameter. 注意：此字段可能返回 null，表示无法获取有效值。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Parameter name. Valid values:- `Action`: this extra parameter is required when modify HTTP header, this action should be a `RewriteAction`.- `StatusCode`: this extra parameter is required when modify HTTP status code, this action should be a `CodeAction`.- `NULL`: this action should be a `NormalAction`.",
+																Description: "Parameter 名称 Valid values:- `操作`: this extra parameter 为必填项 when modify HTTP header，this 操作 should be a `RewriteAction`.- `StatusCode`: this extra parameter 为必填项 when modify HTTP 状态 代码，this 操作 should be a `CodeAction`.- `NULL`: this 操作 should be a `NormalAction`。",
 															},
 															"type": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Parameter value type. Valid values:- `CHOICE`: select one value from `Choices`.- `CUSTOM_NUM`: integer value.- `CUSTOM_STRING`: string value.",
+																Description: "Parameter 值 类型 Valid values:- `CHOICE`: select one 值 from `Choices`.- `CUSTOM_NUM`: integer 值- `CUSTOM_STRING`: string 值",
 															},
 															"choices": {
 																Type:        schema.TypeSet,
 																Computed:    true,
-																Description: "A list of choices which can be used when `Type` is `CHOICE`.",
+																Description: "A 列表 choices which can be used when `类型` is `CHOICE`。",
 																Elem: &schema.Schema{
 																	Type: schema.TypeString,
 																},
@@ -148,23 +148,23 @@ func DataSourceTencentCloudTeoRuleEngineSettings() *schema.Resource {
 									"extra_parameter": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Special parameter. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Special parameter. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Parameter name. Valid values:- `Action`: this extra parameter is required when modify HTTP header, this action should be a `RewriteAction`.- `StatusCode`: this extra parameter is required when modify HTTP status code, this action should be a `CodeAction`.- `NULL`: this action should be a `NormalAction`.",
+													Description: "Parameter 名称 Valid values:- `操作`: this extra parameter 为必填项 when modify HTTP header，this 操作 should be a `RewriteAction`.- `StatusCode`: this extra parameter 为必填项 when modify HTTP 状态 代码，this 操作 should be a `CodeAction`.- `NULL`: this 操作 should be a `NormalAction`。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Parameter value type. Valid values:- `CHOICE`: select one value from `Choices`.- `CUSTOM_NUM`: integer value.- `CUSTOM_STRING`: string value.",
+													Description: "Parameter 值 类型 Valid values:- `CHOICE`: select one 值 from `Choices`.- `CUSTOM_NUM`: integer 值- `CUSTOM_STRING`: string 值",
 												},
 												"choices": {
 													Type:        schema.TypeSet,
 													Computed:    true,
-													Description: "A list of choices which can be used when `Type` is `CHOICE`.",
+													Description: "A 列表 choices which can be used when `类型` is `CHOICE`。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -182,7 +182,7 @@ func DataSourceTencentCloudTeoRuleEngineSettings() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

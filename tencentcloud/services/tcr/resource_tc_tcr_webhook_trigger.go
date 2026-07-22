@@ -29,42 +29,42 @@ func ResourceTencentCloudTcrWebhookTrigger() *schema.Resource {
 			"registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance Id.",
+				Description: "instance Id。",
 			},
 
 			"trigger": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "trigger parameters.",
+				Description: "trigger parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "trigger name.",
+							Description: "trigger 名称",
 						},
 						"targets": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "trigger target.",
+							Description: "trigger target。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"address": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "target address.",
+										Description: "target 地址",
 									},
 									"headers": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "custom Headers.",
+										Description: "custom Headers。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Header Key.",
+													Description: "Header 键",
 												},
 												"values": {
 													Type: schema.TypeSet,
@@ -72,7 +72,7 @@ func ResourceTencentCloudTcrWebhookTrigger() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Required:    true,
-													Description: "Header Values.",
+													Description: "Header Values。",
 												},
 											},
 										},
@@ -86,33 +86,33 @@ func ResourceTencentCloudTcrWebhookTrigger() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "trigger action.",
+							Description: "trigger 操作",
 						},
 						"condition": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "trigger rule.",
+							Description: "trigger rule。",
 						},
 						"enabled": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "enable trigger.",
+							Description: "enable trigger。",
 						},
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "trigger Id.",
+							Description: "trigger Id。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "trigger description.",
+							Description: "trigger 描述",
 						},
 						"namespace_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "the namespace Id to which the trigger belongs.",
+							Description: "the namespace Id to which the trigger belongs。",
 						},
 					},
 				},
@@ -121,13 +121,13 @@ func ResourceTencentCloudTcrWebhookTrigger() *schema.Resource {
 			"namespace": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace name.",
+				Description: "namespace 名称",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

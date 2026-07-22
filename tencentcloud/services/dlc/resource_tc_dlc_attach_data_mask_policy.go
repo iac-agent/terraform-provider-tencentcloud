@@ -25,7 +25,7 @@ func ResourceTencentCloudDlcAttachDataMaskPolicy() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "A collection of data masking policy permission objects to be bound.",
+				Description: "A collection of data masking policy permission objects to be bound。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_info": {
@@ -33,32 +33,32 @@ func ResourceTencentCloudDlcAttachDataMaskPolicy() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Data masking permission object.",
+							Description: "Data masking permission object。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "The name of the database to be authorized. Use * to represent all databases under the current Catalog. For administrator-level authorization, only * is allowed. For data connection-level authorization, leave it empty. For other types, specify the database name.",
+										Description: "The 名称 database to be authorized. Use * to represent all databases under the current Catalog. For administrator-级别 authorization，only * is allowed. For data connection-级别 authorization，leave it empty. For other types，指定database 名称",
 									},
 									"catalog": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "The name of the data source to be authorized. For administrator-level authorization, only * is allowed (representing all resources at this level). For data source-level and database-level authorization, only COSDataCatalog or * is allowed. For table-level authorization, custom data sources can be specified. Defaults to DataLakeCatalog if not specified. Note: For custom data sources, DLC can only manage a subset of permissions provided by the user during data source integration.",
+										Description: "The 名称 data 来源 to be authorized. For administrator-级别 authorization，only * is allowed (representing all resources at this 级别). For data 来源-级别 and database-级别 authorization，only COSDataCatalog or * is allowed. For table-级别 authorization，custom data sources can be specified. 默认为 DataLakeCatalog 如果未指定. Note: For custom data sources，DLC can only manage a subset of permissions provided by the 用户 during data 来源 integration。",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "The name of the table to be authorized. Use * to represent all tables under the current Database. For administrator-level authorization, only * is allowed. For data connection-level and database-level authorization, leave it empty. For other types, specify the table name.",
+										Description: "The 名称 table to be authorized. Use * to represent all tables under the current Database. For administrator-级别 authorization，only * is allowed. For data connection-级别 and database-级别 authorization，leave it empty. For other types，指定table 名称",
 									},
 									"column": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "The name of the column to be authorized. Use * to represent all columns. For administrator-level authorization, only * is allowed.",
+										Description: "The 名称 column to be authorized. Use * to represent all columns. For administrator-级别 authorization，only * is allowed。",
 									},
 								},
 							},
@@ -67,13 +67,13 @@ func ResourceTencentCloudDlcAttachDataMaskPolicy() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "The ID of the data masking strategy.",
+							Description: "The ID data masking strategy。",
 						},
 						"column_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "The type of the bound field.",
+							Description: "The 类型 bound field。",
 						},
 					},
 				},

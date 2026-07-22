@@ -21,41 +21,41 @@ func DataSourceTencentCloudKubernetesCharts() *schema.Resource {
 			"kind": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Kind of app chart. Available values: `log`, `scheduler`, `network`, `storage`, `monitor`, `dns`, `image`, `other`, `invisible`.",
+				Description: "Kind of app chart. 可用值：`log`，`scheduler`，`network`，`storage`，`monitor`，`dns`，`image`，`other`，`invisible`。",
 			},
 
 			"arch": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Operation system app supported. Available values: `arm32`, `arm64`, `amd64`.",
+				Description: "Operation system app supported. 可用值：`arm32`，`arm64`，`amd64`。",
 			},
 
 			"cluster_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cluster type. Available values: `tke`, `eks`.",
+				Description: "集群类型 可用值：`tke`，`eks`。",
 			},
 
 			"chart_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "App chart list.",
+				Description: "App chart list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of chart.",
+							Description: "名称 chart。",
 						},
 						"label": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Label of chart.",
+							Description: "标签 of chart。",
 						},
 						"latest_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chart latest version.",
+							Description: "Chart latest 版本",
 						},
 					},
 				},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudKubernetesCharts() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

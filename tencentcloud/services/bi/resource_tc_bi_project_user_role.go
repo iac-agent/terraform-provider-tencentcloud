@@ -29,7 +29,7 @@ func ResourceTencentCloudBiProjectUserRole() *schema.Resource {
 			"project_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"role_id_list": {
@@ -38,32 +38,32 @@ func ResourceTencentCloudBiProjectUserRole() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Role id list.",
+				Description: "角色 id list。",
 			},
 			"user_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "User id.",
+				Description: "用户 id。",
 			},
 			"user_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Username.",
+				Description: "用户名",
 			},
 			"email": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "E-mail(Note: This field may return null, indicating that no valid value can be obtained).",
+				Description: "E-mail(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 			},
 			"phone_number": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Phone number(Note: This field may return null, indicating that no valid value can be obtained).",
+				Description: "Phone number(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 			},
 			"area_code": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Mobile area code(Note: This field may return null, indicating that no valid value can be obtained).",
+				Description: "Mobile area 代码(Note: This field may return null，indicating that no valid 值 can be obtained)。",
 			},
 		},
 	}

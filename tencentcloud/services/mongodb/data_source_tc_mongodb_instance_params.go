@@ -19,24 +19,24 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"instance_enum_param": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Enum parameter.",
+				Description: "Enum parameter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"current_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "current value.",
+							Description: "当前值",
 						},
 						"default_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "default value.",
+							Description: "默认值",
 						},
 						"enum_value": {
 							Type: schema.TypeSet,
@@ -44,17 +44,17 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "enumvalue.",
+							Description: "enumvalue。",
 						},
 						"need_restart": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "if need restart.",
+							Description: "if need restart。",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "name of parameter.",
+							Description: "名称 parameter。",
 						},
 						"tips": {
 							Type: schema.TypeSet,
@@ -62,17 +62,17 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "descripition of parameter.",
+							Description: "descripition of parameter。",
 						},
 						"value_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "value type.",
+							Description: "值 类型",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "if is running.",
+							Description: "if is running。",
 						},
 					},
 				},
@@ -81,38 +81,38 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 			"instance_integer_param": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Integer parameter.",
+				Description: "Integer parameter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"current_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "current value.",
+							Description: "当前值",
 						},
 						"default_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "default value.",
+							Description: "默认值",
 						},
 						"max": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "max value.",
+							Description: "max 值",
 						},
 						"min": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "min value.",
+							Description: "min 值",
 						},
 						"need_restart": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "if need restart.",
+							Description: "if need restart。",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "name of parameter.",
+							Description: "名称 parameter。",
 						},
 						"tips": {
 							Type: schema.TypeSet,
@@ -120,17 +120,17 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "descripition of parameter.",
+							Description: "descripition of parameter。",
 						},
 						"value_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "value type.",
+							Description: "值 类型",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "if is running.",
+							Description: "if is running。",
 						},
 					},
 				},
@@ -139,33 +139,33 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 			"instance_text_param": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "text parameter.",
+				Description: "text parameter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"current_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "current value.",
+							Description: "当前值",
 						},
 						"default_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "default value.",
+							Description: "默认值",
 						},
 						"need_restart": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "if need restart.",
+							Description: "if need restart。",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "name of parameter.",
+							Description: "名称 parameter。",
 						},
 						"text_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "text value.",
+							Description: "text 值",
 						},
 						"tips": {
 							Type: schema.TypeSet,
@@ -173,17 +173,17 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "descripition of parameter.",
+							Description: "descripition of parameter。",
 						},
 						"value_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "value type.",
+							Description: "值 类型",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "if is running.",
+							Description: "if is running。",
 						},
 					},
 				},
@@ -192,18 +192,18 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 			"instance_multi_param": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "multi parameter.",
+				Description: "multi parameter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"current_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "current value.",
+							Description: "当前值",
 						},
 						"default_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "default value.",
+							Description: "默认值",
 						},
 						"enum_value": {
 							Type: schema.TypeSet,
@@ -211,22 +211,22 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "enum value.",
+							Description: "enum 值",
 						},
 						"need_restart": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "if need restart.",
+							Description: "if need restart。",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "name of parameter.",
+							Description: "名称 parameter。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "if is running.",
+							Description: "if is running。",
 						},
 						"tips": {
 							Type: schema.TypeSet,
@@ -234,12 +234,12 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "descripition of parameter.",
+							Description: "descripition of parameter。",
 						},
 						"value_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "value type.",
+							Description: "值 类型",
 						},
 					},
 				},
@@ -248,7 +248,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

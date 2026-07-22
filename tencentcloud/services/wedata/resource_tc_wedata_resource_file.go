@@ -25,49 +25,49 @@ func ResourceTencentCloudWedataResourceFile() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"resource_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The resource file name should be consistent with the uploaded file name as much as possible.",
+				Description: "The resource file 名称 should be consistent with the uploaded file 名称 as much as possible。",
 			},
 
 			"bucket_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "cos bucket name, which can be obtained from the GetResourceCosPath interface.",
+				Description: "cos 存储桶名称，which can be obtained from the GetResourceCosPath interface。",
 			},
 
 			"cos_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The cos bucket area corresponding to the BucketName bucket.",
+				Description: "The COS 存储桶 area corresponding to the BucketName 存储桶",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The path to upload resource files in the project, example value: /wedata/qxxxm/, root directory, please use/.",
+				Description: "The 路径 to upload resource files in the project，example 值: /wedata/qxxxm/，root directory，please use/。",
 			},
 
 			"resource_file": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "- You can only choose one of the two methods of uploading a file and manually filling. If both are provided, the order of values is file> manual filling value\n-the manual filling value must be the existing cos path, /datastudio/resource/is a fixed prefix, projectId is the project ID, and a specific value needs to be passed in, parentFolderPath is the parent folder path, name is the file name, and examples of manual filling value values are: /datastudio/resource/projectId/parentFolderPath/name \n.",
+				Description: "- You can only choose one of the two methods of uploading a file and manually filling. If both are provided，the 顺序 of values is file> manual filling 值\n-the manual filling 值 must be the existing cos 路径，/datastudio/resource/is a fixed prefix，projectId is the project ID，and a specific 值 needs to be passed in，parentFolderPath is the parent folder 路径，名称 is the file 名称，and examples of manual filling 值 values are: /datastudio/resource/projectId/parentFolderPath/名称 \n。",
 			},
 
 			"bundle_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "bundle client ID.",
+				Description: "bundle client ID。",
 			},
 
 			"bundle_info": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "bundle client information.",
+				Description: "bundle client information。",
 			},
 		},
 	}

@@ -27,31 +27,31 @@ func ResourceTencentCloudCiMediaSuperResolutionTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "The 模板名称 only supports `Chinese`，`English`，`numbers`，`_`，`-` and `*`。",
 			},
 
 			"resolution": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Resolution Options sdtohd: Standard Definition to Ultra Definition, hdto4k: HD to 4K.",
+				Description: "Resolution Options sdtohd: Standard Definition to Ultra Definition，hdto4k: HD to 4K。",
 			},
 
 			"enable_scale_up": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Auto scaling switch, off by default.",
+				Description: "Auto scaling switch，off by default。",
 			},
 
 			"version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "version, default value Base, Base: basic version, Enhance: enhanced version.",
+				Description: "版本，默认值 Base，Base: basic 版本，Enhance: enhanced 版本",
 			},
 		},
 	}

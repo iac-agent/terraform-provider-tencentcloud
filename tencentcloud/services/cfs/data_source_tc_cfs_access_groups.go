@@ -21,44 +21,44 @@ func DataSourceTencentCloudCfsAccessGroups() *schema.Resource {
 			"access_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "A specified access group ID used to query.",
+				Description: "A specified access 组 ID 用于query。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "A access group Name used to query.",
+				Description: "A access group 名称 用于query。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			"access_group_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of CFS access group. Each element contains the following attributes:",
+				Description: "An information 列表 CFS access group. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"access_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the access group.",
+							Description: "ID access group。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the access group.",
+							Description: "名称 access group。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the access group.",
+							Description: "描述 access group。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of the access group.",
+							Description: "创建时间 of the access group。",
 						},
 					},
 				},

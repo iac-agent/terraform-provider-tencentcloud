@@ -28,18 +28,18 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 		"standby_instance_list": {
 			Type:        schema.TypeList,
 			Computed:    true,
-			Description: "List of standby instances' info.",
+			Description: "列表 standby instances' info。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"standby_instance_id": {
 						Type:        schema.TypeString,
 						Computed:    true,
-						Description: "Indicates the ID of standby instance.",
+						Description: "表示ID of standby instance。",
 					},
 					"standby_instance_region": {
 						Type:        schema.TypeString,
 						Computed:    true,
-						Description: "Indicates the region of standby instance.",
+						Description: "表示region of standby instance。",
 					},
 				},
 			},
@@ -48,12 +48,12 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Computed:    true,
-			Description: "The number of nodes in each replica set. Default value: 3.",
+			Description: "The 数量 nodes in each replica set. 默认值：3。",
 		},
 		"add_node_list": {
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "Add node attribute list.",
+			Description: "Add node attribute list。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"role": {
@@ -77,7 +77,7 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 		"remove_node_list": {
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "Add node attribute list.",
+			Description: "Add node attribute list。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"role": {
@@ -91,7 +91,7 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 					"node_name": {
 						Type:        schema.TypeString,
 						Required:    true,
-						Description: "The node ID to delete. The shard cluster must specify the name of the node to be deleted by a group of shards, and the rest of the shards should be grouped and aligned.",
+						Description: "The 节点 ID to delete. The shard cluster must 指定name of the node to be deleted by a group of shards，and the rest of the shards should be grouped and aligned。",
 					},
 					"zone": {
 						Type:     schema.TypeString,
@@ -120,13 +120,13 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "The availability zone to which the Hidden node belongs. This parameter is required in cross-AZ instance deployment.",
+			Description: "The availability 可用区 to which the Hidden node belongs. This parameter 为必填项 in cross-AZ instance deployment。",
 		},
 		"maintenance_start": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "Maintenance window start time. The value range is any full point or half point from `00:00-23:00`, such as 00:00 or 00:30.",
+			Description: "Maintenance window 开始时间. The 值 range is any full point or half point from `00:00-23:00`，such as 00:00 or 00:30。",
 		},
 		"maintenance_end": {
 			Type:     schema.TypeString,

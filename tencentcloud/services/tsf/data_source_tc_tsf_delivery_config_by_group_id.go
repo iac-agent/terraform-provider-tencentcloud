@@ -19,24 +19,24 @@ func DataSourceTencentCloudTsfDeliveryConfigByGroupId() *schema.Resource {
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "groupId.",
+				Description: "groupId。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "configuration item for deliver to a Kafka.",
+				Description: "configuration item for deliver to a Kafka。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Config ID. Note: This field may return null, which means that no valid value was obtained.",
+							Description: "配置 ID. 注意：此字段可能返回 null，表示未获取到有效值。",
 						},
 						"config_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Config Name. Note: This field may return null, which means that no valid value was obtained.",
+							Description: "配置 名称 注意：此字段可能返回 null，表示未获取到有效值。",
 						},
 					},
 				},
@@ -45,7 +45,7 @@ func DataSourceTencentCloudTsfDeliveryConfigByGroupId() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

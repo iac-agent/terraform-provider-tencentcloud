@@ -25,7 +25,7 @@ func ResourceTencentCloudSesSendEmail() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Sender address. Enter a sender address, for example, noreply@mail.qcloud.com.To display the sender name, enter the address in the following format:Sender.",
+				Description: "Sender 地址 Enter a sender 地址，for example，noreply@mail.qcloud.com.To display the sender 名称，enter the 地址 in the following 格式:Sender。",
 			},
 
 			"destination": {
@@ -35,21 +35,21 @@ func ResourceTencentCloudSesSendEmail() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.",
+				Description: "Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email 内容 will display all recipient addresses. To send one-to-one emails to several recipients，please call the API multiple times to send the emails。",
 			},
 
 			"subject": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Email subject.",
+				Description: "Email subject。",
 			},
 
 			"reply_to_addresses": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.",
+				Description: "Reply-to 地址 You can enter a valid personal email 地址 that can receive emails. 如果此参数为空，reply emails will fail to be sent。",
 			},
 
 			"cc": {
@@ -59,7 +59,7 @@ func ResourceTencentCloudSesSendEmail() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Cc recipient email address, up to 20 people can be copied.",
+				Description: "Cc recipient email 地址，up to 20 people can be copied。",
 			},
 
 			"bcc": {
@@ -69,7 +69,7 @@ func ResourceTencentCloudSesSendEmail() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The email address of the cc recipient can support up to 20 cc recipients.",
+				Description: "The email 地址 of the cc recipient can support up to 20 cc recipients。",
 			},
 
 			"template": {
@@ -77,18 +77,18 @@ func ResourceTencentCloudSesSendEmail() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Template parameters for template-based sending. As Simple has been disused, Template is required.",
+				Description: "Template parameters for template-based sending. As Simple has been disused，Template 为必填项。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"template_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Template ID. If you do not have any template, please create one.",
+							Description: "模板 ID If you do not have any template，please create one。",
 						},
 						"template_data": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Variable parameters in the template. Please use json.dump to format the JSON object into a string type.The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the correspondingvalue (represented by {{value}}) when sending the email.Note: The parameter value cannot be data of a complex type such as HTML.Example: {name:xxx,age:xx}.",
+							Description: "Variable parameters in the template. Please use json.dump to 格式 the JSON object into a string 类型The object is a set of 键-值 pairs. Each 键 denotes a variable，which is represented by {{键}}. The 键 will be replaced with the correspondingvalue (represented by {{值}}) when sending the email.Note: The parameter 值 cannot be data of a complex 类型 such as HTML.Example: {名称:xxx,age:xx}。",
 						},
 					},
 				},
@@ -98,18 +98,18 @@ func ResourceTencentCloudSesSendEmail() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Parameters for the attachments to be sent. The TencentCloud API supports a request packet of up to 8 MB in size,and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore,you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB,the API will return an error.",
+				Description: "Parameters for the attachments to be sent. The TencentCloud API supports a request packet of up to 8 MB in size,and the size of the attachment 内容 will increase by 1.5 times after Base64 encoding. Therefore,you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB,the API will return an 错误",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"file_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types.](https://www.tencentcloud.com/document/product/1084/42373?has_map=1).",
+							Description: "Attachment 名称，which cannot exceed 255 characters. Some attachment types are not supported. For details，see [Attachment Types.](https://www.tencentcloud.com/document/product/1084/42373?has_map=1)。",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Base64-encoded attachment content. You can send attachments of up to 4 MB in the total size.Note: The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachmentcontent will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of allattachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.",
+							Description: "Base64-encoded attachment 内容 You can send attachments of up to 4 MB in the total size.Note: The TencentCloud API supports a request packet of up to 8 MB in size，and the size of the attachmentcontent will increase by 1.5 times after Base64 encoding. Therefore，you need to keep the total size of allattachments below 4 MB. If the entire request exceeds 8 MB，the API will return an 错误",
 						},
 					},
 				},
@@ -119,14 +119,14 @@ func ResourceTencentCloudSesSendEmail() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Unsubscribe link option.  0: Do not add unsubscribe link; 1: English 2: Simplified Chinese;  3: Traditional Chinese; 4: Spanish; 5: French;  6: German; 7: Japanese; 8: Korean;  9: Arabic; 10: Thai.",
+				Description: "Unsubscribe link option.  0: Do not add unsubscribe link; 1: English 2: Simplified Chinese;  3: Traditional Chinese; 4: Spanish; 5: French;  6: German; 7: Japanese; 8: Korean;  9: Arabic; 10: Thai。",
 			},
 
 			"trigger_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Email triggering type. 0 (default): non-trigger-based, suitable for marketing emails and non-immediate emails;1: trigger-based, suitable for immediate emails such as emails containing verification codes.If the size of an email exceeds a specified value,the system will automatically choose the non-trigger-based type.",
+				Description: "Email triggering 类型 0 (default): non-trigger-based，suitable for marketing emails and non-immediate emails;1: trigger-based，suitable for immediate emails such as emails containing verification codes.If the size of an email exceeds a specified 值,the system will automatically choose the non-trigger-based 类型",
 			},
 		},
 	}

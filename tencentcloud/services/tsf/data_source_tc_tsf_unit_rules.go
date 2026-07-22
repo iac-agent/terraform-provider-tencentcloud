@@ -19,138 +19,138 @@ func DataSourceTencentCloudTsfUnitRules() *schema.Resource {
 			"gateway_instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway instance id.",
+				Description: "gateway 实例 ID",
 			},
 
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Enabled state, disabled: unpublished, enabled: published.",
+				Description: "已启用 state，已禁用: unpublished，已启用: published。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Pagination list information.",
+				Description: "Pagination list information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "total number of records.",
+							Description: "total 数量 records。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "record entity list.",
+							Description: "record entity list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "rule name.",
+										Description: "rule 名称",
 									},
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "rule ID.",
+										Description: "rule ID。",
 									},
 									"gateway_instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Gateway Entity ID.",
+										Description: "Gateway Entity ID。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule description.",
+										Description: "Rule 描述",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Use status: enabled/disabled.",
+										Description: "Use 状态: 已启用/已禁用",
 									},
 									"unit_rule_item_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "list of rule items.",
+										Description: "列表 rule items。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"relationship": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Logical relationship: AND/OR.",
+													Description: "Logical relationship: AND/OR。",
 												},
 												"dest_namespace_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Destination Namespace ID.",
+													Description: "Destination Namespace ID。",
 												},
 												"dest_namespace_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "destination namespace name.",
+													Description: "destination namespace 名称",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "rule item name.",
+													Description: "rule item 名称",
 												},
 												"id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "rule item ID.",
+													Description: "rule item ID。",
 												},
 												"unit_rule_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Unitization rule ID.",
+													Description: "Unitization rule ID。",
 												},
 												"priority": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Rule order, the smaller the higher the priority: the default is 0.",
+													Description: "Rule 顺序，the smaller the higher the 优先级: the 默认为 0。",
 												},
 												"description": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Rule description.",
+													Description: "Rule 描述",
 												},
 												"unit_rule_tag_list": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "List of rule labels.",
+													Description: "列表 rule labels。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"tag_type": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Tag Type: U(User Tag).",
+																Description: "标签 类型: U(用户 标签)。",
 															},
 															"tag_field": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "tag name.",
+																Description: "标签 名称",
 															},
 															"tag_operator": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Operator: IN/NOT_IN/EQUAL/NOT_EQUAL/REGEX.",
+																Description: "操作者: IN/NOT_IN/EQUAL/NOT_EQUAL/REGEX。",
 															},
 															"tag_value": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "tag value.",
+																Description: "标签值",
 															},
 															"unit_rule_item_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Unitization rule item ID.",
+																Description: "Unitization rule item ID。",
 															},
 															"id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "rule ID.",
+																Description: "rule ID。",
 															},
 														},
 													},
@@ -161,12 +161,12 @@ func DataSourceTencentCloudTsfUnitRules() *schema.Resource {
 									"created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "created time.",
+										Description: "created time。",
 									},
 									"updated_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Updated time.",
+										Description: "Updated time。",
 									},
 								},
 							},
@@ -178,7 +178,7 @@ func DataSourceTencentCloudTsfUnitRules() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

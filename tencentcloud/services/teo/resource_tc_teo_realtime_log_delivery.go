@@ -29,25 +29,25 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the site.",
+				Description: "ID site。",
 			},
 
 			"task_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The name of the real-time log delivery task. The format is a combination of numbers, English, -, and _. The maximum length is 200 characters.",
+				Description: "The 名称 real-time log delivery task. The 格式 is a combination of numbers，English，-，and _. The maximum length is 200 characters。",
 			},
 
 			"task_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The real-time log delivery task type. The possible values are: `cls`: push to Tencent Cloud CLS; `custom_endpoint`: push to a custom HTTP(S) address; `s3`: push to an AWS S3 compatible storage bucket address.",
+				Description: "The real-time log delivery task 类型 The possible values are: `cls`: push to Tencent Cloud CLS; `custom_endpoint`: push to a custom HTTP(S) 地址; `s3`: push to an AWS S3 compatible storage 存储桶 地址",
 			},
 
 			"entity_list": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "List of entities (seven-layer domain names or four-layer proxy instances) corresponding to real-time log delivery tasks. Example values are as follows: Seven-layer domain name: `domain.example.com`; four-layer proxy instance: sid-2s69eb5wcms7. For values, refer to: `https://cloud.tencent.com/document/api/1552/80690`, `https://cloud.tencent.com/document/api/1552/86336`.",
+				Description: "列表 entities (seven-layer 域名 names or four-layer proxy instances) corresponding to real-time log delivery tasks. Example values are as follows: Seven-layer 域名 名称: `域名example.com`; four-layer proxy instance: sid-2s69eb5wcms7. For values，refer to: `https://cloud.tencent.com/document/api/1552/80690`，`https://cloud.tencent.com/document/api/1552/86336`。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -56,19 +56,19 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 			"log_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Data delivery type, the values are: `domain`: site acceleration log; `application`: four-layer proxy log; `web-rateLiming`: rate limit and CC attack protection log; `web-attack`: managed rule log; `web-rule`: custom rule log; `web-bot`: Bot management log.",
+				Description: "Data delivery 类型，the values are: `域名`: site acceleration log; `application`: four-layer proxy log; `web-rateLiming`: rate 限制 and CC attack protection log; `web-attack`: managed rule log; `web-rule`: custom rule log; `web-bot`: Bot management log。",
 			},
 
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Data delivery area, possible values are: `mainland`: within mainland China; `overseas`: worldwide (excluding mainland China).",
+				Description: "Data delivery area，possible values are: `mainland`: within mainland China; `overseas`: worldwide (excluding mainland China)。",
 			},
 
 			"fields": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "A list of preset fields for delivery.",
+				Description: "A 列表 preset fields for delivery。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -78,23 +78,23 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "The list of custom fields delivered supports extracting specified field values from HTTP request headers, response headers, and cookies. Custom field names cannot be repeated and cannot exceed 200 fields.",
+				Description: "The 列表 custom fields delivered supports extracting specified field values from HTTP request headers，response headers，and cookies. Custom field names cannot be repeated and cannot exceed 200 fields。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Extract data from the specified location in the HTTP request and response. The values are: `ReqHeader`: extract the specified field value from the HTTP request header; `RspHeader`: extract the specified field value from the HTTP response header; `Cookie`: extract the specified field value from the Cookie.",
+							Description: "Extract data from the specified location in the HTTP request and response. The values are: `ReqHeader`: extract the specified field 值 from the HTTP request header; `RspHeader`: extract the specified field 值 from the HTTP response header; `Cookie`: extract the specified field 值 from the Cookie。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The name of the parameter whose value needs to be extracted, for example: Accept-Language.",
+							Description: "The 名称 parameter whose 值 needs to be extracted，for example: Accept-语言",
 						},
 						"enabled": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to deliver this field. If left blank, this field will not be delivered.",
+							Description: "是否deliver this field. If left blank，this field will not be delivered。",
 						},
 					},
 				},
@@ -104,29 +104,29 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "The filter condition for log delivery. If it is not filled, all logs will be delivered.",
+				Description: "The filter condition for log delivery. If it is not filled，all logs will be delivered。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"conditions": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Log filtering conditions, the detailed filtering conditions are as follows: - `EdgeResponseStatusCode`: filter according to the status code returned by the EdgeOne node to the client. Supported operators: `equal`, `great`, `less`, `great_equal`, `less_equal`; Value range: any integer greater than or equal to 0; - `OriginResponseStatusCode`: filter according to the origin response status code. Supported operators: `equal`, `great`, `less`, `great_equal`, `less_equal`; Value range: any integer greater than or equal to -1; - `SecurityAction`: filter according to the final disposal action after the request hits the security rule. Supported operators: `equal`; Optional options are as follows: `-`: unknown/miss; `Monitor`: observe; `JSChallenge`: JavaScript challenge; `Deny`: intercept; `Allow`: allow; `BlockIP`: IP ban; `Redirect`: redirect; `ReturnCustomPage`: return to a custom page; `ManagedChallenge`: managed challenge; `Silence`: silent; `LongDelay`: respond after a long wait; `ShortDelay`: respond after a short wait; -`SecurityModule`: filter according to the name of the security module that finally handles the request. Supported operators: `equal`; Optional options: `-`: unknown/missed; `CustomRule`: Web Protection - Custom Rules; `RateLimitingCustomRule`: Web Protection - Rate Limiting Rules; `ManagedRule`: Web Protection - Managed Rules; `L7DDoS`: Web Protection - CC Attack Protection; `BotManagement`: Bot Management - Bot Basic Management; `BotClientReputation`: Bot Management - Client Profile Analysis; `BotBehaviorAnalysis`: Bot Management - Bot Intelligent Analysis; `BotCustomRule`: Bot Management - Custom Bot Rules; `BotActiveDetection`: Bot Management - Active Feature Recognition.",
+							Description: "Log filtering conditions，the detailed filtering conditions are as follows: - `EdgeResponseStatusCode`: filter according to the 状态 代码 returned by the EdgeOne node to the client. Supported operators: `equal`，`great`，`less`，`great_equal`，`less_equal`; 取值范围：any integer greater than or equal to 0; - `OriginResponseStatusCode`: filter according to the origin response 状态 代码 Supported operators: `equal`，`great`，`less`，`great_equal`，`less_equal`; 取值范围：any integer greater than or equal to -1; - `SecurityAction`: filter according to the final disposal 操作 after the request hits the security rule. Supported operators: `equal`; 可选 options are as follows: `-`: unknown/miss; `Monitor`: observe; `JSChallenge`: JavaScript challenge; `Deny`: intercept; `Allow`: allow; `BlockIP`: IP ban; `Redirect`: redirect; `ReturnCustomPage`: return to a custom page; `ManagedChallenge`: managed challenge; `Silence`: silent; `LongDelay`: respond after a long wait; `ShortDelay`: respond after a short wait; -`SecurityModule`: filter according to the 名称 security 模块 that finally handles the request. Supported operators: `equal`; 可选 options: `-`: unknown/missed; `CustomRule`: Web Protection - Custom Rules; `RateLimitingCustomRule`: Web Protection - Rate Limiting Rules; `ManagedRule`: Web Protection - Managed Rules; `L7DDoS`: Web Protection - CC Attack Protection; `BotManagement`: Bot Management - Bot Basic Management; `BotClientReputation`: Bot Management - Client Profile Analysis; `BotBehaviorAnalysis`: Bot Management - Bot Intelligent Analysis; `BotCustomRule`: Bot Management - Custom Bot Rules; `BotActiveDetection`: Bot Management - 活跃 Feature Recognition。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The key of the filter condition.",
+										Description: "The 键 of the filter condition。",
 									},
 									"operator": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Query condition operator, operation types are: `equals`: equal; `notEquals`: not equal; `include`: include; `notInclude`: not include; `startWith`: start with value; `notStartWith`: not start with value; `endWith`: end with value; `notEndWith`: not end with value.",
+										Description: "Query condition 操作者，operation types are: `equals`: equal; `notEquals`: not equal; `include`: include; `notInclude`: not include; `startWith`: start with 值; `notStartWith`: not start with 值; `endWith`: end with 值; `notEndWith`: not end with 值",
 									},
 									"value": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "The value of the filter condition.",
+										Description: "The 值 of the filter condition。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -141,7 +141,7 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 			"sample": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The sampling ratio is in thousandths, with a value range of 1-1000. For example, filling in 605 means the sampling ratio is 60.5%. Leaving it blank means the sampling ratio is 100%.",
+				Description: "The sampling ratio is in thousandths，with a 值 range of 1-1000. For example，filling in 605 means the sampling ratio is 60.5%. Leaving it blank means the sampling ratio is 100%。",
 			},
 
 			"log_format": {
@@ -149,43 +149,43 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "The output format of log delivery. If it is not filled, it means the default format. The default format logic is as follows: when TaskType is `custom_endpoint`, the default format is an array of multiple JSON objects, each JSON object is a log; when TaskType is `s3`, the default format is JSON Lines; in particular, when TaskType is `cls`, the value of LogFormat.FormatType can only be json, and other parameters in LogFormat will be ignored. It is recommended not to pass LogFormat.",
+				Description: "The output 格式 of log delivery. If it is not filled，it means the default 格式 The default 格式 logic is as follows: when TaskType is `custom_endpoint`，the default 格式 is an 数组 multiple JSON objects，each JSON object is a log; when TaskType is `s3`，the default 格式 is JSON Lines; in particular，when TaskType is `cls`，the 值 of LogFormat.FormatType can only be json，and other parameters in LogFormat will be ignored. It is recommended not to pass LogFormat。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"format_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The default output format type for log delivery. The possible values are: `json`: Use the default log output format JSON Lines. The fields in a single log are presented as key-value pairs; `csv`: Use the default log output format csv. Only field values are presented in a single log, without field names.",
+							Description: "The default output 格式 类型 for log delivery. The possible values are: `json`: Use the default log output 格式 JSON Lines. The fields in a single log are presented as 键-值 pairs; `csv`: Use the default log output 格式 csv. Only field values are presented in a single log，without field names。",
 						},
 						"batch_prefix": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "A string to be added before each log delivery batch. Each log delivery batch may contain multiple log records.",
+							Description: "A string to be added before each log delivery batch. Each log delivery batch may contain multiple log records。",
 						},
 						"batch_suffix": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "A string to append after each log delivery batch.",
+							Description: "A string to append after each log delivery batch。",
 						},
 						"record_prefix": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "A string to prepend to each log record.",
+							Description: "A string to prepend to each log record。",
 						},
 						"record_suffix": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "A string to append to each log record.",
+							Description: "A string to append to each log record。",
 						},
 						"record_delimiter": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The string inserted between log records as a separator. The possible values are: `\n`: newline character; `\t`: tab character; `,`: comma.",
+							Description: "The string inserted between log records as a separator. The possible values are: `\n`: newline character; `\t`: tab character; `,`: comma。",
 						},
 						"field_delimiter": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "In a single log record, a string is inserted between fields as a separator. The possible values are: `\t`: tab character; `,`: comma; `;`: semicolon.",
+							Description: "In a single log record，a string is inserted between fields as a separator. The possible values are: `\t`: tab character; `,`: comma; `;`: semicolon。",
 						},
 					},
 				},
@@ -196,23 +196,23 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "CLS configuration information. This parameter is required when TaskType is cls.",
+				Description: "CLS configuration information. This parameter 为必填项 when TaskType is cls。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"log_set_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tencent Cloud CLS log set ID.",
+							Description: "Tencent Cloud CLS log set ID。",
 						},
 						"topic_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tencent Cloud CLS log topic ID.",
+							Description: "Tencent Cloud CLS 日志主题 ID",
 						},
 						"log_set_region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The region where the Tencent Cloud CLS log set is located.",
+							Description: "The 地域 where the Tencent Cloud CLS log set is located。",
 						},
 					},
 				},
@@ -223,49 +223,49 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Customize the configuration information of the HTTP service. This parameter is required when TaskType is set to custom_endpoint.",
+				Description: "Customize the configuration information of the HTTP service. This parameter 为必填项 when TaskType is set to custom_endpoint。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"url": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The custom HTTP interface address for real-time log delivery. Currently, only HTTP/HTTPS protocols are supported.",
+							Description: "The custom HTTP interface 地址 for real-time log delivery. Currently，only HTTP/HTTPS protocols are supported。",
 						},
 						"access_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Fill in a custom SecretId to generate an encrypted signature. This parameter is required if the source site requires authentication.",
+							Description: "Fill in a custom SecretId to generate an encrypted 签名 This parameter 为必填项 if the 来源 site requires authentication。",
 						},
 						"access_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Fill in the custom SecretKey to generate the encrypted signature. This parameter is required if the source site requires authentication.",
+							Description: "Fill in the custom SecretKey to generate the encrypted 签名 This parameter 为必填项 if the 来源 site requires authentication。",
 						},
 						"compress_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data compression type, the possible values are: `gzip`: use gzip compression. If it is not filled in, compression is not enabled.",
+							Description: "Data compression 类型，the possible values are: `gzip`: use gzip compression. If it is not filled in，compression is not 已启用",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "When sending logs via POST request, the application layer protocol type used can be: `http`: HTTP protocol; `https`: HTTPS protocol. If not filled in, the protocol type will be parsed according to the filled in URL address.",
+							Description: "When sending logs via POST request，the application layer 协议 类型 used can be: `http`: HTTP 协议; `https`: HTTPS 协议 如果未填写 in，the 协议 类型 will be parsed according to the filled in URL 地址",
 						},
 						"headers": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "The custom request header carried when delivering logs. If the header name you fill in is the default header carried by EdgeOne log push, such as Content-Type, then the header value you fill in will overwrite the default value. The header value references a single variable ${batchSize} to obtain the number of logs included in each POST request.",
+							Description: "The custom request header carried when delivering logs. If the header 名称 you fill in is the default header carried by EdgeOne log push，such as 内容-类型，then the header 值 you fill in will overwrite the 默认值 The header 值 references a single variable ${batchSize} to obtain the 数量 logs included in each POST request。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "HTTP header name.",
+										Description: "HTTP header 名称",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "HTTP header value.",
+										Description: "HTTP header 值",
 									},
 								},
 							},
@@ -279,39 +279,39 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Configuration information of AWS S3 compatible storage bucket. This parameter is required when TaskType is s3.",
+				Description: "Configuration information of AWS S3 compatible storage 存储桶 This parameter 为必填项 when TaskType is s3。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"endpoint": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "URLs that do not include bucket names or paths, for example: `https://storage.googleapis.com`, `https://s3.ap-northeast-2.amazonaws.com`, `https://cos.ap-nanjing.myqcloud.com`.",
+							Description: "URLs that do not include 存储桶 names or paths，for example: `https://storage.googleapis.com`，`https://s3.ap-northeast-2.amazonaws.com`，`https://cos.ap-nanjing.myqcloud.com`。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The region where the bucket is located, for example: ap-northeast-2.",
+							Description: "The 地域 where the 存储桶 is located，for example: ap-northeast-2。",
 						},
 						"bucket": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Bucket name and log storage directory, for example: `your_bucket_name/EO-logs/`. If this directory does not exist in the bucket, it will be created automatically.",
+							Description: "存储桶名称 and log storage directory，for example: `your_bucket_name/EO-logs/`. If this directory does not exist in the 存储桶，it will be created automatically。",
 						},
 						"access_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The Access Key ID used to access the bucket.",
+							Description: "The Access 键 ID 用于access the 存储桶",
 						},
 						"access_key": {
 							Type:        schema.TypeString,
 							Required:    true,
 							Sensitive:   true,
-							Description: "The secret key used to access the bucket.",
+							Description: "The secret 键 用于access the 存储桶",
 						},
 						"compress_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data compression type, the values are: gzip: gzip compression. If it is not filled in, compression is not enabled.",
+							Description: "Data compression 类型，the values are: gzip: gzip compression. If it is not filled in，compression is not 已启用",
 						},
 					},
 				},
@@ -321,13 +321,13 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The status of the real-time log delivery task. The values are: `enabled`: enabled; `disabled`: disabled. Leave it blank to keep the original configuration. Not required when creating.",
+				Description: "The 状态 real-time log delivery task. The values are: `已启用`: 已启用; `已禁用`: 已禁用 Leave it blank to keep the original configuration. Not 必填 when creating。",
 			},
 
 			"task_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Real-time log delivery task ID.",
+				Description: "Real-time log delivery task ID。",
 			},
 		},
 	}

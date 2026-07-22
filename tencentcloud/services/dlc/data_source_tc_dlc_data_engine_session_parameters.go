@@ -18,95 +18,95 @@ func DataSourceTencentCloudDlcDataEngineSessionParameters() *schema.Resource {
 			"data_engine_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "DataEngine Id.",
+				Description: "DataEngine Id。",
 			},
 
 			"data_engine_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Engine name. When the engine name is specified, the name is used first to obtain the configuration.",
+				Description: "Engine 名称 When the engine 名称 is specified，the 名称 is used first to obtain the configuration。",
 			},
 
 			"data_engine_parameters": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Engine Session Configuration List.",
+				Description: "Engine Session Configuration List。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"parameter_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration ID.",
+							Description: "Configuration ID。",
 						},
 						"child_image_version_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Minor version image ID.",
+							Description: "Minor 版本 image ID。",
 						},
 						"engine_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Cluster type: SparkSQL/PrestoSQL/SparkBatch.",
+							Description: "集群类型: SparkSQL/PrestoSQL/SparkBatch。",
 						},
 						"key_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter key.",
+							Description: "Parameter 键",
 						},
 						"key_description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Description of the key.",
+							Description: "描述 键",
 						},
 						"value_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Type of the value.",
+							Description: "类型 值",
 						},
 						"value_length_limit": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Length limit of the value.",
+							Description: "Length 限制 of the 值",
 						},
 						"value_regexp_limit": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Regular expression constraint for the value.",
+							Description: "Regular expression constraint for the 值",
 						},
 						"value_default": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Default value.",
+							Description: "默认值",
 						},
 						"is_public": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Whether it is a public version: 1 for public; 2 for private.",
+							Description: "是否为a public 版本: 1 for public; 2 for private。",
 						},
 						"parameter_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Configuration type: 1 for session config (default); 2 for common config; 3 for cluster config.",
+							Description: "Configuration 类型: 1 for session 配置 (default); 2 for common 配置; 3 for cluster 配置",
 						},
 						"submit_method": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Submission method: User or BackGround.",
+							Description: "Submission method: 用户 or BackGround。",
 						},
 						"operator": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Operator.",
+							Description: "操作者",
 						},
 						"insert_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Insert time.",
+							Description: "Insert time。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 					},
 				},
@@ -115,7 +115,7 @@ func DataSourceTencentCloudDlcDataEngineSessionParameters() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

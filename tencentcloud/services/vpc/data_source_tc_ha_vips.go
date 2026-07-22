@@ -22,91 +22,91 @@ func DataSourceTencentCloudHaVips() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "Name of the HA VIP. The length of character is limited to 1-60.",
+				Description:  "名称 HA VIP The length of character is limited to 1-60。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the HA VIP to be queried.",
+				Description: "ID HA VIP to be queried。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "VPC id of the HA VIP to be queried.",
+				Description: "VPC ID HA VIP to be queried。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Subnet id of the HA VIP to be queried.",
+				Description: "子网 ID HA VIP to be queried。",
 			},
 			"address_ip": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIp,
-				Description:  "EIP of the HA VIP to be queried.",
+				Description:  "EIP of the HA VIP to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"ha_vip_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the dedicated HA VIPs.",
+				Description: "Information 列表 the dedicated HA VIPs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the HA VIP.",
+							Description: "ID HA VIP",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the HA VIP.",
+							Description: "名称 HA VIP",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC id.",
+							Description: "VPC id。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet id.",
+							Description: "子网 ID",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Virtual IP address, it must not be occupied and in this VPC network segment. If not set, it will be assigned after resource created automatically.",
+							Description: "Virtual IP 地址，it must not be occupied and in this VPC network segment. If not set，it will be assigned after resource created automatically。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State of the HA VIP. Valid values: `AVAILABLE`, `UNBIND`.",
+							Description: "State of the HA VIP 有效值：`AVAILABLE`，`UNBIND`。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance id that is associated.",
+							Description: "实例 ID that is associated。",
 						},
 						"network_interface_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network interface id that is associated.",
+							Description: "Network interface id that is associated。",
 						},
 						"address_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "EIP that is associated.",
+							Description: "EIP that is associated。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the HA VIP.",
+							Description: "创建时间 of the HA VIP",
 						},
 					},
 				},

@@ -18,25 +18,25 @@ func DataSourceTencentCloudWedataDataSources() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Data source name.",
+				Description: "数据源名称",
 			},
 
 			"display_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Data source display name.",
+				Description: "Data 来源 display 名称",
 			},
 
 			"type": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Data source type: enumeration values.\n\n- MYSQL\n- TENCENT_MYSQL\n- POSTGRE\n- ORACLE\n- SQLSERVER\n- FTP\n- HIVE\n- HUDI\n- HDFS\n- ICEBERG\n- KAFKA\n- HBASE\n- SPARK\n- VIRTUAL\n- TBASE\n- DB2\n- DM\n- GAUSSDB\n- GBASE\n- IMPALA\n- ES\n- TENCENT_ES\n- GREENPLUM\n- PHOENIX\n- SAP_HANA\n- SFTP\n- OCEANBASE\n- CLICKHOUSE\n- KUDU\n- VERTICA\n- REDIS\n- COS\n- DLC\n- DORIS\n- CKAFKA\n- S3\n- TDSQL\n- TDSQL_MYSQL\n- MONGODB\n- TENCENT_MONGODB\n- REST_API\n- SuperSQL\n- PRESTO\n- TiDB\n- StarRocks\n- Trino\n- Kyuubi\n- TCHOUSE_X\n- TCHOUSE_P\n- TCHOUSE_C\n- TCHOUSE_D\n- INFLUXDB\n- BIG_QUERY\n- SSH\n- BLOB.",
+				Description: "Data 来源 类型: enumeration values.\n\n- MYSQL\n- TENCENT_MYSQL\n- POSTGRE\n- ORACLE\n- SQLSERVER\n- FTP\n- HIVE\n- HUDI\n- HDFS\n- ICEBERG\n- KAFKA\n- HBASE\n- SPARK\n- VIRTUAL\n- TBASE\n- DB2\n- DM\n- GAUSSDB\n- GBASE\n- IMPALA\n- ES\n- TENCENT_ES\n- GREENPLUM\n- PHOENIX\n- SAP_HANA\n- SFTP\n- OCEANBASE\n- CLICKHOUSE\n- KUDU\n- VERTICA\n- REDIS\n- COS\n- DLC\n- DORIS\n- CKAFKA\n- S3\n- TDSQL\n- TDSQL_MYSQL\n- MONGODB\n- TENCENT_MONGODB\n- REST_API\n- SuperSQL\n- PRESTO\n- TiDB\n- StarRocks\n- Trino\n- Kyuubi\n- TCHOUSE_X\n- TCHOUSE_P\n- TCHOUSE_C\n- TCHOUSE_D\n- INFLUXDB\n- BIG_QUERY\n- SSH\n- BLOB。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -45,84 +45,84 @@ func DataSourceTencentCloudWedataDataSources() *schema.Resource {
 			"creator": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Creator.",
+				Description: "创建者",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Data source list.",
+				Description: "Data 来源 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Belonging project ID.",
+							Description: "Belonging project ID。",
 						},
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Data source ID.",
+							Description: "数据源 ID",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data source type: enumeration values.",
+							Description: "Data 来源 类型: enumeration values。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data source name.",
+							Description: "数据源名称",
 						},
 						"display_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data source display name, for visual viewing.",
+							Description: "Data 来源 display 名称，for visual viewing。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data source description information.",
+							Description: "Data 来源 描述 information。",
 						},
 						"project_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Belonging project name.",
+							Description: "Belonging 项目名称",
 						},
 						"create_user": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data source creator.",
+							Description: "Data 来源 创建者",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Time.",
+							Description: "Time。",
 						},
 						"modify_user": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Modifier.",
+							Description: "Modifier。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Modification time.",
+							Description: "修改时间。",
 						},
 						"prod_con_properties": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data source configuration information, stored in JSON KV format, varies by data source type.",
+							Description: "Data 来源 configuration information，stored in JSON KV 格式，varies by data 来源 类型",
 						},
 						"dev_con_properties": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Same as params, contains data for development data source.",
+							Description: "Same as params，包含data for development data 来源",
 						},
 						"category": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data source category:\n\n- DB - custom source\n- CLUSTER - system source.",
+							Description: "Data 来源 category:\n\n- DB - custom 来源\n- CLUSTER - system 来源",
 						},
 					},
 				},
@@ -131,7 +131,7 @@ func DataSourceTencentCloudWedataDataSources() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

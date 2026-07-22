@@ -21,35 +21,35 @@ func DataSourceTencentCloudMpsMediaMetaData() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Input information of file for metadata getting.",
+				Description: "Input information of file for metadata getting。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The input type. Valid values:`COS`: A COS bucket address.`URL`: A URL.`AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.",
+							Description: "The input 类型 Valid values:`COS`: A COS 存储桶 地址`URL`: A URL`AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
 						},
 						"cos_input_info": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+							Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bucket": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+										Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The region of the COS bucket, such as `ap-chongqing`.",
+										Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 									},
 									"object": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+										Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 									},
 								},
 							},
@@ -58,13 +58,13 @@ func DataSourceTencentCloudMpsMediaMetaData() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"url": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "URL of a video.",
+										Description: "URL of a video。",
 									},
 								},
 							},
@@ -73,33 +73,33 @@ func DataSourceTencentCloudMpsMediaMetaData() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"s3_bucket": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The AWS S3 bucket.",
+										Description: "The AWS S3 存储桶",
 									},
 									"s3_region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The region of the AWS S3 bucket.",
+										Description: "The 地域 of the AWS S3 存储桶",
 									},
 									"s3_object": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The path of the AWS S3 object.",
+										Description: "The 路径 of the AWS S3 object。",
 									},
 									"s3_secret_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The key ID required to access the AWS S3 object.",
+										Description: "The 键 ID 必填 to access the AWS S3 object。",
 									},
 									"s3_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The key required to access the AWS S3 object.",
+										Description: "The 键 必填 to access the AWS S3 object。",
 									},
 								},
 							},
@@ -111,94 +111,94 @@ func DataSourceTencentCloudMpsMediaMetaData() *schema.Resource {
 			"meta_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Media metadata.",
+				Description: "Media metadata。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Size of an uploaded media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS format).Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Size of an uploaded media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS 格式).注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"container": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Container, such as m4a and mp4.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Container，such as m4a and mp4.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"bitrate": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sum of the average bitrate of a video stream and that of an audio stream in bps.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Sum of the average bitrate of a video stream and that of an audio stream in bps.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"height": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum value of the height of a video stream in px.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Maximum 值 of the height of a video stream （像素）。注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum value of the width of a video stream in px.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Maximum 值 of the width of a video stream （像素）。注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"duration": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Video duration in seconds.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Video duration （秒）。注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"rotate": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Selected angle during video recording in degrees.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Selected angle during video recording in degrees.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"video_stream_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Video stream information.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Video stream information.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bitrate": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Bitrate of a video stream in bps.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Bitrate of a video stream in bps.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"height": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Height of a video stream in px.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Height of a video stream （像素）。注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"width": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Width of a video stream in px.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Width of a video stream （像素）。注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"codec": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Video stream codec, such as h264.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Video stream codec，such as h264.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"fps": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Frame rate in Hz.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Frame rate in Hz.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"color_primaries": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Color primariesNote: this field may return `null`, indicating that no valid value was found.",
+										Description: "Color primariesNote: this field may return `null`，indicating that no valid 值 was found。",
 									},
 									"color_space": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Color spaceNote: this field may return `null`, indicating that no valid value was found.",
+										Description: "Color spaceNote: this field may return `null`，indicating that no valid 值 was found。",
 									},
 									"color_transfer": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Color transferNote: this field may return `null`, indicating that no valid value was found.",
+										Description: "Color transferNote: this field may return `null`，indicating that no valid 值 was found。",
 									},
 									"hdr_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "HDR typeNote: This field may return `null`, indicating that no valid value was found.",
+										Description: "HDR typeNote: This field may return `null`，indicating that no valid 值 was found。",
 									},
 								},
 							},
@@ -206,28 +206,28 @@ func DataSourceTencentCloudMpsMediaMetaData() *schema.Resource {
 						"audio_stream_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Audio stream information.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Audio stream information.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bitrate": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Bitrate of an audio stream in bps.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Bitrate of an audio stream in bps.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"sampling_rate": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Sample rate of an audio stream in Hz.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Sample rate of an audio stream in Hz.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"codec": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Audio stream codec, such as aac.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Audio stream codec，such as aac.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"channel": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of sound channels, e.g., 2Note: this field may return `null`, indicating that no valid value was found.",
+										Description: "数量 sound channels，e.g.，2Note: this field may return `null`，indicating that no valid 值 was found。",
 									},
 								},
 							},
@@ -235,12 +235,12 @@ func DataSourceTencentCloudMpsMediaMetaData() *schema.Resource {
 						"video_duration": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Video duration in seconds.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Video duration （秒）。注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"audio_duration": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Audio duration in seconds.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Audio duration （秒）。注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -249,7 +249,7 @@ func DataSourceTencentCloudMpsMediaMetaData() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

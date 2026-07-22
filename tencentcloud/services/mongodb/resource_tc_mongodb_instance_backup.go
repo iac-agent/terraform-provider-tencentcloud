@@ -27,21 +27,21 @@ func ResourceTencentCloudMongodbInstanceBackup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page.",
+				Description: "实例 ID，the 格式 is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page。",
 			},
 
 			"backup_method": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "0:logical backup, 1:physical backup.",
+				Description: "0:logical backup，1:physical backup。",
 			},
 
 			"backup_remark": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "backup notes.",
+				Description: "backup notes。",
 			},
 		},
 	}

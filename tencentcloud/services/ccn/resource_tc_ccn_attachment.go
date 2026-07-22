@@ -30,56 +30,56 @@ func ResourceTencentCloudCcnAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the CCN.",
+				Description: "ID CCN。",
 			},
 			"instance_type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{CNN_INSTANCE_TYPE_VPC, CNN_INSTANCE_TYPE_DIRECTCONNECT, CNN_INSTANCE_TYPE_BMVPC, CNN_INSTANCE_TYPE_VPNGW}),
 				ForceNew:     true,
-				Description:  "Type of attached instance network, and available values include `VPC`, `DIRECTCONNECT`, `BMVPC` and `VPNGW`. Note: `VPNGW` type is only for whitelist customer now.",
+				Description:  "类型 attached instance network，and available values include `VPC`，`DIRECTCONNECT`，`BMVPC` and `VPNGW`. Note: `VPNGW` 类型 is only for whitelist customer now。",
 			},
 			"instance_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The region that the instance locates at.",
+				Description: "The 地域 that the instance locates at。",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of instance is attached.",
+				Description: "ID instance is attached。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remark of attachment.",
+				Description: "备注 of attachment。",
 			},
 			"ccn_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "Uin of the ccn attached. If not set, which means the uin of this account. This parameter is used with case when attaching ccn of other account to the instance of this account. For now only support instance type `VPC`.",
+				Description: "Uin of the ccn attached. If not set，which means the uin of this 账号 This parameter is used with case when attaching ccn of other 账号 to the instance of this 账号 For now only support 实例类型 `VPC`。",
 			},
 			"route_table_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "Ccn instance route table ID.",
+				Description: "Ccn instance route table ID。",
 			},
 			// Computed values
 			"state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "States of instance is attached. Valid values: `PENDING`, `ACTIVE`, `EXPIRED`, `REJECTED`, `DELETED`, `FAILED`, `ATTACHING`, `DETACHING` and `DETACHFAILED`. `FAILED` means asynchronous forced disassociation after 2 hours. `DETACHFAILED` means asynchronous forced disassociation after 2 hours.",
+				Description: "States of instance is attached. 有效值：`PENDING`，`ACTIVE`，`EXPIRED`，`REJECTED`，`DELETED`，`FAILED`，`ATTACHING`，`DETACHING` and `DETACHFAILED`. `FAILED` means asynchronous forced disassociation after 2 hours. `DETACHFAILED` means asynchronous forced disassociation after 2 hours。",
 			},
 			"attached_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Time of attaching.",
+				Description: "Time of attaching。",
 			},
 			"cidr_block": {
 				Type:     schema.TypeList,
@@ -87,7 +87,7 @@ func ResourceTencentCloudCcnAttachment() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "A network address block of the instance that is attached.",
+				Description: "A network 地址 block of the instance that is attached。",
 			},
 			"route_ids": {
 				Type:     schema.TypeList,
@@ -95,7 +95,7 @@ func ResourceTencentCloudCcnAttachment() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Route id list.",
+				Description: "Route id list。",
 			},
 		},
 	}

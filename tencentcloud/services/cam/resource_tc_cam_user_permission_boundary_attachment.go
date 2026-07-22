@@ -28,14 +28,14 @@ func ResourceTencentCloudCamUserPermissionBoundaryAttachment() *schema.Resource 
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Sub account Uin.",
+				Description: "Sub 账号 Uin。",
 			},
 
 			"policy_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Policy ID.",
+				Description: "Policy ID。",
 			},
 		},
 	}

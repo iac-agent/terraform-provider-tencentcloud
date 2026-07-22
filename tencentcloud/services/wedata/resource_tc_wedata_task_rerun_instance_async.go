@@ -25,14 +25,14 @@ func ResourceTencentCloudWedataTaskRerunInstanceAsync() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project Id.",
+				Description: "项目 ID",
 			},
 
 			"instance_key_list": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id list, which can be obtained from ListInstances.",
+				Description: "实例 ID list，which can be obtained from ListInstances。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -42,42 +42,42 @@ func ResourceTencentCloudWedataTaskRerunInstanceAsync() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Rerun type, 1: self; 3: children; 2: self and children, default 1.",
+				Description: "Rerun 类型，1: self; 3: children; 2: self and children，default 1。",
 			},
 
 			"check_parent_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Whether to check upstream tasks: ALL, MAKE_SCOPE (selected), NONE (do not check anything), default is NONE.",
+				Description: "是否check upstream tasks: ALL，MAKE_SCOPE (selected)，NONE (do not check anything)，默认为 NONE。",
 			},
 
 			"son_range_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Downstream instance scope WORKFLOW: workflow PROJECT: project ALL: all cross-workflow dependent projects, default WORKFLOW.",
+				Description: "Downstream instance 范围 WORKFLOW: workflow PROJECT: project ALL: all cross-workflow dependent projects，default WORKFLOW。",
 			},
 
 			"skip_event_listening": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Whether to ignore event monitoring when rerunning.",
+				Description: "是否ignore event monitoring when rerunning。",
 			},
 
 			"redefine_parallel_num": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Customize the instance running concurrency. If not configured, the original self-dependency of the task will be used.",
+				Description: "Customize the instance running 并发 If not configured，the original self-dependency of the task will be used。",
 			},
 
 			"redefine_self_workflow_dependency": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Customized workflow self-dependence: yes to enable, no to disable. If not configured, the original workflow self-dependence will be used.",
+				Description: "Customized workflow self-dependence: yes to enable，no to disable. If not configured，the original workflow self-dependence will be used。",
 			},
 
 			"redefine_param_list": {
@@ -85,18 +85,18 @@ func ResourceTencentCloudWedataTaskRerunInstanceAsync() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Re-run instance custom parameters.",
+				Description: "Re-run instance custom parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"k": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Key.",
+							Description: "键",
 						},
 						"v": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Value.",
+							Description: "值",
 						},
 					},
 				},

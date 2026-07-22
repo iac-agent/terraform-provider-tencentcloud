@@ -26,45 +26,45 @@ func ResourceTencentCloudVpcSnapshotPolicyAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot policy Id.",
+				Description: "Snapshot policy Id。",
 			},
 
 			"instances": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeSet,
-				Description: "Associated instance information.",
+				Description: "Associated instance information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "InstanceId.",
+							Description: "实例 ID",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Instance type, currently supports set: `securitygroup`.",
+							Description: "实例类型，currently supports set: `securitygroup`。",
 						},
 						"instance_region": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "The region where the instance is located.",
+							Description: "The 地域 where the instance is located。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"snapshot_policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Snapshot policy Id.",
+							Description: "Snapshot policy Id。",
 						},
 					},
 				},

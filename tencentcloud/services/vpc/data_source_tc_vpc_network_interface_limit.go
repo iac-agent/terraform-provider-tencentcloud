@@ -19,49 +19,49 @@ func DataSourceTencentCloudVpcNetworkInterfaceLimit() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of a CVM instance or ENI to query.",
+				Description: "ID CVM instance or ENI to query。",
 			},
 
 			"eni_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota of ENIs mounted to a CVM instance in a standard way.",
+				Description: "Quota of ENIs mounted to a CVM instance in a standard way。",
 			},
 
 			"eni_private_ip_address_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota of IP addresses that can be allocated to each standard-mounted ENI.",
+				Description: "Quota of IP addresses that can be allocated to each standard-mounted ENI。",
 			},
 
 			"extend_eni_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota of ENIs mounted to a CVM instance as an extensionNote: this field may return `null`, indicating that no valid values can be obtained.",
+				Description: "Quota of ENIs mounted to a CVM instance as an extensionNote: this field may return `null`，indicating that no valid values can be obtained。",
 			},
 
 			"extend_eni_private_ip_address_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota of IP addresses that can be allocated to each extension-mounted ENI.Note: this field may return `null`, indicating that no valid values can be obtained.",
+				Description: "Quota of IP addresses that can be allocated to each extension-mounted ENI.Note: this field may return `null`，indicating that no valid values can be obtained。",
 			},
 
 			"sub_eni_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The quota of relayed ENIsNote: This field may return `null`, indicating that no valid values can be obtained.",
+				Description: "The quota of relayed ENIsNote: This field may return `null`，indicating that no valid values can be obtained。",
 			},
 
 			"sub_eni_private_ip_address_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The quota of IPs that can be assigned to each relayed ENI.Note: This field may return `null`, indicating that no valid values can be obtained.",
+				Description: "The quota of IPs that can be assigned to each relayed ENI.Note: This field may return `null`，indicating that no valid values can be obtained。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

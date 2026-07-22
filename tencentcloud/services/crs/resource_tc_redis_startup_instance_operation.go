@@ -25,7 +25,7 @@ func ResourceTencentCloudRedisStartupInstanceOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID instance。",
 			},
 		},
 	}

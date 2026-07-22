@@ -27,46 +27,46 @@ func ResourceTencentCloudBhUserDirectory() *schema.Resource {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Directory ID.",
+				Description: "Directory ID。",
 			},
 
 			"dir_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Directory name.",
+				Description: "Directory 名称",
 			},
 
 			"user_org_set": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "IOA group information.",
+				Description: "IOA group information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"org_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "IOA user organization ID.",
+							Description: "IOA 用户 organization ID。",
 						},
 						"org_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IOA user organization name.",
+							Description: "IOA 用户 organization 名称",
 						},
 						"org_id_path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IOA user organization ID path.",
+							Description: "IOA 用户 organization ID 路径",
 						},
 						"org_name_path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IOA user organization name path.",
+							Description: "IOA 用户 organization 名称 路径",
 						},
 						"user_total": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of users under the IOA user organization ID.",
+							Description: "数量 users under the IOA 用户 organization ID。",
 						},
 					},
 				},
@@ -76,27 +76,27 @@ func ResourceTencentCloudBhUserDirectory() *schema.Resource {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "IOA associated user source type.",
+				Description: "IOA associated 用户 来源 类型",
 			},
 
 			"source_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "IOA associated user source name.",
+				Description: "IOA associated 用户 来源 名称",
 			},
 
 			// computed
 			"directory_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Directory ID.",
+				Description: "Directory ID。",
 			},
 
 			"user_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of users included in the directory.",
+				Description: "数量 users included in the directory。",
 			},
 		},
 	}

@@ -18,28 +18,28 @@ func DataSourceTencentCloudCssDeliverLogDownList() *schema.Resource {
 			"log_info_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of log information.",
+				Description: "列表 log information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"log_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log name.",
+							Description: "Log 名称",
 						},
 						"log_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log download address.",
+							Description: "Log download 地址",
 						},
 						"log_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log time. UTC format, for example: 2018-11-29T19:00:00Z.Note:Beijing time is UTC time + 8 hours, formatted according to the ISO 8601 standard, see ISO date format description for details.",
+							Description: "Log time. UTC 格式，for example: 2018-11-29T19:00:00Z.Note:Beijing time is UTC time + 8 hours，formatted according to the ISO 8601 standard，see ISO date 格式 描述 for details。",
 						},
 						"file_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "File size, in bytes.",
+							Description: "File size，in bytes。",
 						},
 					},
 				},
@@ -48,7 +48,7 @@ func DataSourceTencentCloudCssDeliverLogDownList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

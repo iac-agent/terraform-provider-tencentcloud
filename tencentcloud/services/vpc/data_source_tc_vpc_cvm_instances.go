@@ -19,13 +19,13 @@ func DataSourceTencentCloudVpcCvmInstances() *schema.Resource {
 			"filters": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Filter condition. `RouteTableIds` and `Filters` cannot be specified at the same time. vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`;instance-type - String - (Filter condition) CVM instance ID;instance-name - String - (Filter condition) CVM name.",
+				Description: "Filter condition. `RouteTableIds` and `Filters` cannot be specified at the same time. vpc-id - String - (Filter condition) VPC 实例 ID，such as `vpc-f49l6u0z`;instance-类型 - String - (Filter condition) CVM instance ID;instance-名称 - String - (Filter condition) CVM 名称",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The attribute name. If more than one Filter exists, the logical relation between these Filters is `AND`.",
+							Description: "The attribute 名称 If more than one Filter exists，the logical relation between these Filters is `AND`。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudVpcCvmInstances() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Attribute value. If multiple values exist in one filter, the logical relationship between these values is `OR`. For a `bool` parameter, the valid values include `TRUE` and `FALSE`.",
+							Description: "Attribute 值 If multiple values exist in one filter，the logical relationship between these values is `OR`. For a `bool` parameter，the valid values include `TRUE` and `FALSE`。",
 						},
 					},
 				},
@@ -42,68 +42,68 @@ func DataSourceTencentCloudVpcCvmInstances() *schema.Resource {
 			"instance_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of CVM instances.",
+				Description: "列表 CVM instances。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC instance ID.",
+							Description: "VPC 实例 ID",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet instance ID.",
+							Description: "子网实例 ID",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CVM instance ID.",
+							Description: "CVM instance ID。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CVM Name.",
+							Description: "CVM 名称",
 						},
 						"instance_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CVM status.",
+							Description: "CVM 状态",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of CPU cores in an instance (in core).",
+							Description: "CPU 核数 in an instance (in core)。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance's memory capacity. Unit: GB.",
+							Description: "Instance's memory capacity. 单位：GB。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The creation time.",
+							Description: "The 创建时间。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance type.",
+							Description: "实例类型",
 						},
 						"eni_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance ENI quota (including primary ENIs).",
+							Description: "Instance ENI quota (including primary ENIs)。",
 						},
 						"eni_ip_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Private IP quoata for instance ENIs (including primary ENIs).",
+							Description: "Private IP quoata for instance ENIs (including primary ENIs)。",
 						},
 						"instance_eni_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of ENIs (including primary ENIs) bound to a instance.",
+							Description: "The 数量 ENIs (including primary ENIs) bound to a instance。",
 						},
 					},
 				},
@@ -112,7 +112,7 @@ func DataSourceTencentCloudVpcCvmInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

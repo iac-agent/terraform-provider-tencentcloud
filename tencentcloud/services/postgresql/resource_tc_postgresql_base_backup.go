@@ -33,26 +33,26 @@ func ResourceTencentCloudPostgresqlBaseBackup() *schema.Resource {
 			"db_instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"base_backup_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Base backup ID.",
+				Description: "Base backup ID。",
 			},
 
 			"new_expire_time": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "New expiration time.",
+				Description: "New 过期时间。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

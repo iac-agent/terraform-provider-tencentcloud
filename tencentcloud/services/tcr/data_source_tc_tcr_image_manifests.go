@@ -18,43 +18,43 @@ func DataSourceTencentCloudTcrImageManifests() *schema.Resource {
 			"registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance ID.",
+				Description: "instance ID。",
 			},
 
 			"namespace_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace name.",
+				Description: "namespace 名称",
 			},
 
 			"repository_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "mirror warehouse name.",
+				Description: "mirror warehouse 名称",
 			},
 
 			"image_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "mirror version.",
+				Description: "mirror 版本",
 			},
 
 			"manifest": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Manifest information of the image.",
+				Description: "Manifest information of the image。",
 			},
 
 			"config": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "configuration information of the image.",
+				Description: "configuration information of the image。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

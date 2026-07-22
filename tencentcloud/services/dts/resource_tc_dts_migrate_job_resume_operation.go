@@ -23,14 +23,14 @@ func ResourceTencentCloudDtsMigrateJobResumeOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "job id.",
+				Description: "作业 ID",
 			},
 
 			"resume_option": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "resume mode: 1.clearData-Clear target data; 2.overwrite-The task is executed in overwrite mode; 3.normal-No extra action. Note that clearData and overwrite are valid only for redis links, normal is valid only for non-Redis links.",
+				Description: "resume 模式: 1.clearData-Clear target data; 2.overwrite-The task is executed in overwrite 模式; 3.normal-No extra 操作 Note that clearData and overwrite are valid only for redis links，normal is valid only for non-Redis links。",
 			},
 		},
 	}

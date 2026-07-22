@@ -28,47 +28,47 @@ func ResourceTencentCloudClsScheduledSql() *schema.Resource {
 			"src_topic_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "src topic id.",
+				Description: "源主题 ID。",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "task name.",
+				Description: "任务名称。",
 			},
 
 			"enable_flag": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "task enable flag.",
+				Description: "任务启用标志。",
 			},
 
 			"dst_resource": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "scheduled slq dst resource.",
+				Description: "计划的 slq dst 资源。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"topic_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "dst topic id.",
+							Description: "目标主题 ID。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "topic region.",
+							Description: "主题区域。",
 						},
 						"biz_type": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "topic type.",
+							Description: "主题类型。",
 						},
 						"metric_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "metric name.",
+							Description: "度量名称。",
 						},
 					},
 				},
@@ -77,56 +77,56 @@ func ResourceTencentCloudClsScheduledSql() *schema.Resource {
 			"scheduled_sql_content": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "scheduled sql content.",
+				Description: "预定的sql内容。",
 			},
 
 			"process_start_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "process start timestamp.",
+				Description: "进程开始时间戳。",
 			},
 
 			"process_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "process type.",
+				Description: "过程类型。",
 			},
 
 			"process_period": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "process period.",
+				Description: "工艺期。",
 			},
 
 			"process_time_window": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "process time window.",
+				Description: "处理时间窗口。",
 			},
 
 			"process_delay": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "process delay.",
+				Description: "进程延迟。",
 			},
 
 			"src_topic_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "src topic region.",
+				Description: "src 主题区域。",
 			},
 
 			"process_end_time": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "process end timestamp.",
+				Description: "进程结束时间戳。",
 			},
 
 			"syntax_rule": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "syntax rule.",
+				Description: "语法规则。",
 			},
 		},
 	}

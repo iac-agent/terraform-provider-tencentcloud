@@ -23,14 +23,14 @@ func ResourceTencentCloudPostgresqlDeleteLogBackupOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"log_backup_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Log backup ID.",
+				Description: "Log backup ID。",
 			},
 		},
 	}

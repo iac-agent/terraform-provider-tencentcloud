@@ -19,13 +19,13 @@ func DataSourceTencentCloudCkafkaGroupOffsets() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"group": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Kafka consumer group name.",
+				Description: "Kafka consumer 组名称",
 			},
 
 			"topics": {
@@ -34,61 +34,61 @@ func DataSourceTencentCloudCkafkaGroupOffsets() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "An array of topic names subscribed by the group, if there is no such array, it means all topic information under the specified group.",
+				Description: "An 数组 topic names subscribed by the group，if there is no such array，it means all topic information under the specified group。",
 			},
 
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "fuzzy match topicName.",
+				Description: "fuzzy match topicName。",
 			},
 
 			"topic_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The topic array, where each element is a json object.",
+				Description: "The topic array，where each element is a json object。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"topic": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "topicName.",
+							Description: "topicName。",
 						},
 						"partitions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "he topic partition array, where each element is a json object.",
+							Description: "he topic partition array，where each element is a json object。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"partition": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "topic partitionId.",
+										Description: "topic partitionId。",
 									},
 									"offset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The offset of the position.",
+										Description: "The 偏移量 of the position。",
 									},
 									"metadata": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "When consumers submit messages, they can pass in metadata for other purposes. Currently, it is usually an empty string.",
+										Description: "When consumers 提交 messages，they can pass in metadata for other purposes. Currently，it is usually an empty string。",
 									},
 									"error_code": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ErrorCode.",
+										Description: "ErrorCode。",
 									},
 									"log_end_offset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The latest offset of the current partition.",
+										Description: "The latest 偏移量 of the current partition。",
 									},
 									"lag": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of unconsumed messages.",
+										Description: "The 数量 unconsumed messages。",
 									},
 								},
 							},
@@ -100,7 +100,7 @@ func DataSourceTencentCloudCkafkaGroupOffsets() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

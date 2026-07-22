@@ -19,19 +19,19 @@ func DataSourceTencentCloudGaapProxyGroupStatistics() *schema.Resource {
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Group Id.",
+				Description: "Group Id。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start Time.",
+				Description: "Start Time。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End Time.",
+				Description: "End Time。",
 			},
 
 			"metric_names": {
@@ -40,41 +40,41 @@ func DataSourceTencentCloudGaapProxyGroupStatistics() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Metric Names. support, InBandwidth, OutBandwidth, Concurrent, InPackets, OutPackets.",
+				Description: "Metric Names. support，InBandwidth，OutBandwidth，Concurrent，InPackets，OutPackets。",
 			},
 
 			"granularity": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Monitoring granularity, currently supporting 60 300 3600 86400, in seconds.When the time range does not exceed 1 day, support a minimum granularity of 60 seconds;When the time range does not exceed 7 days, support a minimum granularity of 3600 seconds;When the time range does not exceed 30 days, the minimum granularity supported is 86400 seconds.",
+				Description: "Monitoring granularity，currently supporting 60 300 3600 86400，（秒）。When the time range does not exceed 1 day，support a minimum granularity of 60 seconds;When the time range does not exceed 7 days，support a minimum granularity of 3600 seconds;When the time range does not exceed 30 days，the minimum granularity supported is 86400 seconds。",
 			},
 
 			"statistics_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "proxy Group Statistics.",
+				Description: "proxy Group Statistics。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"metric_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Metric Name.",
+							Description: "Metric 名称",
 						},
 						"metric_data": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Metric Data.",
+							Description: "Metric Data。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Time.",
+										Description: "Time。",
 									},
 									"data": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "DataNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Data注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -86,7 +86,7 @@ func DataSourceTencentCloudGaapProxyGroupStatistics() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

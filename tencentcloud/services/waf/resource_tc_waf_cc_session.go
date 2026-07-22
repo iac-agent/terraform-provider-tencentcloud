@@ -29,53 +29,53 @@ func ResourceTencentCloudWafCcSession() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 			"source": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Session matching position, Optional locations are get, post, header, cookie.",
+				Description: "Session matching position，可选 locations are get，post，header，cookie。",
 			},
 			"category": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Session match pattern, Optional patterns are match, location.",
+				Description: "Session match pattern，可选 patterns are match，location。",
 			},
 			"key_or_start_mat": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Session identifier.",
+				Description: "Session identifier。",
 			},
 			"end_mat": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Session end identifier, when Category is match.",
+				Description: "Session end identifier，when Category is match。",
 			},
 			"start_offset": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Starting offset position, when Category is location.",
+				Description: "Starting 偏移量 position，when Category is location。",
 			},
 			"end_offset": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End offset position, when Category is location.",
+				Description: "End 偏移量 position，when Category is location。",
 			},
 			"edition": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(EDITION_TYPE),
-				Description:  "Waf edition. clb-waf means clb-waf, sparta-waf means saas-waf.",
+				Description:  "Waf edition. clb-waf means clb-waf，sparta-waf means saas-waf。",
 			},
 			"session_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Session Name.",
+				Description: "Session 名称",
 			},
 			"session_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Session ID.",
+				Description: "Session ID。",
 			},
 		},
 	}

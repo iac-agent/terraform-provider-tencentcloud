@@ -28,68 +28,68 @@ func ResourceTencentCloudTemApplicationService() *schema.Resource {
 			"environment_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "environment ID.",
+				Description: "environment ID。",
 			},
 
 			"application_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "application ID.",
+				Description: "application ID。",
 			},
 
 			"service": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "service detail list.",
+				Description: "service detail list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:         schema.TypeString,
 							Optional:     true,
-							Description:  "application service type: EXTERNAL | VPC | CLUSTER.",
+							Description:  "application service 类型: EXTERNAL | VPC | CLUSTER。",
 							ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"EXTERNAL", "VPC", "CLUSTER"}),
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "application service name.",
+							Description: "application 服务名称",
 						},
 						"vpc_id": {
 							Optional:    true,
 							Type:        schema.TypeString,
-							Description: "ID of vpc instance, required when type is `VPC`.",
+							Description: "ID vpc instance，必填 when 类型 is `VPC`。",
 						},
 						"subnet_id": {
 							Optional:    true,
 							Type:        schema.TypeString,
-							Description: "ID of subnet instance, required when type is `VPC`.",
+							Description: "ID subnet instance，必填 when 类型 is `VPC`。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ip address of application service.",
+							Description: "ip 地址 of application service。",
 						},
 						"port_mapping_item_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "port mapping item list.",
+							Description: "端口 mapping item list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "container port.",
+										Description: "container 端口",
 									},
 									"target_port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "application listen port.",
+										Description: "application listen 端口",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "UDP or TCP.",
+										Description: "UDP or TCP。",
 									},
 								},
 							},

@@ -26,56 +26,56 @@ func ResourceTencentCloudScfProvisionedConcurrencyConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Name of the function for which to set the provisioned concurrency.",
+				Description: "名称 function for which to set the provisioned 并发",
 			},
 
 			"qualifier": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Function version number. Note: the $LATEST version does not support provisioned concurrency.",
+				Description: "Function 版本 number. Note: the $LATEST 版本 does not support provisioned 并发",
 			},
 
 			"version_provisioned_concurrency_num": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function&amp;#39;s maximum concurrency quota minus 100.",
+				Description: "Provisioned 并发 amount. Note: there is an upper 限制 for the sum of provisioned 并发 amounts of all versions，which currently is the function&amp;#39;s maximum 并发 quota minus 100。",
 			},
 
 			"namespace": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Function namespace. Default value: default.",
+				Description: "Function namespace. 默认值：default。",
 			},
 
 			"trigger_actions": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Scheduled provisioned concurrency scaling action.",
+				Description: "Scheduled provisioned 并发 scaling 操作",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"trigger_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Scheduled action name Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Scheduled 操作 名称 Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"trigger_provisioned_concurrency_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Target provisioned concurrency of the scheduled scaling action Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Target provisioned 并发 of the scheduled scaling 操作 Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"trigger_cron_config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Trigger time of the scheduled action in Cron expression. Seven fields are required and should be separated with a space. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Trigger time of the scheduled 操作 in Cron expression. Seven fields 为必填项 and should be separated with a space. Note: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"provisioned_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The provision type. Value: Default Note: This field may return null, indicating that no valid value can be found.",
+							Description: "The provision 类型 值: Default Note: This field may return null，indicating that no valid 值 can be found。",
 						},
 					},
 				},
@@ -85,28 +85,28 @@ func ResourceTencentCloudScfProvisionedConcurrencyConfig() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Specifies the provisioned concurrency type. Default: Static provisioned concurrency. ConcurrencyUtilizationTracking: Scales the concurrency automatically according to the concurrency utilization. If ConcurrencyUtilizationTracking is passed in, TrackingTarget, MinCapacity and MaxCapacity are required, and VersionProvisionedConcurrencyNum must be 0.",
+				Description: "指定provisioned 并发 类型 默认值：Static provisioned 并发 ConcurrencyUtilizationTracking: Scales the 并发 automatically according to the 并发 utilization. If ConcurrencyUtilizationTracking is passed in，TrackingTarget，MinCapacity and MaxCapacity 为必填项，and VersionProvisionedConcurrencyNum must be 0。",
 			},
 
 			"tracking_target": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeFloat,
-				Description: "The target concurrency utilization. Range: (0,1) (two decimal places).",
+				Description: "The target 并发 utilization. Range: (0,1) (two decimal places)。",
 			},
 
 			"min_capacity": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The minimum number of instances. It can not be smaller than 1.",
+				Description: "The 最小instances. It can not be smaller than 1。",
 			},
 
 			"max_capacity": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum number of instances.",
+				Description: "The 最大instances。",
 			},
 		},
 	}

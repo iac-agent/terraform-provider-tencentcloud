@@ -23,35 +23,35 @@ func ResourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"cron_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Intelligent operation and maintenance staff regularly patrol the inspection time every day, the time format is HH:00:00, such as 15:00:00.",
+				Description: "Intelligent operation and maintenance staff regularly patrol the inspection time every day，the 时间格式 is HH:00:00，such as 15:00:00。",
 			},
 
 			"diagnose_job_metas": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Diagnostic items and meta-information of intelligent operation and maintenance.",
+				Description: "Diagnostic items and meta-information of intelligent operation and maintenance。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "English name of diagnosis item for intelligent operation and maintenance.",
+							Description: "English 名称 diagnosis item for intelligent operation and maintenance。",
 						},
 						"job_zh_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chinese name of intelligent operation and maintenance diagnosis item.",
+							Description: "Chinese 名称 intelligent operation and maintenance diagnosis item。",
 						},
 						"job_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Intelligent operation and maintenance diagnostic item description.",
+							Description: "Intelligent operation and maintenance diagnostic item 描述",
 						},
 					},
 				},
@@ -60,7 +60,7 @@ func ResourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 			"max_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum number of manual triggers per day for intelligent operation and maintenance staff.",
+				Description: "The 最大manual triggers per day for intelligent operation and maintenance staff。",
 			},
 		},
 	}

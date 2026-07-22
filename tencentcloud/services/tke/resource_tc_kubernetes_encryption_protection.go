@@ -23,7 +23,7 @@ func ResourceTencentCloudKubernetesEncryptionProtection() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "cluster id.",
+				Description: "集群 ID",
 			},
 
 			"kms_configuration": {
@@ -31,18 +31,18 @@ func ResourceTencentCloudKubernetesEncryptionProtection() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "kms encryption configuration.",
+				Description: "kms encryption configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Custom key: If no KeyId is specified, a default key will be generated (TKE-KMS).",
+							Description: "Custom 键: If no KeyId is specified，a default 键 will be generated (TKE-KMS)。",
 						},
 						"kms_region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Generate keys with default settings or customize key region information.",
+							Description: "Generate keys with default settings or customize 键 地域 information。",
 						},
 					},
 				},
@@ -51,7 +51,7 @@ func ResourceTencentCloudKubernetesEncryptionProtection() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "kms encryption status.",
+				Description: "kms encryption 状态",
 			},
 		},
 	}

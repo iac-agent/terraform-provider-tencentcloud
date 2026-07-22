@@ -28,32 +28,32 @@ func ResourceTencentCloudScfFunctionEventInvokeConfig() *schema.Resource {
 			"function_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function name.",
+				Description: "Function 名称",
 			},
 
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Default:     "default",
-				Description: "Function namespace. Default value: default.",
+				Description: "Function namespace. 默认值：default。",
 			},
 			"async_trigger_config": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Async retry configuration information.",
+				Description: "Async retry configuration information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"retry_config": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Async retry configuration of function upon user error.",
+							Description: "Async retry configuration of function upon 用户 错误",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"retry_num": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Number of retry attempts.",
+										Description: "数量 retry attempts。",
 									},
 								},
 							},
@@ -61,7 +61,7 @@ func ResourceTencentCloudScfFunctionEventInvokeConfig() *schema.Resource {
 						"msg_ttl": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Message retention period.",
+							Description: "消息 retention 周期",
 						},
 					},
 				},

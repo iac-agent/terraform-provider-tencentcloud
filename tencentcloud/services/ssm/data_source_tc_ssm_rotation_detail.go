@@ -19,32 +19,32 @@ func DataSourceTencentCloudSsmRotationDetail() *schema.Resource {
 			"secret_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Secret name.",
+				Description: "Secret 名称",
 			},
 			"enable_rotation": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to allow rotation.",
+				Description: "是否allow rotation。",
 			},
 			"frequency": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The rotation frequency, in days, defaults to 1 day.",
+				Description: "The rotation frequency，in days，默认为 1 day。",
 			},
 			"latest_rotate_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Time of last rotation.",
+				Description: "Time of last rotation。",
 			},
 			"next_rotate_begin_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The time to start the next rotation.",
+				Description: "The time to start the next rotation。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

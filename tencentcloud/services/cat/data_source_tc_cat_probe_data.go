@@ -20,31 +20,31 @@ func DataSourceTencentCloudCatProbeData() *schema.Resource {
 			"begin_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Start timestamp (in milliseconds).",
+				Description: "Start 时间戳 (in milliseconds)。",
 			},
 
 			"end_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "End timestamp (in milliseconds).",
+				Description: "End 时间戳 (in milliseconds)。",
 			},
 
 			"task_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Task Type in AnalyzeTaskType_Network,AnalyzeTaskType_Browse,AnalyzeTaskType_UploadDownload,AnalyzeTaskType_Transport,AnalyzeTaskType_MediaStream.",
+				Description: "Task 类型 in AnalyzeTaskType_Network,AnalyzeTaskType_Browse,AnalyzeTaskType_UploadDownload,AnalyzeTaskType_Transport,AnalyzeTaskType_MediaStream。",
 			},
 
 			"sort_field": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Fields to be sorted ProbeTime dial test time sorting can be filled in You can also fill in the selected fields in SelectedFields.",
+				Description: "Fields to be sorted ProbeTime dial test time sorting can be filled in You can also fill in the selected fields in SelectedFields。",
 			},
 
 			"ascending": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "true is Ascending.",
+				Description: "true is Ascending。",
 			},
 
 			"selected_fields": {
@@ -53,19 +53,19 @@ func DataSourceTencentCloudCatProbeData() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "Selected Fields.",
+				Description: "Selected Fields。",
 			},
 
 			"offset": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Offset.",
+				Description: "偏移量",
 			},
 
 			"limit": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Limit.",
+				Description: "限制",
 			},
 
 			"task_id": {
@@ -74,7 +74,7 @@ func DataSourceTencentCloudCatProbeData() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "TaskID list.",
+				Description: "TaskID list。",
 			},
 
 			"operators": {
@@ -83,7 +83,7 @@ func DataSourceTencentCloudCatProbeData() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "Operators list.",
+				Description: "Operators list。",
 			},
 
 			"districts": {
@@ -92,7 +92,7 @@ func DataSourceTencentCloudCatProbeData() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "Districts list.",
+				Description: "Districts list。",
 			},
 
 			"error_types": {
@@ -101,7 +101,7 @@ func DataSourceTencentCloudCatProbeData() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "ErrorTypes list.",
+				Description: "ErrorTypes list。",
 			},
 
 			"city": {
@@ -110,7 +110,7 @@ func DataSourceTencentCloudCatProbeData() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "City list.",
+				Description: "City list。",
 			},
 
 			"code": {
@@ -119,40 +119,40 @@ func DataSourceTencentCloudCatProbeData() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "Code list.",
+				Description: "代码 list。",
 			},
 
 			"detailed_single_data_define": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Probe node list.",
+				Description: "Probe node list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"probe_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Probe time.",
+							Description: "Probe time。",
 						},
 						"labels": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Labels.",
+							Description: "Labels。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ID.",
+										Description: "ID。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Custom Field Name/Description.",
+										Description: "Custom Field 名称/描述",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Value.",
+										Description: "值",
 									},
 								},
 							},
@@ -160,23 +160,23 @@ func DataSourceTencentCloudCatProbeData() *schema.Resource {
 						"fields": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Fields.",
+							Description: "Fields。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ID.",
+										Description: "ID。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Custom Field Name/Description.",
+										Description: "Custom Field 名称/描述",
 									},
 									"value": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Value.",
+										Description: "值",
 									},
 								},
 							},
@@ -188,7 +188,7 @@ func DataSourceTencentCloudCatProbeData() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

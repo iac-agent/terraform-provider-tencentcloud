@@ -30,18 +30,18 @@ func ResourceTencentCloudCfwNatFirewallSwitch() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Firewall instance id.",
+				Description: "Firewall 实例 ID",
 			},
 			"subnet_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "subnet id.",
+				Description: "子网 ID",
 			},
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Switch, 0: off, 1: on.",
+				Description: "Switch，0: off，1: on。",
 			},
 		},
 	}

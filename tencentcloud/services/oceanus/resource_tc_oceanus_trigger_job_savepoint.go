@@ -23,19 +23,19 @@ func ResourceTencentCloudOceanusTriggerJobSavepoint() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Job SerialId.",
+				Description: "Job SerialId。",
 			},
 			"description": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Savepoint description.",
+				Description: "Savepoint 描述",
 			},
 			"work_space_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace SerialId.",
+				Description: "Workspace SerialId。",
 			},
 		},
 	}

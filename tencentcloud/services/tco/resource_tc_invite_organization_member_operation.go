@@ -23,28 +23,28 @@ func ResourceTencentCloudInviteOrganizationMemberOperation() *schema.Resource {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Invited account Uin.",
+				Description: "Invited 账号 Uin。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Member name. The maximum length is 25 characters and supports English letters, numbers, Chinese characters, symbols `+`, `@`, `&`, `.`, `[`, `]`, `-`, `:`, `,` and enumeration comma.",
+				Description: "Member 名称 The maximum length is 25 characters and supports English letters，numbers，Chinese characters，symbols `+`，`@`，`&`，`.`，`[`，`]`，`-`，`:`，`,` and enumeration comma。",
 			},
 
 			"policy_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Relationship strategies. Value taken: Financial.",
+				Description: "Relationship strategies. 值 taken: Financial。",
 			},
 
 			"permission_ids": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "List of member financial authority IDs. Values: 1-View bill, 2-View balance, 3-Fund transfer, 4-Consolidated disbursement, 5-Invoice, 6-Benefit inheritance, 7-Proxy payment, 1 and 2 must be default.",
+				Description: "列表 member financial authority IDs. Values: 1-View bill，2-View balance，3-Fund transfer，4-Consolidated disbursement，5-Invoice，6-Benefit inheritance，7-Proxy payment，1 and 2 must be default。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -54,53 +54,53 @@ func ResourceTencentCloudInviteOrganizationMemberOperation() *schema.Resource {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Node ID of the member's department.",
+				Description: "节点 ID member's department。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Remark.",
+				Description: "备注",
 			},
 
 			"is_allow_quit": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Whether to allow members to withdraw. Allow: Allow, Disallow: Denied.",
+				Description: "是否allow members to withdraw. Allow: Allow，Disallow: Denied。",
 			},
 
 			"pay_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Payer Uin. Member needs to pay on behalf of.",
+				Description: "Payer Uin. Member needs to pay on behalf of。",
 			},
 
 			"relation_auth_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Name of the real-name subject of mutual trust.",
+				Description: "名称 real-名称 subject of mutual trust。",
 			},
 
 			"auth_file": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "List of supporting documents of mutual trust entities.",
+				Description: "列表 supporting documents of mutual trust entities。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "File name.",
+							Description: "File 名称",
 						},
 						"url": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "File path.",
+							Description: "File 路径",
 						},
 					},
 				},
@@ -110,18 +110,18 @@ func ResourceTencentCloudInviteOrganizationMemberOperation() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "List of member tags. Maximum 10.",
+				Description: "列表 member 标签 Maximum 10。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 					},
 				},

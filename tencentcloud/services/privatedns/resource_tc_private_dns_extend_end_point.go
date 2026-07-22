@@ -26,34 +26,34 @@ func ResourceTencentCloudPrivateDnsExtendEndPoint() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Outbound endpoint name.",
+				Description: "Outbound endpoint 名称",
 			},
 			"end_point_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The region of the outbound endpoint must be consistent with the region of the forwarding target VIP.",
+				Description: "The 地域 of the outbound endpoint must be consistent with the 地域 of the forwarding target VIP",
 			},
 			"forward_ip": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Forwarding target.",
+				Description: "Forwarding target。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"access_type": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Forwarding target IP network access type. CLB: The forwarding IP is the internal CLB VIP. CCN: Forwarding IP through CCN routing.",
+							Description: "Forwarding target IP network access 类型 CLB: The forwarding IP is the internal CLB VIP CCN: Forwarding IP through CCN routing。",
 						},
 						"host": {
 							Type:          schema.TypeString,
 							Optional:      true,
 							ForceNew:      true,
 							ConflictsWith: []string{"forward_ip.0.hosts"},
-							Description:   "Forwarding target IP address.",
+							Description:   "Forwarding target IP 地址",
 						},
 						"hosts": {
 							Type:          schema.TypeSet,
@@ -61,7 +61,7 @@ func ResourceTencentCloudPrivateDnsExtendEndPoint() *schema.Resource {
 							ForceNew:      true,
 							MinItems:      2,
 							ConflictsWith: []string{"forward_ip.0.host"},
-							Description:   "Forwarding target IPs address.",
+							Description:   "Forwarding target IPs 地址",
 							Elem:          &schema.Schema{Type: schema.TypeString},
 						},
 						"port": {
@@ -81,13 +81,13 @@ func ResourceTencentCloudPrivateDnsExtendEndPoint() *schema.Resource {
 
 								return false
 							},
-							Description: "Specifies the forwarding IP port number. This only applies when configuring `host`; if using `hosts`, you can choose any port value from `hosts`.",
+							Description: "指定forwarding IP 端口 number. This only applies when configuring `主机`; if using `hosts`，you can choose any 端口 值 from `hosts`。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Unique VPC ID.",
+							Description: "Unique 私有网络 ID",
 						},
 						// "subnet_id": {
 						// 	Type:        schema.TypeString,
@@ -98,33 +98,33 @@ func ResourceTencentCloudPrivateDnsExtendEndPoint() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "CCN id. Required when the access type is CCN.",
+							Description: "CCN id. 必填 when the access 类型 is CCN。",
 						},
 						// computed
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specifies the forwarding target IP proxy IP.",
+							Description: "指定forwarding target IP proxy IP。",
 						},
 						"vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Specifies the forwarding target IP proxy port.",
+							Description: "指定forwarding target IP proxy 端口",
 						},
 						"proto": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specifies the forwarding target IP protocol.",
+							Description: "指定forwarding target IP 协议",
 						},
 						"snat_vip_cidr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The SNAT CIDR block of the outbound endpoint.",
+							Description: "The SNAT CIDR block of the outbound endpoint。",
 						},
 						"snat_vip_set": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The SNAT IP list of the outbound endpoint.",
+							Description: "The SNAT IP 列表 the outbound endpoint。",
 						},
 					},
 				},

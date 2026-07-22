@@ -19,39 +19,39 @@ func DataSourceTencentCloudCynosdbCluster() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"database": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Database name.",
+				Description: "数据库名称。",
 			},
 			"table": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Data Table Name.",
+				Description: "数据表名称。",
 			},
 			"table_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Data table type: view: only return view, base_ Table: only returns the basic table, all: returns the view and table.",
+				Description: "数据表类型：view：只返回视图，base_table：只返回基本表，all：返回视图和表。",
 			},
 			"tables": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Note to the data table list: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "数据表列表注意：该字段可能返回null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "数据库名称注意：该字段可能返回null，表示无法获取有效值。",
 						},
 						"tables": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "Table Name List Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "表名列表 注：该字段可能返回null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -59,7 +59,7 @@ func DataSourceTencentCloudCynosdbCluster() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

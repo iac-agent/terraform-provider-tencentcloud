@@ -27,41 +27,41 @@ func ResourceTencentCloudOceanusResourceConfig() *schema.Resource {
 			"resource_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Resource ID.",
+				Description: "资源 ID",
 			},
 			"resource_loc": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Resource location.",
+				Description: "Resource location。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"storage_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The available storage types for resource location are currently limited to 1:COS.",
+							Description: "The available storage types for resource location are currently limited to 1:COS。",
 						},
 						"param": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "Json to describe resource location.",
+							Description: "Json to describe resource location。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bucket": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Resource bucket.",
+										Description: "Resource 存储桶",
 									},
 									"path": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Resource path.",
+										Description: "Resource 路径",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Resource region, if not set, use resource region, note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Resource 地域，if not set，use resource 地域，note: this field may return null，indicating that no valid values can be obtained。",
 									},
 								},
 							},
@@ -72,17 +72,17 @@ func ResourceTencentCloudOceanusResourceConfig() *schema.Resource {
 			"remark": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Resource description.",
+				Description: "Resource 描述",
 			},
 			"work_space_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace SerialId.",
+				Description: "Workspace SerialId。",
 			},
 			"version": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Resource Config Version.",
+				Description: "Resource 配置 版本",
 			},
 		},
 	}

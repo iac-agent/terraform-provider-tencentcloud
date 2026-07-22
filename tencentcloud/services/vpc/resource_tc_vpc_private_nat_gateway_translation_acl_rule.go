@@ -28,78 +28,78 @@ func ResourceTencentCloudVpcPrivateNatGatewayTranslationAclRule() *schema.Resour
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The unique ID of the private NAT gateway, in the format: `intranat-xxxxxxxx`.",
+				Description: "The unique ID private NAT gateway，in the 格式: `intranat-xxxxxxxx`。",
 			},
 
 			"translation_direction": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The target of the translation rule, optional value: LOCAL.",
+				Description: "The target of the translation rule，可选 值: LOCAL。",
 			},
 
 			"translation_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The type of translation rule, optional values: NETWORK_LAYER, TRANSPORT_LAYER. Corresponding to layer 3 and layer 4 respectively.",
+				Description: "类型 translation rule，可选 values: NETWORK_LAYER，TRANSPORT_LAYER. Corresponding to layer 3 and layer 4 respectively。",
 			},
 
 			"translation_ip": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The mapped IP address. When the translation rule type is layer 4, it represents an IP pool.",
+				Description: "The mapped IP 地址 When the translation rule 类型 is layer 4，it represents an IP pool。",
 			},
 
 			"translation_acl_rules": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Access control list.",
+				Description: "Access control list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protocol": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ACL protocol type, optional values: `ALL`, `TCP`, `UDP`.",
+							Description: "ACL 协议 类型，可选 values: `ALL`，`TCP`，`UDP`。",
 						},
 						"source_port": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Source port.",
+							Description: "来源 端口",
 						},
 						"source_cidr": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Source address. Supports `ip` or `cidr` format `xxx.xxx.xxx.000/xx`.",
+							Description: "来源 地址 Supports `ip` or `cidr` 格式 `xxx.xxx.xxx.000/xx`。",
 						},
 						"destination_port": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Destination port.",
+							Description: "Destination 端口",
 						},
 						"destination_cidr": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Destination address.",
+							Description: "Destination 地址",
 						},
 						"acl_rule_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ACL rule ID.",
+							Description: "ACL rule ID。",
 						},
 						"action": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to match.",
+							Description: "是否match。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ACL rule description.",
+							Description: "ACL rule 描述",
 						},
 					},
 				},
@@ -109,7 +109,7 @@ func ResourceTencentCloudVpcPrivateNatGatewayTranslationAclRule() *schema.Resour
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The original IP address before mapping. Valid when the translation rule type is layer 3.",
+				Description: "The original IP 地址 before mapping. Valid when the translation rule 类型 is layer 3。",
 			},
 		},
 	}

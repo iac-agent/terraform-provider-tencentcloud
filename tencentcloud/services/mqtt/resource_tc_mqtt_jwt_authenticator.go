@@ -28,37 +28,37 @@ func ResourceTencentCloudMqttJwtAuthenticator() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"algorithm": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Algorithm. hmac-based, public-key.",
+				Description: "Algorithm. hmac-based，public-键",
 			},
 
 			"from": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Pass the key of JWT when connecting the device; Username - passed using the username field; Password - Pass using password field.",
+				Description: "Pass the 键 of JWT when connecting the device; 用户名 - passed using the 用户名 field; 密码 - Pass using 密码 field。",
 			},
 
 			"secret": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Secret.",
+				Description: "Secret。",
 			},
 
 			"public_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Public key.",
+				Description: "Public 键",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remark.",
+				Description: "备注",
 			},
 		},
 	}

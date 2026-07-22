@@ -24,21 +24,21 @@ func ResourceTencentCloudWedataKillTriggerWorkflowRun() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"workflow_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Workflow ID.",
+				Description: "Workflow ID。",
 			},
 
 			"workflow_execution_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Workflow execution ID to stop.",
+				Description: "Workflow execution ID to stop。",
 			},
 
 			// Both "all" and "pending" require obtaining the execution_id through the query interface before passing it as a parameter.

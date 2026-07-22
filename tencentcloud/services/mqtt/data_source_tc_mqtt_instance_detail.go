@@ -18,152 +18,152 @@ func DataSourceTencentCloudMqttInstanceDetail() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			// computed
 			"instance_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"instance_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance type. BASIC- Basic Edition; PRO- professional edition; PLATINUM- Platinum version.",
+				Description: "实例类型 BASIC- Basic Edition; PRO- professional edition; PLATINUM- Platinum 版本",
 			},
 
 			"topic_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Topic num.",
+				Description: "Topic num。",
 			},
 
 			"topic_num_limit": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Maximum number of instance topics.",
+				Description: "最大instance topics。",
 			},
 
 			"tps_limit": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Elastic TPS current limit value.",
+				Description: "Elastic TPS current 限制 值",
 			},
 
 			"created_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Creation time, millisecond timestamp.",
+				Description: "创建时间，millisecond 时间戳。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Remark.",
+				Description: "备注",
 			},
 
 			"instance_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance status. RUNNING- In operation; MAINTAINING- Under Maintenance; ABNORMAL- abnormal; OVERDUE- Arrears of fees; DESTROYED- Deleted; CREATING- Creating in progress; MODIFYING- In the process of transformation; CREATE_FAILURE- Creation failed; MODIFY_FAILURE- Transformation failed; DELETING- deleting.",
+				Description: "实例状态 RUNNING- In operation; MAINTAINING- Under Maintenance; ABNORMAL- abnormal; OVERDUE- Arrears of fees; DESTROYED- Deleted; CREATING- Creating in progress; MODIFYING- In the process of transformation; CREATE_FAILURE- Creation failed; MODIFY_FAILURE- Transformation failed; DELETING- deleting。",
 			},
 
 			"sku_code": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Product specifications.",
+				Description: "Product specifications。",
 			},
 
 			"max_subscription_per_client": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Maximum number of subscriptions per client.",
+				Description: "最大subscriptions per client。",
 			},
 
 			"authorization_policy_limit": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Limit on the number of authorization rules.",
+				Description: "限制 on the 数量 authorization rules。",
 			},
 
 			"client_num_limit": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of client connections online.",
+				Description: "数量 client connections online。",
 			},
 
 			"device_certificate_provision_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Client certificate registration method: JITP: Automatic Registration; API: Manually register through API.",
+				Description: "Client certificate registration method: JITP: Automatic Registration; API: Manually register through API。",
 			},
 
 			"automatic_activation": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Is it automatically activated when registering device certificates automatically.",
+				Description: "Is it automatically activated when registering device certificates automatically。",
 			},
 
 			"renew_flag": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether to renew automatically. Only the annual and monthly package cluster is effective. 1: Automatic renewal; 0: Non automatic renewal.",
+				Description: "是否renew automatically. Only the annual and monthly package cluster is effective. 1: Automatic renewal; 0: Non automatic renewal。",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Billing mode, POSTPAID, pay as you go PREPAID, annual and monthly package.",
+				Description: "Billing 模式，POSTPAID，pay as you go PREPAID，annual and monthly package。",
 			},
 
 			"expiry_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Expiration time, millisecond level timestamp.",
+				Description: "过期时间，millisecond 级别 时间戳。",
 			},
 
 			"destroy_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Pre destruction time, millisecond timestamp.",
+				Description: "Pre destruction time，millisecond 时间戳。",
 			},
 
 			"x509_mode": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "TLS, Unidirectional authentication mTLS, bidirectional authentication BYOC; One machine, one certificate.",
+				Description: "TLS，Unidirectional authentication mTLS，bidirectional authentication BYOC; One machine，one certificate。",
 			},
 
 			"max_ca_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Maximum Ca quota.",
+				Description: "Maximum Ca quota。",
 			},
 
 			"registration_code": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate registration code.",
+				Description: "Certificate registration 代码",
 			},
 
 			"max_subscription": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Maximum number of subscriptions in the cluster.",
+				Description: "最大subscriptions in the cluster。",
 			},
 
 			"authorization_policy": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Authorization Policy Switch.",
+				Description: "Authorization Policy Switch。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

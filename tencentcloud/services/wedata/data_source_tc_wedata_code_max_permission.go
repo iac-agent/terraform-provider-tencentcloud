@@ -19,25 +19,25 @@ func DataSourceTencentCloudWedataCodeMaxPermission() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"resource_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Unique ID of authorization resource, folder ID or file ID.",
+				Description: "Unique ID authorization resource，folder ID or file ID。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "User's recursive maximum permission type for CodeStudio files/folders.",
+				Description: "用户's recursive maximum permission 类型 for CodeStudio files/folders。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"permission_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Authorization permission type (CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE).",
+							Description: "Authorization permission 类型 (CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE)。",
 						},
 					},
 				},
@@ -46,7 +46,7 @@ func DataSourceTencentCloudWedataCodeMaxPermission() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

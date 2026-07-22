@@ -22,24 +22,24 @@ func DataSourceTencentCloudVpcLimits() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Quota name. A maximum of 100 quota types can be queried each time.",
+				Description: "Quota 名称 A maximum of 100 quota types can be queried each time。",
 			},
 
 			"vpc_limit_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "vpc limit.",
+				Description: "vpc 限制",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"limit_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "type of vpc limit.",
+							Description: "类型 vpc 限制",
 						},
 						"limit_value": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "value of vpc limit.",
+							Description: "值 of vpc 限制",
 						},
 					},
 				},
@@ -48,7 +48,7 @@ func DataSourceTencentCloudVpcLimits() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

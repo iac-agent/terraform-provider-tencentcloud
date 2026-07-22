@@ -20,49 +20,49 @@ func DataSourceTencentCloudAPIGatewayAPIKeys() *schema.Resource {
 			"secret_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom key name.",
+				Description: "Custom 键 名称",
 			},
 			"api_key_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Created API key ID, this field is exactly the same as ID.",
+				Description: "Created API 键 ID，this field is exactly the same as ID。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			// Computed values.
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of API keys.",
+				Description: "A 列表 API keys。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"api_key_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API key ID.",
+							Description: "API 键 ID。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Key status. Values: `on`, `off`.",
+							Description: "键 状态 Values: `on`，`off`。",
 						},
 						"access_key_secret": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Created API key.",
+							Description: "Created API 键",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last modified time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.",
+							Description: "最后修改时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.",
+							Description: "创建时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
 						},
 					},
 				},

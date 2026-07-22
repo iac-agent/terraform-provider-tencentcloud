@@ -26,45 +26,45 @@ func ResourceTencentCloudMonitorTmpTkeConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of instance.",
+				Description: "ID instance。",
 			},
 			"cluster_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Type of cluster.",
+				Description: "类型 cluster。",
 			},
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of cluster.",
+				Description: "ID cluster。",
 			},
 			"config": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Global configuration.",
+				Description: "Global configuration。",
 			},
 			"service_monitors": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Configuration of the service monitors.",
+				Description: "Configuration of the service monitors。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name. The naming rule is: namespace/name. If you don't have any namespace, use the default namespace: kube-system, otherwise use the specified one.",
+							Description: "名称 The naming rule is: namespace/名称 If you don't have any namespace，use the default namespace: kube-system，otherwise use the specified one。",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Config.",
+							Description: "配置",
 						},
 						"template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Used for output parameters, if the configuration comes from a template, it is the template id.",
+							Description: "用于output parameters，if the configuration comes from a template，it is the template id。",
 						},
 					},
 				},
@@ -72,23 +72,23 @@ func ResourceTencentCloudMonitorTmpTkeConfig() *schema.Resource {
 			"pod_monitors": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Configuration of the pod monitors.",
+				Description: "Configuration of the pod monitors。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name. The naming rule is: namespace/name. If you don't have any namespace, use the default namespace: kube-system, otherwise use the specified one.",
+							Description: "名称 The naming rule is: namespace/名称 If you don't have any namespace，use the default namespace: kube-system，otherwise use the specified one。",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Config.",
+							Description: "配置",
 						},
 						"template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Used for output parameters, if the configuration comes from a template, it is the template id.",
+							Description: "用于output parameters，if the configuration comes from a template，it is the template id。",
 						},
 					},
 				},
@@ -96,23 +96,23 @@ func ResourceTencentCloudMonitorTmpTkeConfig() *schema.Resource {
 			"raw_jobs": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Configuration of the native prometheus job.",
+				Description: "Configuration of the native prometheus job。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name.",
+							Description: "名称",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Config.",
+							Description: "配置",
 						},
 						"template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Used for output parameters, if the configuration comes from a template, it is the template id.",
+							Description: "用于output parameters，if the configuration comes from a template，it is the template id。",
 						},
 					},
 				},

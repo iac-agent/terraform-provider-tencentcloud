@@ -27,19 +27,19 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 			"job_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Synchronization instance id (i.e. identifies a synchronization job).",
+				Description: "Synchronization 实例 ID (i.e. identifies a synchronization job)。",
 			},
 
 			"src_access_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Source access type, cdb (cloud database), cvm (cloud host self-built), vpc (private network), extranet (external network), vpncloud (vpn access), dcg (dedicated line access), ccn (cloud networking ), intranet (self-developed cloud), noProxy, note that the specific optional value depends on the current link.",
+				Description: "来源 access 类型，cdb (cloud database)，cvm (cloud 主机 self-built)，vpc (private network)，extranet (external network)，vpncloud (vpn access)，dcg (dedicated line access)，ccn (cloud networking )，intranet (self-developed cloud)，noProxy，note that the specific 可选 值 depends on the current link。",
 			},
 
 			"dst_access_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Target end access type, cdb (cloud database), cvm (cloud host self-built), vpc (private network), extranet (external network), vpncloud (vpn access), dcg (dedicated line access), ccn (cloud networking ), intranet (self-developed cloud), noProxy, note that the specific optional value depends on the current link.",
+				Description: "Target end access 类型，cdb (cloud database)，cvm (cloud 主机 self-built)，vpc (private network)，extranet (external network)，vpncloud (vpn access)，dcg (dedicated line access)，ccn (cloud networking )，intranet (self-developed cloud)，noProxy，note that the specific 可选 值 depends on the current link。",
 			},
 
 			"options": {
@@ -47,32 +47,32 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Sync Task Options.",
+				Description: "Sync Task Options。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"init_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Synchronous initialization options, Data (full data initialization), Structure (structure initialization), Full (full data and structure initialization, default), None (incremental only). Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Synchronous initialization options，Data (full data initialization)，Structure (structure initialization)，Full (full data and structure initialization，default)，None (incremental only). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"deal_of_exist_same_table": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The processing of the table with the same name, ReportErrorAfterCheck (pre-check and report error, default), InitializeAfterDelete (delete and re-initialize), ExecuteAfterIgnore (ignore and continue to execute). Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The processing of the table with the same 名称，ReportErrorAfterCheck (pre-check and report 错误，default)，InitializeAfterDelete (delete and re-initialize)，ExecuteAfterIgnore (ignore and continue to execute). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"conflict_handle_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Conflict handling options, ReportError (error report, the default value), Ignore (ignore), Cover (cover), ConditionCover (condition coverage). Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Conflict handling options，ReportError (错误 report，the 默认值)，Ignore (ignore)，Cover (cover)，ConditionCover (condition coverage). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"add_additional_column": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to add additional columns. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "是否add additional columns. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"op_types": {
 							Type: schema.TypeSet,
@@ -80,29 +80,29 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "DML and DDL options to be synchronized, Insert (insert operation), Update (update operation), Delete (delete operation), DDL (structure synchronization), leave blank (not selected), PartialDDL (custom, work with DdlOptions). Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "DML and DDL options to be synchronized，Insert (insert operation)，Update (update operation)，Delete (delete operation)，DDL (structure synchronization)，leave blank (not selected)，PartialDDL (custom，work with DdlOptions). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"conflict_handle_option": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Detailed options for conflict handling, such as conditional rows and conditional actions in conditional overrides. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Detailed options for conflict handling，such as conditional rows and conditional actions in conditional overrides. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"condition_column": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Columns covered by the condition. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Columns covered by the condition. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"condition_operator": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Conditional Override Operation. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Conditional Override Operation. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"condition_order_in_src_and_dst": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Conditional Override Priority Processing. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Conditional Override 优先级 Processing. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -110,13 +110,13 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 						"ddl_options": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "DDL synchronization options, specifically describe which DDLs to synchronize. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "DDL synchronization options，specifically describe which DDLs to synchronize. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"ddl_object": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Ddl type, such as Database, Table, View, Index, etc. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Ddl 类型，such as Database，Table，View，索引，etc. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"ddl_value": {
 										Type: schema.TypeSet,
@@ -124,7 +124,7 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "The specific value of ddl, the possible values for Database [Create,Drop,Alter].The possible values for Table [Create,Drop,Alter,Truncate,Rename].The possible values for View[Create,Drop].For the possible values of Index [Create, Drop]. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "The specific 值 of ddl，the possible values for Database [Create,Drop,Alter].The possible values for Table [Create,Drop,Alter,Truncate,Rename].The possible values for View[Create,Drop].For the possible values of 索引 [Create，Drop]. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -134,63 +134,63 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Task speed limit information\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Task speed 限制 information\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"current_dump_thread": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The number of full export threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 数量 full export threads currently in effect. The 值 of this field can be adjusted when configuring the task. Note: If it is not set or set to 0，it means the 当前值 is maintained. The maximum 值 is 16.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"default_dump_thread": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The default number of full export threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The default 数量 full export threads. This field is only meaningful in the output parameter.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"current_dump_rps": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The full export Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The full export Rps currently in effect. The 值 of this field can be adjusted when configuring the task. Note: If it is not set or set to 0，it means the 当前值 is maintained. The maximum 值 is 50,000,000.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"default_dump_rps": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The default full export Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The default full export Rps. This field is only meaningful in the output parameter.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"current_load_thread": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The number of full import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 数量 full import threads currently in effect. The 值 of this field can be adjusted when configuring the task. Note: If it is not set or set to 0，it means the 当前值 is maintained. The maximum 值 is 16.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"default_load_thread": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The default number of full import threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The default 数量 full import threads. This field is only meaningful in the output parameter.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"current_load_rps": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The full import Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The full import Rps currently in effect. The 值 of this field can be adjusted when configuring the task. Note: If it is not set or set to 0，it means the 当前值 is maintained. The maximum 值 is 50,000,000.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"default_load_rps": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The default full import Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The default full import Rps. This field is only meaningful in the output parameter.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"current_sinker_thread": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The number of incremental import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 128.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The 数量 incremental import threads currently in effect. The 值 of this field can be adjusted when configuring the task. Note: If it is not set or set to 0，it means the 当前值 is maintained. The maximum 值 is 128.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"default_sinker_thread": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The default number of incremental import threads. This field is only meaningful in the output parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "The default 数量 incremental import threads. This field is only meaningful in the output parameter.\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"has_user_set_rate_limit": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "enum:\"no\"/\"yes\", no: the user has not set a speed limit; yes: a speed limit has been set. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "enum:\"no\"/\"yes\", no：用户未设置限速；是：已设置速度限制。该字段仅在输出参数中有意义。注意：该字段可能返回null，表示取不到有效值。",
 									},
 								},
 							},
@@ -203,71 +203,71 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Synchronize database table object information.",
+				Description: "Synchronize database table object information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Migration object type Partial (partial object). Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Migration object 类型 Partial (partial object). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"databases": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Synchronization object, not null when Mode is Partial. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Synchronization object，not null when 模式 is Partial. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"db_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The name of the library that needs to be migrated or synchronized. This item is required when the ObjectMode is Partial. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "The 名称 library that needs to be migrated or synchronized. This item 为必填项 when the ObjectMode is Partial. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"new_db_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The name of the library after migration or synchronization, which is the same as the source library by default. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "The 名称 library after migration or synchronization，which is the same as the 来源 library by default. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"db_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "DB selection mode: All (for all objects under the current object), Partial (for some objects), when the Mode is Partial, this item is required. Note that synchronization of advanced objects does not depend on this value. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "DB selection 模式: All (for all objects under the current object)，Partial (for some objects)，when the 模式 is Partial，this item 为必填项. Note that synchronization of advanced objects does not depend on this 值 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"schema_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Migrated or synchronized schemaNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Migrated or synchronized schema注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"new_schema_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Schema name after migration or synchronization. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Schema 名称 after migration or synchronization. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"table_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Table selection mode: All (for all objects under the current object), Partial (for some objects), this item is required when the DBMode is Partial. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Table selection 模式: All (for all objects under the current object)，Partial (for some objects)，this item 为必填项 when the DBMode is Partial. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"tables": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "A collection of table graph objects, when TableMode is Partial, this item needs to be filled in. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "A collection of table graph objects，when TableMode is Partial，this item needs to be filled in. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"table_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Table name. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Table 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"new_table_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "New table name. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "New table 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"filter_condition": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Filter condition. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Filter condition. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -275,23 +275,23 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 									"view_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "View selection mode: All is all view objects under the current object, Partial is part of the view objects. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "View selection 模式: All is all view objects under the current object，Partial is part of the view objects. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"views": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "View object collection, when ViewMode is Partial, this item needs to be filled in. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "View object collection，when ViewMode is Partial，this item needs to be filled in. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"view_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "View name. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "View 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"new_view_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "New view name. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "New view 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -299,7 +299,7 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 									"function_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Select the mode to be synchronized, Partial is a part, all is an entire selection. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Select the 模式 to be synchronized，Partial is a part，all is an entire selection. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"functions": {
 										Type: schema.TypeSet,
@@ -308,12 +308,12 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 										},
 										Optional:    true,
 										Computed:    true,
-										Description: "Required when the FunctionMode value is Partial. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "必填 when the FunctionMode 值 is Partial. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"procedure_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Select the mode to be synchronized, Partial is part, All is the whole selection. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Select the 模式 to be synchronized，Partial is part，All is the whole selection. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"procedures": {
 										Type: schema.TypeSet,
@@ -322,12 +322,12 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 										},
 										Optional:    true,
 										Computed:    true,
-										Description: "Required when the value of ProcedureMode is Partial. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "必填 when the 值 of ProcedureMode is Partial. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"trigger_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Trigger migration mode, all (for all objects under the current object), partial (partial objects). Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Trigger migration 模式，all (for all objects under the current object)，partial (partial objects). 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"triggers": {
 										Type: schema.TypeSet,
@@ -336,12 +336,12 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 										},
 										Optional:    true,
 										Computed:    true,
-										Description: "When TriggerMode is partial, specify the name of the trigger to be migrated. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "When TriggerMode is partial，指定name of the trigger to be migrated. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"event_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Event migration mode, all (for all objects under the current object), partial (partial objects). Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Event migration 模式，all (for all objects under the current object)，partial (partial objects). 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"events": {
 										Type: schema.TypeSet,
@@ -350,7 +350,7 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 										},
 										Optional:    true,
 										Computed:    true,
-										Description: "When EventMode is partial, specify the name of the event to be migrated. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "When EventMode is partial，指定name of the event to be migrated. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -362,20 +362,20 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 							},
 							Optional:    true,
 							Computed:    true,
-							Description: "For advanced object types, such as function and procedure, when an advanced object needs to be synchronized, the initialization type must include the structure initialization type, that is, the value of the Options.InitType field is Structure or Full. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "For advanced object types，such as function and procedure，when an advanced object needs to be synchronized，the initialization 类型 must include the structure initialization 类型，that is，the 值 of the Options.InitType field is Structure or Full. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"online_ddl": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "OnlineDDL type. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "OnlineDDL 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"status": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "status.",
+										Description: "状态",
 									},
 								},
 							},
@@ -388,26 +388,26 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Sync job name.",
+				Description: "Sync 作业名称",
 			},
 
 			"job_mode": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The enumeration values are liteMode and fullMode, corresponding to lite mode or normal mode respectively.",
+				Description: "The enumeration values are liteMode and fullMode，corresponding to lite 模式 or normal 模式 respectively。",
 			},
 
 			"run_mode": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Operation mode, such as: Immediate (indicates immediate operation, the default value is this value), Timed (indicates scheduled operation).",
+				Description: "Operation 模式，such as: Immediate (表示immediate operation，the 默认值为 this 值)，Timed (表示scheduled operation)。",
 			},
 
 			"expect_run_time": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Expected start time, when the value of RunMode is Timed, this value is required, such as: 2006-01-02 15:04:05.",
+				Description: "Expected 开始时间，when the 值 of RunMode is Timed，this 值 为必填项，such as: 2006-01-02 15:04:05。",
 			},
 
 			"src_info": {
@@ -415,140 +415,140 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Source information, single-node database use.",
+				Description: "来源 information，single-node database use。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The english name of region. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The english 名称 地域 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"role": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The node type of tdsql mysql version, the enumeration value is proxy, set. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The node 类型 tdsql mysql 版本，the enumeration 值 is proxy，set. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"db_kernel": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Database kernel type, used to distinguish different kernels in tdsql: percona, mariadb, mysql. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Database kernel 类型，用于distinguish different kernels in tdsql: percona，mariadb，mysql. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Database instance id. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Database 实例 ID 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The IP address of the instance, which is required when the access type is non-cdb. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The IP 地址 of the instance，which 为必填项 when the access 类型 is non-cdb. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Instance port, this item is required when the access type is non-cdb. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "实例端口，this item 为必填项 when the access 类型 is non-cdb. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"user": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Username, required for instances that require username and password authentication for access. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "用户名，必填 for instances that require 用户名 and 密码 authentication for access. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Sensitive:   true,
 							Computed:    true,
-							Description: "Password, required for instances that require username and password authentication for access. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "密码，必填 for instances that require 用户名 and 密码 authentication for access. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"db_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Database name, when the database is cdwpg, it needs to be provided. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Database 名称，when the database is cdwpg，it needs to be provided. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Private network ID, which is required for access methods of private network, leased line, and VPN. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Private network ID，which 为必填项 for access methods of private network，leased line，and VPN. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The subnet ID under the private network, this item is required for the private network, leased line, and VPN access methods. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The subnet ID under the private network，this item 为必填项 for the private network，leased line，and VPN access methods. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cvm_instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "CVM instance short ID, which is the same as the instance ID displayed on the cloud server console page. If it is a self-built instance of CVM, this field needs to be passed. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "CVM instance short ID，which is the same as the instance ID displayed on the cloud server console page. If it is a self-built instance of CVM，this field needs to be passed. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"uniq_dcg_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Leased line gateway ID, which is required for the leased line access type. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Leased line gateway ID，which 为必填项 for the leased line access 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"uniq_vpn_gw_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "VPN gateway ID, which is required for the VPN access type. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "VPN 网关 ID，which 为必填项 for the VPN access 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ccn_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cloud networking ID, which is required for the cloud networking access type. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Cloud networking ID，which 为必填项 for the cloud networking access 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"supplier": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cloud vendor type, when the instance is an RDS instance, fill in aliyun, in other cases fill in others, the default is others. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Cloud vendor 类型，when the instance is an RDS instance，fill in aliyun，in other cases fill in others，the 默认为 others. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"engine_version": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Database version, valid only when the instance is an RDS instance, ignored by other instances, the format is: 5.6 or 5.7, the default is 5.6. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Database 版本，valid only when the instance is an RDS instance，ignored by other instances，the 格式 is: 5.6 or 5.7，the 默认为 5.6. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"account": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The account to which the instance belongs. This field is required if it is a cross-account instance. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The 账号 to which the instance belongs. This field 为必填项 if it is a cross-账号 instance. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"account_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The account to which the resource belongs is empty or self (represents resources within this account), other (represents cross-account resources). Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The 账号 to which the resource belongs is empty or self (represents resources within this 账号)，other (represents cross-账号 resources). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"account_role": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The role during cross-account synchronization, only [a-zA-Z0-9-_]+ is allowed, if it is a cross-account instance, this field is required. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The 角色 during cross-账号 synchronization，only [a-zA-Z0-9-_]+ is allowed，if it is a cross-账号 instance，this field 为必填项. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"role_external_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "External role id. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "External 角色 id. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tmp_secret_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Temporary key Id, required if it is a cross-account instance. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Temporary 键 Id，必填 if it is a cross-账号 instance. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tmp_secret_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Temporary key Key, required if it is a cross-account instance. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Temporary 键 键，必填 if it is a cross-账号 instance. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tmp_token": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Temporary Token, required if it is a cross-account instance. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Temporary 令牌，必填 if it is a cross-账号 instance. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"encrypt_conn": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to use encrypted transmission, UnEncrypted means not to use encrypted transmission, Encrypted means to use encrypted transmission, the default is UnEncrypted. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "是否use encrypted transmission，UnEncrypted means not to use encrypted transmission，Encrypted means to use encrypted transmission，the 默认为 UnEncrypted. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"database_net_env": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The network environment to which the database belongs. It is required when AccessType is Cloud Network (CCN). `UserIDC` represents the user IDC. `TencentVPC` represents Tencent Cloud VPC. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The network environment to which the database belongs. It 为必填项 when AccessType is Cloud Network (CCN). `UserIDC` represents the 用户 IDC. `TencentVPC` represents Tencent Cloud VPC. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -559,140 +559,140 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Target information, single-node database use.",
+				Description: "Target information，single-node database use。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The english name of region. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The english 名称 地域 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"role": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The node type of tdsql mysql version, the enumeration value is proxy, set. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The node 类型 tdsql mysql 版本，the enumeration 值 is proxy，set. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"db_kernel": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Database kernel type, used to distinguish different kernels in tdsql: percona, mariadb, mysql. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Database kernel 类型，用于distinguish different kernels in tdsql: percona，mariadb，mysql. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Database instance id. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Database 实例 ID 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The IP address of the instance, which is required when the access type is non-cdb. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The IP 地址 of the instance，which 为必填项 when the access 类型 is non-cdb. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Instance port, this item is required when the access type is non-cdb. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "实例端口，this item 为必填项 when the access 类型 is non-cdb. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"user": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Username, required for instances that require username and password authentication for access. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "用户名，必填 for instances that require 用户名 and 密码 authentication for access. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Sensitive:   true,
 							Computed:    true,
-							Description: "Password, required for instances that require username and password authentication for access. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "密码，必填 for instances that require 用户名 and 密码 authentication for access. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"db_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Database name, when the database is cdwpg, it needs to be provided. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Database 名称，when the database is cdwpg，it needs to be provided. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Private network ID, which is required for access methods of private network, leased line, and VPN. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Private network ID，which 为必填项 for access methods of private network，leased line，and VPN. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The subnet ID under the private network, this item is required for the private network, leased line, and VPN access methods. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The subnet ID under the private network，this item 为必填项 for the private network，leased line，and VPN access methods. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cvm_instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "CVM instance short ID, which is the same as the instance ID displayed on the cloud server console page. If it is a self-built instance of CVM, this field needs to be passed. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "CVM instance short ID，which is the same as the instance ID displayed on the cloud server console page. If it is a self-built instance of CVM，this field needs to be passed. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"uniq_dcg_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Leased line gateway ID, which is required for the leased line access type. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Leased line gateway ID，which 为必填项 for the leased line access 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"uniq_vpn_gw_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "VPN gateway ID, which is required for the VPN access type. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "VPN 网关 ID，which 为必填项 for the VPN access 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ccn_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cloud networking ID, which is required for the cloud networking access type. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Cloud networking ID，which 为必填项 for the cloud networking access 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"supplier": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cloud vendor type, when the instance is an RDS instance, fill in aliyun, in other cases fill in others, the default is others. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Cloud vendor 类型，when the instance is an RDS instance，fill in aliyun，in other cases fill in others，the 默认为 others. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"engine_version": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Database version, valid only when the instance is an RDS instance, ignored by other instances, the format is: 5.6 or 5.7, the default is 5.6. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Database 版本，valid only when the instance is an RDS instance，ignored by other instances，the 格式 is: 5.6 or 5.7，the 默认为 5.6. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"account": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The account to which the instance belongs. This field is required if it is a cross-account instance. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The 账号 to which the instance belongs. This field 为必填项 if it is a cross-账号 instance. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"account_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The account to which the resource belongs is empty or self (represents resources within this account), other (represents cross-account resources). Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The 账号 to which the resource belongs is empty or self (represents resources within this 账号)，other (represents cross-账号 resources). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"account_role": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The role during cross-account synchronization, only [a-zA-Z0-9-_]+ is allowed, if it is a cross-account instance, this field is required. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The 角色 during cross-账号 synchronization，only [a-zA-Z0-9-_]+ is allowed，if it is a cross-账号 instance，this field 为必填项. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"role_external_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "External role id. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "External 角色 id. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tmp_secret_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Temporary key Id, required if it is a cross-account instance. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Temporary 键 Id，必填 if it is a cross-账号 instance. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tmp_secret_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Temporary key Key, required if it is a cross-account instance. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Temporary 键 键，必填 if it is a cross-账号 instance. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tmp_token": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Temporary Token, required if it is a cross-account instance. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Temporary 令牌，必填 if it is a cross-账号 instance. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"encrypt_conn": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to use encrypted transmission, UnEncrypted means not to use encrypted transmission, Encrypted means to use encrypted transmission, the default is UnEncrypted. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "是否use encrypted transmission，UnEncrypted means not to use encrypted transmission，Encrypted means to use encrypted transmission，the 默认为 UnEncrypted. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"database_net_env": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The network environment to which the database belongs. It is required when AccessType is Cloud Network (CCN). `UserIDC` represents the user IDC. `TencentVPC` represents Tencent Cloud VPC. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The network environment to which the database belongs. It 为必填项 when AccessType is Cloud Network (CCN). `UserIDC` represents the 用户 IDC. `TencentVPC` represents Tencent Cloud VPC. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -701,7 +701,7 @@ func ResourceTencentCloudDtsSyncConfig() *schema.Resource {
 			"auto_retry_time_range_minutes": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The time period of automatic retry, can be set from 5 to 720 minutes, 0 means no retry.",
+				Description: "The time 周期 of automatic retry，can be set from 5 to 720 minutes，0 means no retry。",
 			},
 		},
 	}

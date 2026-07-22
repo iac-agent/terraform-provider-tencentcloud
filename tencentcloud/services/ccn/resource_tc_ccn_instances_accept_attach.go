@@ -26,40 +26,40 @@ func ResourceTencentCloudCcnInstancesAcceptAttach() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CCN Instance ID.",
+				Description: "CCN 实例 ID",
 			},
 
 			"instances": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Accept List Of Attachment Instances.",
+				Description: "Accept List Of Attachment Instances。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Attachment Instance ID.",
+							Description: "Attachment 实例 ID",
 						},
 						"instance_region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance Region.",
+							Description: "Instance 地域",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "InstanceType: `VPC`, `DIRECTCONNECT`, `BMVPC`, `VPNGW`.",
+							Description: "InstanceType: `VPC`，`DIRECTCONNECT`，`BMVPC`，`VPNGW`。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Description.",
+							Description: "描述",
 						},
 						"route_table_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of the routing table associated with the instance. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "ID routing table associated with the instance. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

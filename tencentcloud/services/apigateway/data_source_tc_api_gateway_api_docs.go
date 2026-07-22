@@ -20,29 +20,29 @@ func DataSourceTencentCloudAPIGatewayAPIDocs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			"api_doc_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of ApiDocs.",
+				Description: "列表 ApiDocs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"api_doc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Api Doc ID.",
+							Description: "Api Doc ID。",
 						},
 						"api_doc_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Api Doc Name.",
+							Description: "Api Doc 名称",
 						},
 						"api_doc_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Api Doc Status.",
+							Description: "Api Doc 状态",
 						},
 					},
 				},

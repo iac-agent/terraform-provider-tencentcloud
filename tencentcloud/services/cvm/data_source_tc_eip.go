@@ -25,19 +25,19 @@ func DataSourceTencentCloudEip() *schema.Resource {
 			"filter": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "One or more name/value pairs to filter.",
+				Description: "One or more 名称/值 pairs to filter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Key of the filter, valid keys: `address-id`,`address-name`,`address-ip`.",
+							Description: "键 of the filter，valid keys: `地址-id`,`地址-名称`,`地址-ip`。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Value of the filter.",
+							Description: "值 of the filter。",
 						},
 					},
 				},
@@ -45,27 +45,27 @@ func DataSourceTencentCloudEip() *schema.Resource {
 			"include_arrears": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether the IP is arrears.",
+				Description: "是否IP is arrears。",
 			},
 			"include_blocked": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether the IP is blocked.",
+				Description: "是否IP is blocked。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "An EIP id indicate the uniqueness of a certain EIP,  which can be used for instance binding or network interface binding.",
+				Description: "An EIP id indicate the uniqueness of a certain EIP， which can be 用于instance binding or network interface binding。",
 			},
 			"public_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "An public IP address for the EIP.",
+				Description: "An 公网 IP 地址 for the EIP。",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The status of the EIP, there are several status like `BIND`, `UNBIND`, and `BIND_ENI`.",
+				Description: "The 状态 EIP，there are several 状态 like `BIND`，`UNBIND`，and `BIND_ENI`。",
 			},
 		},
 	}

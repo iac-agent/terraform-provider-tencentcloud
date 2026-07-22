@@ -28,45 +28,45 @@ func ResourceTencentCloudWedataCodeFolder() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"folder_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Folder name.",
+				Description: "Folder 名称",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Parent folder path, for example /aaa/bbb/ccc, path header must start with a slash, root directory pass /.",
+				Description: "Parent folder 路径，for example /aaa/bbb/ccc，路径 header must start with a slash，root directory pass /。",
 			},
 
 			// computed
 			"folder_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Folder ID.",
+				Description: "Folder ID。",
 			},
 
 			"access_scope": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Permission range: SHARED, PRIVATE.",
+				Description: "Permission range: SHARED，PRIVATE。",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Type. folder, script.",
+				Description: "类型 folder，script。",
 			},
 
 			"path": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Node path.",
+				Description: "Node 路径",
 			},
 		},
 	}

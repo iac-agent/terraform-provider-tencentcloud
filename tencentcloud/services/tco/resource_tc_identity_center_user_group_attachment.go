@@ -27,21 +27,21 @@ func ResourceTencentCloudIdentityCenterUserGroupAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id.",
+				Description: "可用区 ID",
 			},
 
 			"group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "User group ID.",
+				Description: "用户 组 ID",
 			},
 
 			"user_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "User ID.",
+				Description: "用户 ID。",
 			},
 		},
 	}

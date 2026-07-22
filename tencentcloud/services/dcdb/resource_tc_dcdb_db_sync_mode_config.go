@@ -27,13 +27,13 @@ func ResourceTencentCloudDcdbDbSyncModeConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the instance for which to modify the sync mode. The ID is in the format of `tdsql-ow728lmc`.",
+				Description: "ID instance for which to modify the sync 模式 The ID is in the 格式 of `tdsql-ow728lmc`。",
 			},
 
 			"sync_mode": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Sync mode. Valid values: `0` (async), `1` (strong sync), `2` (downgradable strong sync).",
+				Description: "Sync 模式 有效值：`0` (async)，`1` (strong sync)，`2` (downgradable strong sync)。",
 			},
 		},
 	}

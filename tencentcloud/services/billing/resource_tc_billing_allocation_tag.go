@@ -26,14 +26,14 @@ func ResourceTencentCloudBillingAllocationTag() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cost allocation tag key.",
+				Description: "Cost allocation 标签键",
 			},
 
 			// computed
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Tag type, 0 normal tag, 1 account tag.",
+				Description: "标签 类型，0 normal 标签，1 账号 标签",
 			},
 		},
 	}

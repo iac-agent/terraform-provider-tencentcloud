@@ -26,21 +26,21 @@ func ResourceTencentCloudWedataDataSource() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Data source project ID.",
+				Description: "Data 来源 project ID。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Data source name.",
+				Description: "数据源名称",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Data source type: enumeration values.\n\n- MYSQL\n- TENCENT_MYSQL\n- POSTGRE\n- ORACLE\n- SQLSERVER\n- FTP\n- HIVE\n- HUDI\n- HDFS\n- ICEBERG\n- KAFKA\n- DTS_KAFKA\n- HBASE\n- SPARK\n- TBASE\n- DB2\n- DM\n- GAUSSDB\n- GBASE\n- IMPALA\n- ES\n- TENCENT_ES\n- GREENPLUM\n- SAP_HANA\n- SFTP\n- OCEANBASE\n- CLICKHOUSE\n- KUDU\n- VERTICA\n- REDIS\n- COS\n- DLC\n- DORIS\n- CKAFKA\n- S3_DATAINSIGHT\n- TDSQL\n- TDSQL_MYSQL\n- MONGODB\n- TENCENT_MONGODB\n- REST_API\n- TiDB\n- StarRocks\n- Trino\n- Kyuubi\n- TCHOUSE_X\n- TCHOUSE_P\n- TCHOUSE_C\n- TCHOUSE_D\n- INFLUXDB\n- BIG_QUERY\n- SSH\n- BLOB\n- TDSQL_POSTGRE\n- GDB\n- TDENGINE\n- TDSQLC.",
+				Description: "Data 来源 类型: enumeration values.\n\n- MYSQL\n- TENCENT_MYSQL\n- POSTGRE\n- ORACLE\n- SQLSERVER\n- FTP\n- HIVE\n- HUDI\n- HDFS\n- ICEBERG\n- KAFKA\n- DTS_KAFKA\n- HBASE\n- SPARK\n- TBASE\n- DB2\n- DM\n- GAUSSDB\n- GBASE\n- IMPALA\n- ES\n- TENCENT_ES\n- GREENPLUM\n- SAP_HANA\n- SFTP\n- OCEANBASE\n- CLICKHOUSE\n- KUDU\n- VERTICA\n- REDIS\n- COS\n- DLC\n- DORIS\n- CKAFKA\n- S3_DATAINSIGHT\n- TDSQL\n- TDSQL_MYSQL\n- MONGODB\n- TENCENT_MONGODB\n- REST_API\n- TiDB\n- StarRocks\n- Trino\n- Kyuubi\n- TCHOUSE_X\n- TCHOUSE_P\n- TCHOUSE_C\n- TCHOUSE_D\n- INFLUXDB\n- BIG_QUERY\n- SSH\n- BLOB\n- TDSQL_POSTGRE\n- GDB\n- TDENGINE\n- TDSQLC。",
 			},
 
 			"prod_con_properties": {
@@ -52,66 +52,66 @@ func ResourceTencentCloudWedataDataSource() *schema.Resource {
 			"dev_con_properties": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Development environment data source configuration information, required if the project is in standard mode.",
+				Description: "Development environment data 来源 configuration information，必填 if the project is in standard 模式",
 			},
 
 			"prod_file_upload": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Production environment data source file upload.",
+				Description: "Production environment data 来源 file upload。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"trust_store": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Truststore authentication file, default filename truststore.jks.",
+							Description: "Truststore authentication file，default filename truststore.jks。",
 						},
 						"key_store": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Keystore authentication file, default filename keystore.jks.",
+							Description: "Keystore authentication file，default filename keystore.jks。",
 						},
 						"core_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "core-site.xml file.",
+							Description: "core-site.xml file。",
 						},
 						"hdfs_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hdfs-site.xml file.",
+							Description: "hdfs-site.xml file。",
 						},
 						"hive_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hive-site.xml file.",
+							Description: "hive-site.xml file。",
 						},
 						"hbase_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hbase-site file.",
+							Description: "hbase-site file。",
 						},
 						"key_tab": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "keytab file, default filename [data source name].keytab.",
+							Description: "keytab file，default filename [数据源名称].keytab。",
 						},
 						"krb5_conf": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "krb5.conf file.",
+							Description: "krb5.conf file。",
 						},
 						"private_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Private key, default filename private_key.pem.",
+							Description: "Private 键，default filename private_key.pem。",
 						},
 						"public_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Public key, default filename public_key.pem.",
+							Description: "Public 键，default filename public_key.pem。",
 						},
 					},
 				},
@@ -121,58 +121,58 @@ func ResourceTencentCloudWedataDataSource() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Development environment data source file upload.",
+				Description: "Development environment data 来源 file upload。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"trust_store": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Truststore authentication file, default filename truststore.jks.",
+							Description: "Truststore authentication file，default filename truststore.jks。",
 						},
 						"key_store": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Keystore authentication file, default filename keystore.jks.",
+							Description: "Keystore authentication file，default filename keystore.jks。",
 						},
 						"core_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "core-site.xml file.",
+							Description: "core-site.xml file。",
 						},
 						"hdfs_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hdfs-site.xml file.",
+							Description: "hdfs-site.xml file。",
 						},
 						"hive_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hive-site.xml file.",
+							Description: "hive-site.xml file。",
 						},
 						"hbase_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hbase-site file.",
+							Description: "hbase-site file。",
 						},
 						"key_tab": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "keytab file, default filename [data source name].keytab.",
+							Description: "keytab file，default filename [数据源名称].keytab。",
 						},
 						"krb5_conf": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "krb5.conf file.",
+							Description: "krb5.conf file。",
 						},
 						"private_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Private key, default filename private_key.pem.",
+							Description: "Private 键，default filename private_key.pem。",
 						},
 						"public_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Public key, default filename public_key.pem.",
+							Description: "Public 键，default filename public_key.pem。",
 						},
 					},
 				},
@@ -181,20 +181,20 @@ func ResourceTencentCloudWedataDataSource() *schema.Resource {
 			"display_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Data source display name, for visual viewing.",
+				Description: "Data 来源 display 名称，for visual viewing。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Data source description information.",
+				Description: "Data 来源 描述 information。",
 			},
 
 			// computed
 			"data_source_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Data source ID.",
+				Description: "数据源 ID",
 			},
 		},
 	}

@@ -26,21 +26,21 @@ func ResourceTencentCloudPrivateDnsEndPoint() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Endpoint name.",
+				Description: "Endpoint 名称",
 			},
 
 			"end_point_service_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Endpoint service ID (namely, VPC endpoint service ID).",
+				Description: "Endpoint 服务 ID (namely，VPC endpoint 服务 ID)。",
 			},
 
 			"end_point_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Endpoint region, which should be consistent with the region of the endpoint service.",
+				Description: "Endpoint 地域，which should be consistent with the 地域 of the endpoint service。",
 			},
 
 			"ip_num": {
@@ -48,13 +48,13 @@ func ResourceTencentCloudPrivateDnsEndPoint() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Number of endpoint IP addresses.",
+				Description: "数量 endpoint IP addresses。",
 			},
 
 			"end_point_vip_set": {
 				Type:        schema.TypeSet,
 				Computed:    true,
-				Description: "Vip list of endpoint.",
+				Description: "Vip 列表 endpoint。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},

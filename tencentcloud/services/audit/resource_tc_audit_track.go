@@ -27,25 +27,25 @@ func ResourceTencentCloudAuditTrack() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Track name.",
+				Description: "Track 名称",
 			},
 
 			"action_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Track interface type, optional:- `Read`: Read interface- `Write`: Write interface- `*`: All interface.",
+				Description: "Track interface 类型，可选:- `Read`: Read interface- `Write`: Write interface- `*`: All interface。",
 			},
 
 			"resource_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Track product, optional:- `*`: All product- Single product, such as `cos`.",
+				Description: "Track product，可选:- `*`: All product- Single product，such as `cos`。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Track status, optional:- `0`: Close- `1`: Open.",
+				Description: "Track 状态，可选:- `0`: Close- `1`: Open。",
 			},
 
 			"event_names": {
@@ -54,45 +54,45 @@ func ResourceTencentCloudAuditTrack() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "Track interface name list:- when ResourceType is `*`, EventNames is must `[&amp;quot;*&amp;quot;]`- when ResourceType is a single product, EventNames support all interface:`[&amp;quot;*&amp;quot;]`- when ResourceType is a single product, EventNames support some interface, up to 10.",
+				Description: "Track interface 名称 list:- when ResourceType is `*`，EventNames is must `[&amp;quot;*&amp;quot;]`- when ResourceType is a single product，EventNames support all interface:`[&amp;quot;*&amp;quot;]`- when ResourceType is a single product，EventNames support some interface，up to 10。",
 			},
 
 			"storage": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "Track Storage, support `cos`, `cls` and `ckafka`.",
+				Description: "Track Storage，support `cos`，`cls` and `ckafka`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"storage_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Track Storage type, optional:- `cos`- `cls`- `ckafka`.",
+							Description: "Track Storage 类型，可选:- `cos`- `cls`- `ckafka`。",
 						},
 						"storage_region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Storage region.",
+							Description: "Storage 地域",
 						},
 						"storage_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Track Storage name:- when StorageType is `cls`, StorageName is cls topicId- when StorageType is `cos`, StorageName is cos bucket name that does not contain `-APPID`.",
+							Description: "Track Storage 名称:- when StorageType is `cls`，StorageName is cls topicId- when StorageType is `cos`，StorageName is cos 存储桶名称 that does not contain `-APPID`。",
 						},
 						"storage_prefix": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Storage path prefix.",
+							Description: "Storage 路径 prefix。",
 						},
 						"storage_account_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Designated to store user ID.",
+							Description: "Designated to store 用户 ID。",
 						},
 						"storage_app_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Designated to store user appid.",
+							Description: "Designated to store 用户 appid。",
 						},
 					},
 				},
@@ -101,13 +101,13 @@ func ResourceTencentCloudAuditTrack() *schema.Resource {
 			"track_for_all_members": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Whether to enable the delivery of group member operation logs to the group management account or trusted service management account, optional:- `0`: Close- `1`: Open.",
+				Description: "是否enable the delivery of group member operation logs to the group management 账号 or trusted service management 账号，可选:- `0`: Close- `1`: Open。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Track create time.",
+				Description: "Track 创建时间。",
 			},
 		},
 	}

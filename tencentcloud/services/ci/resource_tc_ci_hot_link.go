@@ -26,7 +26,7 @@ func ResourceTencentCloudCiHotLink() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"url": {
@@ -35,13 +35,13 @@ func ResourceTencentCloudCiHotLink() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "domain address.",
+				Description: "域名 地址",
 			},
 
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Anti-leech type, `white` is whitelist, `black` is blacklist.",
+				Description: "Anti-leech 类型，`white` is whitelist，`black` is blacklist。",
 			},
 		},
 	}

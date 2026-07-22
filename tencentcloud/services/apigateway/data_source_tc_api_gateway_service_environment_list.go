@@ -19,33 +19,33 @@ func DataSourceTencentCloudApiGatewayServiceEnvironmentList() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID of the service to be queried.",
+				Description: "The unique ID service to be queried。",
 			},
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Service binding environment details.Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Service binding environment details.注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"environment_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Environment name.",
+							Description: "Environment 名称",
 						},
 						"url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Access path.",
+							Description: "Access 路径",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Release status, 1 means released, 0 means not released.",
+							Description: "Release 状态，1 means released，0 means not released。",
 						},
 						"version_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Running version.",
+							Description: "Running 版本",
 						},
 					},
 				},
@@ -53,7 +53,7 @@ func DataSourceTencentCloudApiGatewayServiceEnvironmentList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

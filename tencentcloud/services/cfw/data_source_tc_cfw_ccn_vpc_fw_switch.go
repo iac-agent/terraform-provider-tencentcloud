@@ -18,45 +18,45 @@ func DataSourceTencentCloudCfwCcnVpcFwSwitch() *schema.Resource {
 			"ccn_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CCN ID.",
+				Description: "CCN ID。",
 			},
 
 			"interconnect_pairs": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Interconnect pair configuration.",
+				Description: "Interconnect pair configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_a": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Group A.",
+							Description: "Group A。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance ID.",
+										Description: "实例 ID",
 									},
 									"instance_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance type such as VPC or DIRECTCONNECT.",
+										Description: "实例类型 such as VPC or DIRECTCONNECT。",
 									},
 									"instance_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region where the instance is located.",
+										Description: "地域 where the instance is located。",
 									},
 									"access_cidr_mode": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Network segment mode for accessing firewall: 0-no access, 1-access all network segments associated with the instance, 2-access user-defined network segments.",
+										Description: "Network segment 模式 for accessing firewall: 0-no access，1-access all network segments associated with the instance，2-access 用户-defined network segments。",
 									},
 									"access_cidr_list": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "List of network segments for accessing firewall.",
+										Description: "列表 network segments for accessing firewall。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -67,33 +67,33 @@ func DataSourceTencentCloudCfwCcnVpcFwSwitch() *schema.Resource {
 						"group_b": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Group B.",
+							Description: "Group B。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance ID.",
+										Description: "实例 ID",
 									},
 									"instance_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance type such as VPC or DIRECTCONNECT.",
+										Description: "实例类型 such as VPC or DIRECTCONNECT。",
 									},
 									"instance_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region where the instance is located.",
+										Description: "地域 where the instance is located。",
 									},
 									"access_cidr_mode": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Network segment mode for accessing firewall: 0-no access, 1-access all network segments associated with the instance, 2-access user-defined network segments.",
+										Description: "Network segment 模式 for accessing firewall: 0-no access，1-access all network segments associated with the instance，2-access 用户-defined network segments。",
 									},
 									"access_cidr_list": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "List of network segments for accessing firewall.",
+										Description: "列表 network segments for accessing firewall。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -113,7 +113,7 @@ func DataSourceTencentCloudCfwCcnVpcFwSwitch() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

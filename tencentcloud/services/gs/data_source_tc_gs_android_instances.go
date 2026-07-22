@@ -18,7 +18,7 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 			"android_instance_ids": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List of instance IDs to query. Up to 100 per request.",
+				Description: "列表 instance IDs to query. Up to 100 per request。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -27,35 +27,35 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 			"android_instance_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance region. Aggregated query across regions is not currently supported.",
+				Description: "Instance 地域 Aggregated query across regions is not currently supported。",
 			},
 
 			"android_instance_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance availability zone.",
+				Description: "Instance availability 可用区",
 			},
 
 			"label_selector": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Instance label selector.",
+				Description: "Instance 标签 selector。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Label key.",
+							Description: "标签 键",
 						},
 						"operator": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Operator type. IN: label value must match one of Values; NOT_IN: must not match any; EXISTS: label key must exist; NOT_EXISTS: label key must not exist.",
+							Description: "操作者 类型 IN: 标签值 must match one of Values; NOT_IN: must not match any; EXISTS: 标签 键 must exist; NOT_EXISTS: 标签 键 must not exist。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Label value list. Required for IN and NOT_IN operators.",
+							Description: "标签值 list. 必填 for IN and NOT_IN operators。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -67,18 +67,18 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Field filters. Supported filter names: Name, UserId, HostSerialNumber, HostServerSerialNumber, AndroidInstanceModel.",
+				Description: "Field filters. Supported filter names: 名称，UserId，HostSerialNumber，HostServerSerialNumber，AndroidInstanceModel。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter field name.",
+							Description: "过滤字段名称",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Filter field values.",
+							Description: "Filter field values。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -91,109 +91,109 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 			"android_instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of Android instances.",
+				Description: "列表 Android instances。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"android_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"android_instance_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance region.",
+							Description: "Instance 地域",
 						},
 						"android_instance_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance availability zone.",
+							Description: "Instance availability 可用区",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance state: INITIALIZING, NORMAL, PROCESSING.",
+							Description: "Instance state: INITIALIZING，NORMAL，PROCESSING。",
 						},
 						"android_instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance specification.",
+							Description: "Instance specification。",
 						},
 						"android_instance_image_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance image ID.",
+							Description: "Instance image ID。",
 						},
 						"width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resolution width.",
+							Description: "Resolution width。",
 						},
 						"height": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resolution height.",
+							Description: "Resolution height。",
 						},
 						"host_serial_number": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Host serial number.",
+							Description: "主机 serial number。",
 						},
 						"android_instance_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance group ID.",
+							Description: "Instance 组 ID",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"user_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User ID.",
+							Description: "用户 ID。",
 						},
 						"private_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Private IP address.",
+							Description: "内网 IP 地址",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance creation time.",
+							Description: "Instance 创建时间。",
 						},
 						"host_server_serial_number": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chassis serial number.",
+							Description: "Chassis serial number。",
 						},
 						"service_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service status. IDLE: not connected; ESTABLISHED: connected.",
+							Description: "Service 状态 IDLE: not connected; ESTABLISHED: connected。",
 						},
 						"android_instance_model": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Android instance model. YS1: basic; GC0/GC1/GC2: performance.",
+							Description: "Android instance model. YS1: basic; GC0/GC1/GC2: performance。",
 						},
 						"android_instance_labels": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Instance label list.",
+							Description: "Instance 标签 list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Label key.",
+										Description: "标签 键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Label value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -205,7 +205,7 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

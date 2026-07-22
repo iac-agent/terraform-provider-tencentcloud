@@ -20,25 +20,25 @@ func DataSourceTencentCloudDcdbDatabaseObjects() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID instance。",
 			},
 
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database name, obtained through the DescribeDatabases api.",
+				Description: "Database 名称，obtained through the DescribeDatabases api。",
 			},
 
 			"tables": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Table list.",
+				Description: "Table list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"table": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of table.",
+							Description: "名称 table。",
 						},
 					},
 				},
@@ -47,13 +47,13 @@ func DataSourceTencentCloudDcdbDatabaseObjects() *schema.Resource {
 			"views": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "View list.",
+				Description: "View list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"view": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of view.",
+							Description: "名称 view。",
 						},
 					},
 				},
@@ -62,13 +62,13 @@ func DataSourceTencentCloudDcdbDatabaseObjects() *schema.Resource {
 			"procs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Procedure list.",
+				Description: "Procedure list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"proc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of procedure.",
+							Description: "名称 procedure。",
 						},
 					},
 				},
@@ -77,13 +77,13 @@ func DataSourceTencentCloudDcdbDatabaseObjects() *schema.Resource {
 			"funcs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Function list.",
+				Description: "Function list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"func": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of function.",
+							Description: "名称 function。",
 						},
 					},
 				},
@@ -92,7 +92,7 @@ func DataSourceTencentCloudDcdbDatabaseObjects() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

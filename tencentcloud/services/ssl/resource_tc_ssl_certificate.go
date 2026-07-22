@@ -34,26 +34,26 @@ func ResourceTencentCloudSslCertificate() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "Name of the SSL certificate.",
+				Description: "名称 SSL certificate。",
 			},
 			"type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(SSL_CERT_TYPE),
 				ForceNew:     true,
-				Description:  "Type of the SSL certificate. Valid values: `CA` and `SVR`.",
+				Description:  "类型 SSL certificate. 有效值：`CA` and `SVR`。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "Project ID of the SSL certificate. Default is `0`.",
+				Description: "项目 ID SSL certificate. 默认为 `0`。",
 			},
 			"cert": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Content of the SSL certificate. Not allowed newline at the start and end.",
+				Description: "内容 of the SSL certificate. Not allowed newline at the start and end。",
 				ValidateFunc: func(v interface{}, k string) (wss []string, errs []error) {
 					value := v.(string)
 					if strings.HasPrefix(value, "\n") {
@@ -72,7 +72,7 @@ func ResourceTencentCloudSslCertificate() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Sensitive:   true,
-				Description: "Key of the SSL certificate and required when certificate type is `SVR`. Not allowed newline at the start and end.",
+				Description: "键 of the SSL certificate and 必填 when certificate 类型 is `SVR`. Not allowed newline at the start and end。",
 				ValidateFunc: func(v interface{}, k string) (wss []string, errs []error) {
 					value := v.(string)
 					if strings.HasPrefix(value, "\n") {
@@ -90,44 +90,44 @@ func ResourceTencentCloudSslCertificate() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "Tags of the SSL certificate.",
+				Description: "标签 of the SSL certificate。",
 			},
 			// computed
 			"product_zh_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate authority.",
+				Description: "Certificate authority。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Primary domain of the SSL certificate.",
+				Description: "Primary 域名 of the SSL certificate。",
 			},
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Status of the SSL certificate.",
+				Description: "状态 SSL certificate。",
 			},
 			"begin_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Beginning time of the SSL certificate.",
+				Description: "Beginning time of the SSL certificate。",
 			},
 			"end_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Ending time of the SSL certificate.",
+				Description: "Ending time of the SSL certificate。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of the SSL certificate.",
+				Description: "创建时间 of the SSL certificate。",
 			},
 			"subject_names": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Computed:    true,
-				Description: "ALL domains included in the SSL certificate. Including the primary domain name.",
+				Description: "ALL domains included in the SSL certificate. Including the primary 域名 名称",
 			},
 		},
 	}

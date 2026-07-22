@@ -19,49 +19,49 @@ func DataSourceTencentCloudTseNacosReplicas() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "engine instance ID.",
+				Description: "engine instance ID。",
 			},
 
 			"replicas": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Engine instance replica information.",
+				Description: "Engine instance replica information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "name.",
+							Description: "名称",
 						},
 						"role": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "role.",
+							Description: "角色",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "status.",
+							Description: "状态",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet IDNote: This field may return null, indicating that a valid value is not available.",
+							Description: "Subnet ID注意：此字段可能返回 null，表示有效值不可用。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Available area NameNote: This field may return null, indicating that a valid value is not available.",
+							Description: "Available area Name注意：此字段可能返回 null，表示有效值不可用。",
 						},
 						"zone_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Available area IDNote: This field may return null, indicating that a valid value is not available.",
+							Description: "Available area ID注意：此字段可能返回 null，表示有效值不可用。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC IDNote: This field may return null, indicating that a valid value is not available.",
+							Description: "VPC ID注意：此字段可能返回 null，表示有效值不可用。",
 						},
 					},
 				},
@@ -70,7 +70,7 @@ func DataSourceTencentCloudTseNacosReplicas() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

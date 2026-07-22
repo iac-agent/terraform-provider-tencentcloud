@@ -28,107 +28,107 @@ func ResourceTencentCloudClsTopic() *schema.Resource {
 			"logset_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Logset ID.",
+				Description: "日志集 ID。",
 			},
 			"topic_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Log topic name.",
+				Description: "日志主题名称。",
 			},
 			"partition_count": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Number of log topic partitions. Default value: 1. Maximum value: 10.",
+				Description: "日志主题分区数。默认值：1。最大值：10。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list. Up to 10 tag key-value pairs are supported and must be unique.",
+				Description: "标签描述列表。最多支持 10 个标签键值对，并且必须是唯一的。",
 			},
 			"auto_split": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable automatic split. Default value: true.",
+				Description: "是否启用自动拆分。默认值：true。",
 			},
 			"max_split_partitions": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Computed: true,
-				Description: "Maximum number of partitions to split into for this topic if" +
+				Description: "如果满足以下条件，则该主题拆分为的最大分区数：" +
 					" automatic split is enabled. Default value: 50.",
 			},
 			"storage_type": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
-				Description: "Log topic storage class. Valid values: hot: real-time storage; cold: offline storage. Default value: hot. If cold is passed in, " +
+				Description: "日志主题存储类别。有效值：hot：实时存储； Cold：离线存储。默认值：热。如果寒气传入，" +
 					"please contact the customer service to add the log topic to the allowlist first.",
 			},
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "lifetime. Unit: days. Standard storage value range: 1 to 3600. Infrequent storage value range: 7 to 3600 days. A value of 3640 indicates permanent retention.If this value is not input, it defaults to the Period value of the log set corresponding to the accessed log topic (defaults to 30 days in case of access failure).",
+				Description: "寿命。单位：天。标准存储值范围：1 至 3600。 不频繁存储值范围：7 至 3600 天。值为3640表示永久保留。如果不输入该值，则默认为访问的日志主题对应的日志集的Period值（访问失败时默认为30天）。",
 			},
 			"hot_period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "0: Turn off log sinking. Non 0: The number of days of standard storage after enabling log settling. HotPeriod needs to be greater than or equal to 7 and less than Period. Only effective when StorageType is hot.",
+				Description: "0：关闭日志下沉。非0：开启日志结算后标准存储天数。 HotPeriod 需要大于或等于 7 且小于 周期。仅当 StorageType 为热时有效。",
 			},
 			"describes": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log Topic Description.",
+				Description: "日志主题描述。",
 			},
 			"is_web_tracking": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "No authentication switch. False: closed; True: Enable. The default is false. After activation, anonymous access to the log topic will be supported for specified operations.",
+				Description: "没有认证开关。假：关闭；真：启用。默认为 false。激活后，指定操作将支持匿名访问日志主题。",
 			},
 			"extends": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Log Subject Extension Information.",
+				Description: "记录主题扩展信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"anonymous_access": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Log topic authentication free configuration information.",
+							Description: "记录主题认证免配置信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"operations": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Operation list, supporting trackLog (JS/HTTP upload log) and realtimeProducer (kafka protocol upload log).",
+										Description: "操作列表，支持trackLog（JS/HTTP上传日志）和realtimeProducer（kafka协议上传日志）。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"conditions": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Operation list, supporting trackLog (JS/HTTP upload log) and realtimeProducer (kafka protocol upload log).",
+										Description: "操作列表，支持trackLog（JS/HTTP上传日志）和realtimeProducer（kafka协议上传日志）。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"attributes": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Condition attribute, currently only VpcID is supported.",
+													Description: "条件属性，目前仅支持VpcID。",
 												},
 												"rule": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Conditional rule, 1: equal, 2: not equal.",
+													Description: "条件规则，1：等于，2：不等于。",
 												},
 												"condition_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The value of the corresponding conditional attribute.",
+													Description: "相应条件属性的值。",
 												},
 											},
 										},
@@ -143,7 +143,7 @@ func ResourceTencentCloudClsTopic() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Encryption-related parameters. This parameter is supported for users with an open access list and from encrypted regions; it cannot be passed in other scenarios. 0 or not passed: No encryption. 1: KMS-CLS cloud product key encryption. Once enabled, it cannot be disabled.\nSupported regions: ap-beijing, ap-guangzhou, ap-shanghai, ap-singapore, ap-bangkok, ap-jakarta, eu-frankfurt, ap-seoul, ap-tokyo.",
+				Description: "加密相关参数。具有开放访问列表和来自加密区域的用户支持此参数；其他场景无法传递。 0或未通过：不加密。 1：KMS-CLS云产品密钥加密。一旦启用，则无法禁用。\n支持的区域：ap-北京、ap-广州、ap-上海、ap-新加坡、ap-曼谷、ap-雅加达、ap-法兰克福、ap-首尔、ap-东京。",
 			},
 		},
 	}

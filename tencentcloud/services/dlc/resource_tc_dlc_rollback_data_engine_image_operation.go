@@ -22,21 +22,21 @@ func ResourceTencentCloudDlcRollbackDataEngineImageOperation() *schema.Resource 
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Engine ID.",
+				Description: "Engine ID。",
 			},
 
 			"from_record_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "FromRecordId parameters returned by the API for checking the availability of rolling back.",
+				Description: "FromRecordId parameters returned by the API for checking the availability of rolling back。",
 			},
 
 			"to_record_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ToRecordId parameters returned by the API for checking the availability of rolling back.",
+				Description: "ToRecordId parameters returned by the API for checking the availability of rolling back。",
 			},
 		},
 	}

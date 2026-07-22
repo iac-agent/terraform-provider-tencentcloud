@@ -32,17 +32,17 @@ func ResourceTencentCloudCamGroup() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of CAM group.",
+				Description: "名称 CAM group。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the CAM group.",
+				Description: "描述 CAM group。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of the CAM group.",
+				Description: "创建时间 of the CAM group。",
 			},
 		},
 	}

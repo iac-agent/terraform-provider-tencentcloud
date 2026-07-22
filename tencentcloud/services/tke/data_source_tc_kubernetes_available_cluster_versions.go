@@ -19,13 +19,13 @@ func DataSourceTencentCloudKubernetesAvailableClusterVersions() *schema.Resource
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cluster Id.",
+				Description: "Cluster Id。",
 			},
 
 			"cluster_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "list of cluster IDs.",
+				Description: "列表 cluster IDs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -34,7 +34,7 @@ func DataSourceTencentCloudKubernetesAvailableClusterVersions() *schema.Resource
 			"versions": {
 				Type:        schema.TypeSet,
 				Computed:    true,
-				Description: "Upgradable cluster version number. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Upgradable cluster 版本 number. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -43,18 +43,18 @@ func DataSourceTencentCloudKubernetesAvailableClusterVersions() *schema.Resource
 			"clusters": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "cluster information. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "cluster information. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster ID.",
+							Description: "集群 ID",
 						},
 						"versions": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "list of cluster major version numbers, for example 1.18.4.",
+							Description: "列表 cluster major 版本 numbers，for example 1.18.4。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -66,7 +66,7 @@ func DataSourceTencentCloudKubernetesAvailableClusterVersions() *schema.Resource
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -23,19 +23,19 @@ func DataSourceTencentCloudDcdbInstances() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "instance ids.",
+				Description: "instance ids。",
 			},
 
 			"search_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "search name, support instancename, vip, all.",
+				Description: "search 名称，support instancename，VIP，all。",
 			},
 
 			"search_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "search key, support fuzzy query.",
+				Description: "search 键，support fuzzy query。",
 			},
 
 			"project_ids": {
@@ -44,191 +44,191 @@ func DataSourceTencentCloudDcdbInstances() *schema.Resource {
 					Type: schema.TypeInt,
 				},
 				Optional:    true,
-				Description: "project ids.",
+				Description: "project ids。",
 			},
 
 			"excluster_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "cluster excluster type.",
+				Description: "cluster excluster 类型",
 			},
 
 			"is_filter_excluster": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "search according to the cluster excluter type.",
+				Description: "search according to the cluster excluter 类型",
 			},
 
 			"is_filter_vpc": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "search according to the vpc.",
+				Description: "search according to the vpc。",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "vpc id, valid when IsFilterVpc is true.",
+				Description: "私有网络 ID，valid when IsFilterVpc is true。",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "subnet id, valid when IsFilterVpc is true.",
+				Description: "子网 ID，valid when IsFilterVpc is true。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "instance list.",
+				Description: "instance list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance id.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance name.",
+							Description: "实例名称",
 						},
 						"app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "app id.",
+							Description: "app id。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "project id.",
+							Description: "项目 ID",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region.",
+							Description: "地域",
 						},
 						"vpc_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "vpc id.",
+							Description: "私有网络 ID",
 						},
 						"subnet_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "subnet id.",
+							Description: "子网 ID",
 						},
 						"status_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "status description.",
+							Description: "状态 描述",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "status.",
+							Description: "状态",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "vip.",
+							Description: "VIP",
 						},
 						"vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "vport.",
+							Description: "vport。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "auto renew flag.",
+							Description: "auto 续费标识",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "memory, the unit is GB.",
+							Description: "memory，the unit is GB。",
 						},
 						"storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "memory, the unit is GB.",
+							Description: "memory，the unit is GB。",
 						},
 						"shard_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "shard count.",
+							Description: "分片数",
 						},
 						"period_end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "expired time.",
+							Description: "过期时间。",
 						},
 						"isolated_timestamp": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "isolated time.",
+							Description: "isolated time。",
 						},
 						"uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "account uin.",
+							Description: "账号 uin。",
 						},
 						"shard_detail": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "shard detail.",
+							Description: "shard detail。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"shard_instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "shard instance id.",
+										Description: "shard 实例 ID",
 									},
 									"shard_serial_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "shard serial id.",
+										Description: "shard serial id。",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "shard status.",
+										Description: "shard 状态",
 									},
 									"createtime": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "shard create time.",
+										Description: "shard 创建时间。",
 									},
 									"memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "memory.",
+										Description: "memory。",
 									},
 									"storage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "storage.",
+										Description: "storage。",
 									},
 									"shard_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "shard id.",
+										Description: "shard id。",
 									},
 									"node_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "node count.",
+										Description: "node count。",
 									},
 									"cpu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "cpu cores.",
+										Description: "CPU 核数",
 									},
 								},
 							},
@@ -236,78 +236,78 @@ func DataSourceTencentCloudDcdbInstances() *schema.Resource {
 						"node_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "node count.",
+							Description: "node count。",
 						},
 						"is_tmp": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "tmp instance mark.",
+							Description: "tmp instance mark。",
 						},
 						"wan_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "wan domain.",
+							Description: "wan 域名",
 						},
 						"wan_vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "wan vip.",
+							Description: "wan VIP",
 						},
 						"wan_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "wan port.",
+							Description: "wan 端口",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "update time.",
+							Description: "更新时间。",
 						},
 						"db_engine": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db engine.",
+							Description: "db engine。",
 						},
 						"db_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db engine version.",
+							Description: "db engine 版本",
 						},
 						"paymode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "pay mode.",
+							Description: "付费模式",
 						},
 						"wan_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "wan status, 0:nonactivated, 1:activated, 2:closed, 3:activating.",
+							Description: "wan 状态，0:nonactivated，1:activated，2:closed，3:activating。",
 						},
 						"is_audit_supported": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "aduit support, 0:support, 1:unsupport.",
+							Description: "aduit support，0:support，1:unsupport。",
 						},
 						"instance_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "instance type.",
+							Description: "实例类型",
 						},
 						"resource_tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "resource tags.",
+							Description: "resource 标签",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -319,7 +319,7 @@ func DataSourceTencentCloudDcdbInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

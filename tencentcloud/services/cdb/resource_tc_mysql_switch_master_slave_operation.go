@@ -25,28 +25,28 @@ func ResourceTencentCloudMysqlSwitchMasterSlaveOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID。",
 			},
 
 			"dst_slave": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "target instance. Possible values: `first` - first standby; `second` - second standby. The default value is `first`, and only multi-AZ instances support setting it to `second`.",
+				Description: "目标实例。可能的值： `first` - 第一个备用； “第二”- 第二次待机。默认值为“first”，仅多可用区实例支持将其设置为“second”。",
 			},
 
 			"force_switch": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to force switch. Default is False. Note that if you set the mandatory switch to True, there is a risk of data loss on the instance, so use it with caution.",
+				Description: "是否强制切换。默认值为 False。请注意，如果将强制开关设置为True，则实例存在数据丢失的风险，请谨慎使用。",
 			},
 
 			"wait_switch": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to switch within the time window. The default is False, i.e. do not switch within the time window. Note that if the ForceSwitch parameter is set to True, this parameter will not take effect.",
+				Description: "是否在时间窗口内切换。默认为False，即在时间窗口内不切换。注意，如果ForceSwitch参数设置为True，则该参数不会生效。",
 			},
 		},
 	}

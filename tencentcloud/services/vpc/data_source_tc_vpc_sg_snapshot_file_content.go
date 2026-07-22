@@ -19,75 +19,75 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 			"snapshot_policy_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot policy IDs.",
+				Description: "Snapshot policy IDs。",
 			},
 
 			"snapshot_file_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot file ID.",
+				Description: "Snapshot file ID。",
 			},
 
 			"security_group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Security group ID.",
+				Description: "安全组 ID",
 			},
 
 			"instance_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Security group ID.",
+				Description: "安全组 ID",
 			},
 
 			"backup_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Backup time.",
+				Description: "Backup time。",
 			},
 
 			"operator": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Operator.",
+				Description: "操作者",
 			},
 
 			"original_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Original data.",
+				Description: "Original data。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_index": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The index number of security group rules, which dynamically changes with the rules. This parameter can be obtained via the `DescribeSecurityGroupPolicies` API and used with the `Version` field in the returned value of the API.",
+							Description: "The 索引 数量 security group rules，which dynamically changes with the rules. This parameter can be obtained via the `DescribeSecurityGroupPolicies` API and used with the `版本` field in the returned 值 of the API。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Protocol. Valid values: TCP, UDP, ICMP, ICMPv6, ALL.",
+							Description: "协议 有效值：TCP，UDP，ICMP，ICMPv6，ALL。",
 						},
 						"port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Port (`all`, a single port, or a port range).Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be set to `all`.",
+							Description: "端口 (`all`，a single 端口，or a 端口 range).Note: If the `协议` 值 is set to `ALL`，the `端口` 值 also needs to be set to `all`。",
 						},
 						"service_template": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Protocol port ID or protocol port group ID. ServiceTemplate and Protocol+Port are mutually exclusive.",
+							Description: "协议 端口 ID or 协议 端口 组 ID ServiceTemplate and 协议+端口 are mutually exclusive。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"service_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Protocol port ID, such as `ppm-f5n1f8da`.",
+										Description: "协议 端口 ID，such as `ppm-f5n1f8da`。",
 									},
 									"service_group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Protocol port group ID, such as `ppmg-f5n1f8da`.",
+										Description: "协议 端口 组 ID，such as `ppmg-f5n1f8da`。",
 									},
 								},
 							},
@@ -95,33 +95,33 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Either `CidrBlock` or `Ipv6CidrBlock can be specified. Note that if `0.0.0.0/n` is entered, it is mapped to 0.0.0.0/0.",
+							Description: "Either `CidrBlock` or `Ipv6CidrBlock can be specified. Note that if `0.0.0.0/n` is entered，it is mapped to 0.0.0.0/0。",
 						},
 						"ipv6_cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The CIDR block or IPv6 (mutually exclusive).",
+							Description: "The CIDR block or IPv6 (mutually exclusive)。",
 						},
 						"security_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The security group instance ID, such as `sg-ohuuioma`.",
+							Description: "The security group instance ID，such as `sg-ohuuioma`。",
 						},
 						"address_template": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "IP address ID or IP address group ID.",
+							Description: "IP 地址 ID or IP 地址 组 ID",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"address_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID of the IP address, such as `ipm-2uw6ujo6`.",
+										Description: "The ID IP 地址，such as `ipm-2uw6ujo6`。",
 									},
 									"address_group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID of the IP address group, such as `ipmg-2uw6ujo6`.",
+										Description: "The ID IP 地址 group，such as `ipmg-2uw6ujo6`。",
 									},
 								},
 							},
@@ -129,17 +129,17 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 						"action": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ACCEPT or DROP.",
+							Description: "ACCEPT or DROP。",
 						},
 						"policy_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group policy description.",
+							Description: "Security group policy 描述",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last modification time of the security group.",
+							Description: "The last 修改时间 of the security group。",
 						},
 					},
 				},
@@ -148,39 +148,39 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 			"backup_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Backup data.",
+				Description: "Backup data。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_index": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The index number of security group rules, which dynamically changes with the rules. This parameter can be obtained via the `DescribeSecurityGroupPolicies` API and used with the `Version` field in the returned value of the API.",
+							Description: "The 索引 数量 security group rules，which dynamically changes with the rules. This parameter can be obtained via the `DescribeSecurityGroupPolicies` API and used with the `版本` field in the returned 值 of the API。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Protocol. Valid values: TCP, UDP, ICMP, ICMPv6, ALL.",
+							Description: "协议 有效值：TCP，UDP，ICMP，ICMPv6，ALL。",
 						},
 						"port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Port (`all`, a single port, or a port range).Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be set to `all`.",
+							Description: "端口 (`all`，a single 端口，or a 端口 range).Note: If the `协议` 值 is set to `ALL`，the `端口` 值 also needs to be set to `all`。",
 						},
 						"service_template": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Protocol port ID or protocol port group ID. ServiceTemplate and Protocol+Port are mutually exclusive.",
+							Description: "协议 端口 ID or 协议 端口 组 ID ServiceTemplate and 协议+端口 are mutually exclusive。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"service_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Protocol port ID, such as `ppm-f5n1f8da`.",
+										Description: "协议 端口 ID，such as `ppm-f5n1f8da`。",
 									},
 									"service_group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Protocol port group ID, such as `ppmg-f5n1f8da`.",
+										Description: "协议 端口 组 ID，such as `ppmg-f5n1f8da`。",
 									},
 								},
 							},
@@ -188,33 +188,33 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Either `CidrBlock` or `Ipv6CidrBlock can be specified. Note that if `0.0.0.0/n` is entered, it is mapped to 0.0.0.0/0.",
+							Description: "Either `CidrBlock` or `Ipv6CidrBlock can be specified. Note that if `0.0.0.0/n` is entered，it is mapped to 0.0.0.0/0。",
 						},
 						"ipv6_cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The CIDR block or IPv6 (mutually exclusive).",
+							Description: "The CIDR block or IPv6 (mutually exclusive)。",
 						},
 						"security_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The security group instance ID, such as `sg-ohuuioma`.",
+							Description: "The security group instance ID，such as `sg-ohuuioma`。",
 						},
 						"address_template": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "IP address ID or IP address group ID.",
+							Description: "IP 地址 ID or IP 地址 组 ID",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"address_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID of the IP address, such as `ipm-2uw6ujo6`.",
+										Description: "The ID IP 地址，such as `ipm-2uw6ujo6`。",
 									},
 									"address_group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID of the IP address group, such as `ipmg-2uw6ujo6`.",
+										Description: "The ID IP 地址 group，such as `ipmg-2uw6ujo6`。",
 									},
 								},
 							},
@@ -222,17 +222,17 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 						"action": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ACCEPT or DROP.",
+							Description: "ACCEPT or DROP。",
 						},
 						"policy_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group policy description.",
+							Description: "Security group policy 描述",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last modification time of the security group.",
+							Description: "The last 修改时间 of the security group。",
 						},
 					},
 				},
@@ -241,7 +241,7 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

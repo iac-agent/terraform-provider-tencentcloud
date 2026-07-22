@@ -30,14 +30,14 @@ func ResourceTencentCloudImage() *schema.Resource {
 			"image_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Image name.",
+				Description: "Image 名称",
 			},
 			"instance_id": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ForceNew:     true,
 				ExactlyOneOf: []string{"snapshot_ids"},
-				Description:  "Cloud server instance ID.",
+				Description:  "Cloud server instance ID。",
 			},
 			"snapshot_ids": {
 				Type:         schema.TypeSet,
@@ -47,23 +47,23 @@ func ResourceTencentCloudImage() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Cloud disk snapshot ID list; creating a mirror based on a snapshot must include a system disk snapshot. It cannot be passed in simultaneously with InstanceId.",
+				Description: "Cloud disk snapshot ID list; creating a mirror based on a snapshot must include a system disk snapshot. It cannot be passed in simultaneously with 实例 ID",
 			},
 			"image_description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Image Description.",
+				Description: "Image 描述",
 			},
 			"force_poweroff": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Set whether to force shutdown during mirroring. The default value is `false`, when set to true, it means that the mirror will be made after shutdown.",
+				Description: "Set 是否force shutdown during mirroring. The 默认值为 `false`，when set to true，it means that the mirror will be made after shutdown。",
 			},
 			"sysprep": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Sysprep function under Windows. When creating a Windows image, you can select true or false to enable or disable the Syspre function.",
+				Description: "Sysprep function under Windows. When creating a Windows image，you can select true or false to enable or disable the Syspre function。",
 			},
 			"data_disk_ids": {
 				Type:     schema.TypeSet,
@@ -73,17 +73,17 @@ func ResourceTencentCloudImage() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Cloud disk ID list, When creating a whole machine image based on an instance, specify the data disk ID contained in the image.",
+				Description: "Cloud disk ID list，When creating a whole machine image based on an instance，指定data disk ID contained in the image。",
 			},
 			"image_family": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Set image family. Example value: `business-daily-update`.",
+				Description: "Set image family. Example 值: `business-daily-update`。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the image.",
+				Description: "标签 of the image。",
 			},
 		},
 	}

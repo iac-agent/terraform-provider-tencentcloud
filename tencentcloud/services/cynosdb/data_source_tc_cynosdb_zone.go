@@ -19,81 +19,81 @@ func DataSourceTencentCloudCynosdbZone() *schema.Resource {
 			"include_virtual_zones": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Is virtual zone included.",
+				Description: "是否包含虚拟区域。",
 			},
 
 			"show_permission": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to display all available zones under the region and display the permissions of each available zone of the user.",
+				Description: "是否显示该区域下的所有可用区域，并显示用户每个可用区域的权限。",
 			},
 
 			"region_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information of region.",
+				Description: "地区信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region in English.",
+							Description: "地区英文。",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Region ID.",
+							Description: "区域 ID。",
 						},
 						"region_zh": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region name in Chinese.",
+							Description: "地区中文名称。",
 						},
 						"zone_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of available zones for sale.",
+							Description: "可供出售的区域列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Zone name in English.",
+										Description: "区域名称为英文。",
 									},
 									"zone_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ZoneId.",
+										Description: "区域 ID。",
 									},
 									"zone_zh": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Zone name in Chinesee.",
+										Description: "中文区域名称。",
 									},
 									"is_support_serverless": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Does it support serverless clusters, 0:Not supported 1:Support.",
+										Description: "是否支持无服务器集群，0：不支持，1：支持。",
 									},
 									"is_support_normal": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Does it support normal clusters, 0:Not supported 1:Support.",
+										Description: "是否支持普通集群，0：不支持，1：支持。",
 									},
 									"physical_zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Physical zone.",
+										Description: "物理区域。",
 									},
 									"has_permission": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether the user have zone permissionsNote: This field may return null, indicating that no valid value can be obtained.",
+										Description: "用户是否具有区域权限注：该字段可能返回null，表示取不到有效值。",
 									},
 									"is_whole_rdma_zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Is zone Rdma.",
+										Description: "是 Rdma 区域。",
 									},
 								},
 							},
@@ -101,23 +101,23 @@ func DataSourceTencentCloudCynosdbZone() *schema.Resource {
 						"db_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database type.",
+							Description: "数据库类型。",
 						},
 						"modules": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Regional module support.",
+							Description: "区域模块支持。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"is_disable": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Is zone on sale, optional values: yes, no.",
+										Description: "区域是否出售，可选值：是、否。",
 									},
 									"module_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Module name.",
+										Description: "模块名称。",
 									},
 								},
 							},
@@ -129,7 +129,7 @@ func DataSourceTencentCloudCynosdbZone() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

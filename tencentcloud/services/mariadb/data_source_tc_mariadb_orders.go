@@ -17,33 +17,33 @@ func DataSourceTencentCloudMariadbOrders() *schema.Resource {
 			"deal_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "List of long order numbers to be queried, which are returned for the APIs for creating, renewing, or scaling instances.",
+				Description: "列表 long 顺序 numbers to be queried，which are returned for the APIs for creating，renewing，or scaling instances。",
 			},
 			"deals": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Order information list.",
+				Description: "顺序 information list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"deal_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Order number.",
+							Description: "顺序 number。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Account.",
+							Description: "账号",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of items.",
+							Description: "数量 items。",
 						},
 						"flow_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID of the associated process, which can be used to query the process execution status.",
+							Description: "ID associated process，which can be 用于query the process execution 状态",
 						},
 						"instance_ids": {
 							Type: schema.TypeSet,
@@ -51,12 +51,12 @@ func DataSourceTencentCloudMariadbOrders() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The ID of the created instance, which is required only for the order that creates an instance.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The ID created instance，which 为必填项 only for the 顺序 that creates an instance.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Payment mode. Valid values: 0 (postpaid), 1 (prepaid).",
+							Description: "Payment 模式 有效值：0 (postpaid)，1 (prepaid)。",
 						},
 					},
 				},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudMariadbOrders() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

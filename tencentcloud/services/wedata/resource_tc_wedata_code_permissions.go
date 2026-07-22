@@ -27,41 +27,41 @@ func ResourceTencentCloudWedataCodePermissions() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"authorize_permission_objects": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Permission operation objects.",
+				Description: "Permission operation objects。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Authorization resource information, including resourceId and resourceType.",
+							Description: "Authorization resource information，including resourceId and resourceType。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Resource type, can only be these two types: folder, script.",
+										Description: "资源类型，can only be these two types: folder，script。",
 									},
 									"resource_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Resource ID: directory ID or script ID.",
+										Description: "资源 ID: directory ID or script ID。",
 									},
 									"resource_id_for_path": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Full ID path, used for recursive authentication.",
+										Description: "Full ID 路径，用于recursive authentication。",
 									},
 									"resource_cfs_path": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "CFS path.",
+										Description: "CFS 路径",
 									},
 								},
 							},
@@ -69,18 +69,18 @@ func ResourceTencentCloudWedataCodePermissions() *schema.Resource {
 						"authorize_subjects": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Authorization details.",
+							Description: "Authorization details。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"subject_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Subject type (user: user, role: role, group: group).",
+										Description: "Subject 类型 (用户: 用户，角色: 角色，group: group)。",
 									},
 									"subject_values": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Subject value list.",
+										Description: "Subject 值 list。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -88,7 +88,7 @@ func ResourceTencentCloudWedataCodePermissions() *schema.Resource {
 									"privileges": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Permission list.",
+										Description: "Permission list。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},

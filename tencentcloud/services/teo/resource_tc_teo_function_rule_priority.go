@@ -29,20 +29,20 @@ func ResourceTencentCloudTeoFunctionRulePriority() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the site.",
+				Description: "ID site。",
 			},
 
 			"function_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the Function.",
+				Description: "ID Function。",
 			},
 
 			"rule_ids": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "he list of rule IDs. It is required to include all rule IDs after adjusting their priorities. The execution order of multiple rules follows a top-down sequence. If not specified, the original priority order will be maintained.",
+				Description: "he 列表 rule IDs. It 为必填项 to include all rule IDs after adjusting their priorities. The execution 顺序 of multiple rules follows a top-down sequence. 如果未指定，the original 优先级 顺序 will be maintained。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},

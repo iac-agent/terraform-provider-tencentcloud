@@ -28,19 +28,19 @@ func ResourceTencentCloudDnspodRecordGroup() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"group_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Record Group Name.",
+				Description: "Record Group 名称",
 			},
 
 			"group_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Group ID.",
+				Description: "组 ID",
 			},
 		},
 	}

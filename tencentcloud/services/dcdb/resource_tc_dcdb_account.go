@@ -29,44 +29,44 @@ func ResourceTencentCloudDcdbAccount() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"user_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "account name.",
+				Description: "账号 名称",
 			},
 
 			"host": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "db host.",
+				Description: "db 主机",
 			},
 
 			"password": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "password.",
+				Description: "密码",
 				Sensitive:   true,
 			},
 
 			"read_only": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "whether the account is readonly. 0 means not a readonly account.",
+				Description: "是否account is readonly. 0 means not a readonly 账号",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "description for account.",
+				Description: "描述 for 账号",
 			},
 
 			"max_user_connections": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "max user connections.",
+				Description: "max 用户 connections。",
 			},
 		},
 	}

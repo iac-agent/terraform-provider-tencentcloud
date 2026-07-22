@@ -22,14 +22,14 @@ func ResourceTencentCloudCkafkaConsumerGroupModifyOffset() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Kafka instance id.",
+				Description: "Kafka 实例 ID",
 			},
 
 			"group": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "kafka group.",
+				Description: "kafka group。",
 			},
 
 			"strategy": {
@@ -49,28 +49,28 @@ func ResourceTencentCloudCkafkaConsumerGroupModifyOffset() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Indicates the topics that needs to be reset. Leave it empty means all.",
+				Description: "表示topics that needs to be reset. Leave it empty means all。",
 			},
 
 			"shift": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "This field must be included when strategy is 0. If it is greater than zero, the offset will be moved backward by shift bars, and if it is less than zero, the offset will be traced back to the number of shift entries. After the correct reset, the new offset should be (old_offset + shift). It should be noted that if the new offset is less than partition's earliest, it will be set to earliest, and if the latest greater than partition will be set to latest.",
+				Description: "This field must be included when strategy is 0. If it is greater than zero，the 偏移量 will be moved backward by shift bars，and if it is less than zero，the 偏移量 will be traced back to the 数量 shift entries. After the correct reset，the new 偏移量 should be (old_offset + shift). It should be noted that if the new 偏移量 is less than partition's earliest，it will be set to earliest，and if the latest greater than partition will be set to latest。",
 			},
 
 			"shift_timestamp": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Unit ms. When strategy is 1, you must include this field, where-2 means to reset the offset to the beginning,-1 means to reset to the latest position (equivalent to emptying), and other values represent the specified time. You will get the offset of the specified time in the topic and then reset it. If there is no message at the specified time, get the last offset.",
+				Description: "Unit ms. When strategy is 1，you must include this field，where-2 means to reset the 偏移量 to the beginning,-1 means to reset to the latest position (equivalent to emptying)，and other values represent the specified time. You will get the 偏移量 of the specified time in the topic and then reset it. If there is no 消息 at the specified time，get the last 偏移量",
 			},
 
 			"offset": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The offset location that needs to be reset. When strategy is 2, this field must be included.",
+				Description: "The 偏移量 location that needs to be reset. When strategy is 2，this field must be included。",
 			},
 
 			"partitions": {
@@ -80,7 +80,7 @@ func ResourceTencentCloudCkafkaConsumerGroupModifyOffset() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "The list of partition that needs to be reset if no Topics parameter is specified. Resets the partition in the corresponding Partition list of all topics. When Topics is specified, the partition of the corresponding topic list of the specified Partitions list is reset.",
+				Description: "The 列表 partition that needs to be reset if no Topics parameter is specified. Resets the partition in the corresponding Partition 列表 all topics. When Topics is specified，the partition of the corresponding topic 列表 the specified Partitions list is reset。",
 			},
 		},
 	}

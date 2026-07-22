@@ -24,13 +24,13 @@ func ResourceTencentCloudDcShareDcxConfig() *schema.Resource {
 			"direct_connect_tunnel_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "the direct connect owner accept or reject the apply of direct connect tunnel.",
+				Description: "the direct connect 所有者 accept or reject the apply of direct connect tunnel。",
 			},
 
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "if accept or reject direct connect tunnel.",
+				Description: "if accept or reject direct connect tunnel。",
 			},
 		},
 	}

@@ -27,107 +27,107 @@ func ResourceTencentCloudDcInstance() *schema.Resource {
 			"direct_connect_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Connection name.",
+				Description: "Connection 名称",
 			},
 
 			"access_point_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Access point of connection.You can call `DescribeAccessPoints` to get the region ID. The selected access point must exist and be available.",
+				Description: "Access point of connection.You can call `DescribeAccessPoints` to get the 地域 ID. The selected access point must exist and be available。",
 			},
 
 			"line_operator": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).",
+				Description: "ISP that 提供connections. 有效值：ChinaTelecom (China Telecom)，ChinaMobile (China Mobile)，ChinaUnicom (China Unicom)，In-houseWiring (in-house wiring)，ChinaOther (other Chinese ISPs)，InternationalOperator (international ISPs)。",
 			},
 
 			"port_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX.",
+				Description: "端口 类型 connection. 有效值：100Base-T (100-Megabit electrical Ethernet interface)，1000Base-T (1-Gigabit electrical Ethernet interface)，1000Base-LX (1-Gigabit single-模块 optical Ethernet interface; 10 KM)，10GBase-T (10-Gigabit electrical Ethernet interface)，10GBase-LR (10-Gigabit single-模块 optical Ethernet interface; 10 KM). 默认值：1000Base-LX。",
 			},
 
 			"circuit_code": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Circuit code of a connection, which is provided by the ISP or connection provider.",
+				Description: "Circuit 代码 of a connection，which is provided by the ISP or connection provider。",
 			},
 
 			"location": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Local IDC location.",
+				Description: "Local IDC location。",
 			},
 
 			"bandwidth": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Connection port bandwidth in Mbps. Value range: [2,10240]. Default value: 1000.",
+				Description: "Connection 端口 bandwidth in Mbps. 取值范围：[2,10240]. 默认值：1000。",
 			},
 
 			"redundant_direct_connect_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID of redundant connection.",
+				Description: "ID redundant connection。",
 			},
 
 			"vlan": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "VLAN for connection debugging, which is enabled and automatically assigned by default.",
+				Description: "VLAN for connection debugging，which is 已启用 and automatically assigned by default。",
 			},
 
 			"tencent_address": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Tencent-side IP address for connection debugging, which is automatically assigned by default.",
+				Description: "Tencent-side IP 地址 for connection debugging，which is automatically assigned by default。",
 			},
 
 			"customer_address": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "User-side IP address for connection debugging, which is automatically assigned by default.",
+				Description: "用户-side IP 地址 for connection debugging，which is automatically assigned by default。",
 			},
 
 			"customer_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Name of connection applicant, which is obtained from the account system by default.",
+				Description: "名称 connection applicant，which is obtained from the 账号 system by default。",
 			},
 
 			"customer_contact_mail": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Email address of connection applicant, which is obtained from the account system by default.",
+				Description: "Email 地址 of connection applicant，which is obtained from the 账号 system by default。",
 			},
 
 			"customer_contact_number": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Contact number of connection applicant, which is obtained from the account system by default.",
+				Description: "Contact 数量 connection applicant，which is obtained from the 账号 system by default。",
 			},
 
 			"fault_report_contact_person": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fault reporting contact person.",
+				Description: "Fault reporting contact person。",
 			},
 
 			"fault_report_contact_number": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fault reporting contact number.",
+				Description: "Fault reporting contact number。",
 			},
 
 			"sign_law": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether the connection applicant has signed the service agreement. Default value: true.",
+				Description: "是否connection applicant has signed the service agreement. 默认值：true。",
 			},
 		},
 	}

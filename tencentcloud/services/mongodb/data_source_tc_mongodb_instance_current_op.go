@@ -19,101 +19,101 @@ func DataSourceTencentCloudMongodbInstanceCurrentOp() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page.",
+				Description: "实例 ID，the 格式 is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page。",
 			},
 
 			"ns": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter condition, the namespace namespace to which the operation belongs, in the format of db.collection.",
+				Description: "Filter condition，the namespace namespace to which the operation belongs，in the 格式 of db.collection。",
 			},
 
 			"millisecond_running": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Filter condition, the time that the operation has been executed (unit: millisecond),the result will return the operation that exceeds the set time, the default value is 0,and the value range is [0, 3600000].",
+				Description: "Filter condition，the time that the operation has been executed (unit: millisecond),the 结果 will return the operation that exceeds the set time，the 默认值为 0,and the 值 range is [0，3600000]。",
 			},
 
 			"op": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter condition, operation type, possible values: none, update, insert, query, command, getmore,remove and killcursors.",
+				Description: "Filter condition，操作类型，possible values: none，update，insert，query，command，getmore,remove and killcursors。",
 			},
 
 			"replica_set_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "filter condition, shard name.",
+				Description: "filter condition，shard 名称",
 			},
 
 			"state": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter condition, node status, possible value: primary, secondary.",
+				Description: "Filter condition，node 状态，possible 值: primary，secondary。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Returns the sorted field of the result set, currently supports: MicrosecsRunning/microsecsrunning,the default is ascending sort.",
+				Description: "返回sorted field of the 结果 set，currently supports: MicrosecsRunning/microsecsrunning,the 默认为 ascending sort。",
 			},
 
 			"order_by_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Returns the sorting method of the result set, possible values: ASC/asc or DESC/desc.",
+				Description: "返回sorting method of the 结果 set，possible values: ASC/asc or DESC/desc。",
 			},
 
 			"current_ops": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "current operation list.",
+				Description: "current operation list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"op_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "operation id.",
+							Description: "operation id。",
 						},
 						"ns": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "operation namespace.",
+							Description: "operation namespace。",
 						},
 						"query": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "operation query.",
+							Description: "operation query。",
 						},
 						"op": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "operation value.",
+							Description: "operation 值",
 						},
 						"replica_set_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Replication name.",
+							Description: "Replication 名称",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "operation state.",
+							Description: "operation state。",
 						},
 						"operation": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "operation info.",
+							Description: "operation info。",
 						},
 						"node_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node name.",
+							Description: "节点名称",
 						},
 						"microsecs_running": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "running time(ms).",
+							Description: "running time(ms)。",
 						},
 					},
 				},
@@ -122,7 +122,7 @@ func DataSourceTencentCloudMongodbInstanceCurrentOp() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

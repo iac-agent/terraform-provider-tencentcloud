@@ -22,14 +22,14 @@ func ResourceTencentCloudCkafkaRenewInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"time_span": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Renewal duration, the default is 1, and the unit is month.",
+				Description: "Renewal duration，the 默认为 1，and the unit is month。",
 			},
 		},
 	}

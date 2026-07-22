@@ -28,13 +28,13 @@ func ResourceTencentCloudOrganizationOrgMember() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Member name.",
+				Description: "Member 名称",
 			},
 
 			"policy_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Organization policy type.- `Financial`: Financial management policy.",
+				Description: "Organization policy 类型- `Financial`: Financial management policy。",
 			},
 
 			"permission_ids": {
@@ -43,86 +43,86 @@ func ResourceTencentCloudOrganizationOrgMember() *schema.Resource {
 					Type: schema.TypeInt,
 				},
 				Required:    true,
-				Description: "Financial management permission IDs.Valid values:- `1`: View bill.- `2`: Check balance.- `3`: Fund transfer.- `4`: Combine bill.- `5`: Issue an invoice.- `6`: Inherit discount.- `7`: Pay on behalf.value 1,2 is required.",
+				Description: "Financial management permission IDs.Valid values:- `1`: View bill.- `2`: Check balance.- `3`: Fund transfer.- `4`: Combine bill.- `5`: Issue an invoice.- `6`: Inherit discount.- `7`: Pay on behalf.值 1,2 为必填项。",
 			},
 
 			"node_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Organization node ID.",
+				Description: "Organization 节点 ID",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Notes.",
+				Description: "Notes。",
 			},
 
 			"record_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Create member record ID.When create failed and needs to be recreated, is required.",
+				Description: "Create member record ID.When create failed and needs to be recreated，为必填项。",
 			},
 
 			"pay_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The uin which is payment account on behalf.When `PermissionIds` contains 7, is required.",
+				Description: "The uin which is payment 账号 on behalf.When `PermissionIds` 包含7，为必填项。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 
 			"force_delete_account": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Whether to force delete the member account when deleting the organization member. It is only applicable to member accounts of the creation type, not to member accounts of the invitation type. Default is false.",
+				Description: "是否force delete the member 账号 when deleting the organization member. It is only applicable to member accounts of the creation 类型，not to member accounts of the invitation 类型 默认为 false。",
 			},
 
 			"is_modify_nick_name": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Whether to synchronize organization member names to their account nicknames. Values: 1 - Sync, 0 - Do not sync. This parameter takes effect only when the name field is being modified.",
+				Description: "是否synchronize organization member names to their 账号 nicknames. Values: 1 - Sync，0 - Do not sync. This parameter takes effect only when the 名称 field is being modified。",
 			},
 
 			// computed
 			"node_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Organization node name.",
+				Description: "Organization 节点名称",
 			},
 
 			"member_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Member Type.Valid values:- `Invite`: The member is invited.- `Create`: The member is created.",
+				Description: "Member 类型Valid values:- `Invite`: The member is invited.- `Create`: The member is created。",
 			},
 
 			"org_policy_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Organization policy name.",
+				Description: "Organization policy 名称",
 			},
 
 			"org_permission": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Financial management permissions.",
+				Description: "Financial management permissions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Permissions ID.",
+							Description: "Permissions ID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Permissions name.",
+							Description: "Permissions 名称",
 						},
 					},
 				},
@@ -131,25 +131,25 @@ func ResourceTencentCloudOrganizationOrgMember() *schema.Resource {
 			"is_allow_quit": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Whether to allow member to leave the organization.Valid values:- `Allow`.- `Denied`.",
+				Description: "是否allow member to leave the organization.Valid values:- `Allow`.- `Denied`。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Member creation time.",
+				Description: "Member 创建时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Member update time.",
+				Description: "Member 更新时间。",
 			},
 
 			"pay_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The member name which is payment account on behalf.",
+				Description: "The member 名称 which is payment 账号 on behalf。",
 			},
 		},
 	}

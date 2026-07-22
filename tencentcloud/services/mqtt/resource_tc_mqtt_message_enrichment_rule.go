@@ -30,36 +30,36 @@ func ResourceTencentCloudMqttMessageEnrichmentRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "MQTT instance ID.",
+				Description: "MQTT instance ID。",
 			},
 
 			"rule_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule name, 3-64 characters, supports Chinese, letters, numbers, `-` and `_`.",
+				Description: "Rule 名称，3-64 characters，supports Chinese，letters，numbers，`-` and `_`。",
 			},
 
 			"condition": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Rule matching condition.",
+				Description: "Rule matching condition。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"username": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "User name.",
+							Description: "用户 名称",
 						},
 						"client_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Client ID.",
+							Description: "Client ID。",
 						},
 						"topic": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Topic.",
+							Description: "Topic。",
 						},
 					},
 				},
@@ -69,39 +69,39 @@ func ResourceTencentCloudMqttMessageEnrichmentRule() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Rule execution actions.",
+				Description: "Rule execution actions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"message_expiry_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Message expiration interval.",
+							Description: "消息 expiration interval。",
 						},
 						"response_topic": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Response Topic.",
+							Description: "Response Topic。",
 						},
 						"correlation_data": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Correlation Data.",
+							Description: "Correlation Data。",
 						},
 						"user_property": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "User Properties.",
+							Description: "用户 Properties。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Key.",
+										Description: "键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Value.",
+										Description: "值",
 									},
 								},
 							},
@@ -113,39 +113,39 @@ func ResourceTencentCloudMqttMessageEnrichmentRule() *schema.Resource {
 			"priority": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Rule priority, smaller number means higher priority.",
+				Description: "Rule 优先级，smaller number means higher 优先级",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Policy status, 0: undefined; 1: active; 2: inactive, default is 2.",
+				Description: "Policy 状态，0: undefined; 1: 活跃; 2: inactive，默认为 2。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remark information. not exceeding 128 characters in length.",
+				Description: "备注 information. not exceeding 128 characters in length。",
 			},
 
 			// computed
 			"rule_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time, millisecond timestamp.",
+				Description: "创建时间，millisecond 时间戳。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time, millisecond timestamp.",
+				Description: "更新时间，millisecond 时间戳。",
 			},
 		},
 	}

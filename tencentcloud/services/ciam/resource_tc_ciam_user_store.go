@@ -26,19 +26,19 @@ func ResourceTencentCloudCiamUserStore() *schema.Resource {
 			"user_pool_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "User Store Name.",
+				Description: "用户 Store 名称",
 			},
 
 			"user_pool_desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "User Store Description.",
+				Description: "用户 Store 描述",
 			},
 
 			"user_pool_logo": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "User Store Logo.",
+				Description: "用户 Store Logo。",
 			},
 		},
 	}

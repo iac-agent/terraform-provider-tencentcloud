@@ -24,7 +24,7 @@ func ResourceTencentCloudSsmRotateProductSecret() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Secret name.",
+				Description: "Secret 名称",
 			},
 		},
 	}

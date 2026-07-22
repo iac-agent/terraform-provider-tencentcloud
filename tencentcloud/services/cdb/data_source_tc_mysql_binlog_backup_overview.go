@@ -19,61 +19,61 @@ func DataSourceTencentCloudMysqlBinlogBackupOverview() *schema.Resource {
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The type of cloud database product to be queried, currently only supports `mysql`.",
+				Description: "查询的云数据库产品类型，目前仅支持`mysql`。",
 			},
 
 			"binlog_backup_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total log backup capacity, including off-site log backup (unit is byte).",
+				Description: "总日志备份容量，包括异地日志备份（单位为字节）。",
 			},
 
 			"binlog_backup_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of log backups, including remote log backups.",
+				Description: "日志备份总数，包括远程日志备份。",
 			},
 
 			"remote_binlog_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Remote log backup capacity (in bytes).",
+				Description: "远程日志备份容量（以字节为单位）。",
 			},
 
 			"remote_binlog_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of remote log backups.",
+				Description: "远程日志备份的数量。",
 			},
 
 			"binlog_archive_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Archived log backup capacity (in bytes).",
+				Description: "归档日志备份容量（以字节为单位）。",
 			},
 
 			"binlog_archive_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of archived log backups.",
+				Description: "归档日志备份的数量。",
 			},
 
 			"binlog_standby_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Standard storage log backup capacity (in bytes).",
+				Description: "标准存储日志备份容量（以字节为单位）。",
 			},
 
 			"binlog_standby_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of standard storage log backups.",
+				Description: "标准存储日志备份的数量。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

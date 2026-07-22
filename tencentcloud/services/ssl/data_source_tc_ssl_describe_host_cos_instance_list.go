@@ -19,36 +19,36 @@ func DataSourceTencentCloudSslDescribeHostCosInstanceList() *schema.Resource {
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID to be deployed.",
+				Description: "证书 ID to be deployed。",
 			},
 
 			"resource_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Deploy resource type cos.",
+				Description: "Deploy 资源类型 cos。",
 			},
 
 			"is_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to query the cache, 1: Yes; 0: No, the default is the query cache, the cache is half an hour.",
+				Description: "是否query the cache，1: Yes; 0: No，the 默认为 the query cache，the cache is half an hour。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "List of filter parameters.",
+				Description: "列表 filter parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"filter_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter key.",
+							Description: "过滤参数键",
 						},
 						"filter_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter value.",
+							Description: "过滤参数值",
 						},
 					},
 				},
@@ -57,33 +57,33 @@ func DataSourceTencentCloudSslDescribeHostCosInstanceList() *schema.Resource {
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "COS instance listNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "COS instance listNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "domain name.",
+							Description: "域名 名称",
 						},
 						"cert_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Binded certificate IDNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Binded certificate IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Enabled: domain name online statusDisabled: Domain name offline status.",
+							Description: "已启用: 域名 名称 online statusDisabled: 域名 名称 offline 状态",
 						},
 						"bucket": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Reserve bucket nameNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Reserve 存储桶 nameNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Barrel areaNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Barrel areaNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 						},
 					},
 				},
@@ -92,25 +92,25 @@ func DataSourceTencentCloudSslDescribeHostCosInstanceList() *schema.Resource {
 			"async_total_num": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of asynchronous refreshNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "The total 数量 asynchronous refreshNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"async_offset": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Asynchronous refresh current execution numberNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Asynchronous refresh current execution numberNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"async_cache_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Current cache read timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Current cache read timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

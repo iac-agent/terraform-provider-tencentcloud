@@ -20,53 +20,53 @@ func DataSourceTencentCloudCssPadTemplates() *schema.Resource {
 			"templates": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Live pad template information.",
+				Description: "Live pad template information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"template_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Template id.",
+							Description: "Template id。",
 						},
 						"template_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Template name.",
+							Description: "模板名称",
 						},
 						"url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Pad content.",
+							Description: "Pad 内容",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Template create time.",
+							Description: "Template 创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Template modify time.",
+							Description: "Template 修改时间。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description info.",
+							Description: "描述 info。",
 						},
 						"wait_duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Stream interruption waiting time.Value range: 0-30000.Unit: milliseconds.",
+							Description: "Stream interruption waiting time.取值范围：0-30000.单位：milliseconds。",
 						},
 						"max_duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum pad duration.Value range: 0 - positive infinity.Unit: milliseconds.",
+							Description: "Maximum pad duration.取值范围：0 - positive infinity.单位：milliseconds。",
 						},
 						"type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Pad content type: 1: Image, 2: Video. Default value: 1.",
+							Description: "Pad 内容 类型: 1: Image，2: Video. 默认值：1。",
 						},
 					},
 				},
@@ -75,7 +75,7 @@ func DataSourceTencentCloudCssPadTemplates() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

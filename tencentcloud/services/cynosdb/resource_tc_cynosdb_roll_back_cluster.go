@@ -28,53 +28,53 @@ func ResourceTencentCloudCynosdbRollBackCluster() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of cluster.",
+				Description: "集群的ID。",
 			},
 
 			"rollback_strategy": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Backfile policy timeRollback - Backfile by point in time snapRollback - Backfile by backup file.",
+				Description: "回档策略 timeRollback - 按时间点回档 snapRollback - 按备份文件回档。",
 			},
 
 			"rollback_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Rollback ID.",
+				Description: "回滚 ID。",
 			},
 
 			"expect_time": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Expected rollback Time.",
+				Description: "预计回滚时间。",
 			},
 
 			"expect_time_thresh": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Expected Threshold (Obsolete).",
+				Description: "预期阈值（已过时）。",
 			},
 
 			"rollback_databases": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Database list.",
+				Description: "数据库列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"old_database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Old database name.",
+							Description: "旧数据库名称。",
 						},
 						"new_database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "New database name.",
+							Description: "新数据库名称。",
 						},
 					},
 				},
@@ -84,29 +84,29 @@ func ResourceTencentCloudCynosdbRollBackCluster() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Table list.",
+				Description: "表列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "New database name.",
+							Description: "新数据库名称。",
 						},
 						"tables": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Tables.",
+							Description: "桌子。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"old_table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Old table name.",
+										Description: "旧表名。",
 									},
 									"new_table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "New table name.",
+										Description: "新表名。",
 									},
 								},
 							},
@@ -119,7 +119,7 @@ func ResourceTencentCloudCynosdbRollBackCluster() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Rollback mode by time point, full: normal; Db: fast; Table: Extreme speed (default is normal).",
+				Description: "按时间点回滚模式，满：正常； Db：快；表：极速（默认为正常）。",
 			},
 		},
 	}

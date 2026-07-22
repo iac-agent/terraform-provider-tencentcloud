@@ -21,38 +21,38 @@ func DataSourceTencentCloudWafAttackLogHistogram() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain for query, all domain use all.",
+				Description: "域名 for query，all 域名 use all。",
 			},
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Begin time.",
+				Description: "开始时间。",
 			},
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End time.",
+				Description: "结束时间。",
 			},
 			"query_string": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Lucene grammar.",
+				Description: "Lucene grammar。",
 			},
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The statistics detail.",
+				Description: "The statistics detail。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The count of logs.",
+							Description: "The count of logs。",
 						},
 						"time_stamp": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Timestamp.",
+							Description: "时间戳。",
 						},
 					},
 				},
@@ -60,17 +60,17 @@ func DataSourceTencentCloudWafAttackLogHistogram() *schema.Resource {
 			"period": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Period.",
+				Description: "周期",
 			},
 			"total_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "total count.",
+				Description: "总数",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

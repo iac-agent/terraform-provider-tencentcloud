@@ -19,36 +19,36 @@ func DataSourceTencentCloudGaapResourcesByTag() *schema.Resource {
 			"tag_key": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Tag key.",
+				Description: "标签键",
 			},
 
 			"tag_value": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Tag value.",
+				Description: "标签值",
 			},
 
 			"resource_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Resource type, where:Proxy represents the proxy;ProxyGroup represents a proxy group;RealServer represents the Real Server.If this field is not specified, all resources under the label will be queried.",
+				Description: "资源类型，where:Proxy represents the proxy;ProxyGroup represents a proxy group;RealServer represents the Real Server.If this field is not specified，all resources under the 标签 will be queried。",
 			},
 
 			"resource_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of resources corresponding to labels.",
+				Description: "列表 resources corresponding to labels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource type, where:Proxy represents the proxy,ProxyGroup represents a proxy group,RealServer represents the real server.",
+							Description: "资源类型，where:Proxy represents the proxy,ProxyGroup represents a proxy group,RealServer represents the real server。",
 						},
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource Id.",
+							Description: "Resource Id。",
 						},
 					},
 				},
@@ -57,7 +57,7 @@ func DataSourceTencentCloudGaapResourcesByTag() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

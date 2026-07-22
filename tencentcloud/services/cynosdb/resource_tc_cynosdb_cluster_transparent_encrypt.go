@@ -28,31 +28,31 @@ func ResourceTencentCloudCynosdbClusterTransparentEncrypt() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"key_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Key type (cloud, custom).",
+				Description: "密钥类型（云、自定义）。",
 			},
 
 			"key_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Key Id.",
+				Description: "密钥 ID。",
 			},
 
 			"key_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Key region.",
+				Description: "重点区域。",
 			},
 
 			"is_open_global_encryption": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable global encryption.",
+				Description: "是否启用全局加密。",
 			},
 		},
 	}

@@ -19,19 +19,19 @@ func DataSourceTencentCloudEbBus() *schema.Resource {
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "According to which field to sort the returned results, the following fields are supported: `created_at` (creation time), `updated_at` (modification time).",
+				Description: "According to which field to sort the returned results，the following fields are supported: `created_at` (创建时间)，`updated_at` (修改时间)。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Return results in ascending or descending order, optional values ASC (ascending) and DESC (descending).",
+				Description: "Return results in ascending or 降序，可选 values ASC (ascending) and DESC (descending)。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions. The upper limit of Filters per request is 10, and the upper limit of Filter.Values 5.",
+				Description: "Filter conditions. The upper 限制 of Filters per request is 10，and the upper 限制 of Filter.Values 5。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"values": {
@@ -40,12 +40,12 @@ func DataSourceTencentCloudEbBus() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "One or more filter values.",
+							Description: "一个或多个过滤值",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The name of the filter key.",
+							Description: "The 名称 filter 键",
 						},
 					},
 				},
@@ -54,59 +54,59 @@ func DataSourceTencentCloudEbBus() *schema.Resource {
 			"event_buses": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "event set information.",
+				Description: "event set information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mod_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "update time.",
+							Description: "更新时间。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Event set description, unlimited character type, description within 200 characters.",
+							Description: "Event set 描述，unlimited character 类型，描述 within 200 characters。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 						"event_bus_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Event set name, which can only contain letters, numbers, underscores, hyphens, starts with a letter and ends with a number or letter, 2~60 characters.",
+							Description: "Event set 名称，which can only contain letters，numbers，underscores，hyphens，starts with a letter and ends with a number or letter，2~60 characters。",
 						},
 						"event_bus_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "event bus Id.",
+							Description: "event bus Id。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "event bus type.",
+							Description: "event bus 类型",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Billing mode, note: this field may return null, indicating that no valid value can be obtained.",
+							Description: "Billing 模式，note: this field may return null，indicating that no valid 值 can be obtained。",
 						},
 						"connection_briefs": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Connector basic information, note: this field may return null, indicating that no valid value can be obtained.",
+							Description: "Connector basic information，note: this field may return null，indicating that no valid 值 can be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Connector type, note: this field may return null, indicating that no valid value can be obtained.",
+										Description: "Connector 类型，note: this field may return null，indicating that no valid 值 can be obtained。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Connector status, note: this field may return null, indicating that no valid value can be obtained.",
+										Description: "Connector 状态，note: this field may return null，indicating that no valid 值 can be obtained。",
 									},
 								},
 							},
@@ -114,18 +114,18 @@ func DataSourceTencentCloudEbBus() *schema.Resource {
 						"target_briefs": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Target brief information, note: this field may return null, indicating that no valid value can be obtained.",
+							Description: "Target brief information，note: this field may return null，indicating that no valid 值 can be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"target_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Target ID.",
+										Description: "Target ID。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Target type.",
+										Description: "Target 类型",
 									},
 								},
 							},
@@ -137,7 +137,7 @@ func DataSourceTencentCloudEbBus() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

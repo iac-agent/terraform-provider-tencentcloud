@@ -16,29 +16,29 @@ func DataSourceTencentCloudGaapSecurityPolices() *schema.Resource {
 			"id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the security policy to be queried.",
+				Description: "ID security policy to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"proxy_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID of the GAAP proxy.",
+				Description: "ID GAAP proxy。",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Status of the security policy.",
+				Description: "状态 security policy。",
 			},
 			"action": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Default policy.",
+				Description: "Default policy。",
 			},
 		},
 	}

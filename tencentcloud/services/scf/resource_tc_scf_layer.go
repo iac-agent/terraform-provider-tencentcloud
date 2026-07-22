@@ -26,24 +26,24 @@ func LayerContent() map[string]*schema.Schema {
 		"cos_bucket_name": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "Cos bucket name of the SCF layer, such as `cos-1234567890`, conflict with `zip_file`.",
+			Description: "Cos 存储桶 名称 SCF layer，such as `cos-1234567890`，conflict with `zip_file`。",
 		},
 		"cos_object_name": {
 			Type:         schema.TypeString,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateStringSuffix(".zip", ".jar"),
-			Description:  "Cos object name of the SCF layer, should have suffix `.zip` or `.jar`, conflict with `zip_file`.",
+			Description:  "Cos object 名称 SCF layer，should have suffix `.zip` or `.jar`，conflict with `zip_file`。",
 		},
 		"cos_bucket_region": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "Cos bucket region of the SCF layer, conflict with `zip_file`.",
+			Description: "Cos 存储桶 地域 of the SCF layer，conflict with `zip_file`。",
 		},
 		// zip upload
 		"zip_file": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "Zip file of the SCF layer, conflict with `cos_bucket_name`, `cos_object_name`, `cos_bucket_region`.",
+			Description: "Zip file of the SCF layer，conflict with `cos_bucket_name`，`cos_object_name`，`cos_bucket_region`。",
 		},
 	}
 }
@@ -62,22 +62,22 @@ func ResourceTencentCloudScfLayer() *schema.Resource {
 			"layer_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The name of layer.",
+				Description: "名称 layer。",
 			},
 			"compatible_runtimes": {
 				Type:     schema.TypeList,
 				Required: true,
 				Elem: &schema.Schema{
 					Type:        schema.TypeString,
-					Description: "The name of runtime",
+					Description: "名称 runtime",
 				},
-				Description: "The compatible runtimes of layer.",
+				Description: "The compatible runtimes of layer。",
 			},
 			"content": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "The source code of layer.",
+				Description: "The 来源 代码 of layer。",
 				Elem: &schema.Resource{
 					Schema: LayerContent(),
 				},
@@ -85,39 +85,39 @@ func ResourceTencentCloudScfLayer() *schema.Resource {
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The description of layer.",
+				Description: "描述 layer。",
 			},
 			"license_info": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The license info of layer.",
+				Description: "The license info of layer。",
 			},
 
 			//compute
 			"layer_version": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The version of layer.",
+				Description: "The 版本 of layer。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The create time of layer.",
+				Description: "The 创建时间 of layer。",
 			},
 			"code_sha_256": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The code type of layer.",
+				Description: "The 代码 类型 layer。",
 			},
 			"location": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The download location url of layer.",
+				Description: "The download location URL of layer。",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The current status of layer.",
+				Description: "The current 状态 layer。",
 			},
 		},
 	}

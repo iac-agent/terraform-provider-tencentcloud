@@ -19,88 +19,88 @@ func DataSourceTencentCloudWedataTaskInstanceExecutions() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID to which it belongs.",
+				Description: "项目 ID to which it belongs。",
 			},
 
 			"instance_key": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance unique identifier, can be obtained via ListInstances.",
+				Description: "Instance unique identifier，can be obtained via ListInstances。",
 			},
 
 			"time_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "**Time zone** timeZone, the time zone of the input time string, default UTC+8.",
+				Description: "**时区** timeZone，the 时区 of the input time string，default UTC+8。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance details.",
+				Description: "Instance details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total count of results.",
+							Description: "总数 of results。",
 						},
 						"total_page_number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total number of pages.",
+							Description: "Total 数量 pages。",
 						},
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Record list.",
+							Description: "Record list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Instance unique identifier.",
+										Description: "Instance unique identifier。",
 									},
 									"life_round_num": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Instance lifecycle round number, identifying a specific execution of the instance. For example: The first run of a periodic instance has a round number of 0; if the user reruns the instance later, the second execution will have a round number of 1.",
+										Description: "Instance lifecycle round number，identifying a specific execution of the instance. For example: The first run of a periodic instance has a round 数量 0; if the 用户 reruns the instance later，the second execution will have a round 数量 1。",
 									},
 									"instance_state": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Instance state, - WAIT_EVENT: Waiting for event, - WAIT_UPSTREAM: Waiting for upstream, - WAIT_RUN: Waiting to run, - RUNNING: Running, - SKIP_RUNNING: Skip running, - FAILED_RETRY: Failed and retrying, - EXPIRED: Failed, - COMPLETED: Completed.",
+										Description: "Instance state，- WAIT_EVENT: Waiting for event，- WAIT_UPSTREAM: Waiting for upstream，- WAIT_RUN: Waiting to run，- RUNNING: Running，- SKIP_RUNNING: Skip running，- FAILED_RETRY: Failed and retrying，- EXPIRED: Failed，- COMPLETED: Completed。",
 									},
 									"run_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Instance run trigger type, - RERUN: Rerun, - ADDITION: Backfill, - PERIODIC: Periodic, - APERIODIC: Non-periodic, - RERUN_SKIP_RUN: Rerun - Skip run, - ADDITION_SKIP_RUN: Backfill - Skip run, - PERIODIC_SKIP_RUN: Periodic - Skip run, - APERIODIC_SKIP_RUN: Non-periodic - Skip run, - MANUAL_TRIGGER: Manual trigger, - RERUN_MANUAL_TRIGGER: Manual trigger - Rerun.",
+										Description: "Instance run trigger 类型，- RERUN: Rerun，- ADDITION: Backfill，- PERIODIC: Periodic，- APERIODIC: Non-periodic，- RERUN_SKIP_RUN: Rerun - Skip run，- ADDITION_SKIP_RUN: Backfill - Skip run，- PERIODIC_SKIP_RUN: Periodic - Skip run，- APERIODIC_SKIP_RUN: Non-periodic - Skip run，- MANUAL_TRIGGER: Manual trigger，- RERUN_MANUAL_TRIGGER: Manual trigger - Rerun。",
 									},
 									"tries": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Failure retry count.",
+										Description: "Failure retry count。",
 									},
 									"execution_phase_list": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Instance execution lifecycle list.",
+										Description: "Instance execution lifecycle list。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"start_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Start time of this state.",
+													Description: "开始时间 of this state。",
 												},
 												"detail_state": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Instance lifecycle phase state, - WAIT_UPSTREAM: Waiting for event/upstream, - WAIT_RUN: Waiting to run, - RUNNING: Running, - COMPLETE: Final state - Completed, - FAILED: Final state - Failed and retrying, - EXPIRED: Final state - Failed, - SKIP_RUNNING: Final state - Branch skipped by upstream branch node, - HISTORY: For compatibility with historical instances before 2024-03-30, instances after that date do not need to pay attention to this enum type.",
+													Description: "Instance lifecycle phase state，- WAIT_UPSTREAM: Waiting for event/upstream，- WAIT_RUN: Waiting to run，- RUNNING: Running，- COMPLETE: Final state - Completed，- FAILED: Final state - Failed and retrying，- EXPIRED: Final state - Failed，- SKIP_RUNNING: Final state - Branch skipped by upstream branch node，- HISTORY: For compatibility with historical instances before 2024-03-30，instances after that date do not need to pay attention to this enum 类型",
 												},
 												"end_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "End time of this state.",
+													Description: "结束时间 of this state。",
 												},
 											},
 										},
@@ -108,7 +108,7 @@ func DataSourceTencentCloudWedataTaskInstanceExecutions() *schema.Resource {
 									"cost_time": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Cost time, in milliseconds.",
+										Description: "Cost time，（毫秒）。",
 									},
 								},
 							},
@@ -116,12 +116,12 @@ func DataSourceTencentCloudWedataTaskInstanceExecutions() *schema.Resource {
 						"page_number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Page number.",
+							Description: "页码",
 						},
 						"page_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Page size.",
+							Description: "每页数量",
 						},
 					},
 				},
@@ -130,7 +130,7 @@ func DataSourceTencentCloudWedataTaskInstanceExecutions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

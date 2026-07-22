@@ -28,18 +28,18 @@ func ResourceTencentCloudCamTagRoleAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Label.",
+				Description: "标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Label.",
+							Description: "标签",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Label.",
+							Description: "标签",
 						},
 					},
 				},
@@ -50,7 +50,7 @@ func ResourceTencentCloudCamTagRoleAttachment() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Character name, at least one input with the character ID.",
+				Description: "Character 名称，at least one input with the character ID。",
 			},
 
 			"role_id": {
@@ -58,7 +58,7 @@ func ResourceTencentCloudCamTagRoleAttachment() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Character ID, at least one input with the character name.",
+				Description: "Character ID，at least one input with the character 名称",
 			},
 		},
 	}

@@ -29,63 +29,63 @@ func ResourceTencentCloudOrganizationPolicySubAccountAttachment() *schema.Resour
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Policy ID.",
+				Description: "Policy ID。",
 			},
 
 			"org_sub_account_uin": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Organization administrator sub account uin list.",
+				Description: "Organization administrator sub 账号 uin list。",
 			},
 
 			"member_uin": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Organization member uin.",
+				Description: "Organization member uin。",
 			},
 
 			"policy_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Policy name.",
+				Description: "Policy 名称",
 			},
 
 			"identity_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Manage Identity ID.",
+				Description: "Manage Identity ID。",
 			},
 
 			"identity_role_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Identity role name.",
+				Description: "Identity 角色 名称",
 			},
 
 			"identity_role_alias_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Identity role alias name.",
+				Description: "Identity 角色 alias 名称",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "创建时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time.",
+				Description: "更新时间。",
 			},
 
 			"org_sub_account_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Organization administrator sub account name.",
+				Description: "Organization administrator sub 账号 名称",
 			},
 		},
 	}

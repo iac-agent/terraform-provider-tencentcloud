@@ -22,19 +22,19 @@ func DataSourceTencentCloudTatAgent() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of instance IDs for the query.",
+				Description: "列表 instance IDs for the query。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions. agent-status - String - Required: No - (Filter condition) Filter by agent status. Valid values: Online, Offline. environment - String - Required: No - (Filter condition) Filter by the agent environment. Valid value: Linux. instance-id - String - Required: No - (Filter condition) Filter by the instance ID. Up to 10 Filters allowed in one request. For each filter, five Filter.Values can be specified. InstanceIds and Filters cannot be specified at the same time.",
+				Description: "Filter conditions. agent-状态 - String - 必填: No - (Filter condition) Filter by agent 状态 有效值：Online，Offline. environment - String - 必填: No - (Filter condition) Filter by the agent environment. Valid 值: Linux. instance-id - String - 必填: No - (Filter condition) Filter by the instance ID. Up to 10 Filters allowed in one request. For each filter，five Filter.Values can be specified. InstanceIds and Filters cannot be specified at the same time。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudTatAgent() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter values of the field.",
+							Description: "Filter values of the field。",
 						},
 					},
 				},
@@ -51,33 +51,33 @@ func DataSourceTencentCloudTatAgent() *schema.Resource {
 			"automation_agent_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of agent message.",
+				Description: "列表 agent 消息",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "InstanceId.",
+							Description: "实例 ID",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Agent version.",
+							Description: "Agent 版本",
 						},
 						"last_heartbeat_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Time of last heartbeat.",
+							Description: "Time of last heartbeat。",
 						},
 						"agent_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Agent status.Ranges:&lt;li&gt; Online:Online&lt;li&gt; Offline:Offline.",
+							Description: "Agent 状态Ranges:&lt;li&gt; Online:Online&lt;li&gt; Offline:Offline。",
 						},
 						"environment": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Environment for Agent.Ranges:&lt;li&gt; Linux:Linux instance&lt;li&gt; Windows:Windows instance.",
+							Description: "Environment for Agent.Ranges:&lt;li&gt; Linux:Linux instance&lt;li&gt; Windows:Windows instance。",
 						},
 						"support_features": {
 							Type: schema.TypeSet,
@@ -85,7 +85,7 @@ func DataSourceTencentCloudTatAgent() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "List of feature Agent support.",
+							Description: "列表 feature Agent support。",
 						},
 					},
 				},
@@ -94,7 +94,7 @@ func DataSourceTencentCloudTatAgent() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

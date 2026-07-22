@@ -18,18 +18,18 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter query criteria list.",
+				Description: "Filter query criteria list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter name.",
+							Description: "过滤名称",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter values.",
+							Description: "Filter values。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -41,18 +41,18 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 			"tag_filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Tag filters.",
+				Description: "标签 filters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Tag values.",
+							Description: "标签 values。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -64,84 +64,84 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance list.",
+				Description: "Instance list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "version.",
+							Description: "版本",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance type. EXPERIMENT: trial version; BASIC: Basic Edition; PRO: Professional Edition; PLATINUM: Platinum Edition.",
+							Description: "实例类型 EXPERIMENT: trial 版本; BASIC: Basic Edition; PRO: Professional Edition; PLATINUM: Platinum Edition。",
 						},
 						"instance_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance status. RUNNING, Running; MAINTAINING: Under maintenance; ABNORMAL: abnormal; OVERDUE: arrears; DESTROYED: Deleted; CREATING: Creating; MODIFYING: In the process of transformation; CREATE_FAILURE: Creation failed; MODIFY_FAILURE: Transformation failed; DELETING: deleting.",
+							Description: "实例状态 RUNNING，Running; MAINTAINING: Under maintenance; ABNORMAL: abnormal; OVERDUE: arrears; DESTROYED: Deleted; CREATING: Creating; MODIFYING: In the process of transformation; CREATE_FAILURE: Creation failed; MODIFY_FAILURE: Transformation failed; DELETING: deleting。",
 						},
 						"topic_num_limit": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Maximum number of instance topics.",
+							Description: "最大instance topics。",
 						},
 						"group_num_limit": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Maximum number of instance consumer groups.",
+							Description: "最大instance consumer groups。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pay mode. - POSTPAID: postpaid; - PREPAID: prepaid.",
+							Description: "付费模式 - POSTPAID: postpaid; - PREPAID: prepaid。",
 						},
 						"expiry_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Expiration timestamp, **Unix timestamp (in milliseconds)**.",
+							Description: "Expiration 时间戳，**Unix 时间戳 (in milliseconds)**。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 						"topic_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Topic nums.",
+							Description: "Topic nums。",
 						},
 						"group_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Group nums.",
+							Description: "Group nums。",
 						},
 						"tag_list": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Tag list.",
+							Description: "标签列表",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -149,32 +149,32 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 						"sku_code": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Product Specifications.",
+							Description: "Product Specifications。",
 						},
 						"tps_limit": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "TPS current limit value.",
+							Description: "TPS current 限制 值",
 						},
 						"scaled_tps_limit": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Elastic TPS current limit value.",
+							Description: "Elastic TPS current 限制 值",
 						},
 						"message_retention": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Message retention time, in hours.",
+							Description: "消息 retention time，in hours。",
 						},
 						"max_message_delay": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Maximum delay message duration in hours.",
+							Description: "Maximum 延迟 消息 duration in hours。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Whether to renew automatically, only for prepaid clusters (0: not renew automatically; 1: renew automatically).",
+							Description: "是否renew automatically，only for prepaid clusters (0: not renew automatically; 1: renew automatically)。",
 						},
 					},
 				},
@@ -183,7 +183,7 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

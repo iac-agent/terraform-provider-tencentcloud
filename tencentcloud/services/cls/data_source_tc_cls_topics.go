@@ -18,18 +18,18 @@ func DataSourceTencentCloudClsTopics() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "<li>topicName: Filter by **log topic name**. Fuzzy match is implemented by default. You can use the `PreciseSearch` parameter to set exact match. Type: String. Required. No. <br><li>logsetName: Filter by **logset name**. Fuzzy match is implemented by default. You can use the `PreciseSearch` parameter to set exact match. Type: String. Required: No. <br><li>topicId: Filter by **log topic ID**. Type: String. Required: No. <br><li>logsetId: Filter by **logset ID**. You can call `DescribeLogsets` to query the list of created logsets or log in to the console to view them. You can also call `CreateLogset` to create a logset. Type: String. Required: No. <br><li>tagKey: Filter by **tag key**. Type: String. Required: No. <br><li>tag:tagKey: Filter by **tag key-value pair**. The `tagKey` should be replaced with a specified tag key, such as `tag:exampleKey`. Type: String. Required: No. <br><li>storageType: Filter by **log topic storage type**. Valid values: `hot` (standard storage) and `cold` (IA storage). Type: String. Required: No. Each request can have up to 10 `Filters` and 100 `Filter.Values`.",
+				Description: "<li>topicName：按**日志主题名称**过滤。默认实现模糊匹配。您可以使用“PreciseSearch”参数来设置精确匹配。类型：字符串。必需的。否。<br><li>logsetName：按**日志集名称**过滤。默认实现模糊匹配。您可以使用“PreciseSearch”参数来设置精确匹配。类型：字符串。必填：否。<br><li>topicId：按**日志主题 ID** 过滤。类型：字符串。必需：否。<br><li>logsetId：按 **日志集 ID** 过滤。您可以调用“DescribeLogsets”查询已创建的日志集列表或登录控制台查看。您还可以调用 CreateLogset 创建日志集。类型：字符串。必填：否。 <br><li>tagKey：按**标签键**过滤。类型：字符串。必填：否。<br><li>标签:tagKey：按**标签键值对**过滤。 `tagKey` 应替换为指定的标签键，例如 `标签:exampleKey`。类型：字符串。必需：否。<br><li>存储类型：按**日志主题存储类型**过滤。有效值：“热”（标准存储）和“冷”（IA 存储）。类型：字符串。必需：否。每个请求最多可以有 10 个“Filters”和 100 个“Filter.Values”。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "要过滤的字段。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Value to be filtered.",
+							Description: "要过滤的值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -41,76 +41,76 @@ func DataSourceTencentCloudClsTopics() *schema.Resource {
 			"precise_search": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Match mode for `Filters` fields.\n- 0: Fuzzy match for `topicName` and `logsetName`. This is the default value.\n- 1: Exact match for `topicName`.\n- 2: Exact match for `logsetName`.\n- 3: Exact match for `topicName` and `logsetName`.",
+				Description: "`Filters` 字段的匹配模式。\n- 0: `topicName` 和 `logsetName` 的模糊匹配。这是默认值。\n- 1：“topicName”精确匹配。\n- 2：“logsetName”精确匹配。\n- 3：“topicName”和“logsetName”精确匹配。",
 			},
 
 			"biz_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Topic type\n- 0 (default): Log topic.\n- 1: Metric topic.",
+				Description: "主题类型\n- 0（默认）：日志主题。\n- 1：指标主题。",
 			},
 
 			"topics": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Log topic list.",
+				Description: "记录主题列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"logset_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Logset ID.",
+							Description: "日志集 ID。",
 						},
 						"topic_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Topic ID.",
+							Description: "主题 ID。",
 						},
 						"topic_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Topic Name.",
+							Description: "主题名称。",
 						},
 						"partition_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Number of topic partitions.",
+							Description: "主题分区的数量。",
 						},
 						"index": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether the topic has indexing enabled (the topic type must be log topic).",
+							Description: "主题是否启用索引（主题类型必须是日志主题）。",
 						},
 						"assumer_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Cloud product identifier. When the topic is created by other cloud products, this field displays the name of the cloud product, such as CDN, TKE.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "云产品标识符。当主题是由其他云产品创建时，该字段显示云产品的名称，例如CDN、TKE。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time.",
+							Description: "创作时间。",
 						},
 						"status": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether the topic has log collection enabled. true: collection enabled; false: collection disabled.Log collection is enabled by default when creating a log topic, and this field can be modified by calling ModifyTopic through the SDK.The console currently does not support modifying this parameter.",
+							Description: "主题是否启用日志收集。 true：启用收集； false：禁用采集。创建日志主题时默认开启日志采集，可以通过SDK调用ModifyTopic修改该字段。控制台目前不支持修改该参数。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Tag information bound to the topicNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "主题绑定的标签信息注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The tag key.\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "标签键。\n注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The tag value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "标签值。\n注意：该字段可能返回null，表示取不到有效值。",
 									},
 								},
 							},
@@ -118,47 +118,47 @@ func DataSourceTencentCloudClsTopics() *schema.Resource {
 						"auto_split": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether automatic split is enabled for this topic\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "该主题是否启用自动拆分\n注意：该字段可能返回“null”，表示取不到有效值。",
 						},
 						"max_split_partitions": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Maximum number of partitions to split into for this topic if automatic split is enabled\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "如果启用自动拆分，该主题拆分的最大分区数\n注意：该字段可能返回“null”，表示无法获取有效值。",
 						},
 						"storage_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Storage type of the topicNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "topic的存储类型注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)\nNote: This field may return `null`, indicating that no valid value was found.",
+							Description: "生命周期以天为单位。取值范围：1-3600（3640表示永久保留）\n注意：该字段可能返回“null”，表示未找到有效值。",
 						},
 						"sub_assumer_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Cloud product sub-identifier. If the log topic is created by another cloud product, this field returns the name of the cloud product and its log type, such as `TKE-Audit` or `TKE-Event`. Some products only return the cloud product identifier (`AssumerName`), without this field.\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "云产品子标识符。如果日志主题是由其他云产品创建的，则此字段返回云产品的名称及其日志类型，例如“TKE-Audit”或“TKE-Event”。部分产品仅返回云产品标识（`AssumerName`），没有此字段。\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"describes": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Topic description\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "主题描述\n注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"hot_period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Enable log sinking, with the lifecycle of standard storage, where hotPeriod < Period.For standard storage, hotPeriod is used, and for infrequent access storage, it is Period-hotPeriod. (The topic type must be a log topic)HotPeriod=0 indicates that log sinking is not enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "启用日志下沉，采用标准存储的生命周期，其中hotPeriod < 周期。对于标准存储，使用hotPeriod，对于不频繁访问的存储，使用Period-hotPeriod。 （主题类型必须是日志主题）HotPeriod=0表示不开启日志下沉。\n注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"biz_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Topic type.\n- 0:  log  Topic  \n- 1: Metric Topic\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Topic类型。\n- 0：log Topic \n- 1：Metric Topic\n注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"is_web_tracking": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Free authentication switch. false: disabled; true: enabled.After enabling, anonymous access to the log topic will be supported for specified operations. For details, please refer to Log Topic (https://intl.cloud.tencent.com/document/product/614/41035?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "免费认证开关。 false：禁用； true：启用。启用后，指定操作将支持匿名访问日志主题。具体请参见日志主题（https://intl.cloud.tencent.com/document/product/614/41035?from_cn_redirect=1）。注意：该字段可能返回null，表示取不到有效值。",
 						},
 					},
 				},
@@ -167,7 +167,7 @@ func DataSourceTencentCloudClsTopics() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

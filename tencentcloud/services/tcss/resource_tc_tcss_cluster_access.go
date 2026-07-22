@@ -33,27 +33,27 @@ func ResourceTencentCloudTcssClusterAccess() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cluster Id.",
+				Description: "Cluster Id。",
 			},
 
 			"switch_on": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable cluster defend status.",
+				Description: "是否enable cluster defend 状态",
 			},
 
 			// computed
 			"accessed_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Cluster access status.",
+				Description: "Cluster access 状态",
 			},
 
 			"defender_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Cluster defender status.",
+				Description: "Cluster defender 状态",
 			},
 		},
 	}

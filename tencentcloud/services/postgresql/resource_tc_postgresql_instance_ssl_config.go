@@ -27,25 +27,25 @@ func ResourceTencentCloudPostgresqlInstanceSslConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Postgres instance ID.",
+				Description: "Postgres instance ID。",
 			},
 
 			"ssl_enabled": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Enable or disable SSL. true: enable; false: disable.",
+				Description: "启用或禁用SSL. true: enable; false: disable。",
 			},
 
 			"connect_address": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The unique connection address protected by SSL certificate, which can be set as the internal and external IP address if it is the primary instance; If it is a read-only instance, it can be set as the instance IP or read-only group IP. This parameter is mandatory when enabling SSL or modifying SSL protected connection addresses; When SSL is turned off, this parameter will be ignored.",
+				Description: "The unique connection 地址 protected by SSL certificate，which can be set as the internal and external IP 地址 if it is the primary instance; If it is a read-only instance，it can be set as the instance IP or read-only group IP. This parameter is mandatory when enabling SSL or modifying SSL protected connection addresses; When SSL is turned off，this parameter will be ignored。",
 			},
 
 			"ca_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Cloud root certificate download link.",
+				Description: "Cloud root certificate download link。",
 			},
 		},
 	}

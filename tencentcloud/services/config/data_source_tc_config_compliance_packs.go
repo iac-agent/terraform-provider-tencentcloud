@@ -17,13 +17,13 @@ func DataSourceTencentCloudConfigCompliancePacks() *schema.Resource {
 			"compliance_pack_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Compliance pack name for filtering.",
+				Description: "Compliance pack 名称 for filtering。",
 			},
 
 			"risk_level": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Risk level list for filtering. Valid values: 1 (high risk), 2 (medium risk), 3 (low risk).",
+				Description: "风险等级 list for filtering. 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -32,13 +32,13 @@ func DataSourceTencentCloudConfigCompliancePacks() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Compliance pack status for filtering. Valid values: ACTIVE, NO_ACTIVE.",
+				Description: "Compliance pack 状态 for filtering. 有效值：ACTIVE，NO_ACTIVE。",
 			},
 
 			"compliance_result": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Compliance result list for filtering. Valid values: COMPLIANT, NON_COMPLIANT.",
+				Description: "Compliance 结果 list for filtering. 有效值：COMPLIANT，NON_COMPLIANT。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -47,59 +47,59 @@ func DataSourceTencentCloudConfigCompliancePacks() *schema.Resource {
 			"order_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sort type. Valid values: desc (descending), asc (ascending).",
+				Description: "Sort 类型 有效值：desc (descending)，asc (ascending)。",
 			},
 
 			"compliance_pack_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Compliance pack list.",
+				Description: "Compliance pack list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"compliance_pack_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance pack ID.",
+							Description: "Compliance pack ID。",
 						},
 						"compliance_pack_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance pack name.",
+							Description: "Compliance pack 名称",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance pack status. Valid values: ACTIVE, NO_ACTIVE.",
+							Description: "Compliance pack 状态 有效值：ACTIVE，NO_ACTIVE。",
 						},
 						"risk_level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Risk level. Valid values: 1 (high risk), 2 (medium risk), 3 (low risk).",
+							Description: "风险等级 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 						},
 						"compliance_result": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance result. Valid values: COMPLIANT, NON_COMPLIANT.",
+							Description: "Compliance 结果 有效值：COMPLIANT，NON_COMPLIANT。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance pack description.",
+							Description: "Compliance pack 描述",
 						},
 						"rule_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of rules in the compliance pack.",
+							Description: "数量 rules in the compliance pack。",
 						},
 						"no_compliant_names": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of non-compliant rule names.",
+							Description: "列表 non-compliant rule names。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -111,7 +111,7 @@ func DataSourceTencentCloudConfigCompliancePacks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

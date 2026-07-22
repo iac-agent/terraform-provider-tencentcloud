@@ -21,28 +21,28 @@ func DataSourceTencentCloudAuditKeyAlias() *schema.Resource {
 			"region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Region.",
+				Description: "地域",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"audit_key_alias_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of available key alias supported by audit.",
+				Description: "列表 available 键 alias supported by audit。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Key ID.",
+							Description: "键 ID。",
 						},
 						"key_alias": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Key alias.",
+							Description: "键 alias。",
 						},
 					},
 				},

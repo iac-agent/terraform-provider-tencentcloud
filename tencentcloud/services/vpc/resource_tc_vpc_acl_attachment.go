@@ -25,13 +25,13 @@ func ResourceTencentCloudVpcAclAttachment() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateNotEmpty,
-				Description:  "ID of the attached ACL.",
+				Description:  "ID attached ACL。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The Subnet instance ID.",
+				Description: "The 子网实例 ID",
 			},
 		},
 	}

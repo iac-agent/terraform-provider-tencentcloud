@@ -21,13 +21,13 @@ func ResourceTencentCloudTeoCreateCLSIndexOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 			"task_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Realtime log delivery task ID.",
+				Description: "Realtime log delivery task ID。",
 			},
 		},
 	}

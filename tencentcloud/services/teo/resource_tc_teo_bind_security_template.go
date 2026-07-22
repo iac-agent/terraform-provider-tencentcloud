@@ -30,21 +30,21 @@ func ResourceTencentCloudTeoBindSecurityTemplate() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Site ID of the policy template to be bound to or unbound from.",
+				Description: "站点 ID policy template to be bound to or unbound from。",
 			},
 
 			"entity": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "List of domain names to bind to/unbind from a policy template.",
+				Description: "列表 域名 names to bind to/unbind from a policy template。",
 			},
 
 			"template_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Specifies the ID of the policy template or the site global policy to be bound or unbound.\n<li>To bind to a policy template, or unbind from it, specify the policy template ID.</li>.\n<li>To bind to the site's global policy, or unbind from it, use the @ZoneLevel@domain parameter value.</li>.\n\nNote: After unbinding, the domain name will use an independent policy and rule quota will be calculated separately. Please make sure there is sufficient rule quota before unbinding.",
+				Description: "指定ID of the policy template or the site global policy to be bound or unbound.\n<li>To bind to a policy template，or unbind from it，指定policy 模板 ID</li>.\n<li>To bind to the site's global policy，or unbind from it，use the @ZoneLevel@域名 parameter 值</li>.\n\nNote: After unbinding，the 域名 名称 will use an independent policy and rule quota will be calculated separately. Please make sure there is sufficient rule quota before unbinding。",
 			},
 
 			"operate": {
@@ -52,7 +52,7 @@ func ResourceTencentCloudTeoBindSecurityTemplate() *schema.Resource {
 				ForceNew:    true,
 				Optional:    true,
 				Computed:    true,
-				Description: "Unbind operation option. valid values: `unbind-keep-policy`: unbind a domain name from the policy template while retaining the current policy. `unbind-use-default`: unbind a domain name from the policy template and use the default blank policy. default value: `unbind-keep-policy`.",
+				Description: "Unbind operation option. 有效值：`unbind-keep-policy`: unbind a 域名 名称 from the policy template while retaining the current policy. `unbind-use-default`: unbind a 域名 名称 from the policy template and use the default blank policy. 默认值：`unbind-keep-policy`。",
 			},
 
 			"over_write": {
@@ -60,13 +60,13 @@ func ResourceTencentCloudTeoBindSecurityTemplate() *schema.Resource {
 				ForceNew:    true,
 				Optional:    true,
 				Computed:    true,
-				Description: "If the passed-in domain is already bound to a policy template (including site-level protection policies), setting this parameter indicates whether to replace that template. The default value is true. Supported values are: `true`: Replace the currently bound template for the domain. `false`: Do not replace the currently bound template for the domain. Note: When set to false, if the passed-in domain is already bound to a policy template, the API will return an error; site-level protection policies are also a type of policy template.",
+				Description: "If the passed-in 域名 is already bound to a policy template (including site-级别 protection policies)，setting this parameter 表示是否replace that template. The 默认值为 true. Supported values are: `true`: Replace the currently bound template for the 域名 `false`: Do not replace the currently bound template for the 域名 Note: When set to false，if the passed-in 域名 is already bound to a policy template，the API will return an 错误; site-级别 protection policies are also a 类型 policy template。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance configuration delivery status, the possible values are: `online`: the configuration has taken effect; `fail`: the configuration failed; `process`: the configuration is being delivered.",
+				Description: "Instance configuration delivery 状态，the possible values are: `online`: the configuration has taken effect; `fail`: the configuration failed; `process`: the configuration is being delivered。",
 			},
 		},
 	}

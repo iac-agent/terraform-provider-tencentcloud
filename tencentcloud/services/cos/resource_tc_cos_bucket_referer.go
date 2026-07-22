@@ -24,17 +24,17 @@ func ResourceTencentCloudCosBucketReferer() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket format should be [custom name]-[appid], for example `mycos-1258798060`.",
+				Description: "存储桶 格式 should be [custom 名称]-[appid]，for example `mycos-1258798060`。",
 			},
 			"referer_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Hotlink protection type. Enumerated values: `Black-List`, `White-List`.",
+				Description: "Hotlink protection 类型 Enumerated values: `Black-List`，`White-List`。",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Whether to enable hotlink protection. Enumerated values: `Enabled`, `Disabled`.",
+				Description: "是否enable hotlink protection. Enumerated values: `已启用`，`已禁用`。",
 			},
 			"domain_list": {
 				Type: schema.TypeSet,
@@ -42,12 +42,12 @@ func ResourceTencentCloudCosBucketReferer() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "A list of domain names in the blocklist/allowlist.",
+				Description: "A 列表 域名 names in the blocklist/allowlist。",
 			},
 			"empty_refer_configuration": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Whether to allow access with an empty referer. Enumerated values: `Allow`, `Deny` (default).",
+				Description: "是否allow access with an empty referer. Enumerated values: `Allow`，`Deny` (default)。",
 			},
 		},
 	}

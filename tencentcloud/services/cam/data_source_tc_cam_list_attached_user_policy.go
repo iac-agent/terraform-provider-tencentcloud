@@ -19,78 +19,78 @@ func DataSourceTencentCloudCamListAttachedUserPolicy() *schema.Resource {
 			"target_uin": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Target User ID.",
+				Description: "Target 用户 ID。",
 			},
 
 			"attach_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "0: Return direct association and group association policies, 1: Only return direct association policies, 2: Only return group association policies.",
+				Description: "0: Return direct association and group association policies，1: Only return direct association policies，2: Only return group association policies。",
 			},
 
 			"strategy_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Policy type.",
+				Description: "Policy 类型",
 			},
 
 			"keyword": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search Keywords.",
+				Description: "Search Keywords。",
 			},
 
 			"policy_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Policy List Data.",
+				Description: "Policy List Data。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy ID.",
+							Description: "Policy ID。",
 						},
 						"policy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy Name.",
+							Description: "Policy 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy Description.",
+							Description: "Policy 描述",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"strategy_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy type (1 represents custom policy, 2 represents preset policy).",
+							Description: "Policy 类型 (1 represents custom policy，2 represents preset policy)。",
 						},
 						"create_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation mode (1 represents policies created by product or project permissions, others represent policies created by policy syntax).",
+							Description: "Creation 模式 (1 represents policies created by product or project permissions，others represent policies created by policy syntax)。",
 						},
 						"groups": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Associated information with groupNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Associated information with group注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Group ID.",
+										Description: "组 ID",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group Name.",
+										Description: "Group 名称",
 									},
 								},
 							},
@@ -98,7 +98,7 @@ func DataSourceTencentCloudCamListAttachedUserPolicy() *schema.Resource {
 						"deactived": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Has it been taken offline (0: No 1: Yes)Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Has it been taken offline (0: No 1: Yes)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"deactived_detail": {
 							Type: schema.TypeSet,
@@ -106,7 +106,7 @@ func DataSourceTencentCloudCamListAttachedUserPolicy() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "List of offline productsNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "列表 offline products注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -115,7 +115,7 @@ func DataSourceTencentCloudCamListAttachedUserPolicy() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

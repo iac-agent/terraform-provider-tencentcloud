@@ -18,18 +18,18 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Query criteria list, supporting the following fields: InstanceName: cluster name, fuzzy search, InstanceId: cluster ID, precise search, InstanceStatus: cluster status search (RUNNING - Running, CREATING - Creating, MODIFYING - Changing, DELETING - Deleting).",
+				Description: "Query criteria list，supporting the following fields: InstanceName: 集群名称，fuzzy search，实例 ID: cluster ID，precise search，InstanceStatus: cluster 状态 search (RUNNING - Running，CREATING - Creating，MODIFYING - Changing，DELETING - Deleting)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter name.",
+							Description: "过滤名称",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Values.",
+							Description: "Values。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -41,18 +41,18 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 			"tag_filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Tag filters.",
+				Description: "标签 filters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_values": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Tag values.",
+							Description: "标签 values。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -64,108 +64,108 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance list.",
+				Description: "Instance list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instacen ID.",
+							Description: "Instacen ID。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instacen name.",
+							Description: "Instacen 名称",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instacen version.",
+							Description: "Instacen 版本",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance type. BASIC- Basic Edition; PRO- professional edition; PLATINUM- Platinum version.",
+							Description: "实例类型 BASIC- Basic Edition; PRO- professional edition; PLATINUM- Platinum 版本",
 						},
 						"instance_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance status. RUNNING- In operation; MAINTAINING- Under Maintenance; ABNORMAL- abnormal; OVERDUE- Arrears of fees; DESTROYED- Deleted; CREATING- Creating in progress; MODIFYING- In the process of transformation; CREATE_FAILURE- Creation failed; MODIFY_FAILURE- Transformation failed; DELETING- deleting.",
+							Description: "实例状态 RUNNING- In operation; MAINTAINING- Under Maintenance; ABNORMAL- abnormal; OVERDUE- Arrears of fees; DESTROYED- Deleted; CREATING- Creating in progress; MODIFYING- In the process of transformation; CREATE_FAILURE- Creation failed; MODIFY_FAILURE- Transformation failed; DELETING- deleting。",
 						},
 						"topic_num_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of instance topics.",
+							Description: "最大instance topics。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 						"topic_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Topic num.",
+							Description: "Topic num。",
 						},
 						"sku_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Product specifications.",
+							Description: "Product specifications。",
 						},
 						"tps_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Elastic TPS current limit value.",
+							Description: "Elastic TPS current 限制 值",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creation time, millisecond timestamp.",
+							Description: "创建时间，millisecond 时间戳。",
 						},
 						"max_subscription_per_client": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of subscriptions per client.",
+							Description: "最大subscriptions per client。",
 						},
 						"client_num_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of client connections online.",
+							Description: "数量 client connections online。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to renew automatically. Only the annual and monthly package cluster is effective. 1: Automatic renewal; 0: Non automatic renewal.",
+							Description: "是否renew automatically. Only the annual and monthly package cluster is effective. 1: Automatic renewal; 0: Non automatic renewal。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Billing mode, POSTPAID, pay as you go PREPAID, annual and monthly package.",
+							Description: "Billing 模式，POSTPAID，pay as you go PREPAID，annual and monthly package。",
 						},
 						"expiry_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Expiration time, millisecond level timestamp.",
+							Description: "过期时间，millisecond 级别 时间戳。",
 						},
 						"destroy_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Pre destruction time, millisecond timestamp.",
+							Description: "Pre destruction time，millisecond 时间戳。",
 						},
 						"authorization_policy_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Limit on the number of authorization rules.",
+							Description: "限制 on the 数量 authorization rules。",
 						},
 						"max_ca_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum CA quota.",
+							Description: "Maximum CA quota。",
 						},
 						"max_subscription": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of subscriptions.",
+							Description: "最大subscriptions。",
 						},
 					},
 				},
@@ -174,7 +174,7 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

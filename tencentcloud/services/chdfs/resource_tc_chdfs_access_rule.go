@@ -29,33 +29,33 @@ func ResourceTencentCloudChdfsAccessRule() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "rule detail.",
+				Description: "rule detail。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"access_rule_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "single rule id.",
+							Description: "single rule id。",
 						},
 						"address": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "rule address, IP OR IP SEG.",
+							Description: "rule 地址，IP OR IP SEG。",
 						},
 						"access_mode": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "rule access mode, 1: read only, 2: read &amp; wirte.",
+							Description: "rule access 模式，1: read only，2: read &amp; wirte。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "rule priority, range 1 - 100, value less higher priority.",
+							Description: "rule 优先级，range 1 - 100，值 less higher 优先级",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "rule create time.",
+							Description: "rule 创建时间。",
 						},
 					},
 				},
@@ -65,7 +65,7 @@ func ResourceTencentCloudChdfsAccessRule() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "access group id.",
+				Description: "access group id。",
 			},
 		},
 	}

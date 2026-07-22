@@ -23,31 +23,31 @@ func ResourceTencentCloudWedataSubmitTaskOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"task_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Task ID.",
+				Description: "任务 ID",
 			},
 
 			"version_remark": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Version remarks.",
+				Description: "版本 备注",
 			},
 			"status": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Status.",
+				Description: "状态",
 			},
 			"version_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Version id.",
+				Description: "版本 id。",
 			},
 		},
 	}

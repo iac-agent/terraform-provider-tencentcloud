@@ -19,39 +19,39 @@ func DataSourceTencentCloudGaapRuleRealServers() *schema.Resource {
 			"rule_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule Id.",
+				Description: "Rule Id。",
 			},
 
 			"real_server_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Real Server Set.",
+				Description: "Real Server Set。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"real_server_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server IP or domain.",
+							Description: "Real Server IP or 域名",
 						},
 						"real_server_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server Id.",
+							Description: "Real Server Id。",
 						},
 						"real_server_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server Name.",
+							Description: "Real Server 名称",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project Id.",
+							Description: "项目 ID",
 						},
 						"in_ban_blacklist": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Is it on the banned blacklist? 0 indicates not on the blacklist, and 1 indicates on the blacklist.",
+							Description: "Is it on the banned blacklist? 0 表示not on the blacklist，and 1 表示on the blacklist。",
 						},
 					},
 				},
@@ -60,33 +60,33 @@ func DataSourceTencentCloudGaapRuleRealServers() *schema.Resource {
 			"bind_real_server_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Bind Real Server info.",
+				Description: "Bind Real Server info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"real_server_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server Id.",
+							Description: "Real Server Id。",
 						},
 						"real_server_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server Ip or domain.",
+							Description: "Real Server Ip or 域名",
 						},
 						"real_server_weight": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Real Server Weight.",
+							Description: "Real Server 权重",
 						},
 						"real_server_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "RealServerStatus: 0 indicates normal;1 indicates an exception.When the health check status is not enabled, it is always normal.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "RealServerStatus: 0 表示normal;1 表示an exception.When the health check 状态 is not 已启用，it is always normal.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"real_server_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Real Server PortNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Real Server Port注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"down_ip_list": {
 							Type: schema.TypeSet,
@@ -94,12 +94,12 @@ func DataSourceTencentCloudGaapRuleRealServers() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "When the real server is a domain name, the domain name is resolved to one or more IPs, and this field represents the list of abnormal IPs. When the status is abnormal, but the field is empty, it indicates that the domain name resolution is abnormal.",
+							Description: "When the real server is a 域名 名称，the 域名 名称 is resolved to one or more IPs，and this field represents the 列表 abnormal IPs. When the 状态 is abnormal，but the field is empty，it 表示that the 域名 名称 resolution is abnormal。",
 						},
 						"real_server_failover_role": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The primary and secondary roles of the real server:master represents primary, slave represents secondary, and this parameter must be in the active and standby mode of the real server when the listener is turned on.",
+							Description: "The primary and secondary roles of the real server:master represents primary，slave represents secondary，and this parameter must be in the 活跃 and standby 模式 of the real server when the listener is turned on。",
 						},
 					},
 				},
@@ -108,7 +108,7 @@ func DataSourceTencentCloudGaapRuleRealServers() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -53,57 +53,57 @@ func ResourceTencentCloudTsfRepository() *schema.Resource {
 			"repository_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Warehouse ID.",
+				Description: "Warehouse ID。",
 			},
 
 			"repository_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "warehouse name.",
+				Description: "warehouse 名称",
 			},
 
 			"repository_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "warehouse type (default warehouse: default, private warehouse: private).",
+				Description: "warehouse 类型 (default warehouse: default，private warehouse: private)。",
 			},
 
 			"bucket_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "the name of the bucket where the warehouse is located.",
+				Description: "the 名称 存储桶 where the warehouse is located。",
 			},
 
 			"bucket_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket region where the warehouse is located.",
+				Description: "存储桶 地域 where the warehouse is located。",
 			},
 
 			"directory": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "directory.",
+				Description: "directory。",
 			},
 
 			"repository_desc": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "warehouse description.",
+				Description: "warehouse 描述",
 			},
 
 			"is_used": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "whether the repository is in use.",
+				Description: "是否repository is in use。",
 			},
 
 			"create_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "warehouse creation time.",
+				Description: "warehouse 创建时间。",
 			},
 		},
 	}

@@ -19,7 +19,7 @@ func DataSourceTencentCloudRouteTable() *schema.Resource {
 			"route_table_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The Route Table ID.",
+				Description: "The Route Table ID。",
 			},
 			"name": {
 				Type:     schema.TypeString,
@@ -31,43 +31,43 @@ func DataSourceTencentCloudRouteTable() *schema.Resource {
 					}
 					return
 				},
-				Description: "The Route Table name.",
+				Description: "The Route Table 名称",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The VPC ID.",
+				Description: "The 私有网络 ID",
 			},
 			"subnet_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of associated subnets.",
+				Description: "数量 associated subnets。",
 			},
 			"routes": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The information list of the VPC route table.",
+				Description: "The information 列表 the VPC route table。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The RouteEntry's target network segment.",
+							Description: "The RouteEntry's target network segment。",
 						},
 						"next_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The `next_hub` type.",
+							Description: "The `next_hub` 类型",
 						},
 						"next_hub": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The RouteEntry's next hub.",
+							Description: "The RouteEntry's next hub。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The RouteEntry's description.",
+							Description: "The RouteEntry's 描述",
 						},
 					},
 				},
@@ -75,7 +75,7 @@ func DataSourceTencentCloudRouteTable() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of routing table.",
+				Description: "创建时间 of routing table。",
 			},
 		},
 	}

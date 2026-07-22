@@ -18,94 +18,94 @@ func DataSourceTencentCloudWedataListLineage() *schema.Resource {
 			"resource_unique_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Entity unique ID.",
+				Description: "Entity unique ID。",
 			},
 
 			"resource_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Entity type: TABLE|METRIC|MODEL|SERVICE|COLUMN.",
+				Description: "Entity 类型: TABLE|METRIC|MODEL|SERVICE|COLUMN。",
 			},
 
 			"direction": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Lineage direction: INPUT|OUTPUT.",
+				Description: "Lineage direction: INPUT|OUTPUT。",
 			},
 
 			"platform": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Source: WEDATA|THIRD, default is WEDATA.",
+				Description: "来源: WEDATA|THIRD，默认为 WEDATA。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Lineage record list.",
+				Description: "Lineage record list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Current resource.",
+							Description: "Current resource。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource_unique_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Entity original unique ID.",
+										Description: "Entity original unique ID。",
 									},
 									"resource_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Business name: database.table|metric name|model name|field name.",
+										Description: "Business 名称: database.table|指标名称|model 名称|field 名称",
 									},
 									"resource_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Entity type: TABLE|METRIC|MODEL|SERVICE|COLUMN.",
+										Description: "Entity 类型: TABLE|METRIC|MODEL|SERVICE|COLUMN。",
 									},
 									"lineage_node_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Lineage node unique identifier.",
+										Description: "Lineage node unique identifier。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Description: table type|metric description|model description|field description.",
+										Description: "描述: table 类型|metric 描述|model 描述|field 描述",
 									},
 									"platform": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Source: WEDATA|THIRD, default is WEDATA.",
+										Description: "来源: WEDATA|THIRD，默认为 WEDATA。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Creation time.",
+										Description: "创建时间。",
 									},
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Update time.",
+										Description: "更新时间。",
 									},
 									"resource_properties": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Resource additional extension parameters.",
+										Description: "Resource additional extension parameters。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Property name.",
+													Description: "属性名称",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Property value.",
+													Description: "属性值",
 												},
 											},
 										},
@@ -116,65 +116,65 @@ func DataSourceTencentCloudWedataListLineage() *schema.Resource {
 						"relation": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Relation.",
+							Description: "Relation。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"relation_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Association ID.",
+										Description: "Association ID。",
 									},
 									"source_unique_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Source unique lineage ID.",
+										Description: "来源 unique lineage ID。",
 									},
 									"target_unique_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Target unique lineage ID.",
+										Description: "Target unique lineage ID。",
 									},
 									"processes": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Lineage processing process.",
+										Description: "Lineage processing process。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"process_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Original unique ID.",
+													Description: "Original unique ID。",
 												},
 												"process_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Task type: SCHEDULE_TASK, INTEGRATION_TASK, THIRD_REPORT, TABLE_MODEL, MODEL_METRIC, METRIC_METRIC, DATA_SERVICE.",
+													Description: "Task 类型: SCHEDULE_TASK，INTEGRATION_TASK，THIRD_REPORT，TABLE_MODEL，MODEL_METRIC，METRIC_METRIC，DATA_SERVICE。",
 												},
 												"platform": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "WEDATA, THIRD.",
+													Description: "WEDATA，THIRD。",
 												},
 												"process_sub_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Task subtype: SQL_TASK, INTEGRATED_STREAM, INTEGRATED_OFFLINE.",
+													Description: "Task subtype: SQL_TASK，INTEGRATED_STREAM，INTEGRATED_OFFLINE。",
 												},
 												"process_properties": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Additional extension parameters.",
+													Description: "Additional extension parameters。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Property name.",
+																Description: "属性名称",
 															},
 															"value": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Property value.",
+																Description: "属性值",
 															},
 														},
 													},
@@ -182,7 +182,7 @@ func DataSourceTencentCloudWedataListLineage() *schema.Resource {
 												"lineage_node_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Lineage task unique node ID.",
+													Description: "Lineage task unique 节点 ID",
 												},
 											},
 										},
@@ -197,7 +197,7 @@ func DataSourceTencentCloudWedataListLineage() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

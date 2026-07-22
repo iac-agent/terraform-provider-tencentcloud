@@ -26,13 +26,13 @@ func ResourceTencentCloudMpsEnableWorkflowConfig() *schema.Resource {
 			"workflow_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Workflow ID.",
+				Description: "Workflow ID。",
 			},
 
 			"enabled": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "true: enable; false: disable.",
+				Description: "true: enable; false: disable。",
 			},
 		},
 	}

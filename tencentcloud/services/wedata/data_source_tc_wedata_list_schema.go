@@ -18,47 +18,47 @@ func DataSourceTencentCloudWedataListSchema() *schema.Resource {
 			"catalog_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Catalog name.",
+				Description: "Catalog 名称",
 			},
 
 			"datasource_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Data source ID.",
+				Description: "数据源 ID",
 			},
 
 			"database_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Database name.",
+				Description: "Database 名称",
 			},
 
 			"keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Database schema search keyword.",
+				Description: "Database schema search keyword。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Schema record list.",
+				Description: "Schema record list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"guid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Schema GUID.",
+							Description: "Schema GUID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Schema name.",
+							Description: "Schema 名称",
 						},
 						"database_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name.",
+							Description: "Database 名称",
 						},
 					},
 				},
@@ -67,7 +67,7 @@ func DataSourceTencentCloudWedataListSchema() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

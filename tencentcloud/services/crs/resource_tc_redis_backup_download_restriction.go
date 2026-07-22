@@ -26,31 +26,31 @@ func ResourceTencentCloudRedisBackupDownloadRestriction() *schema.Resource {
 			"limit_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Types of network restrictions for downloading backup files:- NoLimit: There is no limit, and backup files can be downloaded from both Tencent Cloud and internal and external networks.- LimitOnlyIntranet: Only intranet addresses automatically assigned by Tencent Cloud can download backup files.- Customize: refers to a user-defined private network downloadable backup file.",
+				Description: "Types of network restrictions for downloading backup files:- NoLimit: There is no 限制，and backup files can be downloaded from both Tencent Cloud and internal and external networks.- LimitOnlyIntranet: Only intranet addresses automatically assigned by Tencent Cloud can download backup files.- Customize: refers to a 用户-defined private network downloadable backup file。",
 			},
 
 			"vpc_comparison_symbol": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "This parameter only supports entering In, which means that the custom LimitVpc can download the backup file.",
+				Description: "This parameter only supports entering In，which means that the custom LimitVpc can download the backup file。",
 			},
 
 			"ip_comparison_symbol": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Identifies whether the customized LimitIP address can download the backup file.- In: Custom IP addresses are available for download.- NotIn: Custom IPs are not available for download.",
+				Description: "Identifies 是否customized LimitIP 地址 can download the backup file.- In: Custom IP addresses are available for download.- NotIn: Custom IPs are not available for download。",
 			},
 
 			"limit_vpc": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "A custom VPC ID for a downloadable backup file.If the parameter LimitType is **Customize**, you need to configure this parameter.",
+				Description: "A custom 私有网络 ID for a downloadable backup file.If the parameter LimitType is **Customize**，you need to configure this parameter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Customize the region of the VPC to which the backup file is downloaded.",
+							Description: "Customize the 地域 of the VPC to which the backup file is downloaded。",
 						},
 						"vpc_list": {
 							Type: schema.TypeSet,
@@ -58,7 +58,7 @@ func ResourceTencentCloudRedisBackupDownloadRestriction() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Customize the list of VPCs to download backup files.",
+							Description: "Customize the 列表 VPCs to download backup files。",
 						},
 					},
 				},
@@ -70,7 +70,7 @@ func ResourceTencentCloudRedisBackupDownloadRestriction() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "A custom VPC IP address for downloadable backup files.If the parameter LimitType is **Customize**, you need to configure this parameter.",
+				Description: "A custom VPC IP 地址 for downloadable backup files.If the parameter LimitType is **Customize**，you need to configure this parameter。",
 			},
 		},
 	}

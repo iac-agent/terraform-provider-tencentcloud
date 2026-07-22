@@ -27,29 +27,29 @@ func ResourceTencentCloudSesDomain() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.",
+				Description: "Your sender 域名 You are advised to use a third-级别 域名，for example，mail.qcloud.com。",
 			},
 
 			"attributes": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "DNS configuration details.",
+				Description: "DNS configuration details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Record Type CNAME | A | TXT | MX.",
+							Description: "Record 类型 CNAME | A | TXT | MX。",
 						},
 						"send_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name.",
+							Description: "域名 名称",
 						},
 						"expected_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Values that need to be configured.",
+							Description: "Values that need to be configured。",
 						},
 					},
 				},

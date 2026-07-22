@@ -18,44 +18,44 @@ func DataSourceTencentCloudWedataGetTableColumns() *schema.Resource {
 			"table_guid": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Table GUID.",
+				Description: "Table GUID。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Table column list.",
+				Description: "Table column list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Field type.",
+							Description: "Field 类型",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Field name.",
+							Description: "Field 名称",
 						},
 						"length": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Field length.",
+							Description: "Field length。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Field description.",
+							Description: "Field 描述",
 						},
 						"position": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Field position.",
+							Description: "Field position。",
 						},
 						"is_partition": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether it is a partition field.",
+							Description: "是否为a partition field。",
 						},
 					},
 				},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudWedataGetTableColumns() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

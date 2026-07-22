@@ -29,46 +29,46 @@ func ResourceTencentCloudChdfsLifeCycleRule() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "file system id.",
+				Description: "file system id。",
 			},
 
 			"life_cycle_rule": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "life cycle rule.",
+				Description: "life cycle rule。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"life_cycle_rule_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "single rule id.",
+							Description: "single rule id。",
 						},
 						"life_cycle_rule_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "rule name.",
+							Description: "rule 名称",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "rule op path.",
+							Description: "rule op 路径",
 						},
 						"transitions": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "life cycle rule transition list.",
+							Description: "life cycle rule transition list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"days": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "trigger days(n day).",
+										Description: "trigger days(n day)。",
 									},
 									"type": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "transition type, 1: archive, 2: delete, 3: low rate.",
+										Description: "transition 类型，1: archive，2: delete，3: low rate。",
 									},
 								},
 							},
@@ -76,12 +76,12 @@ func ResourceTencentCloudChdfsLifeCycleRule() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "rule status, 1:open, 2:close.",
+							Description: "rule 状态，1:open，2:close。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "rule create time.",
+							Description: "rule 创建时间。",
 						},
 					},
 				},

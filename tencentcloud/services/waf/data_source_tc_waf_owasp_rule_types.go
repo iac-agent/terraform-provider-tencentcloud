@@ -18,24 +18,24 @@ func DataSourceTencentCloudWafOwaspRuleTypes() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Domain names to be queried.",
+				Description: "域名 names to be queried。",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions. supports RuleId, CveID, and Desc.",
+				Description: "Filter conditions. supports RuleId，CveID，and Desc。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field name, used for filtering\nFilter the sub-order number (value) by DealName.",
+							Description: "Field 名称，用于filtering\nFilter the sub-顺序 number (值) by DealName。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Values after filtering.",
+							Description: "Values after filtering。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -43,7 +43,7 @@ func DataSourceTencentCloudWafOwaspRuleTypes() *schema.Resource {
 						"exact_match": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Exact search or not.",
+							Description: "Exact search or not。",
 						},
 					},
 				},
@@ -52,53 +52,53 @@ func DataSourceTencentCloudWafOwaspRuleTypes() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Rule type list and information.",
+				Description: "Rule 类型 list and information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Type ID.",
+							Description: "类型 ID。",
 						},
 						"type_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type name.",
+							Description: "类型 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type description.",
+							Description: "类型 描述",
 						},
 						"classification": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data type category.",
+							Description: "Data 类型 category。",
 						},
 						"action": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Protection mode of the rule type. valid values: 0 (observation), 1 (intercept).",
+							Description: "Protection 模式 of the rule 类型 有效值：0 (observation)，1 (intercept)。",
 						},
 						"level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Protection level of the rule type. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).",
+							Description: "Protection 级别 of the rule 类型 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The switch status of the rule type. valid values: 0 (disabled), 1 (enabled).",
+							Description: "The switch 状态 rule 类型 有效值：0 (已禁用)，1 (已启用)。",
 						},
 						"total_rule": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Specifies all rules under the rule type. always.",
+							Description: "指定all rules under the rule 类型 always。",
 						},
 						"active_rule": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Indicates the total number of rules enabled under the rule type.",
+							Description: "表示total 数量 rules 已启用 under the rule 类型",
 						},
 					},
 				},
@@ -107,7 +107,7 @@ func DataSourceTencentCloudWafOwaspRuleTypes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

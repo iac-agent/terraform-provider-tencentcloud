@@ -28,65 +28,65 @@ func ResourceTencentCloudWafOwaspRuleStatusConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain name.",
+				Description: "域名 名称",
 			},
 
 			"rule_status": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Rule switch. valid values: 0 (disabled), 1 (enabled), 2 (observation only).",
+				Description: "Rule switch. 有效值：0 (已禁用)，1 (已启用)，2 (observation only)。",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 
 			"type_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "If reverse requires the input of data type.",
+				Description: "If reverse requires the input of data 类型",
 			},
 
 			"reason": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Reason for modification. valid values: 0: none (compatibility record is empty). 1: avoid false positives due to business characteristics. 2: reporting of rule-based false positives. 3: gray release of core business rules. 4: others.",
+				Description: "Reason for modification. 有效值：0: none (compatibility record is empty). 1: avoid false positives due to business characteristics. 2: reporting of rule-based false positives. 3: gray release of core business rules. 4: others。",
 			},
 
 			// computed
 			"cve_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "CVE ID.",
+				Description: "CVE ID。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Rule description.",
+				Description: "Rule 描述",
 			},
 
 			"level": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Protection level of the rule. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).",
+				Description: "Protection 级别 of the rule. 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
 			},
 
 			"vul_level": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Threat level. valid values: 0 (unknown), 100 (low risk), 200 (medium risk), 300 (high risk), 400 (critical).",
+				Description: "Threat 级别 有效值：0 (unknown)，100 (low risk)，200 (medium risk)，300 (high risk)，400 (critical)。",
 			},
 
 			"locked": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether the user is locked.",
+				Description: "是否user is locked。",
 			},
 		},
 	}

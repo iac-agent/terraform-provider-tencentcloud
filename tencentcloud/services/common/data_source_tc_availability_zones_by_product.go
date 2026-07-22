@@ -22,50 +22,50 @@ func DataSourceTencentCloudAvailabilityZonesByProduct() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "When specified, only the zone with the exactly name match will be returned.",
+				Description: "When specified，only the 可用区 with the exactly 名称 match will be returned。",
 			},
 			"product": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "A string variable indicates that the query will use product information.",
+				Description: "A string variable 表示that the query will use product information。",
 			},
 			"include_unavailable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "A bool variable indicates that the query will include `UNAVAILABLE` zones.",
+				Description: "A bool variable 表示that the query will include `UNAVAILABLE` zones。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values.
 			"zones": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of zones will be exported and its every element contains the following attributes:",
+				Description: "A 列表 zones will be exported and its every element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "An internal id for the zone, like `200003`, usually not so useful.",
+							Description: "An internal id for the 可用区，like `200003`，usually not so useful。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of the zone, like `ap-guangzhou-3`.",
+							Description: "The 名称 可用区，like `ap-guangzhou-3`。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The description of the zone, like `Guangzhou Zone 3`.",
+							Description: "The 描述 可用区，like `Guangzhou 可用区 3`。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The state of the zone, indicate availability using `AVAILABLE` and `UNAVAILABLE` values.",
+							Description: "The state of the 可用区，indicate availability using `AVAILABLE` and `UNAVAILABLE` values。",
 						},
 					},
 				},

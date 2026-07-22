@@ -36,23 +36,23 @@ func DataSourceTencentCloudLighthouseZone() *schema.Resource {
 			"zone_info_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of zone info.",
+				Description: "列表 可用区 info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability zone.",
+							Description: "Availability 可用区",
 						},
 						"zone_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chinese name of availability zone.",
+							Description: "Chinese 名称 availability 可用区",
 						},
 						"instance_display_label": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance purchase page availability zone display label.",
+							Description: "Instance purchase page availability 可用区 display 标签",
 						},
 					},
 				},
@@ -61,7 +61,7 @@ func DataSourceTencentCloudLighthouseZone() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

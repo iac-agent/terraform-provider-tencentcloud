@@ -31,39 +31,39 @@ func ResourceTencentCloudMonitorTmpExporterIntegrationV2() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"kind": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Type.",
+				Description: "类型",
 			},
 
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Integration config. For more details, please refer to [Cloud Monitoring](https://www.tencentcloud.com/document/product/248/63002?lang=en&pg=). PS: `spec.instanceSpec.restart` is used in Terraform to restart integration or update integration version. It is an integer, and the value can be a timestamp in seconds, optional.",
+				Description: "Integration 配置 For more details，please refer to [Cloud Monitoring](https://www.tencentcloud.com/document/product/248/63002?lang=en&pg=). PS: `spec.instanceSpec.restart` is used in Terraform to restart integration or update integration 版本 It is an integer，and the 值 can be a 时间戳 （秒）， 可选",
 			},
 
 			"kube_type": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2, 3}),
-				Description:  "Integration config. 1 - TKE; 2 - EKS; 3 - MEKS.",
+				Description:  "Integration 配置 1 - TKE; 2 - EKS; 3 - MEKS。",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"disable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Integration is disabled when the value is true. Default is false.",
+				Description: "Integration is 已禁用 when the 值 is true. 默认为 false。",
 			},
 		},
 	}

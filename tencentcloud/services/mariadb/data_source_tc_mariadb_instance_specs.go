@@ -19,64 +19,64 @@ func DataSourceTencentCloudMariadbInstanceSpecs() *schema.Resource {
 			"specs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "list of instance specifications.",
+				Description: "列表 instance specifications。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"machine": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "machine type.",
+							Description: "machine 类型",
 						},
 						"spec_infos": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "list of machine specifications.",
+							Description: "列表 machine specifications。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"machine": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "machine type.",
+										Description: "machine 类型",
 									},
 									"memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "memory, in GB.",
+										Description: "memory，（GB）。",
 									},
 									"min_storage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "minimum storage size, in GB.",
+										Description: "minimum storage size，（GB）。",
 									},
 									"max_storage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "maximum storage size, in GB.",
+										Description: "maximum storage size，（GB）。",
 									},
 									"suit_info": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "recommended usage scenarios.",
+										Description: "recommended usage scenarios。",
 									},
 									"qps": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "maximum QPS.",
+										Description: "maximum QPS。",
 									},
 									"pid": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "product price id.",
+										Description: "product price id。",
 									},
 									"node_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "node count.",
+										Description: "node count。",
 									},
 									"cpu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "CPU cores.",
+										Description: "CPU 核数",
 									},
 								},
 							},
@@ -87,7 +87,7 @@ func DataSourceTencentCloudMariadbInstanceSpecs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

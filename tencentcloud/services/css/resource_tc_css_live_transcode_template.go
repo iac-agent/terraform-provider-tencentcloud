@@ -27,133 +27,133 @@ func ResourceTencentCloudCssLiveTranscodeTemplate() *schema.Resource {
 			"template_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "template name, only support 0-9 and a-z.",
+				Description: "模板名称，only support 0-9 and a-z。",
 			},
 
 			"video_bitrate": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "video bitrate, 0 for origin, range 0kbps - 8000kbps.",
+				Description: "video bitrate，0 for origin，range 0kbps - 8000kbps。",
 			},
 
 			"acodec": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "default aac, not support now.",
+				Description: "default aac，not support now。",
 			},
 
 			"audio_bitrate": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "default 0, range 0 - 500.",
+				Description: "default 0，range 0 - 500。",
 			},
 
 			"vcodec": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "video codec, default origin, support h264/h265/origin.",
+				Description: "video codec，default origin，support h264/h265/origin。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "template desc.",
+				Description: "template desc。",
 			},
 
 			"need_video": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "keep video or not, default 1 for yes, 0 for no.",
+				Description: "keep video or not，default 1 for yes，0 for no。",
 			},
 
 			"width": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "template width, default 0, range 0 - 3000, must be pow of 2.",
+				Description: "template width，default 0，range 0 - 3000，must be pow of 2。",
 			},
 
 			"need_audio": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "keep audio or not, default 1 for yes, 0 for no.",
+				Description: "keep audio or not，default 1 for yes，0 for no。",
 			},
 
 			"height": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "template height, default 0, range 0 - 3000, must be pow of 2, needed while AiTransCode = 1.",
+				Description: "template height，default 0，range 0 - 3000，must be pow of 2，needed while AiTransCode = 1。",
 			},
 
 			"fps": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "video fps, default 0, range 0 - 60.",
+				Description: "video fps，default 0，range 0 - 60。",
 			},
 
 			"gop": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "gop of the video, second, default origin of the video, range 2 - 6.",
+				Description: "gop of the video，second，default origin of the video，range 2 - 6。",
 			},
 
 			"rotate": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "roate degree, default 0, support 0/90/180/270.",
+				Description: "roate degree，default 0，support 0/90/180/270。",
 			},
 
 			"profile": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "quality of the video, default baseline, support baseline/main/high.",
+				Description: "quality of the video，default baseline，support baseline/main/high。",
 			},
 
 			"bitrate_to_orig": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "base on origin bitrate if origin bitrate is lower than the setting bitrate. default 0, 1 for yes, 0 for no.",
+				Description: "base on origin bitrate if origin bitrate is lower than the setting bitrate. default 0，1 for yes，0 for no。",
 			},
 
 			"height_to_orig": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "base on origin height if origin height is lower than the setting height. default 0, 1 for yes, 0 for no.",
+				Description: "base on origin height if origin height is lower than the setting height. default 0，1 for yes，0 for no。",
 			},
 
 			"fps_to_orig": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "base on origin fps if origin fps is lower than the setting fps. default 0, 1 for yes, 0 for no.",
+				Description: "base on origin fps if origin fps is lower than the setting fps. default 0，1 for yes，0 for no。",
 			},
 
 			"ai_trans_code": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "enable high speed mode, default 0, 1 for enable, 0 for no.",
+				Description: "enable high speed 模式，default 0，1 for enable，0 for no。",
 			},
 
 			"adapt_bitrate_percent": {
 				Type:        schema.TypeFloat,
 				Optional:    true,
-				Description: "high speed mode adapt bitrate, support 0 - 0.5.",
+				Description: "high speed 模式 adapt bitrate，support 0 - 0.5。",
 			},
 
 			"short_edge_as_height": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "let the short edge as the height.",
+				Description: "let the short edge as the height。",
 			},
 
 			"drm_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "DRM type, support fairplay/normalaes/widevine.",
+				Description: "DRM 类型，support fairplay/normalaes/widevine。",
 			},
 
 			"drm_tracks": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "DRM tracks, support AUDIO/SD/HD/UHD1/UHD2.",
+				Description: "DRM tracks，support AUDIO/SD/HD/UHD1/UHD2。",
 			},
 		},
 	}

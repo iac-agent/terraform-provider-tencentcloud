@@ -29,13 +29,13 @@ func ResourceTencentCloudDedicatedClusterImageCache() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 			"image_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Image ID.",
+				Description: "Image ID。",
 			},
 		},
 	}

@@ -23,30 +23,30 @@ func DataSourceTencentCloudCamSecretLastUsedTime() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Query the key ID list. Supports up to 10.",
+				Description: "Query the 键 ID list. Supports up to 10。",
 			},
 
 			"secret_id_last_used_rows": {
 				Computed:    true,
 				Sensitive:   true,
 				Type:        schema.TypeList,
-				Description: "Last used time list.",
+				Description: "Last used time list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"secret_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Secret Id.",
+							Description: "Secret Id。",
 						},
 						"last_used_date": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last used date (with 1 day delay).",
+							Description: "Last used date (with 1 day 延迟)。",
 						},
 						"last_secret_used_date": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Last used timestamp.",
+							Description: "Last used 时间戳。",
 						},
 					},
 				},
@@ -55,7 +55,7 @@ func DataSourceTencentCloudCamSecretLastUsedTime() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

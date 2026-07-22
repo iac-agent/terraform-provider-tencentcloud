@@ -20,23 +20,23 @@ func DataSourceTencentCloudVpnCustomerGatewayVendors() *schema.Resource {
 			"customer_gateway_vendor_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Customer Gateway Vendor Set.",
+				Description: "Customer Gateway Vendor Set。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"platform": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Platform.",
+							Description: "Platform。",
 						},
 						"software_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SoftwareVersion.",
+							Description: "SoftwareVersion。",
 						},
 						"vendor_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VendorName.",
+							Description: "VendorName。",
 						},
 					},
 				},
@@ -45,7 +45,7 @@ func DataSourceTencentCloudVpnCustomerGatewayVendors() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

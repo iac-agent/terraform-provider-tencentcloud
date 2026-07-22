@@ -30,7 +30,7 @@ func ResourceTencentCloudClbRedirection() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of CLB instance.",
+				Description: "CLB实例ID。",
 			},
 			"source_listener_id": {
 				Type:     schema.TypeString,
@@ -38,13 +38,13 @@ func ResourceTencentCloudClbRedirection() *schema.Resource {
 				Optional: true,
 				Computed: true,
 
-				Description: "ID of source listener.",
+				Description: "源监听器ID。",
 			},
 			"target_listener_id": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "ID of source listener.",
+				Description: "源监听器ID。",
 			},
 			"source_rule_id": {
 				Type:     schema.TypeString,
@@ -52,46 +52,46 @@ func ResourceTencentCloudClbRedirection() *schema.Resource {
 				Optional: true,
 				Computed: true,
 
-				Description: "Rule ID of source listener.",
+				Description: "源监听器的规则ID。",
 			},
 			"target_rule_id": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Rule ID of target listener.",
+				Description: "目标监听器的规则ID。",
 			},
 			"rewrite_code": {
 				Type:        schema.TypeInt,
 				ForceNew:    true,
 				Optional:    true,
 				Computed:    true,
-				Description: "Redirection status codes, with possible values of `301`, `302`, `307`.",
+				Description: "重定向状态代码，可能值为“301”、“302”、“307”。",
 			},
 			"take_url": {
 				Type:        schema.TypeBool,
 				ForceNew:    true,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether the redirect carries a matching URL is required when configuring `rewrite_code`.",
+				Description: "配置rewrite_code时需要重定向是否携带匹配的URL。",
 			},
 			"source_domian": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Optional:    true,
 				Computed:    true,
-				Description: "The domain name for source forwarding must be the domain name corresponding to `source_rule_id`, which is required when configuring `rewrite_code`. Only support `is_auto_rewrite` is `false`.",
+				Description: "源转发的域名必须是source_rule_id对应的域名，配置rewrite_code时需要。仅支持`is_auto_rewrite`为`false`。",
 			},
 			"is_auto_rewrite": {
 				Type:        schema.TypeBool,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "Indicates whether automatic forwarding is enable, default is `false`. If enabled, the source listener and location should be empty, the target listener must be https protocol and port is 443.",
+				Description: "指示是否启用自动转发，默认为 false。如果启用，源侦听器和位置应为空，目标侦听器必须是 https 协议且端口为 443。",
 			},
 			"delete_all_auto_rewrite": {
 				Type:        schema.TypeBool,
 				Default:     false,
 				Optional:    true,
-				Description: "Indicates whether delete all auto redirection. Default is `false`. It will take effect only when this redirection is auto-rewrite and this auto-rewrite auto redirected more than one rules. All the auto-rewrite relations will be deleted when this parameter set true.",
+				Description: "是否删除所有自动重定向。默认为“假”。仅当该重定向为自动重写且该自动重写自动重定向多条规则时才会生效。当该参数设置为 true 时，所有自动重写关系将被删除。",
 			},
 		},
 	}

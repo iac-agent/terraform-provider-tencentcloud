@@ -27,48 +27,48 @@ func ResourceTencentCloudVpcSnapshotPolicy() *schema.Resource {
 			"snapshot_policy_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Snapshot policy name.",
+				Description: "Snapshot policy 名称",
 			},
 			"backup_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Backup strategy type, `operate`: operate backup, `time`: schedule backup.",
+				Description: "Backup strategy 类型，`operate`: operate backup，`time`: schedule backup。",
 			},
 			"keep_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The retention time supports 1 to 365 days.",
+				Description: "The retention time supports 1 to 365 days。",
 			},
 			"create_new_cos": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to create a new cos bucket, the default is False.Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "是否create a new COS 存储桶，the 默认为 False.注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"cos_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The region where the cos bucket is located.",
+				Description: "The 地域 where the COS 存储桶 is located。",
 			},
 			"cos_bucket": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "cos bucket.",
+				Description: "COS 存储桶",
 			},
 			"backup_policies": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Time backup strategy. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Time backup strategy. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"backup_day": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Backup cycle time, the value can be monday, tuesday, wednesday, thursday, friday, saturday, sunday.",
+							Description: "Backup cycle time，the 值 can be monday，tuesday，wednesday，thursday，friday，saturday，sunday。",
 						},
 						"backup_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Backup time point, format:HH:mm:ss.",
+							Description: "Backup time point，格式:HH:mm:ss。",
 						},
 					},
 				},
@@ -76,17 +76,17 @@ func ResourceTencentCloudVpcSnapshotPolicy() *schema.Resource {
 			"enable": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Enabled state, True-enabled, False-disabled, the default is True.",
+				Description: "已启用 state，True-已启用，False-已禁用，the 默认为 True。",
 			},
 			"snapshot_policy_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Snapshot policy Id.",
+				Description: "Snapshot policy Id。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "创建时间.注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 		},
 	}

@@ -18,60 +18,60 @@ func DataSourceTencentCloudZones() *schema.Resource {
 			"product": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Product name to query, e.g. `cvm`. Use `tencentcloud_products` to get available product names.",
+				Description: "Product 名称 to query，e.g. `cvm`. Use `tencentcloud_products` to get available product names。",
 			},
 
 			"scene": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Scene control parameter. `0` or not set means do not query optional business whitelist; `1` means query optional business whitelist.",
+				Description: "Scene control parameter. `0` or not set means do not query 可选 business whitelist; `1` means query 可选 business whitelist。",
 			},
 
 			"zone_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Zone list.",
+				Description: "可用区 list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Zone name, e.g. `ap-guangzhou-3`.",
+							Description: "可用区 名称，e.g. `ap-guangzhou-3`。",
 						},
 						"zone_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Zone description, e.g. `Guangzhou Zone 3`.",
+							Description: "可用区 描述，e.g. `Guangzhou 可用区 3`。",
 						},
 						"zone_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Zone ID.",
+							Description: "可用区 ID",
 						},
 						"zone_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Zone status, `AVAILABLE` or `UNAVAILABLE`.",
+							Description: "可用区 状态，`AVAILABLE` or `UNAVAILABLE`。",
 						},
 						"parent_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parent zone identifier.",
+							Description: "Parent 可用区 identifier。",
 						},
 						"parent_zone_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parent zone ID.",
+							Description: "Parent 可用区 ID。",
 						},
 						"parent_zone_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parent zone description.",
+							Description: "Parent 可用区 描述",
 						},
 						"zone_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Zone type.",
+							Description: "可用区 类型",
 						},
 					},
 				},
@@ -80,7 +80,7 @@ func DataSourceTencentCloudZones() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -20,19 +20,19 @@ func DataSourceTencentCloudVpcBandwidthPackageBillUsage() *schema.Resource {
 			"bandwidth_package_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID of the postpaid bandwidth package.",
+				Description: "The unique ID postpaid bandwidth package。",
 			},
 
 			"bandwidth_package_bill_bandwidth_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "current billing amount.",
+				Description: "current billing amount。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"bandwidth_usage": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Current billing amount in Mbps.",
+							Description: "Current billing amount in Mbps。",
 						},
 					},
 				},
@@ -41,7 +41,7 @@ func DataSourceTencentCloudVpcBandwidthPackageBillUsage() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

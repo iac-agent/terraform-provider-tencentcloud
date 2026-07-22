@@ -19,60 +19,60 @@ func DataSourceTencentCloudMysqlProjectSecurityGroup() *schema.Resource {
 			"project_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "project id.",
+				Description: "项目编号。",
 			},
 
 			"groups": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Security group details.",
+				Description: "安全组详细信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "project id.",
+							Description: "项目编号。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time, time format: yyyy-mm-dd hh:mm:sss.",
+							Description: "创建时间，时间格式：yyyy-mm-dd hh:mm:sss。",
 						},
 						"inbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "inbound rules.",
+							Description: "入站规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy, ACCEPT or DROPs.",
+										Description: "策略、接受或放弃。",
 									},
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Source IP or IP range, such as 192.168.0.0/16.",
+										Description: "源 IP 或 IP 范围，例如 192.168.0.0/16。",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "port.",
+										Description: "港口。",
 									},
 									"ip_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network protocol, support UDP, TCP, etc.",
+										Description: "网络协议，支持UDP、TCP等",
 									},
 									"dir": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The direction defined by the rule, the inbound rule is INPUT.",
+										Description: "规则定义的方向，入站规则为INPUT。",
 									},
 									"desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule description.",
+										Description: "规则描述。",
 									},
 								},
 							},
@@ -80,38 +80,38 @@ func DataSourceTencentCloudMysqlProjectSecurityGroup() *schema.Resource {
 						"outbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "outbound rules.",
+							Description: "出站规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy, ACCEPT or DROP.",
+										Description: "策略，接受或放弃。",
 									},
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Destination IP or IP segment, such as 172.16.0.0/12.",
+										Description: "目的IP或IP段，如172.16.0.0/12。",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "port or port range.",
+										Description: "端口或端口范围。",
 									},
 									"ip_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network protocol, support UDP, TCP, etc.",
+										Description: "网络协议，支持UDP、TCP等",
 									},
 									"dir": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The direction defined by the rule, the inbound rule is OUTPUT.",
+										Description: "规则定义的方向，入站规则为OUTPUT。",
 									},
 									"desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule description.",
+										Description: "规则描述。",
 									},
 								},
 							},
@@ -119,17 +119,17 @@ func DataSourceTencentCloudMysqlProjectSecurityGroup() *schema.Resource {
 						"security_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group ID.",
+							Description: "安全组ID。",
 						},
 						"security_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group name.",
+							Description: "安全组名称。",
 						},
 						"security_group_remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group remark.",
+							Description: "安全组备注。",
 						},
 					},
 				},
@@ -138,7 +138,7 @@ func DataSourceTencentCloudMysqlProjectSecurityGroup() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

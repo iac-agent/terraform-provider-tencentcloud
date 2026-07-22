@@ -26,7 +26,7 @@ func ResourceTencentCloudMysqlTimeWindow() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+				Description: "实例 ID，格式为 cdb-c1nl9rpv 或 cdbro-c1nl9rpv。与腾讯数据库控制台页面显示的实例ID相同。",
 			},
 
 			"time_ranges": {
@@ -35,7 +35,7 @@ func ResourceTencentCloudMysqlTimeWindow() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Time period available for maintenance after modification in the format of 10:00-12:00. Each period lasts from half an hour to three hours, with the start time and end time aligned by half-hour. Up to two time periods can be set. Start and end time range: [00:00, 24:00].",
+				Description: "修改后可进行维护的时间段格式为10:00-12:00。每个时段持续半小时至三小时，开始时间和结束时间按半小时对齐。最多可以设置两个时间段。开始和结束时间范围：[00:00，24:00]。",
 			},
 
 			"weekdays": {
@@ -44,13 +44,13 @@ func ResourceTencentCloudMysqlTimeWindow() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Specifies for which day to modify the time period. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. If it is not specified or is left blank, the time period will be modified for every day by default.",
+				Description: "指定修改时间段的哪一天。取值范围：周一、周二、周三、周四、周五、周六、周日。如果不指定或留空，则默认每天修改时间段。",
 			},
 
 			"max_delay_time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Data delay threshold. It takes effect only for source instance and disaster recovery instance. Default value: 10.",
+				Description: "数据延迟阈值。仅对源实例和灾备实例生效。默认值：10。",
 			},
 		},
 	}

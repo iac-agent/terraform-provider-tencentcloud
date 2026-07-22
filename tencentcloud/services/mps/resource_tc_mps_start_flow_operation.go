@@ -22,13 +22,13 @@ func ResourceTencentCloudMpsStartFlowOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Flow Id.",
+				Description: "Flow Id。",
 			},
 			"start": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "`true`: start mps stream link flow; `false`: stop.",
+				Description: "`true`: start mps stream link flow; `false`: stop。",
 			},
 		},
 	}

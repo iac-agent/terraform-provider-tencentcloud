@@ -19,63 +19,63 @@ func DataSourceTencentCloudCkafkaDatahubTopic() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "query key word.",
+				Description: "query 键 word。",
 			},
 
 			"offset": {
 				Optional:    true,
 				Default:     0,
 				Type:        schema.TypeInt,
-				Description: "The offset position of this query, the default is 0.",
+				Description: "The 偏移量 position of this query，the 默认为 0。",
 			},
 
 			"limit": {
 				Optional:    true,
 				Default:     50,
 				Type:        schema.TypeInt,
-				Description: "The maximum number of results returned this time, the default is 50, and the maximum value is 50.",
+				Description: "The 最大results returned this time，the 默认为 50，and the maximum 值 is 50。",
 			},
 
 			"topic_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Topic list.",
+				Description: "Topic list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "name.",
+							Description: "名称",
 						},
 						"topic_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Topic name.",
+							Description: "Topic 名称",
 						},
 						"topic_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Topic Id.",
+							Description: "Topic Id。",
 						},
 						"partition_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "number of partitions.",
+							Description: "数量 partitions。",
 						},
 						"retention_ms": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Expiration.",
+							Description: "Expiration。",
 						},
 						"note": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Status, 1 in use, 2 in deletion.",
+							Description: "状态，1 in use，2 in deletion。",
 						},
 					},
 				},
@@ -84,7 +84,7 @@ func DataSourceTencentCloudCkafkaDatahubTopic() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

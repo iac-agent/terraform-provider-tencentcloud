@@ -19,33 +19,33 @@ func DataSourceTencentCloudCdwdorisInstances() *schema.Resource {
 			"search_instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The name of the cluster ID for the search.",
+				Description: "The 名称 cluster ID for the search。",
 			},
 			"search_instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The cluster name for the search.",
+				Description: "The 集群名称 for the search。",
 			},
 			"search_tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Search tag list.",
+				Description: "Search 标签列表",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 						"all_value": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "1 means only the tag key is entered without a value, and 0 means both the key and the value are entered.",
+							Description: "1 means only the 标签键 is entered without a 值，and 0 means both the 键 and the 值 are entered。",
 						},
 					},
 				},
@@ -54,130 +54,130 @@ func DataSourceTencentCloudCdwdorisInstances() *schema.Resource {
 			"instances_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Quantities of instances array.",
+				Description: "Quantities of instances array。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster instance ID, `cdw-xxxx` string type. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Cluster instance ID，`cdw-xxxx` string 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster instance name. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Cluster 实例名称 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Status,. Init is being created. Serving is running. Deleted indicates the cluster has been terminated. Deleting indicates the cluster is being terminated. Modify indicates the cluster is being changed. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "状态,. Init is being created. Serving is running. Deleted 表示cluster has been terminated. Deleting 表示cluster is being terminated. Modify 表示cluster is being changed. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "版本 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region, ap-guangzhou. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "地域，ap-guangzhou. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability zone, ap-guangzhou-3. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Availability 可用区，ap-guangzhou-3. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC name. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "VPC 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet name. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Subnet 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Payment type: hour and prepay. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Payment 类型: hour and prepay. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "创建时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Expiration time. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "过期时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"master_summary": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Data node description information. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Data node 描述 information. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"spec": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Model, such as S1.",
+										Description: "Model，such as S1。",
 									},
 									"node_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of nodes.",
+										Description: "节点数量",
 									},
 									"core": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of CPU cores, in counts.",
+										Description: "CPU 核数，in counts。",
 									},
 									"memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Memory size, in GB.",
+										Description: "Memory size，（GB）。",
 									},
 									"disk": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Disk size, in GB.",
+										Description: "Disk size，（GB）。",
 									},
 									"disk_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Disk type.",
+										Description: "Disk 类型",
 									},
 									"disk_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Disk description.",
+										Description: "Disk 描述",
 									},
 									"attach_cbs_spec": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Information of mounted cloud disks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Information of mounted cloud disks. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"disk_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Node disk type, such as CLOUD_SSD, CLOUD_PREMIUM.",
+													Description: "Node disk 类型，such as CLOUD_SSD，CLOUD_PREMIUM。",
 												},
 												"disk_size": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Disk capacity, in GB.",
+													Description: "Disk capacity，（GB）。",
 												},
 												"disk_count": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Total number of disks.",
+													Description: "Total 数量 disks。",
 												},
 												"disk_desc": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Description.",
+													Description: "描述",
 												},
 											},
 										},
@@ -185,32 +185,32 @@ func DataSourceTencentCloudCdwdorisInstances() *schema.Resource {
 									"sub_product_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Sub-product name. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Sub-product 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"spec_core": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Specified cores. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Specified cores. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"spec_memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Specified memory. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Specified memory. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"disk_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Disk size. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Disk size. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"encrypt": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether it is encrypted.. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "是否为encrypted.. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"max_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum disk. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Maximum disk. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -218,69 +218,69 @@ func DataSourceTencentCloudCdwdorisInstances() *schema.Resource {
 						"core_summary": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Zookeeper node description information. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Zookeeper node 描述 information. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"spec": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Model, such as S1.",
+										Description: "Model，such as S1。",
 									},
 									"node_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of nodes.",
+										Description: "节点数量",
 									},
 									"core": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of CPU cores, in counts.",
+										Description: "CPU 核数，in counts。",
 									},
 									"memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Memory size, in GB.",
+										Description: "Memory size，（GB）。",
 									},
 									"disk": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Disk size, in GB.",
+										Description: "Disk size，（GB）。",
 									},
 									"disk_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Disk type.",
+										Description: "Disk 类型",
 									},
 									"disk_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Disk description.",
+										Description: "Disk 描述",
 									},
 									"attach_cbs_spec": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Information of mounted cloud disks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Information of mounted cloud disks. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"disk_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Node disk type, such as CLOUD_SSD, CLOUD_PREMIUM.",
+													Description: "Node disk 类型，such as CLOUD_SSD，CLOUD_PREMIUM。",
 												},
 												"disk_size": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Disk capacity, in GB.",
+													Description: "Disk capacity，（GB）。",
 												},
 												"disk_count": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Total number of disks.",
+													Description: "Total 数量 disks。",
 												},
 												"disk_desc": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Description.",
+													Description: "描述",
 												},
 											},
 										},
@@ -288,32 +288,32 @@ func DataSourceTencentCloudCdwdorisInstances() *schema.Resource {
 									"sub_product_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Sub-product name. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Sub-product 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"spec_core": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Specified cores. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Specified cores. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"spec_memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Specified memory. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Specified memory. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"disk_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Disk size. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Disk size. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"encrypt": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether it is encrypted.. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "是否为encrypted.. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"max_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum disk. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Maximum disk. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -321,63 +321,63 @@ func DataSourceTencentCloudCdwdorisInstances() *schema.Resource {
 						"ha": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "High availability, being true or false. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "High availability，being true or false. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ha_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "High availability type: 0: non-high availability. 1: read high availability. 2: read-write high availability. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "High availability 类型: 0: non-high availability. 1: read high availability. 2: read-write high availability. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"access_info": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Access address. Example: 10.0.0.1:9000. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Access 地址 Example: 10.0.0.1:9000. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Record ID, in numerical type. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Record ID，in numerical 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Region ID, indicating the region. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "地域 ID，indicating the 地域 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"zone_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Note about availability zone, such as Guangzhou Zone 2. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Note about availability 可用区，such as Guangzhou 可用区 2. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"flow_msg": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Error process description information. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "错误 process 描述 information. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"status_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Status description, such as `running`. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "状态 描述，such as `running`. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Automatic renewal marker. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Automatic renewal marker. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Tag list. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "标签列表 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -385,72 +385,72 @@ func DataSourceTencentCloudCdwdorisInstances() *schema.Resource {
 						"monitor": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitoring Information. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Monitoring Information. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"has_cls_topic": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable logs. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否enable logs. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cls_topic_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log Topic ID. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Log Topic ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cls_log_set_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Logset ID. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Logset ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"enable_xml_config": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to support XML configuration management. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否support XML configuration management. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"region_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "地域 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"eip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Elastic network interface address. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Elastic network interface 地址 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cos_move_factor": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cold and hot stratification coefficient. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Cold and hot stratification coefficient. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"kind": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "external/local/yunti. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "external/local/yunti. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cos_bucket_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "COS bucket. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "COS 存储桶 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"can_attach_cbs": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "cbs. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "cbs. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"build_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Minor versions. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Minor versions. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"components": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Component Information. Note: The return type here is map[string]struct, not the string type displayed. You can refer to Sample Value to parse the data. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Component Information. Note: The return 类型 here is map[string]struct，not the string 类型 displayed. You can refer to Sample 值 to parse the data. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"characteristic": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Page features, used to block some page entrances on the front end.. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Page features，用于block some page entrances on the front end.. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -458,27 +458,27 @@ func DataSourceTencentCloudCdwdorisInstances() *schema.Resource {
 						"restart_timeout": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Timeout period, in seconds. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Timeout 周期，（秒）。 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"grace_shutdown_wait_seconds": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The timeout time for the graceful restart of the kernel. If it is -1, it means it is not set.. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The timeout time for the graceful restart of the kernel. If it is -1，it means it is not set.. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"case_sensitive": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the table name is case sensitive, 0 refers to sensitive, 1 refers to insensitive, compared in lowercase; 2 refers to insensitive, and the table name is changed to lowercase for storage.. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否table 名称 is case sensitive，0 refers to sensitive，1 refers to insensitive，compared in lowercase; 2 refers to insensitive，and the table 名称 is changed to lowercase for storage.. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_white_s_gs": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether users can bind security groups.. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Whether users can bind security groups.. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"bind_s_gs": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Bound security group information. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Bound security group information. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -486,22 +486,22 @@ func DataSourceTencentCloudCdwdorisInstances() *schema.Resource {
 						"enable_multi_zones": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether it is a multi-AZ.. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否为a multi-AZ.. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"user_network_infos": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User availability zone and subnet information. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "用户 availability 可用区 and subnet information. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"enable_cool_down": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to enable hot and cold stratification. 0 refers to disabled, and 1 refers to enabled.. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否enable hot and cold stratification. 0 refers to 已禁用，and 1 refers to 已启用. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cool_down_bucket": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "COS buckets are used for hot and cold stratification. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "COS buckets are 用于hot and cold stratification. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -509,7 +509,7 @@ func DataSourceTencentCloudCdwdorisInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

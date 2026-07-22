@@ -19,110 +19,110 @@ func DataSourceTencentCloudWedataOpsWorkflow() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"workflow_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Workflow ID.",
+				Description: "Workflow ID。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Workflow scheduling details.",
+				Description: "Workflow scheduling details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"workflow_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow ID.",
+							Description: "Workflow ID。",
 						},
 						"workflow_desc": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow description.",
+							Description: "Workflow 描述",
 						},
 						"workflow_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow type:\n - cycle: Periodic;\n - manual: Manual.",
+							Description: "Workflow 类型:\n - cycle: Periodic;\n - manual: Manual。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"create_user_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creator.",
+							Description: "创建者",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Modification time.",
+							Description: "修改时间。",
 						},
 						"startup_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Delayed execution time, unit=minute.",
+							Description: "Delayed 执行时间，unit=minute。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration effective date - start date.",
+							Description: "Configuration effective date - start date。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration end date - end date.",
+							Description: "Configuration end date - end date。",
 						},
 						"cycle_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task cycle type. `ONEOFF_CYCLE`: One-time; `YEAR_CYCLE`: Year; `MONTH_CYCLE`: Month; `WEEK_CYCLE`: Week; `DAY_CYCLE`: Day; `HOUR_CYCLE`: Hour; `MINUTE_CYCLE`: Minute; `CRONTAB_CYCLE`: Crontab expression type.",
+							Description: "Task cycle 类型 `ONEOFF_CYCLE`: One-time; `YEAR_CYCLE`: Year; `MONTH_CYCLE`: Month; `WEEK_CYCLE`: Week; `DAY_CYCLE`: Day; `HOUR_CYCLE`: Hour; `MINUTE_CYCLE`: Minute; `CRONTAB_CYCLE`: Crontab expression 类型",
 						},
 						"folder_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Folder ID.",
+							Description: "Folder ID。",
 						},
 						"instance_init_strategy": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task instance initialization strategy: \n - T_PLUS_1 (T+1): Initialize after one day delay;\n - T_PLUS_0 (T+0): Initialize on the same day;\n - T_MINUS_1 (T-1): Initialize one day in advance.",
+							Description: "Task instance initialization strategy: \n - T_PLUS_1 (T+1): Initialize after one day 延迟;\n - T_PLUS_0 (T+0): Initialize on the same day;\n - T_MINUS_1 (T-1): Initialize one day in advance。",
 						},
 						"scheduler_desc": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Scheduling plan description.",
+							Description: "Scheduling plan 描述",
 						},
 						"first_submit_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow first submission time.",
+							Description: "Workflow first submission time。",
 						},
 						"latest_submit_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow latest submission time.",
+							Description: "Workflow latest submission time。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow status: `ALL_RUNNING`: All scheduled; `ALL_FREEZED`: All paused; `ALL_STOPPTED`: All offline; `PART_RUNNING`: Partially scheduled; `ALL_NO_RUNNING`: All unscheduled; `ALL_INVALID`: All invalid.",
+							Description: "Workflow 状态: `ALL_RUNNING`: All scheduled; `ALL_FREEZED`: All paused; `ALL_STOPPTED`: All offline; `PART_RUNNING`: Partially scheduled; `ALL_NO_RUNNING`: All unscheduled; `ALL_INVALID`: All invalid。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Responsible persons, multiple separated by ';'.",
+							Description: "Responsible persons，multiple separated by ';'。",
 						},
 						"workflow_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow name.",
+							Description: "Workflow 名称",
 						},
 					},
 				},
@@ -131,7 +131,7 @@ func DataSourceTencentCloudWedataOpsWorkflow() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

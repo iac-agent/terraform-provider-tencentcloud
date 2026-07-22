@@ -19,77 +19,77 @@ func DataSourceTencentCloudTseGatewayCanaryRules() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID.",
+				Description: "gateway ID。",
 			},
 
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "service ID.",
+				Description: "服务 ID",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "canary rule configuration.",
+				Description: "canary rule configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"canary_rule_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "canary rule list.",
+							Description: "canary rule list。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"priority": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "priority. The value ranges from 0 to 100; the larger the value, the higher the priority; the priority cannot be repeated between different rules.",
+										Description: "优先级 The 值 ranges from 0 to 100; the larger the 值，the higher the 优先级; the 优先级 cannot be repeated between different rules。",
 									},
 									"enabled": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "the status of canary rule.",
+										Description: "状态 canary rule。",
 									},
 									"condition_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "parameter matching condition list.",
+										Description: "parameter matching condition list。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "type.Reference value:- path- method- query- header- cookie- body- system.",
+													Description: "类型Reference 值:- 路径- method- query- header- cookie- body- system。",
 												},
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "parameter name.",
+													Description: "parameter 名称",
 												},
 												"operator": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "operator.Reference value:`le`, `eq`, `lt`, `ne`, `ge`, `gt`, `regex`, `exists`, `in`, `not in`,  `prefix`, `exact`, `regex`.",
+													Description: "操作者Reference 值:`le`，`eq`，`lt`，`ne`，`ge`，`gt`，`regex`，`exists`，`in`，`not in`， `prefix`，`exact`，`regex`。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "parameter value.",
+													Description: "parameter 值",
 												},
 												"delimiter": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "delimiter. valid when operator is in or not in, reference value:`,`, `;`,`\\n`.",
+													Description: "delimiter. valid when 操作者 is in or not in，reference 值:`,`，`;`,`\\n`。",
 												},
 												"global_config_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "global configuration ID.",
+													Description: "global configuration ID。",
 												},
 												"global_config_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "global configuration name.",
+													Description: "global configuration 名称",
 												},
 											},
 										},
@@ -97,28 +97,28 @@ func DataSourceTencentCloudTseGatewayCanaryRules() *schema.Resource {
 									"balanced_service_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "service weight configuration.",
+										Description: "service 权重 configuration。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"service_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "service ID.",
+													Description: "服务 ID",
 												},
 												"service_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "service name.",
+													Description: "服务名称",
 												},
 												"upstream_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "upstream name.",
+													Description: "upstream 名称",
 												},
 												"percent": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "percent, 10 is 10%, valid values: 0 to 100.",
+													Description: "percent，10 is 10%，有效值：0 to 100。",
 												},
 											},
 										},
@@ -126,12 +126,12 @@ func DataSourceTencentCloudTseGatewayCanaryRules() *schema.Resource {
 									"service_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "service ID.",
+										Description: "服务 ID",
 									},
 									"service_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "service name.",
+										Description: "服务名称",
 									},
 								},
 							},
@@ -139,7 +139,7 @@ func DataSourceTencentCloudTseGatewayCanaryRules() *schema.Resource {
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "total count.",
+							Description: "总数",
 						},
 					},
 				},
@@ -148,7 +148,7 @@ func DataSourceTencentCloudTseGatewayCanaryRules() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

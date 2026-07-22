@@ -17,12 +17,12 @@ func DataSourceTencentCloudCcnBandwidthLimits() *schema.Resource {
 			"ccn_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the CCN to be queried.",
+				Description: "ID CCN to be queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			// Computed values
 			"limits": {
@@ -34,17 +34,17 @@ func DataSourceTencentCloudCcnBandwidthLimits() *schema.Resource {
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Limitation of region.",
+							Description: "Limitation of 地域",
 						},
 						"bandwidth_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Limitation of bandwidth.",
+							Description: "Limitation of bandwidth。",
 						},
 						"dst_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Destination area restriction.",
+							Description: "Destination area restriction。",
 						},
 					},
 				},

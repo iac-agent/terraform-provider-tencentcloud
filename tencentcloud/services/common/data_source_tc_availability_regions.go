@@ -22,40 +22,40 @@ func DataSourceTencentCloudAvailabilityRegions() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "When specified, only the region with the exactly name match will be returned. `default` value means it consistent with the provider region.",
+				Description: "When specified，only the 地域 with the exactly 名称 match will be returned. `default` 值 means it consistent with the provider 地域",
 			},
 			"include_unavailable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "A bool variable indicates that the query will include `UNAVAILABLE` regions.",
+				Description: "A bool variable 表示that the query will include `UNAVAILABLE` regions。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values.
 			"regions": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of regions will be exported and its every element contains the following attributes:",
+				Description: "A 列表 regions will be exported and its every element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of the region, like `ap-guangzhou`.",
+							Description: "The 名称 地域，like `ap-guangzhou`。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The description of the region, like `Guangzhou Region`.",
+							Description: "The 描述 地域，like `Guangzhou 地域`。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The state of the region, indicate availability using `AVAILABLE` and `UNAVAILABLE` values.",
+							Description: "The state of the 地域，indicate availability using `AVAILABLE` and `UNAVAILABLE` values。",
 						},
 					},
 				},

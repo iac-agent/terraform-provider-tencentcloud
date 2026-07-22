@@ -26,20 +26,20 @@ func ResourceTencentCloudChdfsMountPoint() *schema.Resource {
 			"mount_point_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "mount point name.",
+				Description: "mount point 名称",
 			},
 
 			"file_system_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "file system id you want to mount.",
+				Description: "file system id you want to mount。",
 			},
 
 			"mount_point_status": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "mount status 1:open, 2:close.",
+				Description: "mount 状态 1:open，2:close。",
 			},
 		},
 	}

@@ -25,14 +25,14 @@ func ResourceTencentCloudMariadbRenewInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"period": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Renewal duration, unit: month.",
+				Description: "Renewal duration，unit: month。",
 			},
 		},
 	}

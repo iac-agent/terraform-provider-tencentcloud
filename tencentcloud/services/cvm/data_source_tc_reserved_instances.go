@@ -21,65 +21,65 @@ func DataSourceTencentCloudReservedInstances() *schema.Resource {
 			"reserved_instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the reserved instance to be query.",
+				Description: "ID reserved instance to be query。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The available zone that the reserved instance locates at.",
+				Description: "The available 可用区 that the reserved instance locates at。",
 			},
 			"instance_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The type of reserved instance.",
+				Description: "类型 reserved instance。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"reserved_instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of reserved instance. Each element contains the following attributes:",
+				Description: "An information 列表 reserved instance. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"reserved_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the reserved instance.",
+							Description: "ID reserved instance。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The type of reserved instance.",
+							Description: "类型 reserved instance。",
 						},
 						"instance_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of reserved instance.",
+							Description: "数量 reserved instance。",
 						},
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability zone of the reserved instance.",
+							Description: "Availability 可用区 of the reserved instance。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Start time of the reserved instance.",
+							Description: "开始时间 of the reserved instance。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Expiry time of the reserved instance.",
+							Description: "Expiry time of the reserved instance。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Status of the reserved instance.",
+							Description: "状态 reserved instance。",
 						},
 					},
 				},

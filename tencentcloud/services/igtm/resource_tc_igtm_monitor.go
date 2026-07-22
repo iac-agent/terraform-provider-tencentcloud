@@ -26,49 +26,49 @@ func ResourceTencentCloudIgtmMonitor() *schema.Resource {
 			"monitor_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Monitor name.",
+				Description: "Monitor 名称",
 			},
 
 			"check_protocol": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Detection protocol, optional values `PING`, `TCP`, `HTTP`, `HTTPS`.",
+				Description: "Detection 协议，可选 values `PING`，`TCP`，`HTTP`，`HTTPS`。",
 			},
 
 			"check_interval": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Check interval (seconds), optional values 15 60 120 300.",
+				Description: "Check interval (seconds)，可选 values 15 60 120 300。",
 			},
 
 			"timeout": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Timeout time, unit seconds, optional values 2 3 5 10.",
+				Description: "Timeout time，unit seconds，可选 values 2 3 5 10。",
 			},
 
 			"fail_times": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Retry count, optional values 0, 1, 2.",
+				Description: "Retry count，可选 values 0，1，2。",
 			},
 
 			"fail_rate": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Failure rate, values 20 30 40 50 60 70 80 100, default value 50.",
+				Description: "Failure rate，values 20 30 40 50 60 70 80 100，默认值 50。",
 			},
 
 			"detector_style": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Monitoring node type, optional values AUTO INTERNAL OVERSEAS IPV6 ALL.",
+				Description: "Monitoring node 类型，可选 values AUTO INTERNAL OVERSEAS IPV6 ALL。",
 			},
 
 			"detector_group_ids": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Detector group ID list separated by commas.",
+				Description: "Detector 组 ID list separated by commas。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -78,20 +78,20 @@ func ResourceTencentCloudIgtmMonitor() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "PING packet count, required when CheckProtocol=ping, optional values 20 50 100.",
+				Description: "PING packet count，必填 when CheckProtocol=ping，可选 values 20 50 100。",
 			},
 
 			"tcp_port": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Check port, optional values between 1-65535.",
+				Description: "Check 端口，可选 values between 1-65535。",
 			},
 
 			"host": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Host setting, default is business domain name.",
+				Description: "主机 setting，默认为 business 域名 名称",
 			},
 
 			"path": {
@@ -105,42 +105,42 @@ func ResourceTencentCloudIgtmMonitor() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Return error code threshold, optional values 400 and 500, default value 500.",
+				Description: "Return 错误码 threshold，可选 values 400 and 500，默认值 500。",
 			},
 
 			"enable_redirect": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Follow 3XX redirect, DISABLED for disabled, ENABLED for enabled, default disabled.",
+				Description: "Follow 3XX redirect，DISABLED for 已禁用，ENABLED for 已启用，default 已禁用",
 			},
 
 			"enable_sni": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Enable SNI, DISABLED for disabled, ENABLED for enabled, default disabled.",
+				Description: "Enable SNI，DISABLED for 已禁用，ENABLED for 已启用，default 已禁用",
 			},
 
 			"packet_loss_rate": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Packet loss rate alarm threshold, required when CheckProtocol=ping, values 10 30 50 80 90 100.",
+				Description: "Packet loss rate alarm threshold，必填 when CheckProtocol=ping，values 10 30 50 80 90 100。",
 			},
 
 			"continue_period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Continuous period count, optional values 1-5.",
+				Description: "Continuous 周期 count，可选 values 1-5。",
 			},
 
 			// computed
 			"monitor_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Monitor ID.",
+				Description: "Monitor ID。",
 			},
 		},
 	}

@@ -22,95 +22,95 @@ func DataSourceTencentCloudCdhInstances() *schema.Resource {
 			"host_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the CDH instances to be queried.",
+				Description: "ID CDH instances to be queried。",
 			},
 			"host_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the CDH instances to be queried.",
+				Description: "名称 CDH instances to be queried。",
 			},
 			"host_state": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "State of the CDH instances to be queried. Valid values: `PENDING`, `LAUNCH_FAILURE`, `RUNNING`, `EXPIRED`.",
+				Description: "State of the CDH instances to be queried. 有效值：`PENDING`，`LAUNCH_FAILURE`，`RUNNING`，`EXPIRED`。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The available zone that the CDH instance locates at.",
+				Description: "The available 可用区 that the CDH instance locates at。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The project CDH belongs to.",
+				Description: "The project CDH belongs to。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"cdh_instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of cdh instance. Each element contains the following attributes:",
+				Description: "An information 列表 cdh instance. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"host_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the CDH instance.",
+							Description: "ID CDH instance。",
 						},
 						"host_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the CDH instance.",
+							Description: "名称 CDH instance。",
 						},
 						"host_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the CDH instance.",
+							Description: "类型 CDH instance。",
 						},
 						"host_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State of the CDH instance.",
+							Description: "State of the CDH instance。",
 						},
 						"charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The charge type of the CDH instance.",
+							Description: "The charge 类型 CDH instance。",
 						},
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The available zone that the CDH instance locates at.",
+							Description: "The available 可用区 that the CDH instance locates at。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The project CDH belongs to.",
+							Description: "The project CDH belongs to。",
 						},
 						"prepaid_renew_flag": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Auto renewal flag.",
+							Description: "自动续费标识",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of the CDH instance.",
+							Description: "创建时间 of the CDH instance。",
 						},
 						"expired_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Expired time of the CDH instance.",
+							Description: "过期时间 of the CDH instance。",
 						},
 						"cvm_instance_ids": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Id of CVM instances that have been created on the CDH instance.",
+							Description: "Id of CVM instances that have been created on the CDH instance。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -118,48 +118,48 @@ func DataSourceTencentCloudCdhInstances() *schema.Resource {
 						"cage_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cage ID of the CDH instance. This parameter is only valid for CDH instances in the cages of finance availability zones.",
+							Description: "Cage ID CDH instance. This parameter is only valid for CDH instances in the cages of finance availability zones。",
 						},
 						"host_resource": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "An information list of host resource. Each element contains the following attributes:",
+							Description: "An information 列表 主机 resource. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cpu_total_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of total CPU cores of the instance.",
+										Description: "The 数量 total CPU 核数 of the instance。",
 									},
 									"cpu_available_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of available CPU cores of the instance.",
+										Description: "The 数量 available CPU 核数 of the instance。",
 									},
 									"memory_total_size": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Instance memory total capacity, unit in GB.",
+										Description: "Instance memory total capacity，unit （GB）。",
 									},
 									"memory_available_size": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Instance memory available capacity, unit in GB.",
+										Description: "Instance memory available capacity，unit （GB）。",
 									},
 									"disk_total_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Instance disk total capacity, unit in GB.",
+										Description: "Instance disk total capacity，unit （GB）。",
 									},
 									"disk_available_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Instance disk available capacity, unit in GB.",
+										Description: "Instance disk available capacity，unit （GB）。",
 									},
 									"disk_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Type of the disk.",
+										Description: "类型 disk。",
 									},
 								},
 							},

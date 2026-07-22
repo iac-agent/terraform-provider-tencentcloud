@@ -28,49 +28,49 @@ func ResourceTencentCloudScfFunctionAlias() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, _, and -, and must begin with a letter.",
+				Description: "Alias 名称，which must be unique in the function，can contain 1 to 64 letters，digits，_，and -，and must begin with a letter。",
 			},
 
 			"function_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function name.",
+				Description: "Function 名称",
 			},
 
 			"function_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Master version pointed to by the alias.",
+				Description: "Master 版本 pointed to by the alias。",
 			},
 
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Function namespace.",
+				Description: "Function namespace。",
 			},
 
 			"routing_config": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Request routing configuration of alias.",
+				Description: "Request routing configuration of alias。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"additional_version_weights": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Additional version with random weight-based routing.",
+							Description: "Additional 版本 with random 权重-based routing。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"version": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Function version name.",
+										Description: "Function 版本 名称",
 									},
 									"weight": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Version weight.",
+										Description: "版本 权重",
 									},
 								},
 							},
@@ -78,28 +78,28 @@ func ResourceTencentCloudScfFunctionAlias() *schema.Resource {
 						"additional_version_matches": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Additional version with rule-based routing.",
+							Description: "Additional 版本 with rule-based routing。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"version": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Function version name.",
+										Description: "Function 版本 名称",
 									},
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Matching rule key. When the API is called, pass in the key to route the request to the specified version based on the matching ruleHeader method:Enter invoke.headers.User for key and pass in RoutingKey:{User:value} when invoking a function through invoke for invocation based on rule matching.",
+										Description: "Matching rule 键 When the API is called，pass in the 键 to route the request to the specified 版本 based on the matching ruleHeader method:Enter invoke.headers.用户 for 键 and pass in RoutingKey:{用户:值} when invoking a function through invoke for invocation based on rule matching。",
 									},
 									"method": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Match method. Valid values:range: Range matchexact: exact string match.",
+										Description: "Match method. Valid values:range: Range matchexact: exact string match。",
 									},
 									"expression": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Rule requirements for range match:It should be described in an open or closed range, i.e., (a,b) or [a,b], where both a and b are integersRule requirements for exact match:Exact string match.",
+										Description: "Rule requirements for range match:It should be described in an open or closed range，i.e.，(a,b) or [a,b]，where both a and b are integersRule requirements for exact match:Exact string match。",
 									},
 								},
 							},
@@ -111,7 +111,7 @@ func ResourceTencentCloudScfFunctionAlias() *schema.Resource {
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Alias description information.",
+				Description: "Alias 描述 information。",
 			},
 		},
 	}

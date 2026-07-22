@@ -20,59 +20,59 @@ func DataSourceTencentCloudAPIGatewayUsagePlans() *schema.Resource {
 			"usage_plan_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the usage plan.",
+				Description: "ID usage plan。",
 			},
 			"usage_plan_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the usage plan.",
+				Description: "名称 usage plan。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			// Computed values.
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of usage plans.",
+				Description: "A 列表 usage plans。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"usage_plan_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the usage plan.",
+							Description: "ID usage plan。",
 						},
 						"usage_plan_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the usage plan.",
+							Description: "名称 usage plan。",
 						},
 						"usage_plan_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom usage plan description.",
+							Description: "Custom usage plan 描述",
 						},
 						"max_request_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total number of requests allowed. Valid value formats: `-1`, `[1,99999999]`. The default value is -1, which indicates no limit.",
+							Description: "Total 数量 requests allowed. Valid 值 formats: `-1`，`[1,99999999]`. The 默认值为 -1，which 表示no 限制",
 						},
 						"max_request_num_pre_sec": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Limit of requests per second. Valid values formats: `-1`, `[1,2000]`. The default value is -1, which indicates no limit.",
+							Description: "限制 of requests per second. Valid values formats: `-1`，`[1,2000]`. The 默认值为 -1，which 表示no 限制",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last modified time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.",
+							Description: "最后修改时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.",
+							Description: "创建时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
 						},
 					},
 				},

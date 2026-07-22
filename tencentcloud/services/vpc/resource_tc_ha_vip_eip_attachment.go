@@ -30,14 +30,14 @@ func ResourceTencentCloudHaVipEipAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the attached HA VIP.",
+				Description: "ID attached HA VIP",
 			},
 			"address_ip": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateIp,
-				Description:  "Public address of the EIP.",
+				Description:  "Public 地址 of the EIP。",
 			},
 		},
 	}

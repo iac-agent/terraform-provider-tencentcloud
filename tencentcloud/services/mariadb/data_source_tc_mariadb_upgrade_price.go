@@ -19,47 +19,47 @@ func DataSourceTencentCloudMariadbUpgradePrice() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 			"memory": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Memory size in GB, which can be obtained by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
+				Description: "Memory size （GB）， which can be obtained by querying the instance specification through the `DescribeDBInstanceSpecs` API。",
 			},
 			"storage": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Storage capacity in GB. The maximum and minimum storage space can be obtained by querying instance specification through the `DescribeDBInstanceSpecs` API.",
+				Description: "Storage capacity （GB）。 The maximum and minimum storage space can be obtained by querying instance specification through the `DescribeDBInstanceSpecs` API。",
 			},
 			"node_count": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "New instance nodes, zero means not change.",
+				Description: "New instance nodes，zero means not change。",
 			},
 			"amount_unit": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Price unit. Valid values: `* pent` (cent), `* microPent` (microcent).",
+				Description: "Price unit. 有效值：`* pent` (cent)，`* microPent` (microcent)。",
 			},
 			"original_price": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Original price * Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description. * Currency: CNY (Chinese site), USD (international site).",
+				Description: "Original price * 单位：Cent (default). If the request parameter 包含`AmountUnit`，see `AmountUnit` 描述 * Currency: CNY (Chinese site)，USD (international site)。",
 			},
 			"price": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The actual price may be different from the original price due to discounts. * Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description. * Currency: CNY (Chinese site), USD (international site).",
+				Description: "The actual price may be different from the original price due to discounts. * 单位：Cent (default). If the request parameter 包含`AmountUnit`，see `AmountUnit` 描述 * Currency: CNY (Chinese site)，USD (international site)。",
 			},
 			"formula": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Price calculation formula.",
+				Description: "Price calculation formula。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

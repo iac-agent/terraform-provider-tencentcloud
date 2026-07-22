@@ -22,20 +22,20 @@ func ResourceTencentCloudWedataAddCalcEnginesToProjectOperation() *schema.Resour
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID to be modified.",
+				Description: "项目 ID to be modified。",
 			},
 
 			"dlc_info": {
 				Type:        schema.TypeList,
 				Required:    true,
 				ForceNew:    true,
-				Description: "DLC cluster information.",
+				Description: "DLC cluster information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"compute_resources": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "DLC resource names (need to add role Uin to DLC, otherwise resources may not be available).",
+							Description: "DLC resource names (need to add 角色 Uin to DLC，otherwise resources may not be available)。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -43,27 +43,27 @@ func ResourceTencentCloudWedataAddCalcEnginesToProjectOperation() *schema.Resour
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "DLC region.",
+							Description: "DLC 地域",
 						},
 						"default_database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specify the default database for the DLC cluster.",
+							Description: "指定default database for the DLC cluster。",
 						},
 						"standard_mode_env_tag": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cluster configuration tag (only effective for standard mode projects and required for standard mode). Enum values:\n- Prod  (Production environment)\n- Dev  (Development environment).",
+							Description: "Cluster configuration 标签 (only effective for standard 模式 projects and 必填 for standard 模式). Enum values:\n- Prod  (Production environment)\n- Dev  (Development environment)。",
 						},
 						"access_account": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Access account (only effective for standard mode projects and required for standard mode), used to submit DLC tasks.\nIt is recommended to use a specified sub-account and set corresponding database table permissions for the sub-account; task runner mode may cause task failures when the responsible person leaves; main account mode is not easy for permission control when multiple projects have different permissions.\n\nEnum values:\n- TASK_RUNNER (Task Runner)\n- OWNER (Main Account Mode)\n- SUB (Sub-Account Mode).",
+							Description: "Access 账号 (only effective for standard 模式 projects and 必填 for standard 模式)，用于submit DLC tasks.\nIt is recommended to use a specified sub-账号 and set corresponding database table permissions for the sub-账号; task runner 模式 may cause task failures when the responsible person leaves; main 账号 模式 is not easy for permission control when multiple projects have different permissions.\n\nEnum values:\n- TASK_RUNNER (Task Runner)\n- OWNER (Main 账号 模式)\n- SUB (Sub-账号 模式)。",
 						},
 						"sub_account_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Sub-account ID (only effective for standard mode projects), when AccessAccount is in sub-account mode, the sub-account ID information needs to be specified, other modes do not need to be specified.",
+							Description: "Sub-账号 ID (only effective for standard 模式 projects)，when AccessAccount is in sub-账号 模式，the sub-账号 ID information needs to be specified，other modes do not need to be specified。",
 						},
 					},
 				},

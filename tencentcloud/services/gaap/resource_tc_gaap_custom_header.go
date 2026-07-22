@@ -27,24 +27,24 @@ func ResourceTencentCloudGaapCustomHeader() *schema.Resource {
 			"rule_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule id.",
+				Description: "Rule id。",
 			},
 
 			"headers": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Headers.",
+				Description: "Headers。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"header_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Header name.",
+							Description: "Header 名称",
 						},
 						"header_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Header value.",
+							Description: "Header 值",
 						},
 					},
 				},

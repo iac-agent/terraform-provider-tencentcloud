@@ -27,19 +27,19 @@ func ResourceTencentCloudVpcDhcpIp() *schema.Resource {
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The private network `ID`.",
+				Description: "The private network `ID`。",
 			},
 
 			"subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Subnet `ID`.",
+				Description: "Subnet `ID`。",
 			},
 
 			"dhcp_ip_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "`DhcpIp` name.",
+				Description: "`DhcpIp` 名称",
 			},
 		},
 	}

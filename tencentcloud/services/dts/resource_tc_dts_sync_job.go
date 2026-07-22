@@ -28,35 +28,35 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "pay mode, optional value is PrePay or PostPay.",
+				Description: "付费模式，可选 值 is PrePay or PostPay。",
 			},
 
 			"src_database_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "source database type.",
+				Description: "来源 database 类型",
 			},
 
 			"src_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "source region.",
+				Description: "来源 地域",
 			},
 
 			"dst_database_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "destination database type.",
+				Description: "destination database 类型",
 			},
 
 			"dst_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "destination region.",
+				Description: "destination 地域",
 			},
 
 			"specification": {
@@ -64,7 +64,7 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "specification.",
+				Description: "specification。",
 			},
 
 			"tags": {
@@ -72,18 +72,18 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "tags.",
+				Description: "标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -94,7 +94,7 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "auto renew.",
+				Description: "auto renew。",
 			},
 
 			"instance_class": {
@@ -102,7 +102,7 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "instance class.",
+				Description: "instance class。",
 			},
 
 			"job_name": {
@@ -110,7 +110,7 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "job name.",
+				Description: "作业名称",
 			},
 
 			"existed_job_id": {
@@ -118,13 +118,13 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "existed job id.",
+				Description: "existed 作业 ID",
 			},
 
 			"job_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "job id.",
+				Description: "作业 ID",
 			},
 		},
 	}

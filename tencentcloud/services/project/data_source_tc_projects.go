@@ -20,39 +20,39 @@ func DataSourceTencentCloudProjects() *schema.Resource {
 			"all_list": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "1 means to list all project, 0 means to list visible project.",
+				Description: "1 means to list all project，0 means to list visible project。",
 			},
 
 			"projects": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of projects.",
+				Description: "列表 projects。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID of Project.",
+							Description: "ID Project。",
 						},
 						"project_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of Project.",
+							Description: "名称 Project。",
 						},
 						"creator_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Uin of Creator.",
+							Description: "Uin of 创建者",
 						},
 						"project_info": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of project.",
+							Description: "描述 project。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 					},
 				},
@@ -61,7 +61,7 @@ func DataSourceTencentCloudProjects() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

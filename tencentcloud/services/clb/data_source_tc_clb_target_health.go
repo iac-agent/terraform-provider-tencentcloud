@@ -22,102 +22,102 @@ func DataSourceTencentCloudClbTargetHealth() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of IDs of CLB instances to be queried.",
+				Description: "需要查询的CLB实例ID列表。",
 			},
 
 			"load_balancers": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "CLB instance list. Note: This field may return null, indicating that no valid values can be obtained.",
+				Description: "CLB实例列表。注意：该字段可能返回null，表示取不到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"load_balancer_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance ID.",
+							Description: "CLB实例ID。",
 						},
 						"load_balancer_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance name. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB 实例名称。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"listeners": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of listeners. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "听众名单。注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"listener_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener ID.",
+										Description: "听众 ID。",
 									},
 									"listener_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener name. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "听众姓名。注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener protocol.",
+										Description: "监听器协议。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Listener port.",
+										Description: "侦听器端口。",
 									},
 									"rules": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "List of forwarding rules of the listener. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "列表 forwarding rules of the listener.注意：该字段可能返回null，表示取不到有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"location_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Forwarding rule ID.",
+													Description: "转发规则ID。",
 												},
 												"domain": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Domain name of the forwarding rule. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "转发规则的域名。注意：该字段可能返回null，表示取不到有效值。",
 												},
 												"url": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Forwarding rule Url. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "转发规则 URL。注意：该字段可能返回null，表示取不到有效值。",
 												},
 												"targets": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Health status of the real server bound to this rule. Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "该规则绑定的真实服务器的健康状态。注意：该字段可能返回null，表示取不到有效值。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"ip": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Private IP of the target.",
+																Description: "目标的私有IP。",
 															},
 															"port": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Port bound to the target.",
+																Description: "绑定到目标的端口。",
 															},
 															"health_status": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "Current health status. true: healthy; false: unhealthy.",
+																Description: "目前的健康状况。真实：健康；假：不健康。",
 															},
 															"target_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Instance ID of the target, such as ins-12345678.",
+																Description: "目标的实例ID，例如ins-12345678。",
 															},
 															"health_status_detail": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Detailed information about the current health status. Alive: healthy; Dead: exceptional; Unknown: check not started/checking/unknown status.",
+																Description: "有关当前健康状况的详细信息。活着：健康；死：例外；未知：检查未启动/正在检查/未知状态。",
 															},
 														},
 													},
@@ -135,7 +135,7 @@ func DataSourceTencentCloudClbTargetHealth() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

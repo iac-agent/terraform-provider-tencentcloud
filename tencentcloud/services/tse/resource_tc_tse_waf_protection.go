@@ -24,13 +24,13 @@ func ResourceTencentCloudTseWafProtection() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Gateway ID.",
+				Description: "网关 ID",
 			},
 
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The type of protection resource. Reference value: `Global`: instance, `Service`: service, `Route`: route, `Object`: obejct (This interface does not currently support this type).",
+				Description: "类型 protection resource. Reference 值: `Global`: instance，`Service`: service，`Route`: route，`Object`: obejct (This interface does not currently support this 类型)。",
 			},
 
 			"list": {
@@ -39,19 +39,19 @@ func ResourceTencentCloudTseWafProtection() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Means the list of services or routes when the resource type `Type` is `Service` or `Route`.",
+				Description: "Means the 列表 services or routes when the 资源类型 `类型` is `Service` or `Route`。",
 			},
 
 			"operate": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "`open`: open the protection, `close`: close the protection.",
+				Description: "`open`: open the protection，`close`: close the protection。",
 			},
 
 			"global_status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Global protection status.",
+				Description: "Global protection 状态",
 			},
 		},
 	}

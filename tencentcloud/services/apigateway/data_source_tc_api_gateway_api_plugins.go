@@ -19,58 +19,58 @@ func DataSourceTencentCloudApiGatewayApiPlugins() *schema.Resource {
 			"api_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "API ID to be queried.",
+				Description: "API ID to be queried。",
 			},
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The service ID to be queried.",
+				Description: "The 服务 ID to be queried。",
 			},
 			"environment_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Environment information.",
+				Description: "Environment information。",
 			},
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "API list information that the plug-in can bind.",
+				Description: "API list information that the plug-in can bind。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"plugin_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plugin ID.",
+							Description: "Plugin ID。",
 						},
 						"environment": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Environment information.",
+							Description: "Environment information。",
 						},
 						"attached_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Binding time.",
+							Description: "Binding time。",
 						},
 						"plugin_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plugin name.",
+							Description: "Plugin 名称",
 						},
 						"plugin_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plugin type.",
+							Description: "Plugin 类型",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plugin description.",
+							Description: "Plugin 描述",
 						},
 						"plugin_data": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plug-in definition statement.",
+							Description: "Plug-in definition statement。",
 						},
 					},
 				},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudApiGatewayApiPlugins() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -20,71 +20,71 @@ func DataSourceTencentCloudAPIGatewayUsagePlanEnvironments() *schema.Resource {
 			"usage_plan_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the usage plan to be queried.",
+				Description: "ID usage plan to be queried。",
 			},
 			"bind_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      API_GATEWAY_TYPE_SERVICE,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(API_GATEWAY_TYPES),
-				Description:  "Binding type. Valid values: `API`, `SERVICE`. Default value: `SERVICE`.",
+				Description:  "Binding 类型 有效值：`API`，`SERVICE`. 默认值：`SERVICE`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			// Computed values.
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of usage plan binding details.",
+				Description: "A 列表 usage plan binding details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The service ID.",
+							Description: "The 服务 ID",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The service name.",
+							Description: "The 服务名称",
 						},
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API ID, this value is empty if attach service.",
+							Description: "The API ID，this 值 is empty if attach service。",
 						},
 						"api_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API name, this value is empty if attach service.",
+							Description: "The API 名称，this 值 is empty if attach service。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API path, this value is empty if attach service.",
+							Description: "The API 路径，this 值 is empty if attach service。",
 						},
 						"method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API method, this value is empty if attach service.",
+							Description: "The API method，this 值 is empty if attach service。",
 						},
 						"environment": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The environment name.",
+							Description: "The environment 名称",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last modified time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.",
+							Description: "最后修改时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.",
+							Description: "创建时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
 						},
 					},
 				},

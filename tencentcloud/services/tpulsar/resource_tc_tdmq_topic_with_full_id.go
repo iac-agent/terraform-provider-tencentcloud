@@ -30,49 +30,49 @@ func ResourceTencentCloudTdmqTopicWithFullId() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The name of tdmq namespace.",
+				Description: "名称 tdmq namespace。",
 			},
 			"topic_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The name of topic to be created.",
+				Description: "名称 topic to be created。",
 			},
 			"partitions": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The partitions of topic.",
+				Description: "The partitions of topic。",
 			},
 			"topic_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
 				Deprecated:  "This input will be gradually discarded and can be switched to PulsarTopicType parameter 0: Normal message; 1: Global sequential messages; 2: Local sequential messages; 3: Retrying queue; 4: Dead letter queue.",
-				Description: "The type of topic.",
+				Description: "类型 topic。",
 			},
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The Dedicated Cluster Id.",
+				Description: "The Dedicated Cluster Id。",
 			},
 			"pulsar_topic_type": {
 				Type:          schema.TypeInt,
 				Optional:      true,
 				Computed:      true,
 				ConflictsWith: []string{"topic_type"},
-				Description:   "Pulsar Topic Type 0: Non-persistent non-partitioned 1: Non-persistent partitioned 2: Persistent non-partitioned 3: Persistent partitioned.",
+				Description:   "Pulsar Topic 类型 0: Non-persistent non-partitioned 1: Non-persistent partitioned 2: Persistent non-partitioned 3: Persistent partitioned。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the namespace.",
+				Description: "描述 namespace。",
 			},
 
 			//compute
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of resource.",
+				Description: "创建时间 of resource。",
 			},
 		},
 	}

@@ -18,7 +18,7 @@ func DataSourceTencentCloudIdentityCenterRoleConfigurations() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Space ID.",
+				Description: "Space ID。",
 			},
 
 			"filter": {
@@ -30,7 +30,7 @@ func DataSourceTencentCloudIdentityCenterRoleConfigurations() *schema.Resource {
 			"filter_targets": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Check whether the member account has been configured with permissions. If configured, return IsSelected: true; otherwise, return false.",
+				Description: "Check 是否member 账号 has been configured with permissions. If configured，return IsSelected: true; otherwise，return false。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -39,54 +39,54 @@ func DataSourceTencentCloudIdentityCenterRoleConfigurations() *schema.Resource {
 			"principal_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "UserId of the authorized user or GroupId of the authorized user group, which must be set together with the input parameter FilterTargets.",
+				Description: "UserId of the authorized 用户 or GroupId of the authorized 用户 group，which must be set together with the input parameter FilterTargets。",
 			},
 
 			"role_configurations": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Permission configuration list.",
+				Description: "Permission configuration list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role_configuration_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Permission configuration ID.",
+							Description: "权限配置 ID",
 						},
 						"role_configuration_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Permission configuration name.",
+							Description: "Permission configuration 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Permission configuration description.",
+							Description: "Permission configuration 描述",
 						},
 						"session_duration": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Session duration. It indicates the maximum session duration when CIC users use the access configuration to access member accounts.\nUnit: seconds.",
+							Description: "Session duration. It 表示maximum session duration when CIC users use the access configuration to access member accounts.\n单位：seconds。",
 						},
 						"relay_state": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Initial access page. It indicates the initial access page URL when CIC users use the access configuration to access member accounts.",
+							Description: "Initial access page. It 表示initial access page URL when CIC users use the access configuration to access member accounts。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Creation time of the permission configuration.",
+							Description: "创建时间 of the permission configuration。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time of the permission configuration.",
+							Description: "更新时间 of the permission configuration。",
 						},
 						"is_selected": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "If the input parameter FilterTargets is provided, check whether the member account has been configured with permissions. If configured, return true; otherwise, return false.",
+							Description: "If the input parameter FilterTargets is provided，check 是否member 账号 has been configured with permissions. If configured，return true; otherwise，return false。",
 						},
 					},
 				},
@@ -95,7 +95,7 @@ func DataSourceTencentCloudIdentityCenterRoleConfigurations() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

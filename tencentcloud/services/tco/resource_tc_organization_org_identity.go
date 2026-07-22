@@ -27,34 +27,34 @@ func ResourceTencentCloudOrganizationOrgIdentity() *schema.Resource {
 			"identity_alias_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Identity name.Supports English letters and numbers, the length cannot exceed 40 characters.",
+				Description: "Identity 名称Supports English letters and numbers，the length cannot exceed 40 characters。",
 			},
 
 			"identity_policy": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Identity policy list.",
+				Description: "Identity policy list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "CAM default policy ID. Valid and required when PolicyType is the 2-preset policy.",
+							Description: "CAM default policy ID. Valid and 必填 when PolicyType is the 2-preset policy。",
 						},
 						"policy_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "CAM default policy name. Valid and required when PolicyType is the 2-preset policy.",
+							Description: "CAM default policy 名称 Valid and 必填 when PolicyType is the 2-preset policy。",
 						},
 						"policy_type": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Policy type. Value 1-custom policy 2-preset policy; default value 2.",
+							Description: "Policy 类型 值 1-custom policy 2-preset policy; 默认值 2。",
 						},
 						"policy_document": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Customize policy content and follow CAM policy syntax. Valid and required when PolicyType is the 1-custom policy.",
+							Description: "Customize policy 内容 and follow CAM policy syntax. Valid and 必填 when PolicyType is the 1-custom policy。",
 						},
 					},
 				},
@@ -63,7 +63,7 @@ func ResourceTencentCloudOrganizationOrgIdentity() *schema.Resource {
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Identity description.",
+				Description: "Identity 描述",
 			},
 		},
 	}

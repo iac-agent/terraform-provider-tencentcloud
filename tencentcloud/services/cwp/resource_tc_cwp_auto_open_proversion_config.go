@@ -25,56 +25,56 @@ func ResourceTencentCloudCwpAutoOpenProversionConfig() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Set the auto-activation status.\n<li>CLOSE: off</li>\n<li>OPEN: on</li>.",
+				Description: "Set the auto-activation 状态\n<li>CLOSE: off</li>\n<li>OPEN: on</li>。",
 			},
 
 			"protect_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Enhanced Protection Mode PROVERSION_POSTPAY Professional Edition - Pay-as-you-go PROVERSION_PREPAY Professional Edition - Annual/Monthly Subscription FLAGSHIP_PREPAY Flagship Edition - Annual/Monthly Subscription.",
+				Description: "Enhanced Protection 模式 PROVERSION_POSTPAY Professional Edition - Pay-as-you-go PROVERSION_PREPAY Professional Edition - Annual/Monthly Subscription FLAGSHIP_PREPAY Flagship Edition - Annual/Monthly Subscription。",
 			},
 
 			"auto_repurchase_switch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Automatic purchase/expansion authorization switch, 1 by default, 0 for OFF, 1 for ON.",
+				Description: "Automatic purchase/expansion authorization switch，1 by default，0 for OFF，1 for ON。",
 			},
 
 			"auto_repurchase_renew_switch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Auto-renewal or not for auto-purchased orders, 0 by default, 0 for OFF, 1 for ON.",
+				Description: "Auto-renewal or not for auto-purchased orders，0 by default，0 for OFF，1 for ON。",
 			},
 
 			"repurchase_renew_switch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether the manually purchased order is automatically renewed (defaults to 0). 0 - off; 1 -on.",
+				Description: "是否manually purchased 顺序 is automatically renewed (默认为 0). 0 - off; 1 -on。",
 			},
 
 			"auto_bind_rasp_switch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Newly added machines will be automatically bound to Rasp. 0: Disabled, 1: Enabled.",
+				Description: "Newly added machines will be automatically bound to Rasp. 0: 已禁用，1: 已启用",
 			},
 
 			"auto_open_rasp_switch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Newly added machines will have automatic Raspberry Pi protection enabled by default. (0: Disabled, 1: Enabled).",
+				Description: "Newly added machines will have automatic Raspberry Pi protection 已启用 by default. (0: 已禁用，1: 已启用)。",
 			},
 
 			"auto_downgrade_switch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Automatic scaling switch: 0 for off, 1 for on.",
+				Description: "Automatic scaling switch: 0 for off，1 for on。",
 			},
 		},
 	}

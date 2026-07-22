@@ -28,47 +28,47 @@ func ResourceTencentCloudCynosdbClusterDatabases() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database name.",
+				Description: "数据库名称。",
 			},
 
 			"character_set": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Character Set Type.",
+				Description: "字符集类型。",
 			},
 
 			"collate_rule": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Sort Rules.",
+				Description: "排序规则。",
 			},
 
 			"user_host_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Authorize user host permissions.",
+				Description: "授权用户主机权限。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Authorized Users.",
+							Description: "授权用户。",
 						},
 						"db_host": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: ".",
+							Description: "。",
 						},
 						"db_privilege": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: ".",
+							Description: "。",
 						},
 					},
 				},
@@ -77,7 +77,7 @@ func ResourceTencentCloudCynosdbClusterDatabases() *schema.Resource {
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Remarks.",
+				Description: "评论。",
 			},
 		},
 	}

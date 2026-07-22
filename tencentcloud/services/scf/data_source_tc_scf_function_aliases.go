@@ -19,58 +19,58 @@ func DataSourceTencentCloudScfFunctionAliases() *schema.Resource {
 			"function_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function name.",
+				Description: "Function 名称",
 			},
 
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Function namespace.",
+				Description: "Function namespace。",
 			},
 
 			"function_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "If this parameter is provided, only aliases associated with this function version will be returned.",
+				Description: "If this parameter is provided，only aliases associated with this function 版本 will be returned。",
 			},
 
 			"aliases": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Alias list.",
+				Description: "Alias list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"function_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Master version pointed to by the alias.",
+							Description: "Master 版本 pointed to by the alias。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alias name.",
+							Description: "Alias 名称",
 						},
 						"routing_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Routing information of aliasNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Routing information of aliasNote: this field may return null，indicating that no valid values can be obtained。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"additional_version_weights": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Additional version with random weight-based routing.",
+										Description: "Additional 版本 with random 权重-based routing。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"version": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Function version name.",
+													Description: "Function 版本 名称",
 												},
 												"weight": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Version weight.",
+													Description: "版本 权重",
 												},
 											},
 										},
@@ -78,28 +78,28 @@ func DataSourceTencentCloudScfFunctionAliases() *schema.Resource {
 									"addition_version_matchs": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Additional version with rule-based routing.",
+										Description: "Additional 版本 with rule-based routing。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"version": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Function version name.",
+													Description: "Function 版本 名称",
 												},
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching ruleHeader method:Enter invoke.headers.User for `key` and pass in `RoutingKey:{User:value}` when invoking a function through `invoke` for invocation based on rule matching.",
+													Description: "Matching rule 键 When the API is called，pass in the `键` to route the request to the specified 版本 based on the matching ruleHeader method:Enter invoke.headers.用户 for `键` and pass in `RoutingKey:{用户:值}` when invoking a function through `invoke` for invocation based on rule matching。",
 												},
 												"method": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Match method. Valid values:range: range matchexact: exact string match.",
+													Description: "Match method. Valid values:range: range matchexact: exact string match。",
 												},
 												"expression": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Rule requirements for range match:It should be described in an open or closed range, i.e., `(a,b)` or `[a,b]`, where both a and b are integersRule requirements for exact match:Exact string match.",
+													Description: "Rule requirements for range match:It should be described in an open or closed range，i.e.，`(a,b)` or `[a,b]`，where both a and b are integersRule requirements for exact match:Exact string match。",
 												},
 											},
 										},
@@ -110,17 +110,17 @@ func DataSourceTencentCloudScfFunctionAliases() *schema.Resource {
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DescriptionNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "DescriptionNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation timeNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Creation timeNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 						"mod_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update timeNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Update timeNote: this field may return null，indicating that no valid values can be obtained。",
 						},
 					},
 				},
@@ -129,7 +129,7 @@ func DataSourceTencentCloudScfFunctionAliases() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

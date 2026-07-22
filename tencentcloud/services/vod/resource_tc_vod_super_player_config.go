@@ -31,31 +31,31 @@ func ResourceTencentCloudVodSuperPlayerConfig() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 64),
-				Description:  "Player configuration name, which can contain up to 64 letters, digits, underscores, and hyphens (such as test_ABC-123) and must be unique under a user.",
+				Description:  "Player configuration 名称，which can contain up to 64 letters，digits，underscores，and hyphens (such as test_ABC-123) and must be unique under a 用户",
 			},
 			"drm_switch": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Switch of DRM-protected adaptive bitstream playback: `true`: enabled, indicating to play back only output adaptive bitstreams protected by DRM; `false`: disabled, indicating to play back unencrypted output adaptive bitstreams. Default value: `false`.",
+				Description: "Switch of DRM-protected adaptive bitstream playback: `true`: 已启用，indicating to play back only output adaptive bitstreams protected by DRM; `false`: 已禁用，indicating to play back unencrypted output adaptive bitstreams. 默认值：`false`。",
 			},
 			"adaptive_dynamic_streaming_definition": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the unencrypted adaptive bitrate streaming template that allows output, which is required if `drm_switch` is `false`.",
+				Description: "ID unencrypted adaptive bitrate streaming template that allows output，which 为必填项 if `drm_switch` is `false`。",
 			},
 			"drm_streaming_info": {
 				Type:        schema.TypeList,
 				MinItems:    1,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Content of the DRM-protected adaptive bitrate streaming template that allows output, which is required if `drm_switch` is `true`.",
+				Description: "内容 of the DRM-protected adaptive bitrate streaming template that allows output，which 为必填项 if `drm_switch` is `true`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"simple_aes_definition": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of the adaptive dynamic streaming template whose protection type is `SimpleAES`.",
+							Description: "ID adaptive dynamic streaming template whose protection 类型 is `SimpleAES`。",
 						},
 					},
 				},
@@ -63,23 +63,23 @@ func ResourceTencentCloudVodSuperPlayerConfig() *schema.Resource {
 			"image_sprite_definition": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the image sprite template that allows output.",
+				Description: "ID image sprite template that allows output。",
 			},
 			"resolution_names": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Display name of player for substreams with different resolutions. If this parameter is left empty or an empty array, the default configuration will be used: `min_edge_length: 240, name: LD`; `min_edge_length: 480, name: SD`; `min_edge_length: 720, name: HD`; `min_edge_length: 1080, name: FHD`; `min_edge_length: 1440, name: 2K`; `min_edge_length: 2160, name: 4K`; `min_edge_length: 4320, name: 8K`.",
+				Description: "Display 名称 player for substreams with different resolutions. 如果此参数为空 or an empty array，the default configuration will be used: `min_edge_length: 240，名称: LD`; `min_edge_length: 480，名称: SD`; `min_edge_length: 720，名称: HD`; `min_edge_length: 1080，名称: FHD`; `min_edge_length: 1440，名称: 2K`; `min_edge_length: 2160，名称: 4K`; `min_edge_length: 4320，名称: 8K`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"min_edge_length": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Length of video short side in px.",
+							Description: "Length of video short side （像素）。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Display name.",
+							Description: "Display 名称",
 						},
 					},
 				},
@@ -88,35 +88,35 @@ func ResourceTencentCloudVodSuperPlayerConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "Default",
-				Description: "Domain name used for playback. If it is left empty or set to `Default`, the domain name configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used. `Default` by default.",
+				Description: "域名 名称 用于playback. If it is left empty or set to `Default`，the 域名 名称 configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used. `Default` by default。",
 			},
 			"scheme": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "Default",
-				Description: "Scheme used for playback. If it is left empty or set to `Default`, the scheme configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used. Other valid values: `HTTP`; `HTTPS`.",
+				Description: "Scheme 用于playback. If it is left empty or set to `Default`，the scheme configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used. Other 有效值：`HTTP`; `HTTPS`。",
 			},
 			"comment": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 256),
-				Description:  "Template description. Length limit: 256 characters.",
+				Description:  "模板描述 Length 限制: 256 characters。",
 			},
 			"sub_app_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Subapplication ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+				Description: "Subapplication ID in VOD. If you need to access a resource in a subapplication，enter the subapplication ID in this field; otherwise，leave it empty。",
 			},
 			// computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of template in ISO date format.",
+				Description: "创建时间 of template in ISO date 格式",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last modified time of template in ISO date format.",
+				Description: "最后修改时间 of template in ISO date 格式",
 			},
 		},
 	}

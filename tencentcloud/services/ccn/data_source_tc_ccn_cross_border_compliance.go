@@ -19,103 +19,103 @@ func DataSourceTencentCloudCcnCrossBorderCompliance() *schema.Resource {
 			"service_provider": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) service provider, optional value: 'UNICOM'.",
+				Description: "(Exact match) service provider，可选 值: 'UNICOM'。",
 			},
 
 			"compliance_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "(Exact match) compliance approval form: 'ID'.",
+				Description: "(Exact match) compliance approval form: 'ID'。",
 			},
 
 			"company": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) Company name.",
+				Description: "(Fuzzy query) 公司名称",
 			},
 
 			"uniform_social_credit_code": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) Uniform Social Credit Code.",
+				Description: "(Exact match) Uniform Social Credit 代码",
 			},
 
 			"legal_person": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) legal representative.",
+				Description: "(Fuzzy query) legal representative。",
 			},
 
 			"issuing_authority": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) Issuing authority.",
+				Description: "(Fuzzy query) Issuing authority。",
 			},
 
 			"business_address": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) business license address.",
+				Description: "(Fuzzy query) business license 地址",
 			},
 
 			"post_code": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "(Exact match) post code.",
+				Description: "(Exact match) post 代码",
 			},
 
 			"manager": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) Person in charge.",
+				Description: "(Fuzzy query) Person in charge。",
 			},
 
 			"manager_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact query) ID number of the person in charge.",
+				Description: "(Exact query) ID 数量 the person in charge。",
 			},
 
 			"manager_address": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) ID card address of the person in charge.",
+				Description: "(Fuzzy query) ID card 地址 of the person in charge。",
 			},
 
 			"manager_telephone": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) contact number of the person in charge.",
+				Description: "(Exact match) contact 数量 the person in charge。",
 			},
 
 			"email": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) email.",
+				Description: "(Exact match) email。",
 			},
 
 			"service_start_date": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) service start date, such as: '2020-07-28'.",
+				Description: "(Exact match) service start date，such as: '2020-07-28'。",
 			},
 
 			"service_end_date": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) service end date, such as: '2020-07-28'.",
+				Description: "(Exact match) service end date，such as: '2020-07-28'。",
 			},
 
 			"state": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) status. Pending: PENDING, Passed: APPROVED, Denied: DENY.",
+				Description: "(Exact match) 状态 Pending: PENDING，Passed: APPROVED，Denied: DENY。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

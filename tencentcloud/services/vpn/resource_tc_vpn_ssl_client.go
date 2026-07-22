@@ -32,18 +32,18 @@ func ResourceTencentCloudVpnSslClient() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "VPN ssl server id.",
+				Description: "VPN ssl server id。",
 			},
 			"ssl_vpn_client_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The name of ssl vpn client to be created.",
+				Description: "名称 ssl vpn client to be created。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the VPN SSL client.",
+				Description: "标签 of the VPN SSL client。",
 			},
 		},
 	}

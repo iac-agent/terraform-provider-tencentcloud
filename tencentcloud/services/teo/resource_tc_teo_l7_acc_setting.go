@@ -26,33 +26,33 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id.",
+				Description: "可用区 ID",
 			},
 
 			"zone_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Zone name.",
+				Description: "可用区 名称",
 			},
 
 			"zone_config": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Site acceleration global configuration. the settings in this parameter will apply to all domain names under the site. you only need to modify the required settings directly, and other settings not passed in will remain unchanged.",
+				Description: "Site acceleration global configuration. the settings in this parameter will apply to all 域名 names under the site. you only need to modify the 必填 settings directly，and other settings not passed in will remain unchanged。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"smart_routing": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Intelligent acceleration configuration.",
+							Description: "Intelligent acceleration configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable smart acceleration. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable smart acceleration. values:\non: Enable;\noff: Disable。",
 									},
 								},
 							},
@@ -61,35 +61,35 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Node cache expiration time configuration.",
+							Description: "Node cache 过期时间 configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"follow_origin": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Follow origin server cache configuration. only one of followorigin, nocache, customtime can have switch set to on.",
+										Description: "Follow origin server cache configuration. only one of followorigin，nocache，customtime can have switch set to on。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Whether to enable the configuration of following the origin server. Valid values:\non: Enable;\noff: Disable.",
+													Description: "是否enable the configuration of following the origin server. Valid values:\non: Enable;\noff: Disable。",
 												},
 												"default_cache": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Whether to cache when an origin server does not return the cache-control header. this field is required when switch is on; when switch is off, this field is not required and will be ineffective if filled. valid values:\non: Cache;\noff: Do not cache.",
+													Description: "是否cache when an origin server does not return the cache-control header. this field 为必填项 when switch is on; when switch is off，this field 不是必填项 and will be ineffective if filled. valid values:\non: Cache;\noff: Do not cache。",
 												},
 												"default_cache_strategy": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Whether to use the default caching policy when an origin server does not return the cache-control header. this field is required when defaultcache is set to on; otherwise, it is ineffective. when defaultcachetime is not 0, this field should be off. valid values:\non: Use the default caching policy.\noff: Do not use the default caching policy.",
+													Description: "是否use the default caching policy when an origin server does not return the cache-control header. this field 为必填项 when defaultcache is set to on; otherwise，it is ineffective. when defaultcachetime is not 0，this field should be off. valid values:\non: Use the default caching policy.\noff: Do not use the default caching policy。",
 												},
 												"default_cache_time": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "The default cache time in seconds when an origin server does not return the cache-control header. the value ranges from 0 to 315360000. this field is required when defaultcache is set to on; otherwise, it is ineffective. when defaultcachestrategy is on, this field should be 0.",
+													Description: "The default cache time （秒） when an origin server does not return the cache-control header. the 值 ranges from 0 to 315360000. this field 为必填项 when defaultcache is set to on; otherwise，it is ineffective. when defaultcachestrategy is on，this field should be 0。",
 												},
 											},
 										},
@@ -98,13 +98,13 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "No cache configuration. only one of followorigin, nocache, customtime can have switch set to on.",
+										Description: "No cache configuration. only one of followorigin，nocache，customtime can have switch set to on。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Whether to enable no-cache configuration. Valid values:\non: Enable;\noff: Disable.",
+													Description: "是否enable no-cache configuration. Valid values:\non: Enable;\noff: Disable。",
 												},
 											},
 										},
@@ -113,18 +113,18 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Custom cache time configuration. only one of followorigin, nocache, customtime can have switch set to on.",
+										Description: "Custom cache time configuration. only one of followorigin，nocache，customtime can have switch set to on。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Custom cache time switch. values:\non: Enable;\noff: Disable.",
+													Description: "Custom cache time switch. values:\non: Enable;\noff: Disable。",
 												},
 												"cache_time": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Custom cache time value, unit: seconds. value range: 0-315360000.\nNote: This field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.",
+													Description: "Custom cache time 值，unit: seconds. 取值范围：0-315360000.\nNote: This field 为必填项 when switch is on; when switch is off，this field 不是必填项 and will not take effect if filled。",
 												},
 											},
 										},
@@ -136,18 +136,18 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Browser cache rule configuration, which is used to set the default value of maxage and is disabled by default.",
+							Description: "Browser cache rule configuration，which is 用于set the 默认值 of maxage and is 已禁用 by default。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"follow_origin": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Specifies whether to follow the origin server cache-control configuration, with the following values:\non: Follow the origin server and ignore the field cachetime;\noff: Do not follow the origin server and apply the field cachetime.",
+										Description: "指定是否follow the origin server cache-control configuration，with the following values:\non: Follow the origin server and ignore the field cachetime;\noff: Do not follow the origin server and apply the field cachetime。",
 									},
 									"cache_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Custom cache time value, unit: seconds. value range: 0-315360000.\nNote: When followorigin is off, it means not following the origin server and using cachetime to set the cache time; otherwise, this field will not take effect.",
+										Description: "Custom cache time 值，unit: seconds. 取值范围：0-315360000.\nNote: When followorigin is off，it means not following the origin server and using cachetime to set the cache time; otherwise，this field will not take effect。",
 									},
 								},
 							},
@@ -156,40 +156,40 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "The node cache key configuration.",
+							Description: "The node cache 键 configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"full_url_cache": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable full-path cache. values:\non: Enable full-path cache (i.e., disable ignore query string);\noff: Disable full-path cache (i.e., enable ignore query string).",
+										Description: "是否enable full-路径 cache. values:\non: Enable full-路径 cache (i.e.，disable ignore query string);\noff: Disable full-路径 cache (i.e.，enable ignore query string)。",
 									},
 									"ignore_case": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to ignore case in the cache key. values:\non: Ignore;\noff: Not ignore.",
+										Description: "是否ignore case in the cache 键 values:\non: Ignore;\noff: Not ignore。",
 									},
 									"query_string": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Query string retention configuration parameter. this field and fullurlcache must be set simultaneously, but cannot both be on.",
+										Description: "Query string retention configuration parameter. this field and fullurlcache must be set simultaneously，but cannot both be on。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Query string retain/ignore specified parameter switch. valid values are:\non: Enable;\noff: Disable.",
+													Description: "Query string retain/ignore specified parameter switch. valid values are:\non: Enable;\noff: Disable。",
 												},
 												"action": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Actions to retain/ignore specified parameters in the query string. values:\nincludeCustom: retain partial parameters;\nexcludeCustom: ignore partial parameters.\nNote: This field is required when switch is on. when switch is off, this field is not required and will not take effect if filled.",
+													Description: "Actions to retain/ignore specified parameters in the query string. values:\nincludeCustom: retain partial parameters;\nexcludeCustom: ignore partial parameters.\nNote: This field 为必填项 when switch is on. when switch is off，this field 不是必填项 and will not take effect if filled。",
 												},
 												"values": {
 													Type:        schema.TypeSet,
 													Optional:    true,
-													Description: "List of parameter names to be retained/ignored in the query string.\nnote: This field is required when switch is on. when switch is off, this field is not required and will not take effect if filled.",
+													Description: "列表 parameter names to be retained/ignored in the query string.\nnote: This field 为必填项 when switch is on. when switch is off，this field 不是必填项 and will not take effect if filled。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -204,18 +204,18 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Cache prefresh configuration.",
+							Description: "Cache prefresh configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable cache prefresh. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable cache prefresh. values:\non: Enable;\noff: Disable。",
 									},
 									"cache_time_percent": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Prefresh interval set as a percentage of the node cache time. value range: 1-99.\nNote: This field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.",
+										Description: "Prefresh interval set as a percentage of the node cache time. 取值范围：1-99.\nNote: This field 为必填项 when switch is on; when switch is off，this field 不是必填项 and will not take effect if filled。",
 									},
 								},
 							},
@@ -224,13 +224,13 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Offline cache configuration.",
+							Description: "Offline cache configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable offline caching. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable offline caching. values:\non: Enable;\noff: Disable。",
 									},
 								},
 							},
@@ -239,18 +239,18 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Smart compression configuration.",
+							Description: "Smart compression configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable smart compression. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable smart compression. values:\non: Enable;\noff: Disable。",
 									},
 									"algorithms": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Supported compression algorithm list. this field is required when switch is on; otherwise, it is not effective. valid values:\nbrotli: Brotli algorithm;\ngzip: Gzip algorithm.",
+										Description: "Supported compression algorithm list. this field 为必填项 when switch is on; otherwise，it is not effective. valid values:\nbrotli: Brotli algorithm;\ngzip: Gzip algorithm。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -262,18 +262,18 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Forced https redirect configuration for access protocols.",
+							Description: "Forced https redirect configuration for access protocols。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable forced redirect configuration switch. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable forced redirect configuration switch. values:\non: Enable;\noff: Disable。",
 									},
 									"redirect_status_code": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Redirection status code. this field is required when switch is on; otherwise, it is not effective. valid values are:\n301: 301 redirect;\n302: 302 redirect.",
+										Description: "Redirection 状态 代码 this field 为必填项 when switch is on; otherwise，it is not effective. valid values are:\n301: 301 redirect;\n302: 302 redirect。",
 									},
 								},
 							},
@@ -282,28 +282,28 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "HSTS configuration.",
+							Description: "HSTS configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable hsts. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable hsts. values:\non: Enable;\noff: Disable。",
 									},
 									"timeout": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Cache hsts header time, unit: seconds. value range: 1-31536000.\nNote: This field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.",
+										Description: "Cache hsts header time，unit: seconds. 取值范围：1-31536000.\nNote: This field 为必填项 when switch is on; when switch is off，this field 不是必填项 and will not take effect if filled。",
 									},
 									"include_sub_domains": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to allow other subdomains to inherit the same hsts header. values:\non: Allows other subdomains to inherit the same hsts header;\noff: Does not allow other subdomains to inherit the same hsts header.\nNote: When switch is on, this field is required; when switch is off, this field is not required and will not take effect if filled.",
+										Description: "是否allow other subdomains to inherit the same hsts header. values:\non: Allows other subdomains to inherit the same hsts header;\noff: Does not allow other subdomains to inherit the same hsts header.\nNote: When switch is on，this field 为必填项; when switch is off，this field 不是必填项 and will not take effect if filled。",
 									},
 									"preload": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to allow the browser to preload the hsts header. valid values:\non: Allows the browser to preload the hsts header;\noff: Does not allow the browser to preload the hsts header.\nNote: When switch is on, this field is required; when switch is off, this field is not required and will not take effect if filled.",
+										Description: "是否allow the browser to preload the hsts header. valid values:\non: Allows the browser to preload the hsts header;\noff: Does not allow the browser to preload the hsts header.\nNote: When switch is on，this field 为必填项; when switch is off，this field 不是必填项 and will not take effect if filled。",
 									},
 								},
 							},
@@ -312,13 +312,13 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "TLS configuration.",
+							Description: "TLS configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"version": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "TLS version. at least one must be specified. if multiple versions are specified, they must be consecutive, e.g., enable tls1, 1.1, 1.2, and 1.3. it is not allowed to enable only 1 and 1.2 while disabling 1.1. valid values:\nTLSv1: TLSv1 version;\nTLSv1.1: TLSv1.1 version;\nTLSv1.2: TLSv1.2 version;\nTLSv1.3: TLSv1.3 version.",
+										Description: "TLS 版本 at least one must be specified. if multiple versions are specified，they must be consecutive，e.g.，enable tls1，1.1，1.2，and 1.3. it is not allowed to enable only 1 and 1.2 while disabling 1.1. valid values:\nTLSv1: TLSv1 版本;\nTLSv1.1: TLSv1.1 版本;\nTLSv1.2: TLSv1.2 版本;\nTLSv1.3: TLSv1.3 版本",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -326,7 +326,7 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 									"cipher_suite": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Cipher suite. for detailed information, please refer to tls versions and cipher suites description. valid values:\nloose-v2023: loose-v2023 cipher suite;\ngeneral-v2023: general-v2023 cipher suite;\nstrict-v2023: strict-v2023 cipher suite.",
+										Description: "Cipher suite. for detailed information，please refer to tls versions and cipher suites 描述 valid values:\nloose-v2023: loose-v2023 cipher suite;\ngeneral-v2023: general-v2023 cipher suite;\nstrict-v2023: strict-v2023 cipher suite。",
 									},
 								},
 							},
@@ -335,13 +335,13 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "OCSP stapling configuration.",
+							Description: "OCSP stapling configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable ocsp stapling configuration switch. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable ocsp stapling configuration switch. values:\non: Enable;\noff: Disable。",
 									},
 								},
 							},
@@ -350,13 +350,13 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "HTTP/2 configuration.",
+							Description: "HTTP/2 configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable http2 access. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable http2 access. values:\non: Enable;\noff: Disable。",
 									},
 								},
 							},
@@ -365,13 +365,13 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "QUIC access configuration.",
+							Description: "QUIC access configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable quic. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable quic. values:\non: Enable;\noff: Disable。",
 									},
 								},
 							},
@@ -380,13 +380,13 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "HTTP2 origin-pull configuration.",
+							Description: "HTTP2 origin-pull configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable http2 origin-pull. valid values:\non: Enable;\noff: Disable.",
+										Description: "是否enable http2 origin-pull. valid values:\non: Enable;\noff: Disable。",
 									},
 								},
 							},
@@ -395,13 +395,13 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "IPv6 access configuration.",
+							Description: "IPv6 access configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable ipv6 access functionality. valid values:\non: Enable;\noff: Disable.",
+										Description: "是否enable ipv6 access functionality. valid values:\non: Enable;\noff: Disable。",
 									},
 								},
 							},
@@ -410,18 +410,18 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "WebSocket configuration.",
+							Description: "WebSocket configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable websocket connection timeout. values:\non: Use timeout as the websocket timeout;\noff: The platform still supports websocket connections, using the system default timeout of 15 seconds.",
+										Description: "是否enable websocket connection timeout. values:\non: Use timeout as the websocket timeout;\noff: The platform still supports websocket connections，using the system default timeout of 15 seconds。",
 									},
 									"timeout": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Timeout, unit: seconds. maximum timeout is 120 seconds.\nNote: This field is required when switch is on; otherwise, this field will not take effect.",
+										Description: "Timeout，unit: seconds. maximum timeout is 120 seconds.\nNote: This field 为必填项 when switch is on; otherwise，this field will not take effect。",
 									},
 								},
 							},
@@ -430,18 +430,18 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "POST request transport configuration.",
+							Description: "POST request transport configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable post request file upload limit, in bytes (default limit: 32 * 2^20 bytes). valid values:\non: Enable limit;\noff: Disable limit.",
+										Description: "是否enable post request file upload 限制，in bytes (default 限制: 32 * 2^20 bytes). valid values:\non: Enable 限制;\noff: Disable 限制",
 									},
 									"max_size": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Maximum size of the file uploaded for streaming via a post request, in bytes. value range: 1 * 2^20 bytes to 500 * 2^20 bytes.",
+										Description: "Maximum size of the file uploaded for streaming via a post request，in bytes. 取值范围：1 * 2^20 bytes to 500 * 2^20 bytes。",
 									},
 								},
 							},
@@ -450,18 +450,18 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Client ip origin-pull request header configuration.",
+							Description: "Client ip origin-pull request header configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable configuration. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable configuration. values:\non: Enable;\noff: Disable。",
 									},
 									"header_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Name of the request header containing the client ip address for origin-pull. when switch is on, this parameter is required. x-forwarded-for is not allowed for this parameter.",
+										Description: "名称 request header containing the client ip 地址 for origin-pull. when switch is on，this parameter 为必填项. x-forwarded-for is not allowed for this parameter。",
 									},
 								},
 							},
@@ -470,18 +470,18 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Client ip origin-pull request header configuration.",
+							Description: "Client ip origin-pull request header configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable configuration. Values:\non: Enable;\noff: Disable.",
+										Description: "是否enable configuration. Values:\non: Enable;\noff: Disable。",
 									},
 									"header_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Name of the request header that contains the client IP region. It is valid when Switch=on.\nThe default value EO-Client-IPCountry is used when it is not specified.",
+										Description: "名称 request header that 包含client IP 地域 It is valid when Switch=on.\nThe 默认值 EO-Client-IPCountry is used when it is not specified。",
 									},
 								},
 							},
@@ -490,13 +490,13 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Configuration of grpc support.",
+							Description: "Configuration of grpc support。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable grpc. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable grpc. values:\non: Enable;\noff: Disable。",
 									},
 								},
 							},
@@ -505,13 +505,13 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Accelerate optimization and configuration in mainland china.",
+							Description: "Accelerate optimization and configuration in mainland china。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Mainland china acceleration optimization switch. valid values:\non: Enable;\noff: Disable.",
+										Description: "Mainland china acceleration optimization switch. valid values:\non: Enable;\noff: Disable。",
 									},
 								},
 							},
@@ -520,18 +520,18 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Standard debugging configuration.",
+							Description: "Standard debugging configuration。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Whether to enable standard debugging. values:\non: Enable;\noff: Disable.",
+										Description: "是否enable standard debugging. values:\non: Enable;\noff: Disable。",
 									},
 									"allow_client_ip_list": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "The client ip to allow. it can be an ipv4/ipv6 address or a cidr block. `0.0.0.0/0` means to allow all ipv4 clients for debugging; `::/0` means to allow all ipv6 clients for debugging; `127.0.0.1` is not allowed.\nNote: this field is required when switch=on and the number of entries should be 1-100. when switch=off, this field is not required and any value specified will not take effect.",
+										Description: "The client ip to allow. it can be an ipv4/ipv6 地址 or a cidr block. `0.0.0.0/0` means to allow all ipv4 clients for debugging; `::/0` means to allow all ipv6 clients for debugging; `127.0.0.1` is not allowed.\nNote: this field 为必填项 when switch=on and the 数量 entries should be 1-100. when switch=off，this field 不是必填项 and any 值 specified will not take effect。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -539,7 +539,7 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 									"expires": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Debug feature expiration time. the feature will be disabled after the set time.\nNote: this field is required when switch=on. when switch=off, this field is not required and any value specified will not take effect.",
+										Description: "Debug feature 过期时间. the feature will be 已禁用 after the set time.\nNote: this field 为必填项 when switch=on. when switch=off，this field 不是必填项 and any 值 specified will not take effect。",
 									},
 								},
 							},

@@ -23,35 +23,35 @@ func ResourceTencentCloudMpsWithdrawsWatermarkOperation() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Input information of file for metadata getting.",
+				Description: "Input information of file for metadata getting。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The input type. Valid values: `COS`: A COS bucket address.  `URL`: A URL.  `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks..",
+							Description: "The input 类型 有效值：`COS`: A COS 存储桶 地址  `URL`: A URL  `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks.。",
 						},
 						"cos_input_info": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+							Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bucket": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+										Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The region of the COS bucket, such as `ap-chongqing`.",
+										Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
 									},
 									"object": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+										Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
 									},
 								},
 							},
@@ -60,13 +60,13 @@ func ResourceTencentCloudMpsWithdrawsWatermarkOperation() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"url": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "URL of a video.",
+										Description: "URL of a video。",
 									},
 								},
 							},
@@ -75,33 +75,33 @@ func ResourceTencentCloudMpsWithdrawsWatermarkOperation() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"s3_bucket": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The AWS S3 bucket.",
+										Description: "The AWS S3 存储桶",
 									},
 									"s3_region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The region of the AWS S3 bucket.",
+										Description: "The 地域 of the AWS S3 存储桶",
 									},
 									"s3_object": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The path of the AWS S3 object.",
+										Description: "The 路径 of the AWS S3 object。",
 									},
 									"s3_secret_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The key ID required to access the AWS S3 object.",
+										Description: "The 键 ID 必填 to access the AWS S3 object。",
 									},
 									"s3_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The key required to access the AWS S3 object.",
+										Description: "The 键 必填 to access the AWS S3 object。",
 									},
 								},
 							},
@@ -115,70 +115,70 @@ func ResourceTencentCloudMpsWithdrawsWatermarkOperation() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.",
+				Description: "Event notification information of a task. 如果此参数为空，no event notifications will be obtained。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cmq_model": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The CMQ or TDMQ-CMQ model. Valid values: Queue, Topic.",
+							Description: "The CMQ or TDMQ-CMQ model. 有效值：Queue，Topic。",
 						},
 						"cmq_region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The CMQ or TDMQ-CMQ region, such as `sh` (Shanghai) or `bj` (Beijing).",
+							Description: "The CMQ or TDMQ-CMQ 地域，such as `sh` (Shanghai) or `bj` (Beijing)。",
 						},
 						"topic_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.",
+							Description: "The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`。",
 						},
 						"queue_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.",
+							Description: "The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`。",
 						},
 						"notify_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.",
+							Description: "Workflow notification method. 有效值：Finish，Change. 如果此参数为空，`Finish` will be used。",
 						},
 						"notify_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The notification type. Valid values:  `CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.  `TDMQ-CMQ`: Message queue  `URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.  `SCF`: This notification type is not recommended. You need to configure it in the SCF console.  `AWS-SQS`: AWS queue. This type is only supported for AWS tasks, and the queue must be in the same region as the AWS bucket. Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.",
+							Description: "The notification 类型 有效值： `CMQ`: This 值 is no longer used. Please use `TDMQ-CMQ` instead.  `TDMQ-CMQ`: 消息 queue  `URL`: If `NotifyType` is set to `URL`，HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are 用于the callbacks. The packet 包含response parameters of the `ParseNotification` API.  `SCF`: This notification 类型 is not recommended. You need to configure it in the SCF console.  `AWS-SQS`: AWS queue. This 类型 is only supported for AWS tasks，and the queue must be in the same 地域 as the AWS 存储桶 Note: If you do not pass this parameter or pass in an empty string，`CMQ` will be used. To use a different notification 类型，指定this parameter accordingly。",
 						},
 						"notify_url": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "HTTP callback URL, required if `NotifyType` is set to `URL`.",
+							Description: "HTTP callback URL，必填 if `NotifyType` is set to `URL`。",
 						},
 						"aws_sqs": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The AWS SQS queue. This parameter is required if `NotifyType` is `AWS-SQS`.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "The AWS SQS queue. This parameter 为必填项 if `NotifyType` is `AWS-SQS`.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"sqs_region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The region of the SQS queue.",
+										Description: "The 地域 of the SQS queue。",
 									},
 									"sqs_queue_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The name of the SQS queue.",
+										Description: "The 名称 SQS queue。",
 									},
 									"s3_secret_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The key ID required to read from/write to the SQS queue.",
+										Description: "The 键 ID 必填 to read from/write to the SQS queue。",
 									},
 									"s3_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The key required to read from/write to the SQS queue.",
+										Description: "The 键 必填 to read from/write to the SQS queue。",
 									},
 								},
 							},
@@ -191,7 +191,7 @@ func ResourceTencentCloudMpsWithdrawsWatermarkOperation() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field.",
+				Description: "The 来源 context which is 用于pass through the 用户 request information. The task flow 状态 change callback will return the 值 of this field。",
 			},
 		},
 	}

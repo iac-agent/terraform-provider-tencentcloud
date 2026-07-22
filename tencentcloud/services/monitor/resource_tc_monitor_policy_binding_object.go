@@ -30,13 +30,13 @@ func ResourceTencentCloudMonitorPolicyBindingObject() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Alarm policy ID for binding objects.",
+				Description: "告警策略 ID for binding objects。",
 			},
 			"dimensions": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "A list objects. Each element contains the following attributes:",
+				Description: "A list objects. Each element 包含following attributes:",
 				Set: func(v interface{}) int {
 					vmap := v.(map[string]interface{})
 					hashMap := map[string]interface{}{}
@@ -60,14 +60,14 @@ func ResourceTencentCloudMonitorPolicyBindingObject() *schema.Resource {
 						"unique_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Object unique ID.",
+							Description: "Object unique ID。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Region.",
+							Description: "地域",
 						},
 					},
 				},

@@ -25,22 +25,22 @@ func ResourceTencentCloudCdcDedicatedCluster() *schema.Resource {
 			"site_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Dedicated Cluster Site ID.",
+				Description: "Dedicated Cluster 站点 ID",
 			},
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Dedicated Cluster Name.",
+				Description: "Dedicated Cluster 名称",
 			},
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Dedicated Cluster Zone.",
+				Description: "Dedicated Cluster 可用区",
 			},
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Dedicated Cluster Description.",
+				Description: "Dedicated Cluster 描述",
 			},
 		},
 	}

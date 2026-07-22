@@ -27,47 +27,47 @@ func ResourceTencentCloudIdentityCenterUserSyncProvisioning() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Space ID.",
+				Description: "Space ID。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description.",
+				Description: "描述",
 			},
 			"principal_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Identity ID for the CAM user synchronization. Valid values:\nWhen the PrincipalType value is Group, it is the CIC user group ID (g-********).\nWhen the PrincipalType value is User, it is the CIC user ID (u-********).",
+				Description: "Identity ID for the CAM 用户 synchronization. Valid values:\nWhen the PrincipalType 值 is Group，it is the CIC 用户 组 ID (g-********).\nWhen the PrincipalType 值 is 用户，it is the CIC 用户 ID (u-********)。",
 			},
 			"principal_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Identity type for the CAM user synchronization. Valid values:\n\nUser: indicates that the identity for the CAM user synchronization is a CIC user.\nGroup: indicates that the identity for the CAM user synchronization is a CIC user group.",
+				Description: "Identity 类型 for the CAM 用户 synchronization. Valid values:\n\nUser: 表示that the identity for the CAM 用户 synchronization is a CIC 用户\nGroup: 表示that the identity for the CAM 用户 synchronization is a CIC 用户 group。",
 			},
 			"target_uin": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "UIN of the synchronized target account of the Tencent Cloud Organization.",
+				Description: "UIN of the synchronized target 账号 of the Tencent Cloud Organization。",
 			},
 			"duplication_strategy": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Conflict policy. It indicates the handling policy for existence of a user with the same username when CIC users are synchronized to CAM. Valid values: KeepBoth: Keep both, that is, add the _cic suffix to the CIC user's username and then try to create a CAM user with the username when CIC users are synchronized to CAM and a user with the same username already exists in CAM; TakeOver: Replace, that is, directly replace the existing CAM user with the synchronized CIC user when CIC users are synchronized to CAM and a user with the same username already exists in CAM.",
+				Description: "Conflict policy. It 表示handling policy for existence of a 用户 with the same 用户名 when CIC users are synchronized to CAM. 有效值：KeepBoth: Keep both，that is，add the _cic suffix to the CIC 用户's 用户名 and then try to create a CAM 用户 with the 用户名 when CIC users are synchronized to CAM and a 用户 with the same 用户名 already exists in CAM; TakeOver: Replace，that is，directly replace the existing CAM 用户 with the synchronized CIC 用户 when CIC users are synchronized to CAM and a 用户 with the same 用户名 already exists in CAM。",
 			},
 			"deletion_strategy": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Deletion policy. It indicates the handling policy for CAM users already synchronized when the CAM user synchronization is deleted. Valid values: Delete: Delete the CAM users already synchronized from CIC to CAM when the CAM user synchronization is deleted; Keep: Keep the CAM users already synchronized from CIC to CAM when the CAM user synchronization is deleted.",
+				Description: "Deletion policy. It 表示handling policy for CAM users already synchronized when the CAM 用户 synchronization is deleted. 有效值：Delete: Delete the CAM users already synchronized from CIC to CAM when the CAM 用户 synchronization is deleted; Keep: Keep the CAM users already synchronized from CIC to CAM when the CAM 用户 synchronization is deleted。",
 			},
 			"target_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Type of the synchronized target account of the Tencent Cloud Organization. ManagerUin: admin account; MemberUin: member account.",
+				Description: "类型 synchronized target 账号 of the Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
 			},
 			"user_provisioning_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "User provisioning id.",
+				Description: "用户 provisioning id。",
 			},
 			"status": {
 				Type:     schema.TypeString,
@@ -79,22 +79,22 @@ func ResourceTencentCloudIdentityCenterUserSyncProvisioning() *schema.Resource {
 			"principal_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The identity name of the CAM user synchronization. Value: When PrincipalType is Group, the value is the CIC user group name; When PrincipalType takes the value to User, the value is the CIC user name.",
+				Description: "The identity 名称 CAM 用户 synchronization. 值: When PrincipalType is Group，the 值 is the CIC 用户 组名称; When PrincipalType takes the 值 to 用户，the 值 is the CIC 用户 名称",
 			},
 			"target_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Group account The name of the target account..",
+				Description: "Group 账号 The 名称 target 账号。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time.",
+				Description: "创建时间。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

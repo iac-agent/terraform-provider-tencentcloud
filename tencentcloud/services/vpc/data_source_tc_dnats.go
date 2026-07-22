@@ -21,94 +21,94 @@ func DataSourceTencentCloudDnats() *schema.Resource {
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the VPC.",
+				Description: "ID VPC。",
 			},
 			"nat_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the NAT gateway.",
+				Description: "ID NAT gateway。",
 			},
 			"elastic_ip": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIp,
-				Description:  "Network address of the EIP.",
+				Description:  "Network 地址 of the EIP。",
 			},
 			"elastic_port": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidatePort,
-				Description:  "Port of the EIP.",
+				Description:  "端口 of the EIP。",
 			},
 			"private_ip": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIp,
-				Description:  "Network address of the backend service.",
+				Description:  "Network 地址 of the backend service。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the NAT forward.",
+				Description: "描述 NAT forward。",
 			},
 			"private_port": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidatePort,
-				Description:  "Port of intranet.",
+				Description:  "端口 of intranet。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"dnat_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the DNATs.",
+				Description: "Information 列表 the DNATs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the VPC.",
+							Description: "ID VPC。",
 						},
 						"nat_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the NAT.",
+							Description: "ID NAT。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the network protocol. Valid values: `TCP` and `UDP`.",
+							Description: "类型 network 协议 有效值：`TCP` and `UDP`。",
 						},
 						"elastic_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network address of the EIP.",
+							Description: "Network 地址 of the EIP。",
 						},
 						"elastic_port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Port of the EIP.",
+							Description: "端口 of the EIP。",
 						},
 						"private_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network address of the backend service.",
+							Description: "Network 地址 of the backend service。",
 						},
 						"private_port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Port of intranet.",
+							Description: "端口 of intranet。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Description of the NAT forward.",
+							Description: "描述 NAT forward。",
 						},
 					},
 				},

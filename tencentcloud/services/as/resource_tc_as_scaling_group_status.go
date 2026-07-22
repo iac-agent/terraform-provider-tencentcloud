@@ -25,13 +25,13 @@ func ResourceTencentCloudAsScalingGroupStatus() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Scaling group ID.",
+				Description: "Scaling 组 ID",
 			},
 
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "If enable auto scaling group.",
+				Description: "If enable auto scaling group。",
 			},
 		},
 	}

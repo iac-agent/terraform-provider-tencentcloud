@@ -27,59 +27,59 @@ func ResourceTencentCloudTeoConfigGroupVersion() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 
 			"group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "GroupId of the version to be created.",
+				Description: "GroupId of the 版本 to be created。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Version description. The maximum length allowed is 50 characters. This field can be used to provide details about the application scenarios of this version.",
+				Description: "版本 描述 The maximum length allowed is 50 characters. This field can be 用于provide details about the application scenarios of this 版本",
 			},
 
 			"content": {
 				Type:             schema.TypeString,
 				Required:         true,
 				ForceNew:         true,
-				Description:      "Configuration content to be imported. It is required to be in JSON format and encoded in UTF-8. Please refer to the example below for the configuration file content.",
+				Description:      "Configuration 内容 to be imported. It 为必填项 to be in JSON 格式 and encoded in UTF-8. Please refer to the example below for the configuration file 内容",
 				DiffSuppressFunc: helper.DiffSupressJSON,
 			},
 
 			"version_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Version ID.",
+				Description: "版本 ID。",
 			},
 
 			"version_number": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Version number.",
+				Description: "版本 number。",
 			},
 
 			"group_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Configuration group type. Valid values: l7_acceleration (Layer 7 acceleration configuration group), edge_functions (Edge function configuration group).",
+				Description: "Configuration group 类型 有效值：l7_acceleration (Layer 7 acceleration configuration group)，edge_functions (Edge function configuration group)。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Version status. Valid values: creating (Creating), inactive (Inactive), active (Active).",
+				Description: "版本 状态 有效值：creating (Creating)，inactive (Inactive)，活跃 (活跃)。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Version creation time. The time follows the ISO 8601 standard in the date and time format.",
+				Description: "版本 创建时间. The time follows the ISO 8601 standard in the date and 时间格式。",
 			},
 		},
 	}

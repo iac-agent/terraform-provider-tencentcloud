@@ -24,25 +24,25 @@ func ResourceTencentCloudWedataProject() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Project basic information.",
+				Description: "Project basic information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Project identifier, English name starting with a letter, can contain letters, numbers, and underscores, cannot exceed 32 characters.",
+							Description: "Project identifier，English 名称 starting with a letter，can contain letters，numbers，and underscores，cannot exceed 32 characters。",
 						},
 						"display_name": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Project display name, can be Chinese name starting with a letter, can contain letters, numbers, and underscores, cannot exceed 32 characters.",
+							Description: "Project display 名称，can be Chinese 名称 starting with a letter，can contain letters，numbers，and underscores，cannot exceed 32 characters。",
 						},
 						"project_model": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Project mode, SIMPLE (default): Simple mode STANDARD: Standard mode.",
+							Description: "Project 模式，SIMPLE (default): Simple 模式 STANDARD: Standard 模式",
 						},
 					},
 				},
@@ -52,13 +52,13 @@ func ResourceTencentCloudWedataProject() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "DLC binding cluster information.",
+				Description: "DLC binding cluster information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"compute_resources": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "DLC resource name (need to add role Uin to DLC, otherwise may not be able to obtain resources).",
+							Description: "DLC 资源名称 (need to add 角色 Uin to DLC，otherwise may not be able to obtain resources)。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -66,27 +66,27 @@ func ResourceTencentCloudWedataProject() *schema.Resource {
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "DLC region.",
+							Description: "DLC 地域",
 						},
 						"default_database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specify the default database for DLC cluster.",
+							Description: "指定default database for DLC cluster。",
 						},
 						"standard_mode_env_tag": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cluster configuration tag (only effective for standard mode projects and required for standard mode). Enum values:\n- Prod  (Production environment)\n- Dev  (Development environment).",
+							Description: "Cluster configuration 标签 (only effective for standard 模式 projects and 必填 for standard 模式). Enum values:\n- Prod  (Production environment)\n- Dev  (Development environment)。",
 						},
 						"access_account": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Access account (only effective for standard mode projects and required for standard mode), used to submit DLC tasks.\nIt is recommended to use a specified sub-account and set corresponding database table permissions for the sub-account; task runner mode may cause task failure when the responsible person leaves; main account mode is not easy for permission control when multiple projects have different permissions.\n\nEnum values:\n- TASK_RUNNER (Task Runner)\n- OWNER (Main Account Mode)\n- SUB (Sub Account Mode).",
+							Description: "Access 账号 (only effective for standard 模式 projects and 必填 for standard 模式)，用于submit DLC tasks.\nIt is recommended to use a specified sub-账号 and set corresponding database table permissions for the sub-账号; task runner 模式 may cause task failure when the responsible person leaves; main 账号 模式 is not easy for permission control when multiple projects have different permissions.\n\nEnum values:\n- TASK_RUNNER (Task Runner)\n- OWNER (Main 账号 模式)\n- SUB (Sub 账号 模式)。",
 						},
 						"sub_account_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Sub-account ID (only effective for standard mode projects), when AccessAccount is in sub-account mode, the sub-account ID information needs to be specified, other modes do not need to be specified.",
+							Description: "Sub-账号 ID (only effective for standard 模式 projects)，when AccessAccount is in sub-账号 模式，the sub-账号 ID information needs to be specified，other modes do not need to be specified。",
 						},
 					},
 				},
@@ -95,7 +95,7 @@ func ResourceTencentCloudWedataProject() *schema.Resource {
 			"resource_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "List of bound resource group IDs.",
+				Description: "列表 bound resource group IDs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -106,14 +106,14 @@ func ResourceTencentCloudWedataProject() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "Item status: 0: disabled, 1: enabled.",
+				Description:  "Item 状态: 0: 已禁用，1: 已启用",
 			},
 
 			// computed
 			"project_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 		},
 	}

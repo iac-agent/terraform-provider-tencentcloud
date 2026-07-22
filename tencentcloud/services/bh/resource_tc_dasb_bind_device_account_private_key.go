@@ -25,19 +25,19 @@ func ResourceTencentCloudDasbBindDeviceAccountPrivateKey() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Host account ID.",
+				Description: "主机 账号 ID。",
 			},
 			"private_key": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Host account private key, the latest length is 128 bytes, the maximum length is 8192 bytes.",
+				Description: "主机 账号 private 键，the latest length is 128 bytes，the maximum length is 8192 bytes。",
 			},
 			"private_key_password": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Host account private key password, maximum length 256 bytes.",
+				Description: "主机 账号 private 键 密码，maximum length 256 bytes。",
 			},
 		},
 	}

@@ -24,20 +24,20 @@ func ResourceTencentCloudDnspodDomainLock() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Domain name.",
+				Description: "域名 名称",
 			},
 
 			"lock_days": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of max days to lock the domain+ Old packages: D_FREE 30 days, D_PLUS 90 days, D_EXTRA 30 days, D_EXPERT 60 days, D_ULTRA 365 days+ New packages: DP_FREE 365 days, DP_PLUS 365 days, DP_EXTRA 365 days, DP_EXPERT 365 days, DP_ULTRA 365 days.",
+				Description: "The 数量 max days to lock the 域名+ Old packages: D_FREE 30 days，D_PLUS 90 days，D_EXTRA 30 days，D_EXPERT 60 days，D_ULTRA 365 days+ New packages: DP_FREE 365 days，DP_PLUS 365 days，DP_EXTRA 365 days，DP_EXPERT 365 days，DP_ULTRA 365 days。",
 			},
 
 			"lock_code": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Domain unlock code, can be obtained through the ModifyDomainLock interface.",
+				Description: "域名 unlock 代码，can be obtained through the ModifyDomainLock interface。",
 			},
 		},
 	}

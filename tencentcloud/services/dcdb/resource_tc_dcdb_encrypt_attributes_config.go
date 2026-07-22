@@ -26,13 +26,13 @@ func ResourceTencentCloudDcdbEncryptAttributesConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"encrypt_enabled": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "whether to enable data encryption. Notice: it is not supported to turn it off after it is turned on. The optional values: 0-disable, 1-enable.",
+				Description: "是否enable data encryption. Notice: it is not supported to turn it off after it is turned on. The 可选 values: 0-disable，1-enable。",
 			},
 		},
 	}

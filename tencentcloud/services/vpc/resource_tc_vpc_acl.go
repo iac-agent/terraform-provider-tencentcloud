@@ -31,36 +31,36 @@ func ResourceTencentCloudVpcACL() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateNotEmpty,
-				Description:  "ID of the VPC instance.",
+				Description:  "ID VPC instance。",
 			},
 			"name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 60),
-				Description:  "Name of the network ACL.",
+				Description:  "名称 network ACL。",
 			},
 			"ingress": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Ingress rules. A rule must match the following format: [action]#[cidr_ip]#[port]#[protocol]#[description]. The available value of `action` is `ACCEPT` and `DROP`. The `cidr_ip` must be an IP address network or segment. The `port` valid format is `80`, `80-90` or `ALL`. The available value of 'protocol' is `TCP`, `UDP`, `ICMP` and `ALL`. When `protocol` is `ICMP` or `ALL`, the 'port' must be `ALL`. The `description` content must be in uppercase.",
+				Description: "Ingress rules. A rule must match the following 格式: [操作]#[cidr_ip]#[端口]#[协议]#[描述]. The available 值 of `操作` is `ACCEPT` and `DROP`. The `cidr_ip` must be an IP 地址 network or segment. The `端口` valid 格式 is `80`，`80-90` or `ALL`. The available 值 of '协议' is `TCP`，`UDP`，`ICMP` and `ALL`. When `协议` is `ICMP` or `ALL`，the '端口' must be `ALL`. The `描述` 内容 must be in uppercase。",
 			},
 			"egress": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Egress rules. A rule must match the following format: [action]#[cidr_ip]#[port]#[protocol]#[description]. The available value of `action` is `ACCEPT` and `DROP`. The `cidr_ip` must be an IP address network or segment. The `port` valid format is `80`, `80-90` or `ALL`. The available value of `protocol` is `TCP`, `UDP`, `ICMP` and `ALL`. When `protocol` is `ICMP` or `ALL`, the `port` must be `ALL`. The `description` content must be in uppercase.",
+				Description: "Egress rules. A rule must match the following 格式: [操作]#[cidr_ip]#[端口]#[协议]#[描述]. The available 值 of `操作` is `ACCEPT` and `DROP`. The `cidr_ip` must be an IP 地址 network or segment. The `端口` valid 格式 is `80`，`80-90` or `ALL`. The available 值 of `协议` is `TCP`，`UDP`，`ICMP` and `ALL`. When `协议` is `ICMP` or `ALL`，the `端口` must be `ALL`. The `描述` 内容 must be in uppercase。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the vpc acl.",
+				Description: "标签 of the vpc acl。",
 			},
 			//compute
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of ACL.",
+				Description: "创建时间 of ACL。",
 			},
 		},
 	}

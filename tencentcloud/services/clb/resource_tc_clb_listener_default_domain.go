@@ -31,24 +31,24 @@ func ResourceTencentCloudClbListenerDefaultDomain() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of CLB instance.",
+				Description: "CLB实例ID。",
 			},
 			"listener_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of CLB listener.",
+				Description: "CLB监听器ID。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Domain name of the listener rule. Single domain rules are passed to `domain`, and multi domain rules are passed to `domains`.",
+				Description: "监听规则的域名。单域规则传递到“域名”，多域规则传递到“domains”。",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID of this CLB listener rule.",
+				Description: "该CLB监听规则ID。",
 			},
 		},
 	}

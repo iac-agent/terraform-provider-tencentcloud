@@ -19,22 +19,22 @@ func DataSourceTencentCloudKmsPublicKey() *schema.Resource {
 			"key_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "CMK unique identifier.",
+				Description: "CMK unique identifier。",
 			},
 			"public_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Base64-encoded public key content.",
+				Description: "Base64-encoded public 键 内容",
 			},
 			"public_key_pem": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Public key content in PEM format.",
+				Description: "Public 键 内容 in PEM 格式",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

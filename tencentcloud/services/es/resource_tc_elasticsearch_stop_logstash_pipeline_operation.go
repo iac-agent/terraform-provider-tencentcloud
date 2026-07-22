@@ -26,14 +26,14 @@ func ResourceTencentCloudElasticsearchStopLogstashPipelineOperation() *schema.Re
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"pipeline_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Pipeline id.",
+				Description: "Pipeline id。",
 			},
 		},
 	}

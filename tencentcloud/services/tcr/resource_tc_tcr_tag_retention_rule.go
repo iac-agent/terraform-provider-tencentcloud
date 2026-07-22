@@ -28,13 +28,13 @@ func ResourceTencentCloudTcrTagRetentionRule() *schema.Resource {
 			"registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The main instance ID.",
+				Description: "The main instance ID。",
 			},
 
 			"namespace_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The Name of the namespace.",
+				Description: "The 名称 namespace。",
 			},
 
 			"retention_rule": {
@@ -42,18 +42,18 @@ func ResourceTencentCloudTcrTagRetentionRule() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Retention Policy.",
+				Description: "Retention Policy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The supported policies are latestPushedK (retain the latest `k` pushed versions) and nDaysSinceLastPush (retain pushed versions within the last `n` days).",
+							Description: "The supported policies are latestPushedK (retain the latest `k` pushed versions) and nDaysSinceLastPush (retain pushed versions within the last `n` days)。",
 						},
 						"value": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "corresponding values for rule settings.",
+							Description: "corresponding values for rule settings。",
 						},
 					},
 				},
@@ -63,25 +63,25 @@ func ResourceTencentCloudTcrTagRetentionRule() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The advanced retention policy takes precedence; when both the basic and advanced retention policies are configured, the advanced retention policy will be used.",
+				Description: "The advanced retention policy takes precedence; when both the basic and advanced retention policies are configured，the advanced retention policy will be used。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"retention_policy": {
 							Optional:    true,
 							Type:        schema.TypeList,
 							MaxItems:    1,
-							Description: "Version retention rules.",
+							Description: "版本 retention rules。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Supported strategies, with possible values: latestPushedK (retain the latest K pushed versions), nDaysSinceLastPush (retain versions pushed within the last n days).",
+										Description: "Supported strategies，with possible values: latestPushedK (retain the latest K pushed versions)，nDaysSinceLastPush (retain versions pushed within the last n days)。",
 									},
 									"value": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Corresponding values under the rule settings.",
+										Description: "Corresponding values under the rule settings。",
 									},
 								},
 							},
@@ -90,18 +90,18 @@ func ResourceTencentCloudTcrTagRetentionRule() *schema.Resource {
 							Optional:    true,
 							Type:        schema.TypeList,
 							MaxItems:    1,
-							Description: "Tag filter.",
+							Description: "标签 filter。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"decoration": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Filter rule types: In tag filtering, the available options are matches (match) and excludes (exclude). In repository filtering, the available options are repoMatches (repository match) and repoExcludes (repository exclude).",
+										Description: "Filter rule types: In 标签 filtering，the available options are matches (match) and excludes (exclude). In repository filtering，the available options are repoMatches (repository match) and repoExcludes (repository exclude)。",
 									},
 									"pattern": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Filter expression.",
+										Description: "Filter expression。",
 									},
 								},
 							},
@@ -110,18 +110,18 @@ func ResourceTencentCloudTcrTagRetentionRule() *schema.Resource {
 							Optional:    true,
 							Type:        schema.TypeList,
 							MaxItems:    1,
-							Description: "Warehouse filter.",
+							Description: "Warehouse filter。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"decoration": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Filter rule types: In tag filtering, the available options are matches (match) and excludes (exclude). In repository filtering, the available options are repoMatches (repository match) and repoExcludes (repository exclude).",
+										Description: "Filter rule types: In 标签 filtering，the available options are matches (match) and excludes (exclude). In repository filtering，the available options are repoMatches (repository match) and repoExcludes (repository exclude)。",
 									},
 									"pattern": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Filter expression.",
+										Description: "Filter expression。",
 									},
 								},
 							},
@@ -134,20 +134,20 @@ func ResourceTencentCloudTcrTagRetentionRule() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Execution cycle, currently only available selections are: manual; daily; weekly; monthly.",
+				Description: "Execution cycle，currently only available selections are: manual; daily; weekly; monthly。",
 			},
 
 			"disabled": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to disable the rule, with the default value of false.",
+				Description: "是否disable the rule，with the 默认值 of false。",
 			},
 
 			// computed
 			"retention_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The ID of the retention task.",
+				Description: "The ID retention task。",
 			},
 		},
 	}

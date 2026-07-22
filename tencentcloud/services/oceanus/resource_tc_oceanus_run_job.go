@@ -24,48 +24,48 @@ func ResourceTencentCloudOceanusRunJob() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "The description information for batch job startup.",
+				Description: "The 描述 information for batch job startup。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Job ID.",
+							Description: "作业 ID",
 						},
 						"run_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The type of the run. 1 indicates start, and 2 indicates resume.",
+							Description: "The 类型 run. 1 表示start，and 2 表示resume。",
 						},
 						"start_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Compatible with the startup parameters of the old SQL type job: specify the start time point of data source consumption (recommended to pass the value)Ensure that the parameter is LATEST, EARLIEST, T+Timestamp (example: T1557394288000).",
+							Description: "Compatible with the startup parameters of the old SQL 类型 job: 指定start time point of data 来源 consumption (recommended to pass the 值)Ensure that the parameter is LATEST，EARLIEST，T+时间戳 (example: T1557394288000)。",
 						},
 						"job_config_version": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "A certain version of the current job(Not passed by default as a non-draft job version).",
+							Description: "A certain 版本 of the current job(Not passed by default as a non-draft job 版本)。",
 						},
 						"savepoint_path": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Savepoint path.",
+							Description: "Savepoint 路径",
 						},
 						"savepoint_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Savepoint ID.",
+							Description: "Savepoint ID。",
 						},
 						"use_old_system_connector": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Use the historical version of the system dependency.",
+							Description: "Use the historical 版本 of the system dependency。",
 						},
 						"custom_timestamp": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Custom timestamp.",
+							Description: "Custom 时间戳。",
 						},
 					},
 				},
@@ -74,7 +74,7 @@ func ResourceTencentCloudOceanusRunJob() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace SerialId.",
+				Description: "Workspace SerialId。",
 			},
 		},
 	}

@@ -19,34 +19,34 @@ func DataSourceTencentCloudKubernetesClusterAuthenticationOptions() *schema.Reso
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"service_accounts": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "ServiceAccount authentication configuration. Note: this field may return `null`, indicating that no valid values can be obtained.",
+				Description: "ServiceAccount authentication configuration. Note: this field may return `null`，indicating that no valid values can be obtained。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"use_tke_default": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Use TKE default issuer and jwksuri. Note: This field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Use TKE default issuer and jwksuri. Note: This field may return `null`，indicating that no valid values can be obtained。",
 						},
 						"issuer": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "service-account-issuer. Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "service-账号-issuer. Note: this field may return `null`，indicating that no valid values can be obtained。",
 						},
 						"jwks_uri": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "service-account-jwks-uri. Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "service-账号-jwks-uri. Note: this field may return `null`，indicating that no valid values can be obtained。",
 						},
 						"auto_create_discovery_anonymous_auth": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "If it is set to `true`, a RABC rule is automatically created to allow anonymous users to access `/.well-known/openid-configuration` and `/openid/v1/jwks`. Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "If it is set to `true`，a RABC rule is automatically created to allow anonymous users to access `/.well-known/openid-configuration` and `/openid/v1/jwks`. Note: this field may return `null`，indicating that no valid values can be obtained。",
 						},
 					},
 				},
@@ -55,24 +55,24 @@ func DataSourceTencentCloudKubernetesClusterAuthenticationOptions() *schema.Reso
 			"latest_operation_state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Result of the last modification. Values: `Updating`, `Success`, `Failed` or `TimeOut`. Note: this field may return `null`, indicating that no valid values can be obtained.",
+				Description: "结果 of the last modification. Values: `Updating`，`Success`，`Failed` or `TimeOut`. Note: this field may return `null`，indicating that no valid values can be obtained。",
 			},
 
 			"oidc_config": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "OIDC authentication configurations. Note: This field may return `null`, indicating that no valid value can be obtained.",
+				Description: "OIDC authentication configurations. Note: This field may return `null`，indicating that no valid 值 can be obtained。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"auto_create_oidc_config": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Creating an identity provider. Note: This field may return `null`, indicating that no valid value can be obtained.",
+							Description: "Creating an identity provider. Note: This field may return `null`，indicating that no valid 值 can be obtained。",
 						},
 						"auto_create_client_id": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Creating ClientId of the identity provider. Note: This field may return `null`, indicating that no valid value can be obtained.",
+							Description: "Creating ClientId of the identity provider. Note: This field may return `null`，indicating that no valid 值 can be obtained。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -80,7 +80,7 @@ func DataSourceTencentCloudKubernetesClusterAuthenticationOptions() *schema.Reso
 						"auto_install_pod_identity_webhook_addon": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Creating the PodIdentityWebhook component. Note: This field may return `null`, indicating that no valid value can be obtained.",
+							Description: "Creating the PodIdentityWebhook component. Note: This field may return `null`，indicating that no valid 值 can be obtained。",
 						},
 					},
 				},
@@ -89,7 +89,7 @@ func DataSourceTencentCloudKubernetesClusterAuthenticationOptions() *schema.Reso
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

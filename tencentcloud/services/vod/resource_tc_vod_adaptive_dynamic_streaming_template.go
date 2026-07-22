@@ -33,47 +33,47 @@ func ResourceTencentCloudVodAdaptiveDynamicStreamingTemplate() *schema.Resource 
 			"format": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Adaptive bitstream format. Valid values: `HLS`.",
+				Description: "Adaptive bitstream 格式 有效值：`HLS`。",
 			},
 			"name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 64),
-				Description:  "Template name. Length limit: 64 characters.",
+				Description:  "模板名称 Length 限制: 64 characters。",
 			},
 			"drm_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "DRM scheme type. Valid values: `SimpleAES`. If this field is an empty string, DRM will not be performed on the video.",
+				Description: "DRM scheme 类型 有效值：`SimpleAES`. If this field is an empty string，DRM will not be performed on the video。",
 			},
 			"disable_higher_video_bitrate": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Whether to prohibit transcoding video from low bitrate to high bitrate. Valid values: `false`,`true`. `false`: no, `true`: yes. Default value: `false`.",
+				Description: "是否prohibit transcoding video from low bitrate to high bitrate. 有效值：`false`,`true`. `false`: no，`true`: yes. 默认值：`false`。",
 			},
 			"disable_higher_video_resolution": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Whether to prohibit transcoding from low resolution to high resolution. Valid values: `false`,`true`. `false`: no, `true`: yes. Default value: `false`.",
+				Description: "是否prohibit transcoding from low resolution to high resolution. 有效值：`false`,`true`. `false`: no，`true`: yes. 默认值：`false`。",
 			},
 			"comment": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 256),
-				Description:  "Template description. Length limit: 256 characters.",
+				Description:  "模板描述 Length 限制: 256 characters。",
 			},
 			"sub_app_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.",
+				Description: "The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25，2023，if they want to access resources in a VOD application (whether it's the default application or a newly created one)，they must fill in this field with the application ID。",
 			},
 			"stream_info": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "List of AdaptiveStreamTemplate parameter information of output substream for adaptive bitrate streaming. Up to 10 substreams can be output. Note: the frame rate of all substreams must be the same; otherwise, the frame rate of the first substream will be used as the output frame rate.",
+				Description: "列表 AdaptiveStreamTemplate parameter information of output substream for adaptive bitrate streaming. Up to 10 substreams can be output. Note: the frame rate of all substreams must be the same; otherwise，the frame rate of the first substream will be used as the output frame rate。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"video": {
@@ -81,49 +81,49 @@ func ResourceTencentCloudVodAdaptiveDynamicStreamingTemplate() *schema.Resource 
 							Required:    true,
 							MaxItems:    1,
 							MinItems:    1,
-							Description: "Video parameter information.",
+							Description: "Video parameter information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"codec": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Video stream encoder. Valid values: `libx264`,`libx265`,`av1`. `libx264`: H.264, `libx265`: H.265, `av1`: AOMedia Video 1. Currently, a resolution within 640x480 must be specified for `H.265`. and the `av1` container only supports mp4.",
+										Description: "Video stream encoder. 有效值：`libx264`,`libx265`,`av1`. `libx264`: H.264，`libx265`: H.265，`av1`: AOMedia Video 1. Currently，a resolution within 640x480 must be specified for `H.265`. and the `av1` container only supports mp4。",
 									},
 									"fps": {
 										Type:         schema.TypeInt,
 										Required:     true,
 										ValidateFunc: tccommon.ValidateIntegerInRange(0, 60),
-										Description:  "Video frame rate in Hz. Value range: `[0, 60]`. If the value is `0`, the frame rate will be the same as that of the source video.",
+										Description:  "Video frame rate in Hz. 取值范围：`[0，60]`. If the 值 is `0`，the frame rate will be the same as that of the 来源 video。",
 									},
 									"bitrate": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Bitrate of video stream in Kbps. Value range: `0` and `[128, 35000]`. If the value is `0`, the bitrate of the video will be the same as that of the source video.",
+										Description: "Bitrate of video stream in Kbps. 取值范围：`0` and `[128，35000]`. If the 值 is `0`，the bitrate of the video will be the same as that of the 来源 video。",
 									},
 									"resolution_adaptive": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										Default:     true,
-										Description: "Resolution adaption. Valid values: `true`,`false`. `true`: enabled. In this case, `width` represents the long side of a video, while `height` the short side; `false`: disabled. In this case, `width` represents the width of a video, while `height` the height. Default value: `true`. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Resolution adaption. 有效值：`true`,`false`. `true`: 已启用 In this case，`width` represents the long side of a video，while `height` the short side; `false`: 已禁用 In this case，`width` represents the width of a video，while `height` the height. 默认值：`true`. Note: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"width": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Default:     0,
-										Description: "Maximum value of the width (or long side) of a video stream in px. Value range: `0` and `[128, 4096]`. If both `width` and `height` are `0`, the resolution will be the same as that of the source video; If `width` is `0`, but `height` is not `0`, `width` will be proportionally scaled; If `width` is not `0`, but `height` is `0`, `height` will be proportionally scaled; If both `width` and `height` are not `0`, the custom resolution will be used. Default value: `0`. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Maximum 值 of the width (or long side) of a video stream （像素）。 取值范围：`0` and `[128，4096]`. If both `width` and `height` are `0`，the resolution will be the same as that of the 来源 video; If `width` is `0`，but `height` is not `0`，`width` will be proportionally scaled; If `width` is not `0`，but `height` is `0`，`height` will be proportionally scaled; If both `width` and `height` are not `0`，the custom resolution will be used. 默认值：`0`. Note: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"height": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Default:     0,
-										Description: "Maximum value of the height (or short side) of a video stream in px. Value range: `0` and `[128, 4096]`. If both `width` and `height` are `0`, the resolution will be the same as that of the source video; If `width` is `0`, but `height` is not `0`, `width` will be proportionally scaled; If `width` is not `0`, but `height` is `0`, `height` will be proportionally scaled; If both `width` and `height` are not `0`, the custom resolution will be used. Default value: `0`. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Maximum 值 of the height (or short side) of a video stream （像素）。 取值范围：`0` and `[128，4096]`. If both `width` and `height` are `0`，the resolution will be the same as that of the 来源 video; If `width` is `0`，but `height` is not `0`，`width` will be proportionally scaled; If `width` is not `0`，but `height` is `0`，`height` will be proportionally scaled; If both `width` and `height` are not `0`，the custom resolution will be used. 默认值：`0`. Note: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"fill_type": {
 										Type:         schema.TypeString,
 										Optional:     true,
 										Default:      "black",
 										ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"stretch", "black"}),
-										Description:  "Fill type. Fill refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported: `stretch`: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot shorter or longer; `black`: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks. Default value: black. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description:  "Fill 类型 Fill refers to the way of processing a screenshot when its aspect ratio is different from that of the 来源 video. The following fill types are supported: `stretch`: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the 来源 video，which may make the screenshot shorter or longer; `black`: fill with black. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with black color blocks. 默认值：black. Note: this field may return null，indicating that no valid values can be obtained。",
 									},
 									"vcrf": {
 										Type:     schema.TypeInt,
@@ -139,7 +139,7 @@ func ResourceTencentCloudVodAdaptiveDynamicStreamingTemplate() *schema.Resource 
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Interval between Keyframe I frames, value range: 0 and [1, 100000], unit: number of frames. When you fill in 0 or leave it empty, the gop length is automatically set.",
+										Description: "Interval between Keyframe I frames，取值范围：0 and [1，100000]，unit: 数量 frames. When you fill in 0 or leave it empty，the gop length is automatically set。",
 									},
 									"preserve_hdr_switch": {
 										Type:     schema.TypeString,
@@ -167,23 +167,23 @@ func ResourceTencentCloudVodAdaptiveDynamicStreamingTemplate() *schema.Resource 
 							Required:    true,
 							MaxItems:    1,
 							MinItems:    1,
-							Description: "Audio parameter information.",
+							Description: "Audio parameter information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"codec": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Audio stream encoder. Valid value are: `libfdk_aac` and `libmp3lame`. while `libfdk_aac` is recommended.",
+										Description: "Audio stream encoder. Valid 值 are: `libfdk_aac` and `libmp3lame`. while `libfdk_aac` is recommended。",
 									},
 									"bitrate": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Audio stream bitrate in Kbps. Value range: `0` and `[26, 256]`. If the value is `0`, the bitrate of the audio stream will be the same as that of the original audio.",
+										Description: "Audio stream bitrate in Kbps. 取值范围：`0` and `[26，256]`. If the 值 is `0`，the bitrate of the audio stream will be the same as that of the original audio。",
 									},
 									"sample_rate": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Audio stream sample rate. Valid values: `32000`, `44100`, `48000`Hz.",
+										Description: "Audio stream sample rate. 有效值：`32000`，`44100`，`48000`Hz。",
 									},
 									"audio_channel": {
 										Type:        schema.TypeString,
@@ -198,13 +198,13 @@ func ResourceTencentCloudVodAdaptiveDynamicStreamingTemplate() *schema.Resource 
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "Whether to remove audio stream. Valid values: `false`: no, `true`: yes. `false` by default.",
+							Description: "是否remove audio stream. 有效值：`false`: no，`true`: yes. `false` by default。",
 						},
 						"remove_video": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to remove video stream. Valid values: `false`: no, `true`: yes. `false` by default.",
+							Description: "是否remove video stream. 有效值：`false`: no，`true`: yes. `false` by default。",
 						},
 						"tehd_config": {
 							Type:        schema.TypeList,
@@ -212,7 +212,7 @@ func ResourceTencentCloudVodAdaptiveDynamicStreamingTemplate() *schema.Resource 
 							Computed:    true,
 							MaxItems:    1,
 							MinItems:    1,
-							Description: "Extremely fast HD transcoding parameters.",
+							Description: "Extremely fast HD transcoding parameters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
@@ -226,7 +226,7 @@ func ResourceTencentCloudVodAdaptiveDynamicStreamingTemplate() *schema.Resource 
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Video bitrate limit, which is valid when Type specifies extreme speed HD type. If you leave it empty or enter 0, there is no video bitrate limit.",
+										Description: "Video bitrate 限制，which is valid when 类型 指定extreme speed HD 类型 If you leave it empty or enter 0，there is no video bitrate 限制",
 									},
 								},
 							},
@@ -247,12 +247,12 @@ func ResourceTencentCloudVodAdaptiveDynamicStreamingTemplate() *schema.Resource 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of template in ISO date format.",
+				Description: "创建时间 of template in ISO date 格式",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last modified time of template in ISO date format.",
+				Description: "最后修改时间 of template in ISO date 格式",
 			},
 		},
 	}

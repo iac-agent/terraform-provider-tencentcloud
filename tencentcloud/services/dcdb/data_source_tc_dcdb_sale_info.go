@@ -19,49 +19,49 @@ func DataSourceTencentCloudDcdbSaleInfo() *schema.Resource {
 			"region_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "list of sale region info.",
+				Description: "列表 sale 地域 info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region name(en).",
+							Description: "地域名称(en)。",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "region id.",
+							Description: "地域 ID",
 						},
 						"region_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region name(zh).",
+							Description: "地域名称(zh)。",
 						},
 						"zone_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "list of az zone.",
+							Description: "列表 az 可用区",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "zone name(en).",
+										Description: "可用区 名称(en)。",
 									},
 									"zone_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "zone id.",
+										Description: "可用区 ID",
 									},
 									"zone_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "zone name(zh).",
+										Description: "可用区 名称(zh)。",
 									},
 									"on_sale": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "is zone on sale.",
+										Description: "is 可用区 on sale。",
 									},
 								},
 							},
@@ -69,34 +69,34 @@ func DataSourceTencentCloudDcdbSaleInfo() *schema.Resource {
 						"available_choice": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "available zone choice.",
+							Description: "available 可用区 choice。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"master_zone": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "master zone.",
+										Description: "master 可用区",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"zone": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "zone name(en).",
+													Description: "可用区 名称(en)。",
 												},
 												"zone_id": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "zone id.",
+													Description: "可用区 ID",
 												},
 												"zone_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "zone name(zh).",
+													Description: "可用区 名称(zh)。",
 												},
 												"on_sale": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "is zone on sale.",
+													Description: "is 可用区 on sale。",
 												},
 											},
 										},
@@ -104,28 +104,28 @@ func DataSourceTencentCloudDcdbSaleInfo() *schema.Resource {
 									"slave_zones": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "slave zones.",
+										Description: "slave zones。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"zone": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "zone name(en).",
+													Description: "可用区 名称(en)。",
 												},
 												"zone_id": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "zone id.",
+													Description: "可用区 ID",
 												},
 												"zone_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "zone name(zh).",
+													Description: "可用区 名称(zh)。",
 												},
 												"on_sale": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "is zone on sale.",
+													Description: "is 可用区 on sale。",
 												},
 											},
 										},
@@ -140,7 +140,7 @@ func DataSourceTencentCloudDcdbSaleInfo() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -22,7 +22,7 @@ func ResourceTencentCloudCvmRenewHost() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CDH instance ID.",
+				Description: "CDH instance ID。",
 			},
 
 			"host_charge_prepaid": {
@@ -30,18 +30,18 @@ func ResourceTencentCloudCvmRenewHost() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Prepaid mode, that is, yearly and monthly subscription related parameter settings. Through this parameter, you can specify attributes such as the purchase duration of the Subscription instance and whether to set automatic renewal. If the payment mode of the specified instance is prepaid, this parameter must be passed.",
+				Description: "Prepaid 模式，that is，yearly and monthly subscription related parameter settings. Through this parameter，you can 指定attributes such as the purchase duration of the Subscription instance and 是否set automatic renewal. If the payment 模式 of the specified instance is prepaid，this parameter must be passed。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The duration of purchasing an instance, unit: month. Value range: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+							Description: "The duration of purchasing an instance，unit: month. 取值范围：1，2，3，4，5，6，7，8，9，10，11，12，24，36。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Auto renewal flag. Valid values:&lt;br&gt;&lt;li&gt;NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically&lt;br&gt;&lt;li&gt;NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically&lt;br&gt;&lt;li&gt;DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically&lt;br&gt;&lt;br&gt;Default value: NOTIFY_AND_AUTO_RENEW。If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.",
+							Description: "自动续费标识 Valid values:&lt;br&gt;&lt;li&gt;NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically&lt;br&gt;&lt;li&gt;NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically&lt;br&gt;&lt;li&gt;DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically&lt;br&gt;&lt;br&gt;默认值：NOTIFY_AND_AUTO_RENEW。If this parameter is specified as NOTIFY_AND_AUTO_RENEW，the instance will be automatically renewed on a monthly basis if the 账号 balance is sufficient。",
 						},
 					},
 				},

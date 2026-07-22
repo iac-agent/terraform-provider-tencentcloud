@@ -26,21 +26,21 @@ func ResourceTencentCloudRedisBackupOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID instance。",
 			},
 
 			"remark": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Notes information for the backup.",
+				Description: "Notes information for the backup。",
 			},
 
 			"storage_days": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of days to store.0 specifies the default retention time.",
+				Description: "数量 days to store.0 指定default retention time。",
 			},
 		},
 	}

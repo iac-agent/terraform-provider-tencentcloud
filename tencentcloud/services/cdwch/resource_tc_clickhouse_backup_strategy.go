@@ -24,77 +24,77 @@ func ResourceTencentCloudClickhouseBackupStrategy() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"data_backup_strategy": {
 				Required:    true,
 				MinItems:    1,
 				Type:        schema.TypeList,
-				Description: "Data backup strategy.",
+				Description: "Data backup strategy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"week_days": {
 							Required:    true,
 							Type:        schema.TypeString,
-							Description: "The day of the week is separated by commas. For example: 2 represents Tuesday.",
+							Description: "The day of the week is separated by commas. For example: 2 represents Tuesday。",
 						},
 
 						"execute_hour": {
 							Required:    true,
 							Type:        schema.TypeInt,
-							Description: "Execution hour.",
+							Description: "Execution hour。",
 						},
 
 						"retain_days": {
 							Required:    true,
 							Type:        schema.TypeInt,
-							Description: "Retention days.",
+							Description: "Retention days。",
 						},
 						"back_up_tables": {
 							Required:    true,
 							Type:        schema.TypeList,
-							Description: "Back up the list of tables.",
+							Description: "Back up the 列表 tables。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Database.",
+										Description: "Database。",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Table.",
+										Description: "Table。",
 									},
 									"total_bytes": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Back up the list of tables.",
+										Description: "Back up the 列表 tables。",
 									},
 									"v_cluster": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Virtual clusters.",
+										Description: "Virtual clusters。",
 									},
 									"ips": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Table ip.",
+										Description: "Table ip。",
 									},
 									"zoo_path": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "ZK path.",
+										Description: "ZK 路径",
 									},
 									"rip": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Ip address of cvm.",
+										Description: "Ip 地址 of cvm。",
 									},
 								},
 							},
@@ -108,25 +108,25 @@ func ResourceTencentCloudClickhouseBackupStrategy() *schema.Resource {
 				Computed:    true,
 				MinItems:    1,
 				Type:        schema.TypeList,
-				Description: "Metadata backup strategy.",
+				Description: "Metadata backup strategy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"week_days": {
 							Optional:    true,
 							Type:        schema.TypeString,
-							Description: "The day of the week is separated by commas. For example: 2 represents Tuesday.",
+							Description: "The day of the week is separated by commas. For example: 2 represents Tuesday。",
 						},
 
 						"execute_hour": {
 							Optional:    true,
 							Type:        schema.TypeInt,
-							Description: "Execution hour.",
+							Description: "Execution hour。",
 						},
 
 						"retain_days": {
 							Optional:    true,
 							Type:        schema.TypeInt,
-							Description: "Retention days.",
+							Description: "Retention days。",
 						},
 					},
 				},

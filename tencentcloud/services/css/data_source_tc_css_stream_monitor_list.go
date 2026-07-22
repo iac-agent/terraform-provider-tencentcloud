@@ -20,49 +20,49 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 			"live_stream_monitors": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The list of live stream monitoring tasks.Note: This field may return null, indicating that no valid value is available.",
+				Description: "The 列表 live stream monitoring tasks.Note: This field may return null，indicating that no valid 值 is available。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"monitor_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitoring task ID.Note: This field may return null, indicating that no valid value is available.",
+							Description: "Monitoring task ID.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"monitor_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitoring task name. Up to 128 bytes.Note: This field may return null, indicating that no valid value is available.",
+							Description: "Monitoring task 名称 Up to 128 bytes.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"output_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Monitoring task output information.Note: This field may return null, indicating that no valid value is available.",
+							Description: "Monitoring task output information.Note: This field may return null，indicating that no valid 值 is available。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"output_stream_width": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The width of the output stream in pixels for the monitoring task. The range is [1, 1920]. It is recommended to be at least 100 pixels.Note: This field may return null, indicating that no valid value is available.",
+										Description: "The width of the output stream in pixels for the monitoring task. The range is [1，1920]. It is recommended to be at least 100 pixels.Note: This field may return null，indicating that no valid 值 is available。",
 									},
 									"output_stream_height": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The height of the output stream in pixels for the monitoring task. The range is [1, 1080]. It is recommended to be at least 100 pixels.Note: This field may return null, indicating that no valid value is available.",
+										Description: "The height of the output stream in pixels for the monitoring task. The range is [1，1080]. It is recommended to be at least 100 pixels.Note: This field may return null，indicating that no valid 值 is available。",
 									},
 									"output_stream_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The name of the output stream for the monitoring task.If not specified, the system will generate a name automatically.The name should be within 256 bytes and can only contain letters, numbers, `-`, `_`, and `.` characters.Note: This field may return null, indicating that no valid value is available.",
+										Description: "The 名称 output stream for the monitoring task.如果未指定，the system will generate a 名称 automatically.The 名称 should be within 256 bytes and can only contain letters，numbers，`-`，`_`，and `.` characters.Note: This field may return null，indicating that no valid 值 is available。",
 									},
 									"output_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The playback domain for the monitoring task.It should be within 128 bytes and can only be filled with an enabled playback domain.Note: This field may return null, indicating that no valid value is available.",
+										Description: "The playback 域名 for the monitoring task.It should be within 128 bytes and can only be filled with an 已启用 playback 域名Note: This field may return null，indicating that no valid 值 is available。",
 									},
 									"output_app": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The playback path for the monitoring task.It should be within 32 bytes and can only contain letters, numbers, `-`, `_`, and `.` characters.Note: This field may return null, indicating that no valid value is available.",
+										Description: "The playback 路径 for the monitoring task.It should be within 32 bytes and can only contain letters，numbers，`-`，`_`，and `.` characters.Note: This field may return null，indicating that no valid 值 is available。",
 									},
 								},
 							},
@@ -70,33 +70,33 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 						"input_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The input stream information for the monitoring task.Note: This field may return null, indicating that no valid value is available.",
+							Description: "The input stream information for the monitoring task.Note: This field may return null，indicating that no valid 值 is available。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"input_stream_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The name of the input stream for the monitoring task.It should be within 256 bytes and can only contain letters, numbers, `-`, `_`, and `.` characters.Note: This field may return null, indicating that no valid value is available.",
+										Description: "The 名称 input stream for the monitoring task.It should be within 256 bytes and can only contain letters，numbers，`-`，`_`，and `.` characters.Note: This field may return null，indicating that no valid 值 is available。",
 									},
 									"input_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The push domain for the input stream to be monitored.It should be within 128 bytes and can only be filled with an enabled push domain.Note: This field may return null, indicating that no valid value is available.",
+										Description: "The push 域名 for the input stream to be monitored.It should be within 128 bytes and can only be filled with an 已启用 push 域名Note: This field may return null，indicating that no valid 值 is available。",
 									},
 									"input_app": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The push path for the input stream to be monitored.It should be within 32 bytes and can only contain letters, numbers, `-`, `_`, and `.` characters.Note: This field may return null, indicating that no valid value is available.",
+										Description: "The push 路径 for the input stream to be monitored.It should be within 32 bytes and can only contain letters，numbers，`-`，`_`，and `.` characters.Note: This field may return null，indicating that no valid 值 is available。",
 									},
 									"input_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The push URL for the input stream to be monitored. In most cases, this parameter is not required.Note: This field may return null, indicating that no valid value is available.",
+										Description: "The push URL for the input stream to be monitored. In most cases，this parameter 不是必填项.Note: This field may return null，indicating that no valid 值 is available。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Description of the monitoring task.It should be within 256 bytes.Note: This field may return null, indicating that no valid value is available.",
+										Description: "描述 monitoring task.It should be within 256 bytes.Note: This field may return null，indicating that no valid 值 is available。",
 									},
 								},
 							},
@@ -104,43 +104,43 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The status of the monitoring task.  0: Represents idle.  1: Represents monitoring in progress.Note: This field may return null, indicating that no valid value is available.",
+							Description: "The 状态 monitoring task.  0: Represents idle.  1: Represents monitoring in progress.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"start_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The last start time of the monitoring task, in Unix timestamp format.Note: This field may return null, indicating that no valid value is available.",
+							Description: "The last 开始时间 of the monitoring task，in Unix 时间戳 格式Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"stop_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The last stop time of the monitoring task, in Unix timestamp format.Note: This field may return null, indicating that no valid value is available.",
+							Description: "The last stop time of the monitoring task，in Unix 时间戳 格式Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The creation time of the monitoring task, in Unix timestamp format.Note: This field may return null, indicating that no valid value is available.",
+							Description: "The 创建时间 of the monitoring task，in Unix 时间戳 格式Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The update time of the monitoring task, in Unix timestamp format.Note: This field may return null, indicating that no valid value is available.",
+							Description: "The 更新时间 of the monitoring task，in Unix 时间戳 格式Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"notify_policy": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The notification policy for monitoring events.Note: This field may return null, indicating that no valid value is available.",
+							Description: "The notification policy for monitoring events.Note: This field may return null，indicating that no valid 值 is available。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"notify_policy_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The type of notification policy: Range [0,1]  0: Represents no notification policy is used.  1: Represents the use of a global callback policy, where all events are notified to the CallbackUrl.Note: This field may return null, indicating that no valid value is available.",
+										Description: "类型 notification policy: Range [0,1]  0: Represents no notification policy is used.  1: Represents the use of a global callback policy，where all events are notified to the CallbackUrl.Note: This field may return null，indicating that no valid 值 is available。",
 									},
 									"callback_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The callback URL for notifications. It should be of length [0,512] and only support URLs with the http and https types.Note: This field may return null, indicating that no valid value is available.",
+										Description: "The callback URL for notifications. It should be of length [0,512] and only support URLs with the http and https types.Note: This field may return null，indicating that no valid 值 is available。",
 									},
 								},
 							},
@@ -151,7 +151,7 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "The list of input indices for the output audio.Note: This field may return null, indicating that no valid value is available.",
+							Description: "The 列表 input indices for the output audio.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"ai_asr_input_index_list": {
 							Type: schema.TypeSet,
@@ -159,27 +159,27 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "The list of input indices for enabling intelligent speech recognition.Note: This field may return null, indicating that no valid value is available.",
+							Description: "The 列表 input indices for enabling intelligent speech recognition.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"check_stream_broken": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to enable stream disconnection detection.Note: This field may return null, indicating that no valid value is available.",
+							Description: "是否enable stream disconnection detection.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"check_stream_low_frame_rate": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to enable low frame rate detection.Note: This field may return null, indicating that no valid value is available.",
+							Description: "是否enable low frame rate detection.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"asr_language": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The language for intelligent speech recognition:0: Disabled1: Chinese2: English3: Japanese4: KoreanNote: This field may return null, indicating that no valid value is available.",
+							Description: "The 语言 for intelligent speech recognition:0: Disabled1: Chinese2: English3: Japanese4: KoreanNote: This field may return null，indicating that no valid 值 is available。",
 						},
 						"ocr_language": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The language for intelligent text recognition:0: Disabled1: Chinese and EnglishNote: This field may return null, indicating that no valid value is available.",
+							Description: "The 语言 for intelligent text recognition:0: Disabled1: Chinese and EnglishNote: This field may return null，indicating that no valid 值 is available。",
 						},
 						"ai_ocr_input_index_list": {
 							Type: schema.TypeSet,
@@ -187,17 +187,17 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "The list of input indices for enabling intelligent text recognition.Note: This field may return null, indicating that no valid value is available.",
+							Description: "The 列表 input indices for enabling intelligent text recognition.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"allow_monitor_report": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to store monitoring events in the monitoring report and allow querying of the monitoring report.Note: This field may return null, indicating that no valid value is available.",
+							Description: "是否store monitoring events in the monitoring report and allow querying of the monitoring report.Note: This field may return null，indicating that no valid 值 is available。",
 						},
 						"ai_format_diagnose": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to enable format diagnosis. Note: This field may return null, indicating that no valid value is available.",
+							Description: "是否enable 格式 diagnosis. Note: This field may return null，indicating that no valid 值 is available。",
 						},
 					},
 				},
@@ -206,7 +206,7 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

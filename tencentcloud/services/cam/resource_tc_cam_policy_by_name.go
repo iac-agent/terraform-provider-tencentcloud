@@ -35,7 +35,7 @@ func ResourceTencentCloudCamPolicyByName() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Name of CAM policy.",
+				Description: "名称 CAM policy。",
 			},
 			"document": {
 				Type:     schema.TypeString,
@@ -54,27 +54,27 @@ func ResourceTencentCloudCamPolicyByName() *schema.Resource {
 					flag := reflect.DeepEqual(oldJson, newJson)
 					return flag
 				},
-				Description: "Document of the CAM policy. The syntax refers to [CAM POLICY](https://intl.cloud.tencent.com/document/product/598/10604). There are some notes when using this para in terraform: 1. The elements in JSON claimed supporting two types as `string` and `array` only support type `array`; 2. Terraform does not support the `root` syntax, when it appears, it must be replaced with the uin it stands for.",
+				Description: "Document of the CAM policy. The syntax refers to [CAM POLICY](https://intl.cloud.tencent.com/document/product/598/10604). There are some notes when using this para in terraform: 1. The elements in JSON claimed supporting two types as `string` and `array` only support 类型 `array`; 2. Terraform does not support the `root` syntax，when it appears，it must be replaced with the uin it stands for。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the CAM policy.",
+				Description: "描述 CAM policy。",
 			},
 			"type": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Type of the policy strategy. Valid values: `1`, `2`.  `1` means customer strategy and `2` means preset strategy.",
+				Description: "类型 policy strategy. 有效值：`1`，`2`.  `1` means customer strategy and `2` means preset strategy。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of the CAM policy.",
+				Description: "创建时间 of the CAM policy。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The last update time of the CAM policy.",
+				Description: "The last 更新时间 of the CAM policy。",
 			},
 		},
 	}

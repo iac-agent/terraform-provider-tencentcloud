@@ -19,58 +19,58 @@ func DataSourceTencentCloudCfwEdgeFwSwitches() *schema.Resource {
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Ip switch list.",
+				Description: "Ip switch list。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"public_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "public ip.",
+							Description: "public ip。",
 						},
 						"public_ip_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Public IP type.",
+							Description: "Public IP 类型",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Id.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Name.",
+							Description: "Instance 名称",
 						},
 						"intranet_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Intranet Ip.",
+							Description: "Intranet Ip。",
 						},
 						"asset_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Asset Type.",
+							Description: "Asset 类型",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region.",
+							Description: "地域",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "status.",
+							Description: "状态",
 						},
 						"switch_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "switch mode.",
+							Description: "switch 模式",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "vpc id.",
+							Description: "私有网络 ID",
 						},
 					},
 				},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudCfwEdgeFwSwitches() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}
