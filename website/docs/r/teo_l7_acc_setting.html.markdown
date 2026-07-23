@@ -122,6 +122,7 @@ The following arguments are supported:
 
 * `zone_config` - (Required, List) Site acceleration global configuration. the settings in this parameter will apply to all domain names under the site. you only need to modify the required settings directly, and other settings not passed in will remain unchanged.
 * `zone_id` - (Required, String, ForceNew) Zone id.
+* `zone_name` - (Optional, String) Zone name.
 
 The `accelerate_mainland` object of `zone_config` supports the following:
 
@@ -364,7 +365,7 @@ The `zone_config` object supports the following:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-* `zone_name` - Zone name.
+
 
 
 ## Import

@@ -31,6 +31,7 @@ func ResourceTencentCloudTeoL7AccSetting() *schema.Resource {
 
 			"zone_name": {
 				Type:        schema.TypeString,
+				Optional:    true,
 				Computed:    true,
 				Description: "Zone name.",
 			},
