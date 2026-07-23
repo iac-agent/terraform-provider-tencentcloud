@@ -40,7 +40,7 @@ func ResourceTencentCloudTeoL4Proxy() *schema.Resource {
 
 			"area": {
 				Type:        schema.TypeString,
-				Optional:    true,
+				Required:    true,
 				Description: "Acceleration zone of the Layer 4 proxy instance. `mainland`: Availability zone in the Chinese mainland; `overseas`: Global availability zone (excluding the Chinese mainland); `global`: Global availability zone.",
 			},
 
@@ -118,9 +118,7 @@ func resourceTencentCloudTeoL4ProxyCreate(d *schema.ResourceData, meta interface
 		request.ProxyName = helper.String(v.(string))
 	}
 
-	if v, ok := d.GetOk("area"); ok {
-		request.Area = helper.String(v.(string))
-	}
+	request.Area = helper.String(d.Get("area").(string))
 
 	if v, ok := d.GetOk("ipv6"); ok {
 		request.Ipv6 = helper.String(v.(string))
