@@ -60,7 +60,7 @@ func ResourceTencentCloudCvmImportImage() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Image description.",
+				Description: "Image description.test",
 			},
 
 			"dry_run": {
