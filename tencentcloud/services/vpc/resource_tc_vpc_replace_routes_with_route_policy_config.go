@@ -6,6 +6,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
 	vpcv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc/v20170312"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
@@ -45,6 +46,43 @@ func ResourceTencentCloudVpcReplaceRoutesWithRoutePolicyConfig() *schema.Resourc
 					},
 				},
 			},
+
+			"name": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Description: "Filter name of the `DescribeRouteTables` read request. Populates the `Name` of a `Filter` entry. Only takes effect when `route_table_ids` is not set.",
+			},
+
+			"values": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Description: "Filter values of the `DescribeRouteTables` read request. Populates the `Values` of the same `Filter` entry as `name`. Only takes effect when `route_table_ids` is not set.",
+				Elem: &schema.Schema{
+					Type: schema.TypeString,
+				},
+			},
+
+			"need_router_info": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Description: "Indicates whether to obtain route policy info. Maps to `NeedRouterInfo` of `DescribeRouteTables`.",
+			},
+
+			"route_table_ids": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Description: "Route table instance IDs, e.g. rtb-azd4dt1c. Maps to `RouteTableIds` of `DescribeRouteTables`. Mutually exclusive with `Filters` (including the `route-table-id` filter derived from `route_table_id`); when set, the read path queries by `RouteTableIds` only.",
+				Elem: &schema.Schema{
+					Type: schema.TypeString,
+				},
+			},
+
+			"limit": {
+				Type:         schema.TypeInt,
+				Optional:     true,
+				ValidateFunc: validation.IntBetween(1, 100),
+				Description:  "Return quantity of `DescribeRouteTables`, default is 20, max value is 100. When unset, the read helper uses its internal default of 100.",
+			},
 		},
 	}
 }
@@ -75,17 +113,47 @@ func resourceTencentCloudVpcReplaceRoutesWithRoutePolicyConfigRead(d *schema.Res
 		routeTableId = d.Id()
 	)
 
-	respData, err := service.DescribeRouteTables(ctx, routeTableId, "", "", map[string]string{}, nil, "")
+	var (
+		filterName     string
+		filterValues   []*string
+		needRouterInfo *bool
+		routeTableIds  []*string
+		limit          int
+	)
+	if v, ok := d.GetOk("name"); ok {
+		filterName = v.(string)
+	}
+	if v, ok := d.GetOk("values"); ok {
+		for _, item := range v.([]interface{}) {
+			val := item.(string)
+			filterValues = append(filterValues, helper.String(val))
+		}
+	}
+	if v, ok := d.GetOkExists("need_router_info"); ok {
+		needRouterInfo = helper.Bool(v.(bool))
+	}
+	if v, ok := d.GetOk("route_table_ids"); ok {
+		for _, item := range v.([]interface{}) {
+			val := item.(string)
+			routeTableIds = append(routeTableIds, helper.String(val))
+		}
+	}
+	if v, ok := d.GetOk("limit"); ok {
+		limit = v.(int)
+	}
+
+	respData, found, err := service.DescribeRouteTablesForReplaceRoutesWithRoutePolicyConfig(ctx, routeTableId, filterName, filterValues, needRouterInfo, routeTableIds, limit)
 	if err != nil {
 		return err
 	}
 
-	if respData == nil {
-		log.Printf("[WARN]%s resource `tencentcloud_vpc_replace_routes_with_route_policy_config` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
+	if !found {
+		log.Printf("[CRUD] tencentcloud_vpc_replace_routes_with_route_policy_config id=%s", d.Id())
 		d.SetId("")
 		return nil
 	}
 
+	_ = respData
 	_ = d.Set("route_table_id", routeTableId)
 
 	return nil

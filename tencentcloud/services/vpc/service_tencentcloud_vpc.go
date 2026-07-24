@@ -1007,6 +1007,162 @@ getMoreData:
 
 }
 
+// DescribeRouteTablesForReplaceRoutesWithRoutePolicyConfig is a dedicated read
+// helper for the tencentcloud_vpc_replace_routes_with_route_policy_config
+// resource. It builds its own DescribeRouteTablesRequest so the widely-used
+// DescribeRouteTables helper signature stays untouched.
+//
+// When routeTableIds is non-empty: request.RouteTableIds is set and NO Filters
+// are added (the cloud API forbids specifying both).
+// Otherwise: a route-table-id filter is added from routeTableId (when non-empty),
+// and when filterName != "" a Filter{Name: filterName, Values: filterValues} is
+// appended.
+//
+// needRouterInfo is set on the request only when it is non-nil. limit (clamped
+// to the cloud API maximum of 100) controls the page size; when limit <= 0 the
+// internal default of 100 is used.
+//
+// The API call is wrapped in tccommon.ReadRetryTimeout retry and returns
+// tccommon.RetryError on failure.
+func (me *VpcService) DescribeRouteTablesForReplaceRoutesWithRoutePolicyConfig(
+	ctx context.Context,
+	routeTableId string,
+	filterName string,
+	filterValues []*string,
+	needRouterInfo *bool,
+	routeTableIds []*string,
+	limit int,
+) (info VpcRouteTableBasicInfo, found bool, errRet error) {
+
+	logId := tccommon.GetLogId(ctx)
+	request := vpc.NewDescribeRouteTablesRequest()
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	// Mutually exclusive: when RouteTableIds is provided, do NOT add any Filters.
+	if len(routeTableIds) > 0 {
+		request.RouteTableIds = routeTableIds
+	} else {
+		var filters []*vpc.Filter
+		if routeTableId != "" {
+			filters = me.fillFilter(filters, "route-table-id", routeTableId)
+		}
+		if filterName != "" {
+			filter := vpc.Filter{
+				Name:   helper.String(filterName),
+				Values: filterValues,
+			}
+			filters = append(filters, &filter)
+		}
+		if len(filters) > 0 {
+			request.Filters = filters
+		}
+	}
+
+	if needRouterInfo != nil {
+		request.NeedRouterInfo = needRouterInfo
+	}
+
+	pageLimit := 100
+	if limit > 0 {
+		if limit > 100 {
+			limit = 100
+		}
+		pageLimit = limit
+	}
+
+	var offset = 0
+	var total = -1
+	var infos []VpcRouteTableBasicInfo
+	var hasTableMap = map[string]bool{}
+	var response *vpc.DescribeRouteTablesResponse
+	var strLimit string
+	var strOffset string
+
+getMoreData:
+	if total >= 0 {
+		if offset >= total {
+			goto done
+		}
+	}
+	strLimit = fmt.Sprintf("%d", pageLimit)
+	request.Limit = &strLimit
+	strOffset = fmt.Sprintf("%d", offset)
+	request.Offset = &strOffset
+
+	response = nil
+	errRet = resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseVpcClient().DescribeRouteTables(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		response = result
+		log.Printf("[DEBUG]%s api[%s] , request body [%s], response body[%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+	if errRet != nil {
+		return
+	}
+
+	if total < 0 {
+		total = int(*response.Response.TotalCount)
+	}
+
+	if len(response.Response.RouteTableSet) > 0 {
+		offset += pageLimit
+	} else {
+		// empty result
+		return info, false, nil
+	}
+	for _, item := range response.Response.RouteTableSet {
+		var basicInfo VpcRouteTableBasicInfo
+		basicInfo.createTime = *item.CreatedTime
+		basicInfo.isDefault = *item.Main
+		basicInfo.name = *item.RouteTableName
+		basicInfo.routeTableId = *item.RouteTableId
+		basicInfo.vpcId = *item.VpcId
+
+		basicInfo.subnetIds = make([]string, 0, len(item.AssociationSet))
+		for _, v := range item.AssociationSet {
+			basicInfo.subnetIds = append(basicInfo.subnetIds, *v.SubnetId)
+		}
+
+		basicInfo.entryInfos = make([]VpcRouteEntryBasicInfo, 0, len(item.RouteSet))
+
+		for _, v := range item.RouteSet {
+			var entry VpcRouteEntryBasicInfo
+			entry.destinationCidr = *v.DestinationCidrBlock
+			entry.nextBub = *v.GatewayId
+			entry.nextType = *v.GatewayType
+			entry.description = *v.RouteDescription
+			entry.routeEntryId = int64(*v.RouteId)
+			entry.entryType = *v.RouteType
+			entry.enabled = *v.Enabled
+			entry.routeItemId = *v.RouteItemId
+			basicInfo.entryInfos = append(basicInfo.entryInfos, entry)
+		}
+		if hasTableMap[basicInfo.routeTableId] {
+			errRet = fmt.Errorf("get repeated route_table_id[%s] when doing DescribeRouteTables", basicInfo.routeTableId)
+			return
+		}
+		hasTableMap[basicInfo.routeTableId] = true
+		infos = append(infos, basicInfo)
+	}
+	goto getMoreData
+
+done:
+	if len(infos) == 0 {
+		return info, false, nil
+	}
+	return infos[0], true, nil
+}
+
 func (me *VpcService) CreateRouteTable(ctx context.Context, name, vpcId string, tags map[string]string) (routeTableId string, errRet error) {
 
 	logId := tccommon.GetLogId(ctx)
