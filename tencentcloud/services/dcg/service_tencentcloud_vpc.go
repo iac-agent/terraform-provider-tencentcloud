@@ -5762,7 +5762,7 @@ func (me *VpcService) DeleteVpcEndPointById(ctx context.Context, endPointId stri
 	return
 }
 
-func (me *VpcService) DescribeVpcEndPointServiceWhiteListById(ctx context.Context, userUin string, endPointServiceId string) (endPointServiceWhiteList *vpc.VpcEndPointServiceUser, errRet error) {
+func (me *VpcService) DescribeVpcEndPointServiceWhiteListById(ctx context.Context, userUin string, endPointServiceId string) (endPointServiceWhiteList *vpc.VpcEndPointServiceUser, totalCount *uint64, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
 	request := vpc.NewDescribeVpcEndPointServiceWhiteListRequest()
@@ -5805,6 +5805,11 @@ func (me *VpcService) DescribeVpcEndPointServiceWhiteListById(ctx context.Contex
 			return
 		}
 		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		// capture TotalCount from the first page response
+		if offset == 0 && response != nil && response.Response != nil && response.Response.TotalCount != nil {
+			totalCount = response.Response.TotalCount
+		}
 
 		if response == nil || len(response.Response.VpcEndpointServiceUserSet) < 1 {
 			break
