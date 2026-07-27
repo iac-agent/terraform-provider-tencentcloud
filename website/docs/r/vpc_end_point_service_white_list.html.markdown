@@ -36,6 +36,7 @@ In addition to all arguments above, the following attributes are exported:
 * `id` - ID of the resource.
 * `create_time` - Create Time.
 * `owner` - APPID.
+* `total_count` - Total count of matching white list records.
 
 
 ## Import

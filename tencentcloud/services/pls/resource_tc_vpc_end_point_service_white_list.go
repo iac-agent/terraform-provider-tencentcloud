@@ -55,6 +55,12 @@ func ResourceTencentCloudVpcEndPointServiceWhiteList() *schema.Resource {
 				Computed:    true,
 				Description: "Create Time.",
 			},
+
+			"total_count": {
+				Type:        schema.TypeInt,
+				Computed:    true,
+				Description: "Total count of matching white list records.",
+			},
 		},
 	}
 }
@@ -120,7 +126,7 @@ func resourceTencentCloudVpcEndPointServiceWhiteListRead(d *schema.ResourceData,
 	userUin := idSplit[0]
 	endPointServiceId := idSplit[1]
 
-	endPointServiceWhiteList, err := service.DescribeVpcEndPointServiceWhiteListById(ctx, userUin, endPointServiceId)
+	endPointServiceWhiteList, totalCount, err := service.DescribeVpcEndPointServiceWhiteListById(ctx, userUin, endPointServiceId)
 	if err != nil {
 		return err
 	}
@@ -148,6 +154,10 @@ func resourceTencentCloudVpcEndPointServiceWhiteListRead(d *schema.ResourceData,
 
 	if endPointServiceWhiteList.CreateTime != nil {
 		_ = d.Set("create_time", endPointServiceWhiteList.CreateTime)
+	}
+
+	if totalCount != nil {
+		_ = d.Set("total_count", int(*totalCount))
 	}
 
 	return nil
