@@ -214,6 +214,7 @@ func resourceTencentCloudTeoDnsRecord24Read(d *schema.ResourceData, meta interfa
 		return err
 	}
 	if respData == nil {
+		log.Printf("[CRUD] teo_dns_record_24 id=%s", d.Id())
 		d.SetId("")
 		log.Printf("[WARN]%s resource `teo_dns_record_24` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		return nil

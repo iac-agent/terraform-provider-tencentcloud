@@ -447,3 +447,111 @@ func TestTeoDnsRecord24_Schema(t *testing.T) {
 	assert.Equal(t, schema.TypeString, modifiedOn.Type)
 	assert.True(t, modifiedOn.Computed)
 }
+
+// TestTeoDnsRecord24_Update_NoChanges tests Update skips API call when no mutable fields change
+func TestTeoDnsRecord24_Update_NoChanges(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoV20220901Client", teoClient)
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoClient", teoClient)
+
+	apiCalled := false
+	patches.ApplyMethodFunc(teoClient, "ModifyDnsRecordsWithContext", func(ctx interface{}, request *teov20220901.ModifyDnsRecordsRequest) (*teov20220901.ModifyDnsRecordsResponse, error) {
+		apiCalled = true
+		resp := teov20220901.NewModifyDnsRecordsResponse()
+		resp.Response = &teov20220901.ModifyDnsRecordsResponseParams{
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	patches.ApplyMethodFunc(teoClient, "DescribeDnsRecords", func(request *teov20220901.DescribeDnsRecordsRequest) (*teov20220901.DescribeDnsRecordsResponse, error) {
+		resp := teov20220901.NewDescribeDnsRecordsResponse()
+		resp.Response = &teov20220901.DescribeDnsRecordsResponseParams{
+			TotalCount: ptrInt64(1),
+			DnsRecords: []*teov20220901.DnsRecord{
+				{
+					ZoneId:     ptrString("zone-1234567890"),
+					RecordId:   ptrString("rec-abcdefghij"),
+					Name:       ptrString("a.example.com"),
+					Type:       ptrString("A"),
+					Content:    ptrString("1.2.3.4"),
+					Location:   ptrString("Default"),
+					TTL:        ptrInt64(300),
+					Weight:     ptrInt64(-1),
+					Priority:   ptrInt64(0),
+					Status:     ptrString("enable"),
+					CreatedOn:  ptrString("2024-01-01T00:00:00Z"),
+					ModifiedOn: ptrString("2024-01-01T00:00:00Z"),
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoDnsRecord24()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id":  "zone-1234567890",
+		"name":     "a.example.com",
+		"type":     "A",
+		"content":  "1.2.3.4",
+		"location": "Default",
+		"ttl":      300,
+		"weight":   -1,
+		"priority": 0,
+	})
+	d.SetId("zone-1234567890#rec-abcdefghij")
+
+	err := res.Update(d, meta)
+	assert.NoError(t, err)
+	assert.False(t, apiCalled, "ModifyDnsRecordsWithContext should not be called when no fields changed")
+}
+
+// TestTeoDnsRecord24_Import tests import functionality
+func TestTeoDnsRecord24_Import(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoClient", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeDnsRecords", func(request *teov20220901.DescribeDnsRecordsRequest) (*teov20220901.DescribeDnsRecordsResponse, error) {
+		resp := teov20220901.NewDescribeDnsRecordsResponse()
+		resp.Response = &teov20220901.DescribeDnsRecordsResponseParams{
+			TotalCount: ptrInt64(1),
+			DnsRecords: []*teov20220901.DnsRecord{
+				{
+					ZoneId:     ptrString("zone-1234567890"),
+					RecordId:   ptrString("rec-abcdefghij"),
+					Name:       ptrString("a.example.com"),
+					Type:       ptrString("A"),
+					Content:    ptrString("1.2.3.4"),
+					Location:   ptrString("Default"),
+					TTL:        ptrInt64(300),
+					Weight:     ptrInt64(-1),
+					Priority:   ptrInt64(0),
+					Status:     ptrString("enable"),
+					CreatedOn:  ptrString("2024-01-01T00:00:00Z"),
+					ModifiedOn: ptrString("2024-01-01T00:00:00Z"),
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoDnsRecord24()
+
+	// Test import with valid composite ID
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{})
+	d.SetId("zone-1234567890#rec-abcdefghij")
+
+	importedData, err := res.Importer.State(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "zone-1234567890#rec-abcdefghij", importedData[0].Id())
+}
