@@ -28,62 +28,53 @@ func ResourceTencentCloudTeoDnsRecord21() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id.",
+				Description: "站点 ID。123",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "DNS record name. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.",
+				Description: "DNS 记录名，如果是中文、韩文、日文域名，需要转换为 punycode 后输入。",
 			},
 
 			"type": {
 				Type:     schema.TypeString,
 				Required: true,
-				Description: "DNS record type. valid values are:\n" +
-					"	- A: points the domain name to an external ipv4 address, such as 8.8.8.8;\n" +
-					"	- AAAA: points the domain name to an external ipv6 address;\n" +
-					"	- MX: used for email servers. when there are multiple mx records, the lower the priority value, the higher the priority;\n" +
-					"	- CNAME: points the domain name to another domain name, which then resolves to the final ip address;\n" +
-					"	- TXT: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);\n" +
-					"	- NS: if you need to delegate the subdomain to another dns service provider for resolution, you need to add an ns record. the root domain cannot add ns records;\n" +
-					"	- CAA: specifies the ca that can issue certificates for this site;\n" +
-					"	- SRV: identifies a server using a service, commonly used in microsoft's directory management.\n" +
-					"Different record types, such as SRV and CAA records, have different requirements for host record names and record value formats. for detailed descriptions and format examples of each record type, please refer to: [introduction to dns record types](https://intl.cloud.tencent.com/document/product/1552/90453?from_cn_redirect=1#2f681022-91ab-4a9e-ac3d-0a6c454d954e).",
+				Description: "DNS 记录类型，取值有：<li>A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；</li><li>AAAA：将域名指向一个外网 IPv6 地址；</li><li>MX：用于邮箱服务器。存在多条 MX 记录时，优先级越低越优先；</li><li>CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；</li><li>TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；</li><li>NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；</li><li>CAA：指定可为本站点颁发证书的 CA；</li><li>SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理。</li>\n不同的记录类型呢例如 SRV、CAA 记录对主机记录名称、记录值格式有不同的要求，各记录类型的详细说明介绍和格式示例请参考：[解析记录类型介绍](https://cloud.tencent.com/document/product/1552/90453#2f681022-91ab-4a9e-ac3d-0a6c454d954e)。",
 			},
 
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "DNS record content. fill in the corresponding content according to the type value. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.",
+				Description: "DNS 记录内容，根据 Type 值填入与之相对应的内容，如果是中文、韩文、日文域名，需要转换为 punycode 后输入。",
 			},
 
 			"location": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Optional:    true,
-				Description: "DNS record resolution route. if not specified, the default is DEFAULT, which means the default resolution route and is effective in all regions.\n\n- resolution route configuration is only applicable when type (dns record type) is A, AAAA, or CNAME.\n- resolution route configuration is only applicable to standard version and enterprise edition packages. for valid values, please refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).",
+				Description: "DNS 记录解析线路，不指定默认为 Default，表示默认解析线路，代表全部地域生效。\n\n- 解析线路配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。\n- 解析线路配置仅适用于标准版、企业版套餐使用，取值请参考：[解析线路及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。",
 			},
 
 			"ttl": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Cache time. users can specify a value range of 60-86400. the smaller the value, the faster the modification records will take effect in all regions. default value: 300. unit: seconds.",
+				Description: "缓存时间，用户可指定值范围 60~86400，数值越小，修改记录各地生效时间越快，默认为 300，单位：秒。",
 			},
 
 			"weight": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "DNS record weight. users can specify a value range of -1 to 100. a value of 0 means no resolution. if not specified, the default is -1, which means no weight is set. weight configuration is only applicable when type (dns record type) is A, AAAA, or CNAME. note: for the same subdomain, different dns records with the same resolution route should either all have weights set or none have weights set.",
+				Description: "DNS 记录权重，用户可指定值范围 -1~100，设置为 0 时表示不解析，不指定默认为 -1，表示不设置权重。权重配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。<br>注意：同一个子域名下，相同解析线路的不同 DNS 记录，应保持同时设置权重或者同时都不设置权重。",
 			},
 
 			"priority": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "MX record priority, which takes effect only when type (dns record type) is MX. the smaller the value, the higher the priority. users can specify a value range of 0-50. the default value is 0 if not specified.",
+				Description: "MX 记录优先级，该参数仅在当 Type（DNS 记录类型）为 MX 时生效，值越小优先级越高，用户可指定值范围0~50，不指定默认为0。",
 			},
 
 			"record_id": {
