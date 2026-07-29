@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_dns_record_21"
 sidebar_current: "docs-tencentcloud-resource-teo_dns_record_21"
 description: |-
-  Provides a resource to create a TEO dns record
+  提供 TEO（EdgeOne）DNS 记录资源。
 ---
 
 # tencentcloud_teo_dns_record_21
 
-Provides a resource to create a TEO dns record
+提供 TEO（EdgeOne）DNS 记录资源。
 
 ## Example Usage
 
@@ -66,7 +66,7 @@ In addition to all arguments above, the following attributes are exported:
 
 ## Import
 
-TEO dns record can be imported using the id, e.g.
+TEO（EdgeOne）DNS 记录可以通过 ID 导入，例如：
 
 ```
 terraform import tencentcloud_teo_dns_record_21.example zone-39quuimqg8r6#rec-abcdefghij
