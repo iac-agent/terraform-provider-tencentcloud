@@ -1,0 +1,400 @@
+package teo_test
+
+import (
+	"fmt"
+	"testing"
+
+	"github.com/agiledragon/gomonkey/v2"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/stretchr/testify/assert"
+	teov20220901 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901"
+
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/teo"
+)
+
+// go test ./tencentcloud/services/teo/ -run "TestTeoDnsRecord25" -v -count=1 -gcflags="all=-l"
+
+// TestTeoDnsRecord25_Create_Success tests Create calls API and sets composite ID
+func TestTeoDnsRecord25_Create_Success(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoV20220901Client", teoClient)
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoClient", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "CreateDnsRecordWithContext", func(ctx interface{}, request *teov20220901.CreateDnsRecordRequest) (*teov20220901.CreateDnsRecordResponse, error) {
+		resp := teov20220901.NewCreateDnsRecordResponse()
+		resp.Response = &teov20220901.CreateDnsRecordResponseParams{
+			RecordId:  ptrString("rec-abcdefghij"),
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	patches.ApplyMethodFunc(teoClient, "DescribeDnsRecords", func(request *teov20220901.DescribeDnsRecordsRequest) (*teov20220901.DescribeDnsRecordsResponse, error) {
+		resp := teov20220901.NewDescribeDnsRecordsResponse()
+		resp.Response = &teov20220901.DescribeDnsRecordsResponseParams{
+			TotalCount: ptrInt64(1),
+			DnsRecords: []*teov20220901.DnsRecord{
+				{
+					ZoneId:   ptrString("zone-1234567890"),
+					RecordId: ptrString("rec-abcdefghij"),
+					Name:     ptrString("a.example.com"),
+					Type:     ptrString("A"),
+					Content:  ptrString("1.2.3.4"),
+					Location: ptrString("Default"),
+					TTL:      ptrInt64(300),
+					Weight:   ptrInt64(-1),
+					Priority: ptrInt64(0),
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoDnsRecord25()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id":  "zone-1234567890",
+		"name":     "a.example.com",
+		"type":     "A",
+		"content":  "1.2.3.4",
+		"location": "Default",
+		"ttl":      300,
+		"weight":   -1,
+		"priority": 0,
+	})
+
+	err := res.Create(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "zone-1234567890#rec-abcdefghij", d.Id())
+}
+
+// TestTeoDnsRecord25_Create_APIError tests Create handles API error
+func TestTeoDnsRecord25_Create_APIError(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "CreateDnsRecordWithContext", func(ctx interface{}, request *teov20220901.CreateDnsRecordRequest) (*teov20220901.CreateDnsRecordResponse, error) {
+		return nil, fmt.Errorf("[TencentCloudSDKError] Code=InvalidParameter, Message=Invalid zone_id")
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoDnsRecord25()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-invalid",
+		"name":    "a.example.com",
+		"type":    "A",
+		"content": "1.2.3.4",
+	})
+
+	err := res.Create(d, meta)
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "InvalidParameter")
+}
+
+// TestTeoDnsRecord25_Read_Success tests Read retrieves DNS record data
+func TestTeoDnsRecord25_Read_Success(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoClient", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeDnsRecords", func(request *teov20220901.DescribeDnsRecordsRequest) (*teov20220901.DescribeDnsRecordsResponse, error) {
+		resp := teov20220901.NewDescribeDnsRecordsResponse()
+		resp.Response = &teov20220901.DescribeDnsRecordsResponseParams{
+			TotalCount: ptrInt64(1),
+			DnsRecords: []*teov20220901.DnsRecord{
+				{
+					ZoneId:   ptrString("zone-1234567890"),
+					RecordId: ptrString("rec-abcdefghij"),
+					Name:     ptrString("a.example.com"),
+					Type:     ptrString("A"),
+					Content:  ptrString("1.2.3.4"),
+					Location: ptrString("Default"),
+					TTL:      ptrInt64(300),
+					Weight:   ptrInt64(-1),
+					Priority: ptrInt64(0),
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoDnsRecord25()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-1234567890",
+		"name":    "a.example.com",
+		"type":    "A",
+		"content": "1.2.3.4",
+	})
+	d.SetId("zone-1234567890#rec-abcdefghij")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "zone-1234567890", d.Get("zone_id"))
+	assert.Equal(t, "a.example.com", d.Get("name"))
+	assert.Equal(t, "A", d.Get("type"))
+	assert.Equal(t, "1.2.3.4", d.Get("content"))
+	assert.Equal(t, "Default", d.Get("location"))
+	assert.Equal(t, 300, d.Get("ttl"))
+	assert.Equal(t, "rec-abcdefghij", d.Get("record_id"))
+}
+
+// TestTeoDnsRecord25_Read_NotFound tests Read handles record not found
+func TestTeoDnsRecord25_Read_NotFound(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoClient", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeDnsRecords", func(request *teov20220901.DescribeDnsRecordsRequest) (*teov20220901.DescribeDnsRecordsResponse, error) {
+		resp := teov20220901.NewDescribeDnsRecordsResponse()
+		resp.Response = &teov20220901.DescribeDnsRecordsResponseParams{
+			TotalCount: ptrInt64(0),
+			DnsRecords: []*teov20220901.DnsRecord{},
+			RequestId:  ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoDnsRecord25()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-1234567890",
+		"name":    "a.example.com",
+		"type":    "A",
+		"content": "1.2.3.4",
+	})
+	d.SetId("zone-1234567890#rec-abcdefghij")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "", d.Id())
+}
+
+// TestTeoDnsRecord25_Update_Success tests Update calls ModifyDnsRecords API
+func TestTeoDnsRecord25_Update_Success(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoV20220901Client", teoClient)
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoClient", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "ModifyDnsRecordsWithContext", func(ctx interface{}, request *teov20220901.ModifyDnsRecordsRequest) (*teov20220901.ModifyDnsRecordsResponse, error) {
+		resp := teov20220901.NewModifyDnsRecordsResponse()
+		resp.Response = &teov20220901.ModifyDnsRecordsResponseParams{
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	patches.ApplyMethodFunc(teoClient, "DescribeDnsRecords", func(request *teov20220901.DescribeDnsRecordsRequest) (*teov20220901.DescribeDnsRecordsResponse, error) {
+		resp := teov20220901.NewDescribeDnsRecordsResponse()
+		resp.Response = &teov20220901.DescribeDnsRecordsResponseParams{
+			TotalCount: ptrInt64(1),
+			DnsRecords: []*teov20220901.DnsRecord{
+				{
+					ZoneId:   ptrString("zone-1234567890"),
+					RecordId: ptrString("rec-abcdefghij"),
+					Name:     ptrString("a.example.com"),
+					Type:     ptrString("A"),
+					Content:  ptrString("5.6.7.8"),
+					Location: ptrString("Default"),
+					TTL:      ptrInt64(300),
+					Weight:   ptrInt64(-1),
+					Priority: ptrInt64(0),
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoDnsRecord25()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id":  "zone-1234567890",
+		"name":     "a.example.com",
+		"type":     "A",
+		"content":  "5.6.7.8",
+		"location": "Default",
+		"ttl":      300,
+		"weight":   -1,
+		"priority": 0,
+	})
+	d.SetId("zone-1234567890#rec-abcdefghij")
+
+	err := res.Update(d, meta)
+	assert.NoError(t, err)
+}
+
+// TestTeoDnsRecord25_Update_APIError tests Update handles API error
+func TestTeoDnsRecord25_Update_APIError(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "ModifyDnsRecordsWithContext", func(ctx interface{}, request *teov20220901.ModifyDnsRecordsRequest) (*teov20220901.ModifyDnsRecordsResponse, error) {
+		return nil, fmt.Errorf("[TencentCloudSDKError] Code=InvalidParameter, Message=Invalid record")
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoDnsRecord25()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id":  "zone-1234567890",
+		"name":     "a.example.com",
+		"type":     "A",
+		"content":  "5.6.7.8",
+		"location": "Default",
+		"ttl":      300,
+		"weight":   -1,
+		"priority": 0,
+	})
+	d.SetId("zone-1234567890#rec-abcdefghij")
+
+	err := res.Update(d, meta)
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "InvalidParameter")
+}
+
+// TestTeoDnsRecord25_Delete_Success tests Delete removes DNS record
+func TestTeoDnsRecord25_Delete_Success(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DeleteDnsRecordsWithContext", func(ctx interface{}, request *teov20220901.DeleteDnsRecordsRequest) (*teov20220901.DeleteDnsRecordsResponse, error) {
+		resp := teov20220901.NewDeleteDnsRecordsResponse()
+		resp.Response = &teov20220901.DeleteDnsRecordsResponseParams{
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoDnsRecord25()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-1234567890",
+		"name":    "a.example.com",
+		"type":    "A",
+		"content": "1.2.3.4",
+	})
+	d.SetId("zone-1234567890#rec-abcdefghij")
+
+	err := res.Delete(d, meta)
+	assert.NoError(t, err)
+}
+
+// TestTeoDnsRecord25_Delete_APIError tests Delete handles API error
+func TestTeoDnsRecord25_Delete_APIError(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DeleteDnsRecordsWithContext", func(ctx interface{}, request *teov20220901.DeleteDnsRecordsRequest) (*teov20220901.DeleteDnsRecordsResponse, error) {
+		return nil, fmt.Errorf("[TencentCloudSDKError] Code=ResourceNotFound, Message=Record not found")
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoDnsRecord25()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-1234567890",
+		"name":    "a.example.com",
+		"type":    "A",
+		"content": "1.2.3.4",
+	})
+	d.SetId("zone-1234567890#rec-abcdefghij")
+
+	err := res.Delete(d, meta)
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "ResourceNotFound")
+}
+
+// TestTeoDnsRecord25_Schema validates schema definition
+func TestTeoDnsRecord25_Schema(t *testing.T) {
+	res := teo.ResourceTencentCloudTeoDnsRecord25()
+
+	assert.NotNil(t, res)
+	assert.NotNil(t, res.Create)
+	assert.NotNil(t, res.Read)
+	assert.NotNil(t, res.Update)
+	assert.NotNil(t, res.Delete)
+	assert.NotNil(t, res.Importer)
+
+	// Check required fields
+	assert.Contains(t, res.Schema, "zone_id")
+	zoneId := res.Schema["zone_id"]
+	assert.Equal(t, schema.TypeString, zoneId.Type)
+	assert.True(t, zoneId.Required)
+	assert.True(t, zoneId.ForceNew)
+
+	assert.Contains(t, res.Schema, "name")
+	name := res.Schema["name"]
+	assert.Equal(t, schema.TypeString, name.Type)
+	assert.True(t, name.Required)
+
+	assert.Contains(t, res.Schema, "type")
+	typeField := res.Schema["type"]
+	assert.Equal(t, schema.TypeString, typeField.Type)
+	assert.True(t, typeField.Required)
+
+	assert.Contains(t, res.Schema, "content")
+	content := res.Schema["content"]
+	assert.Equal(t, schema.TypeString, content.Type)
+	assert.True(t, content.Required)
+
+	// Check optional fields
+	assert.Contains(t, res.Schema, "location")
+	location := res.Schema["location"]
+	assert.Equal(t, schema.TypeString, location.Type)
+	assert.True(t, location.Optional)
+	assert.True(t, location.Computed)
+
+	assert.Contains(t, res.Schema, "ttl")
+	ttl := res.Schema["ttl"]
+	assert.Equal(t, schema.TypeInt, ttl.Type)
+	assert.True(t, ttl.Optional)
+	assert.True(t, ttl.Computed)
+
+	assert.Contains(t, res.Schema, "weight")
+	weight := res.Schema["weight"]
+	assert.Equal(t, schema.TypeInt, weight.Type)
+	assert.True(t, weight.Optional)
+	assert.True(t, weight.Computed)
+
+	assert.Contains(t, res.Schema, "priority")
+	priority := res.Schema["priority"]
+	assert.Equal(t, schema.TypeInt, priority.Type)
+	assert.True(t, priority.Optional)
+	assert.True(t, priority.Computed)
+
+	// Check computed fields
+	assert.Contains(t, res.Schema, "record_id")
+	recordId := res.Schema["record_id"]
+	assert.Equal(t, schema.TypeString, recordId.Type)
+	assert.True(t, recordId.Computed)
+	assert.False(t, recordId.Optional)
+
+	// Verify that status, created_on, modified_on, dns_records are NOT present
+	assert.NotContains(t, res.Schema, "status")
+	assert.NotContains(t, res.Schema, "created_on")
+	assert.NotContains(t, res.Schema, "modified_on")
+	assert.NotContains(t, res.Schema, "dns_records")
+}
