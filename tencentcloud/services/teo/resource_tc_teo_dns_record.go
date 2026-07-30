@@ -172,6 +172,11 @@ func resourceTencentCloudTeoDnsRecordCreate(d *schema.ResourceData, meta interfa
 		return err
 	}
 
+	log.Printf("[CRUD]%s dns_record id=%s", logId, d.Id())
+	if response.Response == nil || response.Response.RecordId == nil {
+		return fmt.Errorf("create teo dns record failed, response is nil")
+	}
+
 	recordId = *response.Response.RecordId
 
 	d.SetId(strings.Join([]string{zoneId, recordId}, tccommon.FILED_SP))
@@ -201,6 +206,7 @@ func resourceTencentCloudTeoDnsRecordRead(d *schema.ResourceData, meta interface
 		return err
 	}
 	if respData == nil {
+		log.Printf("[CRUD]%s dns_record id=%s", logId, d.Id())
 		d.SetId("")
 		log.Printf("[WARN]%s resource `teo_dns_record` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		return nil

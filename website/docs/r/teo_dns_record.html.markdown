@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_dns_record"
 sidebar_current: "docs-tencentcloud-resource-teo_dns_record"
 description: |-
-  Provides a resource to create a teo teo_dns_record
+  Provides a resource to create a TEO DNS record
 ---
 
 # tencentcloud_teo_dns_record
 
-Provides a resource to create a teo teo_dns_record
+Provides a resource to create a TEO DNS record
 
 ## Example Usage
 
