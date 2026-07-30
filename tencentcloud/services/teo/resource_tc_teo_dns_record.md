@@ -1,4 +1,4 @@
-Provides a resource to create a teo teo_dns_record
+Provides a resource to create a TEO DNS record
 
 Example Usage
 
