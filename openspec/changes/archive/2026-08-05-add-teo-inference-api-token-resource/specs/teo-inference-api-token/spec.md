@@ -1,8 +1,5 @@
-# teo-inference-api-token Specification
+## ADDED Requirements
 
-## Purpose
-TBD - created by archiving change add-teo-inference-api-token-resource. Update Purpose after archive.
-## Requirements
 ### Requirement: TEO inference API token creation
 
 The system SHALL support creating a TEO inference API token via the `CreateInferenceAPIToken` cloud API, and return the `token_id` and `content` in the Terraform state.
@@ -53,4 +50,3 @@ The system SHALL treat all user-provided fields as `ForceNew` since the cloud AP
 
 - **WHEN** user modifies the `name` or `zone_id` of an existing `tencentcloud_teo_inference_api_token` resource
 - **THEN** Terraform destroys the existing resource and creates a new one with the updated values
-
