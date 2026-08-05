@@ -2097,6 +2097,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_teo_ddos_protection_config":                                               teo.ResourceTencentCloudTeoDdosProtectionConfig(),
 			"tencentcloud_teo_config_group_version":                                                 teo.ResourceTencentCloudTeoConfigGroupVersion(),
 			"tencentcloud_teo_deploy_config_group_version":                                          teo.ResourceTencentCloudTeoDeployConfigGroupVersion(),
+			"tencentcloud_teo_inference_api_token_v7":                                               teo.ResourceTencentCloudTeoInferenceApiTokenV7(),
 			"tencentcloud_tcm_mesh":                                                                 tcm.ResourceTencentCloudTcmMesh(),
 			"tencentcloud_tcm_cluster_attachment":                                                   tcm.ResourceTencentCloudTcmClusterAttachment(),
 			"tencentcloud_tcm_prometheus_attachment":                                                tcm.ResourceTencentCloudTcmPrometheusAttachment(),
