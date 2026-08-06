@@ -2580,3 +2580,56 @@ func (me *TeoService) TeoIdentifyZone(zoneName, domain string) (ascription *teov
 
 	return
 }
+
+func (me *TeoService) DescribeTeoInferenceServiceV1ById(ctx context.Context, zoneId, serviceId string) (ret *teo.InferenceService, errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = teo.NewDescribeInferenceServicesRequest()
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, "query object", request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	request.ZoneId = &zoneId
+
+	request.Filters = append(
+		request.Filters,
+		&teo.AdvancedFilter{
+			Name:   helper.String("service-id"),
+			Values: []*string{&serviceId},
+			Fuzzy:  helper.Bool(false),
+		},
+	)
+
+	request.Offset = helper.IntInt64(0)
+	request.Limit = helper.IntInt64(200)
+
+	var response *teo.DescribeInferenceServicesResponse
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		result, e := me.client.UseTeoV20220901Client().DescribeInferenceServicesWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Describe teo inference_service by id failed, Response is nil."))
+		}
+
+		response = result
+		return nil
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	if response == nil || response.Response == nil || len(response.Response.Services) == 0 {
+		return nil, nil
+	}
+
+	return response.Response.Services[0], nil
+}
