@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_zone"
 sidebar_current: "docs-tencentcloud-resource-teo_zone"
 description: |-
-  Provides a resource to create a teo zone
+  Provides a resource to create a TEO zone
 ---
 
 # tencentcloud_teo_zone
 
-Provides a resource to create a teo zone
+Provides a resource to create a TEO zone
 
 ## Example Usage
 
@@ -26,6 +26,11 @@ resource "tencentcloud_teo_zone" "zone" {
   tags = {
     "createdBy" = "terraform"
   }
+}
+
+# total_count can be referenced via the computed attribute
+output "zone_total_count" {
+  value = tencentcloud_teo_zone.zone.total_count
 }
 ```
 
@@ -108,6 +113,7 @@ In addition to all arguments above, the following attributes are exported:
     * `record_value` - Record the value.
     * `subdomain` - Host record.
 * `status` - Site status. Valid values: `active`: NS is switched; `pending`: NS is not switched; `moved`: NS is moved; `deactivated`: this site is blocked.
+* `total_count` - Total count of zones matching the query filter.
 
 
 ## Import

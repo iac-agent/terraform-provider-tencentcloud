@@ -71,6 +71,7 @@ func TestAccTencentCloudTeoZone_basic(t *testing.T) {
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_zone.basic", "ownership_verification.0.dns_verification.0.record_value"),
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_zone.basic", "ownership_verification.0.dns_verification.0.subdomain"),
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_zone.basic", "status"),
+					resource.TestCheckResourceAttrSet("tencentcloud_teo_zone.basic", "total_count"),
 				),
 			},
 			{
@@ -95,6 +96,7 @@ func TestAccTencentCloudTeoZone_basic(t *testing.T) {
 					resource.TestCheckResourceAttr("tencentcloud_teo_zone.basic", "ownership_verification.0.dns_verification.0.record_type", "TXT"),
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_zone.basic", "ownership_verification.0.dns_verification.0.record_value"),
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_zone.basic", "ownership_verification.0.dns_verification.0.subdomain"),
+					resource.TestCheckResourceAttrSet("tencentcloud_teo_zone.basic", "total_count"),
 				),
 			},
 			{
@@ -104,6 +106,7 @@ func TestAccTencentCloudTeoZone_basic(t *testing.T) {
 					resource.TestCheckResourceAttr("tencentcloud_teo_zone.basic", "work_mode_infos.#", "1"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_zone.basic", "work_mode_infos.0.config_group_type", "l7_acceleration"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_zone.basic", "work_mode_infos.0.work_mode", "version_control"),
+					resource.TestCheckResourceAttrSet("tencentcloud_teo_zone.basic", "total_count"),
 				),
 			},
 		},
