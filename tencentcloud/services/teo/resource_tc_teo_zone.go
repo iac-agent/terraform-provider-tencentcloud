@@ -152,6 +152,12 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 					},
 				},
 			},
+
+			"total_count": {
+				Type:        schema.TypeInt,
+				Computed:    true,
+				Description: "Total count of zones matching the query filter.",
+			},
 		},
 	}
 }
@@ -250,7 +256,7 @@ func resourceTencentCloudTeoZoneRead(d *schema.ResourceData, meta interface{}) e
 
 	zoneId := d.Id()
 
-	respData, err := service.DescribeTeoZoneById(ctx, zoneId)
+	respData, totalCount, err := service.DescribeTeoZoneById(ctx, zoneId)
 	if err != nil {
 		return err
 	}
@@ -259,6 +265,10 @@ func resourceTencentCloudTeoZoneRead(d *schema.ResourceData, meta interface{}) e
 		d.SetId("")
 		log.Printf("[WARN]%s resource `teo_zone` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		return nil
+	}
+
+	if totalCount != nil {
+		_ = d.Set("total_count", totalCount)
 	}
 	if respData.ZoneName != nil {
 		_ = d.Set("zone_name", respData.ZoneName)

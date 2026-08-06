@@ -1005,7 +1005,7 @@ func (me *TeoService) DescribeTeoApplicationProxyRuleById(ctx context.Context, r
 	return
 }
 
-func (me *TeoService) DescribeTeoZoneById(ctx context.Context, zoneId string) (ret *teo.Zone, errRet error) {
+func (me *TeoService) DescribeTeoZoneById(ctx context.Context, zoneId string) (ret *teo.Zone, totalCount *int64, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
 	request := teo.NewDescribeZonesRequest()
@@ -1045,6 +1045,11 @@ func (me *TeoService) DescribeTeoZoneById(ctx context.Context, zoneId string) (r
 			return
 		}
 		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		// Capture TotalCount from the first page response
+		if totalCount == nil && response != nil && response.Response != nil && response.Response.TotalCount != nil {
+			totalCount = response.Response.TotalCount
+		}
 
 		if response == nil || len(response.Response.Zones) < 1 {
 			break

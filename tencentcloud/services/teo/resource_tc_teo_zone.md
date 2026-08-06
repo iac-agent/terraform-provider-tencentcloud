@@ -1,4 +1,4 @@
-Provides a resource to create a teo zone
+Provides a resource to create a TEO zone
 
 Example Usage
 
@@ -15,6 +15,11 @@ resource "tencentcloud_teo_zone" "zone" {
   tags = {
     "createdBy" = "terraform"
   }
+}
+
+# total_count can be referenced via the computed attribute
+output "zone_total_count" {
+  value = tencentcloud_teo_zone.zone.total_count
 }
 ```
 
