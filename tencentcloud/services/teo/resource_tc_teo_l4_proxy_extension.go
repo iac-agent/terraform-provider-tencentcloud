@@ -53,6 +53,10 @@ func resourceTencentCloudTeoL4ProxyDeletePostFillRequest0(ctx context.Context, r
 		return err
 	}
 
+	if proxy == nil || proxy.Status == nil {
+		return nil
+	}
+
 	if *proxy.Status == "online" {
 		logId := tccommon.GetLogId(tccommon.ContextNil)
 
@@ -62,7 +66,7 @@ func resourceTencentCloudTeoL4ProxyDeletePostFillRequest0(ctx context.Context, r
 		request.ProxyId = &proxyId
 		request.Status = helper.String("offline")
 
-		err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseTeoClient().ModifyL4ProxyStatusWithContext(ctx, request)
 			if e != nil {
 				return tccommon.RetryError(e)
@@ -118,6 +122,10 @@ func teoL4proxyStateRefreshFunc(meta interface{}, zoneId, proxyId string, failSt
 
 		if err != nil {
 			return nil, "", err
+		}
+
+		if object == nil {
+			return nil, "", nil
 		}
 
 		return object, helper.PString(object.Status), nil
