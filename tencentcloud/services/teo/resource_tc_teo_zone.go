@@ -43,6 +43,18 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 				Description: "Alias site identifier. Limit the input to a combination of numbers, English, - and _, within 20 characters. For details, refer to the alias site identifier. If there is no such usage scenario, leave this field empty.",
 			},
 
+			"offset": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "Pagination offset for the DescribeZones API call during the Read operation. Default: 0.",
+			},
+
+			"limit": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "Pagination limit for the DescribeZones API call during the Read operation. Default: 20, maximum: 100.",
+			},
+
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
@@ -250,7 +262,16 @@ func resourceTencentCloudTeoZoneRead(d *schema.ResourceData, meta interface{}) e
 
 	zoneId := d.Id()
 
-	respData, err := service.DescribeTeoZoneById(ctx, zoneId)
+	var offset int64
+	var limit int64
+	if v, ok := d.GetOk("offset"); ok {
+		offset = int64(v.(int))
+	}
+	if v, ok := d.GetOk("limit"); ok {
+		limit = int64(v.(int))
+	}
+
+	respData, err := service.DescribeTeoZoneById(ctx, zoneId, offset, limit)
 	if err != nil {
 		return err
 	}

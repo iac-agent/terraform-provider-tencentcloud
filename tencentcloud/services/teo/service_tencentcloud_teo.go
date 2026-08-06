@@ -1005,7 +1005,7 @@ func (me *TeoService) DescribeTeoApplicationProxyRuleById(ctx context.Context, r
 	return
 }
 
-func (me *TeoService) DescribeTeoZoneById(ctx context.Context, zoneId string) (ret *teo.Zone, errRet error) {
+func (me *TeoService) DescribeTeoZoneById(ctx context.Context, zoneId string, offset int64, limit int64) (ret *teo.Zone, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
 	request := teo.NewDescribeZonesRequest()
@@ -1024,13 +1024,19 @@ func (me *TeoService) DescribeTeoZoneById(ctx context.Context, zoneId string) (r
 	ratelimit.Check(request.GetAction())
 
 	var (
-		offset int64 = 0
-		limit  int64 = 20
+		queryOffset int64 = 0
+		queryLimit  int64 = 20
 	)
+	if offset > 0 {
+		queryOffset = offset
+	}
+	if limit > 0 {
+		queryLimit = limit
+	}
 	var instances []*teo.Zone
 	for {
-		request.Offset = &offset
-		request.Limit = &limit
+		request.Offset = &queryOffset
+		request.Limit = &queryLimit
 		response := teo.NewDescribeZonesResponse()
 		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
 			result, e := me.client.UseTeoClient().DescribeZones(request)
@@ -1050,11 +1056,11 @@ func (me *TeoService) DescribeTeoZoneById(ctx context.Context, zoneId string) (r
 			break
 		}
 		instances = append(instances, response.Response.Zones...)
-		if len(response.Response.Zones) < int(limit) {
+		if len(response.Response.Zones) < int(queryLimit) {
 			break
 		}
 
-		offset += limit
+		queryOffset += queryLimit
 	}
 
 	if len(instances) < 1 {

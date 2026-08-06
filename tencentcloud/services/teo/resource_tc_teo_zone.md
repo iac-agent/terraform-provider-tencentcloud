@@ -36,6 +36,24 @@ resource "tencentcloud_teo_zone" "zone" {
 }
 ```
 
+With Pagination Parameters
+
+```hcl
+resource "tencentcloud_teo_zone" "zone" {
+  zone_name       = "tf-teo.com"
+  type            = "partial"
+  area            = "overseas"
+  alias_zone_name = "teo-test"
+  paused          = false
+  plan_id         = "edgeone-2kfv1h391n6w"
+  offset          = 0
+  limit           = 50
+  tags = {
+    "createdBy" = "terraform"
+  }
+}
+```
+
 Enable Version Control Mode
 
 ```hcl
