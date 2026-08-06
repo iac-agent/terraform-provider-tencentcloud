@@ -3,6 +3,7 @@ package teo
 
 import (
 	"context"
+	"fmt"
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
@@ -210,6 +211,11 @@ func resourceTencentCloudTeoZoneCreate(d *schema.ResourceData, meta interface{})
 		return err
 	}
 
+	if response.Response == nil || response.Response.ZoneId == nil {
+		log.Printf("[CRITAL]%s create teo zone failed, response is nil or zoneId is nil, logId: %s\n", logId, logId)
+		return fmt.Errorf("create teo zone failed, response is nil or zoneId is nil")
+	}
+
 	zoneId = *response.Response.ZoneId
 
 	if err := resourceTencentCloudTeoZoneCreatePostHandleResponse0(ctx, response); err != nil {
@@ -256,8 +262,8 @@ func resourceTencentCloudTeoZoneRead(d *schema.ResourceData, meta interface{}) e
 	}
 
 	if respData == nil {
-		d.SetId("")
 		log.Printf("[WARN]%s resource `teo_zone` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
+		d.SetId("")
 		return nil
 	}
 	if respData.ZoneName != nil {

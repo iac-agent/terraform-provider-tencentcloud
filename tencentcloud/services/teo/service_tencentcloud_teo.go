@@ -1046,7 +1046,7 @@ func (me *TeoService) DescribeTeoZoneById(ctx context.Context, zoneId string) (r
 		}
 		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
 
-		if response == nil || len(response.Response.Zones) < 1 {
+		if response == nil || response.Response == nil || len(response.Response.Zones) < 1 {
 			break
 		}
 		instances = append(instances, response.Response.Zones...)
