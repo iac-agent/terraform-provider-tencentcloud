@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_teo_dns_record: update field descriptions to align with API documentation
+```

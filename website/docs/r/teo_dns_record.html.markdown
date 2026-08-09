@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_dns_record"
 sidebar_current: "docs-tencentcloud-resource-teo_dns_record"
 description: |-
-  Provides a resource to create a teo teo_dns_record
+  Provides a resource to create a TEO DNS record.
 ---
 
 # tencentcloud_teo_dns_record
 
-Provides a resource to create a teo teo_dns_record
+Provides a resource to create a TEO DNS record.
 
 ## Example Usage
 
@@ -43,7 +43,7 @@ The following arguments are supported:
 	- CAA: specifies the ca that can issue certificates for this site;
 	- SRV: identifies a server using a service, commonly used in microsoft's directory management.
 Different record types, such as SRV and CAA records, have different requirements for host record names and record value formats. for detailed descriptions and format examples of each record type, please refer to: [introduction to dns record types](https://intl.cloud.tencent.com/document/product/1552/90453?from_cn_redirect=1#2f681022-91ab-4a9e-ac3d-0a6c454d954e).
-* `zone_id` - (Required, String, ForceNew) Zone id.
+* `zone_id` - (Required, String, ForceNew) Site ID.
 * `location` - (Optional, String) DNS record resolution route. if not specified, the default is DEFAULT, which means the default resolution route and is effective in all regions.
 
 - resolution route configuration is only applicable when type (dns record type) is A, AAAA, or CNAME.
@@ -52,6 +52,7 @@ Different record types, such as SRV and CAA records, have different requirements
 * `status` - (Optional, String) DNS record resolution status, the following values:
 	- enable: has taken effect;
 	- disable: has been disabled.
+Note: Status is output-only for ModifyDnsRecords API and is managed through the separate ModifyDnsRecordsStatus API.
 * `ttl` - (Optional, Int) Cache time. users can specify a value range of 60-86400. the smaller the value, the faster the modification records will take effect in all regions. default value: 300. unit: seconds.
 * `weight` - (Optional, Int) DNS record weight. users can specify a value range of -1 to 100. a value of 0 means no resolution. if not specified, the default is -1, which means no weight is set. weight configuration is only applicable when type (dns record type) is A, AAAA, or CNAME. note: for the same subdomain, different dns records with the same resolution route should either all have weights set or none have weights set.
 
@@ -60,13 +61,13 @@ Different record types, such as SRV and CAA records, have different requirements
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-* `created_on` - Creation time.
-* `modified_on` - Modify time.
+* `created_on` - Creation time. Note: CreatedOn is output-only for ModifyDnsRecords API.
+* `modified_on` - Modification time. Note: ModifiedOn is output-only for ModifyDnsRecords API.
 
 
 ## Import
 
-teo teo_dns_record can be imported using the id, e.g.
+TEO DNS record can be imported using the id, e.g.
 
 ```
 terraform import tencentcloud_teo_dns_record.teo_dns_record {zoneId}#{recordId}

@@ -1,4 +1,4 @@
-Provides a resource to create a teo teo_dns_record
+Provides a resource to create a TEO DNS record.
 
 Example Usage
 
@@ -18,7 +18,7 @@ resource "tencentcloud_teo_dns_record" "teo_dns_record" {
 
 Import
 
-teo teo_dns_record can be imported using the id, e.g.
+TEO DNS record can be imported using the id, e.g.
 
 ```
 terraform import tencentcloud_teo_dns_record.teo_dns_record {zoneId}#{recordId}
