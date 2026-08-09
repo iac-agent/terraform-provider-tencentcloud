@@ -1618,20 +1618,23 @@ func (me *TeoService) DescribeTeoL4ProxyRuleById(ctx context.Context, zoneId str
 	return
 }
 
-func (me *TeoService) DescribeTeoL7AccRuleById(ctx context.Context, zoneId string, ruleId string) (ret *teov20220901.DescribeL7AccRulesResponseParams, errRet error) {
+func (me *TeoService) DescribeTeoL7AccRuleById(ctx context.Context, zoneId string, ruleId string, filters []*teov20220901.Filter) (ret *teov20220901.DescribeL7AccRulesResponseParams, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
 	request := teov20220901.NewDescribeL7AccRulesRequest()
 	response := teov20220901.NewDescribeL7AccRulesResponse()
 	request.ZoneId = helper.String(zoneId)
 
+	requestFilters := make([]*teov20220901.Filter, 0)
 	if ruleId != "" {
-		request.Filters = []*teov20220901.Filter{
-			{
-				Name:   helper.String("rule-id"),
-				Values: helper.Strings([]string{ruleId}),
-			},
-		}
+		requestFilters = append(requestFilters, &teov20220901.Filter{
+			Name:   helper.String("rule-id"),
+			Values: helper.Strings([]string{ruleId}),
+		})
+	}
+	requestFilters = append(requestFilters, filters...)
+	if len(requestFilters) > 0 {
+		request.Filters = requestFilters
 	}
 	defer func() {
 		if errRet != nil {

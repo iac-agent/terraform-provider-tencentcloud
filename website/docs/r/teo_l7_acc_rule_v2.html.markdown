@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_l7_acc_rule_v2"
 sidebar_current: "docs-tencentcloud-resource-teo_l7_acc_rule_v2"
 description: |-
-  Provides a resource to create a TEO l7 acc rule v2
+  Provides a resource to create a TEO L7 acceleration rule v2
 ---
 
 # tencentcloud_teo_l7_acc_rule_v2
 
-Provides a resource to create a TEO l7 acc rule v2
+Provides a resource to create a TEO L7 acceleration rule v2
 
 ~> **NOTE:** Compared to tencentcloud_teo_l7_acc_rule, tencentcloud_teo_l7_acc_rule_v2 is simpler to use but is limited to managing a single rule and lacks the ability to maintain rule ordering. It is best suited for scenarios where you need to manage multiple rules independently and priority/sequencing is not a concern.
 
@@ -107,6 +107,33 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
 }
 ```
 
+### With filters:
+
+```hcl
+resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
+  zone_id   = "zone-3fkff38fyw8s"
+  rule_name = "Web Acceleration"
+  status    = "enable"
+  filters {
+    name   = "rule-id"
+    values = ["rule-abc123"]
+  }
+  branches {
+    condition = "$${http.request.host} in ['www.example.com']"
+    actions {
+      name = "Cache"
+      cache_parameters {
+        custom_time {
+          cache_time           = 2592000
+          ignore_cache_control = "off"
+          switch               = "on"
+        }
+      }
+    }
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -114,6 +141,7 @@ The following arguments are supported:
 * `zone_id` - (Required, String, ForceNew) Zone id.
 * `branches` - (Optional, List) Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.
 * `description` - (Optional, List: [`String`]) Rule annotation. multiple annotations can be added.
+* `filters` - (Optional, List) Filter conditions for querying L7 acceleration rules. The upper limit of Filters.Values is 20. The detailed filtering conditions are as follows: <li>rule-id: filter by rule ID.</li>.
 * `rule_name` - (Optional, String) Rule name. The name length limit is 255 characters.
 * `status` - (Optional, String) Rule status. The possible values are: `enable`: enabled; `disable`: disabled.
 
@@ -297,6 +325,11 @@ The `error_page_params` object of `error_page_parameters` supports the following
 
 * `redirect_url` - (Required, String) Redirect url. requires a full redirect path, such as https://www.test.com/error.html.
 * `status_code` - (Required, Int) Status code. supported values are 400, 403, 404, 405, 414, 416, 451, 500, 501, 502, 503, 504.
+
+The `filters` object supports the following:
+
+* `name` - (Required, String) Filter name.
+* `values` - (Required, Set) Filter value.
 
 The `follow_origin` object of `cache_parameters` supports the following:
 

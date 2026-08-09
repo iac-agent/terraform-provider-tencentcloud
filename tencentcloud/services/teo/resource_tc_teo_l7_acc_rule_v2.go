@@ -55,6 +55,26 @@ func ResourceTencentCloudTeoL7AccRuleV2() *schema.Resource {
 					Schema: TencentTeoL7RuleBranchBasicInfo(1),
 				},
 			},
+			"filters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Description: "Filter conditions for querying L7 acceleration rules. The upper limit of Filters.Values is 20. The detailed filtering conditions are as follows: <li>rule-id: filter by rule ID.</li>.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"name": {
+							Type:        schema.TypeString,
+							Required:    true,
+							Description: "Filter name.",
+						},
+						"values": {
+							Type:        schema.TypeSet,
+							Elem:        &schema.Schema{Type: schema.TypeString},
+							Required:    true,
+							Description: "Filter value.",
+						},
+					},
+				},
+			},
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
@@ -143,7 +163,24 @@ func ResourceTencentCloudTeoL7AccRuleV2Read(d *schema.ResourceData, meta interfa
 	_ = d.Set("zone_id", zoneId)
 	_ = d.Set("rule_id", ruleId)
 
-	respData, err := service.DescribeTeoL7AccRuleById(ctx, zoneId, ruleId)
+	var filters []*teov20220901.Filter
+	if v, ok := d.GetOk("filters"); ok {
+		filtersSet := v.([]interface{})
+		for _, item := range filtersSet {
+			filterMap := item.(map[string]interface{})
+			filter := &teov20220901.Filter{}
+			if name, ok := filterMap["name"].(string); ok && name != "" {
+				filter.Name = helper.String(name)
+			}
+			if v, ok := filterMap["values"]; ok {
+				valuesSet := v.(*schema.Set).List()
+				filter.Values = helper.InterfacesStringsPoint(valuesSet)
+			}
+			filters = append(filters, filter)
+		}
+	}
+
+	respData, err := service.DescribeTeoL7AccRuleById(ctx, zoneId, ruleId, filters)
 	if err != nil {
 		return err
 	}

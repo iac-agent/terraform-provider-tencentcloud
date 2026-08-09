@@ -1,10 +1,18 @@
 package teo_test
 
 import (
+	"fmt"
 	"testing"
 
+	"github.com/agiledragon/gomonkey/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/stretchr/testify/assert"
+	teov20220901 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901"
 	tcacctest "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/acctest"
+	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/connectivity"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/teo"
 )
 
 func TestAccTencentCloudTeoL7AccRuleV2Resource_basic(t *testing.T) {
@@ -185,3 +193,202 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "teo_l7_acc_rule_v2" {
   }
 }
 `
+
+// go test ./tencentcloud/services/teo/ -run "TestL7AccRuleV2" -v -count=1 -gcflags="all=-l"
+
+// mockMetaL7AccRuleV2 implements tccommon.ProviderMeta
+type mockMetaL7AccRuleV2 struct {
+	client *connectivity.TencentCloudClient
+}
+
+func (m *mockMetaL7AccRuleV2) GetAPIV3Conn() *connectivity.TencentCloudClient {
+	return m.client
+}
+
+var _ tccommon.ProviderMeta = &mockMetaL7AccRuleV2{}
+
+func newMockMetaL7AccRuleV2() *mockMetaL7AccRuleV2 {
+	return &mockMetaL7AccRuleV2{client: &connectivity.TencentCloudClient{}}
+}
+
+func ptrStringL7(s string) *string {
+	return &s
+}
+
+func ptrInt64L7(i int64) *int64 {
+	return &i
+}
+
+// TestL7AccRuleV2_Read_WithFilters tests Read with filters specified in schema
+func TestL7AccRuleV2_Read_WithFilters(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaL7AccRuleV2().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeL7AccRules", func(request *teov20220901.DescribeL7AccRulesRequest) (*teov20220901.DescribeL7AccRulesResponse, error) {
+		// Verify that both rule-id filter and user-specified filter are present
+		assert.NotNil(t, request.Filters)
+		assert.Equal(t, 2, len(request.Filters))
+		assert.Equal(t, "rule-id", *request.Filters[0].Name)
+		assert.Equal(t, "rule-abc123", *request.Filters[0].Values[0])
+		assert.Equal(t, "rule-id", *request.Filters[1].Name)
+		assert.Equal(t, "rule-extra456", *request.Filters[1].Values[0])
+
+		resp := teov20220901.NewDescribeL7AccRulesResponse()
+		resp.Response = &teov20220901.DescribeL7AccRulesResponseParams{
+			TotalCount: ptrInt64L7(1),
+			Rules: []*teov20220901.RuleEngineItem{
+				{
+					RuleId:       ptrStringL7("rule-abc123"),
+					RuleName:     ptrStringL7("test-rule"),
+					Status:       ptrStringL7("enable"),
+					RulePriority: ptrInt64L7(1),
+				},
+			},
+			RequestId: ptrStringL7("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaL7AccRuleV2()
+	res := teo.ResourceTencentCloudTeoL7AccRuleV2()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-1234567890",
+		"filters": []interface{}{
+			map[string]interface{}{
+				"name":   "rule-id",
+				"values": []interface{}{"rule-extra456"},
+			},
+		},
+	})
+	d.SetId("zone-1234567890" + tccommon.FILED_SP + "rule-abc123")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "enable", d.Get("status"))
+	assert.Equal(t, "test-rule", d.Get("rule_name"))
+}
+
+// TestL7AccRuleV2_Read_WithoutFilters tests backward compatibility when filters not specified
+func TestL7AccRuleV2_Read_WithoutFilters(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaL7AccRuleV2().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeL7AccRules", func(request *teov20220901.DescribeL7AccRulesRequest) (*teov20220901.DescribeL7AccRulesResponse, error) {
+		// Verify only rule-id filter is present (backward compatibility)
+		assert.NotNil(t, request.Filters)
+		assert.Equal(t, 1, len(request.Filters))
+		assert.Equal(t, "rule-id", *request.Filters[0].Name)
+		assert.Equal(t, "rule-abc123", *request.Filters[0].Values[0])
+
+		resp := teov20220901.NewDescribeL7AccRulesResponse()
+		resp.Response = &teov20220901.DescribeL7AccRulesResponseParams{
+			TotalCount: ptrInt64L7(1),
+			Rules: []*teov20220901.RuleEngineItem{
+				{
+					RuleId:       ptrStringL7("rule-abc123"),
+					RuleName:     ptrStringL7("test-rule"),
+					Status:       ptrStringL7("enable"),
+					RulePriority: ptrInt64L7(1),
+				},
+			},
+			RequestId: ptrStringL7("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaL7AccRuleV2()
+	res := teo.ResourceTencentCloudTeoL7AccRuleV2()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-1234567890",
+	})
+	d.SetId("zone-1234567890" + tccommon.FILED_SP + "rule-abc123")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "enable", d.Get("status"))
+	assert.Equal(t, "test-rule", d.Get("rule_name"))
+}
+
+// TestL7AccRuleV2_Read_NotFound tests Read when rule is not found (nil response)
+func TestL7AccRuleV2_Read_NotFound(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaL7AccRuleV2().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeL7AccRules", func(request *teov20220901.DescribeL7AccRulesRequest) (*teov20220901.DescribeL7AccRulesResponse, error) {
+		resp := teov20220901.NewDescribeL7AccRulesResponse()
+		// Return nil Response to simulate not found
+		resp.Response = nil
+		return resp, nil
+	})
+
+	meta := newMockMetaL7AccRuleV2()
+	res := teo.ResourceTencentCloudTeoL7AccRuleV2()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-1234567890",
+	})
+	d.SetId("zone-1234567890" + tccommon.FILED_SP + "rule-nonexistent")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "", d.Id())
+}
+
+// TestL7AccRuleV2_Read_APIError tests Read handles API error
+func TestL7AccRuleV2_Read_APIError(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaL7AccRuleV2().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeL7AccRules", func(request *teov20220901.DescribeL7AccRulesRequest) (*teov20220901.DescribeL7AccRulesResponse, error) {
+		return nil, fmt.Errorf("[TencentCloudSDKError] Code=ResourceNotFound, Message=Rule not found")
+	})
+
+	meta := newMockMetaL7AccRuleV2()
+	res := teo.ResourceTencentCloudTeoL7AccRuleV2()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-1234567890",
+	})
+	d.SetId("zone-1234567890" + tccommon.FILED_SP + "rule-abc123")
+
+	err := res.Read(d, meta)
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "ResourceNotFound")
+}
+
+// TestL7AccRuleV2_Schema_Filters tests the filters schema definition
+func TestL7AccRuleV2_Schema_Filters(t *testing.T) {
+	res := teo.ResourceTencentCloudTeoL7AccRuleV2()
+
+	assert.NotNil(t, res)
+	assert.Contains(t, res.Schema, "filters")
+
+	filtersSchema := res.Schema["filters"]
+	assert.Equal(t, schema.TypeList, filtersSchema.Type)
+	assert.True(t, filtersSchema.Optional)
+	assert.False(t, filtersSchema.Required)
+	assert.False(t, filtersSchema.Computed)
+
+	filtersElem, ok := filtersSchema.Elem.(*schema.Resource)
+	assert.True(t, ok, "filters Elem should be *schema.Resource")
+	assert.Contains(t, filtersElem.Schema, "name")
+	assert.Contains(t, filtersElem.Schema, "values")
+
+	nameSchema := filtersElem.Schema["name"]
+	assert.Equal(t, schema.TypeString, nameSchema.Type)
+	assert.True(t, nameSchema.Required)
+
+	valuesSchema := filtersElem.Schema["values"]
+	assert.Equal(t, schema.TypeSet, valuesSchema.Type)
+	assert.True(t, valuesSchema.Required)
+}
