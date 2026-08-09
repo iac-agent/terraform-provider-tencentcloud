@@ -11,6 +11,7 @@ Basic usage
 resource "tencentcloud_teo_web_security_template" "web_security_template" {
   template_name = "tf-test"
   zone_id       = "zone-3fkff38fyw8s"
+  # template_id will be computed after creation
   security_policy {
     bot_management {
       enabled = "on"

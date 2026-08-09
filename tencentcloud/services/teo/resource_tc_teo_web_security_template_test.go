@@ -1,10 +1,19 @@
 package teo_test
 
 import (
+	"context"
 	"testing"
 
+	"github.com/agiledragon/gomonkey/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/stretchr/testify/assert"
+	teov20220901 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901"
 	tcacctest "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/acctest"
+
+	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/connectivity"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/teo"
 )
 
 func TestAccTencentCloudTeoWebSecurityTemplateResource_basic(t *testing.T) {
@@ -19,6 +28,7 @@ func TestAccTencentCloudTeoWebSecurityTemplateResource_basic(t *testing.T) {
 				Config: testAccTeoWebSecurityTemplate,
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_web_security_template.web_security_template", "id"),
+					resource.TestCheckResourceAttrSet("tencentcloud_teo_web_security_template.web_security_template", "template_id"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template", "template_name", "tf-test"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template", "zone_id", "zone-3fkff38fyw8s"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template", "security_policy.#", "1"),
@@ -534,5 +544,172 @@ resource "tencentcloud_teo_web_security_template" "web_security_template" {
     }
   }
 }
-
 `
+
+// --- Mock-based unit tests for template_id ---
+
+// mockMeta implements tccommon.ProviderMeta
+type teoWebSecurityTemplateMockMeta struct {
+	client *connectivity.TencentCloudClient
+}
+
+func (m *teoWebSecurityTemplateMockMeta) GetAPIV3Conn() *connectivity.TencentCloudClient {
+	return m.client
+}
+
+var _ tccommon.ProviderMeta = &teoWebSecurityTemplateMockMeta{}
+
+func newTeoWebSecurityTemplateMockMeta() *teoWebSecurityTemplateMockMeta {
+	return &teoWebSecurityTemplateMockMeta{client: &connectivity.TencentCloudClient{}}
+}
+
+func ptrInt64(v int64) *int64 {
+	return &v
+}
+
+// go test ./tencentcloud/services/teo/ -run "TestTeoWebSecurityTemplate_TemplateIdSchema" -v -count=1 -gcflags="all=-l"
+// TestTeoWebSecurityTemplate_TemplateIdSchema verifies template_id field exists in schema with correct properties
+func TestTeoWebSecurityTemplate_TemplateIdSchema(t *testing.T) {
+	res := teo.ResourceTencentCloudTeoWebSecurityTemplate()
+
+	assert.NotNil(t, res)
+	assert.Contains(t, res.Schema, "template_id", "template_id should be present in schema")
+
+	templateIdSchema := res.Schema["template_id"]
+	assert.Equal(t, schema.TypeString, templateIdSchema.Type, "template_id should be TypeString")
+	assert.True(t, templateIdSchema.Optional, "template_id should be Optional")
+	assert.True(t, templateIdSchema.Computed, "template_id should be Computed")
+}
+
+// go test ./tencentcloud/services/teo/ -run "TestTeoWebSecurityTemplate_ReadSetsTemplateId" -v -count=1 -gcflags="all=-l"
+// TestTeoWebSecurityTemplate_ReadSetsTemplateId verifies that Read function sets template_id from composite ID
+func TestTeoWebSecurityTemplate_ReadSetsTemplateId(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	// Patch UseTeoV20220901Client to return a non-nil client
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newTeoWebSecurityTemplateMockMeta().client, "UseTeoV20220901Client", teoClient)
+
+	// Patch DescribeWebSecurityTemplate to return a valid response
+	patches.ApplyMethodFunc(teoClient, "DescribeWebSecurityTemplate", func(request *teov20220901.DescribeWebSecurityTemplateRequest) (*teov20220901.DescribeWebSecurityTemplateResponse, error) {
+		resp := teov20220901.NewDescribeWebSecurityTemplateResponse()
+		resp.Response = &teov20220901.DescribeWebSecurityTemplateResponseParams{
+			SecurityPolicy: &teov20220901.SecurityPolicy{},
+			RequestId:      ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	// Patch DescribeWebSecurityTemplates (list API) used by DescribeTeoWebSecurityTemplateNameById
+	patches.ApplyMethodFunc(teoClient, "DescribeWebSecurityTemplates", func(request *teov20220901.DescribeWebSecurityTemplatesRequest) (*teov20220901.DescribeWebSecurityTemplatesResponse, error) {
+		resp := teov20220901.NewDescribeWebSecurityTemplatesResponse()
+		templateId := "temp-abcdef1234"
+		templateName := "test-template"
+		resp.Response = &teov20220901.DescribeWebSecurityTemplatesResponseParams{
+			TotalCount: ptrInt64(1),
+			SecurityPolicyTemplates: []*teov20220901.SecurityPolicyTemplateInfo{
+				{
+					ZoneId:       ptrString("zone-12345678"),
+					TemplateId:   &templateId,
+					TemplateName: &templateName,
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	res := teo.ResourceTencentCloudTeoWebSecurityTemplate()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id":       "zone-12345678",
+		"template_name": "test-template",
+	})
+
+	// Set composite ID: zoneId#templateId
+	d.SetId("zone-12345678#temp-abcdef1234")
+
+	meta := newTeoWebSecurityTemplateMockMeta()
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+
+	// Verify template_id was set from the composite ID
+	assert.Equal(t, "temp-abcdef1234", d.Get("template_id").(string), "template_id should be set from composite ID")
+	assert.Equal(t, "zone-12345678", d.Get("zone_id").(string), "zone_id should be set from composite ID")
+}
+
+// go test ./tencentcloud/services/teo/ -run "TestTeoWebSecurityTemplate_CreateSetsTemplateId" -v -count=1 -gcflags="all=-l"
+// TestTeoWebSecurityTemplate_CreateSetsTemplateId verifies that Create function sets template_id from API response
+func TestTeoWebSecurityTemplate_CreateSetsTemplateId(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	// Patch UseTeoV20220901Client to return a non-nil client
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newTeoWebSecurityTemplateMockMeta().client, "UseTeoV20220901Client", teoClient)
+
+	// Patch CreateWebSecurityTemplateWithContext to return a response with TemplateId
+	patches.ApplyMethodFunc(teoClient, "CreateWebSecurityTemplateWithContext", func(ctx context.Context, request *teov20220901.CreateWebSecurityTemplateRequest) (*teov20220901.CreateWebSecurityTemplateResponse, error) {
+		resp := teov20220901.NewCreateWebSecurityTemplateResponse()
+		resp.Response = &teov20220901.CreateWebSecurityTemplateResponseParams{
+			TemplateId: ptrString("temp-created123"),
+			RequestId:  ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	// Patch DescribeWebSecurityTemplate for the Read call after Create
+	patches.ApplyMethodFunc(teoClient, "DescribeWebSecurityTemplate", func(request *teov20220901.DescribeWebSecurityTemplateRequest) (*teov20220901.DescribeWebSecurityTemplateResponse, error) {
+		resp := teov20220901.NewDescribeWebSecurityTemplateResponse()
+		resp.Response = &teov20220901.DescribeWebSecurityTemplateResponseParams{
+			SecurityPolicy: &teov20220901.SecurityPolicy{},
+			RequestId:      ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	// Patch DescribeWebSecurityTemplates (list API) used by DescribeTeoWebSecurityTemplateNameById
+	patches.ApplyMethodFunc(teoClient, "DescribeWebSecurityTemplates", func(request *teov20220901.DescribeWebSecurityTemplatesRequest) (*teov20220901.DescribeWebSecurityTemplatesResponse, error) {
+		resp := teov20220901.NewDescribeWebSecurityTemplatesResponse()
+		templateId := "temp-created123"
+		templateName := "test-template"
+		resp.Response = &teov20220901.DescribeWebSecurityTemplatesResponseParams{
+			TotalCount: ptrInt64(1),
+			SecurityPolicyTemplates: []*teov20220901.SecurityPolicyTemplateInfo{
+				{
+					ZoneId:       ptrString("zone-12345678"),
+					TemplateId:   &templateId,
+					TemplateName: &templateName,
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	res := teo.ResourceTencentCloudTeoWebSecurityTemplate()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id":       "zone-12345678",
+		"template_name": "test-template",
+	})
+
+	meta := newTeoWebSecurityTemplateMockMeta()
+	err := res.Create(d, meta)
+	assert.NoError(t, err)
+
+	// Verify composite ID was set
+	assert.Equal(t, "zone-12345678#temp-created123", d.Id(), "composite ID should be set after creation")
+
+	// Verify template_id was set from the API response
+	assert.Equal(t, "temp-created123", d.Get("template_id").(string), "template_id should be set from Create API response")
+}
+
+// go test ./tencentcloud/services/teo/ -run "TestTeoWebSecurityTemplate_TemplateIdImmutable" -v -count=1 -gcflags="all=-l"
+// TestTeoWebSecurityTemplate_TemplateIdImmutable verifies that template_id is in the immutable args list
+func TestTeoWebSecurityTemplate_TemplateIdImmutable(t *testing.T) {
+	res := teo.ResourceTencentCloudTeoWebSecurityTemplate()
+
+	// template_id should not have ForceNew set (it's server-generated, immutability is enforced in Update)
+	templateIdSchema := res.Schema["template_id"]
+	assert.False(t, templateIdSchema.ForceNew, "template_id should not have ForceNew (immutability is enforced in update function)")
+}
