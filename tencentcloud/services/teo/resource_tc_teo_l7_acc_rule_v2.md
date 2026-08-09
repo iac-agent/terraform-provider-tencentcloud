@@ -96,6 +96,18 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
 }
 ```
 
+Example Usage with filters
+
+```hcl
+resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
+  zone_id = "zone-3fkff38fyw8s"
+  filters {
+    name   = "rule-id"
+    values = ["rule-abc123"]
+  }
+}
+```
+
 Import
 
 TEO l7 acc rule v2 can be imported using the {zone_id}#{rule_id}, e.g.
