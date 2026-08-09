@@ -96,6 +96,32 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
 }
 ```
 
+Use the `rule` parameter
+
+```hcl
+resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
+  zone_id = "zone-3fkff38fyw8s"
+  rule {
+    status      = "enable"
+    rule_name   = "Web Acceleration"
+    description = ["description"]
+    branches {
+      condition = "$${http.request.host} in ['www.example.com']"
+      actions {
+        name = "Cache"
+        cache_parameters {
+          custom_time {
+            cache_time           = 2592000
+            ignore_cache_control = "off"
+            switch               = "on"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 Import
 
 TEO l7 acc rule v2 can be imported using the {zone_id}#{rule_id}, e.g.

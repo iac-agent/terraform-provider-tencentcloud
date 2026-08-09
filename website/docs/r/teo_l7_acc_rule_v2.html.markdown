@@ -107,6 +107,32 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
 }
 ```
 
+### parameter
+
+```hcl
+resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
+  zone_id = "zone-3fkff38fyw8s"
+  rule {
+    status      = "enable"
+    rule_name   = "Web Acceleration"
+    description = ["description"]
+    branches {
+      condition = "$${http.request.host} in ['www.example.com']"
+      actions {
+        name = "Cache"
+        cache_parameters {
+          custom_time {
+            cache_time           = 2592000
+            ignore_cache_control = "off"
+            switch               = "on"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -115,6 +141,7 @@ The following arguments are supported:
 * `branches` - (Optional, List) Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.
 * `description` - (Optional, List: [`String`]) Rule annotation. multiple annotations can be added.
 * `rule_name` - (Optional, String) Rule name. The name length limit is 255 characters.
+* `rule` - (Optional, List) Rule configuration. This parameter maps to the Rule field of the ModifyL7AccRule API.
 * `status` - (Optional, String) Rule status. The possible values are: `enable`: enabled; `disable`: disabled.
 
 The `access_url_redirect_parameters` object of `actions` supports the following:
@@ -214,6 +241,12 @@ The `authentication_parameters` object of `actions` supports the following:
 * `time_format` - (Optional, String) Authentication time format. values: dec: decimal; hex: hexadecimal.
 * `time_param` - (Optional, String) Authentication timestamp. it cannot be the same as the value of the authparam field.note: this field is required when authtype is typed.
 * `timeout` - (Optional, Int) Validity period of the authentication url, in seconds, value range: 1-630720000. used to determine if the client access request has expired: If the current time exceeds "timestamp + validity period", it is an expired request, and a 403 is returned directly. If the current time does not exceed "timestamp + validity period", the request is not expired, and the md5 string is further validated. note: when authtype is one of typea, typeb, typec, or typed, this field is required.
+
+The `branches` object of `rule` supports the following:
+
+* `actions` - (Optional, List) Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.
+* `condition` - (Optional, String) Match condition. https://www.tencentcloud.com/document/product/1145/54759.
+* `sub_rules` - (Optional, List) List of sub-rules. multiple rules exist in this list and are executed sequentially from top to bottom. note: subrules and actions cannot both be empty. currently, only one layer of subrules is supported.
 
 The `branches` object of `sub_rules` supports the following:
 
@@ -437,6 +470,13 @@ The `response_speed_limit_parameters` object of `actions` supports the following
 * `max_speed` - (Required, String) Rate-Limiting value, in kb/s. enter a numerical value to specify the rate limit.
 * `mode` - (Required, String) Download rate limit mode. valid values: LimitUponDownload: rate limit throughout the download process; LimitAfterSpecificBytesDownloaded: rate limit after downloading specific bytes at full speed; LimitAfterSpecificSecondsDownloaded: start speed limit after downloading at full speed for a specific duration.
 * `start_at` - (Optional, String) Rate-Limiting start value, which can be the download size or specified duration, in kb or s. this parameter is required when mode is set to limitafterspecificbytesdownloaded or limitafterspecificsecondsdownloaded. enter a numerical value to specify the download size or duration.
+
+The `rule` object supports the following:
+
+* `branches` - (Optional, List) Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.
+* `description` - (Optional, List) Rule annotation. multiple annotations can be added.
+* `rule_name` - (Optional, String) Rule name. The name length limit is 255 characters.
+* `status` - (Optional, String) Rule status. The possible values are: `enable`: enabled; `disable`: disabled.
 
 The `set_content_identifier_parameters` object of `actions` supports the following:
 
