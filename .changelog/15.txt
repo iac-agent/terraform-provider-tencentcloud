@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_teo_function: add query parameters `function_ids`, `filters` and computed attribute `functions`
+```

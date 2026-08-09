@@ -77,6 +77,87 @@ func ResourceTencentCloudTeoFunction() *schema.Resource {
 				Computed:    true,
 				Description: "Modification time. The time is in Coordinated Universal Time (UTC) and follows the date and time format specified by the ISO 8601 standard.",
 			},
+
+			"function_ids": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Description: "List of function IDs to filter by.",
+				Elem: &schema.Schema{
+					Type: schema.TypeString,
+				},
+			},
+
+			"filters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Description: "Filter conditions for querying functions. Support filtering by `name` (function name fuzzy match) and `remark` (function description fuzzy match).",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"name": {
+							Type:        schema.TypeString,
+							Required:    true,
+							Description: "Filter name. Valid values: `name`, `remark`.",
+						},
+						"values": {
+							Type:        schema.TypeSet,
+							Optional:    true,
+							Elem:        &schema.Schema{Type: schema.TypeString},
+							Set:         schema.HashString,
+							Description: "Filter values.",
+						},
+					},
+				},
+			},
+
+			"functions": {
+				Type:        schema.TypeList,
+				Computed:    true,
+				Description: "A list of functions matching the query conditions. Each element contains the following attributes:",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"function_id": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "ID of the function.",
+						},
+						"zone_id": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "ID of the site.",
+						},
+						"name": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Function name.",
+						},
+						"remark": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Function description.",
+						},
+						"content": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Function content.",
+						},
+						"domain": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Default domain name for the function.",
+						},
+						"create_time": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Creation time.",
+						},
+						"update_time": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Modification time.",
+						},
+					},
+				},
+			},
 		},
 	}
 }
@@ -204,6 +285,29 @@ func resourceTencentCloudTeoFunctionRead(d *schema.ResourceData, meta interface{
 
 	if respData.UpdateTime != nil {
 		_ = d.Set("update_time", respData.UpdateTime)
+	}
+
+	// Handle function_ids, filters and functions parameters
+	var functionIds []*string
+	if v, ok := d.GetOk("function_ids"); ok {
+		for _, item := range v.([]interface{}) {
+			functionIds = append(functionIds, helper.String(item.(string)))
+		}
+	}
+
+	var filters []*teov20220901.Filter
+	if v, ok := d.GetOk("filters"); ok {
+		filters = flattenTeoFunctionFilters(v.([]interface{}))
+	}
+
+	if len(functionIds) > 0 || len(filters) > 0 {
+		functionsResp, err := service.DescribeTeoFunctionsByParams(ctx, zoneId, functionIds, filters)
+		if err != nil {
+			return err
+		}
+		_ = d.Set("functions", flattenTeoFunctions(functionsResp))
+	} else {
+		_ = d.Set("functions", []map[string]interface{}{})
 	}
 
 	return nil
