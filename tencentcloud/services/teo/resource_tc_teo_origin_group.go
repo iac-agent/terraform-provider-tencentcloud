@@ -112,6 +112,33 @@ func ResourceTencentCloudTeoOriginGroup() *schema.Resource {
 				Description: "Back-to-origin Host Header, it only takes effect when type = HTTP is passed in. The rule engine modifies the Host Header configuration priority to be higher than the Host Header of the origin site group.",
 			},
 
+			"filters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Computed:    true,
+				Description: "Filter conditions for querying origin groups. The filter conditions are: `origin-group-id` - filter by origin group ID (fuzzy query not supported); `origin-group-name` - filter by origin group name (fuzzy query supported).",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"name": {
+							Type:        schema.TypeString,
+							Required:    true,
+							Description: "The field name to filter on. Valid values: `origin-group-id`, `origin-group-name`.",
+						},
+						"values": {
+							Type:        schema.TypeList,
+							Required:    true,
+							Elem:        &schema.Schema{Type: schema.TypeString},
+							Description: "The filter values.",
+						},
+						"fuzzy": {
+							Type:        schema.TypeBool,
+							Optional:    true,
+							Description: "Whether to enable fuzzy matching.",
+						},
+					},
+				},
+			},
+
 			"references": {
 				Type:        schema.TypeList,
 				Computed:    true,
@@ -260,7 +287,28 @@ func resourceTencentCloudTeoOriginGroupRead(d *schema.ResourceData, meta interfa
 
 	_ = d.Set("zone_id", zoneId)
 
-	respData, err := service.DescribeTeoOriginGroupById(ctx, originGroupId)
+	// Read filters from schema and convert to API AdvancedFilter
+	var apiFilters []*teo.AdvancedFilter
+	if v, ok := d.GetOk("filters"); ok {
+		for _, item := range v.([]interface{}) {
+			filterMap := item.(map[string]interface{})
+			advancedFilter := &teo.AdvancedFilter{}
+			if name, ok := filterMap["name"]; ok {
+				advancedFilter.Name = helper.String(name.(string))
+			}
+			if values, ok := filterMap["values"]; ok {
+				for _, val := range values.([]interface{}) {
+					advancedFilter.Values = append(advancedFilter.Values, helper.String(val.(string)))
+				}
+			}
+			if fuzzy, ok := filterMap["fuzzy"]; ok {
+				advancedFilter.Fuzzy = helper.Bool(fuzzy.(bool))
+			}
+			apiFilters = append(apiFilters, advancedFilter)
+		}
+	}
+
+	respData, err := service.DescribeTeoOriginGroupById(ctx, zoneId, originGroupId, apiFilters)
 	if err != nil {
 		return err
 	}
@@ -367,7 +415,6 @@ func resourceTencentCloudTeoOriginGroupRead(d *schema.ResourceData, meta interfa
 		_ = d.Set("host_header", respData.HostHeader)
 	}
 
-	_ = zoneId
 	return nil
 }
 

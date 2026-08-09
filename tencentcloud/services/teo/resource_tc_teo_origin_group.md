@@ -1,4 +1,4 @@
-Provides a resource to create a teo origin_group
+Provides a resource to create a TEO origin group
 
 ~> **NOTE:** Please note that `tencentcloud_teo_origin_group` had to undergo incompatible changes in version v1.81.96.
 
@@ -22,6 +22,29 @@ resource "tencentcloud_teo_origin_group" "basic" {
       name = "SecretAccessKey"
       value = "test"
     }
+  }
+}
+```
+
+Origin group with filters
+
+```hcl
+resource "tencentcloud_teo_origin_group" "basic" {
+  name    = "keep-group-1"
+  type    = "GENERAL"
+  zone_id = "zone-197z8rf93cfw"
+
+  records {
+    record  = "tf-teo.xyz"
+    type    = "IP_DOMAIN"
+    weight  = 100
+    private = false
+  }
+
+  filters {
+    name   = "origin-group-name"
+    values = ["keep-group-1"]
+    fuzzy  = true
   }
 }
 ```

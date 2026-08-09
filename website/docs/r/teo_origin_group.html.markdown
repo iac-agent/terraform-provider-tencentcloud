@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_origin_group"
 sidebar_current: "docs-tencentcloud-resource-teo_origin_group"
 description: |-
-  Provides a resource to create a teo origin_group
+  Provides a resource to create a TEO origin group
 ---
 
 # tencentcloud_teo_origin_group
 
-Provides a resource to create a teo origin_group
+Provides a resource to create a TEO origin group
 
 ~> **NOTE:** Please note that `tencentcloud_teo_origin_group` had to undergo incompatible changes in version v1.81.96.
 
@@ -37,6 +37,29 @@ resource "tencentcloud_teo_origin_group" "basic" {
 }
 ```
 
+### Origin group with filters
+
+```hcl
+resource "tencentcloud_teo_origin_group" "basic" {
+  name    = "keep-group-1"
+  type    = "GENERAL"
+  zone_id = "zone-197z8rf93cfw"
+
+  records {
+    record  = "tf-teo.xyz"
+    type    = "IP_DOMAIN"
+    weight  = 100
+    private = false
+  }
+
+  filters {
+    name   = "origin-group-name"
+    values = ["keep-group-1"]
+    fuzzy  = true
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -46,8 +69,15 @@ The following arguments are supported:
 - `GENERAL`: Universal origin site group, only supports adding IP/domain name origin sites, which can be referenced by domain name service, rule engine, four-layer proxy, general load balancing, and HTTP-specific load balancing.
 - `HTTP`: The HTTP-specific origin site group, supports adding IP/domain name and object storage origin site as the origin site, it cannot be referenced by the four-layer proxy, it can only be added to the acceleration domain name, rule engine-modify origin site, and HTTP-specific load balancing reference.
 * `zone_id` - (Required, String, ForceNew) Site ID.
+* `filters` - (Optional, List) Filter conditions for querying origin groups. The filter conditions are: `origin-group-id` - filter by origin group ID (fuzzy query not supported); `origin-group-name` - filter by origin group name (fuzzy query supported).
 * `host_header` - (Optional, String) Back-to-origin Host Header, it only takes effect when type = HTTP is passed in. The rule engine modifies the Host Header configuration priority to be higher than the Host Header of the origin site group.
 * `name` - (Optional, String) OriginGroup Name.
+
+The `filters` object supports the following:
+
+* `name` - (Required, String) The field name to filter on. Valid values: `origin-group-id`, `origin-group-name`.
+* `values` - (Required, List) The filter values.
+* `fuzzy` - (Optional, Bool) Whether to enable fuzzy matching.
 
 The `private_parameters` object of `records` supports the following:
 
