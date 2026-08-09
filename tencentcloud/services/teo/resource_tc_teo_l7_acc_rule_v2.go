@@ -65,6 +65,73 @@ func ResourceTencentCloudTeoL7AccRuleV2() *schema.Resource {
 				Computed:    true,
 				Description: "Rule priority. only used as an output parameter.",
 			},
+			"filters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Description: "Filter conditions for querying L7 acceleration rules. Each filter contains a name and a list of values.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"name": {
+							Type:        schema.TypeString,
+							Required:    true,
+							Description: "Filter name, e.g. rule-id.",
+						},
+						"values": {
+							Type:        schema.TypeList,
+							Required:    true,
+							Description: "Filter values.",
+							Elem: &schema.Schema{
+								Type: schema.TypeString,
+							},
+						},
+					},
+				},
+			},
+			"rules": {
+				Type:        schema.TypeList,
+				Computed:    true,
+				Description: "List of L7 acceleration rules matched by the filters.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"status": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Rule status.",
+						},
+						"rule_id": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Rule ID.",
+						},
+						"rule_name": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Rule name.",
+						},
+						"description": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "Rule description.",
+							Elem: &schema.Schema{
+								Type: schema.TypeString,
+							},
+						},
+						"branches": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "Sub-Rule branch.",
+							Elem: &schema.Resource{
+								Schema: TencentTeoL7RuleBranchBasicInfo(1),
+							},
+						},
+						"rule_priority": {
+							Type:        schema.TypeInt,
+							Computed:    true,
+							Description: "Rule priority.",
+						},
+					},
+				},
+			},
 		},
 	}
 }
@@ -162,6 +229,38 @@ func ResourceTencentCloudTeoL7AccRuleV2Read(d *schema.ResourceData, meta interfa
 		_ = d.Set("branches", resourceTencentCloudTeoL7AccRuleSetBranchs(rule.Branches))
 	}
 
+	// Handle filters and rules computed output
+	if v, ok := d.GetOk("filters"); ok {
+		filtersSet := v.([]interface{})
+		filters := make([]*teov20220901.Filter, 0, len(filtersSet))
+		for i := range filtersSet {
+			filterMap := filtersSet[i].(map[string]interface{})
+			filter := &teov20220901.Filter{}
+			if name, ok := filterMap["name"]; ok {
+				filter.Name = helper.String(name.(string))
+			}
+			if values, ok := filterMap["values"]; ok {
+				valuesList := values.([]interface{})
+				filter.Values = make([]*string, 0, len(valuesList))
+				for j := range valuesList {
+					filter.Values = append(filter.Values, helper.String(valuesList[j].(string)))
+				}
+			}
+			filters = append(filters, filter)
+		}
+
+		rulesRespData, err := service.DescribeTeoL7AccRuleByFilters(ctx, zoneId, filters)
+		if err != nil {
+			return err
+		}
+
+		if rulesRespData != nil && len(rulesRespData.Rules) > 0 {
+			_ = d.Set("rules", flattenTeoL7AccRules(rulesRespData.Rules))
+		} else {
+			_ = d.Set("rules", []interface{}{})
+		}
+	}
+
 	return nil
 }
 
@@ -251,4 +350,47 @@ func ResourceTencentCloudTeoL7AccRuleV2Delete(d *schema.ResourceData, meta inter
 	}
 
 	return ResourceTencentCloudTeoL7AccRuleV2Read(d, meta)
+}
+
+func flattenTeoL7AccRules(rules []*teov20220901.RuleEngineItem) []interface{} {
+	result := make([]interface{}, 0, len(rules))
+	for _, rule := range rules {
+		if rule == nil {
+			continue
+		}
+		ruleMap := map[string]interface{}{}
+
+		if rule.Status != nil {
+			ruleMap["status"] = rule.Status
+		}
+
+		if rule.RuleId != nil {
+			ruleMap["rule_id"] = rule.RuleId
+		}
+
+		if rule.RuleName != nil {
+			ruleMap["rule_name"] = rule.RuleName
+		}
+
+		if rule.Description != nil {
+			descList := make([]string, 0, len(rule.Description))
+			for _, desc := range rule.Description {
+				if desc != nil {
+					descList = append(descList, *desc)
+				}
+			}
+			ruleMap["description"] = descList
+		}
+
+		if rule.Branches != nil {
+			ruleMap["branches"] = resourceTencentCloudTeoL7AccRuleSetBranchs(rule.Branches)
+		}
+
+		if rule.RulePriority != nil {
+			ruleMap["rule_priority"] = int(*rule.RulePriority)
+		}
+
+		result = append(result, ruleMap)
+	}
+	return result
 }

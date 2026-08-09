@@ -104,6 +104,11 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
       }
     }
   }
+
+  filters {
+    name   = "rule-id"
+    values = ["rule-abc123"]
+  }
 }
 ```
 
@@ -114,6 +119,7 @@ The following arguments are supported:
 * `zone_id` - (Required, String, ForceNew) Zone id.
 * `branches` - (Optional, List) Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.
 * `description` - (Optional, List: [`String`]) Rule annotation. multiple annotations can be added.
+* `filters` - (Optional, List) Filter conditions for querying L7 acceleration rules. Each filter contains a name and a list of values.
 * `rule_name` - (Optional, String) Rule name. The name length limit is 255 characters.
 * `status` - (Optional, String) Rule status. The possible values are: `enable`: enabled; `disable`: disabled.
 
@@ -297,6 +303,11 @@ The `error_page_params` object of `error_page_parameters` supports the following
 
 * `redirect_url` - (Required, String) Redirect url. requires a full redirect path, such as https://www.test.com/error.html.
 * `status_code` - (Required, Int) Status code. supported values are 400, 403, 404, 405, 414, 416, 451, 500, 501, 502, 503, 504.
+
+The `filters` object supports the following:
+
+* `name` - (Required, String) Filter name, e.g. rule-id.
+* `values` - (Required, List) Filter values.
 
 The `follow_origin` object of `cache_parameters` supports the following:
 
@@ -504,6 +515,13 @@ In addition to all arguments above, the following attributes are exported:
 * `id` - ID of the resource.
 * `rule_id` - Rule ID. Unique identifier of the rule.
 * `rule_priority` - Rule priority. only used as an output parameter.
+* `rules` - List of L7 acceleration rules matched by the filters.
+  * `branches` - Sub-Rule branch.
+  * `description` - Rule description.
+  * `rule_id` - Rule ID.
+  * `rule_name` - Rule name.
+  * `rule_priority` - Rule priority.
+  * `status` - Rule status.
 
 
 ## Import
