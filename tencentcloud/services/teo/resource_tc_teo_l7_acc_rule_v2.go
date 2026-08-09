@@ -65,6 +65,26 @@ func ResourceTencentCloudTeoL7AccRuleV2() *schema.Resource {
 				Computed:    true,
 				Description: "Rule priority. only used as an output parameter.",
 			},
+			"filters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Description: "Filter conditions for querying L7 acceleration rules. Only used in Read operation.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"name": {
+							Type:        schema.TypeString,
+							Required:    true,
+							Description: "Filter field name, e.g., `rule-id`.",
+						},
+						"values": {
+							Type:        schema.TypeList,
+							Required:    true,
+							Elem:        &schema.Schema{Type: schema.TypeString},
+							Description: "Filter field values.",
+						},
+					},
+				},
+			},
 		},
 	}
 }
@@ -143,12 +163,30 @@ func ResourceTencentCloudTeoL7AccRuleV2Read(d *schema.ResourceData, meta interfa
 	_ = d.Set("zone_id", zoneId)
 	_ = d.Set("rule_id", ruleId)
 
-	respData, err := service.DescribeTeoL7AccRuleById(ctx, zoneId, ruleId)
+	var customFilters []*teov20220901.Filter
+	if v, ok := d.GetOk("filters"); ok {
+		filtersSet := v.([]interface{})
+		for _, item := range filtersSet {
+			filterMap := item.(map[string]interface{})
+			filter := &teov20220901.Filter{
+				Name: helper.String(filterMap["name"].(string)),
+			}
+			if values, ok := filterMap["values"]; ok {
+				valuesList := values.([]interface{})
+				for _, val := range valuesList {
+					filter.Values = append(filter.Values, helper.String(val.(string)))
+				}
+			}
+			customFilters = append(customFilters, filter)
+		}
+	}
+
+	respData, err := service.DescribeTeoL7AccRuleById(ctx, zoneId, ruleId, customFilters)
 	if err != nil {
 		return err
 	}
 
-	if respData == nil {
+	if respData == nil || len(respData.Rules) == 0 {
 		d.SetId("")
 		log.Printf("[WARN]%s resource `teo_l7_acc_rule` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		return nil
