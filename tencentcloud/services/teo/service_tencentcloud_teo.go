@@ -1364,13 +1364,17 @@ func (me *TeoService) DescribeTeoSecurityIpGroupById(ctx context.Context, zoneId
 	return
 }
 
-func (me *TeoService) DescribeTeoFunctionById(ctx context.Context, zoneId string, functionId string) (ret *teo.Function, errRet error) {
+func (me *TeoService) DescribeTeoFunctionById(ctx context.Context, zoneId string, functionId string, filters []*teo.Filter) (ret *teo.Function, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
 	request := teo.NewDescribeFunctionsRequest()
 	response := teo.NewDescribeFunctionsResponse()
 	request.ZoneId = helper.String(zoneId)
 	request.FunctionIds = []*string{helper.String(functionId)}
+
+	if len(filters) > 0 {
+		request.Filters = filters
+	}
 
 	defer func() {
 		if errRet != nil {
