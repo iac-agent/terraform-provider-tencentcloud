@@ -16,3 +16,19 @@ resource "tencentcloud_vpc_replace_routes_with_route_policy_config" "example" {
   }
 }
 ```
+
+With filter and router info control:
+
+```hcl
+resource "tencentcloud_vpc_replace_routes_with_route_policy_config" "example" {
+  route_table_id   = "rtb-olsbhnyc"
+  need_router_info = false
+  name             = "route-table-name"
+  values           = ["rtb-olsbhnyc"]
+
+  routes {
+    route_item_id      = "rti-araogi5t"
+    force_match_policy = true
+  }
+}
+```

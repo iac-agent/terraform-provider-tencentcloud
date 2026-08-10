@@ -845,7 +845,7 @@ func (me *VpcService) ReplaceRouteTableAssociation(ctx context.Context, subnetId
 
 func (me *VpcService) IsRouteTableInVpc(ctx context.Context, routeTableId, vpcId string) (info VpcRouteTableBasicInfo, has int, errRet error) {
 
-	infos, err := me.DescribeRouteTables(ctx, routeTableId, "", vpcId, nil, nil, "")
+	infos, _, err := me.DescribeRouteTables(ctx, routeTableId, "", vpcId, nil, nil, "", nil, "", nil)
 	if err != nil {
 		errRet = err
 		return
@@ -860,7 +860,7 @@ func (me *VpcService) IsRouteTableInVpc(ctx context.Context, routeTableId, vpcId
 
 func (me *VpcService) DescribeRouteTable(ctx context.Context, routeTableId string) (info VpcRouteTableBasicInfo, has int, errRet error) {
 
-	infos, err := me.DescribeRouteTables(ctx, routeTableId, "", "", nil, nil, "")
+	infos, _, err := me.DescribeRouteTables(ctx, routeTableId, "", "", nil, nil, "", nil, "", nil)
 	if err != nil {
 		errRet = err
 		return
@@ -877,7 +877,7 @@ func (me *VpcService) DescribeRouteTable(ctx context.Context, routeTableId strin
 
 func (me *VpcService) DescribeRouteTableByParams(ctx context.Context, routeTableId, vpcId string) (info VpcRouteTableBasicInfo, has int, errRet error) {
 
-	infos, err := me.DescribeRouteTables(ctx, routeTableId, "", vpcId, nil, nil, "")
+	infos, _, err := me.DescribeRouteTables(ctx, routeTableId, "", vpcId, nil, nil, "", nil, "", nil)
 	if err != nil {
 		errRet = err
 		return
@@ -898,7 +898,10 @@ func (me *VpcService) DescribeRouteTables(ctx context.Context,
 	vpcId string,
 	tags map[string]string,
 	associationMain *bool,
-	tagKey string) (infos []VpcRouteTableBasicInfo, errRet error) {
+	tagKey string,
+	needRouterInfo *bool,
+	name string,
+	values []*string) (infos []VpcRouteTableBasicInfo, totalCount uint64, errRet error) {
 
 	logId := tccommon.GetLogId(ctx)
 	request := vpc.NewDescribeRouteTablesRequest()
@@ -934,8 +937,18 @@ func (me *VpcService) DescribeRouteTables(ctx context.Context,
 	for k, v := range tags {
 		filters = me.fillFilter(filters, "tag:"+k, v)
 	}
+	if name != "" && len(values) > 0 {
+		filter := &vpc.Filter{
+			Name:   helper.String(name),
+			Values: values,
+		}
+		filters = append(filters, filter)
+	}
 	if len(filters) > 0 {
 		request.Filters = filters
+	}
+	if needRouterInfo != nil {
+		request.NeedRouterInfo = needRouterInfo
 	}
 
 getMoreData:
@@ -961,6 +974,7 @@ getMoreData:
 
 	if total < 0 {
 		total = int(*response.Response.TotalCount)
+		totalCount = *response.Response.TotalCount
 	}
 
 	if len(response.Response.RouteTableSet) > 0 {

@@ -177,7 +177,7 @@ func resourceTencentCloudRouteTableAssociationDelete(d *schema.ResourceData, met
 		return fmt.Errorf("Unable to find the vpc corresponding to the current subnet:  %s", subnetId)
 	}
 
-	routeTables, err := service.DescribeRouteTables(ctx, "", "", info.vpcId, nil, helper.Bool(true), "")
+	routeTables, _, err := service.DescribeRouteTables(ctx, "", "", info.vpcId, nil, helper.Bool(true), "", nil, "", nil)
 
 	if err != nil {
 		log.Printf("[WARN] Describe default Route Table error: %s", err.Error())

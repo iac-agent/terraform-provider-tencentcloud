@@ -224,7 +224,7 @@ func resourceTencentCloudVpcInstanceRead(d *schema.ResourceData, meta interface{
 			return resource.NonRetryableError(errRet)
 		}
 
-		routeTables, err := service.DescribeRouteTables(ctx, "", "", d.Id(), nil, helper.Bool(true), "")
+		routeTables, _, err := service.DescribeRouteTables(ctx, "", "", d.Id(), nil, helper.Bool(true), "", nil, "", nil)
 
 		if err != nil {
 			log.Printf("[WARN] Describe default Route Table error: %s", err.Error())

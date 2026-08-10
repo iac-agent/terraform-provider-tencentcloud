@@ -45,6 +45,31 @@ func ResourceTencentCloudVpcReplaceRoutesWithRoutePolicyConfig() *schema.Resourc
 					},
 				},
 			},
+
+			"need_router_info": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Description: "Indicates whether to obtain route policy information. Maps to the `NeedRouterInfo` parameter of the `DescribeRouteTables` API.",
+			},
+
+			"name": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Description: "Filter name, maps to `Filters.Name` of the `DescribeRouteTables` API. Must be used together with `values`.",
+			},
+
+			"values": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Elem:        &schema.Schema{Type: schema.TypeString},
+				Description: "Filter values, maps to `Filters.Values` of the `DescribeRouteTables` API. Must be used together with `name`.",
+			},
+
+			"total_count": {
+				Type:        schema.TypeInt,
+				Computed:    true,
+				Description: "Total number of matching instances, returned by the `DescribeRouteTables` API.",
+			},
 		},
 	}
 }
@@ -69,24 +94,60 @@ func resourceTencentCloudVpcReplaceRoutesWithRoutePolicyConfigRead(d *schema.Res
 	defer tccommon.InconsistentCheck(d, meta)()
 
 	var (
-		logId        = tccommon.GetLogId(tccommon.ContextNil)
-		ctx          = tccommon.NewResourceLifeCycleHandleFuncContext(context.Background(), logId, d, meta)
-		service      = VpcService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
-		routeTableId = d.Id()
+		logId   = tccommon.GetLogId(tccommon.ContextNil)
+		ctx     = tccommon.NewResourceLifeCycleHandleFuncContext(context.Background(), logId, d, meta)
+		service = VpcService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
 	)
 
-	respData, err := service.DescribeRouteTables(ctx, routeTableId, "", "", map[string]string{}, nil, "")
-	if err != nil {
-		return err
+	routeTableId := d.Id()
+
+	var (
+		needRouterInfo *bool
+		name           string
+		values         []*string
+		totalCount     uint64
+		respData       []VpcRouteTableBasicInfo
+	)
+
+	if v, ok := d.GetOkExists("need_router_info"); ok {
+		needRouterInfo = helper.Bool(v.(bool))
 	}
 
-	if respData == nil {
-		log.Printf("[WARN]%s resource `tencentcloud_vpc_replace_routes_with_route_policy_config` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
+	if v, ok := d.GetOk("name"); ok {
+		name = v.(string)
+	}
+
+	if v, ok := d.GetOk("values"); ok {
+		valuesList := v.([]interface{})
+		if len(valuesList) > 0 {
+			values = make([]*string, 0, len(valuesList))
+			for _, item := range valuesList {
+				value := item.(string)
+				values = append(values, helper.String(value))
+			}
+		}
+	}
+
+	var errRet error
+	e := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		respData, totalCount, errRet = service.DescribeRouteTables(ctx, routeTableId, "", "", map[string]string{}, nil, "", needRouterInfo, name, values)
+		if errRet != nil {
+			return tccommon.RetryError(errRet, tccommon.InternalError)
+		}
+		return nil
+	})
+	if e != nil {
+		return e
+	}
+
+	if len(respData) == 0 {
+		log.Printf("[CRUD]%s api[%s] vpc replace_routes_with_route_policy_config id=%s", logId, "DescribeRouteTables", d.Id())
 		d.SetId("")
 		return nil
 	}
 
 	_ = d.Set("route_table_id", routeTableId)
+	_ = d.Set("total_count", totalCount)
 
 	return nil
 }
