@@ -25,13 +25,14 @@ func ResourceTencentCloudVpcFlowLogConfig() *schema.Resource {
 			"flow_log_id": {
 				Required:    true,
 				Type:        schema.TypeString,
+				ForceNew:    true,
 				Description: "Flow log ID.",
 			},
 
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "If enable snapshot policy.",
+				Description: "Whether to enable the flow log.",
 			},
 		},
 	}
@@ -69,8 +70,8 @@ func resourceTencentCloudVpcFlowLogConfigRead(d *schema.ResourceData, meta inter
 	}
 
 	if len(flowLogs) < 1 {
+		log.Printf("[WARN]%s resource `vpc_flow_log_config` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		d.SetId("")
-		log.Printf("[WARN]%s resource `VpcFlowLogConfig` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		return nil
 	}
 
@@ -105,7 +106,7 @@ func resourceTencentCloudVpcFlowLogConfigUpdate(d *schema.ResourceData, meta int
 
 	if enable {
 		enableRequest.FlowLogIds = []*string{&flowLogId}
-		err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseVpcClient().EnableFlowLogs(enableRequest)
 			if e != nil {
 				return tccommon.RetryError(e)
@@ -115,12 +116,12 @@ func resourceTencentCloudVpcFlowLogConfigUpdate(d *schema.ResourceData, meta int
 			return nil
 		})
 		if err != nil {
-			log.Printf("[CRITAL]%s update vpc flowLogConfig failed, reason:%+v", logId, err)
+			log.Printf("[CRITAL]%s update vpc_flow_log_config failed, reason:%+v", logId, err)
 			return err
 		}
 	} else {
 		disableRequest.FlowLogIds = []*string{&flowLogId}
-		err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseVpcClient().DisableFlowLogs(disableRequest)
 			if e != nil {
 				return tccommon.RetryError(e)
@@ -130,7 +131,7 @@ func resourceTencentCloudVpcFlowLogConfigUpdate(d *schema.ResourceData, meta int
 			return nil
 		})
 		if err != nil {
-			log.Printf("[CRITAL]%s update vpc flowLogConfig failed, reason:%+v", logId, err)
+			log.Printf("[CRITAL]%s update vpc_flow_log_config failed, reason:%+v", logId, err)
 			return err
 		}
 	}

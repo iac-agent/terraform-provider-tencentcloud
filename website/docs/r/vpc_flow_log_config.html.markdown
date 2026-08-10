@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_vpc_flow_log_config"
 sidebar_current: "docs-tencentcloud-resource-vpc_flow_log_config"
 description: |-
-  Provides a resource to create a vpc flow_log_config
+  Provides a resource to manage the enable/disable state of VPC flow log.
 ---
 
 # tencentcloud_vpc_flow_log_config
 
-Provides a resource to create a vpc flow_log_config
+Provides a resource to manage the enable/disable state of VPC flow log.
 
 ## Example Usage
 
@@ -129,8 +129,8 @@ resource "tencentcloud_vpc_flow_log_config" "config" {
 
 The following arguments are supported:
 
-* `enable` - (Required, Bool) If enable snapshot policy.
-* `flow_log_id` - (Required, String) Flow log ID.
+* `enable` - (Required, Bool) Whether to enable the flow log.
+* `flow_log_id` - (Required, String, ForceNew) Flow log ID.
 
 ## Attributes Reference
 
