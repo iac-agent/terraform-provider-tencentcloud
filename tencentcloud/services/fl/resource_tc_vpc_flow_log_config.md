@@ -1,4 +1,4 @@
-Provides a resource to create a vpc flow_log_config
+Provides a resource to manage the enable/disable state of VPC flow log.
 
 Example Usage
 
