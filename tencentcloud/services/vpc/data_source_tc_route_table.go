@@ -105,7 +105,7 @@ func dataSourceTencentCloudRouteTableRead(d *schema.ResourceData, meta interface
 		}
 	}
 
-	var infos, err = service.DescribeRouteTables(ctx, routeTableId, name, "", map[string]string{}, nil, "")
+	var infos, _, err = service.DescribeRouteTables(ctx, routeTableId, name, "", map[string]string{}, nil, "", nil, "", nil)
 	if err != nil {
 		return err
 	}

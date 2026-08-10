@@ -192,7 +192,7 @@ func dataSourceTencentCloudVpcRouteTablesRead(d *schema.ResourceData, meta inter
 	)
 
 	err = resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
-		infos, err = service.DescribeRouteTables(ctx, routeTableId, name, vpcId, tags, associationMain, tagKey)
+		infos, _, err = service.DescribeRouteTables(ctx, routeTableId, name, vpcId, tags, associationMain, tagKey, nil, "", nil)
 		if err != nil {
 			return tccommon.RetryError(err, tccommon.InternalError)
 		}

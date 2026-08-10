@@ -34,7 +34,7 @@ func testSweepRouteTable(region string) error {
 
 	vpcService := svcvpc.NewVpcService(client.GetAPIV3Conn())
 
-	instances, err := vpcService.DescribeRouteTables(ctx, "", "", "", nil, nil, "")
+	instances, _, err := vpcService.DescribeRouteTables(ctx, "", "", "", nil, nil, "", nil, "", nil)
 	if err != nil {
 		return fmt.Errorf("get instance list error: %s", err.Error())
 	}
