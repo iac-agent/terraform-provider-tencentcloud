@@ -1,0 +1,6 @@
+apiVersion: openspec.io/v1
+kind: MainSpec
+metadata:
+  name: main_spec
+spec: |-
+  This is the main spec content.
