@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
-
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	tag "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tag/v20180813"
@@ -30,14 +29,12 @@ func ResourceTencentCloudTagAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Description: "tag key.",
 			},
-
 			"tag_value": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
 				Description: "tag value.",
 			},
-
 			"resource": {
 				Optional:    true,
 				Computed:    true,
@@ -53,6 +50,7 @@ func resourceTencentCloudTagAttachmentCreate(d *schema.ResourceData, meta interf
 	defer tccommon.InconsistentCheck(d, meta)()
 
 	logId := tccommon.GetLogId(tccommon.ContextNil)
+	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
 
 	var (
 		request    = tag.NewAddResourceTagRequest()
@@ -99,7 +97,6 @@ func resourceTencentCloudTagAttachmentRead(d *schema.ResourceData, meta interfac
 	defer tccommon.InconsistentCheck(d, meta)()
 
 	logId := tccommon.GetLogId(tccommon.ContextNil)
-
 	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
 
 	service := TagService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
@@ -122,103 +119,9 @@ func resourceTencentCloudTagAttachmentRead(d *schema.ResourceData, meta interfac
 		log.Printf("[WARN]%s resource `TagResourceTag` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		return nil
 	}
-	if len(tagAttachment.Tags) < 1 {
-		log.Printf("[WARN]%s resource `TagResourceTag` [%s] Tags is null, please check if it has been deleted.\n", logId, d.Id())
-		return nil
-	}
-	if tagAttachment.Tags[0].TagKey != nil {
+	if len(tagAttachment.Tags) > 0 {
 		_ = d.Set("tag_key", tagAttachment.Tags[0].TagKey)
-	}
-
-	if tagAttachment == nil {
-		d.SetId("")
-		log.Printf("[WARN]%s resource `TagResourceTag` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
-		return nil
-	}
-	if len(tagAttachment.Tags) < 1 {
-		log.Printf("[WARN]%s resource `TagResourceTag` [%s] Tags is null, please check if it has been deleted.\n", logId, d.Id())
-		return nil
-	}
-
-	// Read tag_value from the API response if set in the config
-	if v, ok := d.GetOk("tag_value"); ok {
-		_ = d.Set("tag_value", v.(string))
-	}
-
-	// Read auto_renew_flag from the API response
-	if v, ok := d.GetOk("auto_renew_flag"); ok {
-		if v, ok := v.(int); ok {
-			_ = d.Set("auto_renew_flag", v)
-		}
-	}
-
-	// Read tag_value from the API response if set in the config
-	if v, ok := d.GetOk("tag_value"); ok {
-		_ = d.Set("tag_value", v.(string))
-	}
-
-func resourceTencentCloudTagAttachmentDelete(d *schema.ResourceData, meta interface{}) error {
-	defer tccommon.LogElapsed("resource.tencentcloud_tag_attachment.delete")()
-	defer tccommon.InconsistentCheck(d, meta)()
-
-	logId := tccommon.GetLogId(tccommon.ContextNil)
-	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
-
-	service := TagService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
-
-	idSplit := strings.Split(d.Id(), tccommon.FILED_SP)
-	if len(idSplit) != 3 {
-		return fmt.Errorf("id is broken,%s", d.Id())
-	}
-	tagKey := idSplit[0]
-	tagValue := idSplit[1]
-	resource := idSplit[2]
-
-	tagAttachment, err := service.DescribeTagTagAttachmentById(ctx, tagKey, tagValue, resource)
-	if err != nil {
-		return err
-	}
-
-	if tagAttachment == nil {
-		d.SetId("")
-		log.Printf("[WARN]%s resource `TagResourceTag` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
-		return nil
-	}
-	if len(tagAttachment.Tags) < 1 {
-		log.Printf("[WARN]%s resource `TagResourceTag` [%s] Tags is null, please check if it has been deleted.\n", logId, d.Id())
-		return nil
-	}
-	if tagAttachment.Tags[0].TagKey != nil {
-		_ = d.Set("tag_key", tagAttachment.Tags[0].TagKey)
-	}
-
-	if tagAttachment == nil {
-		d.SetId("")
-		log.Printf("[WARN]%s resource `TagResourceTag` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
-		return nil
-	}
-	if len(tagAttachment.Tags) < 1 {
-		log.Printf("[WARN]%s resource `TagResourceTag` [%s] Tags is null, please check if it has been deleted.\n", logId, d.Id())
-		return nil
-	}
-
-	// Read tag_value from the API response if set in the config
-	if v, ok := d.GetOk("tag_value"); ok {
-		_ = d.Set("tag_value", v.(string))
-	}
-
-	// Read auto_renew_flag from the API response
-	if v, ok := d.GetOk("auto_renew_flag"); ok {
-		if v, ok := v.(int); ok {
-			_ = d.Set("auto_renew_flag", v)
-		}
-	}
-
-	// Read tag_value from the API response if set in the config
-	if v, ok := d.GetOk("tag_value"); ok {
-		_ = d.Set("tag_value", v.(string))
 	}
 
 	return nil
 }
-
