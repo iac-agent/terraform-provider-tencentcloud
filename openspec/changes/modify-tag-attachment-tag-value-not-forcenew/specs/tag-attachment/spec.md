@@ -1,0 +1,25 @@
+# Spec: Modify Tag Attachment Tag Value (Not ForceNew)
+
+## Background
+
+The `tencentcloud_tag_attachment` resource currently requires `tag_value` to be
+ForceNew. This means that if a user sets `tag_value` to a value and then changes
+it, Terraform will force a recreation of the entire resource.
+
+## Requirement
+
+Modify the `tencentcloud_tag_attachment` resource so that `tag_value` is no
+longer ForceNew. This allows users to update the tag value without recreating
+the resource.
+
+## Implementation
+
+- Change the schema for `tag_value` from `Required: true, ForceNew: true` to
+  `Optional: true, Computed: true`
+- In the Read function, call `d.Set("tag_value", ...)` if `tag_value` has a value
+- Add unit tests to verify the behavior
+
+## References
+
+- Similar resource implementation: `resource_tc_tag.go`
+- Data source implementation: `data_source_tc_tag_keys.go`

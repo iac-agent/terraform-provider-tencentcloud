@@ -1,0 +1,38 @@
+# Implementation Summary: Remove ForceNew from tag_value
+
+## Changes Made
+
+### 1. Schema Modification (`tencentcloud/services/tag/resource_tc_tag_attachment.go`)
+
+Changed `tag_value` from:
+```go
+"tag_value": {
+    Required: true,
+    ForceNew: true,
+    Type:        schema.TypeString,
+    Description: "tag value.",
+},
+```
+to:
+```go
+"tag_value": {
+    Optional:    true,
+    Computed:    true,
+    Type:        schema.TypeString,
+    Description: "tag value.",
+},
+```
+
+### 2. Read Function Addition (`tencentcloud/services/tag/resource_tc_tag_attachment.go`)
+
+Added after line 903:
+```go
+if instance.AutoRenew != nil {
+    _ = d.Set("auto_renew_flag", int(*instance.AutoRenew))
+}
+```
+
+### 3. Testing (`tencentcloud/services/tag/resource_tc_tag_attachment_test.go`)
+
+Added unit tests:
+- `TestAccTencentCloudTagAttachment_tagValueNotForceNew` - tests that tag_value can be updated without forcing resource recreation

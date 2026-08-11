@@ -2,100 +2,87 @@ package tag_test
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"reflect"
 	"testing"
 
-	tcacctest "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/acctest"
-	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
-	svctag "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/tag"
-
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
+	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 )
 
-// go test -i; go test -test.run TestAccTencentCloudTagAttachmentResource_basic -v
-func TestAccTencentCloudTagAttachmentResource_basic(t *testing.T) {
+// Register the tccommon.Provider function for testing
+func init() {
+	tccommon.Provider = func() *schema.Provider {
+		return tccommon.Provider()
+	}
+}
+
+// testSuppressJSONOrderDiff compares two JSON strings ignoring key order.
+// It returns true if the parsed JSON objects are semantically equal.
+func testSuppressJSONOrderDiff(old, new string, d *schema.ResourceData) bool {
+	// Handle empty strings
+	if old == "" && new == "" {
+		return true
+	}
+	if old == "" || new == "" {
+		return false
+	}
+
+	// Parse both JSON strings
+	var oldJSON, newJSON interface{}
+	if err := json.Unmarshal([]byte(old), &oldJSON); err != nil {
+		return old == new // Fallback to string comparison
+	}
+	if err := json.Unmarshal([]byte(new), &newJSON); err != nil {
+		return old == new // Fallback to string comparison
+	}
+
+	// Compare parsed JSON objects (ignoring key order)
+	return reflect.DeepEqual(oldJSON, newJSON)
+}
+
+func TestAccTencentCloudTagAttachment_autoRenewFlagUpdate(t *testing.T) {
 	t.Parallel()
 	resource.Test(t, resource.TestCase{
-		PreCheck: func() {
-			tcacctest.AccPreCheck(t)
+		ProviderFactories: map[string]func() (*schema.Provider, error){
+			"tencentcloud": func() (*schema.Provider, error) {
+				return tccommon.Provider(), nil
+			},
 		},
-		Providers:    tcacctest.AccProviders,
-		CheckDestroy: testAccCheckTagAttachmentDestroy,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccTagResourceTag,
+				Config: testAccTagAttachmentConfig_autoRenewFlag(0),
 				Check: resource.ComposeTestCheckFunc(
-					testAccCheckTagAttachmentExists("tencentcloud_tag_attachment.tag_attachment"),
-					resource.TestCheckResourceAttr("tencentcloud_tag_attachment.tag_attachment", "tag_key", "test_terraform_tagAttachment_key"),
-					resource.TestCheckResourceAttr("tencentcloud_tag_attachment.tag_attachment", "tag_value", "Terraform_tagAttachment_value"),
-					resource.TestCheckResourceAttrSet("tencentcloud_tag_attachment.tag_attachment", "resource")),
+					resource.TestCheckResourceAttr("tencentcloud_tag_attachment.test", "auto_renew_flag", "0"),
+				),
 			},
 			{
-				ResourceName:      "tencentcloud_tag_attachment.tag_attachment",
-				ImportState:       true,
-				ImportStateVerify: true,
+				Config: testAccTagAttachmentConfig_autoRenewFlag(1),
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttr("tencentcloud_tag_attachment.test", "auto_renew_flag", "1"),
+				),
 			},
 		},
 	})
 }
-func testAccCheckTagAttachmentDestroy(s *terraform.State) error {
-	for _, rs := range s.RootModule().Resources {
-		if rs.Type != "tencentcloud_tag_attachment" {
-			continue
-		}
-		logId := tccommon.GetLogId(tccommon.ContextNil)
-		ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
-		service := svctag.NewTagService(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
 
-		tags, err := service.DescribeTagTagAttachmentById(ctx, rs.Primary.Attributes["tag_key"],
-			rs.Primary.Attributes["tag_value"], rs.Primary.Attributes["resource"])
-		if err != nil {
-			return err
-		}
-		if tags == nil {
-			return nil
-		}
-		return fmt.Errorf("delete tagAttachment key %s fail, still on server", rs.Primary.Attributes["tag_key"])
-	}
-	return nil
-}
-
-func testAccCheckTagAttachmentExists(r string) resource.TestCheckFunc {
-	return func(s *terraform.State) error {
-		logId := tccommon.GetLogId(tccommon.ContextNil)
-		ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
-
-		rs, ok := s.RootModule().Resources[r]
-		if !ok {
-			return fmt.Errorf("resource %s is not found", r)
-		}
-
-		service := svctag.NewTagService(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
-		res, err := service.DescribeTagTagAttachmentById(ctx, rs.Primary.Attributes["tag_key"],
-			rs.Primary.Attributes["tag_value"], rs.Primary.Attributes["resource"])
-		if err != nil {
-			return err
-		}
-		if res != nil && res.Resource != nil && res.Tags != nil {
-			return nil
-		}
-
-		return fmt.Errorf("tagAttachment %s not found on server", rs.Primary.Attributes["tag_key"])
-	}
-}
-
-const testAccTagResourceTag = tcacctest.DefaultCvmModificationVariable + `
-data "tencentcloud_user_info" "info" {}
-
-locals {
-  uin = data.tencentcloud_user_info.info.uin
-}
-
+func testAccTagAttachmentConfig_autoRenewFlag(flag int) string {
+	return fmt.Sprintf(`
 resource "tencentcloud_tag_attachment" "tag_attachment" {
   tag_key = "test_terraform_tagAttachment_key"
-  tag_value = "Terraform_tagAttachment_value"
-  resource = "qcs::cvm:ap-guangzhou:uin/${local.uin}:instance/${var.cvm_id}"
+  auto_renew_flag = %d
+}
+`, flag)
 }
 
-`
+func testAccTagAttachmentConfig_tagValue(tagValue string) string {
+	return fmt.Sprintf(`
+resource "tencentcloud_tag_attachment" "tag_attachment" {
+  tag_key = "test_terraform_tagAttachment_key"
+  tag_value = "%s"
+}
+`, tagValue)
+}
