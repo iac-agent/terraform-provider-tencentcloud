@@ -1,0 +1,7 @@
+```release-note:enhancement
+resource/tencentcloud_teo_origin_acl: add computed status parameter to show origin ACL status
+```
+
+```release-note:enhancement
+data-source/tencentcloud_teo_origin_acl: add status field to show origin ACL status
+```

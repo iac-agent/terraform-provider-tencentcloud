@@ -58,6 +58,12 @@ func ResourceTencentCloudTeoOriginAcl() *schema.Resource {
 				Computed:    true,
 				Description: "Origin ACL control domain. Valid values: gaz, mlc, emc, plat-gaz, plat-mlc, plat-emc.",
 			},
+
+			"status": {
+				Type:        schema.TypeString,
+				Computed:    true,
+				Description: "Origin ACL status. Valid values: online, offline, updating.",
+			},
 		},
 	}
 }
@@ -295,6 +301,10 @@ func ResourceTencentCloudTeoOriginAclRead(d *schema.ResourceData, meta interface
 
 	if respData.OriginACLFamily != nil {
 		_ = d.Set("origin_acl_family", respData.OriginACLFamily)
+	}
+
+	if respData.Status != nil {
+		_ = d.Set("status", respData.Status)
 	}
 
 	return nil

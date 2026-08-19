@@ -197,6 +197,40 @@ func TestTeoOriginAcl_ReadWithNilOriginACLFamily(t *testing.T) {
 	assert.Equal(t, "", d.Get("origin_acl_family"))
 }
 
+// TestTeoOriginAcl_ReadWithStatus tests Read with status field
+func TestTeoOriginAcl_ReadWithStatus(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaOriginAcl().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeOriginACLWithContext", func(_ context.Context, request *teov20220901.DescribeOriginACLRequest) (*teov20220901.DescribeOriginACLResponse, error) {
+		resp := teov20220901.NewDescribeOriginACLResponse()
+		resp.Response = &teov20220901.DescribeOriginACLResponseParams{
+			OriginACLInfo: &teov20220901.OriginACLInfo{
+				Status:          ptrStringOriginAcl("online"),
+				L7Hosts:         []*string{ptrStringOriginAcl("example1.com")},
+				L4ProxyIds:      []*string{ptrStringOriginAcl("sid-abc123")},
+				OriginACLFamily: ptrStringOriginAcl("mlc"),
+			},
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaOriginAcl()
+	res := teo.ResourceTencentCloudTeoOriginAcl()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+	})
+	d.SetId("zone-12345678")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "online", d.Get("status"))
+	assert.Equal(t, "mlc", d.Get("origin_acl_family"))
+}
+
 // TestTeoOriginAcl_UpdateOriginACLFamily tests Update with origin_acl_family change
 func TestTeoOriginAcl_UpdateOriginACLFamily(t *testing.T) {
 	patches := gomonkey.NewPatches()
