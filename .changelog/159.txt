@@ -1,0 +1,7 @@
+```release-note:enhancement
+resource/tencentcloud_teo_origin_acl: add origin_acl_family parameter
+```
+
+```release-note:enhancement
+data_source/tencentcloud_teo_origin_acl: add origin_acl_family parameter
+```
