@@ -8,7 +8,31 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/internal/helper"
 )
+
+/*
+Provides a resource to manage protocol template.
+
+Example Usage
+
+```hcl
+resource "tencentcloud_protocol_template" "example" {
+  name     = "test_protocol_template"
+  protocols = ["tcp:80"]
+
+  key   = "env"
+  value = "production"
+}
+```
+
+```hcl
+resource "tencentcloud_protocol_template" "example_without_tags" {
+  name     = "test_protocol_template_no_tags"
+  protocols = ["udp:53"]
+}
+```
+*/
 
 func ResourceTencentCloudProtocolTemplate() *schema.Resource {
 	return &schema.Resource{
@@ -34,6 +58,18 @@ func ResourceTencentCloudProtocolTemplate() *schema.Resource {
 				Required:    true,
 				Description: "Protocol list. Valid protocols are  `tcp`, `udp`, `icmp`, `gre`. Single port(tcp:80), multi-port(tcp:80,443), port range(tcp:3306-20000), all(tcp:all) format are support. Protocol `icmp` and `gre` cannot specify port.",
 			},
+			"key": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				ForceNew:    true,
+				Description: "Tag key of the protocol template.",
+			},
+			"value": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				ForceNew:    true,
+				Description: "Tag value of the protocol template.",
+			},
 		},
 	}
 }
@@ -52,8 +88,17 @@ func resourceTencentCloudProtocolTemplateCreate(d *schema.ResourceData, meta int
 	var outErr, inErr error
 	var templateId string
 
+	// Get optional tag parameters
+	var key, value *string
+	if v, ok := d.GetOk("key"); ok && v.(string) != "" {
+		key = helper.String(v.(string))
+	}
+	if v, ok := d.GetOk("value"); ok && v.(string) != "" {
+		value = helper.String(v.(string))
+	}
+
 	outErr = resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
-		templateId, inErr = vpcProtocol.CreateServiceTemplate(ctx, name, protocols)
+		templateId, inErr = vpcProtocol.CreateServiceTemplate(ctx, name, protocols, key, value)
 		if inErr != nil {
 			return tccommon.RetryError(inErr)
 		}
@@ -98,6 +143,12 @@ func resourceTencentCloudProtocolTemplateRead(d *schema.ResourceData, meta inter
 
 	_ = d.Set("name", template.ServiceTemplateName)
 	_ = d.Set("protocols", template.ServiceSet)
+
+	// Set tag information if present
+	if template.TagSet != nil && len(template.TagSet) > 0 {
+		_ = d.Set("key", template.TagSet[0].Key)
+		_ = d.Set("value", template.TagSet[0].Value)
+	}
 
 	return nil
 }

@@ -26,6 +26,8 @@ The following arguments are supported:
 
 * `name` - (Required, String) Name of the protocol template.
 * `protocols` - (Required, Set: [`String`]) Protocol list. Valid protocols are  `tcp`, `udp`, `icmp`, `gre`. Single port(tcp:80), multi-port(tcp:80,443), port range(tcp:3306-20000), all(tcp:all) format are support. Protocol `icmp` and `gre` cannot specify port.
+* `key` - (Optional, String, ForceNew) Tag key of the protocol template.
+* `value` - (Optional, String, ForceNew) Tag value of the protocol template.
 
 ## Attributes Reference
 

@@ -4722,7 +4722,7 @@ func (me *VpcService) DeleteAddressTemplateGroup(ctx context.Context, templateGr
 	return err
 }
 
-func (me *VpcService) CreateServiceTemplate(ctx context.Context, name string, services []interface{}) (templateId string, errRet error) {
+func (me *VpcService) CreateServiceTemplate(ctx context.Context, name string, services []interface{}, key *string, value *string) (templateId string, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 	request := vpc.NewCreateServiceTemplateRequest()
 	defer func() {
@@ -4736,6 +4736,15 @@ func (me *VpcService) CreateServiceTemplate(ctx context.Context, name string, se
 	request.Services = make([]*string, len(services))
 	for i, v := range services {
 		request.Services[i] = helper.String(v.(string))
+	}
+
+	// Add tags if key and value are provided
+	if key != nil && value != nil {
+		tag := &vpc.Tag{
+			Key:   key,
+			Value: value,
+		}
+		request.Tags = []*vpc.Tag{tag}
 	}
 
 	ratelimit.Check(request.GetAction())
