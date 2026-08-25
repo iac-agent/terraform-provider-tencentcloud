@@ -20,3 +20,17 @@ resource "tencentcloud_subnet" "main" {
   vpc_id            = data.tencentcloud_vpc.selected.id
 }
 ```
+
+Read the DHCP domain name of a VPC
+
+```hcl
+variable "vpc_id" {}
+
+data "tencentcloud_vpc" "selected" {
+  id = var.vpc_id
+}
+
+output "vpc_domain_name" {
+  value = data.tencentcloud_vpc.selected.domain_name
+}
+```

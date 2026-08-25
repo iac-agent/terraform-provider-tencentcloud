@@ -32,6 +32,20 @@ resource "tencentcloud_subnet" "main" {
 }
 ```
 
+### Read the DHCP domain name of a VPC
+
+```hcl
+variable "vpc_id" {}
+
+data "tencentcloud_vpc" "selected" {
+  id = var.vpc_id
+}
+
+output "vpc_domain_name" {
+  value = data.tencentcloud_vpc.selected.domain_name
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -44,6 +58,7 @@ The following arguments are supported:
 In addition to all arguments above, the following attributes are exported:
 
 * `cidr_block` - The CIDR block of the VPC.
+* `domain_name` - DHCP domain name option value of the VPC.
 * `is_default` - Whether or not the default VPC.
 * `is_multicast` - Whether or not the VPC has Multicast support.
 

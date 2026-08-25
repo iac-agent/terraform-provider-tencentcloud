@@ -42,6 +42,11 @@ func DataSourceTencentCloudVpc() *schema.Resource {
 				Computed:    true,
 				Description: "Whether or not the VPC has Multicast support.",
 			},
+			"domain_name": {
+				Type:        schema.TypeString,
+				Computed:    true,
+				Description: "DHCP domain name option value of the VPC.",
+			},
 		},
 	}
 }
@@ -85,6 +90,7 @@ func dataSourceTencentCloudVpcRead(d *schema.ResourceData, meta interface{}) err
 	_ = d.Set("cidr_block", vpc.cidr)
 	_ = d.Set("is_default", vpc.isDefault)
 	_ = d.Set("is_multicast", vpc.isMulticast)
+	_ = d.Set("domain_name", vpc.domainName)
 
 	return nil
 }

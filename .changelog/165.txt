@@ -1,0 +1,3 @@
+```release-note:enhancement
+data-source/tencentcloud_vpc: add `domain_name` output to expose the DHCP domain name option value
+```
