@@ -3564,3 +3564,108 @@ func (me *TeoService) DescribeTeoFunctionComponentBindingsById(ctx context.Conte
 
 	return
 }
+
+func (me *TeoService) AddTeoInferenceApiToken(ctx context.Context, zoneId, name string) (token *teov20220901.CreateInferenceAPITokenResponseParams, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teov20220901.NewCreateInferenceAPITokenRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.Name = helper.String(name)
+
+	var response *teov20220901.CreateInferenceAPITokenResponse
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().CreateInferenceAPITokenWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		response = result
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	if response == nil || response.Response == nil {
+		return
+	}
+
+	token = response.Response
+	return
+}
+
+func (me *TeoService) DescribeTeoInferenceApiTokenById(ctx context.Context, zoneId, tokenId string) (token *teov20220901.InferenceAPIToken, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	var (
+		limit  int64 = 100
+		offset int64 = 0
+	)
+
+	for {
+		request := teov20220901.NewDescribeInferenceAPITokensRequest()
+		request.ZoneId = helper.String(zoneId)
+		request.Limit = &limit
+		request.Offset = &offset
+
+		var pageTokens []*teov20220901.InferenceAPIToken
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+			ratelimit.Check(request.GetAction())
+			result, e := me.client.UseTeoV20220901Client().DescribeInferenceAPITokensWithContext(ctx, request)
+			if e != nil {
+				return tccommon.RetryError(e)
+			}
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+			if result == nil || result.Response == nil {
+				return resource.NonRetryableError(fmt.Errorf("DescribeInferenceAPITokens response is nil"))
+			}
+			pageTokens = result.Response.Tokens
+			return nil
+		})
+
+		if err != nil {
+			errRet = err
+			return
+		}
+
+		for _, t := range pageTokens {
+			if t.TokenId != nil && *t.TokenId == tokenId {
+				token = t
+				return
+			}
+		}
+
+		if int64(len(pageTokens)) < limit {
+			return
+		}
+		offset += limit
+	}
+}
+
+func (me *TeoService) DeleteTeoInferenceApiToken(ctx context.Context, zoneId, tokenId string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teov20220901.NewDeleteInferenceAPITokenRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.TokenId = helper.String(tokenId)
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DeleteInferenceAPITokenWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
