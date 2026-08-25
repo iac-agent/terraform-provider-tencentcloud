@@ -14,7 +14,7 @@ import (
 
 // go test ./tencentcloud/services/teo/ -run "TestInferenceAPIToken" -v -count=1 -gcflags="all=-l"
 
-// TestInferenceAPIToken_Create_Success tests Create calls API and sets ID
+// TestInferenceAPIToken_Create_Success tests Create calls API and sets composite ID
 func TestInferenceAPIToken_Create_Success(t *testing.T) {
 	patches := gomonkey.NewPatches()
 	defer patches.Reset()
@@ -37,7 +37,7 @@ func TestInferenceAPIToken_Create_Success(t *testing.T) {
 	patches.ApplyMethodFunc(teoClient, "DescribeInferenceAPITokensWithContext", func(_ interface{}, request *teov20220901.DescribeInferenceAPITokensRequest) (*teov20220901.DescribeInferenceAPITokensResponse, error) {
 		resp := teov20220901.NewDescribeInferenceAPITokensResponse()
 		resp.Response = &teov20220901.DescribeInferenceAPITokensResponseParams{
-			TotalCount: ptrInt64Token(1),
+			TotalCount: ptrInt64_IAT(1),
 			Tokens: []*teov20220901.InferenceAPIToken{
 				{
 					TokenId:    ptrString("token-abc123"),
@@ -60,7 +60,7 @@ func TestInferenceAPIToken_Create_Success(t *testing.T) {
 
 	err := res.Create(d, meta)
 	assert.NoError(t, err)
-	assert.Equal(t, "token-abc123", d.Id())
+	assert.Equal(t, "zone-test123#token-abc123", d.Id())
 	assert.Equal(t, "test-token", d.Get("name"))
 	assert.Equal(t, "my-secret-token-content", d.Get("content"))
 	assert.Equal(t, "2024-01-01T00:00:00Z", d.Get("create_time"))
@@ -90,6 +90,36 @@ func TestInferenceAPIToken_Create_APIError(t *testing.T) {
 	assert.Contains(t, err.Error(), "InvalidParameter")
 }
 
+// TestInferenceAPIToken_Create_EmptyTokenId tests Create handles empty TokenId
+func TestInferenceAPIToken_Create_EmptyTokenId(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "CreateInferenceAPITokenWithContext", func(_ interface{}, request *teov20220901.CreateInferenceAPITokenRequest) (*teov20220901.CreateInferenceAPITokenResponse, error) {
+		resp := teov20220901.NewCreateInferenceAPITokenResponse()
+		resp.Response = &teov20220901.CreateInferenceAPITokenResponseParams{
+			TokenId:   ptrString(""),
+			Content:   ptrString("my-secret-token-content"),
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoInferenceAPIToken()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-test123",
+		"name":    "test-token",
+	})
+
+	err := res.Create(d, meta)
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "empty TokenId")
+}
+
 // TestInferenceAPIToken_Read_Success tests Read retrieves token data
 func TestInferenceAPIToken_Read_Success(t *testing.T) {
 	patches := gomonkey.NewPatches()
@@ -102,7 +132,7 @@ func TestInferenceAPIToken_Read_Success(t *testing.T) {
 		assert.Equal(t, "zone-test123", *request.ZoneId)
 		resp := teov20220901.NewDescribeInferenceAPITokensResponse()
 		resp.Response = &teov20220901.DescribeInferenceAPITokensResponseParams{
-			TotalCount: ptrInt64Token(1),
+			TotalCount: ptrInt64_IAT(1),
 			Tokens: []*teov20220901.InferenceAPIToken{
 				{
 					TokenId:    ptrString("token-abc123"),
@@ -122,10 +152,12 @@ func TestInferenceAPIToken_Read_Success(t *testing.T) {
 		"zone_id": "zone-test123",
 		"name":    "test-token",
 	})
-	d.SetId("token-abc123")
+	d.SetId("zone-test123#token-abc123")
 
 	err := res.Read(d, meta)
 	assert.NoError(t, err)
+	assert.Equal(t, "zone-test123#token-abc123", d.Id())
+	assert.Equal(t, "zone-test123", d.Get("zone_id"))
 	assert.Equal(t, "test-token", d.Get("name"))
 	assert.Equal(t, "my-secret-token-content", d.Get("content"))
 	assert.Equal(t, "2024-01-01T00:00:00Z", d.Get("create_time"))
@@ -142,7 +174,7 @@ func TestInferenceAPIToken_Read_NotFound(t *testing.T) {
 	patches.ApplyMethodFunc(teoClient, "DescribeInferenceAPITokensWithContext", func(_ interface{}, request *teov20220901.DescribeInferenceAPITokensRequest) (*teov20220901.DescribeInferenceAPITokensResponse, error) {
 		resp := teov20220901.NewDescribeInferenceAPITokensResponse()
 		resp.Response = &teov20220901.DescribeInferenceAPITokensResponseParams{
-			TotalCount: ptrInt64Token(0),
+			TotalCount: ptrInt64_IAT(0),
 			Tokens:     []*teov20220901.InferenceAPIToken{},
 			RequestId:  ptrString("fake-request-id"),
 		}
@@ -155,11 +187,49 @@ func TestInferenceAPIToken_Read_NotFound(t *testing.T) {
 		"zone_id": "zone-test123",
 		"name":    "test-token",
 	})
-	d.SetId("token-abc123")
+	d.SetId("zone-test123#token-notexist")
 
 	err := res.Read(d, meta)
 	assert.NoError(t, err)
 	assert.Equal(t, "", d.Id())
+}
+
+// TestInferenceAPIToken_Update_Immutable tests Update rejects field changes
+func TestInferenceAPIToken_Update_Immutable(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMeta().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeInferenceAPITokensWithContext", func(_ interface{}, request *teov20220901.DescribeInferenceAPITokensRequest) (*teov20220901.DescribeInferenceAPITokensResponse, error) {
+		resp := teov20220901.NewDescribeInferenceAPITokensResponse()
+		resp.Response = &teov20220901.DescribeInferenceAPITokensResponseParams{
+			TotalCount: ptrInt64_IAT(1),
+			Tokens: []*teov20220901.InferenceAPIToken{
+				{
+					TokenId:    ptrString("token-abc123"),
+					Name:       ptrString("test-token"),
+					Content:    ptrString("my-secret-token-content"),
+					CreateTime: ptrString("2024-01-01T00:00:00Z"),
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoInferenceAPIToken()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-test123",
+		"name":    "modified-name",
+	})
+	d.SetId("zone-test123#token-abc123")
+
+	err := res.Update(d, meta)
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "cannot be changed")
 }
 
 // TestInferenceAPIToken_Delete_Success tests Delete removes token
@@ -186,7 +256,7 @@ func TestInferenceAPIToken_Delete_Success(t *testing.T) {
 		"zone_id": "zone-test123",
 		"name":    "test-token",
 	})
-	d.SetId("token-abc123")
+	d.SetId("zone-test123#token-abc123")
 
 	err := res.Delete(d, meta)
 	assert.NoError(t, err)
@@ -210,7 +280,7 @@ func TestInferenceAPIToken_Delete_APIError(t *testing.T) {
 		"zone_id": "zone-test123",
 		"name":    "test-token",
 	})
-	d.SetId("token-abc123")
+	d.SetId("zone-test123#token-abc123")
 
 	err := res.Delete(d, meta)
 	assert.Error(t, err)
@@ -229,7 +299,7 @@ func TestInferenceAPIToken_Import(t *testing.T) {
 		assert.Equal(t, "zone-test123", *request.ZoneId)
 		resp := teov20220901.NewDescribeInferenceAPITokensResponse()
 		resp.Response = &teov20220901.DescribeInferenceAPITokensResponseParams{
-			TotalCount: ptrInt64Token(1),
+			TotalCount: ptrInt64_IAT(1),
 			Tokens: []*teov20220901.InferenceAPIToken{
 				{
 					TokenId:    ptrString("token-abc123"),
@@ -250,7 +320,7 @@ func TestInferenceAPIToken_Import(t *testing.T) {
 
 	err := res.Read(d, meta)
 	assert.NoError(t, err)
-	assert.Equal(t, "token-abc123", d.Id())
+	assert.Equal(t, "zone-test123#token-abc123", d.Id())
 	assert.Equal(t, "zone-test123", d.Get("zone_id"))
 	assert.Equal(t, "imported-token", d.Get("name"))
 }
@@ -262,7 +332,7 @@ func TestInferenceAPIToken_Schema(t *testing.T) {
 	assert.NotNil(t, res)
 	assert.NotNil(t, res.Create)
 	assert.NotNil(t, res.Read)
-	assert.Nil(t, res.Update)
+	assert.NotNil(t, res.Update)
 	assert.NotNil(t, res.Delete)
 	assert.NotNil(t, res.Importer)
 
@@ -298,6 +368,6 @@ func TestInferenceAPIToken_Schema(t *testing.T) {
 	assert.True(t, createTime.Computed)
 }
 
-func ptrInt64Token(i int64) *int64 {
+func ptrInt64_IAT(i int64) *int64 {
 	return &i
 }
