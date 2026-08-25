@@ -37,6 +37,7 @@ type VpcBasicInfo struct {
 	isMulticast               bool
 	isDefault                 bool
 	dnsServers                []string
+	domainName                string
 	createTime                string
 	tags                      []*vpc.Tag
 	assistantCidrs            []string
@@ -458,6 +459,10 @@ getMoreData:
 		basicInfo.isMulticast = *item.EnableMulticast
 		basicInfo.name = *item.VpcName
 		basicInfo.vpcId = *item.VpcId
+
+		if item.DomainName != nil {
+			basicInfo.domainName = *item.DomainName
+		}
 
 		if hasVpc[basicInfo.vpcId] {
 			errRet = fmt.Errorf("get repeated vpc_id[%s] when doing DescribeVpcs", basicInfo.vpcId)
