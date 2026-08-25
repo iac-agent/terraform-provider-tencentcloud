@@ -1467,6 +1467,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_vpc_bandwidth_package":                                                    vpc.ResourceTencentCloudVpcBandwidthPackage(),
 			"tencentcloud_vpc_bandwidth_package_attachment":                                         vpc.ResourceTencentCloudVpcBandwidthPackageAttachment(),
 			"tencentcloud_vpc_traffic_package":                                                      vpc.ResourceTencentCloudVpcTrafficPackage(),
+			"tencentcloud_vpc_traffic_mirror_filter_rules_v2":                                       vpc.ResourceTencentCloudVpcTrafficMirrorFilterRulesV2(),
 			"tencentcloud_vpc_snapshot_policy":                                                      vpc.ResourceTencentCloudVpcSnapshotPolicy(),
 			"tencentcloud_vpc_snapshot_policy_attachment":                                           vpc.ResourceTencentCloudVpcSnapshotPolicyAttachment(),
 			"tencentcloud_vpc_snapshot_policy_config":                                               vpc.ResourceTencentCloudVpcSnapshotPolicyConfig(),
