@@ -98,3 +98,57 @@ resource "tencentcloud_protocol_template" "template" {
   name = "test_update"
   protocols = ["udp:all", "tcp:80,90"]
 }`
+
+const testAccProtocolTemplate_with_tags = `
+resource "tencentcloud_protocol_template" "template_tags" {
+  name = "test_with_tags"
+  protocols = ["tcp:443"]
+  key = "env"
+  value = "production"
+}`
+
+const testAccProtocolTemplate_without_tags = `
+resource "tencentcloud_protocol_template" "template_no_tags" {
+  name = "test_no_tags"
+  protocols = ["udp:53"]
+}`
+
+func TestAccTencentCloudProtocolTemplate_with_tags(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { tcacctest.AccPreCheck(t) },
+		Providers:    tcacctest.AccProviders,
+		CheckDestroy: testAccCheckProtocolTemplateDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccProtocolTemplate_with_tags,
+				Check: resource.ComposeAggregateTestCheckFunc(
+					testAccCheckProtocolTemplateExists("tencentcloud_protocol_template.template_tags"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template_tags", "name", "test_with_tags"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template_tags", "protocols.#", "1"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template_tags", "key", "env"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template_tags", "value", "production"),
+				),
+			},
+		},
+	})
+}
+
+func TestAccTencentCloudProtocolTemplate_without_tags(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { tcacctest.AccPreCheck(t) },
+		Providers:    tcacctest.AccProviders,
+		CheckDestroy: testAccCheckProtocolTemplateDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccProtocolTemplate_without_tags,
+				Check: resource.ComposeAggregateTestCheckFunc(
+					testAccCheckProtocolTemplateExists("tencentcloud_protocol_template.template_no_tags"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template_no_tags", "name", "test_no_tags"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template_no_tags", "protocols.#", "1"),
+				),
+			},
+		},
+	})
+}
