@@ -23,7 +23,7 @@ func ResourceTencentCloudVpcReplaceRoutesWithRoutePolicyConfig() *schema.Resourc
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Route Table Instance ID.",
+				Description: "Route Table ID.",
 			},
 
 			"routes": {
