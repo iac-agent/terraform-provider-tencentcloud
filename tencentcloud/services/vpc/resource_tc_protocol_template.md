@@ -1,11 +1,16 @@
-Provides a resource to manage protocol template.
+Provides a resource to manage VPC protocol template.
 
 Example Usage
 
 ```hcl
 resource "tencentcloud_protocol_template" "foo" {
-  name                = "protocol-template-test"
-  protocols = ["tcp:80","udp:all","icmp:10-30"]
+  name      = "protocol-template-test"
+  protocols = ["tcp:80", "udp:all", "icmp:10-30"]
+
+  tags {
+    key   = "Environment"
+    value = "test"
+  }
 }
 ```
 

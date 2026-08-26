@@ -3,6 +3,7 @@ package vpc_test
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"testing"
 
 	tcacctest "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/acctest"
@@ -39,6 +40,35 @@ func TestAccTencentCloudProtocolTemplate_basic_and_update(t *testing.T) {
 					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template", "name", "test_update"),
 					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template", "protocols.#", "2"),
 				),
+			},
+		},
+	})
+}
+
+func TestAccTencentCloudProtocolTemplate_tags(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { tcacctest.AccPreCheck(t) },
+		Providers:    tcacctest.AccProviders,
+		CheckDestroy: testAccCheckProtocolTemplateDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccProtocolTemplate_with_tags,
+				Check: resource.ComposeAggregateTestCheckFunc(
+					testAccCheckProtocolTemplateExists("tencentcloud_protocol_template.template"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template", "name", "test"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template", "protocols.#", "1"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template", "tags.#", "2"),
+				),
+			},
+			{
+				ResourceName:      "tencentcloud_protocol_template.template",
+				ImportState:       true,
+				ImportStateVerify: true,
+			},
+			{
+				Config:      testAccProtocolTemplate_update_tags,
+				ExpectError: regexp.MustCompile("tags.*cannot be changed"),
 			},
 		},
 	})
@@ -93,8 +123,32 @@ resource "tencentcloud_protocol_template" "template" {
   protocols = ["tcp:80"]
 }`
 
+const testAccProtocolTemplate_with_tags = `
+resource "tencentcloud_protocol_template" "template" {
+  name      = "test"
+  protocols = ["tcp:80"]
+  tags {
+    key   = "Environment"
+    value = "production"
+  }
+  tags {
+    key   = "Team"
+    value = "networking"
+  }
+}`
+
 const testAccProtocolTemplate_basic_update_remark = `
 resource "tencentcloud_protocol_template" "template" {
   name = "test_update"
   protocols = ["udp:all", "tcp:80,90"]
+}`
+
+const testAccProtocolTemplate_update_tags = `
+resource "tencentcloud_protocol_template" "template" {
+  name      = "test"
+  protocols = ["tcp:80"]
+  tags {
+    key   = "Environment"
+    value = "staging"
+  }
 }`
