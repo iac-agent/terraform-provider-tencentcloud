@@ -4722,7 +4722,7 @@ func (me *VpcService) DeleteAddressTemplateGroup(ctx context.Context, templateGr
 	return err
 }
 
-func (me *VpcService) CreateServiceTemplate(ctx context.Context, name string, services []interface{}) (templateId string, errRet error) {
+func (me *VpcService) CreateServiceTemplate(ctx context.Context, name string, services []interface{}, tags map[string]string) (templateId string, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 	request := vpc.NewCreateServiceTemplateRequest()
 	defer func() {
@@ -4738,6 +4738,18 @@ func (me *VpcService) CreateServiceTemplate(ctx context.Context, name string, se
 		request.Services[i] = helper.String(v.(string))
 	}
 
+	if len(tags) > 0 {
+		request.Tags = make([]*vpc.Tag, 0, len(tags))
+		for k, v := range tags {
+			key := k
+			value := v
+			request.Tags = append(request.Tags, &vpc.Tag{
+				Key:   &key,
+				Value: &value,
+			})
+		}
+	}
+
 	ratelimit.Check(request.GetAction())
 	response, err := me.client.UseVpcClient().CreateServiceTemplate(request)
 	if err != nil {
@@ -4747,6 +4759,7 @@ func (me *VpcService) CreateServiceTemplate(ctx context.Context, name string, se
 
 	if response == nil || response.Response == nil || response.Response.ServiceTemplate == nil {
 		errRet = fmt.Errorf("TencentCloud SDK return nil response, %s", request.GetAction())
+		return
 	}
 
 	templateId = *response.Response.ServiceTemplate.ServiceTemplateId

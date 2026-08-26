@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_protocol_template"
 sidebar_current: "docs-tencentcloud-resource-protocol_template"
 description: |-
-  Provides a resource to manage protocol template.
+  Provides a resource to manage VPC protocol template.
 ---
 
 # tencentcloud_protocol_template
 
-Provides a resource to manage protocol template.
+Provides a resource to manage VPC protocol template.
 
 ## Example Usage
 
@@ -17,6 +17,11 @@ Provides a resource to manage protocol template.
 resource "tencentcloud_protocol_template" "foo" {
   name      = "protocol-template-test"
   protocols = ["tcp:80", "udp:all", "icmp:10-30"]
+
+  tags {
+    key   = "Environment"
+    value = "test"
+  }
 }
 ```
 
@@ -26,6 +31,12 @@ The following arguments are supported:
 
 * `name` - (Required, String) Name of the protocol template.
 * `protocols` - (Required, Set: [`String`]) Protocol list. Valid protocols are  `tcp`, `udp`, `icmp`, `gre`. Single port(tcp:80), multi-port(tcp:80,443), port range(tcp:3306-20000), all(tcp:all) format are support. Protocol `icmp` and `gre` cannot specify port.
+* `tags` - (Optional, List, ForceNew) Tags of the protocol template.
+
+The `tags` object supports the following:
+
+* `key` - (Required, String) Tag key.
+* `value` - (Optional, String) Tag value.
 
 ## Attributes Reference
 

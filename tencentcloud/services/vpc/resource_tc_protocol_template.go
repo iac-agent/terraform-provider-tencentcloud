@@ -34,6 +34,26 @@ func ResourceTencentCloudProtocolTemplate() *schema.Resource {
 				Required:    true,
 				Description: "Protocol list. Valid protocols are  `tcp`, `udp`, `icmp`, `gre`. Single port(tcp:80), multi-port(tcp:80,443), port range(tcp:3306-20000), all(tcp:all) format are support. Protocol `icmp` and `gre` cannot specify port.",
 			},
+			"tags": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				ForceNew:    true,
+				Description: "Tags of the protocol template.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"key": {
+							Type:        schema.TypeString,
+							Required:    true,
+							Description: "Tag key.",
+						},
+						"value": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Tag value.",
+						},
+					},
+				},
+			},
 		},
 	}
 }
@@ -46,6 +66,14 @@ func resourceTencentCloudProtocolTemplateCreate(d *schema.ResourceData, meta int
 	name := d.Get("name").(string)
 	protocols := d.Get("protocols").(*schema.Set).List()
 
+	tags := make(map[string]string)
+	if v, ok := d.GetOk("tags"); ok {
+		for _, item := range v.([]interface{}) {
+			itemMap := item.(map[string]interface{})
+			tags[itemMap["key"].(string)] = itemMap["value"].(string)
+		}
+	}
+
 	vpcProtocol := VpcService{
 		client: meta.(tccommon.ProviderMeta).GetAPIV3Conn(),
 	}
@@ -53,7 +81,7 @@ func resourceTencentCloudProtocolTemplateCreate(d *schema.ResourceData, meta int
 	var templateId string
 
 	outErr = resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
-		templateId, inErr = vpcProtocol.CreateServiceTemplate(ctx, name, protocols)
+		templateId, inErr = vpcProtocol.CreateServiceTemplate(ctx, name, protocols, tags)
 		if inErr != nil {
 			return tccommon.RetryError(inErr)
 		}
@@ -99,6 +127,23 @@ func resourceTencentCloudProtocolTemplateRead(d *schema.ResourceData, meta inter
 	_ = d.Set("name", template.ServiceTemplateName)
 	_ = d.Set("protocols", template.ServiceSet)
 
+	if template.TagSet != nil {
+		tagList := make([]interface{}, 0, len(template.TagSet))
+		for _, tag := range template.TagSet {
+			tagMap := make(map[string]interface{})
+			if tag.Key != nil {
+				tagMap["key"] = *tag.Key
+			}
+			if tag.Value != nil {
+				tagMap["value"] = *tag.Value
+			}
+			tagList = append(tagList, tagMap)
+		}
+		_ = d.Set("tags", tagList)
+	} else {
+		_ = d.Set("tags", []interface{}{})
+	}
+
 	return nil
 }
 
@@ -108,6 +153,13 @@ func resourceTencentCloudProtocolTemplateUpdate(d *schema.ResourceData, meta int
 	logId := tccommon.GetLogId(tccommon.ContextNil)
 	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
 	templateId := d.Id()
+
+	immutableArgs := []string{"tags"}
+	for _, arg := range immutableArgs {
+		if d.HasChange(arg) {
+			return fmt.Errorf("argument `%s` cannot be changed for protocol_template %s", arg, templateId)
+		}
+	}
 
 	if d.HasChange("name") || d.HasChange("protocols") {
 		var outErr, inErr error
