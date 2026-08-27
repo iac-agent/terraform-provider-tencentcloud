@@ -108,6 +108,15 @@ func TestAccTencentCloudTeoZone_basic(t *testing.T) {
 					resource.TestCheckResourceAttr("tencentcloud_teo_zone.basic", "work_mode_infos.0.work_mode", "version_control"),
 				),
 			},
+			{
+				Config: testAccTeoZonePagination,
+				Check: resource.ComposeTestCheckFunc(
+					testAccCheckZoneExists("tencentcloud_teo_zone.basic"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_zone.basic", "offset", "0"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_zone.basic", "limit", "50"),
+					resource.TestCheckResourceAttrSet("tencentcloud_teo_zone.basic", "total_count"),
+				),
+			},
 		},
 	})
 }
@@ -220,6 +229,25 @@ resource "tencentcloud_teo_zone" "basic" {
 		config_group_type = "edge_functions"
 		work_mode         = "immediate_effect"
 	}
+  }
+
+`
+
+const testAccTeoZonePagination = testAccTeoZoneVar + `
+
+resource "tencentcloud_teo_zone" "basic" {
+	area            = "overseas"
+	alias_zone_name = "tf-test"
+	paused          = false
+	plan_id         = var.plan_id
+	tags = {
+	  "DoNotMove"  = "TF-Test"
+	  "Owner" = "arunma"
+	}
+	type      = "partial"
+	zone_name = var.zone_name
+	offset    = 0
+	limit     = 50
   }
 
 `
