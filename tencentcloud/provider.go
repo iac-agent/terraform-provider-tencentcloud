@@ -2180,6 +2180,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_teo_domain_shared_cname_attachment":                                       teo.ResourceTencentCloudTeoDomainSharedCnameAttachment(),
 			"tencentcloud_teo_edge_kv":                                                              teo.ResourceTencentCloudTeoEdgeKV(),
 			"tencentcloud_teo_edge_kv_namespace":                                                    teo.ResourceTencentCloudTeoEdgeKVNamespace(),
+			"tencentcloud_teo_inference_api_token":                                                  teo.ResourceTencentCloudTeoInferenceAPIToken(),
 			"tencentcloud_tcm_mesh":                                                                 tcm.ResourceTencentCloudTcmMesh(),
 			"tencentcloud_tcm_cluster_attachment":                                                   tcm.ResourceTencentCloudTcmClusterAttachment(),
 			"tencentcloud_tcm_prometheus_attachment":                                                tcm.ResourceTencentCloudTcmPrometheusAttachment(),
