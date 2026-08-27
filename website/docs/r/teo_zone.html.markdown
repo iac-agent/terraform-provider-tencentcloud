@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_zone"
 sidebar_current: "docs-tencentcloud-resource-teo_zone"
 description: |-
-  Provides a resource to create a teo zone
+  Provides a resource to create a TEO zone
 ---
 
 # tencentcloud_teo_zone
 
-Provides a resource to create a teo zone
+Provides a resource to create a TEO zone
 
 ## Example Usage
 
@@ -23,6 +23,24 @@ resource "tencentcloud_teo_zone" "zone" {
   alias_zone_name = "teo-test"
   paused          = false
   plan_id         = "edgeone-2kfv1h391n6w"
+  tags = {
+    "createdBy" = "terraform"
+  }
+}
+```
+
+### With Pagination Parameters
+
+```hcl
+resource "tencentcloud_teo_zone" "zone" {
+  zone_name       = "tf-teo.com"
+  type            = "partial"
+  area            = "overseas"
+  alias_zone_name = "teo-test"
+  paused          = false
+  plan_id         = "edgeone-2kfv1h391n6w"
+  offset          = 0
+  limit           = 50
   tags = {
     "createdBy" = "terraform"
   }
@@ -73,6 +91,8 @@ The following arguments are supported:
 - `ai`: Edge Inference Access.
 * `zone_name` - (Required, String, ForceNew) Site name. When accessing CNAME/NS, please pass the second-level domain (example.com) as the site name; when accessing without a domain name, please leave this value empty.
 * `alias_zone_name` - (Optional, String) Alias site identifier. Limit the input to a combination of numbers, English, - and _, within 20 characters. For details, refer to the alias site identifier. If there is no such usage scenario, leave this field empty.
+* `limit` - (Optional, Int) Pagination limit for the DescribeZones API. Default value: 20, maximum: 100.
+* `offset` - (Optional, Int) Pagination offset for the DescribeZones API. Default value: 0.
 * `paused` - (Optional, Bool) Indicates whether the site is disabled.
 * `tags` - (Optional, Map) Tag description list.
 * `work_mode_infos` - (Optional, List) Configuration group work mode. Each configuration module of the site can enable version control mode or immediate effect mode according to the configuration group dimension. For details, please refer to [Version Management](https://cloud.tencent.com/document/product/1552/113690).
@@ -94,6 +114,7 @@ In addition to all arguments above, the following attributes are exported:
     * `record_value` - Record the value.
     * `subdomain` - Host record.
 * `status` - Site status. Valid values: `active`: NS is switched; `pending`: NS is not switched; `moved`: NS is moved; `deactivated`: this site is blocked.
+* `total_count` - Total count of zones matching the filter criteria from the DescribeZones API.
 * `zone_id` - Site ID.
 
 

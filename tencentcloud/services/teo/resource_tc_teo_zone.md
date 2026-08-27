@@ -1,4 +1,4 @@
-Provides a resource to create a teo zone
+Provides a resource to create a TEO zone
 
 Example Usage
 
@@ -12,6 +12,24 @@ resource "tencentcloud_teo_zone" "zone" {
   alias_zone_name = "teo-test"
   paused          = false
   plan_id         = "edgeone-2kfv1h391n6w"
+  tags = {
+    "createdBy" = "terraform"
+  }
+}
+```
+
+With Pagination Parameters
+
+```hcl
+resource "tencentcloud_teo_zone" "zone" {
+  zone_name       = "tf-teo.com"
+  type            = "partial"
+  area            = "overseas"
+  alias_zone_name = "teo-test"
+  paused          = false
+  plan_id         = "edgeone-2kfv1h391n6w"
+  offset          = 0
+  limit           = 50
   tags = {
     "createdBy" = "terraform"
   }
