@@ -2148,6 +2148,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_teo_security_api_resource":                                                teo.ResourceTencentCloudTeoSecurityAPIResource(),
 			"tencentcloud_teo_security_client_attester":                                             teo.ResourceTencentCloudTeoSecurityClientAttester(),
 			"tencentcloud_teo_function":                                                             teo.ResourceTencentCloudTeoFunction(),
+			"tencentcloud_teo_function_v4":                                                          teo.ResourceTencentCloudTeoFunctionV4(),
 			"tencentcloud_teo_function_rule":                                                        teo.ResourceTencentCloudTeoFunctionRule(),
 			"tencentcloud_teo_function_rule_priority":                                               teo.ResourceTencentCloudTeoFunctionRulePriority(),
 			"tencentcloud_teo_function_runtime_environment":                                         teo.ResourceTencentCloudTeoFunctionRuntimeEnvironment(),
