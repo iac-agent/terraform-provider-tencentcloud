@@ -628,7 +628,372 @@ func TestBotManagementLite_UpdateExpand(t *testing.T) {
 	assert.Equal(t, "120s", *capturedRequest.SecurityPolicy.BotManagementLite.AICrawlerDetection.Action.DenyActionParameters.BlockIpDuration)
 }
 
-// TestBotManagementLite_Schema tests the bot_management_lite schema definition
+// TestRateLimitConfig_UpdateExpand tests Update expands rate_limit_config into ModifySecurityPolicy request
+func TestRateLimitConfig_UpdateExpand(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaSecurityPolicy().client, "UseTeoV20220901Client", teoClient)
+
+	var capturedRequest *teov20220901.ModifySecurityPolicyRequest
+	patches.ApplyMethodFunc(teoClient, "ModifySecurityPolicyWithContext", func(_ context.Context, request *teov20220901.ModifySecurityPolicyRequest) (*teov20220901.ModifySecurityPolicyResponse, error) {
+		capturedRequest = request
+		resp := teov20220901.NewModifySecurityPolicyResponse()
+		resp.Response = &teov20220901.ModifySecurityPolicyResponseParams{
+			RequestId: ptrStringSecurityPolicy("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	// Also mock DescribeSecurityPolicy for the Read call after Update
+	patches.ApplyMethodFunc(teoClient, "DescribeSecurityPolicy", func(request *teov20220901.DescribeSecurityPolicyRequest) (*teov20220901.DescribeSecurityPolicyResponse, error) {
+		resp := teov20220901.NewDescribeSecurityPolicyResponse()
+		resp.Response = &teov20220901.DescribeSecurityPolicyResponseParams{
+			SecurityPolicy: &teov20220901.SecurityPolicy{},
+			RequestId:      ptrStringSecurityPolicy("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaSecurityPolicy()
+	res := teo.ResourceTencentCloudTeoSecurityPolicyConfig()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+		"entity":  "ZoneDefaultPolicy",
+		"security_config": []interface{}{
+			map[string]interface{}{
+				"rate_limit_config": []interface{}{
+					map[string]interface{}{
+						"switch": "on",
+						"rate_limit_user_rules": []interface{}{
+							map[string]interface{}{
+								"threshold":          100,
+								"period":             60,
+								"rule_name":          "test-rule",
+								"action":             "drop",
+								"punish_time":        120,
+								"punish_time_unit":   "second",
+								"rule_status":        "on",
+								"rule_priority":      50,
+								"freq_fields":        []interface{}{"sip"},
+								"freq_scope":         []interface{}{"client_to_eo"},
+								"name":               "custom-page",
+								"custom_response_id": "default",
+								"response_code":      567,
+								"redirect_url":       "https://example.com/redirect",
+								"acl_conditions": []interface{}{
+									map[string]interface{}{
+										"match_from":    "url",
+										"match_param":   "",
+										"operator":      "equal",
+										"match_content": "/test",
+									},
+								},
+							},
+						},
+						"rate_limit_template": []interface{}{
+							map[string]interface{}{
+								"mode":   "normal",
+								"action": "alg",
+							},
+						},
+						"rate_limit_intelligence": []interface{}{
+							map[string]interface{}{
+								"switch": "on",
+								"action": "monitor",
+							},
+						},
+						"rate_limit_customizes": []interface{}{
+							map[string]interface{}{
+								"threshold":        200,
+								"period":           30,
+								"rule_name":        "customize-rule",
+								"action":           "monitor",
+								"punish_time":      60,
+								"punish_time_unit": "minutes",
+								"rule_status":      "on",
+								"rule_priority":    80,
+								"freq_fields":      []interface{}{"sip"},
+								"freq_scope":       []interface{}{"source_to_eo"},
+								"acl_conditions": []interface{}{
+									map[string]interface{}{
+										"match_from":    "host",
+										"match_param":   "",
+										"operator":      "include",
+										"match_content": "example.com",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	})
+	d.SetId("zone-12345678#ZoneDefaultPolicy")
+
+	err := res.Update(d, meta)
+	assert.NoError(t, err)
+	assert.NotNil(t, capturedRequest)
+	assert.NotNil(t, capturedRequest.SecurityConfig)
+	assert.NotNil(t, capturedRequest.SecurityConfig.RateLimitConfig)
+
+	rlConfig := capturedRequest.SecurityConfig.RateLimitConfig
+	assert.Equal(t, "on", *rlConfig.Switch)
+
+	// Verify rate_limit_user_rules
+	assert.Len(t, rlConfig.RateLimitUserRules, 1)
+	userRule := rlConfig.RateLimitUserRules[0]
+	assert.Equal(t, int64(100), *userRule.Threshold)
+	assert.Equal(t, int64(60), *userRule.Period)
+	assert.Equal(t, "test-rule", *userRule.RuleName)
+	assert.Equal(t, "drop", *userRule.Action)
+	assert.Equal(t, int64(120), *userRule.PunishTime)
+	assert.Equal(t, "second", *userRule.PunishTimeUnit)
+	assert.Equal(t, "on", *userRule.RuleStatus)
+	assert.Equal(t, int64(50), *userRule.RulePriority)
+	assert.Len(t, userRule.FreqFields, 1)
+	assert.Equal(t, "sip", *userRule.FreqFields[0])
+	assert.Len(t, userRule.FreqScope, 1)
+	assert.Equal(t, "client_to_eo", *userRule.FreqScope[0])
+	assert.Equal(t, "custom-page", *userRule.Name)
+	assert.Equal(t, "default", *userRule.CustomResponseId)
+	assert.Equal(t, int64(567), *userRule.ResponseCode)
+	assert.Equal(t, "https://example.com/redirect", *userRule.RedirectUrl)
+	assert.Len(t, userRule.AclConditions, 1)
+	assert.Equal(t, "url", *userRule.AclConditions[0].MatchFrom)
+	assert.Equal(t, "equal", *userRule.AclConditions[0].Operator)
+	assert.Equal(t, "/test", *userRule.AclConditions[0].MatchContent)
+
+	// Verify rate_limit_template
+	assert.NotNil(t, rlConfig.RateLimitTemplate)
+	assert.Equal(t, "normal", *rlConfig.RateLimitTemplate.Mode)
+	assert.Equal(t, "alg", *rlConfig.RateLimitTemplate.Action)
+
+	// Verify rate_limit_intelligence
+	assert.NotNil(t, rlConfig.RateLimitIntelligence)
+	assert.Equal(t, "on", *rlConfig.RateLimitIntelligence.Switch)
+	assert.Equal(t, "monitor", *rlConfig.RateLimitIntelligence.Action)
+
+	// Verify rate_limit_customizes
+	assert.Len(t, rlConfig.RateLimitCustomizes, 1)
+	customRule := rlConfig.RateLimitCustomizes[0]
+	assert.Equal(t, int64(200), *customRule.Threshold)
+	assert.Equal(t, int64(30), *customRule.Period)
+	assert.Equal(t, "customize-rule", *customRule.RuleName)
+	assert.Equal(t, "monitor", *customRule.Action)
+	assert.Equal(t, int64(60), *customRule.PunishTime)
+	assert.Equal(t, "minutes", *customRule.PunishTimeUnit)
+	assert.Equal(t, "on", *customRule.RuleStatus)
+	assert.Equal(t, int64(80), *customRule.RulePriority)
+	assert.Len(t, customRule.FreqFields, 1)
+	assert.Equal(t, "sip", *customRule.FreqFields[0])
+	assert.Len(t, customRule.FreqScope, 1)
+	assert.Equal(t, "source_to_eo", *customRule.FreqScope[0])
+	assert.Len(t, customRule.AclConditions, 1)
+	assert.Equal(t, "host", *customRule.AclConditions[0].MatchFrom)
+	assert.Equal(t, "include", *customRule.AclConditions[0].Operator)
+	assert.Equal(t, "example.com", *customRule.AclConditions[0].MatchContent)
+}
+
+// TestRateLimitConfig_DeleteNeutralizes tests Delete sets empty SecurityConfig
+func TestRateLimitConfig_DeleteNeutralizes(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaSecurityPolicy().client, "UseTeoV20220901Client", teoClient)
+
+	var capturedRequest *teov20220901.ModifySecurityPolicyRequest
+	patches.ApplyMethodFunc(teoClient, "ModifySecurityPolicyWithContext", func(_ context.Context, request *teov20220901.ModifySecurityPolicyRequest) (*teov20220901.ModifySecurityPolicyResponse, error) {
+		capturedRequest = request
+		resp := teov20220901.NewModifySecurityPolicyResponse()
+		resp.Response = &teov20220901.ModifySecurityPolicyResponseParams{
+			RequestId: ptrStringSecurityPolicy("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaSecurityPolicy()
+	res := teo.ResourceTencentCloudTeoSecurityPolicyConfig()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+		"entity":  "ZoneDefaultPolicy",
+	})
+	d.SetId("zone-12345678#ZoneDefaultPolicy")
+
+	err := res.Delete(d, meta)
+	assert.NoError(t, err)
+	assert.NotNil(t, capturedRequest)
+	assert.NotNil(t, capturedRequest.SecurityConfig)
+	assert.Nil(t, capturedRequest.SecurityConfig.RateLimitConfig)
+	assert.Equal(t, "zone-12345678", *capturedRequest.ZoneId)
+	assert.Equal(t, "ZoneDefaultPolicy", *capturedRequest.Entity)
+}
+
+// TestRateLimitConfig_ReadEmpty tests Read when response is nil (resource not found)
+func TestRateLimitConfig_ReadEmpty(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaSecurityPolicy().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeSecurityPolicy", func(request *teov20220901.DescribeSecurityPolicyRequest) (*teov20220901.DescribeSecurityPolicyResponse, error) {
+		resp := teov20220901.NewDescribeSecurityPolicyResponse()
+		resp.Response = &teov20220901.DescribeSecurityPolicyResponseParams{
+			SecurityPolicy: nil,
+			RequestId:      ptrStringSecurityPolicy("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaSecurityPolicy()
+	res := teo.ResourceTencentCloudTeoSecurityPolicyConfig()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+		"entity":  "ZoneDefaultPolicy",
+	})
+	d.SetId("zone-12345678#ZoneDefaultPolicy")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "", d.Id())
+}
+
+// TestRateLimitConfig_CreateInvalidEntity tests Create with illegal entity/host/template_id combination
+func TestRateLimitConfig_CreateInvalidEntity(t *testing.T) {
+	meta := newMockMetaSecurityPolicy()
+	res := teo.ResourceTencentCloudTeoSecurityPolicyConfig()
+
+	// ZoneDefaultPolicy with host set - illegal
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+		"entity":  "ZoneDefaultPolicy",
+		"host":    "www.example.com",
+	})
+	err := res.Create(d, meta)
+	assert.Error(t, err)
+
+	// Host without host - illegal
+	d = schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+		"entity":  "Host",
+	})
+	err = res.Create(d, meta)
+	assert.Error(t, err)
+
+	// Template without template_id - illegal
+	d = schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+		"entity":  "Template",
+	})
+	err = res.Create(d, meta)
+	assert.Error(t, err)
+}
+
+// TestRateLimitConfig_Schema tests the rate_limit_config schema definition
+func TestRateLimitConfig_Schema(t *testing.T) {
+	res := teo.ResourceTencentCloudTeoSecurityPolicyConfig()
+
+	assert.NotNil(t, res)
+	assert.Contains(t, res.Schema, "security_config")
+
+	scSchema := res.Schema["security_config"]
+	assert.NotNil(t, scSchema.Elem)
+	scRes := scSchema.Elem.(*schema.Resource)
+	assert.Contains(t, scRes.Schema, "rate_limit_config")
+
+	rlSchema := scRes.Schema["rate_limit_config"]
+	assert.Equal(t, schema.TypeList, rlSchema.Type)
+	assert.True(t, rlSchema.Optional)
+	assert.True(t, rlSchema.Computed)
+	assert.Equal(t, 1, rlSchema.MaxItems)
+
+	rlRes := rlSchema.Elem.(*schema.Resource)
+	assert.Contains(t, rlRes.Schema, "switch")
+	assert.Contains(t, rlRes.Schema, "rate_limit_user_rules")
+	assert.Contains(t, rlRes.Schema, "rate_limit_template")
+	assert.Contains(t, rlRes.Schema, "rate_limit_intelligence")
+	assert.Contains(t, rlRes.Schema, "rate_limit_customizes")
+
+	// Verify rate_limit_user_rules element schema
+	ulrSchema := rlRes.Schema["rate_limit_user_rules"]
+	ulrRes := ulrSchema.Elem.(*schema.Resource)
+	assert.Contains(t, ulrRes.Schema, "threshold")
+	assert.Contains(t, ulrRes.Schema, "period")
+	assert.Contains(t, ulrRes.Schema, "rule_name")
+	assert.Contains(t, ulrRes.Schema, "action")
+	assert.Contains(t, ulrRes.Schema, "punish_time")
+	assert.Contains(t, ulrRes.Schema, "punish_time_unit")
+	assert.Contains(t, ulrRes.Schema, "rule_status")
+	assert.Contains(t, ulrRes.Schema, "acl_conditions")
+	assert.Contains(t, ulrRes.Schema, "rule_priority")
+	assert.Contains(t, ulrRes.Schema, "rule_id")
+	assert.True(t, ulrRes.Schema["rule_id"].Computed)
+	assert.False(t, ulrRes.Schema["rule_id"].Optional)
+	assert.Contains(t, ulrRes.Schema, "freq_fields")
+	assert.Contains(t, ulrRes.Schema, "update_time")
+	assert.True(t, ulrRes.Schema["update_time"].Computed)
+	assert.False(t, ulrRes.Schema["update_time"].Optional)
+	assert.Contains(t, ulrRes.Schema, "freq_scope")
+	assert.Contains(t, ulrRes.Schema, "name")
+	assert.Contains(t, ulrRes.Schema, "custom_response_id")
+	assert.Contains(t, ulrRes.Schema, "response_code")
+	assert.Contains(t, ulrRes.Schema, "redirect_url")
+
+	// Verify acl_conditions element schema
+	acSchema := ulrRes.Schema["acl_conditions"]
+	acRes := acSchema.Elem.(*schema.Resource)
+	assert.Contains(t, acRes.Schema, "match_from")
+	assert.Contains(t, acRes.Schema, "match_param")
+	assert.Contains(t, acRes.Schema, "operator")
+	assert.Contains(t, acRes.Schema, "match_content")
+
+	// Verify rate_limit_template schema
+	rltSchema := rlRes.Schema["rate_limit_template"]
+	rltRes := rltSchema.Elem.(*schema.Resource)
+	assert.Contains(t, rltRes.Schema, "mode")
+	assert.Contains(t, rltRes.Schema, "action")
+	assert.Contains(t, rltRes.Schema, "rate_limit_template_detail")
+	assert.True(t, rltRes.Schema["rate_limit_template_detail"].Computed)
+	assert.False(t, rltRes.Schema["rate_limit_template_detail"].Optional)
+
+	// Verify rate_limit_template_detail is Computed-only
+	rltdSchema := rltRes.Schema["rate_limit_template_detail"]
+	rltdRes := rltdSchema.Elem.(*schema.Resource)
+	assert.Contains(t, rltdRes.Schema, "mode")
+	assert.Contains(t, rltdRes.Schema, "id")
+	assert.Contains(t, rltdRes.Schema, "action")
+	assert.Contains(t, rltdRes.Schema, "punish_time")
+	assert.Contains(t, rltdRes.Schema, "threshold")
+	assert.Contains(t, rltdRes.Schema, "period")
+	for _, s := range rltdRes.Schema {
+		assert.True(t, s.Computed)
+		assert.False(t, s.Optional)
+	}
+
+	// Verify rate_limit_intelligence schema
+	rliSchema := rlRes.Schema["rate_limit_intelligence"]
+	rliRes := rliSchema.Elem.(*schema.Resource)
+	assert.Contains(t, rliRes.Schema, "switch")
+	assert.Contains(t, rliRes.Schema, "action")
+	assert.Contains(t, rliRes.Schema, "rule_id")
+	assert.True(t, rliRes.Schema["rule_id"].Computed)
+	assert.False(t, rliRes.Schema["rule_id"].Optional)
+
+	// Verify rate_limit_customizes reuses rate_limit_user_rules structure
+	rlcSchema := rlRes.Schema["rate_limit_customizes"]
+	rlcRes := rlcSchema.Elem.(*schema.Resource)
+	assert.Contains(t, rlcRes.Schema, "threshold")
+	assert.Contains(t, rlcRes.Schema, "period")
+	assert.Contains(t, rlcRes.Schema, "rule_name")
+	assert.Contains(t, rlcRes.Schema, "action")
+	assert.Contains(t, rlcRes.Schema, "acl_conditions")
+	assert.Contains(t, rlcRes.Schema, "rule_priority")
+}
+
 func TestBotManagementLite_Schema(t *testing.T) {
 	res := teo.ResourceTencentCloudTeoSecurityPolicyConfig()
 
