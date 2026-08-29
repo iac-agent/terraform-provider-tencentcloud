@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_zone_setting"
 sidebar_current: "docs-tencentcloud-resource-teo_zone_setting"
 description: |-
-  Provides a resource to create a teo zone_setting
+  Provides a resource to create a TEO zone setting
 ---
 
 # tencentcloud_teo_zone_setting
 
-Provides a resource to create a teo zone_setting
+Provides a resource to create a TEO zone setting
 
 ~> **NOTE:** The current resource has been deprecated, please use `tencentcloud_teo_l7_acc_setting`.
 
@@ -310,6 +310,6 @@ In addition to all arguments above, the following attributes are exported:
 
 teo zone_setting can be imported using the zone_id, e.g.
 ```
-terraform import tencentcloud_teo_zone_setting.zone_setting zone-297z8rf93cfw#
+terraform import tencentcloud_teo_zone_setting.zone_setting zone-297z8rf93cfw
 ```
 
