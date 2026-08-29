@@ -27,7 +27,7 @@ func ResourceTencentCloudClsCkafkaConsumer() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "topic id.",
+				Description: "topic id.1.",
 			},
 
 			"need_content": {

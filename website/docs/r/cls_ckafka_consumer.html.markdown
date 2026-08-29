@@ -48,7 +48,7 @@ resource "tencentcloud_cls_ckafka_consumer" "example" {
 
 The following arguments are supported:
 
-* `topic_id` - (Required, String, ForceNew) topic id.
+* `topic_id` - (Required, String, ForceNew) topic id.1.
 * `ckafka` - (Optional, List) ckafka info.
 * `compression` - (Optional, Int) compression method. 0 for NONE, 2 for SNAPPY, 3 for LZ4.
 * `content` - (Optional, List) metadata information.
