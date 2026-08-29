@@ -6,6 +6,9 @@ Example Usage
 resource "tencentcloud_protocol_template" "foo" {
   name                = "protocol-template-test"
   protocols = ["tcp:80","udp:all","icmp:10-30"]
+  tags = {
+    "env" = "prod"
+  }
 }
 ```
 
