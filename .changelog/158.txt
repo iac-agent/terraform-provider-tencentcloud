@@ -1,0 +1,7 @@
+```release-note:enhancement
+resource/tencentcloud_teo_origin_acl: add origin_acl_family parameter to support geographic domain control for origin ACL
+```
+
+```release-note:enhancement
+data-source/tencentcloud_teo_origin_acl: add origin_acl_family parameter to expose geographic domain information
+```
