@@ -43,6 +43,11 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 								Type: schema.TypeString,
 							},
 						},
+						"status": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Origin ACL status. Valid values: online, offline, updating.",
+						},
 						"current_origin_acl": {
 							Type:        schema.TypeList,
 							Computed:    true,
@@ -301,11 +306,6 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 								},
 							},
 						},
-						"status": {
-							Type:        schema.TypeString,
-							Computed:    true,
-							Description: "Origin protection status. Vaild values:\n- online: in effect;\n- offline: disabled;\n- updating: configuration deployment in progress.",
-						},
 						"origin_acl_family": {
 							Type:        schema.TypeString,
 							Computed:    true,
@@ -364,6 +364,10 @@ func dataSourceTencentCloudTeoOriginAclRead(d *schema.ResourceData, meta interfa
 
 		if respData.OriginACLInfo.L4ProxyIds != nil {
 			originACLInfoMap["l4_proxy_ids"] = respData.OriginACLInfo.L4ProxyIds
+		}
+
+		if respData.OriginACLInfo.Status != nil {
+			originACLInfoMap["status"] = respData.OriginACLInfo.Status
 		}
 
 		currentOriginACLMap := map[string]interface{}{}

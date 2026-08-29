@@ -11,6 +11,9 @@ description: |-
 
 Use this data source to query detailed information of TEO origin acl
 
+The `origin_acl_info` block contains the following computed fields:
+- `status` - Origin ACL status. Valid values: `online`, `offline`, `updating`.
+
 ## Example Usage
 
 ### Query origin acl by zone Id
@@ -76,9 +79,6 @@ Note: This field may return null, which indicates a failure to obtain a valid va
       * `ipv6` - IPv6 subnet.
     * `version` - Version number.
   * `origin_acl_family` - Origin ACL control domain.
-  * `status` - Origin protection status. Vaild values:
-- online: in effect;
-- offline: disabled;
-- updating: configuration deployment in progress.
+  * `status` - Origin ACL status. Valid values: online, offline, updating.
 
 

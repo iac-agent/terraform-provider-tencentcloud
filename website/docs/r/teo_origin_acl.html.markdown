@@ -13,6 +13,8 @@ Provides a resource to create a TEO origin acl
 
 ~> **NOTE:** This resource must exclusive in one origin acl, do not declare additional rule resources of this origin acl elsewhere.
 
+The `status` field is a computed field that shows the current status of the origin ACL. Valid values are: `online`, `offline`, `updating`.
+
 ## Example Usage
 
 ```hcl
@@ -54,7 +56,7 @@ The following arguments are supported:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-
+* `status` - Origin ACL status. Valid values: online, offline, updating.
 
 ## Timeouts
 

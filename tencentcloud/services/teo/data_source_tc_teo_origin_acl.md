@@ -1,5 +1,8 @@
 Use this data source to query detailed information of TEO origin acl
 
+The `origin_acl_info` block contains the following computed fields:
+- `status` - Origin ACL status. Valid values: `online`, `offline`, `updating`.
+
 Example Usage
 
 Query origin acl by zone Id
