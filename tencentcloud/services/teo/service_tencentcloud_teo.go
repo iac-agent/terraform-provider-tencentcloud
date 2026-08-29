@@ -1330,6 +1330,59 @@ func (me *TeoService) DescribeTeoRealtimeLogDeliveryById(ctx context.Context, zo
 	return
 }
 
+func (me *TeoService) DescribeTeoRealtimeLogDeliveryTasksByFilters(ctx context.Context, zoneId string, filters []*teo.AdvancedFilter) (ret []*teo.RealtimeLogDeliveryTask, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	var (
+		request  = teo.NewDescribeRealtimeLogDeliveryTasksRequest()
+		response = teo.NewDescribeRealtimeLogDeliveryTasksResponse()
+		offset   int64
+	)
+
+	request.ZoneId = helper.String(zoneId)
+	request.Limit = helper.Uint64(1000)
+	request.Filters = filters
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+
+	for {
+		request.Offset = helper.Int64(offset)
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+			result, e := me.client.UseTeoClient().DescribeRealtimeLogDeliveryTasks(request)
+			if e != nil {
+				return tccommon.RetryError(e)
+			}
+			response = result
+			return nil
+		})
+		if err != nil {
+			errRet = err
+			return
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response.Response == nil {
+			return
+		}
+
+		ret = append(ret, response.Response.RealtimeLogDeliveryTasks...)
+
+		if len(ret) >= int(*response.Response.TotalCount) {
+			break
+		}
+
+		offset += 1000
+	}
+
+	return
+}
+
 func (me *TeoService) DescribeTeoSecurityIpGroupById(ctx context.Context, zoneId string, groupId string) (ret *teo.DescribeSecurityIPGroupResponseParams, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
