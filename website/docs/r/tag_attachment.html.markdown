@@ -27,7 +27,7 @@ The following arguments are supported:
 
 * `resource` - (Required, String, ForceNew) [Six-segment description of resources](https://cloud.tencent.com/document/product/598/10606).
 * `tag_key` - (Required, String, ForceNew) tag key.
-* `tag_value` - (Required, String, ForceNew) tag value.
+* `tag_value` - (Required, String) tag value.
 
 ## Attributes Reference
 
