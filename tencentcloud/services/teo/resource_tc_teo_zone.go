@@ -38,6 +38,20 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 				Description: "Site name. When accessing CNAME/NS, please pass the second-level domain (example.com) as the site name; when accessing without a domain name, please leave this value empty.",
 			},
 
+			"allow_duplicates": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				ForceNew:    true,
+				Description: "Whether to allow duplicate access. true: Allow duplicate access; false: Do not allow duplicate access. Default value is false.",
+			},
+
+			"jump_start": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				ForceNew:    true,
+				Description: "Whether to skip existing DNS record scanning during site creation. Default value is false.",
+			},
+
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
@@ -102,6 +116,42 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 										Type:        schema.TypeString,
 										Computed:    true,
 										Description: "Record the value.",
+									},
+								},
+							},
+						},
+						"file_verification": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "CNAME, no-domain access, using file verification information. For details, please refer to [Site/Domain Name Ownership Verification](https://cloud.tencent.com/document/product/1552/70789#7af6ecf8-afca-4e35-8811-b5797ed1bde5). Note: This field may return null, indicating that no valid value can be obtained.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"path": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The URL path for file verification.",
+									},
+									"content": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The content of the verification file.",
+									},
+								},
+							},
+						},
+						"ns_verification": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "NS access, switching DNS server information. For details, please refer to [Modify DNS Server](https://cloud.tencent.com/document/product/1552/90452). Note: This field may return null, indicating that no valid value can be obtained.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"name_servers": {
+										Type:        schema.TypeList,
+										Computed:    true,
+										Description: "NS access, DNS server addresses assigned to the user.",
+										Elem: &schema.Schema{
+											Type: schema.TypeString,
+										},
 									},
 								},
 							},
@@ -183,6 +233,14 @@ func resourceTencentCloudTeoZoneCreate(d *schema.ResourceData, meta interface{})
 
 	if v, ok := d.GetOk("alias_zone_name"); ok {
 		request.AliasZoneName = helper.String(v.(string))
+	}
+
+	if v, ok := d.GetOkExists("allow_duplicates"); ok {
+		request.AllowDuplicates = helper.Bool(v.(bool))
+	}
+
+	if v, ok := d.GetOkExists("jump_start"); ok {
+		request.JumpStart = helper.Bool(v.(bool))
 	}
 
 	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
@@ -295,22 +353,43 @@ func resourceTencentCloudTeoZoneRead(d *schema.ResourceData, meta interface{}) e
 	ownershipVerificationMap := map[string]interface{}{}
 
 	if respData.OwnershipVerification != nil {
-		dnsVerificationMap := map[string]interface{}{}
-
 		if respData.OwnershipVerification.DnsVerification != nil {
+			dnsVerificationMap := map[string]interface{}{}
 			if respData.OwnershipVerification.DnsVerification.Subdomain != nil {
 				dnsVerificationMap["subdomain"] = respData.OwnershipVerification.DnsVerification.Subdomain
 			}
-
 			if respData.OwnershipVerification.DnsVerification.RecordType != nil {
 				dnsVerificationMap["record_type"] = respData.OwnershipVerification.DnsVerification.RecordType
 			}
-
 			if respData.OwnershipVerification.DnsVerification.RecordValue != nil {
 				dnsVerificationMap["record_value"] = respData.OwnershipVerification.DnsVerification.RecordValue
 			}
-
 			ownershipVerificationMap["dns_verification"] = []interface{}{dnsVerificationMap}
+		} else {
+			ownershipVerificationMap["dns_verification"] = []interface{}{}
+		}
+
+		if respData.OwnershipVerification.FileVerification != nil {
+			fileVerificationMap := map[string]interface{}{}
+			if respData.OwnershipVerification.FileVerification.Path != nil {
+				fileVerificationMap["path"] = respData.OwnershipVerification.FileVerification.Path
+			}
+			if respData.OwnershipVerification.FileVerification.Content != nil {
+				fileVerificationMap["content"] = respData.OwnershipVerification.FileVerification.Content
+			}
+			ownershipVerificationMap["file_verification"] = []interface{}{fileVerificationMap}
+		} else {
+			ownershipVerificationMap["file_verification"] = []interface{}{}
+		}
+
+		if respData.OwnershipVerification.NsVerification != nil {
+			nsVerificationMap := map[string]interface{}{}
+			if respData.OwnershipVerification.NsVerification.NameServers != nil {
+				nsVerificationMap["name_servers"] = respData.OwnershipVerification.NsVerification.NameServers
+			}
+			ownershipVerificationMap["ns_verification"] = []interface{}{nsVerificationMap}
+		} else {
+			ownershipVerificationMap["ns_verification"] = []interface{}{}
 		}
 
 		_ = d.Set("ownership_verification", []interface{}{ownershipVerificationMap})
