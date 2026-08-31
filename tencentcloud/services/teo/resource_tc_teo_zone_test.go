@@ -112,6 +112,27 @@ func TestAccTencentCloudTeoZone_basic(t *testing.T) {
 	})
 }
 
+// go test -test.run TestAccTencentCloudTeoZone_allowDuplicatesAndJumpStart -v
+func TestAccTencentCloudTeoZone_allowDuplicatesAndJumpStart(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { tcacctest.AccPreCheckCommon(t, tcacctest.ACCOUNT_TYPE_PRIVATE) },
+		Providers:    tcacctest.AccProviders,
+		CheckDestroy: testAccCheckZoneDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccTeoZoneWithAllowDuplicatesAndJumpStart,
+				Check: resource.ComposeTestCheckFunc(
+					testAccCheckZoneExists("tencentcloud_teo_zone.basic"),
+					resource.TestCheckResourceAttrSet("tencentcloud_teo_zone.basic", "zone_id"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_zone.basic", "allow_duplicates", "true"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_zone.basic", "jump_start", "true"),
+				),
+			},
+		},
+	})
+}
+
 func testAccCheckZoneDestroy(s *terraform.State) error {
 	logId := tccommon.GetLogId(tccommon.ContextNil)
 	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
@@ -220,6 +241,25 @@ resource "tencentcloud_teo_zone" "basic" {
 		config_group_type = "edge_functions"
 		work_mode         = "immediate_effect"
 	}
+  }
+
+`
+
+const testAccTeoZoneWithAllowDuplicatesAndJumpStart = testAccTeoZoneVar + `
+
+resource "tencentcloud_teo_zone" "basic" {
+	area             = "overseas"
+	alias_zone_name  = "tf-test"
+	paused           = false
+	plan_id          = var.plan_id
+	tags = {
+	  "DoNotMove"  = "TF-Test"
+	  "Owner" = "arunma"
+	}
+	type             = "partial"
+	zone_name        = var.zone_name
+	allow_duplicates = true
+	jump_start       = true
   }
 
 `
