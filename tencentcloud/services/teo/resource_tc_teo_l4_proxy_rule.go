@@ -107,6 +107,37 @@ func ResourceTencentCloudTeoL4ProxyRule() *schema.Resource {
 							Computed:    true,
 							Description: "Rule status. Valid values:<li>online: Enabled;</li>\n<li>offline: Disabled;</li>\n<li>progress: Deploying;</li>\n<li>stopping: Disabling;</li>\n<li>fail: Failed to deploy or disable.</li>.",
 						},
+						"bu_id": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Computed:    true,
+							Description: "Business unit ID.",
+						},
+						"remote_auth": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							MaxItems:    1,
+							Description: "Remote authentication information. Note: This field is returned by DescribeL4ProxyRules only and is ignored in Create/Modify. When empty in Describe response, it means remote authentication is not enabled.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"switch": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Remote authentication switch. Valid values: `on` (enabled), `off` (disabled).",
+									},
+									"address": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Remote authentication service address, format: domain/ip:port.",
+									},
+									"server_faulty_behavior": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Default back-to-origin behavior after remote authentication service is unreachable. Valid values: `reject` (block access), `allow` (allow pass).",
+									},
+								},
+							},
+						},
 					},
 				},
 			},
@@ -182,6 +213,9 @@ func resourceTencentCloudTeoL4ProxyRuleCreate(d *schema.ResourceData, meta inter
 			}
 			if v, ok := l4ProxyRuleMap["rule_tag"].(string); ok && v != "" {
 				l4ProxyRule.RuleTag = helper.String(v)
+			}
+			if v, ok := l4ProxyRuleMap["bu_id"].(string); ok && v != "" {
+				l4ProxyRule.BuId = helper.String(v)
 			}
 			request.L4ProxyRules = append(request.L4ProxyRules, &l4ProxyRule)
 		}
@@ -296,6 +330,24 @@ func resourceTencentCloudTeoL4ProxyRuleRead(d *schema.ResourceData, meta interfa
 			l4ProxyRuleMap["status"] = l4ProxyRule.Status
 		}
 
+		if l4ProxyRule.BuId != nil {
+			l4ProxyRuleMap["bu_id"] = l4ProxyRule.BuId
+		}
+
+		if l4ProxyRule.RemoteAuth != nil {
+			remoteAuthMap := map[string]interface{}{}
+			if l4ProxyRule.RemoteAuth.Switch != nil {
+				remoteAuthMap["switch"] = l4ProxyRule.RemoteAuth.Switch
+			}
+			if l4ProxyRule.RemoteAuth.Address != nil {
+				remoteAuthMap["address"] = l4ProxyRule.RemoteAuth.Address
+			}
+			if l4ProxyRule.RemoteAuth.ServerFaultyBehavior != nil {
+				remoteAuthMap["server_faulty_behavior"] = l4ProxyRule.RemoteAuth.ServerFaultyBehavior
+			}
+			l4ProxyRuleMap["remote_auth"] = []interface{}{remoteAuthMap}
+		}
+
 		l4ProxyRuleList = append(l4ProxyRuleList, l4ProxyRuleMap)
 
 		_ = d.Set("l4_proxy_rules", l4ProxyRuleList)
@@ -374,6 +426,9 @@ func resourceTencentCloudTeoL4ProxyRuleUpdate(d *schema.ResourceData, meta inter
 				}
 				if v, ok := l4ProxyRuleMap["rule_tag"].(string); ok && v != "" {
 					l4ProxyRule.RuleTag = helper.String(v)
+				}
+				if v, ok := l4ProxyRuleMap["bu_id"].(string); ok && v != "" {
+					l4ProxyRule.BuId = helper.String(v)
 				}
 				request.L4ProxyRules = append(request.L4ProxyRules, &l4ProxyRule)
 			}

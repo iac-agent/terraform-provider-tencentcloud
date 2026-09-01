@@ -21,6 +21,7 @@ resource "tencentcloud_teo_l4_proxy_rule" "teo_l4_proxy_rule" {
         rule_tag                    = "aaa"
         session_persist             = "off"
         session_persist_time        = 3600
+        bu_id                       = "bu-abc123"
     }
 }
 ```

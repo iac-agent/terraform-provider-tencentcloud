@@ -6110,44 +6110,45 @@ type DDoS struct {
 }
 
 type DDoSAttackEvent struct {
-	// 事件ID。
+	// <p>事件 ID。</p>
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 攻击类型(对应交互事件名称)。
+	// <p>攻击类型。</p>
 	AttackType *string `json:"AttackType,omitnil,omitempty" name:"AttackType"`
 
-	// 攻击状态。
+	// <p>攻击状态。</p><p>枚举值：</p><ul><li>0： 观察中</li><li>1： 攻击中</li><li>2： 攻击结束</li></ul>
 	AttackStatus *int64 `json:"AttackStatus,omitnil,omitempty" name:"AttackStatus"`
 
-	// 攻击最大带宽，单位为 bps。
+	// <p>攻击最大带宽，单位为 bps。</p>
 	AttackMaxBandWidth *int64 `json:"AttackMaxBandWidth,omitnil,omitempty" name:"AttackMaxBandWidth"`
 
-	// 攻击包速率峰值，单位为 pps。
+	// <p>攻击包速率峰值，单位为 pps。</p>
 	AttackPacketMaxRate *int64 `json:"AttackPacketMaxRate,omitnil,omitempty" name:"AttackPacketMaxRate"`
 
-	// 攻击开始时间，单位为s。
+	// <p>攻击开始时间戳。</p><p>单位：秒</p>
 	AttackStartTime *int64 `json:"AttackStartTime,omitnil,omitempty" name:"AttackStartTime"`
 
-	// 攻击结束时间，单位为s。
+	// <p>攻击结束时间戳。</p><p>单位：秒</p>
 	AttackEndTime *int64 `json:"AttackEndTime,omitnil,omitempty" name:"AttackEndTime"`
 
-	// DDoS策略组ID。
+	// <p>DDoS 策略组 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 站点ID。
+	// <p>站点 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 攻击事件所属地区，取值有：
-	// <li>overseas：全球（除中国大陆地区）数据；</li>
-	// <li>mainland：中国大陆地区数据。</li>
+	// <p>攻击事件所属地区。</p><p>枚举值：</p><ul><li>overseas： 全球（除中国大陆地区）数据；</li><li>mainland： 中国大陆地区数据。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 封禁解封信息。
+	// <p>封禁解封信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DDoSBlockData []*DDoSBlockData `json:"DDoSBlockData,omitnil,omitempty" name:"DDoSBlockData"`
+
+	// <p>被 DDoS 攻击的目的 IP 列表。</p>
+	DDoSAttackDips []*string `json:"DDoSAttackDips,omitnil,omitempty" name:"DDoSAttackDips"`
 }
 
 type DDoSBlockData struct {
@@ -8540,6 +8541,101 @@ func (r *DescribeApplicationProxiesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAvailableCustomActionsForRuleEngineRequestParams struct {
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>过滤条件，多个条件为且关系，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用的规则引擎定制配置。详细的过滤条件如下：</p><li>action-id：按照定制配置唯一标识 ID 进行过滤；</li><li>name：按照定制配置名称进行过滤。</li>模糊查询时仅支持过滤字段名为 <code>name</code>。<p></p>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页查询限制数目。</p><p>取值范围：[0, 1000]</p><p>默认值：20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量。</p><p>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序字段，取值有：</p><li>action-id：按照定制配置唯一标识 ID 排序；</li><li>create-time：按照定制配置创建时间排序。</li>默认值：<code>action-id</code>。<p></p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>排序方式，取值有：</p><li>asc：升序排序；</li><li>desc：降序排序。</li>默认值：desc。<p></p>
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+type DescribeAvailableCustomActionsForRuleEngineRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>过滤条件，多个条件为且关系，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用的规则引擎定制配置。详细的过滤条件如下：</p><li>action-id：按照定制配置唯一标识 ID 进行过滤；</li><li>name：按照定制配置名称进行过滤。</li>模糊查询时仅支持过滤字段名为 <code>name</code>。<p></p>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页查询限制数目。</p><p>取值范围：[0, 1000]</p><p>默认值：20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量。</p><p>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序字段，取值有：</p><li>action-id：按照定制配置唯一标识 ID 排序；</li><li>create-time：按照定制配置创建时间排序。</li>默认值：<code>action-id</code>。<p></p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>排序方式，取值有：</p><li>asc：升序排序；</li><li>desc：降序排序。</li>默认值：desc。<p></p>
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeAvailableCustomActionsForRuleEngineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailableCustomActionsForRuleEngineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SortBy")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAvailableCustomActionsForRuleEngineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAvailableCustomActionsForRuleEngineResponseParams struct {
+	// <p>符合条件的规则引擎定制配置的总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>符合条件的规则引擎定制配置的列表。</p>
+	CustomActionSet []*RuleEngineCustomAction `json:"CustomActionSet,omitnil,omitempty" name:"CustomActionSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAvailableCustomActionsForRuleEngineResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAvailableCustomActionsForRuleEngineResponseParams `json:"Response"`
+}
+
+func (r *DescribeAvailableCustomActionsForRuleEngineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailableCustomActionsForRuleEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAvailablePlansRequestParams struct {
 
 }
@@ -9096,73 +9192,57 @@ func (r *DescribeCustomErrorPagesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDDoSAttackDataRequestParams struct {
-	// 开始时间。
+	// <p>开始时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
+	// <p>结束时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 31 天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计指标列表，取值有：
-	// <li>ddos_attackMaxBandwidth：攻击带宽峰值；</li>
-	// <li>ddos_attackMaxPackageRate：攻击包速率峰值 ；</li>
-	// <li>ddos_attackBandwidth：攻击带宽曲线；</li>
-	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
+	// <p>统计指标列表，至少填写 1 个，且不允许重复。</p><p>枚举值：</p><ul><li>ddos_attackMaxBandwidth： 攻击带宽峰值，单位 bps；</li><li>ddos_attackMaxPackageRate： 攻击包速率峰值，单位 pps；</li><li>ddos_attackBandwidth： 攻击带宽曲线，单位 bps；</li><li>ddos_attackPackageRate： 攻击包速率曲线，单位 pps。</li></ul>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// <p>站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：<a href="https://cloud.tencent.com/document/product/1552/104902">【腾讯云 EdgeOne】云 API 变更通知</a>。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 <code>*</code> 代替，查询账号级别数据需具备本接口全部站点资源权限。</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// DDoS策略组ID列表，不填默认选择全部策略ID。
+	// <p>DDoS 策略组 ID 列表，不填默认选择全部策略 ID。</p>
 	PolicyIds []*int64 `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 查询时间粒度，取值有：
-	// <li>min：1分钟；</li>
-	// <li>5min：5分钟；</li>
-	// <li>hour：1小时；</li>
-	// <li>day：1天。</li>不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+	// <p>查询时间粒度，不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。</p><p>枚举值：</p><ul><li>min： 1 分钟；</li><li>5min： 5分钟；</li><li>hour： 1小时；</li><li>day： 1天。</li></ul>
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 数据归属地区，取值有：
-	// <li>overseas：全球（除中国大陆地区）数据；</li>
-	// <li>mainland：中国大陆地区数据；</li>
-	// <li>global：全球数据。</li>不填默认取值为global。
+	// <p>数据归属地区。</p><p>枚举值：</p><ul><li>overseas： 全球（除中国大陆地区）数据；</li><li>mainland： 中国大陆地区数据；</li><li>global： 全球数据。</li></ul><p>默认值：global</p>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// <p>过滤条件，QueryCondition.Value 的集合数量上限为 20，详细的过滤条件 QueryCondition.Key 值如下：</p><li>ddos-attack-dip：按照 DDoS 攻击目的 IP 进行过滤，QueryCondition.Operator 仅支持 equals。</li>
+	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeDDoSAttackDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间。
+	// <p>开始时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
+	// <p>结束时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 31 天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计指标列表，取值有：
-	// <li>ddos_attackMaxBandwidth：攻击带宽峰值；</li>
-	// <li>ddos_attackMaxPackageRate：攻击包速率峰值 ；</li>
-	// <li>ddos_attackBandwidth：攻击带宽曲线；</li>
-	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
+	// <p>统计指标列表，至少填写 1 个，且不允许重复。</p><p>枚举值：</p><ul><li>ddos_attackMaxBandwidth： 攻击带宽峰值，单位 bps；</li><li>ddos_attackMaxPackageRate： 攻击包速率峰值，单位 pps；</li><li>ddos_attackBandwidth： 攻击带宽曲线，单位 bps；</li><li>ddos_attackPackageRate： 攻击包速率曲线，单位 pps。</li></ul>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// <p>站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：<a href="https://cloud.tencent.com/document/product/1552/104902">【腾讯云 EdgeOne】云 API 变更通知</a>。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 <code>*</code> 代替，查询账号级别数据需具备本接口全部站点资源权限。</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// DDoS策略组ID列表，不填默认选择全部策略ID。
+	// <p>DDoS 策略组 ID 列表，不填默认选择全部策略 ID。</p>
 	PolicyIds []*int64 `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 查询时间粒度，取值有：
-	// <li>min：1分钟；</li>
-	// <li>5min：5分钟；</li>
-	// <li>hour：1小时；</li>
-	// <li>day：1天。</li>不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+	// <p>查询时间粒度，不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。</p><p>枚举值：</p><ul><li>min： 1 分钟；</li><li>5min： 5分钟；</li><li>hour： 1小时；</li><li>day： 1天。</li></ul>
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 数据归属地区，取值有：
-	// <li>overseas：全球（除中国大陆地区）数据；</li>
-	// <li>mainland：中国大陆地区数据；</li>
-	// <li>global：全球数据。</li>不填默认取值为global。
+	// <p>数据归属地区。</p><p>枚举值：</p><ul><li>overseas： 全球（除中国大陆地区）数据；</li><li>mainland： 中国大陆地区数据；</li><li>global： 全球数据。</li></ul><p>默认值：global</p>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// <p>过滤条件，QueryCondition.Value 的集合数量上限为 20，详细的过滤条件 QueryCondition.Key 值如下：</p><li>ddos-attack-dip：按照 DDoS 攻击目的 IP 进行过滤，QueryCondition.Operator 仅支持 equals。</li>
+	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeDDoSAttackDataRequest) ToJsonString() string {
@@ -9184,6 +9264,7 @@ func (r *DescribeDDoSAttackDataRequest) FromJsonString(s string) error {
 	delete(f, "PolicyIds")
 	delete(f, "Interval")
 	delete(f, "Area")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDoSAttackDataRequest has unknown keys!", "")
 	}
@@ -9192,10 +9273,10 @@ func (r *DescribeDDoSAttackDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDDoSAttackDataResponseParams struct {
-	// 查询结果的总条数。
+	// <p>查询结果的总条数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// DDoS攻击数据内容列表。
+	// <p>DDoS 攻击数据内容列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*SecEntry `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -24705,6 +24786,73 @@ type RuleEngineAction struct {
 
 	// <p>定制配置操作参数，当 Name 取值为 CustomAction 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口的返回值 CustomActionSet 获取您当前支持的定制配置项列表。</p>
 	CustomActionParameters *CustomActionParameters `json:"CustomActionParameters,omitnil,omitempty" name:"CustomActionParameters"`
+}
+
+type RuleEngineCustomAction struct {
+	// <p>定制配置唯一 ID。</p>
+	ActionId *string `json:"ActionId,omitnil,omitempty" name:"ActionId"`
+
+	// <p>定制配置名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>定制配置描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>定制配置参数定义列表。</p>
+	Parameters []*RuleEngineCustomActionParameterSchema `json:"Parameters,omitnil,omitempty" name:"Parameters"`
+
+	// <p>定制配置支持的匹配条件。</p><p>支持匹配条件参考官方文档 <a href="https://cloud.tencent.com/document/product/1552/125344">通用参考-配置语法-变量</a>。</p>
+	SupportedConditions []*string `json:"SupportedConditions,omitnil,omitempty" name:"SupportedConditions"`
+}
+
+type RuleEngineCustomActionParameterSchema struct {
+	// <p>参数字段名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>参数字段类型，取值有：<li>Boolean：布尔；</li><li>Integer：整型；</li><li>Float：浮点型；</li><li>String：字符串；</li><li>ArrayOfInteger：整型数组；</li><li>ArrayOfFloat：浮点型数组；</li><li>ArrayOfString：字符串数组。</li></p>
+	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+
+	// <p>参数字段描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>参数字段默认值。</p>
+	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
+
+	// <p>参数字段单位。</p>
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// <p>参数字段是否必填。</p><p>默认值：false</p><p>若填充，则适用于所有参数字段类型校验；若不填充则不校验。</p>
+	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
+
+	// <p>参数字段最小值。</p><p>若填充，适用于整数、浮点数、整数数组、浮点数数组类型参数的数值校验；若不填充则不校验。</p>
+	MinValue *float64 `json:"MinValue,omitnil,omitempty" name:"MinValue"`
+
+	// <p>参数字段最大值。</p><p>若填充，适用于整数、浮点数、整数数组、浮点数数组类型参数的数值校验；若不填充则不校验。</p>
+	MaxValue *float64 `json:"MaxValue,omitnil,omitempty" name:"MaxValue"`
+
+	// <p>参数字段最小长度。</p><p>若填充，适用于字符串、字符串数组类型参数的数值校验；若不填充则不校验。</p>
+	MinLength *int64 `json:"MinLength,omitnil,omitempty" name:"MinLength"`
+
+	// <p>参数字段最大长度。</p><p>若填充，适用于字符串、字符串数组类型参数的数值校验；若不填充则不校验。</p>
+	MaxLength *int64 `json:"MaxLength,omitnil,omitempty" name:"MaxLength"`
+
+	// <p>参数字段最小项数。</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+	MinItems *int64 `json:"MinItems,omitnil,omitempty" name:"MinItems"`
+
+	// <p>参数字段最大项数。</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+	MaxItems *int64 `json:"MaxItems,omitnil,omitempty" name:"MaxItems"`
+
+	// <p>参数字段项是否唯一。</p><p>默认值：false</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+	UniqueItems *bool `json:"UniqueItems,omitnil,omitempty" name:"UniqueItems"`
+
+	// <p>参数字段允许的格式。</p><p>若填充，需要校验字符串或者字符串数组内容合适；若不填充则不校验。</p>
+	AllowedPattern *string `json:"AllowedPattern,omitnil,omitempty" name:"AllowedPattern"`
+
+	// <p>参数字段允许的取值，若为空则不校验。</p><p>若本参数填充，则说明对应参数为枚举类型，仅允许填充本参数数组中的值；若不填充则不校验。</p>
+	AllowedValues []*string `json:"AllowedValues,omitnil,omitempty" name:"AllowedValues"`
+
+	// <p>参数字段最小步长。若填充，适用于浮点型和浮点型数组类型参数的数值校验；若不填充则不校验。</p>
+	MultipleOf *string `json:"MultipleOf,omitnil,omitempty" name:"MultipleOf"`
 }
 
 type RuleEngineItem struct {

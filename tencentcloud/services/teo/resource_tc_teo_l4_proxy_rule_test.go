@@ -32,6 +32,7 @@ func TestAccTencentCloudTeoL4ProxyRuleResource_basic(t *testing.T) {
 					resource.TestCheckResourceAttr("tencentcloud_teo_l4_proxy_rule.teo_l4_proxy_rule", "l4_proxy_rules.0.rule_tag", "aaa"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_l4_proxy_rule.teo_l4_proxy_rule", "l4_proxy_rules.0.session_persist", "off"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_l4_proxy_rule.teo_l4_proxy_rule", "l4_proxy_rules.0.session_persist_time", "3600"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_l4_proxy_rule.teo_l4_proxy_rule", "l4_proxy_rules.0.bu_id", "bu-test001"),
 				),
 			},
 			{
@@ -56,6 +57,7 @@ func TestAccTencentCloudTeoL4ProxyRuleResource_basic(t *testing.T) {
 					resource.TestCheckResourceAttr("tencentcloud_teo_l4_proxy_rule.teo_l4_proxy_rule", "l4_proxy_rules.0.rule_tag", "bbb"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_l4_proxy_rule.teo_l4_proxy_rule", "l4_proxy_rules.0.session_persist", "off"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_l4_proxy_rule.teo_l4_proxy_rule", "l4_proxy_rules.0.session_persist_time", "3600"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_l4_proxy_rule.teo_l4_proxy_rule", "l4_proxy_rules.0.bu_id", "bu-test002"),
 				),
 			},
 		},
@@ -82,6 +84,7 @@ resource "tencentcloud_teo_l4_proxy_rule" "teo_l4_proxy_rule" {
         rule_tag                    = "aaa"
         session_persist             = "off"
         session_persist_time        = 3600
+        bu_id                       = "bu-test001"
     }
 }
 `
@@ -106,6 +109,7 @@ resource "tencentcloud_teo_l4_proxy_rule" "teo_l4_proxy_rule" {
         rule_tag                    = "bbb"
         session_persist             = "off"
         session_persist_time        = 3600
+        bu_id                       = "bu-test002"
     }
 }
 `

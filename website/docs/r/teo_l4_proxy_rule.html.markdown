@@ -32,6 +32,7 @@ resource "tencentcloud_teo_l4_proxy_rule" "teo_l4_proxy_rule" {
     rule_tag             = "aaa"
     session_persist      = "off"
     session_persist_time = 3600
+    bu_id                = "bu-abc123"
   }
 }
 ```
@@ -46,6 +47,7 @@ The following arguments are supported:
 
 The `l4_proxy_rules` object supports the following:
 
+* `bu_id` - (Optional, String) Business unit ID.
 * `client_ip_pass_through_mode` - (Optional, String) Transmission of the client IP address. Valid values:<li>TOA: Available only when Protocol=TCP;</li> 
 <li>PPV1: Transmission via Proxy Protocol V1. Available only when Protocol=TCP;</li>
 <li>PPV2: Transmission via Proxy Protocol V2;</li> 
@@ -86,6 +88,9 @@ Note: This parameter is optional when L4ProxyRule is used as an input parameter 
 <li>progress: Deploying;</li>
 <li>stopping: Disabling;</li>
 <li>fail: Failed to deploy or disable.</li>.
+
+The `remote_auth` object of `l4_proxy_rules` supports the following:
+
 
 ## Attributes Reference
 
