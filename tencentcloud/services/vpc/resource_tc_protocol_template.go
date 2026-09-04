@@ -6,6 +6,9 @@ import (
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 
+	vpc "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc/v20170312"
+	svctag "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/tag"
+
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -34,6 +37,11 @@ func ResourceTencentCloudProtocolTemplate() *schema.Resource {
 				Required:    true,
 				Description: "Protocol list. Valid protocols are  `tcp`, `udp`, `icmp`, `gre`. Single port(tcp:80), multi-port(tcp:80,443), port range(tcp:3306-20000), all(tcp:all) format are support. Protocol `icmp` and `gre` cannot specify port.",
 			},
+			"tags": {
+				Type:        schema.TypeMap,
+				Optional:    true,
+				Description: "Tags of the protocol template.",
+			},
 		},
 	}
 }
@@ -46,6 +54,21 @@ func resourceTencentCloudProtocolTemplateCreate(d *schema.ResourceData, meta int
 	name := d.Get("name").(string)
 	protocols := d.Get("protocols").(*schema.Set).List()
 
+	var tags []*vpc.Tag
+	if v, ok := d.GetOk("tags"); ok {
+		tagMap := v.(map[string]interface{})
+		tags = make([]*vpc.Tag, 0, len(tagMap))
+		for k, t := range tagMap {
+			key := k
+			value := t.(string)
+			tag := vpc.Tag{
+				Key:   &key,
+				Value: &value,
+			}
+			tags = append(tags, &tag)
+		}
+	}
+
 	vpcProtocol := VpcService{
 		client: meta.(tccommon.ProviderMeta).GetAPIV3Conn(),
 	}
@@ -53,7 +76,7 @@ func resourceTencentCloudProtocolTemplateCreate(d *schema.ResourceData, meta int
 	var templateId string
 
 	outErr = resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
-		templateId, inErr = vpcProtocol.CreateServiceTemplate(ctx, name, protocols)
+		templateId, inErr = vpcProtocol.CreateServiceTemplate(ctx, name, protocols, tags)
 		if inErr != nil {
 			return tccommon.RetryError(inErr)
 		}
@@ -99,6 +122,16 @@ func resourceTencentCloudProtocolTemplateRead(d *schema.ResourceData, meta inter
 	_ = d.Set("name", template.ServiceTemplateName)
 	_ = d.Set("protocols", template.ServiceSet)
 
+	if len(template.TagSet) > 0 {
+		tags := make(map[string]string)
+		for _, tag := range template.TagSet {
+			if tag.Key != nil && tag.Value != nil {
+				tags[*tag.Key] = *tag.Value
+			}
+		}
+		_ = d.Set("tags", tags)
+	}
+
 	return nil
 }
 
@@ -123,6 +156,20 @@ func resourceTencentCloudProtocolTemplateUpdate(d *schema.ResourceData, meta int
 		})
 		if outErr != nil {
 			return outErr
+		}
+	}
+
+	if d.HasChange("tags") {
+		client := meta.(tccommon.ProviderMeta).GetAPIV3Conn()
+		tagService := svctag.NewTagService(client)
+		oldValue, newValue := d.GetChange("tags")
+		replaceTags, deleteTags := svctag.DiffTags(oldValue.(map[string]interface{}), newValue.(map[string]interface{}))
+		region := client.Region
+
+		resourceName := tccommon.BuildTagResourceName("vpc", "service", region, d.Id())
+		err := tagService.ModifyTags(ctx, resourceName, replaceTags, deleteTags)
+		if err != nil {
+			return err
 		}
 	}
 

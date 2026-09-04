@@ -17,6 +17,10 @@ Provides a resource to manage protocol template.
 resource "tencentcloud_protocol_template" "foo" {
   name      = "protocol-template-test"
   protocols = ["tcp:80", "udp:all", "icmp:10-30"]
+  tags = {
+    "env"  = "prod"
+    "team" = "infra"
+  }
 }
 ```
 
@@ -26,6 +30,7 @@ The following arguments are supported:
 
 * `name` - (Required, String) Name of the protocol template.
 * `protocols` - (Required, Set: [`String`]) Protocol list. Valid protocols are  `tcp`, `udp`, `icmp`, `gre`. Single port(tcp:80), multi-port(tcp:80,443), port range(tcp:3306-20000), all(tcp:all) format are support. Protocol `icmp` and `gre` cannot specify port.
+* `tags` - (Optional, Map) Tags of the protocol template.
 
 ## Attributes Reference
 
