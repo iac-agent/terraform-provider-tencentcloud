@@ -44,6 +44,39 @@ func TestAccTencentCloudProtocolTemplate_basic_and_update(t *testing.T) {
 	})
 }
 
+func TestAccTencentCloudProtocolTemplate_tags(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { tcacctest.AccPreCheck(t) },
+		Providers:    tcacctest.AccProviders,
+		CheckDestroy: testAccCheckProtocolTemplateDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccProtocolTemplate_tags,
+				Check: resource.ComposeAggregateTestCheckFunc(
+					testAccCheckProtocolTemplateExists("tencentcloud_protocol_template.template"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template", "name", "tf-tags-test"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template", "tags.env", "prod"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template", "tags.team", "infra"),
+				),
+			},
+			{
+				ResourceName:      "tencentcloud_protocol_template.template",
+				ImportState:       true,
+				ImportStateVerify: true,
+			},
+			{
+				Config: testAccProtocolTemplate_tags_update,
+				Check: resource.ComposeAggregateTestCheckFunc(
+					testAccCheckProtocolTemplateExists("tencentcloud_protocol_template.template"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template", "tags.env", "dev"),
+					resource.TestCheckResourceAttr("tencentcloud_protocol_template.template", "tags.owner", "tf"),
+				),
+			},
+		},
+	})
+}
+
 func testAccCheckProtocolTemplateDestroy(s *terraform.State) error {
 	logId := tccommon.GetLogId(tccommon.ContextNil)
 	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
@@ -97,4 +130,24 @@ const testAccProtocolTemplate_basic_update_remark = `
 resource "tencentcloud_protocol_template" "template" {
   name = "test_update"
   protocols = ["udp:all", "tcp:80,90"]
+}`
+
+const testAccProtocolTemplate_tags = `
+resource "tencentcloud_protocol_template" "template" {
+  name = "tf-tags-test"
+  protocols = ["tcp:80"]
+  tags = {
+    "env" = "prod"
+    "team" = "infra"
+  }
+}`
+
+const testAccProtocolTemplate_tags_update = `
+resource "tencentcloud_protocol_template" "template" {
+  name = "tf-tags-test"
+  protocols = ["tcp:80"]
+  tags = {
+    "env" = "dev"
+    "owner" = "tf"
+  }
 }`
