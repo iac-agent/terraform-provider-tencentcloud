@@ -985,7 +985,6 @@ github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.102/go.mod 
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.104/go.mod h1:r5r4xbfxSaeR04b166HGsBa/R4U3SueirEUpXGuw+Q0=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.105/go.mod h1:r5r4xbfxSaeR04b166HGsBa/R4U3SueirEUpXGuw+Q0=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.107/go.mod h1:r5r4xbfxSaeR04b166HGsBa/R4U3SueirEUpXGuw+Q0=
-github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.108/go.mod h1:r5r4xbfxSaeR04b166HGsBa/R4U3SueirEUpXGuw+Q0=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.110/go.mod h1:r5r4xbfxSaeR04b166HGsBa/R4U3SueirEUpXGuw+Q0=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.112/go.mod h1:r5r4xbfxSaeR04b166HGsBa/R4U3SueirEUpXGuw+Q0=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.113/go.mod h1:r5r4xbfxSaeR04b166HGsBa/R4U3SueirEUpXGuw+Q0=
@@ -1060,8 +1059,8 @@ github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/keewidb v1.3.32/go.mod 
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms v1.0.563/go.mod h1:uom4Nvi9W+Qkom0exYiJ9VWJjXwyxtPYTkKkaLMlfE0=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms v1.0.1145 h1:/wV6YoCqDU1XXci7kxt/k+RTwx2xLzcxH4NYbC1UT6k=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms v1.0.1145/go.mod h1:tUblC9MYww0ZRScBkLYINJ7F1fxAv/Ymmpbjn05RTPY=
-github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse v1.3.108 h1:CWRFvlXDi4DG3M7TFG9BTB75egWmpT4f9r4Tak/BF+M=
-github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse v1.3.108/go.mod h1:V0SM/0KPnLW/54jmfvqOlBRgStkQMCGoYrrJv+oOkEo=
+github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse v1.3.153 h1:OFpFGkGnEIxyme0dutC36i4vMk57GxMOZ6c2+A4/eqk=
+github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse v1.3.153/go.mod h1:lBIyo5/O0wGfd/FeVG9ZPbY3Xcww+fsSF/bEqydHLEs=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live v1.3.95 h1:rWiKud64WUq65AenAxjNtXjaf9wbbpitT1xUfnE9kZ4=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live v1.3.95/go.mod h1:uDGk0Bi0diOd1VaQPnfZO0MLKPKjqIT4Hi0sdanwD9s=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mariadb v1.3.102 h1:I4QaWjVMOfuEsmxjTS8BxYgLcgdATWIAGutcHDnIvB4=
