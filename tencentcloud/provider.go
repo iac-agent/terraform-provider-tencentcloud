@@ -2469,6 +2469,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_lighthouse_disk_attachment":                                               lighthouse.ResourceTencentCloudLighthouseDiskAttachment(),
 			"tencentcloud_lighthouse_key_pair":                                                      lighthouse.ResourceTencentCloudLighthouseKeyPair(),
 			"tencentcloud_lighthouse_snapshot":                                                      lighthouse.ResourceTencentCloudLighthouseSnapshot(),
+			"tencentcloud_lighthouse_instance_snapshot_1":                                           lighthouse.ResourceTencentCloudLighthouseInstanceSnapshot1(),
 			"tencentcloud_lighthouse_apply_instance_snapshot":                                       lighthouse.ResourceTencentCloudLighthouseApplyInstanceSnapshot(),
 			"tencentcloud_lighthouse_start_instance":                                                lighthouse.ResourceTencentCloudLighthouseStartInstance(),
 			"tencentcloud_lighthouse_stop_instance":                                                 lighthouse.ResourceTencentCloudLighthouseStopInstance(),
