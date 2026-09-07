@@ -51,17 +51,17 @@ func TestLighthouseInstanceSnapshot1_Create(t *testing.T) {
 		resp.Response = &lighthouse.DescribeSnapshotsResponseParams{
 			SnapshotSet: []*lighthouse.Snapshot{
 				{
-					SnapshotId:             ptrStr("lhsnap-test123"),
-					SnapshotName:           ptrStr("test-snapshot"),
-					DiskUsage:              ptrStr("SYSTEM_DISK"),
-					DiskId:                 ptrStr("lhdisk-test"),
-					DiskSize:               ptrInt64(60),
-					SnapshotState:          ptrStr("NORMAL"),
-					Percent:                ptrInt64(100),
-					LatestOperation:        ptrStr("CreateInstanceSnapshot"),
-					LatestOperationState:   ptrStr("SUCCESS"),
+					SnapshotId:               ptrStr("lhsnap-test123"),
+					SnapshotName:             ptrStr("test-snapshot"),
+					DiskUsage:                ptrStr("SYSTEM_DISK"),
+					DiskId:                   ptrStr("lhdisk-test"),
+					DiskSize:                 ptrInt64(60),
+					SnapshotState:            ptrStr("NORMAL"),
+					Percent:                  ptrInt64(100),
+					LatestOperation:          ptrStr("CreateInstanceSnapshot"),
+					LatestOperationState:     ptrStr("SUCCESS"),
 					LatestOperationRequestId: ptrStr("op-req-id"),
-					CreatedTime:            ptrStr("2024-01-01T00:00:00Z"),
+					CreatedTime:              ptrStr("2024-01-01T00:00:00Z"),
 				},
 			},
 			TotalCount: ptrInt64(1),
@@ -224,8 +224,8 @@ func TestLighthouseInstanceSnapshot1_Update(t *testing.T) {
 		resp.Response = &lighthouse.DescribeSnapshotsResponseParams{
 			SnapshotSet: []*lighthouse.Snapshot{
 				{
-					SnapshotId:   ptrStr("lhsnap-test123"),
-					SnapshotName: ptrStr("updated-snapshot"),
+					SnapshotId:    ptrStr("lhsnap-test123"),
+					SnapshotName:  ptrStr("updated-snapshot"),
 					SnapshotState: ptrStr("NORMAL"),
 				},
 			},
