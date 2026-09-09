@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_nat_gateway: add unit tests for deletion_protection_enabled parameter
+```

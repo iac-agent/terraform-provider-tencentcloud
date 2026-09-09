@@ -1,8 +1,5 @@
-# nat-gateway-deletion-protection Specification
+## MODIFIED Requirements
 
-## Purpose
-TBD - created by archiving change add-nat-gateway-deletion-protection. Update Purpose after archive.
-## Requirements
 ### Requirement: NAT gateway deletion protection management
 The system SHALL allow users to manage deletion protection for NAT gateway instances through the `deletion_protection_enabled` parameter. This includes support for setting deletion protection at creation time via the `CreateNatGateway` API.
 
