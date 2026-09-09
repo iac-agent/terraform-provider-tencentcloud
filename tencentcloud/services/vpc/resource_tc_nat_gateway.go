@@ -86,6 +86,12 @@ func ResourceTencentCloudNatGateway() *schema.Resource {
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
 				Description:  "1: traditional NAT, 2: standard NAT, default value is 1.",
 			},
+			"deletion_protection_enabled": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Computed:    true,
+				Description: "Whether to enable deletion protection for the NAT gateway. Default is `false`.",
+			},
 			"stock_public_ip_addresses_bandwidth_out": {
 				Type:        schema.TypeInt,
 				Optional:    true,
@@ -144,6 +150,10 @@ func resourceTencentCloudNatGatewayCreate(d *schema.ResourceData, meta interface
 				return fmt.Errorf("If `nat_product_version` is 2, `bandwidth` can only be set to `5000` or not set at all.")
 			}
 		}
+	}
+
+	if v, ok := d.GetOkExists("deletion_protection_enabled"); ok {
+		request.DeletionProtectionEnabled = helper.Bool(v.(bool))
 	}
 
 	if v, ok := d.GetOk("vpc_id"); ok {
@@ -303,6 +313,10 @@ func resourceTencentCloudNatGatewayRead(d *schema.ResourceData, meta interface{}
 		_ = d.Set("nat_product_version", *nat.NatProductVersion)
 	}
 
+	if nat.DeletionProtectionEnabled != nil {
+		_ = d.Set("deletion_protection_enabled", *nat.DeletionProtectionEnabled)
+	}
+
 	// set `stock_public_ip_addresses_bandwidth_out`
 	bandwidthRequest := vpc.NewDescribeAddressesRequest()
 	bandwidthResponse := vpc.NewDescribeAddressesResponse()
@@ -382,6 +396,11 @@ func resourceTencentCloudNatGatewayUpdate(d *schema.ResourceData, meta interface
 			}
 		}
 		request.InternetMaxBandwidthOut = &bandwidth64
+		changed = true
+	}
+
+	if d.HasChange("deletion_protection_enabled") {
+		request.DeletionProtectionEnabled = helper.Bool(d.Get("deletion_protection_enabled").(bool))
 		changed = true
 	}
 
