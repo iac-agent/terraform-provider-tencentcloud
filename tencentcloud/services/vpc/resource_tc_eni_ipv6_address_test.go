@@ -28,6 +28,7 @@ func TestAccTencentCloudNeedFixEniIpv6AddressResource_basic(t *testing.T) {
 					resource.TestCheckResourceAttrSet("tencentcloud_eni_ipv6_address.ipv6_eni_address", "ipv6_addresses.0.description"),
 					resource.TestCheckResourceAttrSet("tencentcloud_eni_ipv6_address.ipv6_eni_address", "ipv6_addresses.0.is_wan_ip_blocked"),
 					resource.TestCheckResourceAttrSet("tencentcloud_eni_ipv6_address.ipv6_eni_address", "ipv6_addresses.0.state"),
+					resource.TestCheckResourceAttrSet("tencentcloud_eni_ipv6_address.ipv6_eni_address", "ipv6_addresses.0.public_ip_address"),
 				),
 			},
 			{
