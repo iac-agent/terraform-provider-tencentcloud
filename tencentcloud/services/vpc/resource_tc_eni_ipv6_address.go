@@ -80,6 +80,13 @@ func ResourceTencentCloudEniIpv6Address() *schema.Resource {
 							ForceNew:    true,
 							Description: "`IPv6` address status: `PENDING`: pending, `MIGRATING`: migrating, `DELETING`: deleting, `AVAILABLE`: available.",
 						},
+						"public_ip_address": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Computed:    true,
+							ForceNew:    true,
+							Description: "Public IP address of the IPv6 address (ULA type).",
+						},
 					},
 				},
 			},
@@ -140,6 +147,10 @@ func resourceTencentCloudEniIpv6AddressCreate(d *schema.ResourceData, meta inter
 
 			if v, ok := dMap["state"]; ok {
 				ipv6Address.State = helper.String(v.(string))
+			}
+
+			if v, ok := dMap["public_ip_address"]; ok {
+				ipv6Address.PublicIpAddress = helper.String(v.(string))
 			}
 
 			request.Ipv6Addresses = append(request.Ipv6Addresses, &ipv6Address)
@@ -222,6 +233,7 @@ func resourceTencentCloudEniIpv6AddressRead(d *schema.ResourceData, meta interfa
 			"description":       ipv6.Description,
 			"is_wan_ip_blocked": ipv6.IsWanIpBlocked,
 			"state":             ipv6.State,
+			"public_ip_address": ipv6.PublicIpAddress,
 		})
 	}
 
