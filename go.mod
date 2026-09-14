@@ -66,7 +66,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gs v1.3.58
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/keewidb v1.3.32
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms v1.0.1145
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse v1.3.108
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse v1.3.153
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live v1.3.95
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mariadb v1.3.102
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mongodb v1.3.141

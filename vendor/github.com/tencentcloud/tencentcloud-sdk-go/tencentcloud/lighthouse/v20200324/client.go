@@ -1155,6 +1155,7 @@ func NewCreateInstanceSnapshotResponse() (response *CreateInstanceSnapshotRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
+//  FAILEDOPERATION_GETSNAPSHOTALLOCQUOTALOCKERROR = "FailedOperation.GetSnapshotAllocQuotaLockError"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 //  INTERNALERROR_GETSNAPSHOTALLOCQUOTALOCKERROR = "InternalError.GetSnapshotAllocQuotaLockError"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
@@ -1180,6 +1181,7 @@ func (c *Client) CreateInstanceSnapshot(request *CreateInstanceSnapshotRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
+//  FAILEDOPERATION_GETSNAPSHOTALLOCQUOTALOCKERROR = "FailedOperation.GetSnapshotAllocQuotaLockError"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 //  INTERNALERROR_GETSNAPSHOTALLOCQUOTALOCKERROR = "InternalError.GetSnapshotAllocQuotaLockError"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
@@ -2043,6 +2045,62 @@ func (c *Client) DescribeAllScenesWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeAllScenesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBlueprintBundlesRequest() (request *DescribeBlueprintBundlesRequest) {
+    request = &DescribeBlueprintBundlesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeBlueprintBundles")
+    
+    
+    return
+}
+
+func NewDescribeBlueprintBundlesResponse() (response *DescribeBlueprintBundlesResponse) {
+    response = &DescribeBlueprintBundlesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBlueprintBundles
+// 本接口(DescribeBlueprintBundles)用于查询镜像所对应的套餐。当前仅支持查询镜像类型为游戏专区的镜像ID。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEBLUEPRINTBUNDLESFAILED = "FailedOperation.DescribeBlueprintBundlesFailed"
+//  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTTYPE = "InvalidParameterValue.InvalidBlueprintType"
+//  INVALIDPARAMETERVALUE_INVALIDBUNDLE = "InvalidParameterValue.InvalidBundle"
+//  RESOURCENOTFOUND_BLUEPRINTNOTFOUND = "ResourceNotFound.BlueprintNotFound"
+func (c *Client) DescribeBlueprintBundles(request *DescribeBlueprintBundlesRequest) (response *DescribeBlueprintBundlesResponse, err error) {
+    return c.DescribeBlueprintBundlesWithContext(context.Background(), request)
+}
+
+// DescribeBlueprintBundles
+// 本接口(DescribeBlueprintBundles)用于查询镜像所对应的套餐。当前仅支持查询镜像类型为游戏专区的镜像ID。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEBLUEPRINTBUNDLESFAILED = "FailedOperation.DescribeBlueprintBundlesFailed"
+//  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTTYPE = "InvalidParameterValue.InvalidBlueprintType"
+//  INVALIDPARAMETERVALUE_INVALIDBUNDLE = "InvalidParameterValue.InvalidBundle"
+//  RESOURCENOTFOUND_BLUEPRINTNOTFOUND = "ResourceNotFound.BlueprintNotFound"
+func (c *Client) DescribeBlueprintBundlesWithContext(ctx context.Context, request *DescribeBlueprintBundlesRequest) (response *DescribeBlueprintBundlesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlueprintBundlesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "DescribeBlueprintBundles")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlueprintBundles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBlueprintBundlesResponse()
     err = c.Send(request, response)
     return
 }
