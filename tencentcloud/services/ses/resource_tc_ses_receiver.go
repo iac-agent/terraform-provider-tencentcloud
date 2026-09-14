@@ -59,6 +59,12 @@ func ResourceTencentCloudSesReceiver() *schema.Resource {
 					},
 				},
 			},
+
+			"count": {
+				Computed:    true,
+				Type:        schema.TypeInt,
+				Description: "Total number of recipient email addresses in the receiver list.",
+			},
 		},
 	}
 }
@@ -195,6 +201,10 @@ func resourceTencentCloudSesReceiverRead(d *schema.ResourceData, meta interface{
 
 	if receiver.Desc != nil {
 		_ = d.Set("desc", receiver.Desc)
+	}
+
+	if receiver.Count != nil {
+		_ = d.Set("count", int(*receiver.Count))
 	}
 
 	receiverData, err := service.DescribeSesReceiverDetailById(ctx, receiverId)

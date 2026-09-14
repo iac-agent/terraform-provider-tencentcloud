@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_ses_receiver"
 sidebar_current: "docs-tencentcloud-resource-ses_receiver"
 description: |-
-  Provides a resource to create a ses receiver
+  Provides a resource to create a SES receiver
 ---
 
 # tencentcloud_ses_receiver
 
-Provides a resource to create a ses receiver
+Provides a resource to create a SES receiver
 
 ## Example Usage
 
@@ -65,7 +65,7 @@ The `data` object supports the following:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-
+* `count` - Total number of recipient email addresses in the receiver list.
 
 
 ## Import
