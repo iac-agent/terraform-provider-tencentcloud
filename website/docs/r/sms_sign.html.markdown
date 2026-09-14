@@ -44,6 +44,6 @@ The following arguments are supported:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-
+* `qualification_status_code` - Domestic SMS qualification review status. 0: pending review, 1: approved, 2: rejected, 3: supplement required, 4: modified pending review, 5: modified rejected. For international SMS, defaults to 0.
 
 

@@ -70,6 +70,12 @@ func ResourceTencentCloudSmsSign() *schema.Resource {
 				Optional:    true,
 				Description: "Signature application remarks.",
 			},
+
+			"qualification_status_code": {
+				Type:        schema.TypeInt,
+				Computed:    true,
+				Description: "Domestic SMS qualification review status. 0: pending review, 1: approved, 2: rejected, 3: supplement required, 4: modified pending review, 5: modified rejected. For international SMS, defaults to 0.",
+			},
 		},
 	}
 }
@@ -175,6 +181,10 @@ func resourceTencentCloudSmsSignRead(d *schema.ResourceData, meta interface{}) e
 
 	if sign.International != nil {
 		_ = d.Set("international", sign.International)
+	}
+
+	if sign.QualificationStatusCode != nil {
+		_ = d.Set("qualification_status_code", sign.QualificationStatusCode)
 	}
 
 	return nil
