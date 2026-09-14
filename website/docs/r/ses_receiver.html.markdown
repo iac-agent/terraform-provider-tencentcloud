@@ -37,12 +37,12 @@ resource "tencentcloud_ses_receiver" "receiver" {
 
   data {
     email         = "abc@abc.com"
-    template_data = "{\"name\":\"xxx\",\"age\":\"xx\"}"
+    template_data = jsonencode({ "name" = "xxx", "age" = "xx" })
   }
 
   data {
     email         = "abcd@abcd.com"
-    template_data = "{\"name\":\"xxx\",\"age\":\"xx\"}"
+    template_data = jsonencode({ "name" = "xxx", "age" = "xx" })
   }
 }
 ```
@@ -65,7 +65,7 @@ The `data` object supports the following:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-
+* `count` - Total number of recipient email addresses.
 
 
 ## Import
