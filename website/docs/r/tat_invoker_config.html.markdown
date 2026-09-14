@@ -32,14 +32,14 @@ The following arguments are supported:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-
+* `command_id` - ID of the command.
 
 
 ## Import
 
-tat invoker_config can be imported using the id, e.g.
+tat invoker_config can be imported using the invoker id, e.g.
 
 ```
-terraform import tencentcloud_tat_invoker_config.invoker_config invoker_config_id
+terraform import tencentcloud_tat_invoker_config.invoker_config ivk-cas4upyf
 ```
 
