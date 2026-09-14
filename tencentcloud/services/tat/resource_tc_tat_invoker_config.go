@@ -33,6 +33,12 @@ func ResourceTencentCloudTatInvokerConfig() *schema.Resource {
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"on", "off"}),
 				Description:  "Invoker on and off state, Values: `on`, `off`.",
 			},
+
+			"command_id": {
+				Computed:    true,
+				Type:        schema.TypeString,
+				Description: "ID of the command.",
+			},
 		},
 	}
 }
@@ -84,6 +90,10 @@ func resourceTencentCloudTatInvokerConfigRead(d *schema.ResourceData, meta inter
 		_ = d.Set("invoker_status", "on")
 	} else {
 		_ = d.Set("invoker_status", "off")
+	}
+
+	if invokerConfig.CommandId != nil {
+		_ = d.Set("command_id", invokerConfig.CommandId)
 	}
 
 	return nil

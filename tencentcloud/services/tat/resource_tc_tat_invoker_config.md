@@ -11,8 +11,8 @@ resource "tencentcloud_tat_invoker_config" "invoker_config" {
 
 Import
 
-tat invoker_config can be imported using the id, e.g.
+tat invoker_config can be imported using the invoker id, e.g.
 
 ```
-terraform import tencentcloud_tat_invoker_config.invoker_config invoker_config_id
+terraform import tencentcloud_tat_invoker_config.invoker_config ivk-cas4upyf
 ```
