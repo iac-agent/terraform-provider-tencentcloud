@@ -71,7 +71,7 @@ The `template_content` object supports the following:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-
+* `template_status` - Template status. 0 - Approved, 1 - Pending review, 2 - Rejected.
 
 
 ## Import
@@ -80,4 +80,9 @@ ses template can be imported using the id, e.g.
 ```
 $ terraform import tencentcloud_ses_template.example template_id
 ```
+
+The `template_status` field is a computed attribute that indicates the review status of the template. Possible values:
+- `0`: Approved
+- `1`: Pending review
+- `2`: Rejected
 

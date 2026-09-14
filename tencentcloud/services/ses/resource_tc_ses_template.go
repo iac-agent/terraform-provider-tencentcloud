@@ -52,6 +52,12 @@ func ResourceTencentCloudSesTemplate() *schema.Resource {
 					},
 				},
 			},
+
+			"template_status": {
+				Type:        schema.TypeInt,
+				Computed:    true,
+				Description: "Template status. 0 - Approved, 1 - Pending review, 2 - Rejected.",
+			},
 		},
 	}
 }
@@ -161,6 +167,10 @@ func resourceTencentCloudSesTemplateRead(d *schema.ResourceData, meta interface{
 	}
 
 	_ = d.Set("template_name", templateResponse.TemplateName)
+
+	if templateResponse.TemplateStatus != nil {
+		_ = d.Set("template_status", int(*templateResponse.TemplateStatus))
+	}
 
 	return nil
 }

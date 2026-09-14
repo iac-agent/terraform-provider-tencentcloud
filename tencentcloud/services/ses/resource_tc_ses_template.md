@@ -51,3 +51,8 @@ ses template can be imported using the id, e.g.
 ```
 $ terraform import tencentcloud_ses_template.example template_id
 ```
+
+The `template_status` field is a computed attribute that indicates the review status of the template. Possible values:
+- `0`: Approved
+- `1`: Pending review
+- `2`: Rejected

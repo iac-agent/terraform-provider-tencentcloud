@@ -21,6 +21,7 @@ func TestAccTencentCloudSesTemplate_basic(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttrSet("tencentcloud_ses_template.template", "id"),
 					resource.TestCheckResourceAttr("tencentcloud_ses_template.template", "template_name", "sesTemplateName"),
+					resource.TestCheckResourceAttrSet("tencentcloud_ses_template.template", "template_status"),
 				),
 			},
 			{
