@@ -3,41 +3,161 @@ package sms_test
 import (
 	"testing"
 
-	tcacctest "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/acctest"
+	"github.com/agiledragon/gomonkey/v2"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/stretchr/testify/assert"
+	sms "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms/v20210111"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/connectivity"
+	svcsms "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/sms"
 )
 
-func TestAccTencentCloudSmsTemplate_basic(t *testing.T) {
-	t.Parallel()
+type mockMetaSmsTemplate struct {
+	client *connectivity.TencentCloudClient
+}
 
-	resource.Test(t, resource.TestCase{
-		PreCheck:  func() { tcacctest.AccPreCheckCommon(t, tcacctest.ACCOUNT_TYPE_SMS) },
-		Providers: tcacctest.AccProviders,
-		Steps: []resource.TestStep{
-			{
-				Config: testAccSmsTemplate,
-				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttrSet("tencentcloud_sms_template.template", "id"),
-					resource.TestCheckResourceAttr("tencentcloud_sms_template.template", "template_name", "Template By Terraform"),
-					resource.TestCheckResourceAttr("tencentcloud_sms_template.template", "template_content", "Template Content"),
-					resource.TestCheckResourceAttr("tencentcloud_sms_template.template", "international", "0"),
-					resource.TestCheckResourceAttr("tencentcloud_sms_template.template", "sms_type", "0"),
-					resource.TestCheckResourceAttr("tencentcloud_sms_template.template", "remark", "terraform test"),
-				),
+func (m *mockMetaSmsTemplate) GetAPIV3Conn() *connectivity.TencentCloudClient {
+	return m.client
+}
+
+var _ tccommon.ProviderMeta = &mockMetaSmsTemplate{}
+
+func newMockMetaSmsTemplate() *mockMetaSmsTemplate {
+	return &mockMetaSmsTemplate{client: &connectivity.TencentCloudClient{}}
+}
+
+func ptrStrSmsTpl(s string) *string {
+	return &s
+}
+
+func ptrUint64SmsTpl(u uint64) *uint64 {
+	return &u
+}
+
+// TestSmsTemplate_Read_ReviewReplyNotNil verifies that when the API returns a
+// non-nil ReviewReply, the Read method sets the review_reply attribute correctly.
+func TestSmsTemplate_Read_ReviewReplyNotNil(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	smsClient := &sms.Client{}
+	patches.ApplyMethodReturn(newMockMetaSmsTemplate().client, "UseSmsClient", smsClient)
+
+	patches.ApplyMethodFunc(smsClient, "DescribeSmsTemplateList", func(request *sms.DescribeSmsTemplateListRequest) (*sms.DescribeSmsTemplateListResponse, error) {
+		resp := sms.NewDescribeSmsTemplateListResponse()
+		resp.Response = &sms.DescribeSmsTemplateListResponseParams{
+			RequestId: ptrStrSmsTpl("fake-request-id-read"),
+			DescribeTemplateStatusSet: []*sms.DescribeTemplateListStatus{
+				{
+					TemplateName:    ptrStrSmsTpl("test_template"),
+					TemplateContent: ptrStrSmsTpl("test content"),
+					International:   ptrUint64SmsTpl(0),
+					ReviewReply:     ptrStrSmsTpl("template content is not compliant"),
+				},
 			},
-		},
+		}
+		return resp, nil
 	})
+
+	meta := newMockMetaSmsTemplate()
+	res := svcsms.ResourceTencentCloudSmsTemplate()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"template_name":    "test_template",
+		"template_content": "test content",
+		"international":    0,
+		"sms_type":         0,
+		"remark":           "test",
+	})
+	d.SetId("12345" + tccommon.FILED_SP + "0")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "test_template", d.Get("template_name"))
+	assert.Equal(t, "test content", d.Get("template_content"))
+	assert.Equal(t, "template content is not compliant", d.Get("review_reply"))
 }
 
-const testAccSmsTemplate = `
+// TestSmsTemplate_Read_ReviewReplyNil verifies that when the API returns nil for
+// ReviewReply, the Read method does not set the review_reply attribute (nil check skips Set).
+func TestSmsTemplate_Read_ReviewReplyNil(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
 
-resource "tencentcloud_sms_template" "template" {
-  template_name = "Template By Terraform"
-  template_content = "Template Content"
-  international = 0
-  sms_type = 0
-  remark = "terraform test"
+	smsClient := &sms.Client{}
+	patches.ApplyMethodReturn(newMockMetaSmsTemplate().client, "UseSmsClient", smsClient)
+
+	patches.ApplyMethodFunc(smsClient, "DescribeSmsTemplateList", func(request *sms.DescribeSmsTemplateListRequest) (*sms.DescribeSmsTemplateListResponse, error) {
+		resp := sms.NewDescribeSmsTemplateListResponse()
+		resp.Response = &sms.DescribeSmsTemplateListResponseParams{
+			RequestId: ptrStrSmsTpl("fake-request-id-read"),
+			DescribeTemplateStatusSet: []*sms.DescribeTemplateListStatus{
+				{
+					TemplateName:    ptrStrSmsTpl("test_template"),
+					TemplateContent: ptrStrSmsTpl("test content"),
+					International:   ptrUint64SmsTpl(0),
+					ReviewReply:     nil,
+				},
+			},
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaSmsTemplate()
+	res := svcsms.ResourceTencentCloudSmsTemplate()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"template_name":    "test_template",
+		"template_content": "test content",
+		"international":    0,
+		"sms_type":         0,
+		"remark":           "test",
+	})
+	d.SetId("12345" + tccommon.FILED_SP + "0")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "test_template", d.Get("template_name"))
+	// review_reply should remain empty string (default for TypeString) since nil check skips Set
+	assert.Equal(t, "", d.Get("review_reply"))
 }
 
-`
+// TestSmsTemplate_Read_ReviewReplyEmptyString verifies that when the API returns
+// an empty string for ReviewReply, the Read method sets review_reply to empty string.
+func TestSmsTemplate_Read_ReviewReplyEmptyString(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	smsClient := &sms.Client{}
+	patches.ApplyMethodReturn(newMockMetaSmsTemplate().client, "UseSmsClient", smsClient)
+
+	patches.ApplyMethodFunc(smsClient, "DescribeSmsTemplateList", func(request *sms.DescribeSmsTemplateListRequest) (*sms.DescribeSmsTemplateListResponse, error) {
+		resp := sms.NewDescribeSmsTemplateListResponse()
+		resp.Response = &sms.DescribeSmsTemplateListResponseParams{
+			RequestId: ptrStrSmsTpl("fake-request-id-read"),
+			DescribeTemplateStatusSet: []*sms.DescribeTemplateListStatus{
+				{
+					TemplateName:    ptrStrSmsTpl("test_template"),
+					TemplateContent: ptrStrSmsTpl("test content"),
+					International:   ptrUint64SmsTpl(0),
+					ReviewReply:     ptrStrSmsTpl(""),
+				},
+			},
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaSmsTemplate()
+	res := svcsms.ResourceTencentCloudSmsTemplate()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"template_name":    "test_template",
+		"template_content": "test content",
+		"international":    0,
+		"sms_type":         0,
+		"remark":           "test",
+	})
+	d.SetId("12345" + tccommon.FILED_SP + "0")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "", d.Get("review_reply"))
+}

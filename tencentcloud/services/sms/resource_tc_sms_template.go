@@ -55,6 +55,12 @@ func ResourceTencentCloudSmsTemplate() *schema.Resource {
 				Required:    true,
 				Description: "Template remarks, such as reason for application and use case.",
 			},
+
+			"review_reply": {
+				Type:        schema.TypeString,
+				Computed:    true,
+				Description: "Review reply, the reply given by the reviewer after review, usually the reason for review rejection.",
+			},
 		},
 	}
 }
@@ -153,6 +159,10 @@ func resourceTencentCloudSmsTemplateRead(d *schema.ResourceData, meta interface{
 
 	if template.International != nil {
 		_ = d.Set("international", template.International)
+	}
+
+	if template.ReviewReply != nil {
+		_ = d.Set("review_reply", template.ReviewReply)
 	}
 
 	return nil
