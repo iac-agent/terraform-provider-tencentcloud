@@ -1295,7 +1295,7 @@ func NewCreateCustomizeErrorPageResponse() (response *CreateCustomizeErrorPageRe
 }
 
 // CreateCustomizeErrorPage
-// 创建自定义错误页面。
+// 创建自定义响应页面。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = "InvalidParameterValue.ContentTypeNotMatch"
@@ -1305,7 +1305,7 @@ func (c *Client) CreateCustomizeErrorPage(request *CreateCustomizeErrorPageReque
 }
 
 // CreateCustomizeErrorPage
-// 创建自定义错误页面。
+// 创建自定义响应页面。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = "InvalidParameterValue.ContentTypeNotMatch"
@@ -6441,6 +6441,56 @@ func (c *Client) DescribeApplicationProxiesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeAvailableCustomActionsForRuleEngineRequest() (request *DescribeAvailableCustomActionsForRuleEngineRequest) {
+    request = &DescribeAvailableCustomActionsForRuleEngineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeAvailableCustomActionsForRuleEngine")
+    
+    
+    return
+}
+
+func NewDescribeAvailableCustomActionsForRuleEngineResponse() (response *DescribeAvailableCustomActionsForRuleEngineResponse) {
+    response = &DescribeAvailableCustomActionsForRuleEngineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAvailableCustomActionsForRuleEngine
+// 查询站点规则引擎操作可用的定制配置列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeAvailableCustomActionsForRuleEngine(request *DescribeAvailableCustomActionsForRuleEngineRequest) (response *DescribeAvailableCustomActionsForRuleEngineResponse, err error) {
+    return c.DescribeAvailableCustomActionsForRuleEngineWithContext(context.Background(), request)
+}
+
+// DescribeAvailableCustomActionsForRuleEngine
+// 查询站点规则引擎操作可用的定制配置列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeAvailableCustomActionsForRuleEngineWithContext(ctx context.Context, request *DescribeAvailableCustomActionsForRuleEngineRequest) (response *DescribeAvailableCustomActionsForRuleEngineResponse, err error) {
+    if request == nil {
+        request = NewDescribeAvailableCustomActionsForRuleEngineRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeAvailableCustomActionsForRuleEngine")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAvailableCustomActionsForRuleEngine require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAvailableCustomActionsForRuleEngineResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAvailablePlansRequest() (request *DescribeAvailablePlansRequest) {
     request = &DescribeAvailablePlansRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7069,6 +7119,8 @@ func NewDescribeDefaultCertificatesResponse() (response *DescribeDefaultCertific
 // DescribeDefaultCertificates
 // 查询默认证书列表
 //
+// <p style="color: red;">注意：该旧版接口已停止更新迭代，后续新增功能将仅在新版接口中提供，旧版接口支持的原有能力将不受影响。如需查询域名配置的证书，请使用DescribeAccelerationDomains。</p>
+//
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -7085,6 +7137,8 @@ func (c *Client) DescribeDefaultCertificates(request *DescribeDefaultCertificate
 
 // DescribeDefaultCertificates
 // 查询默认证书列表
+//
+// <p style="color: red;">注意：该旧版接口已停止更新迭代，后续新增功能将仅在新版接口中提供，旧版接口支持的原有能力将不受影响。如需查询域名配置的证书，请使用DescribeAccelerationDomains。</p>
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -11065,7 +11119,9 @@ func NewDownloadL4LogsResponse() (response *DownloadL4LogsResponse) {
 }
 
 // DownloadL4Logs
-// 本接口（DownloadL4Logs）用于下载四层离线日志。
+// 本接口（DownloadL4Logs）用于获取四层代理业务的离线日志下载链接。
+//
+// **注意：**仅当离线日志功能开启期间，EO 才会存储相关离线日志并提供下载服务。具体功能介绍请见[文档](https://cloud.tencent.com/document/product/1552/73660)。
 //
 // 可能返回的错误码:
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -11074,7 +11130,9 @@ func (c *Client) DownloadL4Logs(request *DownloadL4LogsRequest) (response *Downl
 }
 
 // DownloadL4Logs
-// 本接口（DownloadL4Logs）用于下载四层离线日志。
+// 本接口（DownloadL4Logs）用于获取四层代理业务的离线日志下载链接。
+//
+// **注意：**仅当离线日志功能开启期间，EO 才会存储相关离线日志并提供下载服务。具体功能介绍请见[文档](https://cloud.tencent.com/document/product/1552/73660)。
 //
 // 可能返回的错误码:
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -11115,7 +11173,9 @@ func NewDownloadL7LogsResponse() (response *DownloadL7LogsResponse) {
 }
 
 // DownloadL7Logs
-// 本接口（DownloadL7Logs）下载七层离线日志。
+// 本接口（DownloadL7Logs）用于获取七层域名业务的离线日志下载链接。
+//
+// **注意：**仅当离线日志功能开启期间，EO 才会存储相关离线日志并提供下载服务。具体功能介绍请见[文档](https://cloud.tencent.com/document/product/1552/73660)。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -11126,7 +11186,9 @@ func (c *Client) DownloadL7Logs(request *DownloadL7LogsRequest) (response *Downl
 }
 
 // DownloadL7Logs
-// 本接口（DownloadL7Logs）下载七层离线日志。
+// 本接口（DownloadL7Logs）用于获取七层域名业务的离线日志下载链接。
+//
+// **注意：**仅当离线日志功能开启期间，EO 才会存储相关离线日志并提供下载服务。具体功能介绍请见[文档](https://cloud.tencent.com/document/product/1552/73660)。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -12443,7 +12505,7 @@ func NewModifyCustomErrorPageResponse() (response *ModifyCustomErrorPageResponse
 }
 
 // ModifyCustomErrorPage
-// 修改自定义错误页面。
+// 修改自定义响应页面。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -12452,7 +12514,7 @@ func (c *Client) ModifyCustomErrorPage(request *ModifyCustomErrorPageRequest) (r
 }
 
 // ModifyCustomErrorPage
-// 修改自定义错误页面。
+// 修改自定义响应页面。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
