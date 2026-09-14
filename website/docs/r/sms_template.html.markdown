@@ -41,5 +41,6 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
 * `review_reply` - Review reply, the reply given by the reviewer after review, usually the reason for review rejection.
+* `status_code` - Template status. 0: approved and effective, 1: pending review, 2: approved pending activation, -1: review failed or rejected.
 
 

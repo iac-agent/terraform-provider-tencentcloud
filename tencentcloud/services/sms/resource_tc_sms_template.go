@@ -61,6 +61,14 @@ func ResourceTencentCloudSmsTemplate() *schema.Resource {
 				Computed:    true,
 				Description: "Review reply, the reply given by the reviewer after review, usually the reason for review rejection.",
 			},
+
+			"status_code": {
+				Type:        schema.TypeInt,
+				Computed:    true,
+				ForceNew:    false,
+				Description: "Template status. 0: approved and effective, 1: pending review, 2: approved pending activation, -1: review failed or rejected.",
+			},
+			},
 		},
 	}
 }
@@ -163,6 +171,10 @@ func resourceTencentCloudSmsTemplateRead(d *schema.ResourceData, meta interface{
 
 	if template.ReviewReply != nil {
 		_ = d.Set("review_reply", template.ReviewReply)
+	}
+
+	if template.StatusCode != nil {
+		_ = d.Set("status_code", template.StatusCode)
 	}
 
 	return nil
