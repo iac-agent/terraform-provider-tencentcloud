@@ -1798,6 +1798,7 @@ func (me *TeoService) DescribeTeoDnsRecordById(ctx context.Context, zoneId, reco
 
 	request := teov20220901.NewDescribeDnsRecordsRequest()
 	request.ZoneId = helper.String(zoneId)
+	request.Limit = helper.Int64(1000)
 	request.Filters = []*teov20220901.AdvancedFilter{
 		{
 			Name:   helper.String("id"),
