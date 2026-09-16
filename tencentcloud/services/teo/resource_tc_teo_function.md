@@ -16,6 +16,15 @@ resource "tencentcloud_teo_function" "teo_function" {
 }
 ```
 
+The `domain_compliance_restrictions` computed attribute lists the regional access restrictions of the function default domain for compliance reasons, e.g. when the default domain is inaccessible in some regions due to ICP filing not obtained or government order:
+
+```
+domain_compliance_restrictions {
+    reason = "ICP_RECORD_REQUIRED"
+    region = "CN"
+}
+```
+
 Import
 
 teo teo_function can be imported using the id, e.g.

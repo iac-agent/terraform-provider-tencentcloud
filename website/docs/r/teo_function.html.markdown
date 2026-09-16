@@ -27,6 +27,15 @@ resource "tencentcloud_teo_function" "teo_function" {
 }
 ```
 
+### computed attribute lists the regional access restrictions of the function default domain for compliance reasons, e.g. when the default domain is inaccessible in some regions due to ICP filing not obtained or government order:
+
+```hcl
+domain_compliance_restrictions {
+  reason = "ICP_RECORD_REQUIRED"
+  region = "CN"
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -42,6 +51,9 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
 * `create_time` - Creation time. The time is in Coordinated Universal Time (UTC) and follows the date and time format specified by the ISO 8601 standard.
+* `domain_compliance_restrictions` - List of regional access restrictions applied to the function default domain for compliance reasons.
+  * `reason` - The reason why the regional access restriction was issued. Valid values are: `ICP_RECORD_REQUIRED` (ICP filing not obtained), `GOVERNMENT_ORDER` (government order).
+  * `region` - The country/region code where access to the function default domain is restricted, in ISO 3166 format. For more information, see https://www.iso.org/iso-3166-country-codes.html.
 * `domain` - The default domain name for the function.
 * `function_id` - ID of the Function.
 * `update_time` - Modification time. The time is in Coordinated Universal Time (UTC) and follows the date and time format specified by the ISO 8601 standard.
