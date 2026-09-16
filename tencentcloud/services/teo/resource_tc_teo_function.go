@@ -77,6 +77,27 @@ func ResourceTencentCloudTeoFunction() *schema.Resource {
 				Computed:    true,
 				Description: "Modification time. The time is in Coordinated Universal Time (UTC) and follows the date and time format specified by the ISO 8601 standard.",
 			},
+
+			"domain_compliance_restrictions": {
+				Type:        schema.TypeList,
+				Computed:    true,
+				Description: "List of regional access restrictions applied to the function default domain for compliance reasons.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"reason": {
+							Type:     schema.TypeString,
+							Computed: true,
+							Description: "The reason why the regional access restriction was issued. Valid values are: `ICP_RECORD_REQUIRED` (ICP filing not obtained), " +
+								"`GOVERNMENT_ORDER` (government order).",
+						},
+						"region": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "The country/region code where access to the function default domain is restricted, in ISO 3166 format. For more information, see https://www.iso.org/iso-3166-country-codes.html.",
+						},
+					},
+				},
+			},
 		},
 	}
 }
@@ -214,6 +235,25 @@ func resourceTencentCloudTeoFunctionRead(d *schema.ResourceData, meta interface{
 
 	if respData.UpdateTime != nil {
 		_ = d.Set("update_time", respData.UpdateTime)
+	}
+
+	domainComplianceRestrictionsList := make([]map[string]interface{}, 0, len(respData.DomainComplianceRestrictions))
+	if respData.DomainComplianceRestrictions != nil {
+		for _, restriction := range respData.DomainComplianceRestrictions {
+			restrictionMap := map[string]interface{}{}
+
+			if restriction.Reason != nil {
+				restrictionMap["reason"] = restriction.Reason
+			}
+
+			if restriction.Region != nil {
+				restrictionMap["region"] = restriction.Region
+			}
+
+			domainComplianceRestrictionsList = append(domainComplianceRestrictionsList, restrictionMap)
+		}
+
+		_ = d.Set("domain_compliance_restrictions", domainComplianceRestrictionsList)
 	}
 
 	return nil

@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_teo_function: add `domain_compliance_restrictions` computed attribute to expose regional access restrictions of the function default domain
+```
