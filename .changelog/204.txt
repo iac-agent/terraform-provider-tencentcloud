@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_teo_plan: support auto_use_voucher parameter
+```
