@@ -30,6 +30,13 @@ func ResourceTencentCloudTeoPlan() *schema.Resource {
 				Description:  "The subscription package type, the possible values are: `personal`: personal package, prepaid package; `basic`: basic package, prepaid package; `standard`: standard package, prepaid package; `enterprise`: enterprise package, postpaid package.",
 			},
 
+			"auto_use_voucher": {
+				Type:         schema.TypeString,
+				Optional:     true,
+				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"true", "false"}),
+				Description:  "Whether to automatically use vouchers, the possible values are: `true`: yes; `false`: no. This parameter is only valid when `plan_type` is `personal`, `basic` or `standard` (prepaid package). If not filled in, the default value `false` is used. This parameter cannot be changed after creation.",
+			},
+
 			"prepaid_plan_param": {
 				Type:        schema.TypeList,
 				Optional:    true,
@@ -109,6 +116,10 @@ func ResourceTencentCloudTeoPlanCreate(d *schema.ResourceData, meta interface{})
 		request.PlanType = helper.String(v.(string))
 	}
 
+	if v, ok := d.GetOk("auto_use_voucher"); ok {
+		request.AutoUseVoucher = helper.String(v.(string))
+	}
+
 	if dMap, ok := helper.InterfacesHeadMap(d, "prepaid_plan_param"); ok {
 		prepaidPlanParam := teov20220901.PrepaidPlanParam{}
 		if v, ok := dMap["period"].(int); ok && v != 0 {
@@ -144,6 +155,7 @@ func ResourceTencentCloudTeoPlanCreate(d *schema.ResourceData, meta interface{})
 	}
 
 	if response.Response.PlanId == nil {
+		log.Printf("[CRITAL]%s create teo plan failed, PlanId is nil, current d.Id()=%s", logId, d.Id())
 		return fmt.Errorf("PlanId is nil.")
 	}
 
@@ -214,6 +226,14 @@ func ResourceTencentCloudTeoPlanUpdate(d *schema.ResourceData, meta interface{})
 		ctx    = tccommon.NewResourceLifeCycleHandleFuncContext(context.Background(), logId, d, meta)
 		planId = d.Id()
 	)
+
+	immutableArgs := []string{"auto_use_voucher"}
+
+	for _, v := range immutableArgs {
+		if d.HasChange(v) {
+			return fmt.Errorf("argument `%s` cannot be changed", v)
+		}
+	}
 
 	if d.HasChange("plan_type") {
 		request := teov20220901.NewUpgradePlanRequest()

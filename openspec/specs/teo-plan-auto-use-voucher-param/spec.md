@@ -1,0 +1,75 @@
+# teo-plan-auto-use-voucher-param Specification
+
+## Purpose
+Defines that the `tencentcloud_teo_plan` resource SHALL support an optional `auto_use_voucher` parameter, mapping to the `AutoUseVoucher` field of the TencentCloud TEO `CreatePlan` API, so users can control whether to automatically use vouchers when purchasing prepaid TEO plans (`personal`/`basic`/`standard`).
+
+## Requirements
+### Requirement: Auto use voucher parameter on plan creation
+The `tencentcloud_teo_plan` resource SHALL support an optional `auto_use_voucher` parameter (TypeString, valid values `true`/`false`, default `false`) that is passed to the `CreatePlan` API as `AutoUseVoucher`. The parameter is only effective when `plan_type` is `personal`, `basic`, or `standard` (prepaid plans). The parameter SHALL only be included in the API request when explicitly configured.
+
+#### Scenario: Create plan with auto_use_voucher set to true
+- **WHEN** a user specifies `auto_use_voucher = "true"` in the `tencentcloud_teo_plan` resource configuration with `plan_type = "personal"`
+- **THEN** the provider SHALL pass `AutoUseVoucher="true"` in the `CreatePlan` API request
+
+#### Scenario: Create plan with auto_use_voucher set to false
+- **WHEN** a user specifies `auto_use_voucher = "false"` in the `tencentcloud_teo_plan` resource configuration
+- **THEN** the provider SHALL pass `AutoUseVoucher="false"` in the `CreatePlan` API request
+
+#### Scenario: Create plan without auto_use_voucher
+- **WHEN** a user does NOT specify `auto_use_voucher` in the `tencentcloud_teo_plan` resource configuration
+- **THEN** the provider SHALL NOT set `AutoUseVoucher` in the `CreatePlan` API request (API defaults to `false`)
+
+#### Scenario: Validation of auto_use_voucher values
+- **WHEN** a user specifies `auto_use_voucher = "yes"` or any value other than `true`/`false`
+- **THEN** the provider SHALL return a validation error indicating valid values are `true` and `false`
+
+#### Scenario: Enterprise plan type ignores voucher semantics
+- **WHEN** a user specifies `auto_use_voucher = "true"` with `plan_type = "enterprise"` (postpaid plan)
+- **THEN** the provider SHALL still pass the parameter in the `CreatePlan` API request and the cloud API determines effectiveness (documented as only effective for prepaid plan types)
+
+### Requirement: Auto use voucher is immutable after creation
+The `auto_use_voucher` parameter SHALL be treated as create-time only. Because the `DescribePlans` API response does not include `AutoUseVoucher`, the Read function SHALL NOT refresh it into state. The Update function SHALL reject any change to `auto_use_voucher` with an error via the immutable args check pattern.
+
+#### Scenario: Read does not refresh auto_use_voucher
+- **WHEN** the provider reads an existing `tencentcloud_teo_plan` resource
+- **THEN** the `auto_use_voucher` field SHALL NOT be overwritten from the `DescribePlans` API response
+
+#### Scenario: Update auto_use_voucher triggers immutable error
+- **WHEN** a user changes `auto_use_voucher` after creation (e.g. from `true` to `false`)
+- **THEN** the provider SHALL return an error: `argument 'auto_use_voucher' cannot be changed`
+
+#### Scenario: Update other fields still works
+- **WHEN** a user changes only `plan_type` (or `prepaid_plan_param` fields) and `auto_use_voucher` is unchanged
+- **THEN** the provider SHALL proceed with the existing `UpgradePlan`/`RenewPlan`/`ModifyPlan` update flows without error
+
+### Requirement: Unit tests for the teo plan resource
+The provider SHALL provide unit tests in `tencentcloud/services/teo/resource_tc_teo_plan_test.go` using gomonkey to mock cloud API calls, covering Create (with and without `auto_use_voucher`), Read, Update (including the immutable error for `auto_use_voucher`), and Delete operations.
+
+#### Scenario: Create with auto_use_voucher passes parameter to API
+- **WHEN** a unit test simulates creating a plan with `auto_use_voucher = "true"` while mocking `CreatePlanWithContext`
+- **THEN** the mocked API SHALL be invoked with `AutoUseVoucher="true"` in the request
+- **AND** the test SHALL assert the resource ID is set to the returned `PlanId`
+
+#### Scenario: Create without auto_use_voucher omits parameter
+- **WHEN** a unit test simulates creating a plan without `auto_use_voucher` while mocking `CreatePlanWithContext`
+- **THEN** the mocked API request SHALL have `AutoUseVoucher` unset (nil)
+
+#### Scenario: Update with auto_use_voucher change returns error
+- **WHEN** a unit test simulates changing `auto_use_voucher` in the Update flow
+- **THEN** the test SHALL assert an error containing `auto_use_voucher` is returned and no update API is called
+
+#### Scenario: Unit tests pass
+- **WHEN** `go test` is executed for the teo plan resource test file with gomonkey mocks
+- **THEN** all test cases for Create, Read, Update, and Delete SHALL pass without live API calls
+
+### Requirement: Resource documentation
+The provider SHALL provide a markdown documentation file `tencentcloud/services/teo/resource_tc_teo_plan.md` containing a one-line description mentioning TEO, an Example Usage section that includes the `auto_use_voucher` parameter, and an Import section. The `Argument Reference` and `Attribute Reference` sections SHALL NOT be hand-written (they are generated by `make doc`).
+
+#### Scenario: Documentation exists with auto_use_voucher example
+- **WHEN** the change is implemented
+- **THEN** `resource_tc_teo_plan.md` SHALL exist with a one-line description ("Provides a resource to ..."), an Example Usage block that sets `auto_use_voucher`, and an Import section referencing the plan ID
+
+#### Scenario: Documentation does not hand-write argument reference
+- **WHEN** the documentation file is created
+- **THEN** it SHALL NOT contain `Argument Reference` or `Attribute Reference` sections
+
