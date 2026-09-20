@@ -68,6 +68,24 @@ func ResourceTencentCloudTeoL4Proxy() *schema.Resource {
 				Description: "Specifies whether to enable network optimization in the Chinese mainland. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values: `on`: Enable; `off`: Disable.",
 			},
 
+			"offset": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "Pagination offset used for the `DescribeL4Proxy` API call. Default is 0.",
+			},
+
+			"limit": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "Pagination limit used for the `DescribeL4Proxy` API call. Default is 20.",
+			},
+
+			"total_count": {
+				Type:        schema.TypeInt,
+				Computed:    true,
+				Description: "Total count of L4 proxy instances matching the current filter conditions, returned by the `DescribeL4Proxy` API.",
+			},
+
 			"ddos_protection_config": {
 				Type:        schema.TypeList,
 				Optional:    true,
@@ -209,15 +227,29 @@ func resourceTencentCloudTeoL4ProxyRead(d *schema.ResourceData, meta interface{}
 
 	_ = d.Set("zone_id", zoneId)
 
-	respData, err := service.DescribeTeoL4ProxyById(ctx, zoneId, proxyId)
+	var offset *uint64
+	var limit *uint64
+	if v, ok := d.GetOk("offset"); ok {
+		offset = helper.IntUint64(v.(int))
+	}
+	if v, ok := d.GetOk("limit"); ok {
+		limit = helper.IntUint64(v.(int))
+	}
+
+	respData, totalCount, err := service.DescribeTeoL4ProxyById(ctx, zoneId, proxyId, offset, limit)
 	if err != nil {
 		return err
 	}
 
 	if respData == nil {
+		log.Printf("[CRUD] teo_l4_proxy id=%s", d.Id())
 		d.SetId("")
 		log.Printf("[WARN]%s resource `teo_l4_proxy` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		return nil
+	}
+
+	if totalCount != nil {
+		_ = d.Set("total_count", int(*totalCount))
 	}
 	if respData.ZoneId != nil {
 		_ = d.Set("zone_id", respData.ZoneId)

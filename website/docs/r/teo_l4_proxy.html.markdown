@@ -22,6 +22,18 @@ resource "tencentcloud_teo_l4_proxy" "proxy" {
   static_ip           = "off"
   zone_id             = "zone-2qtuhspy6cr7"
 }
+
+resource "tencentcloud_teo_l4_proxy" "proxy_with_pagination" {
+  accelerate_mainland = "off"
+  area                = "overseas"
+  ipv6                = "on"
+  proxy_name          = "proxy-test-pagination"
+  static_ip           = "off"
+  zone_id             = "zone-2qtuhspy6cr7"
+
+  offset = 0
+  limit  = 20
+}
 ```
 
 ## Argument Reference
@@ -34,6 +46,8 @@ The following arguments are supported:
 * `area` - (Optional, String) Acceleration zone of the Layer 4 proxy instance. `mainland`: Availability zone in the Chinese mainland; `overseas`: Global availability zone (excluding the Chinese mainland); `global`: Global availability zone.
 * `ddos_protection_config` - (Optional, List, **Deprecated**) It has been deprecated from version 1.82.90. Please do not use this field anymore. Layer 3/Layer 4 DDoS protection. The default protection option of the platform will be used if it is left empty. For details, see [Exclusive DDoS Protection Usage](https://intl.cloud.tencent.com/document/product/1552/95994?from_cn_redirect=1).
 * `ipv6` - (Optional, String) Specifies whether to enable IPv6 access. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values: `on`: Enable; `off`: Disable.
+* `limit` - (Optional, Int) Pagination limit used for the `DescribeL4Proxy` API call. Default is 20.
+* `offset` - (Optional, Int) Pagination offset used for the `DescribeL4Proxy` API call. Default is 0.
 * `static_ip` - (Optional, String) Specifies whether to enable the fixed IP address. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values: `on`: Enable; `off`: Disable.
 
 The `ddos_protection_config` object supports the following:
@@ -48,6 +62,7 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
 * `proxy_id` - L4 proxy instance ID.
+* `total_count` - Total count of L4 proxy instances matching the current filter conditions, returned by the `DescribeL4Proxy` API.
 
 
 ## Import

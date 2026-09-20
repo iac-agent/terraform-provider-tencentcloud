@@ -48,7 +48,7 @@ func resourceTencentCloudTeoL4ProxyDeletePostFillRequest0(ctx context.Context, r
 	proxyId := idSplit[1]
 
 	service := TeoService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
-	proxy, err := service.DescribeTeoL4ProxyById(ctx, zoneId, proxyId)
+	proxy, _, err := service.DescribeTeoL4ProxyById(ctx, zoneId, proxyId, nil, nil)
 	if err != nil {
 		return err
 	}
@@ -114,7 +114,7 @@ func teoL4proxyStateRefreshFunc(meta interface{}, zoneId, proxyId string, failSt
 		ctx := tccommon.ContextNil
 
 		service := TeoService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
-		object, err := service.DescribeTeoL4ProxyById(ctx, zoneId, proxyId)
+		object, _, err := service.DescribeTeoL4ProxyById(ctx, zoneId, proxyId, nil, nil)
 
 		if err != nil {
 			return nil, "", err
