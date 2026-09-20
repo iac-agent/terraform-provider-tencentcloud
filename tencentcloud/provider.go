@@ -2153,6 +2153,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_teo_function_runtime_environment":                                         teo.ResourceTencentCloudTeoFunctionRuntimeEnvironment(),
 			"tencentcloud_teo_function_replica":                                                     teo.ResourceTencentCloudTeoFunctionReplica(),
 			"tencentcloud_teo_function_component_binding":                                           teo.ResourceTencentCloudTeoFunctionComponentBinding(),
+			"tencentcloud_teo_function_v5":                                                          teo.ResourceTencentCloudTeoFunctionV5(),
 			"tencentcloud_teo_security_policy_config":                                               teo.ResourceTencentCloudTeoSecurityPolicyConfig(),
 			"tencentcloud_teo_web_security_template":                                                teo.ResourceTencentCloudTeoWebSecurityTemplate(),
 			"tencentcloud_teo_dns_record":                                                           teo.ResourceTencentCloudTeoDnsRecord(),
