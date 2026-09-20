@@ -11,6 +11,18 @@ resource "tencentcloud_teo_l4_proxy" "proxy" {
   static_ip           = "off"
   zone_id             = "zone-2qtuhspy6cr7"
 }
+
+resource "tencentcloud_teo_l4_proxy" "proxy_with_pagination" {
+  accelerate_mainland = "off"
+  area                = "overseas"
+  ipv6                = "on"
+  proxy_name          = "proxy-test-pagination"
+  static_ip           = "off"
+  zone_id             = "zone-2qtuhspy6cr7"
+
+  offset      = 0
+  limit       = 20
+}
 ```
 
 Import

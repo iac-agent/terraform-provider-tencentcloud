@@ -95,7 +95,7 @@ func testAccCheckL4ProxyDestroy(s *terraform.State) error {
 		zoneId := idSplit[0]
 		proxyId := idSplit[1]
 
-		proxy, err := service.DescribeTeoL4ProxyById(ctx, zoneId, proxyId)
+		proxy, _, err := service.DescribeTeoL4ProxyById(ctx, zoneId, proxyId, nil, nil)
 		if proxy != nil {
 			return fmt.Errorf("zone l4 proxy %s still exists", rs.Primary.ID)
 		}
@@ -123,7 +123,7 @@ func testAccCheckL4ProxyExists(r string) resource.TestCheckFunc {
 		proxyId := idSplit[1]
 
 		service := svcteo.NewTeoService(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
-		proxy, err := service.DescribeTeoL4ProxyById(ctx, zoneId, proxyId)
+		proxy, _, err := service.DescribeTeoL4ProxyById(ctx, zoneId, proxyId, nil, nil)
 		if proxy == nil {
 			return fmt.Errorf("zone l4 proxy %s is not found", rs.Primary.ID)
 		}
@@ -182,7 +182,7 @@ func TestTeoL4Proxy_Create(t *testing.T) {
 	})
 
 	// Mock TeoService.DescribeTeoL4ProxyById for both the state refresh in CreatePostHandleResponse and the Read call
-	patches.ApplyMethodFunc(&svcteo.TeoService{}, "DescribeTeoL4ProxyById", func(_ context.Context, zoneId string, proxyId string) (*teov20220901.L4Proxy, error) {
+	patches.ApplyMethodFunc(&svcteo.TeoService{}, "DescribeTeoL4ProxyById", func(_ context.Context, zoneId string, proxyId string, offset *uint64, limit *uint64) (*teov20220901.L4Proxy, *uint64, error) {
 		return &teov20220901.L4Proxy{
 			ZoneId:             ptrStringL4Proxy("zone-test1234"),
 			ProxyId:            ptrStringL4Proxy("proxy-12345678"),
@@ -192,7 +192,7 @@ func TestTeoL4Proxy_Create(t *testing.T) {
 			StaticIp:           ptrStringL4Proxy("off"),
 			AccelerateMainland: ptrStringL4Proxy("off"),
 			Status:             ptrStringL4Proxy("online"),
-		}, nil
+		}, nil, nil
 	})
 
 	meta := newMockMetaL4Proxy()
@@ -223,7 +223,7 @@ func TestTeoL4Proxy_Read(t *testing.T) {
 	defer patches.Reset()
 
 	// Mock TeoService.DescribeTeoL4ProxyById for the Read flow
-	patches.ApplyMethodFunc(&svcteo.TeoService{}, "DescribeTeoL4ProxyById", func(_ context.Context, zoneId string, proxyId string) (*teov20220901.L4Proxy, error) {
+	patches.ApplyMethodFunc(&svcteo.TeoService{}, "DescribeTeoL4ProxyById", func(_ context.Context, zoneId string, proxyId string, offset *uint64, limit *uint64) (*teov20220901.L4Proxy, *uint64, error) {
 		assert.Equal(t, "zone-test1234", zoneId)
 		assert.Equal(t, "proxy-87654321", proxyId)
 		return &teov20220901.L4Proxy{
@@ -234,7 +234,7 @@ func TestTeoL4Proxy_Read(t *testing.T) {
 			Ipv6:               ptrStringL4Proxy("off"),
 			StaticIp:           ptrStringL4Proxy("off"),
 			AccelerateMainland: ptrStringL4Proxy("off"),
-		}, nil
+		}, nil, nil
 	})
 
 	meta := newMockMetaL4Proxy()
@@ -259,8 +259,8 @@ func TestTeoL4Proxy_Read_NotFound(t *testing.T) {
 	defer patches.Reset()
 
 	// Mock TeoService.DescribeTeoL4ProxyById to return nil (not found)
-	patches.ApplyMethodFunc(&svcteo.TeoService{}, "DescribeTeoL4ProxyById", func(_ context.Context, zoneId string, proxyId string) (*teov20220901.L4Proxy, error) {
-		return nil, nil
+	patches.ApplyMethodFunc(&svcteo.TeoService{}, "DescribeTeoL4ProxyById", func(_ context.Context, zoneId string, proxyId string, offset *uint64, limit *uint64) (*teov20220901.L4Proxy, *uint64, error) {
+		return nil, nil, nil
 	})
 
 	meta := newMockMetaL4Proxy()
@@ -288,4 +288,119 @@ func TestTeoL4Proxy_Schema(t *testing.T) {
 	assert.True(t, proxyIdSchema.Computed)
 	assert.False(t, proxyIdSchema.Optional)
 	assert.False(t, proxyIdSchema.Required)
+}
+
+// TestTeoL4Proxy_Read_OffsetLimit tests that offset and limit are passed to DescribeTeoL4ProxyById and total_count is set
+func TestTeoL4Proxy_Read_OffsetLimit(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	var capturedOffset *uint64
+	var capturedLimit *uint64
+
+	// Mock TeoService.DescribeTeoL4ProxyById to capture offset/limit and return total_count
+	patches.ApplyMethodFunc(&svcteo.TeoService{}, "DescribeTeoL4ProxyById", func(_ context.Context, zoneId string, proxyId string, offset *uint64, limit *uint64) (*teov20220901.L4Proxy, *uint64, error) {
+		capturedOffset = offset
+		capturedLimit = limit
+		totalCount := uint64(10)
+		return &teov20220901.L4Proxy{
+			ZoneId:             ptrStringL4Proxy("zone-test1234"),
+			ProxyId:            ptrStringL4Proxy("proxy-87654321"),
+			ProxyName:          ptrStringL4Proxy("proxy-test"),
+			Area:               ptrStringL4Proxy("overseas"),
+			Ipv6:               ptrStringL4Proxy("off"),
+			StaticIp:           ptrStringL4Proxy("off"),
+			AccelerateMainland: ptrStringL4Proxy("off"),
+		}, &totalCount, nil
+	})
+
+	meta := newMockMetaL4Proxy()
+	res := svcteo.ResourceTencentCloudTeoL4Proxy()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id":    "zone-test1234",
+		"proxy_name": "proxy-test",
+		"offset":     5,
+		"limit":      10,
+	})
+	d.SetId("zone-test1234#proxy-87654321")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+
+	// Verify offset and limit were passed to the service
+	assert.NotNil(t, capturedOffset)
+	assert.Equal(t, uint64(5), *capturedOffset)
+	assert.NotNil(t, capturedLimit)
+	assert.Equal(t, uint64(10), *capturedLimit)
+
+	// Verify total_count is set
+	totalCount := d.Get("total_count").(int)
+	assert.Equal(t, 10, totalCount)
+}
+
+// TestTeoL4Proxy_Read_TotalCount tests that total_count is set when returned from API
+func TestTeoL4Proxy_Read_TotalCount(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	totalCount := uint64(5)
+
+	// Mock TeoService.DescribeTeoL4ProxyById to return a specific total_count
+	patches.ApplyMethodFunc(&svcteo.TeoService{}, "DescribeTeoL4ProxyById", func(_ context.Context, zoneId string, proxyId string, offset *uint64, limit *uint64) (*teov20220901.L4Proxy, *uint64, error) {
+		return &teov20220901.L4Proxy{
+			ZoneId:             ptrStringL4Proxy("zone-test1234"),
+			ProxyId:            ptrStringL4Proxy("proxy-87654321"),
+			ProxyName:          ptrStringL4Proxy("proxy-test"),
+			Area:               ptrStringL4Proxy("overseas"),
+			Ipv6:               ptrStringL4Proxy("off"),
+			StaticIp:           ptrStringL4Proxy("off"),
+			AccelerateMainland: ptrStringL4Proxy("off"),
+		}, &totalCount, nil
+	})
+
+	meta := newMockMetaL4Proxy()
+	res := svcteo.ResourceTencentCloudTeoL4Proxy()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id":    "zone-test1234",
+		"proxy_name": "proxy-test",
+	})
+	d.SetId("zone-test1234#proxy-87654321")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+
+	// Verify total_count is set correctly
+	tc := d.Get("total_count").(int)
+	assert.Equal(t, 5, tc)
+}
+
+// TestTeoL4Proxy_Schema_NewFields tests that offset, limit, total_count are defined in schema
+func TestTeoL4Proxy_Schema_NewFields(t *testing.T) {
+	res := svcteo.ResourceTencentCloudTeoL4Proxy()
+
+	assert.NotNil(t, res)
+
+	// offset
+	assert.Contains(t, res.Schema, "offset")
+	offsetSchema := res.Schema["offset"]
+	assert.Equal(t, schema.TypeInt, offsetSchema.Type)
+	assert.True(t, offsetSchema.Optional)
+	assert.False(t, offsetSchema.Required)
+	assert.False(t, offsetSchema.Computed)
+
+	// limit
+	assert.Contains(t, res.Schema, "limit")
+	limitSchema := res.Schema["limit"]
+	assert.Equal(t, schema.TypeInt, limitSchema.Type)
+	assert.True(t, limitSchema.Optional)
+	assert.False(t, limitSchema.Required)
+	assert.False(t, limitSchema.Computed)
+
+	// total_count
+	assert.Contains(t, res.Schema, "total_count")
+	totalCountSchema := res.Schema["total_count"]
+	assert.Equal(t, schema.TypeInt, totalCountSchema.Type)
+	assert.True(t, totalCountSchema.Computed)
+	assert.False(t, totalCountSchema.Optional)
+	assert.False(t, totalCountSchema.Required)
 }

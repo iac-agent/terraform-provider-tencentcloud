@@ -1246,7 +1246,7 @@ func (me *TeoService) DescribeTeoCertificateConfigById(ctx context.Context, zone
 	return
 }
 
-func (me *TeoService) DescribeTeoL4ProxyById(ctx context.Context, zoneId string, proxyId string) (ret *teo.L4Proxy, errRet error) {
+func (me *TeoService) DescribeTeoL4ProxyById(ctx context.Context, zoneId string, proxyId string, offset *uint64, limit *uint64) (ret *teo.L4Proxy, totalCount *uint64, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
 	request := teo.NewDescribeL4ProxyRequest()
@@ -1257,6 +1257,13 @@ func (me *TeoService) DescribeTeoL4ProxyById(ctx context.Context, zoneId string,
 		Values: []*string{&proxyId},
 	}
 	request.Filters = append(request.Filters, filter)
+
+	if offset != nil {
+		request.Offset = offset
+	}
+	if limit != nil {
+		request.Limit = limit
+	}
 
 	defer func() {
 		if errRet != nil {
@@ -1285,6 +1292,7 @@ func (me *TeoService) DescribeTeoL4ProxyById(ctx context.Context, zoneId string,
 	}
 
 	ret = response.Response.L4Proxies[0]
+	totalCount = response.Response.TotalCount
 	return
 }
 
