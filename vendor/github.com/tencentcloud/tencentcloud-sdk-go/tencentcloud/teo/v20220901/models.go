@@ -136,6 +136,9 @@ type AccelerationDomain struct {
 
 	// <p>修改时间。</p>
 	ModifiedOn *string `json:"ModifiedOn,omitnil,omitempty" name:"ModifiedOn"`
+
+	// <p>域名因合规问题产生的地区访问限制列表。</p>
+	ComplianceRestrictions []*ComplianceRestriction `json:"ComplianceRestrictions,omitnil,omitempty" name:"ComplianceRestrictions"`
 }
 
 type AccelerationDomainCertificate struct {
@@ -1976,6 +1979,14 @@ type CodeAction struct {
 	Parameters []*RuleCodeActionParams `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 }
 
+type ComplianceRestriction struct {
+	// <p>下发访问限制的原因。</p><p>枚举值：</p><ul><li>ICP_RECORD_REQUIRED： 未备案；</li><li>GOVERNMENT_ORDER： 政府指令。</li></ul>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// <p>限制访问地区的具体国家/地区码，使用“ISO 3166 国家/地区代码标准”。</p><p>参数格式：查看链接：https://www.iso.org/iso-3166-country-codes.html。</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
 type ComponentReference struct {
 	// 引用的实例类型。取值有：
 	// <li>edge-function：边缘函数。</li>
@@ -3010,38 +3021,38 @@ func (r *CreateContentIdentifierResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCustomizeErrorPageRequestParams struct {
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义错误页名称，名称为 2-30 个字符。
+	// <p>自定义响应页面名称，名称为 2-30 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 自定义错误页面类型，取值有：<li>text/html； </li><li>application/json；</li><li>text/plain；</li><li>text/xml。</li>
+	// <p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 自定义错误页面描述，描述不超过 60 个字符。
+	// <p>自定义响应页面描述，描述不超过 60 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 自定义错误页面内容，内容不超过 2KB。
+	// <p>自定义响应页面内容，内容不超过 16KB。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type CreateCustomizeErrorPageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义错误页名称，名称为 2-30 个字符。
+	// <p>自定义响应页面名称，名称为 2-30 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 自定义错误页面类型，取值有：<li>text/html； </li><li>application/json；</li><li>text/plain；</li><li>text/xml。</li>
+	// <p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 自定义错误页面描述，描述不超过 60 个字符。
+	// <p>自定义响应页面描述，描述不超过 60 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 自定义错误页面内容，内容不超过 2KB。
+	// <p>自定义响应页面内容，内容不超过 16KB。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -3070,7 +3081,7 @@ func (r *CreateCustomizeErrorPageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCustomizeErrorPageResponseParams struct {
-	// 页面 ID。
+	// <p>自定义响应页面 ID。</p>
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4082,60 +4093,50 @@ func (r *CreateL7AccRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLoadBalancerRequestParams struct {
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。
+	// <p>实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例类型，取值有：
-	// <li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
-	// <li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+	// <p>实例类型，取值有：</p><li>HTTP_V2：HTTP 专用型（V2），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型支持选择发起探测的区域，可显著降低探测请求量但对源站的健康感知灵敏度更低；</li><li>HTTP：HTTP 专用型（V1），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高；</li><li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。
+	// <p>源站组列表及其对应的容灾调度优先级。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104223">快速创建负载均衡实例</a> 中的示例场景。</p>
 	OriginGroups []*OriginGroupInLoadBalancer `json:"OriginGroups,omitnil,omitempty" name:"OriginGroups"`
 
-	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写时，默认为不启用健康检查。
+	// <p>健康检查策略。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>。不填写时，默认为不启用健康检查。</p>
 	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
 
-	// 源站组间的流量调度策略，取值有：
-	// <li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
+	// <p>源站组间的流量调度策略，取值有：</p><li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
 	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
 
-	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
-	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
-	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
+	// <p>实际访问某源站失败时的请求重试策略，详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104227">请求重试策略介绍</a>，取值有：</p><li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li><li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
 	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
 }
 
 type CreateLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。
+	// <p>实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例类型，取值有：
-	// <li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
-	// <li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+	// <p>实例类型，取值有：</p><li>HTTP_V2：HTTP 专用型（V2），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型支持选择发起探测的区域，可显著降低探测请求量但对源站的健康感知灵敏度更低；</li><li>HTTP：HTTP 专用型（V1），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高；</li><li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。
+	// <p>源站组列表及其对应的容灾调度优先级。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104223">快速创建负载均衡实例</a> 中的示例场景。</p>
 	OriginGroups []*OriginGroupInLoadBalancer `json:"OriginGroups,omitnil,omitempty" name:"OriginGroups"`
 
-	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写时，默认为不启用健康检查。
+	// <p>健康检查策略。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>。不填写时，默认为不启用健康检查。</p>
 	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
 
-	// 源站组间的流量调度策略，取值有：
-	// <li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
+	// <p>源站组间的流量调度策略，取值有：</p><li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
 	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
 
-	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
-	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
-	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
+	// <p>实际访问某源站失败时的请求重试策略，详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104227">请求重试策略介绍</a>，取值有：</p><li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li><li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
 	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
 }
 
@@ -4166,7 +4167,7 @@ func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLoadBalancerResponseParams struct {
-	// 负载均衡实例 ID。
+	// <p>负载均衡实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6094,6 +6095,57 @@ type CustomTime struct {
 	CacheTime *int64 `json:"CacheTime,omitnil,omitempty" name:"CacheTime"`
 }
 
+type CustomVariable struct {
+	// <p>变量名称。需填写完整前缀：user.zone.* 表示站点级自定义变量，user.rule.* 表示规则级自定义变量。前缀后的自定义部分仅支持大小写字母、数字和下划线。变量名称区分大小写，长度不能超过 50 个字符。变量创建成功后，名称不可修改。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>变量初始值。支持使用常量字符串、变量以及公式。长度不能超过 255 个字符。</p>
+	InitialValue *string `json:"InitialValue,omitnil,omitempty" name:"InitialValue"`
+
+	// <p>变量描述。长度限制不超过 60 个字符。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CustomVariableOperation struct {
+	// <p>子规则分支。此列表当前只支持填写一项规则，多填无效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Branches []*CustomVariableOperationRuleBranch `json:"Branches,omitnil,omitempty" name:"Branches"`
+
+	// <p>规则注释。可以填写多个注释。</p>
+	Description []*string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CustomVariableOperationRuleAction struct {
+	// <p>操作名称。名称需要与参数结构体对应，例如 Name=Set，则 SetParameters 必填。当前仅支持填写 Set。</p><li>Set：自定义变量设置；</li>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>自定义变量设置参数。此参数中若存在多条运算，按照数组的顺序依次执行。当 Name 取值为 Set 时，该参数必填。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetParameters *SetParameters `json:"SetParameters,omitnil,omitempty" name:"SetParameters"`
+}
+
+type CustomVariableOperationRuleBranch struct {
+	// <p><a href="https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d">匹配条件</a>。</p>
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// <p><a href="https://cloud.tencent.com/document/product/1552/90438#c7bd7e02-9247-4a72-b0e4-11c27cadb198">操作</a>。<br>注意：Actions 和 SubRules 不可同时为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Actions []*CustomVariableOperationRuleAction `json:"Actions,omitnil,omitempty" name:"Actions"`
+
+	// <p>子规则列表。此列表中若存在多条规则，按照从上往下的顺序依次执行。<br>注意：SubRules 和 Actions 不可同时为空。且当前只支持填写一层 SubRules。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubRules []*CustomVariableOperationSubRule `json:"SubRules,omitnil,omitempty" name:"SubRules"`
+}
+
+type CustomVariableOperationSubRule struct {
+	// <p>子规则分支</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Branches []*CustomVariableOperationRuleBranch `json:"Branches,omitnil,omitempty" name:"Branches"`
+
+	// <p>规则注释。</p>
+	Description []*string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
 type CustomizedHeader struct {
 	// 自定义头部 Key。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -6572,7 +6624,7 @@ type DeleteCustomErrorPageRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义页面 ID。
+	// 自定义响应页面 ID。
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 }
 
@@ -6582,7 +6634,7 @@ type DeleteCustomErrorPageRequest struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义页面 ID。
+	// 自定义响应页面 ID。
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 }
 
@@ -8541,6 +8593,182 @@ func (r *DescribeApplicationProxiesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAvailableCustomActionsForRuleEngineRequestParams struct {
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>过滤条件，多个条件为且关系，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用的规则引擎定制配置。详细的过滤条件如下：</p><li>action-id：按照定制配置唯一标识 ID 进行过滤；</li><li>name：按照定制配置名称进行过滤。</li>模糊查询时仅支持过滤字段名为 <code>name</code>。<p></p>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页查询限制数目。</p><p>取值范围：[0, 1000]</p><p>默认值：20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量。</p><p>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序字段，取值有：</p><li>action-id：按照定制配置唯一标识 ID 排序；</li><li>create-time：按照定制配置创建时间排序。</li>默认值：<code>action-id</code>。<p></p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>排序方式，取值有：</p><li>asc：升序排序；</li><li>desc：降序排序。</li>默认值：desc。<p></p>
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+type DescribeAvailableCustomActionsForRuleEngineRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>过滤条件，多个条件为且关系，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用的规则引擎定制配置。详细的过滤条件如下：</p><li>action-id：按照定制配置唯一标识 ID 进行过滤；</li><li>name：按照定制配置名称进行过滤。</li>模糊查询时仅支持过滤字段名为 <code>name</code>。<p></p>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页查询限制数目。</p><p>取值范围：[0, 1000]</p><p>默认值：20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量。</p><p>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序字段，取值有：</p><li>action-id：按照定制配置唯一标识 ID 排序；</li><li>create-time：按照定制配置创建时间排序。</li>默认值：<code>action-id</code>。<p></p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>排序方式，取值有：</p><li>asc：升序排序；</li><li>desc：降序排序。</li>默认值：desc。<p></p>
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeAvailableCustomActionsForRuleEngineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailableCustomActionsForRuleEngineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SortBy")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAvailableCustomActionsForRuleEngineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAvailableCustomActionsForRuleEngineResponseParams struct {
+	// <p>符合条件的规则引擎定制配置的总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>符合条件的规则引擎定制配置的列表。</p>
+	CustomActionSet []*RuleEngineCustomAction `json:"CustomActionSet,omitnil,omitempty" name:"CustomActionSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAvailableCustomActionsForRuleEngineResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAvailableCustomActionsForRuleEngineResponseParams `json:"Response"`
+}
+
+func (r *DescribeAvailableCustomActionsForRuleEngineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailableCustomActionsForRuleEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAvailableOriginACLFamilyRequestParams struct {
+	// <p>站点ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用版本。源站防护的 IP 段控制域包含标准控制域和精简控制域。标准控制域和精简控制域主要区别在于提供的回源 IP 网段数量差异，后者数量更少,但是使用上有限制，如需使用请联系技术支持。具体取值说明如下：<br>详细的过滤条件如下：<br>OriginACLFamily：按照控制域进行过滤；</p><li>gaz：标准全球可用区控制域；</li><li>mlc：标准中国大陆可用区控制域；</li><li>emc：标准全球(不含中国大陆)可用区控制域；</li><li>plat-gaz：精简全球可用区控制域；</li><li>plat-mlc：精简中国大陆可用区控制域；</li><li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li><li>plat-specific-gaz：定制版控全球可用区制域；</li><li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li><li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页查询偏移量，默认为 0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页查询限制数目，默认值：20，最大值：100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeAvailableOriginACLFamilyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用版本。源站防护的 IP 段控制域包含标准控制域和精简控制域。标准控制域和精简控制域主要区别在于提供的回源 IP 网段数量差异，后者数量更少,但是使用上有限制，如需使用请联系技术支持。具体取值说明如下：<br>详细的过滤条件如下：<br>OriginACLFamily：按照控制域进行过滤；</p><li>gaz：标准全球可用区控制域；</li><li>mlc：标准中国大陆可用区控制域；</li><li>emc：标准全球(不含中国大陆)可用区控制域；</li><li>plat-gaz：精简全球可用区控制域；</li><li>plat-mlc：精简中国大陆可用区控制域；</li><li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li><li>plat-specific-gaz：定制版控全球可用区制域；</li><li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li><li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页查询偏移量，默认为 0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页查询限制数目，默认值：20，最大值：100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAvailableOriginACLFamilyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailableOriginACLFamilyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAvailableOriginACLFamilyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAvailableOriginACLFamilyResponseParams struct {
+	// <p>源站防护 IP 段详细信息总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>回源 IP 网段详细信息列表。</p>
+	OriginACLFamilyInfos []*OriginACLFamilyInfo `json:"OriginACLFamilyInfos,omitnil,omitempty" name:"OriginACLFamilyInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAvailableOriginACLFamilyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAvailableOriginACLFamilyResponseParams `json:"Response"`
+}
+
+func (r *DescribeAvailableOriginACLFamilyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailableOriginACLFamilyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAvailablePlansRequestParams struct {
 
 }
@@ -9008,40 +9236,32 @@ func (r *DescribeContentQuotaResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCustomErrorPagesRequestParams struct {
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 过滤条件，Filters.Values 的上限为20，详细的过滤条件Name值如下：
-	// <li>page-id： 按照页面 ID 进行过滤；</li>
-	// <li>name： 按照页面名称进行过滤；</li>
-	// <li>description：按照页面描述过滤；</li>
-	// <li>content-type：按照页面类型过滤。</li>
+	// <p>过滤条件，Filters.Values 的上限为 20，详细的过滤条件Name值如下：<li>page-id： 按照页面 ID 进行过滤；</li><li>name： 按照页面名称进行过滤；</li><li>description：按照页面描述过滤；</li><li>content-type：按照页面类型过滤。</li></p>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页查询偏移量。默认值：0。
+	// <p>分页查询偏移量。默认值：0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询限制数目。默认值：20，最大值：1000。 
+	// <p>分页查询限制数目。默认值：20，最大值：1000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeCustomErrorPagesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 过滤条件，Filters.Values 的上限为20，详细的过滤条件Name值如下：
-	// <li>page-id： 按照页面 ID 进行过滤；</li>
-	// <li>name： 按照页面名称进行过滤；</li>
-	// <li>description：按照页面描述过滤；</li>
-	// <li>content-type：按照页面类型过滤。</li>
+	// <p>过滤条件，Filters.Values 的上限为 20，详细的过滤条件Name值如下：<li>page-id： 按照页面 ID 进行过滤；</li><li>name： 按照页面名称进行过滤；</li><li>description：按照页面描述过滤；</li><li>content-type：按照页面类型过滤。</li></p>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页查询偏移量。默认值：0。
+	// <p>分页查询偏移量。默认值：0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询限制数目。默认值：20，最大值：1000。 
+	// <p>分页查询限制数目。默认值：20，最大值：1000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -9069,10 +9289,10 @@ func (r *DescribeCustomErrorPagesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCustomErrorPagesResponseParams struct {
-	// 自定义错误页面总数。
+	// <p>自定义响应页面总数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 自定义错误页面数据列表。
+	// <p>自定义响应页面数据列表。</p>
 	ErrorPages []*CustomErrorPage `json:"ErrorPages,omitnil,omitempty" name:"ErrorPages"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16781,28 +17001,31 @@ type FrequentScanningProtection struct {
 }
 
 type Function struct {
-	// 函数 ID。
+	// <p>函数 ID。</p>
 	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
 
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 函数名字。
+	// <p>函数名字。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 函数描述。
+	// <p>函数描述。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 函数内容。
+	// <p>函数内容。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 函数默认域名。
+	// <p>函数默认域名。</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+	// <p>边缘函数默认域名因合规问题产生的地区访问限制列表。</p>
+	DomainComplianceRestrictions []*ComplianceRestriction `json:"DomainComplianceRestrictions,omitnil,omitempty" name:"DomainComplianceRestrictions"`
+
+	// <p>创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 修改时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+	// <p>修改时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -17087,53 +17310,47 @@ type HeaderAction struct {
 }
 
 type HealthChecker struct {
-	// 健康检查策略，取值有：
-	// <li>HTTP；</li>
-	// <li>HTTPS；</li>
-	// <li>TCP；</li>
-	// <li>UDP；</li>
-	// <li>ICMP Ping；</li>
-	// <li>NoCheck。</li>
-	// 注意：NoCheck 表示不启用健康检查策略。
+	// <p>健康检查策略，取值有：</p><li>HTTP；</li><li>HTTPS；</li><li>TCP；</li><li>UDP；</li><li>ICMP Ping；</li><li>NoCheck。</li>注意：NoCheck 表示不启用健康检查策略。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 检查端口。当 Type=HTTP 或 Type=HTTPS 或 Type=TCP 或 Type=UDP 时为必填。
+	// <p>检查端口。当 Type=HTTP 或 Type=HTTPS 或 Type=TCP 或 Type=UDP 时为必填。</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 检查频率，表示多久发起一次健康检查任务，单位为秒。可配置 10-600 秒。
+	// <p>检查频率，表示多久发起一次健康检查任务，单位为秒。可配置 10-600 秒。</p>
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 每一次健康检查的超时时间，若健康检查消耗时间大于此值，则检查结果判定为“不健康”， 单位为秒，默认值为 5s，取值必须小于 Interval。
+	// <p>每一次健康检查的超时时间，若健康检查消耗时间大于此值，则检查结果判定为“不健康”， 单位为秒，默认值为 5s，取值必须小于 Interval。</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 健康阈值，表示连续几次健康检查结果为"健康"，则判断源站为"健康"，单位为次，默认 3 次，最小取值 1 次。
+	// <p>健康阈值，表示连续几次健康检查结果为&quot;健康&quot;，则判断源站为&quot;健康&quot;，单位为次，默认 3 次，最小取值 1 次。</p>
 	HealthThreshold *uint64 `json:"HealthThreshold,omitnil,omitempty" name:"HealthThreshold"`
 
-	// 不健康阈值，表示连续几次健康检查结果为"不健康"，则判断源站为"不健康"，单位为次，默认 2 次。
+	// <p>不健康阈值，表示连续几次健康检查结果为&quot;不健康&quot;，则判断源站为&quot;不健康&quot;，单位为次，默认 2 次。</p>
 	CriticalThreshold *uint64 `json:"CriticalThreshold,omitnil,omitempty" name:"CriticalThreshold"`
 
-	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测路径，需要填写完整的 host/path，不包含协议部分，例如：www.example.com/test。
+	// <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测路径，需要填写完整的 host/path，不包含协议部分，例如：www.example.com/test。</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示请求方法，取值有：
-	// <li>GET；</li>
-	// <li>HEAD。</li>
+	// <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示请求方法，取值有：</p><li>GET；</li><li>HEAD。</li>
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测节点向源站发起健康检查时，响应哪些状态码可用于认定探测结果为健康。
+	// <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测节点向源站发起健康检查时，响应哪些状态码可用于认定探测结果为健康。</p>
 	ExpectedCodes []*string `json:"ExpectedCodes,omitnil,omitempty" name:"ExpectedCodes"`
 
-	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测请求携带的自定义  HTTP 请求头，至多可配置 10 个。
+	// <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测请求携带的自定义  HTTP 请求头，至多可配置 10 个。</p>
 	Headers []*CustomizedHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示是否启用遵循 301/302 重定向。启用后，301/302 默认为"健康"的状态码，默认跳转 3 次。
+	// <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示是否启用遵循 301/302 重定向。启用后，301/302 默认为&quot;健康&quot;的状态码，默认跳转 3 次。</p>
 	FollowRedirect *string `json:"FollowRedirect,omitnil,omitempty" name:"FollowRedirect"`
 
-	// 该参数仅当 Type=UDP 时有效，表示健康检查发送的内容。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+	// <p>该参数仅当 Type=UDP 时有效，表示健康检查发送的内容。只允许 ASCII 可见字符，最大长度限制 500 个字符。</p>
 	SendContext *string `json:"SendContext,omitnil,omitempty" name:"SendContext"`
 
-	// 该参数仅当 Type=UDP 时有效，表示健康检查期望源站返回结果。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+	// <p>该参数仅当 Type=UDP 时有效，表示健康检查期望源站返回结果。只允许 ASCII 可见字符，最大长度限制 500 个字符。</p>
 	RecvContext *string `json:"RecvContext,omitnil,omitempty" name:"RecvContext"`
+
+	// <p>健康检查探测集群。指定本负载均衡实例发起健康探测的集群区域范围，探测集群地区分布详见<a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>，仅 HTTP 专用型（V2）版本负载均衡实例支持设置。取值有：<br>global：由全球所有区域的探测集群发起探测，包括中国大陆区域以及非中国大陆区域，各个区域的集群独立维护各自的探测结果；<br>mainland_china：仅由中国大陆区域的探测集群发起探测，当前中国大陆区域共用一个探测集群，探测结果由中国大陆区域的探测集群维护，其他区域跟随中国大陆区域的集群的探测结果；<br>overseas：仅由非中国大陆区域的探测集群发起探测，当前非中国大陆区域包含多个地区的探测集群，探测结果由各个地区的探测集群独立维护，中国大陆区域的探测结果由所有其他地区的探测集群的探测结果汇总生成。<br>默认为 global。</p>
+	ProbeCluster *string `json:"ProbeCluster,omitnil,omitempty" name:"ProbeCluster"`
 }
 
 type HostHeaderParameters struct {
@@ -17656,24 +17873,60 @@ type InferenceEnvironmentVariable struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
-type InferenceHardwareSpecification struct {
-	// 规格标识。
-	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
-
-	// 规格名称。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// CPU 核数。
-	CPUNum *float64 `json:"CPUNum,omitnil,omitempty" name:"CPUNum"`
-
-	// 内存大小。单位为 MB。
-	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
-
-	// GPU 卡数。
+type InferenceHardwareConfig struct {
+	// <p>推理服务单个实例分配的 GPU 卡数，当前仅支持整数值，且必须为 <code>HardwareSpecId</code> 对应规格的 <code>AllowedGPUNums</code> 中的可选值。</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 规格对应的默认 <code>GPUNum</code> 值。</p>
 	GPUNum *float64 `json:"GPUNum,omitnil,omitempty" name:"GPUNum"`
 
-	// 显存大小。单位为 MB。
+	// <p>推理服务单个实例分配的 CPU 核数，当前仅支持整数值。</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 规格对应的默认 <code>CPUNum</code> 值。</p>
+	CPUNum *float64 `json:"CPUNum,omitnil,omitempty" name:"CPUNum"`
+
+	// <p>推理服务单实例分配的内存大小。</p><p>单位：MB</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 对应规格的默认 <code>MemSize</code> 值；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// <p>推理服务单实例分配的临时磁盘大小。</p><p>单位：MB</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 对应规格的默认 <code>DiskSize</code> 值；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+type InferenceHardwareConfigForModify struct {
+	// <p>推理服务单实例分配的 CPU 核数，当前仅支持整数值。</p><p>若不填充，则不修改。</p>
+	CPUNum *float64 `json:"CPUNum,omitnil,omitempty" name:"CPUNum"`
+
+	// <p>推理服务单实例分配的内存大小。</p><p>单位：MB</p><p>若不填充，则不修改；若填写，则必须为 <code>1024</code> 的整数倍。</p>
+	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// <p>推理服务单实例分配的临时磁盘大小。</p><p>单位：MB</p><p>若不填充，则不修改；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+type InferenceHardwareSpecification struct {
+	// <p>规格标识。已废弃，参考使用字段 <code>HardwareSpecId</code>。</p>
+	//
+	// Deprecated: Spec is deprecated.
+	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// <p>规格唯一标识 ID。</p>
+	HardwareSpecId *string `json:"HardwareSpecId,omitnil,omitempty" name:"HardwareSpecId"`
+
+	// <p>规格名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>规格默认分配的 GPU 卡数。</p>
+	GPUNum *float64 `json:"GPUNum,omitnil,omitempty" name:"GPUNum"`
+
+	// <p>规格默认分配的 CPU 核数。</p>
+	CPUNum *float64 `json:"CPUNum,omitnil,omitempty" name:"CPUNum"`
+
+	// <p>规格默认分配的内存大小。</p><p>单位：MB</p>
+	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// <p>规格默认分配的显存大小。</p><p>单位：MB</p>
 	GPUMemSize *int64 `json:"GPUMemSize,omitnil,omitempty" name:"GPUMemSize"`
+
+	// <p>规格默认分配的磁盘大小。</p><p>单位：MB</p>
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>规格当前支持的 GPU 卡数列表。</p><p>若不填充或填充空数组，则仅支持规格默认分配的 GPU 卡数。</p>
+	AllowedGPUNums []*float64 `json:"AllowedGPUNums,omitnil,omitempty" name:"AllowedGPUNums"`
 }
 
 type InferenceManualInstanceConfig struct {
@@ -17682,36 +17935,47 @@ type InferenceManualInstanceConfig struct {
 }
 
 type InferenceResourceConfig struct {
-	// 扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+	// <p>扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li></p>
 	ScalingMode *string `json:"ScalingMode,omitnil,omitempty" name:"ScalingMode"`
 
-	// 硬件规格。
+	// <p>硬件规格标识。已废弃，请参考使用 <code>HardwareSpecId</code>。</p>
+	//
+	// Deprecated: HardwareSpec is deprecated.
 	HardwareSpec *string `json:"HardwareSpec,omitnil,omitempty" name:"HardwareSpec"`
 
-	// 推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+	// <p>硬件规格唯一标识 ID，可通过 <code>DescribeInferenceHardwareSpecifications</code> 接口获取当前站点支持的硬件规格。</p><p>系统默认按照所选 <code>HardwareSpecId</code> 对应的硬件规格配置推理服务所需资源；如需调整，可通过 <code>HardwareConfig</code> 自定义硬件资源配置。</p>
+	HardwareSpecId *string `json:"HardwareSpecId,omitnil,omitempty" name:"HardwareSpecId"`
+
+	// <p>推理服务硬件配置。</p><p>作为入参时，若未填充则按照所选 <code>HardwareSpecId</code> 规格的默认值配置硬件资源；若填充则优先按照填写值进行配置。</p>
+	HardwareConfig *InferenceHardwareConfig `json:"HardwareConfig,omitnil,omitempty" name:"HardwareConfig"`
+
+	// <p>推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoScalingConfig *InferenceAutoScalingConfig `json:"AutoScalingConfig,omitnil,omitempty" name:"AutoScalingConfig"`
 
-	// 推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+	// <p>推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManualInstanceConfig *InferenceManualInstanceConfig `json:"ManualInstanceConfig,omitnil,omitempty" name:"ManualInstanceConfig"`
 
-	// 单实例的并发数。默认值为 1。
+	// <p>单实例的并发数。默认值为 1。</p>
 	Concurrency *int64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
 }
 
 type InferenceResourceConfigForModify struct {
-	// 扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+	// <p>扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li></p>
 	ScalingMode *string `json:"ScalingMode,omitnil,omitempty" name:"ScalingMode"`
 
-	// 推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+	// <p>推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。</p>
 	AutoScalingConfig *InferenceAutoScalingConfig `json:"AutoScalingConfig,omitnil,omitempty" name:"AutoScalingConfig"`
 
-	// 推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+	// <p>推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。</p>
 	ManualInstanceConfig *InferenceManualInstanceConfig `json:"ManualInstanceConfig,omitnil,omitempty" name:"ManualInstanceConfig"`
 
-	// 单实例的并发数。默认值为 1。
+	// <p>单实例的并发数。默认值为 1。</p>
 	Concurrency *int64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
+
+	// <p>推理服务的硬件资源配置。</p>
+	HardwareConfig *InferenceHardwareConfigForModify `json:"HardwareConfig,omitnil,omitempty" name:"HardwareConfig"`
 }
 
 type InferenceScalingPolicy struct {
@@ -18303,45 +18567,37 @@ type L7OfflineLog struct {
 }
 
 type LoadBalancer struct {
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。	
+	// <p>实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例类型，取值有：
-	// <li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
-	// <li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+	// <p>实例类型，取值有：</p><li>HTTP_V2：HTTP 专用型（V2），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型支持选择发起探测的区域，可显著降低探测请求量但对源站的健康感知灵敏度更低；</li><li>HTTP：HTTP 专用型（V1），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高；</li><li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。
+	// <p>健康检查策略。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>。</p>
 	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
 
-	// 源站组间的流量调度策略，取值有：
-	// <li>Pritory：按优先级顺序进行故障转移 。</li>
+	// <p>源站组间的流量调度策略，取值有：</p><li>Pritory：按优先级顺序进行故障转移 。</li>
 	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
 
-	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
-	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
-	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>
+	// <p>实际访问某源站失败时的请求重试策略，详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104227">请求重试策略介绍</a>，取值有：</p><li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li><li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>
 	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
 
-	// 源站组健康状态。
+	// <p>源站组健康状态。</p>
 	OriginGroupHealthStatus []*OriginGroupHealthStatus `json:"OriginGroupHealthStatus,omitnil,omitempty" name:"OriginGroupHealthStatus"`
 
-	// 负载均衡状态，取值有：
-	// <li>Pending：部署中；</li>
-	// <li>Deleting：删除中；</li>
-	// <li>Running：已生效。</li>
+	// <p>负载均衡状态，取值有：</p><li>Pending：部署中；</li><li>Deleting：删除中；</li><li>Running：已生效。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 该负载均衡实例绑的四层代理实例的列表。
+	// <p>该负载均衡实例绑的四层代理实例的列表。</p>
 	L4UsedList []*string `json:"L4UsedList,omitnil,omitempty" name:"L4UsedList"`
 
-	// 该负载均衡实例绑定的七层域名列表。
+	// <p>该负载均衡实例绑定的七层域名列表。</p>
 	L7UsedList []*string `json:"L7UsedList,omitnil,omitempty" name:"L7UsedList"`
 
-	// 负载均衡被引用实例的列表。
+	// <p>负载均衡被引用实例的列表。</p>
 	References []*OriginGroupReference `json:"References,omitnil,omitempty" name:"References"`
 }
 
@@ -19379,44 +19635,44 @@ func (r *ModifyContentIdentifierResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCustomErrorPageRequestParams struct {
-	// 自定义错误页面 ID。
+	// <p>自定义响应页面 ID。</p>
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义错误页名称，名称为2 - 60个字符。
+	// <p>自定义响应页面名称，名称为 2 - 60 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 自定义错误页描述，描述内容不超过60个字符。
+	// <p>自定义响应页面描述，描述内容不超过 60 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 自定义错误页面类型，取值有：<li>text/html。 </li><li>application/json。</li><li>plain/text。</li><li>text/xml。</li>
+	// <p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 自定义错误页面内容。内容不超过 2KB。
+	// <p>自定义响应页面内容。内容不超过 16KB。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type ModifyCustomErrorPageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 自定义错误页面 ID。
+	// <p>自定义响应页面 ID。</p>
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义错误页名称，名称为2 - 60个字符。
+	// <p>自定义响应页面名称，名称为 2 - 60 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 自定义错误页描述，描述内容不超过60个字符。
+	// <p>自定义响应页面描述，描述内容不超过 60 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 自定义错误页面类型，取值有：<li>text/html。 </li><li>application/json。</li><li>plain/text。</li><li>text/xml。</li>
+	// <p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 自定义错误页面内容。内容不超过 2KB。
+	// <p>自定义响应页面内容。内容不超过 16KB。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -23222,6 +23478,39 @@ type OriginACLEntity struct {
 	OperationMode *string `json:"OperationMode,omitnil,omitempty" name:"OperationMode"`
 }
 
+type OriginACLFamilyInfo struct {
+	// 源站防护版本号。
+	// 格式说明：
+	// 标准版本：
+	// <li>gaz-xxxxx：全球；</li>
+	// <li>mlc-xxxxx：中国；</li>
+	// <li>emc-xxxxx：海外(全球不含中国)；</li>
+	// 精简版(平台级版本)：
+	// <li>plat-gaz-xxxxxx：精简全球版；</li>
+	// <li>plat-mlc-xxxxxx：精简中国版；</li>
+	// <li>plat-emc-xxxxxx：精简海外(全球不含中国)版；</li>
+	// 缩写说明：
+	// <li>gaz：Global AZ Availability Zone;</li>
+	// <li>mlc：mainlandChina;</li>
+	// <li>emc：Exclude mainlandChina.</li>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 版本生效时间，时间是北京时间 UTC+8， 遵循 ISO 8601 标准的日期和时间格式。
+	ActiveTime *string `json:"ActiveTime,omitnil,omitempty" name:"ActiveTime"`
+
+	// 回源 IP 网段详情。	
+	EntireAddresses *Addresses `json:"EntireAddresses,omitnil,omitempty" name:"EntireAddresses"`
+
+	// 源站防护回源ACL控制域。取值说明如下：
+	// <li>gaz：标准全球可用区控制域；</li>
+	// <li>mlc：标准中国大陆可用区控制域；</li>
+	// <li>emc：标准全球(不含中国大陆)可用区控制域；</li>
+	// <li>plat-gaz：精简全球可用区控制域；</li>
+	// <li>plat-mlc：精简中国大陆可用区控制域；</li>
+	// <li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+	OriginACLFamily *string `json:"OriginACLFamily,omitnil,omitempty" name:"OriginACLFamily"`
+}
+
 type OriginACLInfo struct {
 	// 启用了特定回源 IP 网段回源的七层加速域名列表。源站防护未开启时为空。
 	L7Hosts []*string `json:"L7Hosts,omitnil,omitempty" name:"L7Hosts"`
@@ -24693,24 +24982,99 @@ type RuleEngineAction struct {
 	CustomActionParameters *CustomActionParameters `json:"CustomActionParameters,omitnil,omitempty" name:"CustomActionParameters"`
 }
 
+type RuleEngineCustomAction struct {
+	// <p>定制配置唯一 ID。</p>
+	ActionId *string `json:"ActionId,omitnil,omitempty" name:"ActionId"`
+
+	// <p>定制配置名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>定制配置描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>定制配置参数定义列表。</p>
+	Parameters []*RuleEngineCustomActionParameterSchema `json:"Parameters,omitnil,omitempty" name:"Parameters"`
+
+	// <p>定制配置支持的匹配条件。</p><p>支持匹配条件参考官方文档 <a href="https://cloud.tencent.com/document/product/1552/125344">通用参考-配置语法-变量</a>。</p>
+	SupportedConditions []*string `json:"SupportedConditions,omitnil,omitempty" name:"SupportedConditions"`
+}
+
+type RuleEngineCustomActionParameterSchema struct {
+	// <p>参数字段名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>参数字段类型，取值有：<li>Boolean：布尔；</li><li>Integer：整型；</li><li>Float：浮点型；</li><li>String：字符串；</li><li>ArrayOfInteger：整型数组；</li><li>ArrayOfFloat：浮点型数组；</li><li>ArrayOfString：字符串数组。</li></p>
+	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+
+	// <p>参数字段描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>参数字段默认值。</p>
+	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
+
+	// <p>参数字段单位。</p>
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// <p>参数字段是否必填。</p><p>默认值：false</p><p>若填充，则适用于所有参数字段类型校验；若不填充则不校验。</p>
+	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
+
+	// <p>参数字段最小值。</p><p>若填充，适用于整数、浮点数、整数数组、浮点数数组类型参数的数值校验；若不填充则不校验。</p>
+	MinValue *float64 `json:"MinValue,omitnil,omitempty" name:"MinValue"`
+
+	// <p>参数字段最大值。</p><p>若填充，适用于整数、浮点数、整数数组、浮点数数组类型参数的数值校验；若不填充则不校验。</p>
+	MaxValue *float64 `json:"MaxValue,omitnil,omitempty" name:"MaxValue"`
+
+	// <p>参数字段最小长度。</p><p>若填充，适用于字符串、字符串数组类型参数的数值校验；若不填充则不校验。</p>
+	MinLength *int64 `json:"MinLength,omitnil,omitempty" name:"MinLength"`
+
+	// <p>参数字段最大长度。</p><p>若填充，适用于字符串、字符串数组类型参数的数值校验；若不填充则不校验。</p>
+	MaxLength *int64 `json:"MaxLength,omitnil,omitempty" name:"MaxLength"`
+
+	// <p>参数字段最小项数。</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+	MinItems *int64 `json:"MinItems,omitnil,omitempty" name:"MinItems"`
+
+	// <p>参数字段最大项数。</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+	MaxItems *int64 `json:"MaxItems,omitnil,omitempty" name:"MaxItems"`
+
+	// <p>参数字段项是否唯一。</p><p>默认值：false</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+	UniqueItems *bool `json:"UniqueItems,omitnil,omitempty" name:"UniqueItems"`
+
+	// <p>参数字段允许的格式。</p><p>若填充，需要校验字符串或者字符串数组内容合适；若不填充则不校验。</p>
+	AllowedPattern *string `json:"AllowedPattern,omitnil,omitempty" name:"AllowedPattern"`
+
+	// <p>参数字段允许的取值，若为空则不校验。</p><p>若本参数填充，则说明对应参数为枚举类型，仅允许填充本参数数组中的值；若不填充则不校验。</p>
+	AllowedValues []*string `json:"AllowedValues,omitnil,omitempty" name:"AllowedValues"`
+
+	// <p>参数字段最小步长。若填充，适用于浮点型和浮点型数组类型参数的数值校验；若不填充则不校验。</p>
+	MultipleOf *string `json:"MultipleOf,omitnil,omitempty" name:"MultipleOf"`
+}
+
 type RuleEngineItem struct {
-	// 规则状态。取值有：<li> enable: 启用； </li><li> disable: 未启用。</li>
+	// <p>规则状态。取值有：<li> enable: 启用； </li><li> disable: 未启用。</li></p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 规则 ID。规则的唯一性标识，当调用 ModifyL7AccRules 时，该参数必填。
+	// <p>规则 ID。规则的唯一性标识，当调用 ModifyL7AccRule 时，该参数必填。</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 规则名称。名称长度限制不超过 255 个字符。
+	// <p>规则名称。名称长度限制不超过 255 个字符。</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 规则注释。可以填写多个注释。
+	// <p>规则注释。可以填写多个注释。</p>
 	Description []*string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 子规则分支。此列表当前只支持填写一项规则，多填无效。
+	// <p>规则级自定义变量列表。CustomVariable.Name 需要使用 user.rule. 作为前缀。变量按照数组顺序依次初始化，InitialValue 支持引用站点级自定义变量，以及位于当前变量之前的规则级自定义变量，不支持引用当前变量自身或位于其后的规则级自定义变量。站点级自定义变量可通过 DescribeZoneCustomVariables 接口查询。当 Branches 为空时 CustomVariable 不允许填写，填写无效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// <p>规则级自定义变量运算详情。运算中支持引用站点级自定义变量和当前规则已定义的规则级自定义变量。站点级自定义变量可通过 DescribeZoneCustomVariables 接口查询。此列表当前只支持填写一项规则，多填无效。当 Branches 为空时 CustomVariableOperations 不允许填写，填写无效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomVariableOperations []*CustomVariableOperation `json:"CustomVariableOperations,omitnil,omitempty" name:"CustomVariableOperations"`
+
+	// <p>子规则分支。此列表当前只支持填写一项规则，多填无效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Branches []*RuleBranch `json:"Branches,omitnil,omitempty" name:"Branches"`
 
-	// 规则优先级。仅作为出参使用。
+	// <p>规则优先级。仅作为出参使用。</p>
 	RulePriority *int64 `json:"RulePriority,omitnil,omitempty" name:"RulePriority"`
 }
 
@@ -25092,6 +25456,14 @@ type SessionRateControl struct {
 type SetContentIdentifierParameters struct {
 	// 内容标识id
 	ContentIdentifier *string `json:"ContentIdentifier,omitnil,omitempty" name:"ContentIdentifier"`
+}
+
+type SetParameters struct {
+	// <p>自定义变量名称。自定义变量必须先被定义才可进行运算。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>自定义变量赋值。支持使用常量字符串、变量以及公式，不支持中文。长度不能超过 1000 个字符。</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type SharedCNAMEInfo struct {
