@@ -142,3 +142,5 @@ SQL Server basic instance can be imported using the id, e.g.
 $ terraform import tencentcloud_sqlserver_basic_instance.example mssql-3cdq7kx5
 ```
 
+After import, both `time_zone` and `disk_encrypt_flag` will be populated from the API.
+

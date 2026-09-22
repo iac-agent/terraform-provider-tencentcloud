@@ -127,3 +127,134 @@ resource "tencentcloud_sqlserver_basic_instance" "example" {
   }
 }
 `
+
+func TestAccTencentCloudSqlserverBasicInstanceTimezone(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { tcacctest.AccPreCheck(t) },
+		Providers:    tcacctest.AccProviders,
+		CheckDestroy: testAccCheckSqlserverBasicInstanceDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccSqlserverBasicInstanceTimezone,
+				Check: resource.ComposeTestCheckFunc(
+					testAccCheckSqlserverBasicInstanceExists(testSqlserverBasicInstanceResourceKey),
+					resource.TestCheckResourceAttr(testSqlserverBasicInstanceResourceKey, "time_zone", "UTC"),
+				),
+			},
+			{
+				ResourceName:            testSqlserverBasicInstanceResourceKey,
+				ImportState:             true,
+				ImportStateVerify:       true,
+				ImportStateVerifyIgnore: []string{"auto_voucher", "period"},
+			},
+		},
+	})
+}
+
+const testAccSqlserverBasicInstanceTimezone string = tcacctest.DefaultVpcSubnets + tcacctest.DefaultSecurityGroupData + `
+data "tencentcloud_availability_zones_by_product" "zones" {
+  product = "sqlserver"
+}
+
+resource "tencentcloud_sqlserver_basic_instance" "example" {
+  name                   = "tf-example-timezone"
+  availability_zone      = data.tencentcloud_availability_zones_by_product.zones.zones.4.name
+  charge_type            = "POSTPAID_BY_HOUR"
+  vpc_id                 = local.vpc_id
+  subnet_id              = local.subnet_id
+  memory                 = 4
+  storage                = 100
+  cpu                    = 2
+  machine_type           = "CLOUD_PREMIUM"
+  time_zone              = "UTC"
+}
+`
+
+func TestAccTencentCloudSqlserverBasicInstanceDiskEncrypt(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { tcacctest.AccPreCheck(t) },
+		Providers:    tcacctest.AccProviders,
+		CheckDestroy: testAccCheckSqlserverBasicInstanceDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccSqlserverBasicInstanceDiskEncrypt,
+				Check: resource.ComposeTestCheckFunc(
+					testAccCheckSqlserverBasicInstanceExists(testSqlserverBasicInstanceResourceKey),
+					resource.TestCheckResourceAttr(testSqlserverBasicInstanceResourceKey, "disk_encrypt_flag", "1"),
+				),
+			},
+			{
+				ResourceName:            testSqlserverBasicInstanceResourceKey,
+				ImportState:             true,
+				ImportStateVerify:       true,
+				ImportStateVerifyIgnore: []string{"auto_voucher", "period"},
+			},
+		},
+	})
+}
+
+const testAccSqlserverBasicInstanceDiskEncrypt string = tcacctest.DefaultVpcSubnets + tcacctest.DefaultSecurityGroupData + `
+data "tencentcloud_availability_zones_by_product" "zones" {
+  product = "sqlserver"
+}
+
+resource "tencentcloud_sqlserver_basic_instance" "example" {
+  name                   = "tf-example-encrypt"
+  availability_zone      = data.tencentcloud_availability_zones_by_product.zones.zones.4.name
+  charge_type            = "POSTPAID_BY_HOUR"
+  vpc_id                 = local.vpc_id
+  subnet_id              = local.subnet_id
+  memory                 = 4
+  storage                = 100
+  cpu                    = 2
+  machine_type           = "CLOUD_SSD"
+  disk_encrypt_flag      = 1
+}
+`
+
+func TestAccTencentCloudSqlserverBasicInstanceTimezoneAndEncrypt(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { tcacctest.AccPreCheck(t) },
+		Providers:    tcacctest.AccProviders,
+		CheckDestroy: testAccCheckSqlserverBasicInstanceDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccSqlserverBasicInstanceTimezoneAndEncrypt,
+				Check: resource.ComposeTestCheckFunc(
+					testAccCheckSqlserverBasicInstanceExists(testSqlserverBasicInstanceResourceKey),
+					resource.TestCheckResourceAttr(testSqlserverBasicInstanceResourceKey, "time_zone", "UTC"),
+					resource.TestCheckResourceAttr(testSqlserverBasicInstanceResourceKey, "disk_encrypt_flag", "1"),
+				),
+			},
+			{
+				ResourceName:            testSqlserverBasicInstanceResourceKey,
+				ImportState:             true,
+				ImportStateVerify:       true,
+				ImportStateVerifyIgnore: []string{"auto_voucher", "period"},
+			},
+		},
+	})
+}
+
+const testAccSqlserverBasicInstanceTimezoneAndEncrypt string = tcacctest.DefaultVpcSubnets + tcacctest.DefaultSecurityGroupData + `
+data "tencentcloud_availability_zones_by_product" "zones" {
+  product = "sqlserver"
+}
+
+resource "tencentcloud_sqlserver_basic_instance" "example" {
+  name                   = "tf-example-both"
+  availability_zone      = data.tencentcloud_availability_zones_by_product.zones.zones.4.name
+  charge_type            = "POSTPAID_BY_HOUR"
+  vpc_id                 = local.vpc_id
+  subnet_id              = local.subnet_id
+  memory                 = 4
+  storage                = 100
+  cpu                    = 2
+  machine_type           = "CLOUD_SSD"
+  time_zone              = "UTC"
+  disk_encrypt_flag      = 1
+}
+`

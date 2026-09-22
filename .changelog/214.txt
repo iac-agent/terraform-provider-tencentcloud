@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_sqlserver_basic_instance: support `time_zone` and `disk_encrypt_flag` parameters
+```
