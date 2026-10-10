@@ -42,6 +42,9 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
 * `create_time` - Creation time. The time is in Coordinated Universal Time (UTC) and follows the date and time format specified by the ISO 8601 standard.
+* `domain_compliance_restrictions` - Region access restriction list of the function default domain due to compliance issues. Valid restriction reasons: `ICP_RECORD_REQUIRED` (ICP filing not obtained), `GOVERNMENT_ORDER` (government order).
+  * `reason` - The reason for the access restriction. Valid values: `ICP_RECORD_REQUIRED` (ICP filing not obtained), `GOVERNMENT_ORDER` (government order).
+  * `region` - The country/region code of the restricted access area, using the ISO 3166 country/region code standard.
 * `domain` - The default domain name for the function.
 * `function_id` - ID of the Function.
 * `update_time` - Modification time. The time is in Coordinated Universal Time (UTC) and follows the date and time format specified by the ISO 8601 standard.
