@@ -66,6 +66,26 @@ func ResourceTencentCloudTeoFunction() *schema.Resource {
 				Description: "The default domain name for the function.",
 			},
 
+			"domain_compliance_restrictions": {
+				Type:     schema.TypeList,
+				Computed: true,
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"reason": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "The reason for the access restriction. Valid values: `ICP_RECORD_REQUIRED` (ICP filing not obtained), `GOVERNMENT_ORDER` (government order).",
+						},
+						"region": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "The country/region code of the restricted access area, using the ISO 3166 country/region code standard.",
+						},
+					},
+				},
+				Description: "Region access restriction list of the function default domain due to compliance issues. Valid restriction reasons: `ICP_RECORD_REQUIRED` (ICP filing not obtained), `GOVERNMENT_ORDER` (government order).",
+			},
+
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
@@ -206,6 +226,21 @@ func resourceTencentCloudTeoFunctionRead(d *schema.ResourceData, meta interface{
 
 	if respData.Domain != nil {
 		_ = d.Set("domain", respData.Domain)
+	}
+
+	if respData.DomainComplianceRestrictions != nil && len(respData.DomainComplianceRestrictions) > 0 {
+		restrictionsList := make([]map[string]interface{}, 0, len(respData.DomainComplianceRestrictions))
+		for _, item := range respData.DomainComplianceRestrictions {
+			restriction := map[string]interface{}{}
+			if item.Reason != nil {
+				restriction["reason"] = *item.Reason
+			}
+			if item.Region != nil {
+				restriction["region"] = *item.Region
+			}
+			restrictionsList = append(restrictionsList, restriction)
+		}
+		_ = d.Set("domain_compliance_restrictions", restrictionsList)
 	}
 
 	if respData.CreateTime != nil {
