@@ -32,7 +32,7 @@ The following arguments are supported:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-
+* `Category` - Tag category, valid values: `Custom` (custom tag), `System` (system tag), `All` (all tags).
 
 
 ## Import
