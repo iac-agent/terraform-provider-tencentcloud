@@ -28,7 +28,8 @@ func TestAccTencentCloudTagResource_basic(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckTagExists("tencentcloud_tag.tag"),
 					resource.TestCheckResourceAttr("tencentcloud_tag.tag", "tag_key", "test_terraform_tag_key"),
-					resource.TestCheckResourceAttr("tencentcloud_tag.tag", "tag_value", "Terraform_tag_value")),
+					resource.TestCheckResourceAttr("tencentcloud_tag.tag", "tag_value", "Terraform_tag_value"),
+					resource.TestCheckResourceAttr("tencentcloud_tag.tag", "Category", "Custom")),
 			},
 			{
 				ResourceName:      "tencentcloud_tag.tag",

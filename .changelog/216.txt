@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_tag: add Category attribute to display tag category (Custom/System/All)
+```
