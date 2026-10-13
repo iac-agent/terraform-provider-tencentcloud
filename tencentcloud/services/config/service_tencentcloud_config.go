@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
@@ -57,7 +58,7 @@ func (me *ConfigService) DescribeConfigCompliancePacksByFilter(ctx context.Conte
 			pageItems []*configv20220802.ConfigCompliancePack
 		)
 
-		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 			ratelimit.Check(request.GetAction())
 			result, e := me.client.UseConfigV20220802Client().ListCompliancePacksWithContext(ctx, request)
 			if e != nil {
@@ -65,7 +66,7 @@ func (me *ConfigService) DescribeConfigCompliancePacksByFilter(ctx context.Conte
 			}
 
 			if result == nil || result.Response == nil {
-				return resource.NonRetryableError(fmt.Errorf("list config compliance packs failed, Response is nil"))
+				return retry.NonRetryableError(fmt.Errorf("list config compliance packs failed, Response is nil"))
 			}
 
 			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -110,7 +111,7 @@ func (me *ConfigService) DescribeSystemConfigCompliancePacks(ctx context.Context
 			pageItems []*configv20220802.SystemCompliancePack
 		)
 
-		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 			ratelimit.Check(request.GetAction())
 			result, e := me.client.UseConfigV20220802Client().ListSystemCompliancePacksWithContext(ctx, request)
 			if e != nil {
@@ -118,7 +119,7 @@ func (me *ConfigService) DescribeSystemConfigCompliancePacks(ctx context.Context
 			}
 
 			if result == nil || result.Response == nil {
-				return resource.NonRetryableError(fmt.Errorf("list system config compliance packs failed, Response is nil"))
+				return retry.NonRetryableError(fmt.Errorf("list system config compliance packs failed, Response is nil"))
 			}
 
 			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -171,7 +172,7 @@ func (me *ConfigService) DescribeConfigSystemRulesByFilter(ctx context.Context, 
 			pageItems []*configv20220802.SystemConfigRule
 		)
 
-		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 			ratelimit.Check(request.GetAction())
 			result, e := me.client.UseConfigV20220802Client().ListSystemRulesWithContext(ctx, request)
 			if e != nil {
@@ -179,7 +180,7 @@ func (me *ConfigService) DescribeConfigSystemRulesByFilter(ctx context.Context, 
 			}
 
 			if result == nil || result.Response == nil {
-				return resource.NonRetryableError(fmt.Errorf("list config system rules failed, Response is nil"))
+				return retry.NonRetryableError(fmt.Errorf("list config system rules failed, Response is nil"))
 			}
 
 			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -236,7 +237,7 @@ func (me *ConfigService) DescribeConfigRuleEvaluationResultsByFilter(ctx context
 			pageItems []*configv20220802.EvaluationResult
 		)
 
-		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 			ratelimit.Check(request.GetAction())
 			result, e := me.client.UseConfigV20220802Client().ListConfigRuleEvaluationResultsWithContext(ctx, request)
 			if e != nil {
@@ -244,7 +245,7 @@ func (me *ConfigService) DescribeConfigRuleEvaluationResultsByFilter(ctx context
 			}
 
 			if result == nil || result.Response == nil {
-				return resource.NonRetryableError(fmt.Errorf("list config rule evaluation results failed, Response is nil"))
+				return retry.NonRetryableError(fmt.Errorf("list config rule evaluation results failed, Response is nil"))
 			}
 
 			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -309,7 +310,7 @@ func (me *ConfigService) DescribeConfigRulesByFilter(ctx context.Context, paramM
 			pageItems []*configv20220802.ConfigRule
 		)
 
-		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 			ratelimit.Check(request.GetAction())
 			result, e := me.client.UseConfigV20220802Client().ListConfigRulesWithContext(ctx, request)
 			if e != nil {
@@ -317,7 +318,7 @@ func (me *ConfigService) DescribeConfigRulesByFilter(ctx context.Context, paramM
 			}
 
 			if result == nil || result.Response == nil {
-				return resource.NonRetryableError(fmt.Errorf("list config rules failed, Response is nil"))
+				return retry.NonRetryableError(fmt.Errorf("list config rules failed, Response is nil"))
 			}
 
 			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -360,7 +361,7 @@ func (me *ConfigService) DescribeConfigRuleById(ctx context.Context, ruleId stri
 		}
 	}()
 
-	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+	err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 		ratelimit.Check(request.GetAction())
 		result, e := me.client.UseConfigV20220802Client().DescribeConfigRule(request)
 		if e != nil {
@@ -368,7 +369,7 @@ func (me *ConfigService) DescribeConfigRuleById(ctx context.Context, ruleId stri
 		}
 
 		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("describe config rule failed, Response is nil"))
+			return retry.NonRetryableError(fmt.Errorf("describe config rule failed, Response is nil"))
 		}
 
 		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -402,7 +403,7 @@ func (me *ConfigService) DescribeConfigAlarmPolicyById(ctx context.Context, alar
 	for {
 		var result *configv20220802.ListAlarmPolicyResponse
 
-		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 			ratelimit.Check(request.GetAction())
 			resp, e := me.client.UseConfigV20220802Client().ListAlarmPolicy(request)
 			if e != nil {
@@ -410,7 +411,7 @@ func (me *ConfigService) DescribeConfigAlarmPolicyById(ctx context.Context, alar
 			}
 
 			if resp == nil || resp.Response == nil {
-				return resource.NonRetryableError(fmt.Errorf("list config alarm policy failed, Response is nil"))
+				return retry.NonRetryableError(fmt.Errorf("list config alarm policy failed, Response is nil"))
 			}
 
 			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), resp.ToJsonString())
@@ -453,7 +454,7 @@ func (me *ConfigService) DescribeConfigRecorder(ctx context.Context) (ret *confi
 		}
 	}()
 
-	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+	err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 		ratelimit.Check(request.GetAction())
 		result, e := me.client.UseConfigV20220802Client().DescribeConfigRecorder(request)
 		if e != nil {
@@ -461,7 +462,7 @@ func (me *ConfigService) DescribeConfigRecorder(ctx context.Context) (ret *confi
 		}
 
 		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("describe config recorder failed, Response is nil"))
+			return retry.NonRetryableError(fmt.Errorf("describe config recorder failed, Response is nil"))
 		}
 
 		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -505,7 +506,7 @@ func (me *ConfigService) DescribeConfigDiscoveredResourcesByFilter(ctx context.C
 			pageItems []*configv20220802.ResourceListInfo
 		)
 
-		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 			ratelimit.Check(request.GetAction())
 			result, e := me.client.UseConfigV20220802Client().ListDiscoveredResourcesWithContext(ctx, request)
 			if e != nil {
@@ -513,7 +514,7 @@ func (me *ConfigService) DescribeConfigDiscoveredResourcesByFilter(ctx context.C
 			}
 
 			if result == nil || result.Response == nil {
-				return resource.NonRetryableError(fmt.Errorf("list config discovered resources failed, Response is nil"))
+				return retry.NonRetryableError(fmt.Errorf("list config discovered resources failed, Response is nil"))
 			}
 
 			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -551,7 +552,7 @@ func (me *ConfigService) DescribeConfigResourceTypes(ctx context.Context) (items
 		}
 	}()
 
-	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+	err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 		ratelimit.Check(request.GetAction())
 		result, e := me.client.UseConfigV20220802Client().ListResourceTypesWithContext(ctx, request)
 		if e != nil {
@@ -559,7 +560,7 @@ func (me *ConfigService) DescribeConfigResourceTypes(ctx context.Context) (items
 		}
 
 		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("list config resource types failed, Response is nil"))
+			return retry.NonRetryableError(fmt.Errorf("list config resource types failed, Response is nil"))
 		}
 
 		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -588,7 +589,7 @@ func (me *ConfigService) DescribeConfigDeliver(ctx context.Context) (ret *config
 		}
 	}()
 
-	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+	err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 		ratelimit.Check(request.GetAction())
 		result, e := me.client.UseConfigV20220802Client().DescribeConfigDeliver(request)
 		if e != nil {
@@ -596,7 +597,7 @@ func (me *ConfigService) DescribeConfigDeliver(ctx context.Context) (ret *config
 		}
 
 		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("describe config deliver failed, Response is nil"))
+			return retry.NonRetryableError(fmt.Errorf("describe config deliver failed, Response is nil"))
 		}
 
 		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -629,7 +630,7 @@ func (me *ConfigService) DescribeConfigRemediationById(ctx context.Context, rule
 		}
 	}()
 
-	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+	err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 		ratelimit.Check(request.GetAction())
 		result, e := me.client.UseConfigV20220802Client().ListRemediations(request)
 		if e != nil {
@@ -637,7 +638,7 @@ func (me *ConfigService) DescribeConfigRemediationById(ctx context.Context, rule
 		}
 
 		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("list config remediations failed, Response is nil"))
+			return retry.NonRetryableError(fmt.Errorf("list config remediations failed, Response is nil"))
 		}
 
 		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
@@ -660,6 +661,57 @@ func (me *ConfigService) DescribeConfigRemediationById(ctx context.Context, rule
 	return
 }
 
+func (me *ConfigService) DescribeConfigListAggregators(ctx context.Context) (total uint64, items []*configv20220802.Aggregator, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := configv20220802.NewListAggregatorsRequest()
+	request.Limit = helper.Uint64(100)
+	request.Offset = helper.Uint64(0)
+
+	items = make([]*configv20220802.Aggregator, 0)
+
+	for {
+		var pageItems []*configv20220802.Aggregator
+
+		err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
+			ratelimit.Check(request.GetAction())
+			result, e := me.client.UseConfigV20220802Client().ListAggregatorsWithContext(ctx, request)
+			if e != nil {
+				return tccommon.RetryError(e)
+			}
+
+			if result == nil || result.Response == nil {
+				log.Printf("[DATASOURCE] read empty, skip SetId")
+				return retry.NonRetryableError(fmt.Errorf("list config aggregators failed, Response is nil"))
+			}
+
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+			if result.Response.Total != nil {
+				total = *result.Response.Total
+			}
+
+			pageItems = result.Response.Items
+			return nil
+		})
+
+		if err != nil {
+			errRet = err
+			return
+		}
+
+		items = append(items, pageItems...)
+
+		if uint64(len(items)) >= total {
+			break
+		}
+
+		*request.Offset += *request.Limit
+	}
+
+	return
+}
+
 func (me *ConfigService) DescribeConfigCompliancePackById(ctx context.Context, compliancePackId string) (ret *configv20220802.DescribeCompliancePackResponseParams, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
@@ -673,7 +725,7 @@ func (me *ConfigService) DescribeConfigCompliancePackById(ctx context.Context, c
 		}
 	}()
 
-	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+	err := retry.RetryContext(ctx, tccommon.ReadRetryTimeout, func() *retry.RetryError {
 		ratelimit.Check(request.GetAction())
 		result, e := me.client.UseConfigV20220802Client().DescribeCompliancePack(request)
 		if e != nil {
@@ -681,7 +733,7 @@ func (me *ConfigService) DescribeConfigCompliancePackById(ctx context.Context, c
 		}
 
 		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("describe config compliance pack failed, Response is nil"))
+			return retry.NonRetryableError(fmt.Errorf("describe config compliance pack failed, Response is nil"))
 		}
 
 		response = result

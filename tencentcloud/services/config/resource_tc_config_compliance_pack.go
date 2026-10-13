@@ -5,8 +5,10 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
@@ -15,12 +17,20 @@ import (
 
 func ResourceTencentCloudConfigCompliancePack() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceTencentCloudConfigCompliancePackCreate,
-		Read:   resourceTencentCloudConfigCompliancePackRead,
-		Update: resourceTencentCloudConfigCompliancePackUpdate,
-		Delete: resourceTencentCloudConfigCompliancePackDelete,
+		CreateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigCompliancePackCreate(d, meta))
+		},
+		ReadContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigCompliancePackRead(d, meta))
+		},
+		UpdateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigCompliancePackUpdate(d, meta))
+		},
+		DeleteContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigCompliancePackDelete(d, meta))
+		},
 		Importer: &schema.ResourceImporter{
-			State: schema.ImportStatePassthrough,
+			StateContext: schema.ImportStatePassthroughContext,
 		},
 		Schema: map[string]*schema.Schema{
 			"compliance_pack_name": {
@@ -181,7 +191,7 @@ func resourceTencentCloudConfigCompliancePackCreate(d *schema.ResourceData, meta
 		request.ConfigRules = buildCompliancePackRules(v.(*schema.Set).List())
 	}
 
-	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().AddCompliancePackWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)
@@ -190,7 +200,7 @@ func resourceTencentCloudConfigCompliancePackCreate(d *schema.ResourceData, meta
 		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
 
 		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("create config compliance pack failed, Response is nil"))
+			return retry.NonRetryableError(fmt.Errorf("create config compliance pack failed, Response is nil"))
 		}
 
 		response = result
@@ -268,7 +278,7 @@ func resourceTencentCloudConfigCompliancePackRead(d *schema.ResourceData, meta i
 		_ = d.Set("create_time", respData.CreateTime)
 	}
 
-	if respData.ConfigRules != nil && len(respData.ConfigRules) > 0 {
+	if len(respData.ConfigRules) > 0 {
 		configRulesList := flattenComplianceConfigRules(respData.ConfigRules)
 		_ = d.Set("config_rules", configRulesList)
 	}
@@ -315,7 +325,7 @@ func resourceTencentCloudConfigCompliancePackUpdate(d *schema.ResourceData, meta
 			request.ConfigRules = buildCompliancePackRules(v.(*schema.Set).List())
 		}
 
-		reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().UpdateCompliancePackWithContext(ctx, request)
 			if e != nil {
 				return tccommon.RetryError(e)
@@ -362,7 +372,7 @@ func resourceTencentCloudConfigCompliancePackDelete(d *schema.ResourceData, meta
 	// request := configv20220802.NewDeleteCompliancePackRequest()
 	// request.CompliancePackId = &compliancePackId
 
-	// reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	// reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 	// 	result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().DeleteCompliancePackWithContext(ctx, request)
 	// 	if e != nil {
 	// 		return tccommon.RetryError(e)
@@ -385,7 +395,7 @@ func updateCompliancePackStatus(ctx context.Context, meta interface{}, complianc
 	request.CompliancePackId = &compliancePackId
 	request.Status = &status
 
-	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().UpdateCompliancePackStatusWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)

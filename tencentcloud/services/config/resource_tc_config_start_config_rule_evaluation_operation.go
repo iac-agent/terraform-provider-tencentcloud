@@ -4,8 +4,10 @@ import (
 	"context"
 	"log"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
@@ -14,9 +16,15 @@ import (
 
 func ResourceTencentCloudConfigStartConfigRuleEvaluationOperation() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceTencentCloudConfigStartConfigRuleEvaluationOperationCreate,
-		Read:   resourceTencentCloudConfigStartConfigRuleEvaluationOperationRead,
-		Delete: resourceTencentCloudConfigStartConfigRuleEvaluationOperationDelete,
+		CreateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigStartConfigRuleEvaluationOperationCreate(d, meta))
+		},
+		ReadContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigStartConfigRuleEvaluationOperationRead(d, meta))
+		},
+		DeleteContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigStartConfigRuleEvaluationOperationDelete(d, meta))
+		},
 		Schema: map[string]*schema.Schema{
 			"rule_id": {
 				Type:        schema.TypeString,
@@ -53,7 +61,7 @@ func resourceTencentCloudConfigStartConfigRuleEvaluationOperationCreate(d *schem
 		request.CompliancePackId = helper.String(v.(string))
 	}
 
-	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().StartConfigRuleEvaluationWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)

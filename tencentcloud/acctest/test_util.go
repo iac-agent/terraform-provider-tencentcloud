@@ -18,6 +18,7 @@ import (
 )
 
 var AccProviders map[string]*schema.Provider
+var AccProviderFactories map[string]func() (*schema.Provider, error)
 var AccProvider *schema.Provider
 
 const (
@@ -76,6 +77,9 @@ func init() {
 	AccProvider = tcprovider.Provider()
 	AccProviders = map[string]*schema.Provider{
 		"tencentcloud": AccProvider,
+	}
+	AccProviderFactories = map[string]func() (*schema.Provider, error){
+		"tencentcloud": func() (*schema.Provider, error) { return AccProvider, nil },
 	}
 	envProject := os.Getenv("QCI_JOB_ID")
 	envNum := os.Getenv("QCI_BUILD_NUMBER")

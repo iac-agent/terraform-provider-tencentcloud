@@ -4,8 +4,10 @@ import (
 	"context"
 	"log"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
@@ -14,12 +16,20 @@ import (
 
 func ResourceTencentCloudConfigRecorderConfig() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceTencentCloudConfigRecorderConfigCreate,
-		Read:   resourceTencentCloudConfigRecorderConfigRead,
-		Update: resourceTencentCloudConfigRecorderConfigUpdate,
-		Delete: resourceTencentCloudConfigRecorderConfigDelete,
+		CreateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRecorderConfigCreate(d, meta))
+		},
+		ReadContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRecorderConfigRead(d, meta))
+		},
+		UpdateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRecorderConfigUpdate(d, meta))
+		},
+		DeleteContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRecorderConfigDelete(d, meta))
+		},
 		Importer: &schema.ResourceImporter{
-			State: schema.ImportStatePassthrough,
+			StateContext: schema.ImportStatePassthroughContext,
 		},
 		Schema: map[string]*schema.Schema{
 			"status": {
@@ -142,7 +152,7 @@ func resourceTencentCloudConfigRecorderConfigUpdate(d *schema.ResourceData, meta
 		enable := d.Get("status").(bool)
 		if enable {
 			request := configv20220802.NewOpenConfigRecorderRequest()
-			reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+			reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 				result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().OpenConfigRecorderWithContext(ctx, request)
 				if e != nil {
 					return tccommon.RetryError(e)
@@ -158,7 +168,7 @@ func resourceTencentCloudConfigRecorderConfigUpdate(d *schema.ResourceData, meta
 			}
 		} else {
 			request := configv20220802.NewCloseConfigRecorderRequest()
-			reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+			reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 				result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().CloseConfigRecorderWithContext(ctx, request)
 				if e != nil {
 					return tccommon.RetryError(e)
@@ -188,7 +198,7 @@ func resourceTencentCloudConfigRecorderConfigUpdate(d *schema.ResourceData, meta
 			request.ResourceTypes = resourceTypes
 		}
 
-		reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().UpdateConfigRecorderWithContext(ctx, request)
 			if e != nil {
 				return tccommon.RetryError(e)

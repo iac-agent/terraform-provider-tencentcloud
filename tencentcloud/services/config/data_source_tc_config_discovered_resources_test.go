@@ -14,7 +14,7 @@ func TestAccTencentCloudConfigDiscoveredResourcesDataSource_basic(t *testing.T) 
 		PreCheck: func() {
 			tcacctest.AccPreCheck(t)
 		},
-		Providers: tcacctest.AccProviders,
+		ProviderFactories: tcacctest.AccProviderFactories,
 		Steps: []resource.TestStep{
 			{
 				Config: testAccConfigDiscoveredResourcesDataSource,
@@ -32,7 +32,7 @@ func TestAccTencentCloudConfigDiscoveredResourcesDataSource_withFilters(t *testi
 		PreCheck: func() {
 			tcacctest.AccPreCheck(t)
 		},
-		Providers: tcacctest.AccProviders,
+		ProviderFactories: tcacctest.AccProviderFactories,
 		Steps: []resource.TestStep{
 			{
 				Config: testAccConfigDiscoveredResourcesDataSourceWithFilters,

@@ -6,8 +6,10 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
@@ -16,12 +18,20 @@ import (
 
 func ResourceTencentCloudConfigAlarmPolicy() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceTencentCloudConfigAlarmPolicyCreate,
-		Read:   resourceTencentCloudConfigAlarmPolicyRead,
-		Update: resourceTencentCloudConfigAlarmPolicyUpdate,
-		Delete: resourceTencentCloudConfigAlarmPolicyDelete,
+		CreateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigAlarmPolicyCreate(d, meta))
+		},
+		ReadContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigAlarmPolicyRead(d, meta))
+		},
+		UpdateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigAlarmPolicyUpdate(d, meta))
+		},
+		DeleteContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigAlarmPolicyDelete(d, meta))
+		},
 		Importer: &schema.ResourceImporter{
-			State: schema.ImportStatePassthrough,
+			StateContext: schema.ImportStatePassthroughContext,
 		},
 		Schema: map[string]*schema.Schema{
 			"name": {
@@ -113,9 +123,7 @@ func resourceTencentCloudConfigAlarmPolicyCreate(d *schema.ResourceData, meta in
 		request.Name = helper.String(v.(string))
 	}
 
-	if v, ok := d.GetOkExists("type"); ok {
-		request.Type = helper.IntInt64(v.(int))
-	}
+	request.Type = helper.IntInt64(d.Get("type").(int))
 
 	if v, ok := d.GetOk("event_scope"); ok {
 		rawList := v.([]interface{})
@@ -139,9 +147,7 @@ func resourceTencentCloudConfigAlarmPolicyCreate(d *schema.ResourceData, meta in
 		request.NotificationMechanism = helper.String(v.(string))
 	}
 
-	if v, ok := d.GetOkExists("status"); ok {
-		request.Status = helper.IntInt64(v.(int))
-	}
+	request.Status = helper.IntInt64(d.Get("status").(int))
 
 	if v, ok := d.GetOk("notice_period"); ok {
 		rawList := v.([]interface{})
@@ -154,7 +160,7 @@ func resourceTencentCloudConfigAlarmPolicyCreate(d *schema.ResourceData, meta in
 		request.Description = helper.String(v.(string))
 	}
 
-	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().AddAlarmPolicyWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)
@@ -163,7 +169,7 @@ func resourceTencentCloudConfigAlarmPolicyCreate(d *schema.ResourceData, meta in
 		}
 
 		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("create config alarm policy failed, Response is nil"))
+			return retry.NonRetryableError(fmt.Errorf("create config alarm policy failed, Response is nil"))
 		}
 
 		response = result
@@ -327,9 +333,7 @@ func resourceTencentCloudConfigAlarmPolicyUpdate(d *schema.ResourceData, meta in
 			request.NotificationMechanism = helper.String(v.(string))
 		}
 
-		if v, ok := d.GetOkExists("status"); ok {
-			request.Status = helper.IntInt64(v.(int))
-		}
+		request.Status = helper.IntInt64(d.Get("status").(int))
 
 		if v, ok := d.GetOk("notice_period"); ok {
 			rawList := v.([]interface{})
@@ -342,7 +346,7 @@ func resourceTencentCloudConfigAlarmPolicyUpdate(d *schema.ResourceData, meta in
 			request.Description = helper.String(v.(string))
 		}
 
-		reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().UpdateAlarmPolicyWithContext(ctx, request)
 			if e != nil {
 				return tccommon.RetryError(e)
@@ -379,7 +383,7 @@ func resourceTencentCloudConfigAlarmPolicyDelete(d *schema.ResourceData, meta in
 
 	request.AlarmPolicyId = &idUint
 
-	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().DeleteAlarmPolicyWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)
