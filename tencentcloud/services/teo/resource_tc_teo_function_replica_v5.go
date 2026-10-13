@@ -28,29 +28,29 @@ func ResourceTencentCloudTeoFunctionReplicaV5() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone ID.",
+				Description: "站点 ID。123",
 			},
 			"function_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Function ID.",
+				Description: "函数 ID。",
 			},
 			"replica_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Edge function replica name. Limited to 1-50 characters, allowed characters are a-z, 0-9, -, and - cannot be used alone or consecutively, nor at the beginning or end. Replica names must be unique under the same FunctionId.",
+				Description: "边缘函数副本名称。限制可输入 1-50 个字符，允许的字符为a-z、0-9、-，且-不能单独注册或连续使用，不能放在开头或结尾。同一 FunctionId 下副本名称需唯一。",
 			},
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Edge function replica content. Currently only supports JavaScript code, maximum 5MB.",
+				Description: "边缘函数副本内容，当前仅支持 JavaScript 代码，最大支持 5MB。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Edge function replica description. Maximum 50 characters.",
+				Description: "边缘函数副本描述。最大支持 50 个字符。",
 			},
 			"sort_by": {
 				Type:        schema.TypeString,
@@ -96,12 +96,51 @@ func ResourceTencentCloudTeoFunctionReplicaV5() *schema.Resource {
 			"created_on": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of the edge function replica.",
+				Description: "边缘函数副本创建时间。",
 			},
 			"modified_on": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last modified time of the edge function replica.",
+				Description: "边缘函数副本更新时间。",
+			},
+			"function_replicas": {
+				Type:        schema.TypeList,
+				Computed:    true,
+				Description: "边缘函数副本列表。",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"function_id": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "函数 ID。",
+						},
+						"replica_name": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "边缘函数副本名称。",
+						},
+						"content": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "边缘函数副本内容。格式为 JavaScript 代码。",
+						},
+						"remark": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "边缘函数副本描述。",
+						},
+						"created_on": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "边缘函数副本创建时间。",
+						},
+						"modified_on": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "边缘函数副本更新时间。",
+						},
+					},
+				},
 			},
 		},
 	}
@@ -284,6 +323,31 @@ func resourceTencentCloudTeoFunctionReplicaV5Read(d *schema.ResourceData, meta i
 	if targetReplica.ModifiedOn != nil {
 		_ = d.Set("modified_on", targetReplica.ModifiedOn)
 	}
+
+	functionReplicasList := make([]interface{}, 0, len(response.Response.FunctionReplicas))
+	for _, replica := range response.Response.FunctionReplicas {
+		functionReplicaMap := make(map[string]interface{})
+		if replica.FunctionId != nil {
+			functionReplicaMap["function_id"] = replica.FunctionId
+		}
+		if replica.ReplicaName != nil {
+			functionReplicaMap["replica_name"] = replica.ReplicaName
+		}
+		if replica.Content != nil {
+			functionReplicaMap["content"] = replica.Content
+		}
+		if replica.Remark != nil {
+			functionReplicaMap["remark"] = replica.Remark
+		}
+		if replica.CreatedOn != nil {
+			functionReplicaMap["created_on"] = replica.CreatedOn
+		}
+		if replica.ModifiedOn != nil {
+			functionReplicaMap["modified_on"] = replica.ModifiedOn
+		}
+		functionReplicasList = append(functionReplicasList, functionReplicaMap)
+	}
+	_ = d.Set("function_replicas", functionReplicasList)
 
 	return nil
 }
