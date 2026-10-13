@@ -38,12 +38,6 @@ func ResourceTencentCloudTag() *schema.Resource {
 				Type:        schema.TypeString,
 				Description: "Tag value.",
 			},
-
-			"Category": {
-				Computed:    true,
-				Type:        schema.TypeString,
-				Description: "Tag category, valid values: `Custom` (custom tag), `System` (system tag), `All` (all tags).",
-			},
 		},
 	}
 }
@@ -130,10 +124,6 @@ func resourceTencentCloudTagResourceRead(d *schema.ResourceData, meta interface{
 
 	if tagRes.TagValue != nil {
 		_ = d.Set("tag_value", tagRes.TagValue)
-	}
-
-	if tagRes.Category != nil {
-		_ = d.Set("Category", tagRes.Category)
 	}
 
 	return nil
