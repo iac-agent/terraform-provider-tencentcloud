@@ -4,8 +4,10 @@ import (
 	"context"
 	"log"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
@@ -14,12 +16,20 @@ import (
 
 func ResourceTencentCloudConfigDeliverConfig() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceTencentCloudConfigDeliverConfigCreate,
-		Read:   resourceTencentCloudConfigDeliverConfigRead,
-		Update: resourceTencentCloudConfigDeliverConfigUpdate,
-		Delete: resourceTencentCloudConfigDeliverConfigDelete,
+		CreateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigDeliverConfigCreate(d, meta))
+		},
+		ReadContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigDeliverConfigRead(d, meta))
+		},
+		UpdateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigDeliverConfigUpdate(d, meta))
+		},
+		DeleteContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigDeliverConfigDelete(d, meta))
+		},
 		Importer: &schema.ResourceImporter{
-			State: schema.ImportStatePassthrough,
+			StateContext: schema.ImportStatePassthroughContext,
 		},
 		Schema: map[string]*schema.Schema{
 			"status": {
@@ -139,9 +149,7 @@ func resourceTencentCloudConfigDeliverConfigUpdate(d *schema.ResourceData, meta 
 		request = configv20220802.NewUpdateConfigDeliverRequest()
 	)
 
-	if v, ok := d.GetOkExists("status"); ok {
-		request.Status = helper.IntUint64(v.(int))
-	}
+	request.Status = helper.IntUint64(d.Get("status").(int))
 
 	if v, ok := d.GetOk("deliver_name"); ok {
 		request.DeliverName = helper.String(v.(string))
@@ -159,11 +167,11 @@ func resourceTencentCloudConfigDeliverConfigUpdate(d *schema.ResourceData, meta 
 		request.DeliverType = helper.String(v.(string))
 	}
 
-	if v, ok := d.GetOkExists("deliver_content_type"); ok {
+	if v, ok := d.GetOk("deliver_content_type"); ok {
 		request.DeliverContentType = helper.IntUint64(v.(int))
 	}
 
-	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().UpdateConfigDeliverWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)

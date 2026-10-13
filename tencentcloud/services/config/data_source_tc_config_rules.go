@@ -3,7 +3,9 @@ package config
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
@@ -12,7 +14,9 @@ import (
 
 func DataSourceTencentCloudConfigRules() *schema.Resource {
 	return &schema.Resource{
-		Read: dataSourceTencentCloudConfigRulesRead,
+		ReadContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(dataSourceTencentCloudConfigRulesRead(d, meta))
+		},
 		Schema: map[string]*schema.Schema{
 			"rule_name": {
 				Type:        schema.TypeString,

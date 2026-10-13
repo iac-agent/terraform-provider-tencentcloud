@@ -5,8 +5,10 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
@@ -15,12 +17,20 @@ import (
 
 func ResourceTencentCloudConfigRule() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceTencentCloudConfigRuleCreate,
-		Read:   resourceTencentCloudConfigRuleRead,
-		Update: resourceTencentCloudConfigRuleUpdate,
-		Delete: resourceTencentCloudConfigRuleDelete,
+		CreateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRuleCreate(d, meta))
+		},
+		ReadContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRuleRead(d, meta))
+		},
+		UpdateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRuleUpdate(d, meta))
+		},
+		DeleteContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRuleDelete(d, meta))
+		},
 		Importer: &schema.ResourceImporter{
-			State: schema.ImportStatePassthrough,
+			StateContext: schema.ImportStatePassthroughContext,
 		},
 		Schema: map[string]*schema.Schema{
 			"identifier": {
@@ -247,7 +257,7 @@ func resourceTencentCloudConfigRuleCreate(d *schema.ResourceData, meta interface
 		}
 	}
 
-	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().AddConfigRuleWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)
@@ -256,7 +266,7 @@ func resourceTencentCloudConfigRuleCreate(d *schema.ResourceData, meta interface
 		}
 
 		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("create config rule failed, Response is nil"))
+			return retry.NonRetryableError(fmt.Errorf("create config rule failed, Response is nil"))
 		}
 
 		response = result
@@ -502,7 +512,7 @@ func resourceTencentCloudConfigRuleUpdate(d *schema.ResourceData, meta interface
 			}
 		}
 
-		reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().UpdateConfigRuleWithContext(ctx, request)
 			if e != nil {
 				return tccommon.RetryError(e)
@@ -549,7 +559,7 @@ func resourceTencentCloudConfigRuleDelete(d *schema.ResourceData, meta interface
 
 	request.RuleId = &ruleId
 
-	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().DeleteConfigRuleWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)
@@ -569,11 +579,12 @@ func resourceTencentCloudConfigRuleDelete(d *schema.ResourceData, meta interface
 }
 
 func updateConfigRuleStatus(ctx context.Context, meta interface{}, ruleId, status, logId string) error {
-	if status == "ACTIVE" {
+	switch status {
+	case "ACTIVE":
 		request := configv20220802.NewOpenConfigRuleRequest()
 		request.RuleId = &ruleId
 
-		reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().OpenConfigRuleWithContext(ctx, request)
 			if e != nil {
 				return tccommon.RetryError(e)
@@ -587,11 +598,11 @@ func updateConfigRuleStatus(ctx context.Context, meta interface{}, ruleId, statu
 			log.Printf("[CRITAL]%s open config rule failed, reason:%+v", logId, reqErr)
 			return reqErr
 		}
-	} else if status == "UN_ACTIVE" {
+	case "UN_ACTIVE":
 		request := configv20220802.NewCloseConfigRuleRequest()
 		request.RuleId = &ruleId
 
-		reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().CloseConfigRuleWithContext(ctx, request)
 			if e != nil {
 				return tccommon.RetryError(e)

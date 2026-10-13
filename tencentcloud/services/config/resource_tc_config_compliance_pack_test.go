@@ -14,7 +14,7 @@ func TestAccTencentCloudConfigCompliancePackResource_basic(t *testing.T) {
 		PreCheck: func() {
 			tcacctest.AccPreCheck(t)
 		},
-		Providers: tcacctest.AccProviders,
+		ProviderFactories: tcacctest.AccProviderFactories,
 		Steps: []resource.TestStep{
 			{
 				Config: testAccConfigCompliancePack,

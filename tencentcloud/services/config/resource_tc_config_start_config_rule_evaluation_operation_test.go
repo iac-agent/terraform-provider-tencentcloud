@@ -14,7 +14,7 @@ func TestAccTencentCloudConfigStartConfigRuleEvaluationOperationResource_basic(t
 		PreCheck: func() {
 			tcacctest.AccPreCheck(t)
 		},
-		Providers: tcacctest.AccProviders,
+		ProviderFactories: tcacctest.AccProviderFactories,
 		Steps: []resource.TestStep{{
 			Config: testAccConfigStartConfigRuleEvaluationOperation,
 			Check: resource.ComposeTestCheckFunc(

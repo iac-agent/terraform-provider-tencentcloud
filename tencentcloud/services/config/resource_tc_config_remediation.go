@@ -5,8 +5,10 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
@@ -15,12 +17,20 @@ import (
 
 func ResourceTencentCloudConfigRemediation() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceTencentCloudConfigRemediationCreate,
-		Read:   resourceTencentCloudConfigRemediationRead,
-		Update: resourceTencentCloudConfigRemediationUpdate,
-		Delete: resourceTencentCloudConfigRemediationDelete,
+		CreateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRemediationCreate(d, meta))
+		},
+		ReadContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRemediationRead(d, meta))
+		},
+		UpdateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRemediationUpdate(d, meta))
+		},
+		DeleteContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+			return diag.FromErr(resourceTencentCloudConfigRemediationDelete(d, meta))
+		},
 		Importer: &schema.ResourceImporter{
-			State: schema.ImportStatePassthrough,
+			StateContext: schema.ImportStatePassthroughContext,
 		},
 		Schema: map[string]*schema.Schema{
 			"rule_id": {
@@ -107,7 +117,7 @@ func resourceTencentCloudConfigRemediationCreate(d *schema.ResourceData, meta in
 		request.SourceType = helper.String(v.(string))
 	}
 
-	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().CreateRemediationWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)
@@ -116,7 +126,7 @@ func resourceTencentCloudConfigRemediationCreate(d *schema.ResourceData, meta in
 		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
 
 		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("create config remediation failed, Response is nil"))
+			return retry.NonRetryableError(fmt.Errorf("create config remediation failed, Response is nil"))
 		}
 
 		response = result
@@ -234,7 +244,7 @@ func resourceTencentCloudConfigRemediationUpdate(d *schema.ResourceData, meta in
 			request.SourceType = helper.String(v.(string))
 		}
 
-		reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().UpdateRemediationWithContext(ctx, request)
 			if e != nil {
 				return tccommon.RetryError(e)
@@ -266,7 +276,7 @@ func resourceTencentCloudConfigRemediationDelete(d *schema.ResourceData, meta in
 
 	request.RemediationIds = []*string{&remediationId}
 
-	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+	reqErr := retry.RetryContext(ctx, tccommon.WriteRetryTimeout, func() *retry.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().DeleteRemediationsWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)
