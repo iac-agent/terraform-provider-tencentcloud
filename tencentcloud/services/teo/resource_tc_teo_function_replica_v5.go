@@ -103,6 +103,45 @@ func ResourceTencentCloudTeoFunctionReplicaV5() *schema.Resource {
 				Computed:    true,
 				Description: "Last modified time of the edge function replica.",
 			},
+			"function_replicas": {
+				Type:        schema.TypeList,
+				Computed:    true,
+				Description: "A list of edge function replicas.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"function_id": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Function ID.",
+						},
+						"replica_name": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Edge function replica name.",
+						},
+						"content": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Edge function replica content. The format is JavaScript code.",
+						},
+						"remark": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Edge function replica description.",
+						},
+						"created_on": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Creation time of the edge function replica.",
+						},
+						"modified_on": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Last modified time of the edge function replica.",
+						},
+					},
+				},
+			},
 		},
 	}
 }
@@ -284,6 +323,31 @@ func resourceTencentCloudTeoFunctionReplicaV5Read(d *schema.ResourceData, meta i
 	if targetReplica.ModifiedOn != nil {
 		_ = d.Set("modified_on", targetReplica.ModifiedOn)
 	}
+
+	functionReplicasList := make([]interface{}, 0, len(response.Response.FunctionReplicas))
+	for _, replica := range response.Response.FunctionReplicas {
+		functionReplicaMap := make(map[string]interface{})
+		if replica.FunctionId != nil {
+			functionReplicaMap["function_id"] = replica.FunctionId
+		}
+		if replica.ReplicaName != nil {
+			functionReplicaMap["replica_name"] = replica.ReplicaName
+		}
+		if replica.Content != nil {
+			functionReplicaMap["content"] = replica.Content
+		}
+		if replica.Remark != nil {
+			functionReplicaMap["remark"] = replica.Remark
+		}
+		if replica.CreatedOn != nil {
+			functionReplicaMap["created_on"] = replica.CreatedOn
+		}
+		if replica.ModifiedOn != nil {
+			functionReplicaMap["modified_on"] = replica.ModifiedOn
+		}
+		functionReplicasList = append(functionReplicasList, functionReplicaMap)
+	}
+	_ = d.Set("function_replicas", functionReplicasList)
 
 	return nil
 }

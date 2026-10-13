@@ -173,6 +173,16 @@ func TestTeoFunctionReplicaV5_Read(t *testing.T) {
 	assert.Equal(t, "test remark", d.Get("remark"))
 	assert.Equal(t, "2024-01-01T00:00:00Z", d.Get("created_on"))
 	assert.Equal(t, "2024-01-02T00:00:00Z", d.Get("modified_on"))
+
+	functionReplicas := d.Get("function_replicas").([]interface{})
+	assert.Len(t, functionReplicas, 1)
+	functionReplicasMap := functionReplicas[0].(map[string]interface{})
+	assert.Equal(t, "ef-test456", functionReplicasMap["function_id"])
+	assert.Equal(t, "test-replica", functionReplicasMap["replica_name"])
+	assert.Equal(t, "console.log(123)", functionReplicasMap["content"])
+	assert.Equal(t, "test remark", functionReplicasMap["remark"])
+	assert.Equal(t, "2024-01-01T00:00:00Z", functionReplicasMap["created_on"])
+	assert.Equal(t, "2024-01-02T00:00:00Z", functionReplicasMap["modified_on"])
 }
 
 // go test ./tencentcloud/services/teo/ -run "TestTeoFunctionReplicaV5_ReadFuzzyMatch" -v -count=1 -gcflags="all=-l"

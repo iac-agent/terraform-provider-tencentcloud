@@ -1,3 +1,7 @@
 ```release-note:new-resource
 tencentcloud_teo_function_replica_v5
 ```
+
+```release-note:enhancement
+resource/tencentcloud_teo_function_replica_v5: add function_replicas attribute and update field descriptions
+```

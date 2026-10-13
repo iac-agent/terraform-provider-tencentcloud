@@ -69,6 +69,13 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
 * `created_on` - Creation time of the edge function replica.
+* `function_replicas` - A list of edge function replicas.
+  * `content` - Edge function replica content. The format is JavaScript code.
+  * `created_on` - Creation time of the edge function replica.
+  * `function_id` - Function ID.
+  * `modified_on` - Last modified time of the edge function replica.
+  * `remark` - Edge function replica description.
+  * `replica_name` - Edge function replica name.
 * `modified_on` - Last modified time of the edge function replica.
 
 
