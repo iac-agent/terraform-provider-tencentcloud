@@ -1,4 +1,4 @@
-Provides a resource to create a TEO edge function replica
+提供 TEO（EdgeOne）边缘函数副本资源。
 
 Example Usage
 
@@ -34,7 +34,7 @@ resource "tencentcloud_teo_function_replica_v5" "example" {
 
 Import
 
-TEO function replica can be imported using the zone_id#function_id#replica_name, e.g.
+TEO（EdgeOne）边缘函数副本可以通过 zone_id#function_id#replica_name 导入，例如：
 
 ```
 terraform import tencentcloud_teo_function_replica_v5.example zone-2qtuhspy7cr6#ef-2qlxy8s7o96e#replica-example

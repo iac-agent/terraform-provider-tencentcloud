@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_function_replica_v5"
 sidebar_current: "docs-tencentcloud-resource-teo_function_replica_v5"
 description: |-
-  Provides a resource to create a TEO edge function replica
+  提供 TEO（EdgeOne）边缘函数副本资源。
 ---
 
 # tencentcloud_teo_function_replica_v5
 
-Provides a resource to create a TEO edge function replica
+提供 TEO（EdgeOne）边缘函数副本资源。
 
 ## Example Usage
 
@@ -69,12 +69,19 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
 * `created_on` - Creation time of the edge function replica.
+* `function_replicas` - List of edge function replicas.
+  * `content` - Edge function replica content, in JavaScript code format.
+  * `created_on` - Creation time of the edge function replica.
+  * `function_id` - Function ID.
+  * `modified_on` - Last modified time of the edge function replica.
+  * `remark` - Edge function replica description.
+  * `replica_name` - Edge function replica name.
 * `modified_on` - Last modified time of the edge function replica.
 
 
 ## Import
 
-TEO function replica can be imported using the zone_id#function_id#replica_name, e.g.
+TEO（EdgeOne）边缘函数副本可以通过 zone_id#function_id#replica_name 导入，例如：
 
 ```
 terraform import tencentcloud_teo_function_replica_v5.example zone-2qtuhspy7cr6#ef-2qlxy8s7o96e#replica-example
