@@ -2756,6 +2756,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_vcube_renew_video_operation":                                              vcube.ResourceTencentCloudVcubeRenewVideoOperation(),
 			"tencentcloud_advisor_authorization_operation":                                          advisor.ResourceTencentCloudAdvisorAuthorizationOperation(),
 			"tencentcloud_vdb_instance":                                                             vdb.ResourceTencentCloudVdbInstance(),
+			"tencentcloud_config_aggregator":                                                        config.ResourceTencentCloudConfigAggregator(),
 		},
 
 		ConfigureFunc: providerConfigure,
