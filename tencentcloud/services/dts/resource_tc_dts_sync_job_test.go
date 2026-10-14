@@ -84,6 +84,40 @@ func TestAccTencentCloudDtsSyncJobResource_basic(t *testing.T) {
 	})
 }
 
+func TestAccTencentCloudDtsSyncJobResource_tags(t *testing.T) {
+	t.Parallel()
+
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { tcacctest.AccPreCheck(t) },
+		Providers:    tcacctest.AccProviders,
+		CheckDestroy: testAccCheckDtsSyncJobDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccDtsSyncJobTags,
+				Check: resource.ComposeTestCheckFunc(
+					testAccCheckDtsSyncJobExists("tencentcloud_dts_sync_job.sync_job"),
+					resource.TestCheckResourceAttr("tencentcloud_dts_sync_job.sync_job", "tags.#", "3"),
+					resource.TestCheckTypeSetElemNestedAttrs("tencentcloud_dts_sync_job.sync_job", "tags.*",
+						map[string]string{
+							"tag_key":   "aaa",
+							"tag_value": "bbb",
+						}),
+					resource.TestCheckTypeSetElemNestedAttrs("tencentcloud_dts_sync_job.sync_job", "tags.*",
+						map[string]string{
+							"tag_key":   "ccc",
+							"tag_value": "ddd",
+						}),
+					resource.TestCheckTypeSetElemNestedAttrs("tencentcloud_dts_sync_job.sync_job", "tags.*",
+						map[string]string{
+							"tag_key":   "createBy",
+							"tag_value": "Terraform",
+						}),
+				),
+			},
+		},
+	})
+}
+
 func testAccCheckDtsSyncJobDestroy(s *terraform.State) error {
 	logId := tccommon.GetLogId(tccommon.ContextNil)
 	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
@@ -146,6 +180,32 @@ resource "tencentcloud_dts_sync_job" "sync_job" {
   tags {
 	tag_key = "aaa"
 	tag_value = "bbb"
+  }
+  auto_renew = 0
+  instance_class = "micro"
+}
+
+`
+
+const testAccDtsSyncJobTags = `
+
+resource "tencentcloud_dts_sync_job" "sync_job" {
+  pay_mode = "PostPay"
+  src_database_type = "mysql"
+  src_region = "ap-guangzhou"
+  dst_database_type = "cynosdbmysql"
+  dst_region = "ap-guangzhou"
+  tags {
+	tag_key = "aaa"
+	tag_value = "bbb"
+  }
+  tags {
+	tag_key = "ccc"
+	tag_value = "ddd"
+  }
+  tags {
+	tag_key = "createBy"
+	tag_value = "Terraform"
   }
   auto_renew = 0
   instance_class = "micro"
