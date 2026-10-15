@@ -2649,6 +2649,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_config_recorder_config":                                                   config.ResourceTencentCloudConfigRecorderConfig(),
 			"tencentcloud_config_alarm_policy":                                                      config.ResourceTencentCloudConfigAlarmPolicy(),
 			"tencentcloud_config_rule":                                                              config.ResourceTencentCloudConfigRule(),
+			"tencentcloud_config_update_aggregate_config_deliver":                                   config.ResourceTencentCloudConfigUpdateAggregateConfigDeliver(),
 			"tencentcloud_bh_acl":                                                                   bh.ResourceTencentCloudBhAcl(),
 			"tencentcloud_bh_bind_device_account_kubeconfig":                                        bh.ResourceTencentCloudBhBindDeviceAccountKubeconfig(),
 			"tencentcloud_bh_bind_device_resource":                                                  bh.ResourceTencentCloudBhBindDeviceResource(),
