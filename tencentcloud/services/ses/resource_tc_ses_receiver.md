@@ -25,12 +25,12 @@ resource "tencentcloud_ses_receiver" "receiver" {
 
   data {
     email = "abc@abc.com"
-    template_data = "{\"name\":\"xxx\",\"age\":\"xx\"}"
+    template_data = jsonencode({"name" = "xxx", "age" = "xx"})
   }
 
   data {
     email = "abcd@abcd.com"
-    template_data = "{\"name\":\"xxx\",\"age\":\"xx\"}"
+    template_data = jsonencode({"name" = "xxx", "age" = "xx"})
   }
 }
 ```
