@@ -19,6 +19,7 @@ func ResourceTencentCloudTagAttachment() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceTencentCloudTagAttachmentCreate,
 		Read:   resourceTencentCloudTagAttachmentRead,
+		Update: resourceTencentCloudTagAttachmentUpdate,
 		Delete: resourceTencentCloudTagAttachmentDelete,
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -33,7 +34,6 @@ func ResourceTencentCloudTagAttachment() *schema.Resource {
 
 			"tag_value": {
 				Required:    true,
-				ForceNew:    true,
 				Type:        schema.TypeString,
 				Description: "tag value.",
 			},
@@ -139,6 +139,35 @@ func resourceTencentCloudTagAttachmentRead(d *schema.ResourceData, meta interfac
 	}
 
 	return nil
+}
+
+func resourceTencentCloudTagAttachmentUpdate(d *schema.ResourceData, meta interface{}) error {
+	defer tccommon.LogElapsed("resource.tencentcloud_tag_attachment.update")()
+	defer tccommon.InconsistentCheck(d, meta)()
+
+	logId := tccommon.GetLogId(tccommon.ContextNil)
+	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
+
+	idSplit := strings.Split(d.Id(), tccommon.FILED_SP)
+	if len(idSplit) != 3 {
+		log.Printf("[CRITAL]%s tag_attachment update id is broken,%s", logId, d.Id())
+		return fmt.Errorf("id is broken,%s", d.Id())
+	}
+	oldTagKey := idSplit[0]
+	resourceSixSegment := idSplit[2]
+
+	if d.HasChange("tag_value") {
+		newTagValue := d.Get("tag_value").(string)
+		replaceTags := map[string]string{oldTagKey: newTagValue}
+		tagService := TagService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
+		if err := tagService.ModifyTags(ctx, resourceSixSegment, replaceTags, nil); err != nil {
+			log.Printf("[CRITAL]%s update tag_attachment failed, tag_key=%s, new tag_value=%s, reason:%+v", logId, oldTagKey, newTagValue, err)
+			return err
+		}
+		d.SetId(oldTagKey + tccommon.FILED_SP + newTagValue + tccommon.FILED_SP + resourceSixSegment)
+	}
+
+	return resourceTencentCloudTagAttachmentRead(d, meta)
 }
 
 func resourceTencentCloudTagAttachmentDelete(d *schema.ResourceData, meta interface{}) error {
