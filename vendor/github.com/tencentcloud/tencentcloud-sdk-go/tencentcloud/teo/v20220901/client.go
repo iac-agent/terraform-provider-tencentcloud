@@ -1295,7 +1295,7 @@ func NewCreateCustomizeErrorPageResponse() (response *CreateCustomizeErrorPageRe
 }
 
 // CreateCustomizeErrorPage
-// 创建自定义错误页面。
+// 创建自定义响应页面。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = "InvalidParameterValue.ContentTypeNotMatch"
@@ -1305,7 +1305,7 @@ func (c *Client) CreateCustomizeErrorPage(request *CreateCustomizeErrorPageReque
 }
 
 // CreateCustomizeErrorPage
-// 创建自定义错误页面。
+// 创建自定义响应页面。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = "InvalidParameterValue.ContentTypeNotMatch"
@@ -4635,7 +4635,7 @@ func NewDeleteCustomErrorPageResponse() (response *DeleteCustomErrorPageResponse
 }
 
 // DeleteCustomErrorPage
-// 删除自定义错误页面。
+// 删除自定义响应页面。
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
@@ -4645,7 +4645,7 @@ func (c *Client) DeleteCustomErrorPage(request *DeleteCustomErrorPageRequest) (r
 }
 
 // DeleteCustomErrorPage
-// 删除自定义错误页面。
+// 删除自定义响应页面。
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
@@ -6437,6 +6437,170 @@ func (c *Client) DescribeApplicationProxiesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeApplicationProxiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAvailableCustomActionsForRuleEngineRequest() (request *DescribeAvailableCustomActionsForRuleEngineRequest) {
+    request = &DescribeAvailableCustomActionsForRuleEngineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeAvailableCustomActionsForRuleEngine")
+    
+    
+    return
+}
+
+func NewDescribeAvailableCustomActionsForRuleEngineResponse() (response *DescribeAvailableCustomActionsForRuleEngineResponse) {
+    response = &DescribeAvailableCustomActionsForRuleEngineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAvailableCustomActionsForRuleEngine
+// 查询站点规则引擎操作可用的定制配置列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeAvailableCustomActionsForRuleEngine(request *DescribeAvailableCustomActionsForRuleEngineRequest) (response *DescribeAvailableCustomActionsForRuleEngineResponse, err error) {
+    return c.DescribeAvailableCustomActionsForRuleEngineWithContext(context.Background(), request)
+}
+
+// DescribeAvailableCustomActionsForRuleEngine
+// 查询站点规则引擎操作可用的定制配置列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeAvailableCustomActionsForRuleEngineWithContext(ctx context.Context, request *DescribeAvailableCustomActionsForRuleEngineRequest) (response *DescribeAvailableCustomActionsForRuleEngineResponse, err error) {
+    if request == nil {
+        request = NewDescribeAvailableCustomActionsForRuleEngineRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeAvailableCustomActionsForRuleEngine")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAvailableCustomActionsForRuleEngine require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAvailableCustomActionsForRuleEngineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAvailableOriginACLFamilyRequest() (request *DescribeAvailableOriginACLFamilyRequest) {
+    request = &DescribeAvailableOriginACLFamilyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeAvailableOriginACLFamily")
+    
+    
+    return
+}
+
+func NewDescribeAvailableOriginACLFamilyResponse() (response *DescribeAvailableOriginACLFamilyResponse) {
+    response = &DescribeAvailableOriginACLFamilyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAvailableOriginACLFamily
+// 查询源站防护 IP 段控制域详细信息，包含版本号和具体IP网段信息等。
+//
+// 标准控制域和精简控制域主要区别在于提供的 IP 段数量差异，后者数量更少,但是使用上有些限制，具体限制请咨询产品。具体格式说明如下：
+//
+// 标准控制域：
+//
+// <li>gaz：标准全球控制域；</li>
+//
+// <li>mlc：标准中国控制域；</li>
+//
+// <li>emc：标准海外(全球不含中国)控制域；</li>
+//
+// 精简控制域控制域：
+//
+// <li>plat-gaz：精简全球控制域；</li>
+//
+// <li>plat-mlc：精简中国控制域；</li>
+//
+// <li>plat-emc：精简海外(全球不含中国)控制域；</li>
+//
+// <li>plat-specific-gaz：定制版控全球可用区制域；</li>
+//
+// <li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li>
+//
+// <li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域；</li>
+//
+// 缩写说明：
+//
+// <li>gaz：Global AZ Availability Zone;</li>
+//
+// <li>mlc：mainlandChina;</li>
+//
+// <li>emc：Exclude mainlandChina.</li>
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeAvailableOriginACLFamily(request *DescribeAvailableOriginACLFamilyRequest) (response *DescribeAvailableOriginACLFamilyResponse, err error) {
+    return c.DescribeAvailableOriginACLFamilyWithContext(context.Background(), request)
+}
+
+// DescribeAvailableOriginACLFamily
+// 查询源站防护 IP 段控制域详细信息，包含版本号和具体IP网段信息等。
+//
+// 标准控制域和精简控制域主要区别在于提供的 IP 段数量差异，后者数量更少,但是使用上有些限制，具体限制请咨询产品。具体格式说明如下：
+//
+// 标准控制域：
+//
+// <li>gaz：标准全球控制域；</li>
+//
+// <li>mlc：标准中国控制域；</li>
+//
+// <li>emc：标准海外(全球不含中国)控制域；</li>
+//
+// 精简控制域控制域：
+//
+// <li>plat-gaz：精简全球控制域；</li>
+//
+// <li>plat-mlc：精简中国控制域；</li>
+//
+// <li>plat-emc：精简海外(全球不含中国)控制域；</li>
+//
+// <li>plat-specific-gaz：定制版控全球可用区制域；</li>
+//
+// <li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li>
+//
+// <li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域；</li>
+//
+// 缩写说明：
+//
+// <li>gaz：Global AZ Availability Zone;</li>
+//
+// <li>mlc：mainlandChina;</li>
+//
+// <li>emc：Exclude mainlandChina.</li>
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeAvailableOriginACLFamilyWithContext(ctx context.Context, request *DescribeAvailableOriginACLFamilyRequest) (response *DescribeAvailableOriginACLFamilyResponse, err error) {
+    if request == nil {
+        request = NewDescribeAvailableOriginACLFamilyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeAvailableOriginACLFamily")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAvailableOriginACLFamily require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAvailableOriginACLFamilyResponse()
     err = c.Send(request, response)
     return
 }
@@ -11069,7 +11233,9 @@ func NewDownloadL4LogsResponse() (response *DownloadL4LogsResponse) {
 }
 
 // DownloadL4Logs
-// 本接口（DownloadL4Logs）用于下载四层离线日志。
+// 本接口（DownloadL4Logs）用于获取四层代理业务的离线日志下载链接。
+//
+// **注意：**仅当离线日志功能开启期间，EO 才会存储相关离线日志并提供下载服务。具体功能介绍请见[文档](https://cloud.tencent.com/document/product/1552/73660)。
 //
 // 可能返回的错误码:
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -11078,7 +11244,9 @@ func (c *Client) DownloadL4Logs(request *DownloadL4LogsRequest) (response *Downl
 }
 
 // DownloadL4Logs
-// 本接口（DownloadL4Logs）用于下载四层离线日志。
+// 本接口（DownloadL4Logs）用于获取四层代理业务的离线日志下载链接。
+//
+// **注意：**仅当离线日志功能开启期间，EO 才会存储相关离线日志并提供下载服务。具体功能介绍请见[文档](https://cloud.tencent.com/document/product/1552/73660)。
 //
 // 可能返回的错误码:
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -11119,7 +11287,9 @@ func NewDownloadL7LogsResponse() (response *DownloadL7LogsResponse) {
 }
 
 // DownloadL7Logs
-// 本接口（DownloadL7Logs）下载七层离线日志。
+// 本接口（DownloadL7Logs）用于获取七层域名业务的离线日志下载链接。
+//
+// **注意：**仅当离线日志功能开启期间，EO 才会存储相关离线日志并提供下载服务。具体功能介绍请见[文档](https://cloud.tencent.com/document/product/1552/73660)。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -11130,7 +11300,9 @@ func (c *Client) DownloadL7Logs(request *DownloadL7LogsRequest) (response *Downl
 }
 
 // DownloadL7Logs
-// 本接口（DownloadL7Logs）下载七层离线日志。
+// 本接口（DownloadL7Logs）用于获取七层域名业务的离线日志下载链接。
+//
+// **注意：**仅当离线日志功能开启期间，EO 才会存储相关离线日志并提供下载服务。具体功能介绍请见[文档](https://cloud.tencent.com/document/product/1552/73660)。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -12447,7 +12619,7 @@ func NewModifyCustomErrorPageResponse() (response *ModifyCustomErrorPageResponse
 }
 
 // ModifyCustomErrorPage
-// 修改自定义错误页面。
+// 修改自定义响应页面。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -12456,7 +12628,7 @@ func (c *Client) ModifyCustomErrorPage(request *ModifyCustomErrorPageRequest) (r
 }
 
 // ModifyCustomErrorPage
-// 修改自定义错误页面。
+// 修改自定义响应页面。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
