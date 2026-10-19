@@ -32,7 +32,7 @@ resource "tencentcloud_vpc_replace_routes_with_route_policy_config" "example" {
 
 The following arguments are supported:
 
-* `route_table_id` - (Required, String, ForceNew) Route Table Instance ID.
+* `route_table_id` - (Required, String, ForceNew) Route Table ID.
 * `routes` - (Required, Set) Routing policy object. requires specifying the unique ID of routing policy (RouteItemId).
 
 The `routes` object supports the following:
