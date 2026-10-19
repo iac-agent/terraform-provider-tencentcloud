@@ -1,4 +1,4 @@
-Provides a resource to create a ses receiver
+Provides a resource to create a SES receiver
 
 Example Usage
 
