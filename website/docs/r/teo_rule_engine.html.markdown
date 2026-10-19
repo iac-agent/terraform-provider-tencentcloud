@@ -135,6 +135,49 @@ resource "tencentcloud_teo_rule_engine" "rule1" {
 }
 ```
 
+### Example Usage with filters
+
+```hcl
+resource "tencentcloud_teo_rule_engine" "rule1" {
+  zone_id   = tencentcloud_teo_zone.example.id
+  rule_name = "test-rule"
+  status    = "disable"
+
+  filters {
+    name   = "rule-id"
+    values = ["rule-xxx"]
+  }
+
+  rules {
+    actions {
+      normal_action {
+        action = "UpstreamUrlRedirect"
+        parameters {
+          name   = "Type"
+          values = ["Path"]
+        }
+        parameters {
+          name   = "Action"
+          values = ["addPrefix"]
+        }
+        parameters {
+          name   = "Value"
+          values = ["/sss"]
+        }
+      }
+    }
+
+    or {
+      and {
+        operator = "equal"
+        target   = "host"
+        values   = ["a.tf-teo-t.xyz"]
+      }
+    }
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -145,6 +188,7 @@ The following arguments are supported:
   - `enable`: Enabled.
   - `disable`: Disabled.
 * `zone_id` - (Required, String, ForceNew) ID of the site.
+* `filters` - (Optional, List) Filter conditions. Filters.Values has an upper limit of 20. The supported filter key is `rule-id`.
 * `tags` - (Optional, Set: [`String`]) rule tag list.
 
 The `actions` object of `rules` supports the following:
@@ -253,6 +297,11 @@ The `code_action` object of `actions` supports the following:
 * `action` - (Required, String) Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.
 * `parameters` - (Required, List) Operation parameter.
 
+The `filters` object supports the following:
+
+* `name` - (Required, String) The field to filter by.
+* `values` - (Required, Set) The filter values.
+
 The `normal_action` object of `actions` supports the following:
 
 * `action` - (Required, String) Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.
@@ -314,6 +363,66 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
 * `rule_id` - Rule ID.
+* `rule_items` - Rule items list returned by the DescribeRules API.
+  * `rule_id` - Rule ID.
+  * `rule_name` - The rule name (1 to 255 characters).
+  * `rule_priority` - Rule priority, the larger the value, the higher the priority, the minimum is 1.
+  * `rules` - Rule items list.
+    * `actions` - Feature to be executed.
+      * `code_action` - Feature operation with a status code.
+        * `action` - Feature name.
+        * `parameters` - Operation parameter.
+          * `name` - The parameter name.
+          * `status_code` - The status code.
+          * `values` - The parameter value.
+      * `normal_action` - Common operation.
+        * `action` - Feature name.
+        * `parameters` - Parameter.
+          * `name` - Parameter name.
+          * `values` - The parameter value.
+      * `rewrite_action` - Feature operation with a request/response header.
+        * `action` - Feature name.
+        * `parameters` - Parameter.
+          * `action` - Feature parameter name.
+          * `name` - Parameter name.
+          * `values` - Parameter value.
+    * `or` - OR Conditions list of the rule.
+      * `and` - AND Conditions list of the rule.
+        * `ignore_case` - Whether the parameter value is case insensitive.
+        * `name` - The parameter name of the match type.
+        * `operator` - Operator.
+        * `target` - The match type.
+        * `values` - The parameter value of the match type.
+    * `sub_rules` - The nested rule.
+      * `rules` - Nested rule settings.
+        * `actions` - The feature to be executed.
+          * `code_action` - Feature operation with a status code.
+            * `action` - Feature name.
+            * `parameters` - Operation parameter.
+              * `name` - The parameter name.
+              * `status_code` - The status code.
+              * `values` - The parameter value.
+          * `normal_action` - Common operation.
+            * `action` - Feature name.
+            * `parameters` - Parameter.
+              * `name` - Parameter name.
+              * `values` - The parameter value.
+          * `rewrite_action` - Feature operation with a request/response header.
+            * `action` - Feature name.
+            * `parameters` - Parameter.
+              * `action` - Feature parameter name.
+              * `name` - Parameter name.
+              * `values` - Parameter value.
+        * `or` - The condition that determines if a feature should run.
+          * `and` - Rule engine condition.
+            * `ignore_case` - Whether the parameter value is case insensitive.
+            * `name` - The parameter name of the match type.
+            * `operator` - Operator.
+            * `target` - The match type.
+            * `values` - The parameter value of the match type.
+      * `tags` - Tag of the rule.
+  * `status` - Rule status.
+  * `tags` - Rule tag list.
 * `rule_priority` - Rule priority, the larger the value, the higher the priority, the minimum is 1.
 
 
