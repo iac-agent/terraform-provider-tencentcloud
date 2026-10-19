@@ -132,6 +132,36 @@ resource "tencentcloud_nat_gateway" "example" {
 }
 ```
 
+Create an exclusive NAT gateway.
+
+```hcl
+resource "tencentcloud_vpc" "vpc" {
+  cidr_block = "10.0.0.0/16"
+  name       = "tf_nat_gateway_vpc"
+}
+
+resource "tencentcloud_eip" "eip_example1" {
+  name = "tf_nat_gateway_eip1"
+}
+
+resource "tencentcloud_eip" "eip_example2" {
+  name = "tf_nat_gateway_eip2"
+}
+
+resource "tencentcloud_nat_gateway" "example" {
+  name           = "tf_example_nat_gateway"
+  vpc_id         = tencentcloud_vpc.vpc.id
+  exclusive_type = "ExclusiveSmall"
+  assigned_eip_set = [
+    tencentcloud_eip.eip_example1.public_ip,
+    tencentcloud_eip.eip_example2.public_ip,
+  ]
+  tags = {
+    createBy = "terraform"
+  }
+}
+```
+
 Import
 
 NAT gateway can be imported using the id, e.g.

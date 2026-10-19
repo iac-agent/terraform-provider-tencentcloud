@@ -150,6 +150,35 @@ func testAccCheckNatGatewayDestroy(s *terraform.State) error {
 	return nil
 }
 
+func TestAccTencentCloudNatGateway_exclusiveType(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { tcacctest.AccPreCheck(t) },
+		Providers:    tcacctest.AccProviders,
+		CheckDestroy: testAccCheckNatGatewayDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccNatGatewayConfigExclusiveType,
+				Check: resource.ComposeTestCheckFunc(
+					testAccCheckNatGatewayExists("tencentcloud_nat_gateway.my_nat"),
+					resource.TestCheckResourceAttr("tencentcloud_nat_gateway.my_nat", "name", "terraform_test"),
+					resource.TestCheckResourceAttr("tencentcloud_nat_gateway.my_nat", "exclusive_type", "ExclusiveSmall"),
+					resource.TestCheckResourceAttr("tencentcloud_nat_gateway.my_nat", "assigned_eip_set.#", "2"),
+				),
+			},
+			{
+				Config: testAccNatGatewayConfigExclusiveTypeUpdate,
+				Check: resource.ComposeTestCheckFunc(
+					testAccCheckNatGatewayExists("tencentcloud_nat_gateway.my_nat"),
+					resource.TestCheckResourceAttr("tencentcloud_nat_gateway.my_nat", "name", "terraform_test"),
+					resource.TestCheckResourceAttr("tencentcloud_nat_gateway.my_nat", "exclusive_type", "ExclusiveMedium1"),
+					resource.TestCheckResourceAttr("tencentcloud_nat_gateway.my_nat", "assigned_eip_set.#", "2"),
+				),
+			},
+		},
+	})
+}
+
 func testAccCheckNatGatewayExists(n string) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 		logId := tccommon.GetLogId(tccommon.ContextNil)
@@ -237,5 +266,49 @@ resource "tencentcloud_nat_gateway" "my_nat" {
   tags = {
     tf = "teest"
   }
+}
+`
+const testAccNatGatewayConfigExclusiveType = `
+data "tencentcloud_vpc_instances" "foo" {
+  name = "Default-VPC"
+}
+# Create EIP 
+resource "tencentcloud_eip" "eip_dev_dnat" {
+  name = "terraform_test"
+}
+resource "tencentcloud_eip" "eip_test_dnat" {
+  name = "terraform_test"
+}
+resource "tencentcloud_nat_gateway" "my_nat" {
+  vpc_id         = data.tencentcloud_vpc_instances.foo.instance_list.0.vpc_id
+  name           = "terraform_test"
+  exclusive_type = "ExclusiveSmall"
+
+  assigned_eip_set = [
+    tencentcloud_eip.eip_dev_dnat.public_ip,
+    tencentcloud_eip.eip_test_dnat.public_ip,
+  ]
+}
+`
+const testAccNatGatewayConfigExclusiveTypeUpdate = `
+data "tencentcloud_vpc_instances" "foo" {
+  name = "Default-VPC"
+}
+# Create EIP 
+resource "tencentcloud_eip" "eip_dev_dnat" {
+  name = "terraform_test"
+}
+resource "tencentcloud_eip" "eip_test_dnat" {
+  name = "terraform_test"
+}
+resource "tencentcloud_nat_gateway" "my_nat" {
+  vpc_id         = data.tencentcloud_vpc_instances.foo.instance_list.0.vpc_id
+  name           = "terraform_test"
+  exclusive_type = "ExclusiveMedium1"
+
+  assigned_eip_set = [
+    tencentcloud_eip.eip_dev_dnat.public_ip,
+    tencentcloud_eip.eip_test_dnat.public_ip,
+  ]
 }
 `

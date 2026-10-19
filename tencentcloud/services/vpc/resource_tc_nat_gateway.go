@@ -99,6 +99,13 @@ func ResourceTencentCloudNatGateway() *schema.Resource {
 				ForceNew:    true,
 				Description: "The elastic public IP bandwidth value (unit: Mbps) for binding NAT gateway. When this parameter is not filled in, it defaults to the bandwidth value of the elastic public IP, and for some users, it defaults to the bandwidth limit of the elastic public IP of that user type.",
 			},
+			"exclusive_type": {
+				Type:         schema.TypeString,
+				Optional:     true,
+				Computed:     true,
+				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ExclusiveSmall", "ExclusiveMedium1", "ExclusiveLarge1"}),
+				Description:  "Exclusive (dedicated) NAT gateway instance type. Valid values: `ExclusiveSmall`, `ExclusiveMedium1`, `ExclusiveLarge1`. When not set, a standard NAT gateway is created.",
+			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
@@ -182,6 +189,10 @@ func resourceTencentCloudNatGatewayCreate(d *schema.ResourceData, meta interface
 
 	if v, ok := d.GetOkExists("stock_public_ip_addresses_bandwidth_out"); ok {
 		request.StockPublicIpAddressesBandwidthOut = helper.IntUint64(v.(int))
+	}
+
+	if v, ok := d.GetOkExists("exclusive_type"); ok {
+		request.ExclusiveType = helper.String(v.(string))
 	}
 
 	if v := helper.GetTags(d, "tags"); len(v) > 0 {
@@ -317,6 +328,10 @@ func resourceTencentCloudNatGatewayRead(d *schema.ResourceData, meta interface{}
 		_ = d.Set("deletion_protection_enabled", *nat.DeletionProtectionEnabled)
 	}
 
+	if nat.ExclusiveType != nil {
+		_ = d.Set("exclusive_type", *nat.ExclusiveType)
+	}
+
 	// set `stock_public_ip_addresses_bandwidth_out`
 	bandwidthRequest := vpc.NewDescribeAddressesRequest()
 	bandwidthResponse := vpc.NewDescribeAddressesResponse()
@@ -446,6 +461,27 @@ func resourceTencentCloudNatGatewayUpdate(d *schema.ResourceData, meta interface
 
 		if err != nil {
 			log.Printf("[CRITAL]%s modify NAT gateway concurrent failed, reason:%s\n", logId, err.Error())
+			return err
+		}
+	}
+
+	//exclusive_type
+	if d.HasChange("exclusive_type") {
+		exclusiveTypeReq := vpc.NewResetNatGatewayConnectionRequest()
+		exclusiveTypeReq.NatGatewayId = &natGatewayId
+		exclusiveTypeReq.ExclusiveType = helper.String(d.Get("exclusive_type").(string))
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+			_, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseVpcClient().ResetNatGatewayConnection(exclusiveTypeReq)
+			if e != nil {
+				log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+					logId, exclusiveTypeReq.GetAction(), exclusiveTypeReq.ToJsonString(), e.Error())
+				return tccommon.RetryError(e, tccommon.InternalError)
+			}
+			return nil
+		})
+
+		if err != nil {
+			log.Printf("[CRITAL]%s modify NAT gateway exclusive type failed, reason:%s\n", logId, err.Error())
 			return err
 		}
 	}
