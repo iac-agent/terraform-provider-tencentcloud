@@ -56,6 +56,14 @@ resource "tencentcloud_eni_ipv6_address" "example" {
   network_interface_id = tencentcloud_eni.example.id
   ipv6_address_count   = 1
 }
+
+resource "tencentcloud_eni_ipv6_address" "example_with_public_ip" {
+  network_interface_id = tencentcloud_eni.example.id
+  ipv6_addresses {
+    address           = "2402:4e00:1015:7500:0:8cd9:2a67:71f3"
+    public_ip_address = "2402:4e00:1015:7500:0:8cd9:2a67:71f4"
+  }
+}
 ```
 
 ## Argument Reference
@@ -73,6 +81,7 @@ The `ipv6_addresses` object supports the following:
 * `description` - (Optional, String, ForceNew) Description.
 * `is_wan_ip_blocked` - (Optional, Bool, ForceNew) Whether the public network IP is blocked.
 * `primary` - (Optional, Bool, ForceNew) Whether to master `IP`.
+* `public_ip_address` - (Optional, String, ForceNew) Public IP address of the IPv6 address (ULA type).
 * `state` - (Optional, String, ForceNew) `IPv6` address status: `PENDING`: pending, `MIGRATING`: migrating, `DELETING`: deleting, `AVAILABLE`: available.
 
 ## Attributes Reference
