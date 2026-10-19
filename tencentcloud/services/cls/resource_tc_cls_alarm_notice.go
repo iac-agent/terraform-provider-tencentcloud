@@ -759,6 +759,10 @@ func resourceTencentCloudClsAlarmNoticeCreate(d *schema.ResourceData, meta inter
 		}
 	}
 
+	if tagsMap, ok := d.GetOk("tags"); ok {
+		request.Tags = mapToClsTags(tagsMap.(map[string]interface{}))
+	}
+
 	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseClsClient().CreateAlarmNotice(request)
 		if e != nil {
@@ -1069,13 +1073,17 @@ func resourceTencentCloudClsAlarmNoticeRead(d *schema.ResourceData, meta interfa
 		_ = d.Set("notice_rules", noticeRulesList)
 	}
 
-	tcClient := meta.(tccommon.ProviderMeta).GetAPIV3Conn()
-	tagService := svctag.NewTagService(tcClient)
-	tags, err := tagService.DescribeResourceTags(ctx, "cls", "alarmNotice", tcClient.Region, d.Id())
-	if err != nil {
-		return err
+	if alarmNotice.Tags != nil && len(alarmNotice.Tags) > 0 {
+		_ = d.Set("tags", clsTagsToMap(alarmNotice.Tags))
+	} else {
+		tcClient := meta.(tccommon.ProviderMeta).GetAPIV3Conn()
+		tagService := svctag.NewTagService(tcClient)
+		tags, err := tagService.DescribeResourceTags(ctx, "cls", "alarmNotice", tcClient.Region, d.Id())
+		if err != nil {
+			return err
+		}
+		_ = d.Set("tags", tags)
 	}
-	_ = d.Set("tags", tags)
 
 	return nil
 }
@@ -1093,7 +1101,7 @@ func resourceTencentCloudClsAlarmNoticeUpdate(d *schema.ResourceData, meta inter
 	needChange := false
 	request.AlarmNoticeId = &alarmNoticeId
 
-	mutableArgs := []string{"name", "type", "notice_receivers", "web_callbacks", "jump_domain", "deliver_status", "deliver_config", "alarm_shield_status", "callback_prioritize", "notice_rules"}
+	mutableArgs := []string{"name", "type", "notice_receivers", "web_callbacks", "jump_domain", "deliver_status", "deliver_config", "alarm_shield_status", "callback_prioritize", "notice_rules", "tags"}
 
 	for _, v := range mutableArgs {
 		if d.HasChange(v) {
@@ -1331,6 +1339,12 @@ func resourceTencentCloudClsAlarmNoticeUpdate(d *schema.ResourceData, meta inter
 			}
 		}
 
+		if d.HasChange("tags") {
+			if tagsMap, ok := d.GetOk("tags"); ok {
+				request.Tags = mapToClsTags(tagsMap.(map[string]interface{}))
+			}
+		}
+
 		err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseClsClient().ModifyAlarmNotice(request)
 			if e != nil {
@@ -1376,6 +1390,30 @@ func resourceTencentCloudClsAlarmNoticeDelete(d *schema.ResourceData, meta inter
 	}
 
 	return nil
+}
+
+// mapToClsTags converts a Terraform TypeMap (map[string]interface{}) to []*cls.Tag (CLS API format).
+func mapToClsTags(tagsMap map[string]interface{}) []*cls.Tag {
+	tags := make([]*cls.Tag, 0, len(tagsMap))
+	for k, v := range tagsMap {
+		tag := &cls.Tag{
+			Key:   helper.String(k),
+			Value: helper.String(v.(string)),
+		}
+		tags = append(tags, tag)
+	}
+	return tags
+}
+
+// clsTagsToMap converts []*cls.Tag (CLS API format) to map[string]interface{} (Terraform TypeMap).
+func clsTagsToMap(tags []*cls.Tag) map[string]interface{} {
+	result := make(map[string]interface{})
+	for _, tag := range tags {
+		if tag.Key != nil && tag.Value != nil {
+			result[*tag.Key] = *tag.Value
+		}
+	}
+	return result
 }
 
 // buildEscalateNoticeChain converts an ordered list (plan D) into the SDK's recursive chain structure.
