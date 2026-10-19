@@ -22,6 +22,7 @@ func TestAccTencentCloudTatInvokerConfigResource_basic(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttrSet("tencentcloud_tat_invoker_config.invoker_config", "id"),
 					resource.TestCheckResourceAttr("tencentcloud_tat_invoker_config.invoker_config", "invoker_status", "off"),
+					resource.TestCheckResourceAttrSet("tencentcloud_tat_invoker_config.invoker_config", "command_id"),
 				),
 			},
 			{
