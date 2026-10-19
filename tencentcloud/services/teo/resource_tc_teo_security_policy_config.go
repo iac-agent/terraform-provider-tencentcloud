@@ -2952,8 +2952,8 @@ func resourceTencentCloudTeoSecurityPolicyConfigRead(d *schema.ResourceData, met
 	}
 
 	if respData == nil {
+		log.Printf("[WARN]%s resource `teo_security_policy_config` id=%s not found, please check if it has been deleted.\n", logId, d.Id())
 		d.SetId("")
-		log.Printf("[WARN]%s resource `teo_security_policy` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		return nil
 	}
 
@@ -5802,6 +5802,39 @@ func resourceTencentCloudTeoSecurityPolicyConfigUpdate(d *schema.ResourceData, m
 					if v, ok := ruleMap["rule_status"].(string); ok && v != "" {
 						rateLimitUserRule.RuleStatus = helper.String(v)
 					}
+					if v, ok := ruleMap["rule_priority"].(int); ok {
+						rateLimitUserRule.RulePriority = helper.IntInt64(v)
+					}
+					if v, ok := ruleMap["freq_fields"]; ok {
+						freqFields := make([]*string, 0, len(v.([]interface{})))
+						for _, freqItem := range v.([]interface{}) {
+							if freqVal, ok := freqItem.(string); ok && freqVal != "" {
+								freqFields = append(freqFields, helper.String(freqVal))
+							}
+						}
+						rateLimitUserRule.FreqFields = freqFields
+					}
+					if v, ok := ruleMap["freq_scope"]; ok {
+						freqScope := make([]*string, 0, len(v.([]interface{})))
+						for _, scopeItem := range v.([]interface{}) {
+							if scopeVal, ok := scopeItem.(string); ok && scopeVal != "" {
+								freqScope = append(freqScope, helper.String(scopeVal))
+							}
+						}
+						rateLimitUserRule.FreqScope = freqScope
+					}
+					if v, ok := ruleMap["name"].(string); ok && v != "" {
+						rateLimitUserRule.Name = helper.String(v)
+					}
+					if v, ok := ruleMap["custom_response_id"].(string); ok && v != "" {
+						rateLimitUserRule.CustomResponseId = helper.String(v)
+					}
+					if v, ok := ruleMap["response_code"].(int); ok {
+						rateLimitUserRule.ResponseCode = helper.IntInt64(v)
+					}
+					if v, ok := ruleMap["redirect_url"].(string); ok && v != "" {
+						rateLimitUserRule.RedirectUrl = helper.String(v)
+					}
 					if v, ok := ruleMap["acl_conditions"]; ok {
 						for _, condItem := range v.([]interface{}) {
 							condMap := condItem.(map[string]interface{})
@@ -5868,6 +5901,39 @@ func resourceTencentCloudTeoSecurityPolicyConfigUpdate(d *schema.ResourceData, m
 					}
 					if v, ok := ruleMap["rule_status"].(string); ok && v != "" {
 						rateLimitUserRule.RuleStatus = helper.String(v)
+					}
+					if v, ok := ruleMap["rule_priority"].(int); ok {
+						rateLimitUserRule.RulePriority = helper.IntInt64(v)
+					}
+					if v, ok := ruleMap["freq_fields"]; ok {
+						freqFields := make([]*string, 0, len(v.([]interface{})))
+						for _, freqItem := range v.([]interface{}) {
+							if freqVal, ok := freqItem.(string); ok && freqVal != "" {
+								freqFields = append(freqFields, helper.String(freqVal))
+							}
+						}
+						rateLimitUserRule.FreqFields = freqFields
+					}
+					if v, ok := ruleMap["freq_scope"]; ok {
+						freqScope := make([]*string, 0, len(v.([]interface{})))
+						for _, scopeItem := range v.([]interface{}) {
+							if scopeVal, ok := scopeItem.(string); ok && scopeVal != "" {
+								freqScope = append(freqScope, helper.String(scopeVal))
+							}
+						}
+						rateLimitUserRule.FreqScope = freqScope
+					}
+					if v, ok := ruleMap["name"].(string); ok && v != "" {
+						rateLimitUserRule.Name = helper.String(v)
+					}
+					if v, ok := ruleMap["custom_response_id"].(string); ok && v != "" {
+						rateLimitUserRule.CustomResponseId = helper.String(v)
+					}
+					if v, ok := ruleMap["response_code"].(int); ok {
+						rateLimitUserRule.ResponseCode = helper.IntInt64(v)
+					}
+					if v, ok := ruleMap["redirect_url"].(string); ok && v != "" {
+						rateLimitUserRule.RedirectUrl = helper.String(v)
 					}
 					if v, ok := ruleMap["acl_conditions"]; ok {
 						for _, condItem := range v.([]interface{}) {
@@ -6417,6 +6483,60 @@ func resourceTencentCloudTeoSecurityPolicyConfigUpdate(d *schema.ResourceData, m
 func resourceTencentCloudTeoSecurityPolicyConfigDelete(d *schema.ResourceData, meta interface{}) error {
 	defer tccommon.LogElapsed("resource.tencentcloud_teo_security_policy_config.delete")()
 	defer tccommon.InconsistentCheck(d, meta)()
+
+	var (
+		logId      = tccommon.GetLogId(tccommon.ContextNil)
+		ctx        = tccommon.NewResourceLifeCycleHandleFuncContext(context.Background(), logId, d, meta)
+		request    = teov20220901.NewModifySecurityPolicyRequest()
+		zoneId     string
+		entity     string
+		host       string
+		templateId string
+	)
+
+	idSplit := strings.Split(d.Id(), tccommon.FILED_SP)
+	if !(len(idSplit) == 2 || len(idSplit) == 3) {
+		return fmt.Errorf("id is broken,%s", d.Id())
+	}
+
+	zoneId = idSplit[0]
+	entity = idSplit[1]
+	if entity == "Host" && len(idSplit) == 3 {
+		host = idSplit[2]
+	} else if entity == "Template" && len(idSplit) == 3 {
+		templateId = idSplit[2]
+	} else if entity == "ZoneDefaultPolicy" && len(idSplit) == 2 {
+		// site-level policy, no host/templateId
+	} else {
+		return fmt.Errorf("`entity` is illegal, %s.", entity)
+	}
+
+	request.ZoneId = &zoneId
+	request.Entity = &entity
+	request.Host = &host
+	request.TemplateId = &templateId
+	// Set an empty SecurityConfig to neutralize the security policy configuration.
+	request.SecurityConfig = &teov20220901.SecurityConfig{}
+
+	reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseTeoV20220901Client().ModifySecurityPolicyWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Delete teo_security_policy_config failed, Response is nil. id=%s", d.Id()))
+		}
+
+		return nil
+	})
+
+	if reqErr != nil {
+		log.Printf("[CRITAL]%s delete teo_security_policy_config failed, id=%s, reason:%+v", logId, d.Id(), reqErr)
+		return reqErr
+	}
 
 	return nil
 }

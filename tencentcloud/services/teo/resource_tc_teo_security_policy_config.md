@@ -1,4 +1,4 @@
-Provides a resource to create a teo security policy
+Provides a resource to create a TEO security policy config.
 
 ~> **NOTE:** If the user's EO version is the personal version, `managed_rule_groups` needs to set one; If the user's EO version is a non personal version, `managed_rule_groups` needs to set 17. If the user does not set the `managed_rule_groups` parameter, the system will generate it by default.
 
@@ -632,6 +632,46 @@ resource "tencentcloud_teo_security_policy_config" "example" {
         action {
           name = "Deny"
         }
+      }
+    }
+  }
+}
+```
+
+If use security_config with rate_limit_config
+
+```hcl
+resource "tencentcloud_teo_security_policy_config" "example" {
+  zone_id = "zone-37u62pwxfo8s"
+  entity  = "ZoneDefaultPolicy"
+
+  security_config {
+    rate_limit_config {
+      switch = "on"
+      rate_limit_user_rules {
+        threshold        = 100
+        period           = 60
+        rule_name        = "test-rule"
+        action           = "drop"
+        punish_time      = 120
+        punish_time_unit = "second"
+        rule_status      = "on"
+        rule_priority    = 50
+        freq_fields      = ["sip"]
+        freq_scope       = ["client_to_eo"]
+        acl_conditions {
+          match_from    = "url"
+          operator      = "equal"
+          match_content = "/test"
+        }
+      }
+      rate_limit_template {
+        mode   = "normal"
+        action = "alg"
+      }
+      rate_limit_intelligence {
+        switch = "on"
+        action = "monitor"
       }
     }
   }
