@@ -2346,3 +2346,64 @@ func (me *RedisService) DescribeRedisAuditLogById(ctx context.Context, instanceI
 	instance = response.Response.Items[0]
 	return
 }
+
+// DescribeBackupEncryptConfig queries the backup encryption configuration of a Redis instance.
+func (me *RedisService) DescribeBackupEncryptConfig(ctx context.Context, instanceId string) (config *redis.DescribeBackupEncryptConfigResponseParams, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := redis.NewDescribeBackupEncryptConfigRequest()
+	request.InstanceId = &instanceId
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+	response, err := me.client.UseRedisClient().DescribeBackupEncryptConfigWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response == nil {
+		return
+	}
+	config = response.Response
+	return
+}
+
+// ModifyBackupEncrypt sets the backup encryption configuration of a Redis instance.
+// nil optional arguments are omitted from the request so that the cloud keeps its defaults.
+func (me *RedisService) ModifyBackupEncrypt(ctx context.Context, instanceId string, backupEncrypt bool, encryptKeyType *int64, kmsKeyId, kmsRegion *string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := redis.NewModifyBackupEncryptRequest()
+	request.InstanceId = &instanceId
+	request.BackupEncrypt = &backupEncrypt
+	request.EncryptKeyType = encryptKeyType
+	request.KmsKeyId = kmsKeyId
+	request.KmsRegion = kmsRegion
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+	response, err := me.client.UseRedisClient().ModifyBackupEncryptWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	return
+}
