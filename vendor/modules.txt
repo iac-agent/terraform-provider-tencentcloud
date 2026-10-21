@@ -695,7 +695,9 @@ github.com/hashicorp/terraform-plugin-framework/resource
 github.com/hashicorp/terraform-plugin-framework/resource/identityschema
 github.com/hashicorp/terraform-plugin-framework/resource/schema
 github.com/hashicorp/terraform-plugin-framework/resource/schema/defaults
+github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier
 github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier
+github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier
 github.com/hashicorp/terraform-plugin-framework/schema/validator
 github.com/hashicorp/terraform-plugin-framework/statestore
 github.com/hashicorp/terraform-plugin-framework/statestore/schema
@@ -1262,7 +1264,7 @@ github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit/v20190319
 # github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls v1.3.144
 ## explicit; go 1.14
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls/v20201016
-# github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.172
+# github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.196
 ## explicit; go 1.11
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors
@@ -1327,6 +1329,9 @@ github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr/v20190103
 # github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es v1.1.13
 ## explicit; go 1.14
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es/v20180416
+# github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fwm v1.3.196
+## explicit; go 1.14
+github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fwm/v20250611
 # github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ga2 v1.3.144
 ## explicit; go 1.14
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ga2/v20250115
