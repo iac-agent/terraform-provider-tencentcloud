@@ -2124,6 +2124,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_tem_gateway":                                                              tem.ResourceTencentCloudTemGateway(),
 			"tencentcloud_tem_application_service":                                                  tem.ResourceTencentCloudTemApplicationService(),
 			"tencentcloud_teo_zone":                                                                 teo.ResourceTencentCloudTeoZone(),
+			"tencentcloud_teo_zone_v2":                                                              teo.ResourceTencentCloudTeoZoneV2(),
 			"tencentcloud_teo_zone_setting":                                                         teo.ResourceTencentCloudTeoZoneSetting(),
 			"tencentcloud_teo_origin_group":                                                         teo.ResourceTencentCloudTeoOriginGroup(),
 			"tencentcloud_teo_l4_proxy":                                                             teo.ResourceTencentCloudTeoL4Proxy(),
