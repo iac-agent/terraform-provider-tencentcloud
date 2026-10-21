@@ -17,12 +17,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/list"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/crs"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ssm"
 )
 
 // resourceFactories lists every framework Resource factory.
 var resourceFactories = []func() resource.Resource{
 	ssm.NewSsmSecretVersionV2Resource,
+	crs.NewCrsRedisBackupEncryptConfigResource,
 }
 
 // dataSourceFactories lists every framework DataSource factory.
