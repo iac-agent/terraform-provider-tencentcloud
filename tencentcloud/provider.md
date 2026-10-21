@@ -2501,6 +2501,10 @@ tencentcloud_wedata_authorize_data_source
 tencentcloud_wedata_workflow_permissions
 tencentcloud_wedata_data_backfill_plan
 
+Firewall Management(FWM)
+Resource
+tencentcloud_fwm_strategy
+
 Cloud Firewall(CFW)
 Data Source
 tencentcloud_cfw_nat_fw_switches

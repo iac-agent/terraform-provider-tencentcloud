@@ -68,6 +68,7 @@ import (
 	eb "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eb/v20210416"
 	emr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr/v20190103"
 	es "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es/v20180416"
+	fwm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fwm/v20250611"
 	ga2v20250115 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ga2/v20250115"
 	gaap "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gaap/v20180529"
 	gsv20191118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gs/v20191118"
@@ -179,6 +180,7 @@ type TencentCloudClient struct {
 	apiGatewayConn       *apigateway.Client
 	sslCertificateConn   *sslCertificate.Client
 	kmsConn              *kms.Client
+	fwmConn              *fwm.Client
 	ssmConn              *ssm.Client
 	apiConn              *api.Client
 	emrConn              *emr.Client
@@ -1109,6 +1111,19 @@ func (me *TencentCloudClient) UseSsmClient() *ssm.Client {
 	me.ssmConn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.ssmConn
+}
+
+// UseFwmClient returns FWM (Firewall Management) client for service
+func (me *TencentCloudClient) UseFwmClient() *fwm.Client {
+	if me.fwmConn != nil {
+		return me.fwmConn
+	}
+
+	cpf := me.NewClientProfile(300)
+	me.fwmConn, _ = fwm.NewClient(me.Credential, me.Region, cpf)
+	me.fwmConn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.fwmConn
 }
 
 // UseApiClient return API client for service
