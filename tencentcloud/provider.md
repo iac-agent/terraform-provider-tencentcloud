@@ -1014,6 +1014,7 @@ tencentcloud_redis_clusters
 Resource
 tencentcloud_redis_instance
 tencentcloud_redis_backup_config
+tencentcloud_redis_backup_encrypt
 tencentcloud_redis_param
 tencentcloud_redis_param_template
 tencentcloud_redis_account

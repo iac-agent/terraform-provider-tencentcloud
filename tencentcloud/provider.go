@@ -1683,6 +1683,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_cfs_sign_up_cfs_service":                                                  cfs.ResourceTencentCloudCfsSignUpCfsService(),
 			"tencentcloud_redis_instance":                                                           crs.ResourceTencentCloudRedisInstance(),
 			"tencentcloud_redis_backup_config":                                                      crs.ResourceTencentCloudRedisBackupConfig(),
+			"tencentcloud_redis_backup_encrypt":                                                     crs.ResourceTencentCloudRedisBackupEncryptConfig(),
 			"tencentcloud_redis_account":                                                            crs.ResourceTencentCloudRedisAccount(),
 			"tencentcloud_redis_param_template":                                                     crs.ResourceTencentCloudRedisParamTemplate(),
 			"tencentcloud_redis_connection_config":                                                  crs.ResourceTencentCloudRedisConnectionConfig(),
