@@ -18,6 +18,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ssm"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/tke"
 )
 
 // resourceFactories lists every framework Resource factory.
@@ -26,7 +27,9 @@ var resourceFactories = []func() resource.Resource{
 }
 
 // dataSourceFactories lists every framework DataSource factory.
-var dataSourceFactories = []func() datasource.DataSource{}
+var dataSourceFactories = []func() datasource.DataSource{
+	tke.NewTkeAddonValuesDataSource,
+}
 
 // functionFactories lists every framework Function factory.
 var functionFactories = []func() function.Function{}

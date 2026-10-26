@@ -3019,6 +3019,37 @@ func (me *TkeService) DescribeKubernetesAddonById(ctx context.Context, clusterId
 	return
 }
 
+func (me *TkeService) DescribeAddonValues(ctx context.Context, clusterId string, addonName string) (values *string, defaultValues *string, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := tke.NewDescribeAddonValuesRequest()
+	request.ClusterId = &clusterId
+	request.AddonName = &addonName
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+
+	response, err := me.client.UseTkeClient().DescribeAddonValuesWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		return
+	}
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("DescribeAddonValues returned an empty response, clusterId: %s, addonName: %s", clusterId, addonName)
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	values = response.Response.Values
+	defaultValues = response.Response.DefaultValues
+	return
+}
+
 func (me *TkeService) DescribeKubernetesClustersByFilter(ctx context.Context, param map[string]interface{}) (ret []*tke.Cluster, errRet error) {
 	var (
 		logId   = tccommon.GetLogId(ctx)
