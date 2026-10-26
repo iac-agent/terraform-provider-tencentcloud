@@ -4617,3 +4617,22 @@ func (me *TkeService) DescribeKubernetesClusterRollOutSequenceTagConfigById(ctx 
 
 	return
 }
+
+func (me *TkeService) DescribeAddonValues(ctx context.Context, request *tke.DescribeAddonValuesRequest) (response *tke.DescribeAddonValuesResponse, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+	response, errRet = me.client.UseTkeClient().DescribeAddonValues(request)
+	if errRet != nil {
+		return nil, errRet
+	}
+
+	return response, nil
+}
