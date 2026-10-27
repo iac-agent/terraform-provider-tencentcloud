@@ -201,6 +201,8 @@ func (r *ConfigUpdateConfigDeliverResource) Read(ctx context.Context, req resour
 	state.Id = types.StringValue(id)
 	flattenConfigDeliver(result, &state)
 
+	log.Printf("[DEBUG] describe config_update_config_deliver success, id=%s", id)
+
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 }
 
@@ -281,6 +283,13 @@ func (r *ConfigUpdateConfigDeliverResource) ImportState(ctx context.Context, req
 // is Required; every other field is sent only when the plan carries a known,
 // non-null value.
 func (r *ConfigUpdateConfigDeliverResource) modifyConfig(ctx context.Context, plan *ConfigUpdateConfigDeliverResourceModel) error {
+	// status is Required, so an unknown or null value here would silently be
+	// coerced to 0 by ValueInt64() and turn log delivery off. Reject it
+	// explicitly instead of sending a wrong switch state to the cloud.
+	if plan.Status.IsNull() || plan.Status.IsUnknown() {
+		return fmt.Errorf("config_update_config_deliver: status must be known, got a null or unknown value")
+	}
+
 	request := configv20220802.NewUpdateConfigDeliverRequest()
 	request.Status = tccommonhelper.Uint64(uint64(plan.Status.ValueInt64()))
 
@@ -327,7 +336,8 @@ func flattenConfigDeliver(src *configv20220802.DescribeConfigDeliverResponsePara
 // uint64ToInt64Value converts the *uint64 fields used by the Config SDK to
 // types.Int64. A nil pointer becomes types.Int64Null() so that an absent
 // field does not produce a spurious diff against an Optional+Computed
-// attribute.
+// attribute. The framework-side helper package is not importable from the
+// services subtree because it lives under tencentcloud/framework/internal.
 func uint64ToInt64Value(p *uint64) types.Int64 {
 	if p == nil {
 		return types.Int64Null()

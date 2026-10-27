@@ -358,6 +358,44 @@ func TestConfigUpdateConfigDeliverResource_ModifyConfigError(t *testing.T) {
 	}
 }
 
+// TestConfigUpdateConfigDeliverResource_ModifyConfigStatusUnknownRejected
+// ensures a null or unknown status is rejected instead of being coerced to 0,
+// which would silently disable log delivery.
+func TestConfigUpdateConfigDeliverResource_ModifyConfigStatusUnknownRejected(t *testing.T) {
+	cases := []struct {
+		name   string
+		status types.Int64
+	}{
+		{"unknown", types.Int64Unknown()},
+		{"null", types.Int64Null()},
+	}
+
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			patches := gomonkey.NewPatches()
+			defer patches.Reset()
+
+			called := false
+			service := &ConfigService{}
+			patches.ApplyMethodFunc(service, "UpdateConfigDeliver",
+				func(_ context.Context, _ *configv20220802.UpdateConfigDeliverRequest) error {
+					called = true
+					return nil
+				})
+
+			plan := &ConfigUpdateConfigDeliverResourceModel{Status: c.status}
+
+			r := &ConfigUpdateConfigDeliverResource{client: *service}
+			if err := r.modifyConfig(context.Background(), plan); err == nil {
+				t.Fatal("expected an error for a null or unknown status")
+			}
+			if called {
+				t.Error("UpdateConfigDeliver must not be called when status is null or unknown")
+			}
+		})
+	}
+}
+
 // TestFlattenConfigDeliverNilFieldPointers ensures nil response pointers become
 // null state values rather than Go zero values.
 func TestFlattenConfigDeliverNilFieldPointers(t *testing.T) {

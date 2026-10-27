@@ -100,3 +100,17 @@
 - [x] 7.1 Self-review the diff with `git diff` against the spec scenarios; do not run `go build`, `go vet`,
       `golangci-lint` or `go test` in this change phase.
 - [x] 7.2 Hand off to the finalize phase for `gofmt`, `make doc` and the `.changelog` entry.
+
+## 8. Follow-up Hardening
+
+- [x] 8.1 Guard `modifyConfig` against a null or unknown planned `status`: `ValueInt64()` would coerce it to
+      `0` and silently disable log delivery, so return an error before any `UpdateConfigDeliver` call.
+      Add the matching unit test (service must not be invoked in either the null or the unknown case).
+- [x] 8.2 Log the resource ID on the successful `Read` path as well, so a refresh can be traced end to end.
+- [x] 8.3 Confirm the framework-side `tencentcloud/framework/internal/helper` package cannot be imported from
+      `tencentcloud/services/config` (Go's `internal` visibility rule restricts it to the
+      `tencentcloud/framework/...` subtree), so the `*uint64` -> `types.Int64` conversion stays local.
+- [x] 8.4 Re-verify the vendored `config/v20220802` structs still expose every field used by the resource:
+      `UpdateConfigDeliverRequest.Status/DeliverName/TargetArn/DeliverPrefix/DeliverType/DeliverContentType`
+      and `DescribeConfigDeliverResponseParams` plus `CreateTime`.
+

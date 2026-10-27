@@ -173,6 +173,25 @@ Update: req.Plan.Get -> modifyConfig(plan) -> State.Set(plan, preserving id from
 `modifyConfig` marshals only fields that are **set** — `if !v.IsNull() && !v.IsUnknown()` — mirroring the
 "only send what the user/cloud has" rule. `status` is always sent because it is `Required`.
 
+`status` is additionally guarded: if it is null or unknown, `modifyConfig` returns an error without calling
+the API. `types.Int64.ValueInt64()` returns `0` for both cases, so an unguarded path would issue
+`Status = 0` and silently disable audit-log delivery — the one failure mode of this resource that is both
+invisible and costly. Because `status` is `Required` the guard is defensive, but it is the cheapest place to
+stop that class of bug.
+
+### 6.1 `*uint64` conversion stays local to the resource
+
+`DescribeConfigDeliver` returns `Status` / `DeliverContentType` as `*uint64`, and
+`UpdateConfigDeliver` expects `*uint64`. Two helper packages exist, and neither is usable here:
+
+| Helper | Usable from `tencentcloud/services/config`? | Why |
+| --- | --- | --- |
+| `tencentcloud/framework/internal/helper` (`Int64ValueFromUint`) | **No** | It lives under `tencentcloud/framework/internal/`, so Go's `internal` visibility rule limits imports to the `tencentcloud/framework/...` subtree. Importing it from `tencentcloud/services/config` is a compile error. |
+| `tencentcloud/internal/helper` (`Uint64`) | Yes | Imported as `tccommonhelper` for the **request** side. It has no `*uint64` → `types.Int64` flattener. |
+
+So the request side uses `tccommonhelper.Uint64(...)` and the response side keeps a local
+`uint64ToInt64Value(*uint64) types.Int64` that maps `nil` → `types.Int64Null()`.
+
 `Create` does not need a pre-check against existing cloud state: `UpdateConfigDeliver` is idempotent and
 overwrites, so first-apply adopts the existing setting in place. That is the documented behaviour for
 config-type resources and avoids a read-modify-write race.

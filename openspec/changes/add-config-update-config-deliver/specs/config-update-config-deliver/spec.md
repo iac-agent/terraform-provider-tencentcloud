@@ -118,6 +118,10 @@ be no separate creation API call.
 The modify path MUST set `Status` unconditionally (it is `Required`) and MUST set each other request field
 only when its planned value is neither null nor unknown.
 
+The modify path MUST reject a null or unknown planned `status` with an error instead of sending it: coercing
+such a value to `0` would silently disable log delivery. This guard is defensive, since `status` is
+`Required`, and it must fire before any `UpdateConfigDeliver` call is made.
+
 `Create` MUST adopt pre-existing cloud state rather than attempting to detect and reject it: applying to an
 account whose delivery setting is already configured SHALL overwrite that setting.
 
@@ -135,6 +139,12 @@ the resource ID in the message.
 
 - **WHEN** the resource is applied with only `status = 0` and no other arguments
 - **THEN** the `UpdateConfigDeliver` request carries only `Status`
+
+#### Scenario: Unresolved status is refused
+
+- **WHEN** the planned `status` value is null or unknown when the modify path runs
+- **THEN** an error is returned, no `UpdateConfigDeliver` call is made, and log delivery is not silently
+  switched off
 
 #### Scenario: Subsequent change updates in place
 
