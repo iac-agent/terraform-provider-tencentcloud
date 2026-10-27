@@ -87,7 +87,7 @@ func (e *SsmSecretVersionEphemeralResource) Configure(_ context.Context, req eph
 		return
 	}
 
-	e.client = NewSsmService(meta.Client)
+	e.client = NewSsmServiceClient(meta.Client)
 }
 
 // Open is invoked once per plan/apply. It reads the secret value via the SSM

@@ -27,7 +27,7 @@ func init() {
 			ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
 			cli, _ := tcacctest.SharedClientForRegion(r)
 			client := cli.(tccommon.ProviderMeta).GetAPIV3Conn()
-			service := svcssm.NewSsmService(client)
+			service := svcssm.NewSsmServiceClient(client)
 
 			secrets, err := service.DescribeSecretsByFilter(ctx, nil)
 
@@ -126,7 +126,7 @@ func testAccCheckSsmSecretDestroy(s *terraform.State) error {
 	logId := tccommon.GetLogId(tccommon.ContextNil)
 	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
 
-	ssmService := svcssm.NewSsmService(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
+	ssmService := svcssm.NewSsmServiceClient(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
 	for _, rs := range s.RootModule().Resources {
 		if rs.Type != "tencentcloud_ssm_secret" {
 			continue
@@ -160,7 +160,7 @@ func testAccCheckSsmSecretExists(name string) resource.TestCheckFunc {
 		if rs.Primary.ID == "" {
 			return fmt.Errorf("[CHECK][SSM secret][Exists] check:SSM secret id is not set")
 		}
-		ssmService := svcssm.NewSsmService(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
+		ssmService := svcssm.NewSsmServiceClient(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
 		secret, err := ssmService.DescribeSecretByName(ctx, rs.Primary.ID)
 		if err != nil {
 			return err

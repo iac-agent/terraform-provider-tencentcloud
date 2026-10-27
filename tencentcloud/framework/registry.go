@@ -40,7 +40,9 @@ var ephemeralResourceFactories = []func() ephemeral.EphemeralResource{
 var listResourceFactories = []func() list.ListResource{}
 
 // actionFactories lists every framework Action factory.
-var actionFactories = []func() action.Action{}
+var actionFactories = []func() action.Action{
+	ssm.NewSsmService,
+}
 
 // frameworkResources returns every framework Resource factory.
 func frameworkResources() []func() resource.Resource { return resourceFactories }
