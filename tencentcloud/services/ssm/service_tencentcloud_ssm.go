@@ -15,7 +15,7 @@ import (
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/ratelimit"
 )
 
-func NewSsmService(client *connectivity.TencentCloudClient) SsmService {
+func NewSsmServiceClient(client *connectivity.TencentCloudClient) SsmService {
 	return SsmService{client: client}
 }
 
@@ -702,5 +702,41 @@ func (me *SsmService) DescribeSsmSshKeyPairValueByFilter(ctx context.Context, pa
 	}
 
 	sshKeyPairValue = response.Response
+	return
+}
+
+// CreateSsmService subscribes the current account to Secrets Manager by calling CreateService.
+// It is a one-shot, account-level operation: the same clientToken must be reused when the
+// very same logical creation is retried, otherwise a second billing order may be created.
+func (me *SsmService) CreateSsmService(ctx context.Context, payMode, clientToken string) (service *ssm.CreateServiceResponseParams, errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = ssm.NewCreateServiceRequest()
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	request.PayMode = helper.String(payMode)
+	request.ClientToken = helper.String(clientToken)
+
+	ratelimit.Check(request.GetAction())
+
+	response, err := me.client.UseSsmClient().CreateService(request)
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response == nil {
+		return
+	}
+
+	service = response.Response
 	return
 }

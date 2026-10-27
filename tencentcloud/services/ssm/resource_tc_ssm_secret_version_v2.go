@@ -119,7 +119,7 @@ func (r *SsmSecretVersionV2Resource) Configure(_ context.Context, req resource.C
 		return
 	}
 
-	r.client = NewSsmService(meta.Client)
+	r.client = NewSsmServiceClient(meta.Client)
 }
 
 // Create handles `terraform apply` for new resources.

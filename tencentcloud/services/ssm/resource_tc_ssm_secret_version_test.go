@@ -62,7 +62,7 @@ func testAccCheckSsmSecretVersionDestroy(s *terraform.State) error {
 	logId := tccommon.GetLogId(tccommon.ContextNil)
 	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
 
-	ssmService := svcssm.NewSsmService(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
+	ssmService := svcssm.NewSsmServiceClient(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
 	for _, rs := range s.RootModule().Resources {
 		if rs.Type != "tencentcloud_ssm_secret_version" {
 			continue
@@ -103,7 +103,7 @@ func testAccCheckSsmSecretVersionExists(name string) resource.TestCheckFunc {
 		if rs.Primary.ID == "" {
 			return fmt.Errorf("[CHECK][SSM secret version][Exists] check:SSM secret version id is not set")
 		}
-		ssmService := svcssm.NewSsmService(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
+		ssmService := svcssm.NewSsmServiceClient(tcacctest.AccProvider.Meta().(tccommon.ProviderMeta).GetAPIV3Conn())
 
 		items := strings.Split(rs.Primary.ID, tccommon.FILED_SP)
 		if len(items) != 2 {
