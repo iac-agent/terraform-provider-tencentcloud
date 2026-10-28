@@ -1206,6 +1206,9 @@ tencentcloud_ssm_rotate_product_secret
 Ephemeral Resource
 tencentcloud_ssm_secret_version
 
+Action
+tencentcloud_ssm_service
+
 TcaplusDB
 Data Source
 tencentcloud_tcaplus_clusters

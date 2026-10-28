@@ -53,6 +53,7 @@ var actionFactories = []func() action.Action{
 	mongodb.NewMongodbRestoreDbInstance,
 	antiddos.NewAntiddosUnblockResources,
 	tco.NewTcoProvisionRoleConfiguration,
+	ssm.NewSsmServiceAction,
 }
 
 // frameworkResources returns every framework Resource factory.

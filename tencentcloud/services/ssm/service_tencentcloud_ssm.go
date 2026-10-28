@@ -639,6 +639,43 @@ func (me *SsmService) DescribeSsmRotationHistoryByFilter(ctx context.Context, pa
 	return
 }
 
+func (me *SsmService) CreateSsmService(ctx context.Context, payMode, clientToken *string) (service *ssm.CreateServiceResponseParams, errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = ssm.NewCreateServiceRequest()
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	if payMode != nil {
+		request.PayMode = payMode
+	}
+	if clientToken != nil {
+		request.ClientToken = clientToken
+	}
+
+	ratelimit.Check(request.GetAction())
+
+	response, err := me.client.UseSsmClient().CreateService(request)
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response == nil {
+		return
+	}
+
+	service = response.Response
+	return
+}
+
 func (me *SsmService) DescribeSsmServiceStatusByFilter(ctx context.Context) (ServiceStatus *ssm.GetServiceStatusResponseParams, errRet error) {
 	var (
 		logId   = tccommon.GetLogId(ctx)
