@@ -20,6 +20,7 @@ import (
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/antiddos"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/bdrc"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/dlc"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/fwm"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/mongodb"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ssm"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/tco"
@@ -28,6 +29,7 @@ import (
 
 // resourceFactories lists every framework Resource factory.
 var resourceFactories = []func() resource.Resource{
+	fwm.NewFwmNatAclRuleResource,
 	ssm.NewSsmSecretVersionV2Resource,
 }
 
