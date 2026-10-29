@@ -2814,5 +2814,8 @@ Action
 tencentcloud_bdrc_run_copy_pair_tasks
 
 Firewall Manager(FWM)
+Data Source
+tencentcloud_fwm_organ_summary
+
 Resource
 tencentcloud_fwm_account_group

@@ -72,6 +72,38 @@ func (me *FwmService) DescribeFwmAccountGroupById(ctx context.Context, groupId s
 	return
 }
 
+// DescribeFwmOrganSummary queries the FWM organisation overview of the
+// account used by the provider. DescribeOrganSummary has no business input
+// parameters, so the request carries only the common request fields.
+func (me *FwmService) DescribeFwmOrganSummary(ctx context.Context) (summary *fwmv20250611.OrganSummary, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewDescribeOrganSummaryRequest()
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+	result, err := me.client.UseFwmV20250611Client().DescribeOrganSummaryWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	if result == nil || result.Response == nil {
+		errRet = fmt.Errorf("Describe fwm organ summary failed, Response is nil.")
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+	summary = result.Response.Summary
+	return
+}
+
 func (me *FwmService) DeleteFwmAccountGroupById(ctx context.Context, groupId string) (errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
