@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_teo_dns_record: update resolution_route field description
-```

@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_vpn_gateway_route: fix Read error when cloud API returns ResourceNotFound during DescribeVpnGatewayRoutes
-```

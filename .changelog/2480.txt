@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_kubernetes_scale_worker: fix DescribeClusters return parameter `Property` parsing code
-```

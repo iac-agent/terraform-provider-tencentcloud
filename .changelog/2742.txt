@@ -1,3 +1,0 @@
-```release-note:enhancement
-provider: add SAML, OIDC for STS client
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_private_dns_extend_end_point: support new params
-```

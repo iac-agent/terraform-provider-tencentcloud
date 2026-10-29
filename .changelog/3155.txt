@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cos_bucket_policy: update doc
-```

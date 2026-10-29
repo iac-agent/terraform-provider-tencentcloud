@@ -1,3 +1,0 @@
-```release-note:enhancement
-datasource/tencentcloud_vpc_acls: update doc
-```

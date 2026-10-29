@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_postgresql_parameter_template: optimiz code logic
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dcx: support in-place bandwidth update via ModifyDirectConnectTunnelAttribute
-```

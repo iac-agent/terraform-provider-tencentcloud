@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_private_dns_zone: support input 'cname_speedup_status'.
-```

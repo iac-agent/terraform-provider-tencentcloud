@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_waf_ip_access_control_v2
-```

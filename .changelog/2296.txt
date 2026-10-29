@@ -1,3 +1,0 @@
-```release-note:enhancement
-tencentcloud_ckafka_datahub_task: Optimize `input_value_type` and `input_value` empty string processing
-```

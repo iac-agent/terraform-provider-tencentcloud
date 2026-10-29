@@ -1,7 +1,0 @@
-```release-note:new-resource
-tencentcloud_tsf_application_config
-```
-
-```release-note:new-resource
-tencentcloud_tsf_microservice
-```

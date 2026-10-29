@@ -1,2 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_node_pool: update doc in tke node pool resource

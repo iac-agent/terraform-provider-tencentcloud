@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_clb_instance: optimiz delete code logic.
-```

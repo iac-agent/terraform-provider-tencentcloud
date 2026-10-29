@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cynosdb_cluster_slave_zone: Optimize timeout
-```

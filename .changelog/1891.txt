@@ -1,7 +1,0 @@
-```release-note:new-data-source
-tencentcloud_projects
-```
-
-```release-note:new-resource
-tencentcloud_project
-```

@@ -1,7 +1,0 @@
-```release-note:new-resource
-tencentcloud_mps_schedule
-```
-
-```release-note:new-resource
-tencentcloud_mps_enable_schedule_config
-```

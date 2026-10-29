@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cls_topic: support custom KMS key (kms_region, kms_key_id) for encryption
-```

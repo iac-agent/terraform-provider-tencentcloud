@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_ckafka_acl: retry CreateAcl using resource.Retry with WriteRetryTimeout, giving up after 5 FailedOperation errors
-```

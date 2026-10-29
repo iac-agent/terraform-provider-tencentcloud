@@ -1,3 +1,0 @@
-```release-note:enhancement
-tencentcloud_cam_service_linked_role: Set `custom_suffix` computed
-```

@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_dts_sync_job: change tags from list to set to fix unordered tags response
-```

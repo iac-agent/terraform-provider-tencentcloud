@@ -1,3 +1,0 @@
-```release-note:enhancement
-tencentcloud_vpn_ssl_server: Support modify attributes
-```

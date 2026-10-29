@@ -1,3 +1,0 @@
-```release-note:enhancement
-provider: Update the field attributes for `assume_role`, `assume_role_with_saml`, `assume_role_with_web_identity`, and `mfa_certification` in the framework.
-```

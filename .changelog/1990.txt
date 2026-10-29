@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_eip_association: Fix the issue of binding EIP timeout.
-```

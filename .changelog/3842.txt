@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_gwlb_target_group: fix `port` field drift issue by adding `Computed: true` attribute
-```

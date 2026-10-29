@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_vpn_gateway: support create `SSL_CCN` vpn gateway
-```

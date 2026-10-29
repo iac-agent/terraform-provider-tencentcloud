@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_bdrc_instance_copy_pair
-```

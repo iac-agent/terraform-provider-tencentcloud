@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cynosdb_proxy: Add return value `ro_instances`
-```

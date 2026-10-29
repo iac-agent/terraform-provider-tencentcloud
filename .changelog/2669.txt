@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_cfs_file_system: fix null fs_id
-```

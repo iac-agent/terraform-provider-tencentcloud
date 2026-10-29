@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_monitor_tmpInstance: Update the description of the `data_retention_time` field.
-```

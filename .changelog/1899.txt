@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_lighthouse_instance: offline param `permit_default_key_pair_login`
-```

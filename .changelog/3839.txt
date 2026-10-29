@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_ssl_pay_certificate: remove optional `dv_auths`
-```

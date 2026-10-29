@@ -1,7 +1,0 @@
-```release-note:new-data-source
-tencentcloud_clickhouse_spec
-```
-
-```release-note:new-data-source
-tencentcloud_clickhouse_instance_shards
-```

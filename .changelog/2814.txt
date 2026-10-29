@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_as_start_instance_refresh
-```

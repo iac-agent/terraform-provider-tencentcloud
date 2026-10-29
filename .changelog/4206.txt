@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_cfw_cluster_nat_fw_switch
-```

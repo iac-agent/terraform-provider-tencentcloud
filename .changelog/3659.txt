@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_cynosdb_cls_delivery
-```

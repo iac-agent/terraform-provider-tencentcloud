@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_eb_bus: update desc of `order_by`
-```

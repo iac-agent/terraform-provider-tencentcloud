@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_clb_attachment: optimize code logic for update function
-```

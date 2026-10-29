@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cls_cos_shipper: add timezone parameter support
-```

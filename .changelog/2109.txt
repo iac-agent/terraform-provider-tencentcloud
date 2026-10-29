@@ -1,3 +1,0 @@
-```release-note:new-data-source
-tencentcloud_kms_get_parameters_for_import
-```

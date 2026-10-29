@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_nat_gateway_flow_monitor
-```

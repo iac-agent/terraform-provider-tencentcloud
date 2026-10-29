@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dnspod_record: support refresh state while destroy outside of Terraform
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_clb_attachment: support domain and url params
-```

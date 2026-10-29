@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dlc_attach_user_policy_attachment: support setting `policy_set.re_auth` as an optional input parameter
-```

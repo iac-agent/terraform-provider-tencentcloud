@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_encryption_protection: support custom timeouts
-```

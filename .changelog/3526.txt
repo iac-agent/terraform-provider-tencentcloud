@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_tcss_image_registry: This resource has been deprecated
-```

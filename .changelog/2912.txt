@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_cynosdb_cluster_databases: Fix the problem of matching errors caused by fuzzy query.
-```

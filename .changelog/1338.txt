@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_postgresql_instance: network switching polling status check
-```

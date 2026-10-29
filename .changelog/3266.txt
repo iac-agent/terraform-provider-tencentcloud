@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cls_config: fix create error while `extract_rule` is nil
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-provider: `assume_role_with_web_identity` supports `role_arn_file`
-```

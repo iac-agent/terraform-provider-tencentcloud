@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cls_topic: update doc for `period`
-```

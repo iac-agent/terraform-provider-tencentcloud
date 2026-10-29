@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_vpn_connection: update code for `security_group_policy`
-```

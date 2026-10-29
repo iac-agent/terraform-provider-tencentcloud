@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_wedata_authorize_data_source
-```

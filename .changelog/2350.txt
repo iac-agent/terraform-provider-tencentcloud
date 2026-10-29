@@ -1,3 +1,0 @@
-```release-note:deprecation
-provider/tencentcloud_monitor_policy_group
-```

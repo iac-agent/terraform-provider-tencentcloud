@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_thpc_workspaces:  Optimized code
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-datasource/tencentcloud_ssl_certificates: Filter out invalid certificates without reporting errors directly
-```

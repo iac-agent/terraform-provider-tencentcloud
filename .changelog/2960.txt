@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_emr_cluster: support param pre_executed_file_settings
-```

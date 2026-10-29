@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_clb_function_targets_attachment: support update function targets.
-```

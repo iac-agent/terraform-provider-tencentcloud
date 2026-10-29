@@ -1,3 +1,0 @@
-```release-note:new-data-source
-tencentcloud_teo_export_zone_config
-```

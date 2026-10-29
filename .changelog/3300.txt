@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_eni_ipv6_address: update code and doc
-```

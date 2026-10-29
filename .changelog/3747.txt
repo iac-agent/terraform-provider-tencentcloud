@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_cfw_ips_mode_switch
-```

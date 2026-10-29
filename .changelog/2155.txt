@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_as_scaling_config: fix `key_ids` can not modify
-```

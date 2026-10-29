@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_tcr_instance: fix: skip fail operation capture while add same region replica
-```

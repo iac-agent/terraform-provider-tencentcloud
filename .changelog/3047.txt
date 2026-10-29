@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kms_key: support check `pending_delete_window_in_days` params
-```

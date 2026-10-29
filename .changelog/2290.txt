@@ -1,3 +1,0 @@
-```release-note:enhancement
-tencentcloud_ccn_bandwidth_limit: Support recover bandwidth limit when run `terraform destroy`
-```

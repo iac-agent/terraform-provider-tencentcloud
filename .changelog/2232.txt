@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_cam_group: fix cam group modify error
-```

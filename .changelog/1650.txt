@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_vpn_gateway_ssl_client_cert
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_scale_worker: support modify `instance_charge_type` and optimize delete code logic
-```

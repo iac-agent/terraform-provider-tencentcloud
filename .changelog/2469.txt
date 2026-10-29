@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_cluster: add `cluster_internet` and `cluster_intranet` configuration check
-```

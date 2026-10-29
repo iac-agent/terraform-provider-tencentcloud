@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_ssl_check_certificate_domain_verification_operation
-```

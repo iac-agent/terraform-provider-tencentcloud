@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_placement_group: support `affinity` and `tags`
-```

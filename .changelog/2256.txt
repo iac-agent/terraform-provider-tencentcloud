@@ -1,3 +1,0 @@
-```release-note:enhancement
-tencentcloud_ssm_secret: Remove default version while `secret_type` is 0
-```

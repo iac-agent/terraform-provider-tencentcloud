@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_addon: support custom timeout
-```

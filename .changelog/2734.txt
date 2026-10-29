@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dasb_user: update param phone Adapter country area code
-```

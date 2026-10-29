@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_teo_rule_engine: Add enumeration to the `target` field.
-```

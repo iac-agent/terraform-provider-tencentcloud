@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_instance: fix npe
-```

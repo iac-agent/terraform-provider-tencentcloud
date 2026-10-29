@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_emr_cluster: support `tags` param
-```

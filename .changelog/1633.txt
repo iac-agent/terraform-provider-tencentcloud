@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_cvm_security_group_attachment
-```

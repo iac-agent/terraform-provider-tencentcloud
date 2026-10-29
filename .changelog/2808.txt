@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_route_table_entry: fix creation failure
-```

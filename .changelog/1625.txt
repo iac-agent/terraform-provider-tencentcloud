@@ -1,7 +1,0 @@
-```release-note:new-data-source
-tencentcloud_postgresql_parameter_templates
-```
-
-```release-note:new-resource
-tencentcloud_postgresql_parameter_template
-```

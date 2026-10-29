@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_elasticsearch_instance: support enable_destroy_protection parameter to manage cluster destroy protection
-```

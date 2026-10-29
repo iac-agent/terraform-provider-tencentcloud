@@ -1,3 +1,0 @@
-```release-note:enhancement
-provider: add new auth for `cam_role_name`
-```

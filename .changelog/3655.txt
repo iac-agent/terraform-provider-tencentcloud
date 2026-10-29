@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dnspod_domain_list: update doc
-```

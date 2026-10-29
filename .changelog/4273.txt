@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_clb_instance: update internet_max_bandwidth_out description
-```

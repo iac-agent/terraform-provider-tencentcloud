@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_mongodb_instance: support `cpu` parameter to manage the CPU core count during instance configuration changes
-```

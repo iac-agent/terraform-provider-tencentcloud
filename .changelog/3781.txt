@@ -1,3 +1,0 @@
-```release-note:enhancement
-data-source/tencentcloud_instance_types: return details of instance types
-```

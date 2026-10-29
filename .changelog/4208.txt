@@ -1,3 +1,0 @@
-```release-note:new-data-source
-tencentcloud_mongodb_db_instance_node_property
-```

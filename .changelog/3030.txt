@@ -1,3 +1,0 @@
-```release-note:enhancement
-provider: support `allowed_account_ids` and `forbidden_account_ids`
-```

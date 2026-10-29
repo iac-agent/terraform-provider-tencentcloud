@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_instance: support ipv6_addresses and public_ipv6_addresses
-```

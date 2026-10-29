@@ -1,3 +1,0 @@
-```release-note:enhancement
-tencentcloud_mysql_dr_instance: modify doc
-```

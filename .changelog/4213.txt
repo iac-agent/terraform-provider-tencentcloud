@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_mariadb_hour_db_instance: add init_params parameter to support custom database initialization parameters
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_tcr_manage_replication_operation: has been deprecated
-```

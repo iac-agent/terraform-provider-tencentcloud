@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_cam_access_key
-```

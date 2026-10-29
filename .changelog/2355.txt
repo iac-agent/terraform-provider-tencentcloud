@@ -1,3 +1,0 @@
-```release-note:enhancement
-tencentcloud_postgresql_readonly_instance: Optimize isolation operations.
-```

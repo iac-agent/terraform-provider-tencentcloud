@@ -1,7 +1,0 @@
-```release-note:new-resource
-tencentcloud_lighthouse_snapshot
-```
-
-```release-note:new-resource
-tencentcloud_lighthouse_apply_instance_snapshot
-```

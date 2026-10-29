@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_postgresql_instance: output `auto_renew_flag`
-```

@@ -1,3 +1,0 @@
-```release-note:new-data-source
-tencentcloud_eb_plateform_event_template
-```

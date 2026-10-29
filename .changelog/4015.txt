@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_teo_create_cls_index_operation
-```

@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_postgresql_readonly_instance_v2
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-provider: support cam role name auth
-```

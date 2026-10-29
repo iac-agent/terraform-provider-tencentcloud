@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_cluster: optimize code logic for create function
-```

@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_eni_ipv4_address
-```

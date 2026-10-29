@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_sts_assume_role_operation
-```

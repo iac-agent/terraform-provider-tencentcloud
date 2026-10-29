@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_organization_member_auth_policy_attachment
-```

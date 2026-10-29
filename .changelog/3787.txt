@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_vpc_replace_routes_with_route_policy_config
-```

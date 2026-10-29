@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_reserve_ip_address: add subnet_id read-back support from DescribeReserveIpAddresses API response
-```

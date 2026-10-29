@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_waf_anti_fake: update doc
-```

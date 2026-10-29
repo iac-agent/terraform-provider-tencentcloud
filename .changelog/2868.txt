@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cos_bucket: fix the issue where acl_body a cannot be modified
-```

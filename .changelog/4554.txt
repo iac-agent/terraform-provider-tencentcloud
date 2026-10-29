@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cdwdoris_instance: support disk_encrypt parameter to enable disk encryption at creation time
-```

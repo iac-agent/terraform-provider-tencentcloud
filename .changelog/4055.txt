@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_teo_realtime_log_delivery: add log_analysis option to task_type description
-```

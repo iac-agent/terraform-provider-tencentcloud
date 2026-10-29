@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_teo_bind_security_template
-```

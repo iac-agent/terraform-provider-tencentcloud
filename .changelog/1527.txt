@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_tem_application: Make the `description` parameter of the TEM Application required
-```

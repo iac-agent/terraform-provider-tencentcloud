@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_postgresql_instance: support `monthly_backup_retention_period`, `monthly_backup_period` and `monthly_plan_id`
-```

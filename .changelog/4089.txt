@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_teo_zone: update type parameter description with detailed access modes
-```

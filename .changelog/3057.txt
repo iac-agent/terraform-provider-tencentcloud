@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_private_dns_extend_end_point
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_eni_ipv4_address: Add deletion operation waiting
-```

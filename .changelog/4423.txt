@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_tag_attachment_v2
-```

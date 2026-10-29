@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_instance: add new param `disaster_recover_group_ids`
-```

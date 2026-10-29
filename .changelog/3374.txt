@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_mqtt_instance: support `automatic_activation` field edit
-```

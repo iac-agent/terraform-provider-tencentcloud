@@ -1,3 +1,0 @@
-```release-note:enhancement
-provider: OIDC auth support set `provider_id`
-```

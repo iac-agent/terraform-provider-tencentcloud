@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_elasticsearch_instance: affect `es_acl` when first apply
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cam_saml_provider: update doc
-```

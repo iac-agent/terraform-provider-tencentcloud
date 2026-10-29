@@ -1,3 +1,0 @@
-```release-note:bug
-tencentcloud_mysql_readonly_instance: Fix the problem of error reporting when modifying configuration
-```

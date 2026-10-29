@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_as_start_instance_refresh: add `max_surge`
-```

@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_kubernetes_node_pool: adjust `security_group_ids` type to unordered
-```

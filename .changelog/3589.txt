@@ -1,7 +1,0 @@
-```release-note:new-resource
-tencentcloud_tcss_cluster_access
-```
-
-```release-note:new-resource
-tencentcloud_tcss_refresh_task_operation
-```

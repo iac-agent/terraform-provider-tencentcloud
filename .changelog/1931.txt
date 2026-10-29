@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_ssm_secret: support `service_type` and `additional_config`
-```

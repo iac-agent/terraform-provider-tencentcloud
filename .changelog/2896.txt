@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_cluster: adjust TKE tags logic to support existing native nodes
-```

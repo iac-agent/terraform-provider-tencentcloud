@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_cfw_edge_policy_order_config
-```
