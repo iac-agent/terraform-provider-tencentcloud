@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_ssm_product_secret: Support create ssm secret for tdsql-c-mysql.
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dts_migrate_job: update doc
-```

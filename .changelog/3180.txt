@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dc_share_dcx_config: update doc
-```

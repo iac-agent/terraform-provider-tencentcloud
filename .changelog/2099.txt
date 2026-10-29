@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_cluster: support for cluster configuration of CiliumOverlay network
-```

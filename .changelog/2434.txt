@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_mariadb_hour_db_instance: Fix tag problem
-```

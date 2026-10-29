@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_tdmq_rabbitmq_vip_instance: optimize code logic for read function
-```

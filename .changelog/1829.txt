@@ -1,7 +1,0 @@
-```release-note:new-resource
-tencentcloud_scf_function_version
-```
-
-```release-note:new-resource
-tencentcloud_scf_function_event_invoke_config
-```

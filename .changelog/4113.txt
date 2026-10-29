@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_tcr_instance: add new params
-```

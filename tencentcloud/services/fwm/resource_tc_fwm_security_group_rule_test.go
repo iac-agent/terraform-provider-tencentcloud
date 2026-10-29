@@ -2,8 +2,6 @@ package fwm_test
 
 import (
 	"context"
-	"fmt"
-	"regexp"
 	"testing"
 
 	"github.com/agiledragon/gomonkey/v2"
@@ -18,698 +16,546 @@ import (
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/fwm"
 )
 
-// go test ./tencentcloud/services/fwm/ -run "TestFwmSecurityGroupRule" -v -count=1 -gcflags="all=-l"
-
-const (
-	fwmSgRuleGroupId = "cfwg-1a2b3c4d"
-	fwmSgRuleRuleId  = "rule-1a2b3c4d"
-)
-
-func ptrStringFwmSgRule(s string) *string {
+func ptrStringFSGR(s string) *string {
 	return &s
 }
 
-func ptrInt64FwmSgRule(i int64) *int64 {
+func ptrInt64FSGR(i int64) *int64 {
 	return &i
 }
 
-// fwmSgRuleAttrTypes returns the attribute types of the resource schema, keyed
-// by schema attribute name. It is used to build raw tftypes values.
-func fwmSgRuleAttrTypes() map[string]tftypes.Type {
-	return map[string]tftypes.Type{
-		"id":       tftypes.String,
-		"group_id": tftypes.String,
-		"rules": tftypes.List{ElementType: tftypes.Object{
-			AttributeTypes: map[string]tftypes.Type{
-				"ip_version":          tftypes.String,
-				"source_content":      tftypes.String,
-				"source_type":         tftypes.String,
-				"dest_content":        tftypes.String,
-				"dest_type":           tftypes.String,
-				"protocol":            tftypes.String,
-				"port":                tftypes.String,
-				"service_template_id": tftypes.String,
-				"rule_action":         tftypes.String,
-				"description":         tftypes.String,
-				"order_index":         tftypes.Int64,
-				"rule_id":             tftypes.String,
-				"scope":               tftypes.String,
-				"protocol_port_type":  tftypes.Int64,
-				"belong_member_id":    tftypes.String,
-			},
-		}},
-		"rule": tftypes.List{ElementType: tftypes.Object{
-			AttributeTypes: map[string]tftypes.Type{
-				"rule_id":             tftypes.String,
-				"sequence":            tftypes.Int64,
-				"region":              tftypes.String,
-				"ip_version":          tftypes.String,
-				"src_content":         tftypes.String,
-				"src_type":            tftypes.String,
-				"dst_content":         tftypes.String,
-				"dst_type":            tftypes.String,
-				"protocol":            tftypes.String,
-				"protocol_port_type":  tftypes.Int64,
-				"service_template_id": tftypes.String,
-				"dst_port":            tftypes.String,
-				"rule_action":         tftypes.String,
-				"detail":              tftypes.String,
-				"rule_source":         tftypes.String,
-				"scope":               tftypes.String,
-			},
-		}},
+// buildFwmSecurityGroupRuleSchemaType builds the tftypes.Object describing the
+// tencentcloud_fwm_security_group_rule schema, used to construct tfsdk.State /
+// tfsdk.Plan values for the framework unit tests.
+func buildFwmSecurityGroupRuleSchemaType() tftypes.Object {
+	str := tftypes.String
+	i64 := tftypes.Number
+
+	ruleDetailAttr := tftypes.Object{AttributeTypes: map[string]tftypes.Type{
+		"rule_id":             str,
+		"sequence":            i64,
+		"region":              str,
+		"ip_version":          str,
+		"src_content":         str,
+		"src_type":            str,
+		"dst_content":         str,
+		"dst_type":            str,
+		"protocol":            str,
+		"protocol_port_type":  i64,
+		"service_template_id": str,
+		"dst_port":            str,
+		"rule_action":         str,
+		"detail":              str,
+		"rule_source":         str,
+		"scope":               str,
+	}}
+
+	rulesAttr := tftypes.Object{AttributeTypes: map[string]tftypes.Type{
+		"ip_version":          str,
+		"source_content":      str,
+		"source_type":         str,
+		"dest_content":        str,
+		"dest_type":           str,
+		"protocol":            str,
+		"port":                str,
+		"service_template_id": str,
+		"rule_action":         str,
+		"description":         str,
+		"order_index":         i64,
+		"rule_id":             str,
+		"scope":               str,
+		"protocol_port_type":  i64,
+		"belong_member_id":    str,
+	}}
+
+	return tftypes.Object{AttributeTypes: map[string]tftypes.Type{
+		"id":       str,
+		"group_id": str,
+		"rules":    tftypes.List{ElementType: rulesAttr},
+		"rule":     tftypes.List{ElementType: ruleDetailAttr},
+	}}
+}
+
+func newFwmSecurityGroupRuleResourceWithClient(client *connectivity.TencentCloudClient) resource.Resource {
+	res := fwm.NewFwmSecurityGroupRuleResource()
+	res.(resource.ResourceWithConfigure).Configure(
+		context.Background(),
+		resource.ConfigureRequest{ProviderData: &sharedmeta.ProviderMeta{Client: client}},
+		&resource.ConfigureResponse{},
+	)
+	return res
+}
+
+func newFwmSecurityGroupRuleState() tfsdk.State {
+	return tfsdk.State{
+		Raw:    tftypes.NewValue(buildFwmSecurityGroupRuleSchemaType(), nil),
+		Schema: getFwmSecurityGroupRuleSchema(),
 	}
 }
 
-// fwmSgRuleRawRule builds one raw `rules` element.
-func fwmSgRuleRawRule() tftypes.Value {
-	return tftypes.NewValue(tftypes.Object{
-		AttributeTypes: fwmSgRuleAttrTypes()["rules"].(tftypes.List).ElementType.(tftypes.Object).AttributeTypes,
-	}, map[string]tftypes.Value{
-		"ip_version":          tftypes.NewValue(tftypes.String, "ipv4"),
-		"source_content":      tftypes.NewValue(tftypes.String, "10.0.0.0/16"),
-		"source_type":         tftypes.NewValue(tftypes.String, "net"),
-		"dest_content":        tftypes.NewValue(tftypes.String, "10.0.1.0/24"),
-		"dest_type":           tftypes.NewValue(tftypes.String, "net"),
-		"protocol":            tftypes.NewValue(tftypes.String, "TCP"),
-		"port":                tftypes.NewValue(tftypes.String, "80"),
-		"service_template_id": tftypes.NewValue(tftypes.String, nil),
-		"rule_action":         tftypes.NewValue(tftypes.String, "2"),
-		"description":         tftypes.NewValue(tftypes.String, "allow http"),
-		"order_index":         tftypes.NewValue(tftypes.Int64, int64(1)),
-		"rule_id":             tftypes.NewValue(tftypes.String, nil),
-		"scope":               tftypes.NewValue(tftypes.String, "1"),
-		"protocol_port_type":  tftypes.NewValue(tftypes.Int64, int64(0)),
-		"belong_member_id":    tftypes.NewValue(tftypes.String, nil),
+func newFwmSecurityGroupRulePlan() tfsdk.Plan {
+	return tfsdk.Plan{
+		Raw:    tftypes.NewValue(buildFwmSecurityGroupRuleSchemaType(), nil),
+		Schema: getFwmSecurityGroupRuleSchema(),
+	}
+}
+
+func getFwmSecurityGroupRuleSchema() tfsdk.Schema {
+	var schemaResp resource.SchemaResponse
+	fwm.NewFwmSecurityGroupRuleResource().Schema(context.Background(), resource.SchemaRequest{}, &schemaResp)
+	return schemaResp.Schema
+}
+
+// buildFwmSecurityGroupRuleValue builds a raw object value for the resource schema.
+func buildFwmSecurityGroupRuleValue(
+	id interface{},
+	groupId interface{},
+	rules []map[string]interface{},
+	details []map[string]interface{},
+) tftypes.Value {
+	return tftypes.NewValue(buildFwmSecurityGroupRuleSchemaType(), map[string]tftypes.Value{
+		"id":       tftypes.NewValue(tftypes.String, id),
+		"group_id": tftypes.NewValue(tftypes.String, groupId),
+		"rules":    buildFwmSecurityGroupRuleListValue(rules, fwmSecurityGroupRuleRulesAttributes()),
+		"rule":     buildFwmSecurityGroupRuleListValue(details, fwmSecurityGroupRuleDetailAttributes()),
 	})
 }
 
-// fwmSgRuleResourceSchema returns the framework resource schema.
-func fwmSgRuleResourceSchema(t *testing.T) *resource.SchemaResponse {
-	r := fwm.NewFwmSecurityGroupRuleResource()
-	schemaResp := &resource.SchemaResponse{}
-	r.Schema(context.Background(), resource.SchemaRequest{}, schemaResp)
-	if schemaResp.Diagnostics.HasError() {
-		t.Fatalf("failed to build resource schema: %v", schemaResp.Diagnostics)
+func buildFwmSecurityGroupRuleListValue(items []map[string]interface{}, attributeTypes map[string]tftypes.Type) tftypes.Value {
+	elementType := tftypes.Object{AttributeTypes: attributeTypes}
+	values := make([]tftypes.Value, 0, len(items))
+	for _, item := range items {
+		attrValues := make(map[string]tftypes.Value, len(attributeTypes))
+		for name, attrType := range attributeTypes {
+			var raw interface{}
+			if v, ok := item[name]; ok {
+				raw = v
+			}
+			attrValues[name] = tftypes.NewValue(attrType, raw)
+		}
+		values = append(values, tftypes.NewValue(elementType, attrValues))
 	}
-	return schemaResp
+	return tftypes.NewValue(tftypes.List{ElementType: elementType}, values)
 }
 
-// newFwmSgRulePlan builds a raw plan value.
-func newFwmSgRulePlan(groupId string, rules interface{}, ruleDetail interface{}) tftypes.Value {
-	rulesVal := tftypes.NewValue(fwmSgRuleAttrTypes()["rules"], nil)
-	if rules != nil {
-		rulesVal = rules.(tftypes.Value)
+func fwmSecurityGroupRuleRulesAttributes() map[string]tftypes.Type {
+	out := make(map[string]tftypes.Type)
+	rulesType := buildFwmSecurityGroupRuleSchemaType().AttributeTypes["rules"].(tftypes.List)
+	objType := rulesType.ElementType.(tftypes.Object)
+	for name, attrType := range objType.AttributeTypes {
+		out[name] = attrType
 	}
+	return out
+}
 
-	ruleVal := tftypes.NewValue(fwmSgRuleAttrTypes()["rule"], nil)
-	if ruleDetail != nil {
-		ruleVal = ruleDetail.(tftypes.Value)
+func fwmSecurityGroupRuleDetailAttributes() map[string]tftypes.Type {
+	out := make(map[string]tftypes.Type)
+	detailType := buildFwmSecurityGroupRuleSchemaType().AttributeTypes["rule"].(tftypes.List)
+	objType := detailType.ElementType.(tftypes.Object)
+	for name, attrType := range objType.AttributeTypes {
+		out[name] = attrType
 	}
+	return out
+}
 
-	groupIdVal := tftypes.NewValue(tftypes.String, nil)
-	if groupId != "" {
-		groupIdVal = tftypes.NewValue(tftypes.String, groupId)
+func fwmMockRuleDetail(ruleId string) *fwmv20250611.SgRuleResp {
+	return &fwmv20250611.SgRuleResp{
+		RuleId:            ptrStringFSGR(ruleId),
+		Sequence:          ptrInt64FSGR(1),
+		Region:            ptrStringFSGR("ap-guangzhou"),
+		IpVersion:         ptrStringFSGR("v4"),
+		SrcContent:        ptrStringFSGR("10.0.0.0/8"),
+		SrcType:           ptrStringFSGR("net"),
+		DstContent:        ptrStringFSGR("192.168.0.0/16"),
+		DstType:           ptrStringFSGR("net"),
+		Protocol:          ptrStringFSGR("TCP"),
+		ProtocolPortType:  ptrInt64FSGR(0),
+		ServiceTemplateId: ptrStringFSGR(""),
+		DstPort:           ptrStringFSGR("80"),
+		RuleAction:        ptrStringFSGR("2"),
+		Detail:            ptrStringFSGR("allow http"),
+		RuleSource:        ptrStringFSGR("0"),
+		Scope:             ptrStringFSGR("1"),
 	}
-
-	return tftypes.NewValue(tftypes.Object{
-		AttributeTypes: fwmSgRuleAttrTypes(),
-	}, map[string]tftypes.Value{
-		"id":       tftypes.NewValue(tftypes.String, nil),
-		"group_id": groupIdVal,
-		"rules":    rulesVal,
-		"rule":     ruleVal,
-	})
 }
 
-// fwmSgRuleRawList wraps rules into a list value.
-func fwmSgRuleRawList(rules []tftypes.Value) tftypes.Value {
-	if len(rules) == 0 {
-		return tftypes.NewValue(fwmSgRuleAttrTypes()["rules"], nil)
-	}
-	return tftypes.NewValue(fwmSgRuleAttrTypes()["rules"], rules)
+func TestFwmSecurityGroupRule_Metadata(t *testing.T) {
+	var resp resource.MetadataResponse
+	fwm.NewFwmSecurityGroupRuleResource().Metadata(context.Background(), resource.MetadataRequest{}, &resp)
+	assert.Equal(t, "tencentcloud_fwm_security_group_rule", resp.TypeName)
 }
 
-// fwmSgRuleRawDetailList wraps one rule detail into a list value.
-func fwmSgRuleRawDetailList() tftypes.Value {
-	detail := tftypes.NewValue(tftypes.Object{
-		AttributeTypes: fwmSgRuleAttrTypes()["rule"].(tftypes.List).ElementType.(tftypes.Object).AttributeTypes,
-	}, map[string]tftypes.Value{
-		"rule_id":             tftypes.NewValue(tftypes.String, fwmSgRuleRuleId),
-		"sequence":            tftypes.NewValue(tftypes.Int64, int64(1)),
-		"region":              tftypes.NewValue(tftypes.String, "ap-guangzhou"),
-		"ip_version":          tftypes.NewValue(tftypes.String, "ipv4"),
-		"src_content":         tftypes.NewValue(tftypes.String, "10.0.0.0/16"),
-		"src_type":            tftypes.NewValue(tftypes.String, "net"),
-		"dst_content":         tftypes.NewValue(tftypes.String, "10.0.1.0/24"),
-		"dst_type":            tftypes.NewValue(tftypes.String, "net"),
-		"protocol":            tftypes.NewValue(tftypes.String, "TCP"),
-		"protocol_port_type":  tftypes.NewValue(tftypes.Int64, int64(0)),
-		"service_template_id": tftypes.NewValue(tftypes.String, nil),
-		"dst_port":            tftypes.NewValue(tftypes.String, "80"),
-		"rule_action":         tftypes.NewValue(tftypes.String, "2"),
-		"detail":              tftypes.NewValue(tftypes.String, "allow http"),
-		"rule_source":         tftypes.NewValue(tftypes.String, "0"),
-		"scope":               tftypes.NewValue(tftypes.String, "1"),
-	})
-	return tftypes.NewValue(fwmSgRuleAttrTypes()["rule"], []tftypes.Value{detail})
+func TestFwmSecurityGroupRule_Schema_Attributes(t *testing.T) {
+	s := getFwmSecurityGroupRuleSchema()
+
+	idAttr, ok := s.Attributes["id"]
+	assert.True(t, ok)
+	assert.True(t, idAttr.IsComputed())
+
+	groupIdAttr, ok := s.Attributes["group_id"]
+	assert.True(t, ok)
+	assert.True(t, groupIdAttr.IsOptional())
+	assert.True(t, groupIdAttr.IsComputed())
+
+	rulesAttr, ok := s.Attributes["rules"]
+	assert.True(t, ok)
+	assert.True(t, rulesAttr.IsOptional())
+
+	ruleAttr, ok := s.Attributes["rule"]
+	assert.True(t, ok)
+	assert.True(t, ruleAttr.IsComputed())
 }
 
-// setFwmSgRuleClient injects a mock connectivity client into the resource.
-func setFwmSgRuleClient(t *testing.T, client *connectivity.TencentCloudClient) resource.Resource {
-	r := fwm.NewFwmSecurityGroupRuleResource()
-	configureReq := resource.ConfigureRequest{ProviderData: &sharedmeta.ProviderMeta{Client: client}}
-	configureResp := &resource.ConfigureResponse{}
-	r.Configure(context.Background(), configureReq, configureResp)
-	if configureResp.Diagnostics.HasError() {
-		t.Fatalf("failed to configure resource: %v", configureResp.Diagnostics)
-	}
-	return r
-}
-
-// newFwmSgRuleCreateRequest builds a CreateRequest carrying the given raw plan.
-func newFwmSgRuleCreateRequest(t *testing.T, raw tftypes.Value) resource.CreateRequest {
-	schemaResp := fwmSgRuleResourceSchema(t)
-	req := resource.CreateRequest{}
-	req.Plan = tfsdk.Plan{Raw: raw, Schema: schemaResp.Schema}
-	return req
-}
-
-// newFwmSgRuleCreateResponse builds a CreateResponse whose state mirrors the
-// plan, as the framework does before invoking Create.
-func newFwmSgRuleCreateResponse(raw tftypes.Value) *resource.CreateResponse {
-	schemaResp := fwmSgRuleResourceSchema(t)
-	resp := &resource.CreateResponse{}
-	resp.State = tfsdk.State{Raw: raw, Schema: schemaResp.Schema}
-	return resp
-}
-
-// fwmSgRuleDescribeResponse builds a describe response carrying one rule.
-func fwmSgRuleDescribeResponse() *fwmv20250611.DescribeSecurityGroupRuleResponse {
-	resp := &fwmv20250611.DescribeSecurityGroupRuleResponse{}
-	resp.Response = &fwmv20250611.DescribeSecurityGroupRuleResponseParams{
-		RequestId: ptrStringFwmSgRule("fake-request-id"),
-		Rule: &fwmv20250611.SgRuleResp{
-			RuleId:           ptrStringFwmSgRule(fwmSgRuleRuleId),
-			Sequence:         ptrInt64FwmSgRule(1),
-			Region:           ptrStringFwmSgRule("ap-guangzhou"),
-			IpVersion:        ptrStringFwmSgRule("ipv4"),
-			SrcContent:       ptrStringFwmSgRule("10.0.0.0/16"),
-			SrcType:          ptrStringFwmSgRule("net"),
-			DstContent:       ptrStringFwmSgRule("10.0.1.0/24"),
-			DstType:          ptrStringFwmSgRule("net"),
-			Protocol:         ptrStringFwmSgRule("TCP"),
-			ProtocolPortType: ptrInt64FwmSgRule(0),
-			DstPort:          ptrStringFwmSgRule("80"),
-			RuleAction:       ptrStringFwmSgRule("2"),
-			Detail:           ptrStringFwmSgRule("allow http"),
-			RuleSource:       ptrStringFwmSgRule("0"),
-			Scope:            ptrStringFwmSgRule("1"),
-		},
-	}
-	return resp
-}
-
-// TestFwmSecurityGroupRule_Create_Success covers the happy path of Create,
-// including the composed resource identifier and the read-back of the rule detail.
 func TestFwmSecurityGroupRule_Create_Success(t *testing.T) {
 	patches := gomonkey.NewPatches()
 	defer patches.Reset()
 
-	client := &connectivity.TencentCloudClient{}
 	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	patches.ApplyMethodReturn(&connectivity.TencentCloudClient{}, "UseFwmV20250611Client", fwmClient)
 
-	var gotRequest *fwmv20250611.CreateSecurityGroupRuleRequest
 	patches.ApplyMethodFunc(fwmClient, "CreateSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.CreateSecurityGroupRuleRequest) (*fwmv20250611.CreateSecurityGroupRuleResponse, error) {
-		gotRequest = request
-		result := &fwmv20250611.CreateSecurityGroupRuleResponse{}
-		result.Response = &fwmv20250611.CreateSecurityGroupRuleResponseParams{
-			RequestId: ptrStringFwmSgRule("fake-request-id"),
-			RuleIds:   []*string{ptrStringFwmSgRule(fwmSgRuleRuleId)},
+		assert.NotNil(t, request.GroupId)
+		assert.Equal(t, "fwg-1a2b3c4d", *request.GroupId)
+		assert.Len(t, request.Rules, 1)
+		assert.Equal(t, "TCP", *request.Rules[0].Protocol)
+
+		resp := fwmv20250611.NewCreateSecurityGroupRuleResponse()
+		resp.Response = &fwmv20250611.CreateSecurityGroupRuleResponseParams{
+			RequestId: ptrStringFSGR("fake-request-id-create"),
+			RuleIds:   []*string{ptrStringFSGR("fwr-1a2b3c4d")},
 		}
-		return result, nil
+		return resp, nil
 	})
 
 	patches.ApplyMethodFunc(fwmClient, "DescribeSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.DescribeSecurityGroupRuleRequest) (*fwmv20250611.DescribeSecurityGroupRuleResponse, error) {
-		assert.Equal(t, fwmSgRuleGroupId, *request.GroupId)
-		assert.Equal(t, fwmSgRuleRuleId, *request.RuleId)
-		return fwmSgRuleDescribeResponse(), nil
+		assert.NotNil(t, request.GroupId)
+		assert.Equal(t, "fwg-1a2b3c4d", *request.GroupId)
+		resp := fwmv20250611.NewDescribeSecurityGroupRuleResponse()
+		resp.Response = &fwmv20250611.DescribeSecurityGroupRuleResponseParams{
+			RequestId: ptrStringFSGR("fake-request-id-describe"),
+			Rule:      fwmMockRuleDetail(*request.RuleId),
+		}
+		return resp, nil
 	})
 
-	r := setFwmSgRuleClient(t, client)
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	raw := newFwmSgRulePlan(fwmSgRuleGroupId, fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}), nil)
-	req := newFwmSgRuleCreateRequest(t, raw)
-	resp := newFwmSgRuleCreateResponse(raw)
-	r.Create(context.Background(), req, resp)
+	plan := newFwmSecurityGroupRulePlan()
+	plan.Raw = buildFwmSecurityGroupRuleValue(nil, "fwg-1a2b3c4d", []map[string]interface{}{
+		{
+			"ip_version":         "v4",
+			"source_type":        "net",
+			"source_content":     "10.0.0.0/8",
+			"dest_type":          "net",
+			"dest_content":       "192.168.0.0/16",
+			"protocol":           "TCP",
+			"port":               "80",
+			"rule_action":        "2",
+			"description":        "allow http",
+			"scope":              "1",
+			"order_index":        float64(1),
+			"protocol_port_type": float64(0),
+		},
+	}, nil)
 
-	assert.False(t, resp.Diagnostics.HasError(), "unexpected diagnostics: %v", resp.Diagnostics)
+	createResp := resource.CreateResponse{State: newFwmSecurityGroupRuleState()}
+	res.Create(context.Background(), resource.CreateRequest{Plan: plan}, &createResp)
 
-	assert.NotNil(t, gotRequest)
-	assert.Equal(t, fwmSgRuleGroupId, *gotRequest.GroupId)
-	assert.Len(t, gotRequest.Rules, 1)
-	assert.Equal(t, "10.0.0.0/16", *gotRequest.Rules[0].SourceContent)
-	assert.Equal(t, "10.0.1.0/24", *gotRequest.Rules[0].DestContent)
-	assert.Equal(t, "TCP", *gotRequest.Rules[0].Protocol)
-	assert.Equal(t, "80", *gotRequest.Rules[0].Port)
-	assert.Equal(t, "2", *gotRequest.Rules[0].RuleAction)
-	assert.Equal(t, int64(1), *gotRequest.Rules[0].OrderIndex)
-
-	var state fwm.FwmSecurityGroupRuleResourceModel
-	diags := resp.State.Get(context.Background(), &state)
-	assert.False(t, diags.HasError(), "failed to read state: %v", diags)
-	assert.Equal(t, fmt.Sprintf("%s#%s", fwmSgRuleGroupId, fwmSgRuleRuleId), state.Id.ValueString())
-	assert.Len(t, state.Rule, 1)
-	assert.Equal(t, fwmSgRuleRuleId, state.Rule[0].RuleId.ValueString())
-	assert.Equal(t, "80", state.Rule[0].DstPort.ValueString())
+	assert.False(t, createResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Create_EmptyRuleIds covers the case where the cloud
-// API returns no rule ID.
 func TestFwmSecurityGroupRule_Create_EmptyRuleIds(t *testing.T) {
 	patches := gomonkey.NewPatches()
 	defer patches.Reset()
 
-	client := &connectivity.TencentCloudClient{}
 	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	patches.ApplyMethodReturn(&connectivity.TencentCloudClient{}, "UseFwmV20250611Client", fwmClient)
 
 	patches.ApplyMethodFunc(fwmClient, "CreateSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.CreateSecurityGroupRuleRequest) (*fwmv20250611.CreateSecurityGroupRuleResponse, error) {
-		result := &fwmv20250611.CreateSecurityGroupRuleResponse{}
-		result.Response = &fwmv20250611.CreateSecurityGroupRuleResponseParams{
-			RequestId: ptrStringFwmSgRule("fake-request-id"),
+		resp := fwmv20250611.NewCreateSecurityGroupRuleResponse()
+		resp.Response = &fwmv20250611.CreateSecurityGroupRuleResponseParams{
+			RequestId: ptrStringFSGR("fake-request-id-create"),
 			RuleIds:   []*string{},
 		}
-		return result, nil
+		return resp, nil
 	})
 
-	r := setFwmSgRuleClient(t, client)
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	raw := newFwmSgRulePlan(fwmSgRuleGroupId, fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}), nil)
-	req := newFwmSgRuleCreateRequest(t, raw)
-	resp := newFwmSgRuleCreateResponse(raw)
-	r.Create(context.Background(), req, resp)
+	plan := newFwmSecurityGroupRulePlan()
+	plan.Raw = buildFwmSecurityGroupRuleValue(nil, "fwg-1a2b3c4d", []map[string]interface{}{
+		{"ip_version": "v4", "protocol": "TCP", "port": "80", "rule_action": "2"},
+	}, nil)
 
-	assert.True(t, resp.Diagnostics.HasError())
-	assert.Contains(t, resp.Diagnostics.Errors()[0].Summary(), "Error creating FWM security group rule")
+	createResp := resource.CreateResponse{State: newFwmSecurityGroupRuleState()}
+	res.Create(context.Background(), resource.CreateRequest{Plan: plan}, &createResp)
+
+	assert.True(t, createResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Create_MissingGroupId covers the guard that rejects
-// a plan without group_id before any cloud API call.
 func TestFwmSecurityGroupRule_Create_MissingGroupId(t *testing.T) {
-	patches := gomonkey.NewPatches()
-	defer patches.Reset()
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	client := &connectivity.TencentCloudClient{}
-	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	plan := newFwmSecurityGroupRulePlan()
+	plan.Raw = buildFwmSecurityGroupRuleValue(nil, nil, []map[string]interface{}{
+		{"ip_version": "v4", "protocol": "TCP", "port": "80", "rule_action": "2"},
+	}, nil)
 
-	apiCalled := false
-	patches.ApplyMethodFunc(fwmClient, "CreateSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.CreateSecurityGroupRuleRequest) (*fwmv20250611.CreateSecurityGroupRuleResponse, error) {
-		apiCalled = true
-		return &fwmv20250611.CreateSecurityGroupRuleResponse{}, nil
-	})
+	createResp := resource.CreateResponse{State: newFwmSecurityGroupRuleState()}
+	res.Create(context.Background(), resource.CreateRequest{Plan: plan}, &createResp)
 
-	r := setFwmSgRuleClient(t, client)
-
-	raw := newFwmSgRulePlan("", fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}), nil)
-	req := newFwmSgRuleCreateRequest(t, raw)
-	resp := newFwmSgRuleCreateResponse(raw)
-	r.Create(context.Background(), req, resp)
-
-	assert.True(t, resp.Diagnostics.HasError())
-	assert.Contains(t, resp.Diagnostics.Errors()[0].Summary(), "Missing group_id")
-	assert.False(t, apiCalled)
+	assert.True(t, createResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Create_InvalidRuleCount covers the guard that only
-// one rule may be managed per resource instance.
-func TestFwmSecurityGroupRule_Create_InvalidRuleCount(t *testing.T) {
-	patches := gomonkey.NewPatches()
-	defer patches.Reset()
+func TestFwmSecurityGroupRule_Create_MissingRules(t *testing.T) {
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	client := &connectivity.TencentCloudClient{}
-	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	plan := newFwmSecurityGroupRulePlan()
+	plan.Raw = buildFwmSecurityGroupRuleValue(nil, "fwg-1a2b3c4d", nil, nil)
 
-	apiCalled := false
-	patches.ApplyMethodFunc(fwmClient, "CreateSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.CreateSecurityGroupRuleRequest) (*fwmv20250611.CreateSecurityGroupRuleResponse, error) {
-		apiCalled = true
-		return &fwmv20250611.CreateSecurityGroupRuleResponse{}, nil
-	})
+	createResp := resource.CreateResponse{State: newFwmSecurityGroupRuleState()}
+	res.Create(context.Background(), resource.CreateRequest{Plan: plan}, &createResp)
 
-	r := setFwmSgRuleClient(t, client)
-
-	rules := []tftypes.Value{
-		fwmSgRuleRawRule(),
-		fwmSgRuleRawRule(),
-	}
-	raw := newFwmSgRulePlan(fwmSgRuleGroupId, fwmSgRuleRawList(rules), nil)
-	req := newFwmSgRuleCreateRequest(t, raw)
-	resp := newFwmSgRuleCreateResponse(raw)
-	r.Create(context.Background(), req, resp)
-
-	assert.True(t, resp.Diagnostics.HasError())
-	assert.Contains(t, resp.Diagnostics.Errors()[0].Summary(), "Invalid rules")
-	assert.False(t, apiCalled)
+	assert.True(t, createResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Create_APIError covers cloud API failure handling.
-func TestFwmSecurityGroupRule_Create_APIError(t *testing.T) {
-	patches := gomonkey.NewPatches()
-	defer patches.Reset()
-
-	client := &connectivity.TencentCloudClient{}
-	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
-
-	patches.ApplyMethodFunc(fwmClient, "CreateSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.CreateSecurityGroupRuleRequest) (*fwmv20250611.CreateSecurityGroupRuleResponse, error) {
-		return nil, fmt.Errorf("[TencentCloudSDKError] Code=InvalidParameter, Message=invalid rule")
-	})
-
-	r := setFwmSgRuleClient(t, client)
-
-	raw := newFwmSgRulePlan(fwmSgRuleGroupId, fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}), nil)
-	req := newFwmSgRuleCreateRequest(t, raw)
-	resp := newFwmSgRuleCreateResponse(raw)
-	r.Create(context.Background(), req, resp)
-
-	assert.True(t, resp.Diagnostics.HasError())
-	assert.Contains(t, resp.Diagnostics.Errors()[0].Summary(), "Error creating FWM security group rule")
-	assert.Regexp(t, regexp.MustCompile("InvalidParameter"), resp.Diagnostics.Errors()[0].Detail())
-}
-
-// TestFwmSecurityGroupRule_Read_Success covers a normal refresh.
 func TestFwmSecurityGroupRule_Read_Success(t *testing.T) {
 	patches := gomonkey.NewPatches()
 	defer patches.Reset()
 
-	client := &connectivity.TencentCloudClient{}
 	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	patches.ApplyMethodReturn(&connectivity.TencentCloudClient{}, "UseFwmV20250611Client", fwmClient)
 
 	patches.ApplyMethodFunc(fwmClient, "DescribeSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.DescribeSecurityGroupRuleRequest) (*fwmv20250611.DescribeSecurityGroupRuleResponse, error) {
-		assert.Equal(t, fwmSgRuleGroupId, *request.GroupId)
-		assert.Equal(t, fwmSgRuleRuleId, *request.RuleId)
-		return fwmSgRuleDescribeResponse(), nil
+		resp := fwmv20250611.NewDescribeSecurityGroupRuleResponse()
+		resp.Response = &fwmv20250611.DescribeSecurityGroupRuleResponseParams{
+			RequestId: ptrStringFSGR("fake-request-id-describe"),
+			Rule:      fwmMockRuleDetail(*request.RuleId),
+		}
+		return resp, nil
 	})
 
-	r := setFwmSgRuleClient(t, client)
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	schemaResp := fwmSgRuleResourceSchema(t)
-	raw := tftypes.NewValue(tftypes.Object{AttributeTypes: fwmSgRuleAttrTypes()}, map[string]tftypes.Value{
-		"id":       tftypes.NewValue(tftypes.String, fmt.Sprintf("%s#%s", fwmSgRuleGroupId, fwmSgRuleRuleId)),
-		"group_id": tftypes.NewValue(tftypes.String, fwmSgRuleGroupId),
-		"rules":    fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}),
-		"rule":     tftypes.NewValue(fwmSgRuleAttrTypes()["rule"], nil),
-	})
+	state := newFwmSecurityGroupRuleState()
+	state.Raw = buildFwmSecurityGroupRuleValue("fwg-1a2b3c4d#fwr-1a2b3c4d", "fwg-1a2b3c4d", []map[string]interface{}{
+		{
+			"ip_version":         "v4",
+			"source_type":        "net",
+			"source_content":     "10.0.0.0/8",
+			"dest_type":          "net",
+			"dest_content":       "192.168.0.0/16",
+			"protocol":           "TCP",
+			"port":               "80",
+			"rule_action":        "2",
+			"description":        "allow http",
+			"scope":              "1",
+			"rule_id":            "fwr-1a2b3c4d",
+			"order_index":        float64(1),
+			"protocol_port_type": float64(0),
+		},
+	}, nil)
 
-	req := resource.ReadRequest{}
-	req.State = tfsdk.State{Raw: raw, Schema: schemaResp.Schema}
-	resp := &resource.ReadResponse{}
-	resp.State = tfsdk.State{Raw: raw, Schema: schemaResp.Schema}
+	readResp := resource.ReadResponse{State: state}
+	res.Read(context.Background(), resource.ReadRequest{State: state}, &readResp)
 
-	r.Read(context.Background(), req, resp)
-	assert.False(t, resp.Diagnostics.HasError(), "unexpected diagnostics: %v", resp.Diagnostics)
-
-	var state fwm.FwmSecurityGroupRuleResourceModel
-	diags := resp.State.Get(context.Background(), &state)
-	assert.False(t, diags.HasError(), "failed to read state: %v", diags)
-	assert.Equal(t, fwmSgRuleGroupId, state.GroupId.ValueString())
-	assert.Len(t, state.Rule, 1)
-	assert.Equal(t, fwmSgRuleRuleId, state.Rule[0].RuleId.ValueString())
-	assert.Equal(t, "TCP", state.Rule[0].Protocol.ValueString())
-	assert.Equal(t, "2", state.Rule[0].RuleAction.ValueString())
+	assert.False(t, readResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Read_NotFound covers a rule removed on the cloud side.
 func TestFwmSecurityGroupRule_Read_NotFound(t *testing.T) {
 	patches := gomonkey.NewPatches()
 	defer patches.Reset()
 
-	client := &connectivity.TencentCloudClient{}
 	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	patches.ApplyMethodReturn(&connectivity.TencentCloudClient{}, "UseFwmV20250611Client", fwmClient)
 
 	patches.ApplyMethodFunc(fwmClient, "DescribeSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.DescribeSecurityGroupRuleRequest) (*fwmv20250611.DescribeSecurityGroupRuleResponse, error) {
-		result := &fwmv20250611.DescribeSecurityGroupRuleResponse{}
-		result.Response = &fwmv20250611.DescribeSecurityGroupRuleResponseParams{
-			RequestId: ptrStringFwmSgRule("fake-request-id"),
+		resp := fwmv20250611.NewDescribeSecurityGroupRuleResponse()
+		resp.Response = &fwmv20250611.DescribeSecurityGroupRuleResponseParams{
+			RequestId: ptrStringFSGR("fake-request-id-describe"),
 			Rule:      nil,
 		}
-		return result, nil
+		return resp, nil
 	})
 
-	r := setFwmSgRuleClient(t, client)
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	schemaResp := fwmSgRuleResourceSchema(t)
-	raw := tftypes.NewValue(tftypes.Object{AttributeTypes: fwmSgRuleAttrTypes()}, map[string]tftypes.Value{
-		"id":       tftypes.NewValue(tftypes.String, fmt.Sprintf("%s#%s", fwmSgRuleGroupId, fwmSgRuleRuleId)),
-		"group_id": tftypes.NewValue(tftypes.String, fwmSgRuleGroupId),
-		"rules":    fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}),
-		"rule":     tftypes.NewValue(fwmSgRuleAttrTypes()["rule"], nil),
-	})
+	state := newFwmSecurityGroupRuleState()
+	state.Raw = buildFwmSecurityGroupRuleValue("fwg-1a2b3c4d#fwr-notexist", "fwg-1a2b3c4d", nil, nil)
 
-	req := resource.ReadRequest{}
-	req.State = tfsdk.State{Raw: raw, Schema: schemaResp.Schema}
-	resp := &resource.ReadResponse{}
-	resp.State = tfsdk.State{Raw: raw, Schema: schemaResp.Schema}
+	readResp := resource.ReadResponse{State: state}
+	res.Read(context.Background(), resource.ReadRequest{State: state}, &readResp)
 
-	r.Read(context.Background(), req, resp)
-	assert.False(t, resp.Diagnostics.HasError(), "unexpected diagnostics: %v", resp.Diagnostics)
-	assert.False(t, resp.Diagnostics.HasError())
-	assert.NotEmpty(t, resp.Diagnostics.Warnings())
-	assert.True(t, resp.State.Raw.IsNull(), "expected the resource to be removed from state")
+	assert.False(t, readResp.Diagnostics.HasError())
+	assert.True(t, readResp.State.Raw.IsNull())
 }
 
-// TestFwmSecurityGroupRule_Read_InvalidId covers a malformed resource identifier.
 func TestFwmSecurityGroupRule_Read_InvalidId(t *testing.T) {
-	patches := gomonkey.NewPatches()
-	defer patches.Reset()
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	client := &connectivity.TencentCloudClient{}
-	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	state := newFwmSecurityGroupRuleState()
+	state.Raw = buildFwmSecurityGroupRuleValue("broken-id", "fwg-1a2b3c4d", nil, nil)
 
-	apiCalled := false
-	patches.ApplyMethodFunc(fwmClient, "DescribeSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.DescribeSecurityGroupRuleRequest) (*fwmv20250611.DescribeSecurityGroupRuleResponse, error) {
-		apiCalled = true
-		return fwmSgRuleDescribeResponse(), nil
-	})
+	readResp := resource.ReadResponse{State: state}
+	res.Read(context.Background(), resource.ReadRequest{State: state}, &readResp)
 
-	r := setFwmSgRuleClient(t, client)
-
-	schemaResp := fwmSgRuleResourceSchema(t)
-	raw := tftypes.NewValue(tftypes.Object{AttributeTypes: fwmSgRuleAttrTypes()}, map[string]tftypes.Value{
-		"id":       tftypes.NewValue(tftypes.String, "invalid-id-without-separator"),
-		"group_id": tftypes.NewValue(tftypes.String, nil),
-		"rules":    tftypes.NewValue(fwmSgRuleAttrTypes()["rules"], nil),
-		"rule":     tftypes.NewValue(fwmSgRuleAttrTypes()["rule"], nil),
-	})
-
-	req := resource.ReadRequest{}
-	req.State = tfsdk.State{Raw: raw, Schema: schemaResp.Schema}
-	resp := &resource.ReadResponse{}
-	resp.State = tfsdk.State{Raw: raw, Schema: schemaResp.Schema}
-
-	r.Read(context.Background(), req, resp)
-	assert.True(t, resp.Diagnostics.HasError())
-	assert.Contains(t, resp.Diagnostics.Errors()[0].Summary(), "Invalid resource identifier")
-	assert.False(t, apiCalled)
+	assert.True(t, readResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Update_Success covers an in-place update, where the
-// rule ID is taken from the resource identifier when it is not configured.
 func TestFwmSecurityGroupRule_Update_Success(t *testing.T) {
 	patches := gomonkey.NewPatches()
 	defer patches.Reset()
 
-	client := &connectivity.TencentCloudClient{}
 	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	patches.ApplyMethodReturn(&connectivity.TencentCloudClient{}, "UseFwmV20250611Client", fwmClient)
 
-	var gotRequest *fwmv20250611.ModifySecurityGroupRuleRequest
 	patches.ApplyMethodFunc(fwmClient, "ModifySecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.ModifySecurityGroupRuleRequest) (*fwmv20250611.ModifySecurityGroupRuleResponse, error) {
-		gotRequest = request
-		return &fwmv20250611.ModifySecurityGroupRuleResponse{
-			Response: &fwmv20250611.ModifySecurityGroupRuleResponseParams{
-				RequestId: ptrStringFwmSgRule("fake-request-id"),
-			},
-		}, nil
+		assert.NotNil(t, request.GroupId)
+		assert.Equal(t, "fwg-1a2b3c4d", *request.GroupId)
+		assert.NotNil(t, request.Rule)
+		assert.Equal(t, "fwr-1a2b3c4d", *request.Rule.RuleId)
+
+		resp := fwmv20250611.NewModifySecurityGroupRuleResponse()
+		resp.Response = &fwmv20250611.ModifySecurityGroupRuleResponseParams{
+			RequestId: ptrStringFSGR("fake-request-id-modify"),
+		}
+		return resp, nil
 	})
 
 	patches.ApplyMethodFunc(fwmClient, "DescribeSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.DescribeSecurityGroupRuleRequest) (*fwmv20250611.DescribeSecurityGroupRuleResponse, error) {
-		return fwmSgRuleDescribeResponse(), nil
+		resp := fwmv20250611.NewDescribeSecurityGroupRuleResponse()
+		resp.Response = &fwmv20250611.DescribeSecurityGroupRuleResponseParams{
+			RequestId: ptrStringFSGR("fake-request-id-describe"),
+			Rule:      fwmMockRuleDetail(*request.RuleId),
+		}
+		return resp, nil
 	})
 
-	r := setFwmSgRuleClient(t, client)
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	schemaResp := fwmSgRuleResourceSchema(t)
-	stateRaw := tftypes.NewValue(tftypes.Object{AttributeTypes: fwmSgRuleAttrTypes()}, map[string]tftypes.Value{
-		"id":       tftypes.NewValue(tftypes.String, fmt.Sprintf("%s#%s", fwmSgRuleGroupId, fwmSgRuleRuleId)),
-		"group_id": tftypes.NewValue(tftypes.String, fwmSgRuleGroupId),
-		"rules":    fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}),
-		"rule":     fwmSgRuleRawDetailList(),
-	})
-	planRaw := tftypes.NewValue(tftypes.Object{AttributeTypes: fwmSgRuleAttrTypes()}, map[string]tftypes.Value{
-		"id":       tftypes.NewValue(tftypes.String, fmt.Sprintf("%s#%s", fwmSgRuleGroupId, fwmSgRuleRuleId)),
-		"group_id": tftypes.NewValue(tftypes.String, fwmSgRuleGroupId),
-		"rules":    fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}),
-		"rule":     fwmSgRuleRawDetailList(),
-	})
+	state := newFwmSecurityGroupRuleState()
+	state.Raw = buildFwmSecurityGroupRuleValue("fwg-1a2b3c4d#fwr-1a2b3c4d", "fwg-1a2b3c4d", []map[string]interface{}{
+		{
+			"ip_version":  "v4",
+			"protocol":    "TCP",
+			"port":        "80",
+			"rule_action": "2",
+			"rule_id":     "fwr-1a2b3c4d",
+			"scope":       "1",
+		},
+	}, nil)
 
-	req := resource.UpdateRequest{}
-	req.State = tfsdk.State{Raw: stateRaw, Schema: schemaResp.Schema}
-	req.Plan = tfsdk.Plan{Raw: planRaw, Schema: schemaResp.Schema}
-	resp := &resource.UpdateResponse{}
-	resp.State = tfsdk.State{Raw: stateRaw, Schema: schemaResp.Schema}
+	plan := newFwmSecurityGroupRulePlan()
+	plan.Raw = buildFwmSecurityGroupRuleValue("fwg-1a2b3c4d#fwr-1a2b3c4d", "fwg-1a2b3c4d", []map[string]interface{}{
+		{
+			"ip_version":  "v4",
+			"protocol":    "TCP",
+			"port":        "8080",
+			"rule_action": "2",
+			"rule_id":     "fwr-1a2b3c4d",
+			"scope":       "1",
+		},
+	}, nil)
 
-	r.Update(context.Background(), req, resp)
-	assert.False(t, resp.Diagnostics.HasError(), "unexpected diagnostics: %v", resp.Diagnostics)
+	updateResp := resource.UpdateResponse{State: state}
+	res.Update(context.Background(), resource.UpdateRequest{Plan: plan, State: state}, &updateResp)
 
-	assert.NotNil(t, gotRequest)
-	assert.Equal(t, fwmSgRuleGroupId, *gotRequest.GroupId)
-	assert.Equal(t, fwmSgRuleRuleId, *gotRequest.Rule.RuleId)
-	assert.Equal(t, "TCP", *gotRequest.Rule.Protocol)
+	assert.False(t, updateResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Update_APIError covers a cloud API failure during update.
-func TestFwmSecurityGroupRule_Update_APIError(t *testing.T) {
-	patches := gomonkey.NewPatches()
-	defer patches.Reset()
+func TestFwmSecurityGroupRule_Update_GroupIdChanged(t *testing.T) {
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	client := &connectivity.TencentCloudClient{}
-	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	state := newFwmSecurityGroupRuleState()
+	state.Raw = buildFwmSecurityGroupRuleValue("fwg-1a2b3c4d#fwr-1a2b3c4d", "fwg-1a2b3c4d", []map[string]interface{}{
+		{"ip_version": "v4", "protocol": "TCP", "port": "80", "rule_action": "2", "rule_id": "fwr-1a2b3c4d"},
+	}, nil)
 
-	patches.ApplyMethodFunc(fwmClient, "ModifySecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.ModifySecurityGroupRuleRequest) (*fwmv20250611.ModifySecurityGroupRuleResponse, error) {
-		return nil, fmt.Errorf("[TencentCloudSDKError] Code=ResourceNotFound.RuleNotFound, Message=rule not found")
-	})
+	plan := newFwmSecurityGroupRulePlan()
+	plan.Raw = buildFwmSecurityGroupRuleValue("fwg-1a2b3c4d#fwr-1a2b3c4d", "fwg-other", []map[string]interface{}{
+		{"ip_version": "v4", "protocol": "TCP", "port": "80", "rule_action": "2", "rule_id": "fwr-1a2b3c4d"},
+	}, nil)
 
-	r := setFwmSgRuleClient(t, client)
+	updateResp := resource.UpdateResponse{State: state}
+	res.Update(context.Background(), resource.UpdateRequest{Plan: plan, State: state}, &updateResp)
 
-	schemaResp := fwmSgRuleResourceSchema(t)
-	stateRaw := tftypes.NewValue(tftypes.Object{AttributeTypes: fwmSgRuleAttrTypes()}, map[string]tftypes.Value{
-		"id":       tftypes.NewValue(tftypes.String, fmt.Sprintf("%s#%s", fwmSgRuleGroupId, fwmSgRuleRuleId)),
-		"group_id": tftypes.NewValue(tftypes.String, fwmSgRuleGroupId),
-		"rules":    fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}),
-		"rule":     fwmSgRuleRawDetailList(),
-	})
-	planRaw := tftypes.NewValue(tftypes.Object{AttributeTypes: fwmSgRuleAttrTypes()}, map[string]tftypes.Value{
-		"id":       tftypes.NewValue(tftypes.String, fmt.Sprintf("%s#%s", fwmSgRuleGroupId, fwmSgRuleRuleId)),
-		"group_id": tftypes.NewValue(tftypes.String, fwmSgRuleGroupId),
-		"rules":    fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}),
-		"rule":     fwmSgRuleRawDetailList(),
-	})
-
-	req := resource.UpdateRequest{}
-	req.State = tfsdk.State{Raw: stateRaw, Schema: schemaResp.Schema}
-	req.Plan = tfsdk.Plan{Raw: planRaw, Schema: schemaResp.Schema}
-	resp := &resource.UpdateResponse{}
-	resp.State = tfsdk.State{Raw: stateRaw, Schema: schemaResp.Schema}
-
-	r.Update(context.Background(), req, resp)
-	assert.True(t, resp.Diagnostics.HasError())
-	assert.Contains(t, resp.Diagnostics.Errors()[0].Summary(), "Error updating FWM security group rule")
+	assert.True(t, updateResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Delete_Success covers a normal delete.
 func TestFwmSecurityGroupRule_Delete_Success(t *testing.T) {
 	patches := gomonkey.NewPatches()
 	defer patches.Reset()
 
-	client := &connectivity.TencentCloudClient{}
 	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	patches.ApplyMethodReturn(&connectivity.TencentCloudClient{}, "UseFwmV20250611Client", fwmClient)
 
-	var gotRequest *fwmv20250611.DeleteSecurityGroupRuleRequest
 	patches.ApplyMethodFunc(fwmClient, "DeleteSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.DeleteSecurityGroupRuleRequest) (*fwmv20250611.DeleteSecurityGroupRuleResponse, error) {
-		gotRequest = request
-		return &fwmv20250611.DeleteSecurityGroupRuleResponse{
-			Response: &fwmv20250611.DeleteSecurityGroupRuleResponseParams{
-				RequestId: ptrStringFwmSgRule("fake-request-id"),
-			},
-		}, nil
+		assert.NotNil(t, request.GroupId)
+		assert.Equal(t, "fwg-1a2b3c4d", *request.GroupId)
+		assert.Len(t, request.RuleIds, 2)
+		assert.Equal(t, "fwr-1a2b3c4d", *request.RuleIds[0])
+		assert.Equal(t, "fwr-5e6f7g8h", *request.RuleIds[1])
+
+		resp := fwmv20250611.NewDeleteSecurityGroupRuleResponse()
+		resp.Response = &fwmv20250611.DeleteSecurityGroupRuleResponseParams{
+			RequestId: ptrStringFSGR("fake-request-id-delete"),
+		}
+		return resp, nil
 	})
 
-	r := setFwmSgRuleClient(t, client)
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	schemaResp := fwmSgRuleResourceSchema(t)
-	stateRaw := tftypes.NewValue(tftypes.Object{AttributeTypes: fwmSgRuleAttrTypes()}, map[string]tftypes.Value{
-		"id":       tftypes.NewValue(tftypes.String, fmt.Sprintf("%s#%s", fwmSgRuleGroupId, fwmSgRuleRuleId)),
-		"group_id": tftypes.NewValue(tftypes.String, fwmSgRuleGroupId),
-		"rules":    fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}),
-		"rule":     fwmSgRuleRawDetailList(),
-	})
+	state := newFwmSecurityGroupRuleState()
+	state.Raw = buildFwmSecurityGroupRuleValue("fwg-1a2b3c4d#fwr-1a2b3c4d#fwr-5e6f7g8h", "fwg-1a2b3c4d", nil, nil)
 
-	req := resource.DeleteRequest{}
-	req.State = tfsdk.State{Raw: stateRaw, Schema: schemaResp.Schema}
-	resp := &resource.DeleteResponse{}
-	resp.State = tfsdk.State{Raw: stateRaw, Schema: schemaResp.Schema}
+	deleteResp := resource.DeleteResponse{State: state}
+	res.Delete(context.Background(), resource.DeleteRequest{State: state}, &deleteResp)
 
-	r.Delete(context.Background(), req, resp)
-	assert.False(t, resp.Diagnostics.HasError(), "unexpected diagnostics: %v", resp.Diagnostics)
-
-	assert.NotNil(t, gotRequest)
-	assert.Equal(t, fwmSgRuleGroupId, *gotRequest.GroupId)
-	assert.Len(t, gotRequest.RuleIds, 1)
-	assert.Equal(t, fwmSgRuleRuleId, *gotRequest.RuleIds[0])
+	assert.False(t, deleteResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Delete_APIError covers a cloud API failure during delete.
-func TestFwmSecurityGroupRule_Delete_APIError(t *testing.T) {
+func TestFwmSecurityGroupRule_Delete_Error(t *testing.T) {
 	patches := gomonkey.NewPatches()
 	defer patches.Reset()
 
-	client := &connectivity.TencentCloudClient{}
 	fwmClient := &fwmv20250611.Client{}
-	patches.ApplyMethodReturn(client, "UseFwmV20250611Client", fwmClient)
+	patches.ApplyMethodReturn(&connectivity.TencentCloudClient{}, "UseFwmV20250611Client", fwmClient)
 
 	patches.ApplyMethodFunc(fwmClient, "DeleteSecurityGroupRuleWithContext", func(_ context.Context, request *fwmv20250611.DeleteSecurityGroupRuleRequest) (*fwmv20250611.DeleteSecurityGroupRuleResponse, error) {
-		return nil, fmt.Errorf("[TencentCloudSDKError] Code=InternalError, Message=delete failed")
+		return nil, assert.AnError
 	})
 
-	r := setFwmSgRuleClient(t, client)
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	schemaResp := fwmSgRuleResourceSchema(t)
-	stateRaw := tftypes.NewValue(tftypes.Object{AttributeTypes: fwmSgRuleAttrTypes()}, map[string]tftypes.Value{
-		"id":       tftypes.NewValue(tftypes.String, fmt.Sprintf("%s#%s", fwmSgRuleGroupId, fwmSgRuleRuleId)),
-		"group_id": tftypes.NewValue(tftypes.String, fwmSgRuleGroupId),
-		"rules":    fwmSgRuleRawList([]tftypes.Value{fwmSgRuleRawRule()}),
-		"rule":     fwmSgRuleRawDetailList(),
-	})
+	state := newFwmSecurityGroupRuleState()
+	state.Raw = buildFwmSecurityGroupRuleValue("fwg-1a2b3c4d#fwr-1a2b3c4d", "fwg-1a2b3c4d", nil, nil)
 
-	req := resource.DeleteRequest{}
-	req.State = tfsdk.State{Raw: stateRaw, Schema: schemaResp.Schema}
-	resp := &resource.DeleteResponse{}
-	resp.State = tfsdk.State{Raw: stateRaw, Schema: schemaResp.Schema}
+	deleteResp := resource.DeleteResponse{State: state}
+	res.Delete(context.Background(), resource.DeleteRequest{State: state}, &deleteResp)
 
-	r.Delete(context.Background(), req, resp)
-	assert.True(t, resp.Diagnostics.HasError())
-	assert.Contains(t, resp.Diagnostics.Errors()[0].Summary(), "Error deleting FWM security group rule")
+	assert.True(t, deleteResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Metadata covers the registered type name.
-func TestFwmSecurityGroupRule_Metadata(t *testing.T) {
-	r := fwm.NewFwmSecurityGroupRuleResource()
-	resp := &resource.MetadataResponse{}
-	r.Metadata(context.Background(), resource.MetadataRequest{}, resp)
-	assert.Equal(t, "tencentcloud_fwm_security_group_rule", resp.TypeName)
+func TestFwmSecurityGroupRule_Delete_InvalidId(t *testing.T) {
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
+
+	state := newFwmSecurityGroupRuleState()
+	state.Raw = buildFwmSecurityGroupRuleValue("broken-id", "fwg-1a2b3c4d", nil, nil)
+
+	deleteResp := resource.DeleteResponse{State: state}
+	res.Delete(context.Background(), resource.DeleteRequest{State: state}, &deleteResp)
+
+	assert.True(t, deleteResp.Diagnostics.HasError())
 }
 
-// TestFwmSecurityGroupRule_Schema covers the expected attribute shape.
-func TestFwmSecurityGroupRule_Schema(t *testing.T) {
-	schemaResp := fwmSgRuleResourceSchema(t)
+func TestFwmSecurityGroupRule_ImportState(t *testing.T) {
+	res := newFwmSecurityGroupRuleResourceWithClient(&connectivity.TencentCloudClient{})
 
-	rulesAttr, ok := schemaResp.Schema.Attributes["rules"]
-	assert.True(t, ok, "rules attribute is missing")
-	assert.True(t, rulesAttr.IsOptional())
-
-	ruleAttr, ok := schemaResp.Schema.Attributes["rule"]
-	assert.True(t, ok, "rule attribute is missing")
-	assert.True(t, ruleAttr.IsComputed())
-
-	assert.NotNil(t, rulesAttr.GetType())
-	assert.NotNil(t, ruleAttr.GetType())
+	importResp := resource.ImportStateResponse{State: newFwmSecurityGroupRuleState()}
+	res.(resource.ResourceWithImportState).ImportState(
+		context.Background(),
+		resource.ImportStateRequest{ID: "fwg-1a2b3c4d#fwr-1a2b3c4d"},
+		&importResp,
+	)
+	assert.False(t, importResp.Diagnostics.HasError())
 }

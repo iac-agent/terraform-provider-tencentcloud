@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_ckafka_acl: optmize the value of principal
-```

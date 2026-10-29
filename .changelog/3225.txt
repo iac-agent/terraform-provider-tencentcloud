@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_cluster_endpoint: add `kube_config`, `kube_config_intranet` fields output
-```

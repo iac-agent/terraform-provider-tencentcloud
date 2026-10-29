@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_teo_security_policy_config: support configuring frequent_scanning_protection within managed_rules
-```

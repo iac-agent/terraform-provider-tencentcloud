@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cam_role_permission_boundary_attachment: fix code panic
-```

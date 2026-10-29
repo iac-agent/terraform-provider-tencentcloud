@@ -1,3 +1,0 @@
-```release-note:enhancement
-datasource/tencentcloud_ssl_certificates:  add `owner_uin` and `validity_period` params
-```

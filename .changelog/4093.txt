@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_teo_origin_group: add zone_id, zone_name and alias_zone_name fields to references block
-```

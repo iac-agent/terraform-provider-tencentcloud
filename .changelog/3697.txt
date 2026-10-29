@@ -1,3 +1,0 @@
-```release-note:enhancement
-provider: OIDC support `web_identity_token_file`
-```

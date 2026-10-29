@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_tcr_instance: optimize code logic for update and delete function
-```

@@ -1,7 +1,0 @@
-```release-note:new-resource
-tencentcloud_postgresql_account
-```
-
-```release-note:new-data-source
-tencentcloud_postgresql_account_privileges
-```

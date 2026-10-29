@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_ccn_route_table_associate_instance_config:  Support assume role
-```

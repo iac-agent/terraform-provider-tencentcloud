@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_clb_attachment: fix http backend delete problem.
-```

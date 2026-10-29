@@ -1,3 +1,0 @@
-```release-note:enhancement
-provider: optmize resources doc and support to show `timeouts` content
-```

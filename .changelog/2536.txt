@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_mongodb_instance_account: support import
-```

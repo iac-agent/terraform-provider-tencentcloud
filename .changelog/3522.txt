@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_mysql_audit_service
-```

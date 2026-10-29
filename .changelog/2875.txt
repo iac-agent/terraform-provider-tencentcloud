@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_as_scaling_config: Supports `enhanced_automation_tools_service` params.
-```

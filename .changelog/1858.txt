@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_lighthouse_disk: add create ready status
-```

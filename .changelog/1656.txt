@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_dbbrain_db_diag_report_task
-```

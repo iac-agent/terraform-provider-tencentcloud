@@ -1,4 +1,0 @@
-
-```release-note:new-resource
-tencentcloud_invite_organization_member_operation
-```

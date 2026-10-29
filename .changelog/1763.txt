@@ -1,3 +1,0 @@
-```release-note:bug
-tencentcloud_clb_instance: fix the nil exception caused by the security_groups 
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_teo_customize_error_page: add references computed attribute
-```

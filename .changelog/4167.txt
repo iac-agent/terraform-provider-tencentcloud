@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_teo_bind_security_template: update entity field description
-```

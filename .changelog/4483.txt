@@ -1,3 +1,0 @@
-```release-note:new-data-source
-tencentcloud_billing_bill_detail
-```

@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_security_group_rule: fix delete rule failed
-```

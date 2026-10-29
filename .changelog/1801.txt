@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_vpc_snapshot_policy_config
-```

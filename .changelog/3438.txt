@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_redis_instance: suuport create memcached redis
-```

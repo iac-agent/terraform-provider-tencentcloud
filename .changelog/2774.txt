@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_kubernetes_scale_worker: fix the cluster instance paging logic
-```

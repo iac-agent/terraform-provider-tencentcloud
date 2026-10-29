@@ -1,3 +1,0 @@
-```release-note:bug
-tencentcloud_clb_redirection: Fix null pointer exception
-```

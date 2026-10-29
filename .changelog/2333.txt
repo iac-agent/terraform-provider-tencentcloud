@@ -1,3 +1,0 @@
-```release-note:enhancement
-provider: `shared_credentials_dir` Support set Home path, `~/path`.
-```

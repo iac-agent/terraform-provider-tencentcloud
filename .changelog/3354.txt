@@ -1,7 +1,0 @@
-```release-note:new-resource
-tencentcloud_waf_domain_post_action
-```
-
-```release-note:new-resource
-tencentcloud_waf_instance_attack_log_post
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_log_config: Add detailed documentation guidelines
-```

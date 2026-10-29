@@ -1,3 +1,0 @@
-```release-note:enhancement
-data-source/tencentcloud_dnspod_record_list: add param `instance_list`
-```

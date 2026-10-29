@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_trocket_rocketmq_instance: support more specifications of param `sku_code` for create instance
-```

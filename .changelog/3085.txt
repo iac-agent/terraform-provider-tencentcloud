@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_clb_customized_config: update code
-```

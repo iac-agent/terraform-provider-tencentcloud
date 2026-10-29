@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cwp_license_order: update doc and optimiz code logic
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_invite_organization_member_operation: update doc
-```

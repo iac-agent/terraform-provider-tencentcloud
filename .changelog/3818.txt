@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_sqlserver_basic_instance:  add field `time_zone` and `disk_encrypt_flag`
-```

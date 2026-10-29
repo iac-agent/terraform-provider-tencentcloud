@@ -1,7 +1,0 @@
-```release-note:new-resource
-tencentcloud_clickhouse_keyval_config
-```
-
-```release-note:new-resource
-tencentcloud_clickhouse_xml_config
-```

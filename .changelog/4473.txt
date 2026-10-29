@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cls_alarm_notice: support secure_detail_status parameter
-```

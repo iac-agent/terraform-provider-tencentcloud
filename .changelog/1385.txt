@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_tcr_instance: fix: tcr - block creating while replication region same with current
-```

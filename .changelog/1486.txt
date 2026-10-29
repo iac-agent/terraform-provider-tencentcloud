@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_ckafka_instance: change `vpc_id` and `subnet_id` to optional, and optimize doc
-```

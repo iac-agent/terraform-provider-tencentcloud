@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_clb_target_group_attachments
-```

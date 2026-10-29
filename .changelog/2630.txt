@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_instance: Update the limit of period and charge type
-```

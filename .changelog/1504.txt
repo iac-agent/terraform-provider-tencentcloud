@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_vpc_bandwidth_package_attachment: catch the error when bgp attach is nil
-```

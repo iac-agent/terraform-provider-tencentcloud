@@ -1,7 +1,0 @@
-```release-note:new-resource
-tencentcloud_postgresql_security_group_config
-```
-
-```release-note:new-resource
-tencentcloud_postgresql_backup_download_restriction_config
-```

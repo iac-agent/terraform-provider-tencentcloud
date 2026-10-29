@@ -1,3 +1,0 @@
-```release-note:enhancement
-data-source/tencentcloud_cos_buckets: optimiz code logic and doc
-```

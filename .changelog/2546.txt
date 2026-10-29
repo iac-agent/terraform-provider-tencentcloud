@@ -1,3 +1,0 @@
-```release-note:bug
-datasource/tencentcloud_tcmq_topic: fix `topic_list.topic_id` value
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_trocket_rocketmq_role: Add computed `access_key` and `secret_key`
-```

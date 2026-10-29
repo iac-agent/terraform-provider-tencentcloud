@@ -1,3 +1,0 @@
-```release-note:bug
-data-source/tencentcloud_dnspod_record_analytics: Fix set info error.
-```

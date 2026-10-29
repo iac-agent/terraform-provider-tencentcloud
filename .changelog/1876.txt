@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_ckafka_instance: deprecated the `public_network` field.
-```

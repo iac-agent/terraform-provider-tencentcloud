@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_teo_zone: Fix unnecessary change ownership_verification.
-```

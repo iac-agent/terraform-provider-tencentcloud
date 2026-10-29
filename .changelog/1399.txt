@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_gaap_proxy: fix gaap proxy retry error `DuplicatedRequest`
-```

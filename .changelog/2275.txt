@@ -1,3 +1,0 @@
-```release-note:enhancement
-tencentcloud_nat_gateway: Support create standard nat
-```

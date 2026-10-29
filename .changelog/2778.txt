@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_vpn_gateway: Optimize VPN gateway change issue.
-```

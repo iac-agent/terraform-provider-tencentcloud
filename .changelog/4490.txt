@@ -1,3 +1,0 @@
-```release-note:new-action
-tencentcloud_teo_confirm_origin_acl_update
-```

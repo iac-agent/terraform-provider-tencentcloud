@@ -1,4 +1,0 @@
-
-```release-note:new-resource
-tencentcloud_dcdb_account_privileges
-```

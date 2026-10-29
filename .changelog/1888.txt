@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_postgresql_instance: adjust `availability_zone` to unchangeable.
-```

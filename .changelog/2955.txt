@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_nat_gateway: add `stock_public_ip_addresses_bandwidth_out` fields
-```

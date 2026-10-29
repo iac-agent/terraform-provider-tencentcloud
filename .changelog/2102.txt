@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_monitor_alarm_notice: support set 'is_valid' and 'validation_code'.
-```

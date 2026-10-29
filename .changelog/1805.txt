@@ -1,7 +1,0 @@
-```release-note:new-resource
-tencentcloud_vpc_net_detect
-```
-
-```release-note:new-resource
-tencentcloud_vpc_flow_log_config
-```

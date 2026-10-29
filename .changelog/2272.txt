@@ -1,3 +1,0 @@
-```release-note:enhancement
-tencentcloud_mysql_backup_policy: Support instance binlog setting.
-```

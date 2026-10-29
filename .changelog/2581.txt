@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_tse_cngw_network_access_control
-```

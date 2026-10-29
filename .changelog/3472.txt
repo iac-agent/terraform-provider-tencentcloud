@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cam_user_saml_config: add `auxiliary_domain`
-```

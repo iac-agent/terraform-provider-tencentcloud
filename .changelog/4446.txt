@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_teo_import_zone_config: update content field description with detailed import requirements
-```

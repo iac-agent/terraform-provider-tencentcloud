@@ -72,7 +72,7 @@ func (me *FwmService) DescribeFwmAccountGroupById(ctx context.Context, groupId s
 	return
 }
 
-func (me *FwmService) CreateFwmSecurityGroupRule(ctx context.Context, request *fwmv20250611.CreateSecurityGroupRuleRequest) (ruleIds []*string, errRet error) {
+func (me *FwmService) CreateFwmSecurityGroupRule(ctx context.Context, request *fwmv20250611.CreateSecurityGroupRuleRequest) (response *fwmv20250611.CreateSecurityGroupRuleResponse, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
 	defer func() {
@@ -81,7 +81,6 @@ func (me *FwmService) CreateFwmSecurityGroupRule(ctx context.Context, request *f
 		}
 	}()
 
-	var response *fwmv20250611.CreateSecurityGroupRuleResponse
 	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 		ratelimit.Check(request.GetAction())
 		result, e := me.client.UseFwmV20250611Client().CreateSecurityGroupRuleWithContext(ctx, request)
@@ -93,7 +92,6 @@ func (me *FwmService) CreateFwmSecurityGroupRule(ctx context.Context, request *f
 			return resource.NonRetryableError(fmt.Errorf("Create fwm security group rule failed, Response is nil."))
 		}
 
-		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
 		response = result
 		return nil
 	})
@@ -103,17 +101,15 @@ func (me *FwmService) CreateFwmSecurityGroupRule(ctx context.Context, request *f
 		return
 	}
 
-	ruleIds = response.Response.RuleIds
 	return
 }
 
-func (me *FwmService) DescribeFwmSecurityGroupRuleById(ctx context.Context, groupId string, ruleId string) (rule *fwmv20250611.SgRuleResp, errRet error) {
+func (me *FwmService) DescribeFwmSecurityGroupRuleById(ctx context.Context, groupId, ruleId string) (rule *fwmv20250611.SgRuleResp, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
-	request := &fwmv20250611.DescribeSecurityGroupRuleRequest{
-		GroupId: helper.String(groupId),
-		RuleId:  helper.String(ruleId),
-	}
+	request := fwmv20250611.NewDescribeSecurityGroupRuleRequest()
+	request.GroupId = helper.String(groupId)
+	request.RuleId = helper.String(ruleId)
 
 	defer func() {
 		if errRet != nil {
@@ -121,23 +117,18 @@ func (me *FwmService) DescribeFwmSecurityGroupRuleById(ctx context.Context, grou
 		}
 	}()
 
-	var response *fwmv20250611.DescribeSecurityGroupRuleResponse
 	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
 		ratelimit.Check(request.GetAction())
 		result, e := me.client.UseFwmV20250611Client().DescribeSecurityGroupRuleWithContext(ctx, request)
 		if e != nil {
-			if tccommon.IsExpectError(e, []string{"ResourceNotFound", "ResourceNotFound.RuleNotFound", "ResourceNotFound.GroupNotFound"}) {
-				return resource.RetryableError(e)
-			}
-			return resource.NonRetryableError(e)
+			return tccommon.RetryError(e)
 		}
 
 		if result == nil || result.Response == nil {
 			return resource.NonRetryableError(fmt.Errorf("Describe fwm security group rule failed, Response is nil."))
 		}
 
-		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
-		response = result
+		rule = result.Response.Rule
 		return nil
 	})
 
@@ -146,12 +137,6 @@ func (me *FwmService) DescribeFwmSecurityGroupRuleById(ctx context.Context, grou
 		return
 	}
 
-	// A missing rule is a normal business state, not an API failure.
-	if response.Response.Rule == nil {
-		return
-	}
-
-	rule = response.Response.Rule
 	return
 }
 
@@ -175,7 +160,6 @@ func (me *FwmService) ModifyFwmSecurityGroupRule(ctx context.Context, request *f
 			return resource.NonRetryableError(fmt.Errorf("Modify fwm security group rule failed, Response is nil."))
 		}
 
-		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
 		return nil
 	})
 
@@ -187,13 +171,12 @@ func (me *FwmService) ModifyFwmSecurityGroupRule(ctx context.Context, request *f
 	return
 }
 
-func (me *FwmService) DeleteFwmSecurityGroupRuleById(ctx context.Context, groupId string, ruleId string) (errRet error) {
+func (me *FwmService) DeleteFwmSecurityGroupRule(ctx context.Context, groupId string, ruleIds []*string) (errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
-	request := &fwmv20250611.DeleteSecurityGroupRuleRequest{
-		GroupId: helper.String(groupId),
-		RuleIds: []*string{helper.String(ruleId)},
-	}
+	request := fwmv20250611.NewDeleteSecurityGroupRuleRequest()
+	request.GroupId = helper.String(groupId)
+	request.RuleIds = ruleIds
 
 	defer func() {
 		if errRet != nil {
@@ -212,7 +195,6 @@ func (me *FwmService) DeleteFwmSecurityGroupRuleById(ctx context.Context, groupI
 			return resource.NonRetryableError(fmt.Errorf("Delete fwm security group rule failed, Response is nil."))
 		}
 
-		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
 		return nil
 	})
 

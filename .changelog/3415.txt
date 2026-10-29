@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_clb_instance: optmize `security_groups` nil value
-```

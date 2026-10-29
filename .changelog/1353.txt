@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_elasticsearch_instance: status polling fix
-```

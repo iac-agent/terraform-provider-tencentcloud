@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_config_update_aggregate_config_deliver
-```

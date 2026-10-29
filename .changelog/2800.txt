@@ -1,3 +1,0 @@
-```release-note:enhancement
-tencentcloud_mysql_readonly_instance: Read-only instance creation supports setting read-only groups.
-```

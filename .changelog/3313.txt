@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_node_pool: field `pre_start_user_script` support update
-```

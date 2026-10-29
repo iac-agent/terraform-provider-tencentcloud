@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cbs_storage: support `instance_id` parameter to auto-mount and auto-initialize the data disk to a specified CVM instance during creation.
-```

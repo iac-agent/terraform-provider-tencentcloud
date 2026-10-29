@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_private_dns_zone: Increase the waiting time for instance creation
-```

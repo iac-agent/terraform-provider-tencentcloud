@@ -1,4 +1,0 @@
-```release-note:bug
-resource/tencentcloud_instance: fix order `data_disks`
-```
-

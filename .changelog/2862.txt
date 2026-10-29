@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_redis_startup_instance_operation: adjust startup status logic
-```

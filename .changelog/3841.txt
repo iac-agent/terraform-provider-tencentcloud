@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cfs_file_system: support timeouts block
-```

@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_dlc_suspend_resume_data_engine
-```

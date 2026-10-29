@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_dnspod_domain_alias
-```

@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_mongodb_scale_up_db_instance_cpu
-```

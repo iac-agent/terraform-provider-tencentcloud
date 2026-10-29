@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_serverless_hbase_instance: support update instance_name and tags
-```

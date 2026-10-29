@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_as_start_instance_refresh: update retry code logic
-```

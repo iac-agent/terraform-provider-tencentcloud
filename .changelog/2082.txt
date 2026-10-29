@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_vpn_connection: support change `ike_version`
-```

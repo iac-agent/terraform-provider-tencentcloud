@@ -1,3 +1,0 @@
-```release-note:bug
-resource/tencentcloud_clb_target_group_attachments: Fixed the problem of not supporting four-layer LB
-```

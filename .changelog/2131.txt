@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_ses_black_list_delete
-```

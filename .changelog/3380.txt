@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cam_group_membership: throw error while user not exist
-```

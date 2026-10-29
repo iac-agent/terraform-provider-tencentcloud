@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cynosdb_cluster: fix: cynos - support serverless cluster pause/resume
-```

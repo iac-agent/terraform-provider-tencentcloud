@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dts_sync_job: optimize code logic
-```

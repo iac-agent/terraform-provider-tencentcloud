@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_ckafka_topic: update documentation
-```

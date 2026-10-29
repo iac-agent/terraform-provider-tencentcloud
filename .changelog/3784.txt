@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_elasticsearch_instance: optmize `multi_zone_infos` logic 
-```

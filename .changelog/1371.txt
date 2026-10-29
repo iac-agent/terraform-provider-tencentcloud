@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_ssl_free_certificate: support computed param dv_auths
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_kubernetes_scale_worker: Add `pre_start_user_script` and `user_script` fields
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dnspod_domain_instance: fix error while setting `group_id`
-```

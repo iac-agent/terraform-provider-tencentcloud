@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_eni: Update `security_groups` field
-```

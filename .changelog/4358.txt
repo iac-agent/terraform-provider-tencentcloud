@@ -1,3 +1,0 @@
-```release-note:new-data-source
-tencentcloud_postgresql_db_instance_security_groups
-```

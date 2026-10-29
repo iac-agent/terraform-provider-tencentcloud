@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cdh_instance: optimize create function code logic
-```

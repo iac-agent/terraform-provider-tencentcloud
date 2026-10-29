@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_gaap_layer4_listener: support udp listener enable `health_check`
-```

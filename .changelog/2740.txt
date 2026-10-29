@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_instance: add param `system_disk_resize_online`
-```

@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dc_internet_address_config: update doc
-```

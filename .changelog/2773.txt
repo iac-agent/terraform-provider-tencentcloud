@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_dnspod_record: compatible with record value ends with dot
-```

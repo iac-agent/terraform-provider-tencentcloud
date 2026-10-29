@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_bh_resource: add new params
-```

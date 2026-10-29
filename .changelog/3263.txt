@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_cbs_snapshot_share_permission: update code and doc
-```

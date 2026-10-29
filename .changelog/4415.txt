@@ -1,3 +1,0 @@
-```release-note:enhancement
-data-source/tencentcloud_teo_environments: add source_version output field
-```

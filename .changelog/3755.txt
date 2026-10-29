@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_clb_snat_ip: mark `ip` optional
-```

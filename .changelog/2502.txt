@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_mysql_instance: Optimize the availability zone problem when modifying the configuration after active/standby switchover.
-```

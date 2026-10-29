@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_cls_dlc_deliver
-```

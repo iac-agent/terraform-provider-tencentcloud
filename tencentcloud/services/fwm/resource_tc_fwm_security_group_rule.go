@@ -6,20 +6,18 @@ import (
 	"log"
 	"strings"
 
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+
 	fwmv20250611 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fwm/v20250611"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/framework/fw"
 )
 
-// _ resource.Resource is intentionally omitted: the factory function
-// NewFwmSecurityGroupRuleResource returns resource.Resource, which already
-// performs the implicit compile-time check at the return statement. Only the
-// extended-interface assertions are kept here.
 var (
 	_ resource.ResourceWithConfigure   = &FwmSecurityGroupRuleResource{}
 	_ resource.ResourceWithImportState = &FwmSecurityGroupRuleResource{}
@@ -33,18 +31,23 @@ func NewFwmSecurityGroupRuleResource() resource.Resource {
 
 // FwmSecurityGroupRuleResource implements resource.Resource for
 // tencentcloud_fwm_security_group_rule.
-//
-// One Terraform resource manages exactly one enterprise security group rule.
-// The remote identifier is composed of the owning rule group ID and the rule
-// ID as `<group_id>#<rule_id>`, because both values are required by every
-// rule level cloud API.
 type FwmSecurityGroupRuleResource struct {
 	fw.ResourceWithConfigure
 	fw.WithImportByID
 }
 
-// FwmSecurityGroupRuleRuleModel maps one element of the `rules` attribute.
-type FwmSecurityGroupRuleRuleModel struct {
+// FwmSecurityGroupRuleResourceModel maps the schema attributes of
+// tencentcloud_fwm_security_group_rule.
+type FwmSecurityGroupRuleResourceModel struct {
+	Id      types.String                     `tfsdk:"id"`
+	GroupId types.String                     `tfsdk:"group_id"`
+	Rules   []FwmSecurityGroupRuleRulesModel `tfsdk:"rules"`
+	Rule    []FwmSecurityGroupRuleRuleModel  `tfsdk:"rule"`
+}
+
+// FwmSecurityGroupRuleRulesModel maps one element of the `rules` argument used
+// by CreateSecurityGroupRule / ModifySecurityGroupRule.
+type FwmSecurityGroupRuleRulesModel struct {
 	IpVersion         types.String `tfsdk:"ip_version"`
 	SourceContent     types.String `tfsdk:"source_content"`
 	SourceType        types.String `tfsdk:"source_type"`
@@ -62,9 +65,9 @@ type FwmSecurityGroupRuleRuleModel struct {
 	BelongMemberId    types.String `tfsdk:"belong_member_id"`
 }
 
-// FwmSecurityGroupRuleDetailModel maps one element of the computed `rule`
-// attribute, which mirrors the cloud side rule detail.
-type FwmSecurityGroupRuleDetailModel struct {
+// FwmSecurityGroupRuleRuleModel maps one element of the computed `rule`
+// attribute returned by DescribeSecurityGroupRule.
+type FwmSecurityGroupRuleRuleModel struct {
 	RuleId            types.String `tfsdk:"rule_id"`
 	Sequence          types.Int64  `tfsdk:"sequence"`
 	Region            types.String `tfsdk:"region"`
@@ -83,108 +86,116 @@ type FwmSecurityGroupRuleDetailModel struct {
 	Scope             types.String `tfsdk:"scope"`
 }
 
-// FwmSecurityGroupRuleResourceModel maps the schema attributes.
-type FwmSecurityGroupRuleResourceModel struct {
-	Id      types.String                      `tfsdk:"id"`
-	GroupId types.String                      `tfsdk:"group_id"`
-	Rules   []FwmSecurityGroupRuleRuleModel   `tfsdk:"rules"`
-	Rule    []FwmSecurityGroupRuleDetailModel `tfsdk:"rule"`
-}
-
 func (r *FwmSecurityGroupRuleResource) Metadata(_ context.Context, _ resource.MetadataRequest, resp *resource.MetadataResponse) {
 	resp.TypeName = "tencentcloud_fwm_security_group_rule"
 }
 
 func (r *FwmSecurityGroupRuleResource) Schema(_ context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		Description: "Provides a resource to manage a FWM (Firewall Manager) enterprise security group rule. " +
-			"The remote identifier of this resource is `<group_id>#<rule_id>`.",
+		Description: "Provides a resource to manage FWM enterprise security group rules. " +
+			"Each apply creates one rule per element of `rules`, and destroy deletes every rule tracked by this resource.",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
 				Computed:    true,
-				Description: "Identifier of the security group rule, in the form `<group_id>#<rule_id>`.",
+				Description: "Resource identifier in the form `<group_id>#<rule_id>#<rule_id>...`.",
 				PlanModifiers: []planmodifier.String{
-					stringUseStateForUnknownRule{},
+					fwmStringUseStateForUnknown{},
 				},
 			},
 			"group_id": schema.StringAttribute{
 				Optional:    true,
-				Description: "ID of the rule group the security group rule belongs to.",
+				Computed:    true,
+				Description: "ID of the enterprise security group rule group.",
 				PlanModifiers: []planmodifier.String{
-					stringRequiresReplaceRule{},
+					fwmStringUseStateForUnknown{},
 				},
 			},
 			"rules": schema.ListNestedAttribute{
 				Optional:    true,
-				Description: "Rule list, exactly one element is supported and it describes the rule to create.",
+				Description: "List of security group rules to create.",
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"ip_version": schema.StringAttribute{
 							Optional:    true,
+							Computed:    true,
 							Description: "IP version of the rule.",
 						},
 						"source_content": schema.StringAttribute{
 							Optional:    true,
+							Computed:    true,
 							Description: "Source address of the rule.",
 						},
 						"source_type": schema.StringAttribute{
 							Optional:    true,
+							Computed:    true,
 							Description: "Source type of the rule.",
 						},
 						"dest_content": schema.StringAttribute{
 							Optional:    true,
+							Computed:    true,
 							Description: "Destination address of the rule.",
 						},
 						"dest_type": schema.StringAttribute{
 							Optional:    true,
+							Computed:    true,
 							Description: "Destination type of the rule.",
 						},
 						"protocol": schema.StringAttribute{
 							Optional:    true,
+							Computed:    true,
 							Description: "Protocol of the rule.",
 						},
 						"port": schema.StringAttribute{
 							Optional:    true,
-							Description: "Port of the rule.",
+							Computed:    true,
+							Description: "Port range of the rule.",
 						},
 						"service_template_id": schema.StringAttribute{
 							Optional:    true,
-							Description: "ID of the protocol and port template used by the rule.",
+							Computed:    true,
+							Description: "Protocol port template ID of the rule.",
 						},
 						"rule_action": schema.StringAttribute{
 							Optional:    true,
-							Description: "Action of the rule, `1` for block and `2` for allow.",
+							Computed:    true,
+							Description: "Action of the rule, for example `1` for block and `2` for allow.",
 						},
 						"description": schema.StringAttribute{
 							Optional:    true,
+							Computed:    true,
 							Description: "Description of the rule.",
 						},
 						"order_index": schema.Int64Attribute{
 							Optional:    true,
+							Computed:    true,
 							Description: "Priority of the rule.",
 						},
 						"rule_id": schema.StringAttribute{
 							Optional:    true,
-							Description: "ID of the rule. Leave it empty on creation; the cloud side generates the ID.",
+							Computed:    true,
+							Description: "ID of the rule.",
 						},
 						"scope": schema.StringAttribute{
 							Optional:    true,
+							Computed:    true,
 							Description: "Effective scope of the rule.",
 						},
 						"protocol_port_type": schema.Int64Attribute{
 							Optional:    true,
-							Description: "Protocol and port type of the rule.",
+							Computed:    true,
+							Description: "Protocol port type of the rule.",
 						},
 						"belong_member_id": schema.StringAttribute{
 							Optional:    true,
-							Description: "ID of the member account the rule belongs to. It is required when the group is a `cfwg-xxx` group or when the source type or destination type is `instance` or `tag`.",
+							Computed:    true,
+							Description: "ID of the member account the rule belongs to. It is required when group_id is a cfwg-xxx group, or when source_type/dest_type is `instance` or `tag`.",
 						},
 					},
 				},
 			},
 			"rule": schema.ListNestedAttribute{
 				Computed:    true,
-				Description: "Detail of the security group rule returned by the cloud side.",
+				Description: "Rule details returned by the cloud API.",
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"rule_id": schema.StringAttribute{
@@ -225,15 +236,15 @@ func (r *FwmSecurityGroupRuleResource) Schema(_ context.Context, _ resource.Sche
 						},
 						"protocol_port_type": schema.Int64Attribute{
 							Computed:    true,
-							Description: "Protocol and port type of the rule.",
+							Description: "Protocol port template parameter of the rule.",
 						},
 						"service_template_id": schema.StringAttribute{
 							Computed:    true,
-							Description: "ID of the protocol and port template used by the rule.",
+							Description: "Protocol port template ID of the rule.",
 						},
 						"dst_port": schema.StringAttribute{
 							Computed:    true,
-							Description: "Destination port of the rule, a single port, multiple ports or a port range.",
+							Description: "Destination port of the rule. Single port, multiple ports and port ranges are supported.",
 						},
 						"rule_action": schema.StringAttribute{
 							Computed:    true,
@@ -245,11 +256,11 @@ func (r *FwmSecurityGroupRuleResource) Schema(_ context.Context, _ resource.Sche
 						},
 						"rule_source": schema.StringAttribute{
 							Computed:    true,
-							Description: "Source of the rule, `0` means it was created from the user console.",
+							Description: "Source of the rule, `0` means it was added from the user console.",
 						},
 						"scope": schema.StringAttribute{
 							Computed:    true,
-							Description: "Effective scope of the rule, a bit mask where `1` means enterprise security group and `2` means lighthouse instance.",
+							Description: "Effective scope of the rule, bitwise, `1` for SG (enterprise security group) and `2` for LH (lightweight server).",
 						},
 					},
 				},
@@ -258,7 +269,7 @@ func (r *FwmSecurityGroupRuleResource) Schema(_ context.Context, _ resource.Sche
 	}
 }
 
-// Create handles `terraform apply` for a new security group rule.
+// Create handles `terraform apply` for new resources.
 func (r *FwmSecurityGroupRuleResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
 	var plan FwmSecurityGroupRuleResourceModel
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &plan)...)
@@ -266,31 +277,30 @@ func (r *FwmSecurityGroupRuleResource) Create(ctx context.Context, req resource.
 		return
 	}
 
-	if len(plan.Rules) != 1 {
+	if plan.GroupId.IsNull() || plan.GroupId.IsUnknown() || plan.GroupId.ValueString() == "" {
 		resp.Diagnostics.AddError(
-			"Invalid rules",
-			fmt.Sprintf("tencentcloud_fwm_security_group_rule manages exactly one rule, but %d element(s) were given in `rules`.", len(plan.Rules)),
+			"Missing required argument",
+			"group_id must be specified when creating tencentcloud_fwm_security_group_rule.",
 		)
 		return
 	}
 
-	groupId, ok := resolveGroupIdOfRule(plan)
-	if !ok {
+	if len(plan.Rules) == 0 {
 		resp.Diagnostics.AddError(
-			"Missing group_id",
-			"`group_id` must be set to the ID of the rule group the security group rule belongs to.",
+			"Missing required argument",
+			"rules must contain at least one element when creating tencentcloud_fwm_security_group_rule.",
 		)
 		return
 	}
 
-	plan.GroupId = types.StringValue(groupId)
+	groupId := plan.GroupId.ValueString()
 
-	request := &fwmv20250611.CreateSecurityGroupRuleRequest{
-		GroupId: &groupId,
-		Rules:   []*fwmv20250611.SecurityGroupRule{buildSecurityGroupRule(plan.Rules[0])},
-	}
+	request := fwmv20250611.NewCreateSecurityGroupRuleRequest()
+	request.GroupId = &groupId
+	request.Rules = expandFwmSecurityGroupRuleRules(plan.Rules)
 
-	ruleIds, err := NewFwmService(r.Client()).CreateFwmSecurityGroupRule(ctx, request)
+	service := NewFwmService(r.Client())
+	response, err := service.CreateFwmSecurityGroupRule(ctx, request)
 	if err != nil {
 		resp.Diagnostics.AddError(
 			"Error creating FWM security group rule",
@@ -299,32 +309,48 @@ func (r *FwmSecurityGroupRuleResource) Create(ctx context.Context, req resource.
 		return
 	}
 
-	if len(ruleIds) == 0 || ruleIds[0] == nil || *ruleIds[0] == "" {
+	ruleIds := response.Response.RuleIds
+	if len(ruleIds) == 0 {
 		resp.Diagnostics.AddError(
 			"Error creating FWM security group rule",
-			fmt.Sprintf("CreateSecurityGroupRule returned an empty rule ID for group %s.", groupId),
+			fmt.Sprintf("CreateSecurityGroupRule returned empty RuleIds for group %s.", groupId),
 		)
 		return
 	}
 
-	ruleId := *ruleIds[0]
-	plan.Id = types.StringValue(fmt.Sprintf("%s%s%s", groupId, tccommon.FILED_SP, ruleId))
+	idParts := []string{groupId}
+	for _, ruleId := range ruleIds {
+		if ruleId == nil || *ruleId == "" {
+			resp.Diagnostics.AddError(
+				"Error creating FWM security group rule",
+				fmt.Sprintf("CreateSecurityGroupRule returned an empty rule ID for group %s.", groupId),
+			)
+			return
+		}
+		idParts = append(idParts, *ruleId)
+	}
 
-	// Read back immediately after creation so that state matches the cloud side.
-	detail, err := NewFwmService(r.Client()).DescribeFwmSecurityGroupRuleById(ctx, groupId, ruleId)
-	if err != nil {
-		resp.Diagnostics.AddError(
-			"Error reading FWM security group rule after create",
-			fmt.Sprintf("DescribeSecurityGroupRule failed for rule %s of group %s: %v", ruleId, groupId, err),
-		)
+	// Write the ID before any follow-up API call so that the created rules can
+	// always be destroyed even if a later step fails.
+	plan.Id = types.StringValue(strings.Join(idParts, tccommon.FILED_SP))
+	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)
+	if resp.Diagnostics.HasError() {
 		return
 	}
-	setSecurityGroupRuleDetail(&plan, detail)
+
+	// Back-fill the rule IDs of the `rules` elements so that config and state agree.
+	for i := range plan.Rules {
+		if i+1 < len(idParts) {
+			plan.Rules[i].RuleId = types.StringValue(idParts[i+1])
+		}
+	}
+
+	r.refreshPlan(ctx, &plan, idParts[1:])
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)
 }
 
-// Read handles `terraform refresh`, `terraform plan` refresh and imports.
+// Read handles `terraform refresh` and post-apply state refresh.
 func (r *FwmSecurityGroupRuleResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
 	var state FwmSecurityGroupRuleResourceModel
 	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
@@ -332,30 +358,19 @@ func (r *FwmSecurityGroupRuleResource) Read(ctx context.Context, req resource.Re
 		return
 	}
 
-	groupId, ruleId, ok := splitSecurityGroupRuleId(state.Id.ValueString())
+	groupId, ruleIds, ok := splitFwmSecurityGroupRuleId(state.Id.ValueString())
 	if !ok {
 		resp.Diagnostics.AddError(
-			"Invalid resource identifier",
-			fmt.Sprintf("Expected an identifier in the form `<group_id>#<rule_id>`, got %q.", state.Id.ValueString()),
+			"Invalid resource ID",
+			fmt.Sprintf("tencentcloud_fwm_security_group_rule id is broken, id is %q (expected `<group_id>%s<rule_id>...`)", state.Id.ValueString(), tccommon.FILED_SP),
 		)
 		return
 	}
 
-	if !state.GroupId.IsNull() && !state.GroupId.IsUnknown() && state.GroupId.ValueString() != "" {
-		groupId = state.GroupId.ValueString()
-	}
+	r.refreshPlan(ctx, &state, ruleIds)
 
-	detail, err := NewFwmService(r.Client()).DescribeFwmSecurityGroupRuleById(ctx, groupId, ruleId)
-	if err != nil {
-		resp.Diagnostics.AddError(
-			"Error reading FWM security group rule",
-			fmt.Sprintf("DescribeSecurityGroupRule failed for rule %s of group %s: %v", ruleId, groupId, err),
-		)
-		return
-	}
-
-	if detail == nil {
-		log.Printf("[WARN]%s resource `tencentcloud_fwm_security_group_rule` [%s] not found, please check if it has been deleted.", tccommon.GetLogId(ctx), state.Id.ValueString())
+	if len(state.Rule) == 0 {
+		log.Printf("[WARN] tencentcloud_fwm_security_group_rule id=%s not found, removing from state.", state.Id.ValueString())
 		resp.Diagnostics.AddWarning(
 			"Resource not found",
 			fmt.Sprintf("tencentcloud_fwm_security_group_rule %s not found, removing from state.", state.Id.ValueString()),
@@ -365,80 +380,88 @@ func (r *FwmSecurityGroupRuleResource) Read(ctx context.Context, req resource.Re
 	}
 
 	state.GroupId = types.StringValue(groupId)
-	state.Rule = []FwmSecurityGroupRuleDetailModel{toSecurityGroupRuleDetailModel(detail)}
-
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 }
 
-// Update handles in-place updates of the rule.
+// Update handles in-place modifications.
 func (r *FwmSecurityGroupRuleResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
 	var plan FwmSecurityGroupRuleResourceModel
-	var state FwmSecurityGroupRuleResourceModel
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &plan)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
+
+	var state FwmSecurityGroupRuleResourceModel
 	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	groupId, ruleId, ok := splitSecurityGroupRuleId(state.Id.ValueString())
+	groupId, ruleIds, ok := splitFwmSecurityGroupRuleId(state.Id.ValueString())
 	if !ok {
 		resp.Diagnostics.AddError(
-			"Invalid resource identifier",
-			fmt.Sprintf("Expected an identifier in the form `<group_id>#<rule_id>`, got %q.", state.Id.ValueString()),
+			"Invalid resource ID",
+			fmt.Sprintf("tencentcloud_fwm_security_group_rule id is broken, id is %q", state.Id.ValueString()),
 		)
 		return
 	}
 
-	if !plan.GroupId.IsNull() && !plan.GroupId.IsUnknown() && plan.GroupId.ValueString() != "" {
-		groupId = plan.GroupId.ValueString()
-	}
-
-	plannedRule := FwmSecurityGroupRuleRuleModel{}
-	if len(plan.Rules) > 0 {
-		plannedRule = plan.Rules[0]
-	}
-
-	// The cloud API identifies the rule to modify by the ID inside the rule body.
-	if plannedRule.RuleId.IsNull() || plannedRule.RuleId.IsUnknown() || plannedRule.RuleId.ValueString() == "" {
-		plannedRule.RuleId = types.StringValue(ruleId)
-	}
-
-	request := &fwmv20250611.ModifySecurityGroupRuleRequest{
-		GroupId: &groupId,
-		Rule:    buildSecurityGroupRule(plannedRule),
-	}
-
-	if err := NewFwmService(r.Client()).ModifyFwmSecurityGroupRule(ctx, request); err != nil {
+	if !plan.GroupId.IsNull() && !plan.GroupId.IsUnknown() && plan.GroupId.ValueString() != groupId {
 		resp.Diagnostics.AddError(
-			"Error updating FWM security group rule",
-			fmt.Sprintf("ModifySecurityGroupRule failed for rule %s of group %s: %v", ruleId, groupId, err),
+			"Unsupported change of group_id",
+			fmt.Sprintf("group_id cannot be changed from %s to %s, please recreate tencentcloud_fwm_security_group_rule instead.", groupId, plan.GroupId.ValueString()),
 		)
 		return
 	}
 
-	detail, err := NewFwmService(r.Client()).DescribeFwmSecurityGroupRuleById(ctx, groupId, ruleId)
-	if err != nil {
-		resp.Diagnostics.AddError(
-			"Error reading FWM security group rule after update",
-			fmt.Sprintf("DescribeSecurityGroupRule failed for rule %s of group %s: %v", ruleId, groupId, err),
-		)
-		return
+	// Match the planned rules with the existing rule IDs by position so that
+	// every rule keeps its identity across updates.
+	existingIds := make(map[string]string, len(state.Rules))
+	for i, rule := range state.Rules {
+		if !rule.RuleId.IsNull() && !rule.RuleId.IsUnknown() && i < len(ruleIds) {
+			existingIds[rule.RuleId.ValueString()] = ruleIds[i]
+		}
 	}
-	setSecurityGroupRuleDetail(&plan, detail)
 
-	if len(plan.Rules) > 0 {
-		plan.Rules[0].RuleId = types.StringValue(ruleId)
+	service := NewFwmService(r.Client())
+	newRuleIds := make([]string, 0, len(plan.Rules))
+
+	for i := range plan.Rules {
+		var ruleId string
+		if i < len(ruleIds) {
+			ruleId = ruleIds[i]
+		}
+		if !plan.Rules[i].RuleId.IsNull() && !plan.Rules[i].RuleId.IsUnknown() {
+			if id, exists := existingIds[plan.Rules[i].RuleId.ValueString()]; exists {
+				ruleId = id
+			}
+		}
+		plan.Rules[i].RuleId = types.StringValue(ruleId)
+
+		request := fwmv20250611.NewModifySecurityGroupRuleRequest()
+		request.GroupId = &groupId
+		request.Rule = expandFwmSecurityGroupRuleRule(&plan.Rules[i])
+
+		if err := service.ModifyFwmSecurityGroupRule(ctx, request); err != nil {
+			resp.Diagnostics.AddError(
+				"Error updating FWM security group rule",
+				fmt.Sprintf("ModifySecurityGroupRule failed for group %s rule %s: %v", groupId, ruleId, err),
+			)
+			return
+		}
+
+		newRuleIds = append(newRuleIds, ruleId)
 	}
+
+	plan.Id = types.StringValue(strings.Join(append([]string{groupId}, newRuleIds...), tccommon.FILED_SP))
 	plan.GroupId = types.StringValue(groupId)
-	plan.Id = types.StringValue(fmt.Sprintf("%s%s%s", groupId, tccommon.FILED_SP, ruleId))
+
+	r.refreshPlan(ctx, &plan, newRuleIds)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)
 }
 
-// Delete handles rule deletion.
+// Delete handles `terraform destroy`.
 func (r *FwmSecurityGroupRuleResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
 	var state FwmSecurityGroupRuleResourceModel
 	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
@@ -446,180 +469,191 @@ func (r *FwmSecurityGroupRuleResource) Delete(ctx context.Context, req resource.
 		return
 	}
 
-	groupId, ruleId, ok := splitSecurityGroupRuleId(state.Id.ValueString())
+	groupId, ruleIds, ok := splitFwmSecurityGroupRuleId(state.Id.ValueString())
 	if !ok {
 		resp.Diagnostics.AddError(
-			"Invalid resource identifier",
-			fmt.Sprintf("Expected an identifier in the form `<group_id>#<rule_id>`, got %q.", state.Id.ValueString()),
+			"Invalid resource ID",
+			fmt.Sprintf("tencentcloud_fwm_security_group_rule id is broken, id is %q", state.Id.ValueString()),
 		)
 		return
 	}
 
-	if !state.GroupId.IsNull() && !state.GroupId.IsUnknown() && state.GroupId.ValueString() != "" {
-		groupId = state.GroupId.ValueString()
+	ruleIdPointers := make([]*string, 0, len(ruleIds))
+	for _, ruleId := range ruleIds {
+		id := ruleId
+		ruleIdPointers = append(ruleIdPointers, &id)
 	}
 
-	if err := NewFwmService(r.Client()).DeleteFwmSecurityGroupRuleById(ctx, groupId, ruleId); err != nil {
+	service := NewFwmService(r.Client())
+	if err := service.DeleteFwmSecurityGroupRule(ctx, groupId, ruleIdPointers); err != nil {
 		resp.Diagnostics.AddError(
 			"Error deleting FWM security group rule",
-			fmt.Sprintf("DeleteSecurityGroupRule failed for rule %s of group %s: %v", ruleId, groupId, err),
+			fmt.Sprintf("DeleteSecurityGroupRule failed for group %s rules %v: %v", groupId, ruleIds, err),
 		)
 		return
 	}
-
-	// The framework removes the resource from state after a successful delete.
 }
 
-// ImportState is embedded via fw.WithImportByID for `terraform import <id>` passthrough,
-// where `<id>` must be `<group_id>#<rule_id>`.
-
-// resolveGroupIdOfRule returns the rule group ID configured on the resource.
-func resolveGroupIdOfRule(plan FwmSecurityGroupRuleResourceModel) (string, bool) {
-	if plan.GroupId.IsNull() || plan.GroupId.IsUnknown() {
-		return "", false
+// ImportState supports `terraform import` using the `<group_id>#<rule_id>...` form.
+func (r *FwmSecurityGroupRuleResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	if _, _, ok := splitFwmSecurityGroupRuleId(req.ID); !ok {
+		resp.Diagnostics.AddError(
+			"Invalid import ID",
+			fmt.Sprintf("Expected import ID in the form `<group_id>%s<rule_id>...`, got %q", tccommon.FILED_SP, req.ID),
+		)
+		return
 	}
+	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("id"), req.ID)...)
+}
 
-	groupId := plan.GroupId.ValueString()
+// refreshPlan queries every rule tracked by this resource and fills the
+// computed `rule` attribute. It also back-fills `rules` elements when the
+// configured element carries the same rule ID.
+func (r *FwmSecurityGroupRuleResource) refreshPlan(ctx context.Context, m *FwmSecurityGroupRuleResourceModel, ruleIds []string) {
+	groupId := m.GroupId.ValueString()
 	if groupId == "" {
-		return "", false
+		parsedGroupId, _, ok := splitFwmSecurityGroupRuleId(m.Id.ValueString())
+		if ok {
+			groupId = parsedGroupId
+		}
 	}
 
-	return groupId, true
+	service := NewFwmService(r.Client())
+	details := make([]FwmSecurityGroupRuleRuleModel, 0, len(ruleIds))
+	for _, ruleId := range ruleIds {
+		rule, err := service.DescribeFwmSecurityGroupRuleById(ctx, groupId, ruleId)
+		if err != nil {
+			log.Printf("[WARN] describe tencentcloud_fwm_security_group_rule failed, group_id=%s rule_id=%s, error: %v", groupId, ruleId, err)
+			continue
+		}
+		if rule == nil {
+			log.Printf("[WARN] tencentcloud_fwm_security_group_rule not found, group_id=%s rule_id=%s", groupId, ruleId)
+			continue
+		}
+		details = append(details, flattenFwmSecurityGroupRuleRule(rule))
+	}
+
+	if len(details) > 0 {
+		m.Rule = details
+	} else if len(m.Rule) == 0 {
+		m.Rule = nil
+	}
 }
 
-// splitSecurityGroupRuleId parses `<group_id>#<rule_id>`.
-func splitSecurityGroupRuleId(id string) (string, string, bool) {
+// expandFwmSecurityGroupRuleRules converts the `rules` list of the model into
+// the SDK type consumed by CreateSecurityGroupRule.
+func expandFwmSecurityGroupRuleRules(rules []FwmSecurityGroupRuleRulesModel) []*fwmv20250611.SecurityGroupRule {
+	result := make([]*fwmv20250611.SecurityGroupRule, 0, len(rules))
+	for i := range rules {
+		result = append(result, expandFwmSecurityGroupRuleRule(&rules[i]))
+	}
+	return result
+}
+
+// expandFwmSecurityGroupRuleRule converts one `rules` element into the SDK type.
+func expandFwmSecurityGroupRuleRule(rule *FwmSecurityGroupRuleRulesModel) *fwmv20250611.SecurityGroupRule {
+	item := &fwmv20250611.SecurityGroupRule{}
+	if !rule.IpVersion.IsNull() && !rule.IpVersion.IsUnknown() {
+		item.IpVersion = rule.IpVersion.ValueStringPointer()
+	}
+	if !rule.SourceContent.IsNull() && !rule.SourceContent.IsUnknown() {
+		item.SourceContent = rule.SourceContent.ValueStringPointer()
+	}
+	if !rule.SourceType.IsNull() && !rule.SourceType.IsUnknown() {
+		item.SourceType = rule.SourceType.ValueStringPointer()
+	}
+	if !rule.DestContent.IsNull() && !rule.DestContent.IsUnknown() {
+		item.DestContent = rule.DestContent.ValueStringPointer()
+	}
+	if !rule.DestType.IsNull() && !rule.DestType.IsUnknown() {
+		item.DestType = rule.DestType.ValueStringPointer()
+	}
+	if !rule.Protocol.IsNull() && !rule.Protocol.IsUnknown() {
+		item.Protocol = rule.Protocol.ValueStringPointer()
+	}
+	if !rule.Port.IsNull() && !rule.Port.IsUnknown() {
+		item.Port = rule.Port.ValueStringPointer()
+	}
+	if !rule.ServiceTemplateId.IsNull() && !rule.ServiceTemplateId.IsUnknown() {
+		item.ServiceTemplateId = rule.ServiceTemplateId.ValueStringPointer()
+	}
+	if !rule.RuleAction.IsNull() && !rule.RuleAction.IsUnknown() {
+		item.RuleAction = rule.RuleAction.ValueStringPointer()
+	}
+	if !rule.Description.IsNull() && !rule.Description.IsUnknown() {
+		item.Description = rule.Description.ValueStringPointer()
+	}
+	if !rule.OrderIndex.IsNull() && !rule.OrderIndex.IsUnknown() {
+		item.OrderIndex = rule.OrderIndex.ValueInt64Pointer()
+	}
+	if !rule.RuleId.IsNull() && !rule.RuleId.IsUnknown() {
+		item.RuleId = rule.RuleId.ValueStringPointer()
+	}
+	if !rule.Scope.IsNull() && !rule.Scope.IsUnknown() {
+		item.Scope = rule.Scope.ValueStringPointer()
+	}
+	if !rule.ProtocolPortType.IsNull() && !rule.ProtocolPortType.IsUnknown() {
+		item.ProtocolPortType = rule.ProtocolPortType.ValueInt64Pointer()
+	}
+	if !rule.BelongMemberId.IsNull() && !rule.BelongMemberId.IsUnknown() {
+		item.BelongMemberId = rule.BelongMemberId.ValueStringPointer()
+	}
+	return item
+}
+
+// flattenFwmSecurityGroupRuleRule converts the SDK rule detail into the
+// computed `rule` element of the model.
+func flattenFwmSecurityGroupRuleRule(rule *fwmv20250611.SgRuleResp) FwmSecurityGroupRuleRuleModel {
+	return FwmSecurityGroupRuleRuleModel{
+		RuleId:            types.StringPointerValue(rule.RuleId),
+		Sequence:          types.Int64PointerValue(rule.Sequence),
+		Region:            types.StringPointerValue(rule.Region),
+		IpVersion:         types.StringPointerValue(rule.IpVersion),
+		SrcContent:        types.StringPointerValue(rule.SrcContent),
+		SrcType:           types.StringPointerValue(rule.SrcType),
+		DstContent:        types.StringPointerValue(rule.DstContent),
+		DstType:           types.StringPointerValue(rule.DstType),
+		Protocol:          types.StringPointerValue(rule.Protocol),
+		ProtocolPortType:  types.Int64PointerValue(rule.ProtocolPortType),
+		ServiceTemplateId: types.StringPointerValue(rule.ServiceTemplateId),
+		DstPort:           types.StringPointerValue(rule.DstPort),
+		RuleAction:        types.StringPointerValue(rule.RuleAction),
+		Detail:            types.StringPointerValue(rule.Detail),
+		RuleSource:        types.StringPointerValue(rule.RuleSource),
+		Scope:             types.StringPointerValue(rule.Scope),
+	}
+}
+
+// splitFwmSecurityGroupRuleId parses `<group_id>#<rule_id>...#<rule_id>`.
+func splitFwmSecurityGroupRuleId(id string) (string, []string, bool) {
 	parts := strings.Split(id, tccommon.FILED_SP)
-	if len(parts) != 2 || parts[0] == "" || parts[1] == "" {
-		return "", "", false
+	if len(parts) < 2 || parts[0] == "" {
+		return "", nil, false
 	}
 
-	return parts[0], parts[1], true
+	ruleIds := make([]string, 0, len(parts)-1)
+	for _, part := range parts[1:] {
+		if part == "" {
+			return "", nil, false
+		}
+		ruleIds = append(ruleIds, part)
+	}
+	return parts[0], ruleIds, true
 }
 
-// buildSecurityGroupRule converts the model of one rule into the SDK struct.
-func buildSecurityGroupRule(item FwmSecurityGroupRuleRuleModel) *fwmv20250611.SecurityGroupRule {
-	rule := &fwmv20250611.SecurityGroupRule{}
+// fwmStringUseStateForUnknown copies the prior state value into the plan when
+// the new plan value is unknown, keeping computed identifiers stable.
+type fwmStringUseStateForUnknown struct{}
 
-	if !item.IpVersion.IsNull() && !item.IpVersion.IsUnknown() {
-		rule.IpVersion = item.IpVersion.ValueStringPointer()
-	}
-	if !item.SourceContent.IsNull() && !item.SourceContent.IsUnknown() {
-		rule.SourceContent = item.SourceContent.ValueStringPointer()
-	}
-	if !item.SourceType.IsNull() && !item.SourceType.IsUnknown() {
-		rule.SourceType = item.SourceType.ValueStringPointer()
-	}
-	if !item.DestContent.IsNull() && !item.DestContent.IsUnknown() {
-		rule.DestContent = item.DestContent.ValueStringPointer()
-	}
-	if !item.DestType.IsNull() && !item.DestType.IsUnknown() {
-		rule.DestType = item.DestType.ValueStringPointer()
-	}
-	if !item.Protocol.IsNull() && !item.Protocol.IsUnknown() {
-		rule.Protocol = item.Protocol.ValueStringPointer()
-	}
-	if !item.Port.IsNull() && !item.Port.IsUnknown() {
-		rule.Port = item.Port.ValueStringPointer()
-	}
-	if !item.ServiceTemplateId.IsNull() && !item.ServiceTemplateId.IsUnknown() {
-		rule.ServiceTemplateId = item.ServiceTemplateId.ValueStringPointer()
-	}
-	if !item.RuleAction.IsNull() && !item.RuleAction.IsUnknown() {
-		rule.RuleAction = item.RuleAction.ValueStringPointer()
-	}
-	if !item.Description.IsNull() && !item.Description.IsUnknown() {
-		rule.Description = item.Description.ValueStringPointer()
-	}
-	if !item.OrderIndex.IsNull() && !item.OrderIndex.IsUnknown() {
-		rule.OrderIndex = item.OrderIndex.ValueInt64Pointer()
-	}
-	if !item.RuleId.IsNull() && !item.RuleId.IsUnknown() {
-		rule.RuleId = item.RuleId.ValueStringPointer()
-	}
-	if !item.Scope.IsNull() && !item.Scope.IsUnknown() {
-		rule.Scope = item.Scope.ValueStringPointer()
-	}
-	if !item.ProtocolPortType.IsNull() && !item.ProtocolPortType.IsUnknown() {
-		rule.ProtocolPortType = item.ProtocolPortType.ValueInt64Pointer()
-	}
-	if !item.BelongMemberId.IsNull() && !item.BelongMemberId.IsUnknown() {
-		rule.BelongMemberId = item.BelongMemberId.ValueStringPointer()
-	}
-
-	return rule
-}
-
-// toSecurityGroupRuleDetailModel converts the cloud side rule detail into the model.
-func toSecurityGroupRuleDetailModel(item *fwmv20250611.SgRuleResp) FwmSecurityGroupRuleDetailModel {
-	if item == nil {
-		return FwmSecurityGroupRuleDetailModel{}
-	}
-
-	return FwmSecurityGroupRuleDetailModel{
-		RuleId:            types.StringPointerValue(item.RuleId),
-		Sequence:          types.Int64PointerValue(item.Sequence),
-		Region:            types.StringPointerValue(item.Region),
-		IpVersion:         types.StringPointerValue(item.IpVersion),
-		SrcContent:        types.StringPointerValue(item.SrcContent),
-		SrcType:           types.StringPointerValue(item.SrcType),
-		DstContent:        types.StringPointerValue(item.DstContent),
-		DstType:           types.StringPointerValue(item.DstType),
-		Protocol:          types.StringPointerValue(item.Protocol),
-		ProtocolPortType:  types.Int64PointerValue(item.ProtocolPortType),
-		ServiceTemplateId: types.StringPointerValue(item.ServiceTemplateId),
-		DstPort:           types.StringPointerValue(item.DstPort),
-		RuleAction:        types.StringPointerValue(item.RuleAction),
-		Detail:            types.StringPointerValue(item.Detail),
-		RuleSource:        types.StringPointerValue(item.RuleSource),
-		Scope:             types.StringPointerValue(item.Scope),
-	}
-}
-
-// setSecurityGroupRuleDetail writes the computed rule detail into the model.
-func setSecurityGroupRuleDetail(model *FwmSecurityGroupRuleResourceModel, item *fwmv20250611.SgRuleResp) {
-	model.Rule = []FwmSecurityGroupRuleDetailModel{toSecurityGroupRuleDetailModel(item)}
-}
-
-// stringRequiresReplaceRule forces resource replacement when a string attribute changes.
-type stringRequiresReplaceRule struct{}
-
-func (stringRequiresReplaceRule) Description(_ context.Context) string {
-	return "If the value of this attribute changes, Terraform will destroy and recreate the resource."
-}
-
-func (stringRequiresReplaceRule) MarkdownDescription(ctx context.Context) string {
-	return stringRequiresReplaceRule{}.Description(ctx)
-}
-
-func (stringRequiresReplaceRule) PlanModifyString(_ context.Context, req planmodifier.StringRequest, resp *planmodifier.StringResponse) {
-	if req.StateValue.IsNull() {
-		// Resource is being created; nothing to replace.
-		return
-	}
-	if req.PlanValue.IsNull() {
-		// Resource is being destroyed; nothing to replace.
-		return
-	}
-	if !req.PlanValue.Equal(req.StateValue) {
-		resp.RequiresReplace = true
-	}
-}
-
-// stringUseStateForUnknownRule copies the prior state value into the plan when
-// the new plan value is unknown, used for the computed `id` attribute so that
-// it stays stable across refreshes.
-type stringUseStateForUnknownRule struct{}
-
-func (stringUseStateForUnknownRule) Description(_ context.Context) string {
+func (fwmStringUseStateForUnknown) Description(_ context.Context) string {
 	return "Once set, the value of this attribute in state will not change."
 }
 
-func (stringUseStateForUnknownRule) MarkdownDescription(ctx context.Context) string {
-	return stringUseStateForUnknownRule{}.Description(ctx)
+func (fwmStringUseStateForUnknown) MarkdownDescription(ctx context.Context) string {
+	return fwmStringUseStateForUnknown{}.Description(ctx)
 }
 
-func (stringUseStateForUnknownRule) PlanModifyString(_ context.Context, req planmodifier.StringRequest, resp *planmodifier.StringResponse) {
+func (fwmStringUseStateForUnknown) PlanModifyString(_ context.Context, req planmodifier.StringRequest, resp *planmodifier.StringResponse) {
 	if req.StateValue.IsNull() {
 		return
 	}

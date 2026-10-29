@@ -1,3 +1,0 @@
-```release-note:enhancement
-resource/tencentcloud_clb_log_topic: support `period` parameter to configure log retention lifecycle
-```

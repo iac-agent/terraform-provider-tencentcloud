@@ -1,3 +1,0 @@
-```release-note:new-resource
-tencentcloud_dlc_attach_user_policyr_attachment
-```
