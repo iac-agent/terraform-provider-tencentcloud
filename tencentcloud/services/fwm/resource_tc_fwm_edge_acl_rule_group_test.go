@@ -272,6 +272,7 @@ func ruleRawValue(t *testing.T, ruleType tftypes.Object, values map[string]tftyp
 	t.Helper()
 	return tftypes.NewValue(ruleType, values)
 }
+
 // ruleObjectType returns the tftypes.Object of one rules element.
 func ruleObjectType(t *testing.T, sch *schema.Schema) tftypes.Object {
 	t.Helper()
