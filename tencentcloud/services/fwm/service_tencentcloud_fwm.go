@@ -553,3 +553,170 @@ func (me *FwmService) DescribeFwmNatAclRuleById(ctx context.Context, groupId, ru
 
 	return
 }
+
+func (me *FwmService) CreateFwmVpcAclRule(ctx context.Context, request *fwmv20250611.CreateVpcAclRuleRequest) (ruleIds []*string, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		response, e := me.client.UseFwmV20250611Client().CreateVpcAclRuleWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response == nil || response.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Create fwm_vpc_acl_rule failed, Response is nil."))
+		}
+
+		ruleIds = response.Response.RuleIds
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// DescribeFwmVpcAclRuleById looks up a single rule inside a rule group. The
+// Describe API has no "get by id" contract, so the RuleId filter is sent
+// explicitly and the result is matched by RuleId on the client side: a rule
+// missing from the page means "does not exist", it must never be replaced by
+// "the first element of the list".
+func (me *FwmService) DescribeFwmVpcAclRuleById(ctx context.Context, groupId, ruleId string) (rule *fwmv20250611.VpcAclRuleResp, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewDescribeVpcAclRulesRequest()
+	request.GroupId = helper.String(groupId)
+	request.Limit = helper.Int64(100)
+	request.Offset = helper.Int64(0)
+	request.Filters = []*fwmv20250611.CommonFilter{
+		{
+			Name:         helper.String("RuleId"),
+			Values:       []*string{helper.String(ruleId)},
+			OperatorType: helper.Int64(1),
+		},
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		response, e := me.client.UseFwmV20250611Client().DescribeVpcAclRulesWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response == nil || response.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Describe fwm_vpc_acl_rule failed, Response is nil."))
+		}
+
+		for _, item := range response.Response.Rules {
+			if item == nil || item.RuleId == nil {
+				continue
+			}
+			if *item.RuleId == ruleId {
+				rule = item
+				break
+			}
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+func (me *FwmService) ModifyFwmVpcAclRule(ctx context.Context, request *fwmv20250611.ModifyVpcAclRuleRequest) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		response, e := me.client.UseFwmV20250611Client().ModifyVpcAclRuleWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response == nil || response.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Modify fwm_vpc_acl_rule failed, Response is nil."))
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+func (me *FwmService) DeleteFwmVpcAclRule(ctx context.Context, groupId, ruleId string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewDeleteVpcAclRuleRequest()
+	request.GroupId = helper.String(groupId)
+	request.RuleIds = helper.Strings([]string{ruleId})
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		response, e := me.client.UseFwmV20250611Client().DeleteVpcAclRuleWithContext(ctx, request)
+		if e != nil {
+			if tccommon.IsExpectError(e, []string{"ResourceNotFound"}) {
+				return nil
+			}
+			return tccommon.RetryError(e)
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response == nil || response.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Delete fwm_vpc_acl_rule failed, Response is nil."))
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
