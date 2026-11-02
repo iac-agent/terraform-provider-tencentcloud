@@ -68,6 +68,39 @@ resource "tencentcloud_nat_gateway" "example" {
 }
 ```
 
+Create a NAT gateway with deletion protection enabled.
+
+```hcl
+resource "tencentcloud_vpc" "vpc" {
+  cidr_block = "10.0.0.0/16"
+  name       = "tf_nat_gateway_vpc"
+}
+
+resource "tencentcloud_eip" "eip_example1" {
+  name = "tf_nat_gateway_eip1"
+}
+
+resource "tencentcloud_eip" "eip_example2" {
+  name = "tf_nat_gateway_eip2"
+}
+
+resource "tencentcloud_nat_gateway" "example" {
+  name                        = "tf_example_nat_gateway"
+  vpc_id                      = tencentcloud_vpc.vpc.id
+  nat_product_version         = 1
+  bandwidth                   = 100
+  max_concurrent              = 1000000
+  deletion_protection_enabled = true
+  assigned_eip_set = [
+    tencentcloud_eip.eip_example1.public_ip,
+    tencentcloud_eip.eip_example2.public_ip,
+  ]
+  tags = {
+    createBy = "terraform"
+  }
+}
+```
+
 Or set stock public ip addresses bandwidth out
 
 ```hcl

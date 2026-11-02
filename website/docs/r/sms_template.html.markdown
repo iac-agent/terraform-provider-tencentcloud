@@ -40,7 +40,7 @@ The following arguments are supported:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-
+* `status_code` - Template status. 0: approved and effective, 1: pending review, 2: approved pending activation, -1: review failed or rejected.
 
 ## API Reference
 
