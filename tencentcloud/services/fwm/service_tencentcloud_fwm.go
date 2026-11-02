@@ -302,6 +302,58 @@ func (me *FwmService) ModifyFwmMemberGroup(ctx context.Context, userMemberId, gr
 	return
 }
 
+// DescribeFwmOrganMembersByFilter queries one page of FWM organization members.
+// filters, by and order are passed through as-is; limit/offset implement paging.
+func (me *FwmService) DescribeFwmOrganMembersByFilter(ctx context.Context, filters []*fwmv20250611.CommonFilter, by, order string, limit, offset int64) (members []*fwmv20250611.OrganMemberItem, totalCount int64, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewDescribeOrganMembersRequest()
+	if len(filters) > 0 {
+		request.Filters = filters
+	}
+	if by != "" {
+		request.By = helper.String(by)
+	}
+	if order != "" {
+		request.Order = helper.String(order)
+	}
+	request.Limit = helper.Int64(limit)
+	request.Offset = helper.Int64(offset)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseFwmV20250611Client().DescribeOrganMembersWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Describe fwm organ members failed, Response is nil."))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+		members = result.Response.Members
+		if result.Response.TotalCount != nil {
+			totalCount = *result.Response.TotalCount
+		}
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
 func (me *FwmService) FwmMemberGroupIdToAppIdMemberId(id string) (appId, memberId string, err error) {
 	parts := strings.Split(id, tccommon.FILED_SP)
 	if len(parts) != 2 {
