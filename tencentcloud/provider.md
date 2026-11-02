@@ -2831,3 +2831,6 @@ tencentcloud_fwm_strategy
 tencentcloud_fwm_edge_acl_rule
 tencentcloud_fwm_security_group_rule
 tencentcloud_fwm_nat_acl_rule
+
+Action
+tencentcloud_fwm_dispatch_strategy

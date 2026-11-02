@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"strings"
+	"time"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	sdkErrors "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
@@ -552,4 +553,199 @@ func (me *FwmService) DescribeFwmNatAclRuleById(ctx context.Context, groupId, ru
 	}
 
 	return
+}
+
+// FWM strategy dispatch status values returned by DescribeStrategyDispatchStatus.
+const (
+	// FwmStrategyDispatchStatusNoChange means no strategy change is pending.
+	FwmStrategyDispatchStatusNoChange int64 = 0
+	// FwmStrategyDispatchStatusDispatching means the dispatch is in progress.
+	FwmStrategyDispatchStatusDispatching int64 = 1
+	// FwmStrategyDispatchStatusSuccess means the dispatch finished successfully.
+	FwmStrategyDispatchStatusSuccess int64 = 2
+	// FwmStrategyDispatchStatusFailed means the dispatch failed.
+	FwmStrategyDispatchStatusFailed int64 = 3
+	// FwmStrategyDispatchStatusPendingUpdate means an update is waiting to be dispatched.
+	FwmStrategyDispatchStatusPendingUpdate int64 = 4
+)
+
+// FwmStrategyDispatchAbortStatus is the DispatchStrategy request value that aborts
+// an ongoing dispatch instead of starting a new one.
+const FwmStrategyDispatchAbortStatus int64 = 2
+
+// DispatchFwmStrategy triggers a rule dispatch through the DispatchStrategy API.
+// product limits the dispatch scope; an empty product means every product.
+// status is the raw DispatchStrategy status value (1: dispatch, 2: abort).
+func (me *FwmService) DispatchFwmStrategy(ctx context.Context, product string, status int64) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewDispatchStrategyRequest()
+	request.Status = helper.Int64(status)
+	if product != "" {
+		request.Product = helper.String(product)
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+
+	response, err := me.client.UseFwmClient().DispatchStrategyWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("Dispatch fwm strategy failed, Response is nil.")
+		return
+	}
+
+	return
+}
+
+// DescribeFwmStrategyDispatchStatus returns the raw status progress of the
+// strategy dispatch scoped by product. An empty product means every product.
+func (me *FwmService) DescribeFwmStrategyDispatchStatus(ctx context.Context, product string) (ret *fwmv20250611.DescribeStrategyDispatchStatusResponseParams, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewDescribeStrategyDispatchStatusRequest()
+	if product != "" {
+		request.Product = helper.String(product)
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseFwmClient().DescribeStrategyDispatchStatusWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Describe fwm strategy dispatch status failed, Response is nil."))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		ret = result.Response
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// WaitFwmStrategyDispatch polls DescribeStrategyDispatchStatus until the dispatch
+// reaches a terminal status (success) or a terminal failure status, or until the
+// timeout is exceeded. Only status 2 is treated as completion: 1 (dispatching), 4
+// (pending update) and 0 (no change) are intermediate and keep the poll running.
+// For status 3 (failed) the failure reason reported by the cloud is returned.
+func (me *FwmService) WaitFwmStrategyDispatch(ctx context.Context, product string, timeout time.Duration, interval time.Duration) (errRet error) {
+	var last *fwmv20250611.DescribeStrategyDispatchStatusResponseParams
+	deadline := time.Now().Add(timeout)
+
+	for {
+		statusParams, e := me.DescribeFwmStrategyDispatchStatus(ctx, product)
+		if e != nil {
+			errRet = fmt.Errorf("querying dispatch status failed: %v", e)
+			return
+		}
+		last = statusParams
+
+		if endErr, done := fwmStrategyDispatchTerminalState(statusParams); done {
+			errRet = endErr
+			return
+		}
+
+		// The remaining budget may be shorter than one interval; never sleep past it.
+		remaining := time.Until(deadline)
+		if remaining <= 0 {
+			errRet = fmt.Errorf(
+				"dispatch did not converge within %s: last observed %s",
+				timeout,
+				fwmStrategyDispatchSnapshot(last),
+			)
+			return
+		}
+		if interval < remaining {
+			remaining = interval
+		}
+		select {
+		case <-ctx.Done():
+			errRet = fmt.Errorf("dispatch wait was cancelled: %v; last observed %s", ctx.Err(), fwmStrategyDispatchSnapshot(last))
+			return
+		case <-time.After(remaining):
+		}
+	}
+}
+
+// fwmStrategyDispatchTerminalState reports whether the observed dispatch status is
+// terminal, and the resulting error (nil when the dispatch succeeded). Only status 2
+// counts as success; status 3 counts as a failure carrying the cloud-side reason.
+func fwmStrategyDispatchTerminalState(p *fwmv20250611.DescribeStrategyDispatchStatusResponseParams) (error, bool) {
+	if p == nil || p.Status == nil {
+		return nil, false
+	}
+
+	switch *p.Status {
+	case FwmStrategyDispatchStatusSuccess:
+		return nil, true
+	case FwmStrategyDispatchStatusFailed:
+		reason := "the cloud did not report an error message"
+		if p.ErrorMsg != nil && *p.ErrorMsg != "" {
+			reason = *p.ErrorMsg
+		}
+		return fmt.Errorf("dispatch failed: %s", reason), true
+	default:
+		return nil, false
+	}
+}
+
+// fwmStrategyDispatchSnapshot renders the last observed dispatch status so a timeout
+// can be told apart from a wrong completion predicate.
+func fwmStrategyDispatchSnapshot(p *fwmv20250611.DescribeStrategyDispatchStatusResponseParams) string {
+	if p == nil {
+		return "status=<nil>"
+	}
+
+	value := func(v *string) string {
+		if v == nil {
+			return "<nil>"
+		}
+		return *v
+	}
+	number := func(v *int64) string {
+		if v == nil {
+			return "<nil>"
+		}
+		return fmt.Sprintf("%d", *v)
+	}
+
+	progress := "<nil>"
+	if p.Progress != nil {
+		progress = fmt.Sprintf("%v", *p.Progress)
+	}
+
+	return fmt.Sprintf(
+		"status=%s, progress=%s, start_time=%s, end_time=%s, rule_group_num=%s, error_msg=%s",
+		number(p.Status),
+		progress,
+		value(p.StartTime),
+		value(p.EndTime),
+		number(p.RuleGroupNum),
+		value(p.ErrorMsg),
+	)
 }
