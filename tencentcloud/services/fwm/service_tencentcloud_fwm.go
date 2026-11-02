@@ -553,3 +553,264 @@ func (me *FwmService) DescribeFwmNatAclRuleById(ctx context.Context, groupId, ru
 
 	return
 }
+
+// EdgeAclRuleGroupProduct is the fixed Product value of the internet border
+// (cfw_edge_acl) rule group. CreateEdgeAclRuleGroup and DescribeRuleGroups
+// both require it, so the provider hard-codes it instead of exposing an
+// attribute the user could set to an unsupported value.
+const EdgeAclRuleGroupProduct = "cfw_edge_acl"
+
+// CreateFwmEdgeAclRuleGroup creates one internet border rule group and
+// returns the group id assigned by the cloud.
+func (me *FwmService) CreateFwmEdgeAclRuleGroup(ctx context.Context, groupName string, rules []*fwmv20250611.EdgeAclRuleInfo) (groupId string, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewCreateEdgeAclRuleGroupRequest()
+	request.Product = helper.String(EdgeAclRuleGroupProduct)
+	if groupName != "" {
+		request.GroupName = helper.String(groupName)
+	}
+	request.Rules = rules
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseFwmV20250611Client().CreateEdgeAclRuleGroupWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Create fwm edge acl rule group failed, Response is nil."))
+		}
+
+		if result.Response.GroupId == nil || *result.Response.GroupId == "" {
+			return resource.NonRetryableError(fmt.Errorf("Create fwm edge acl rule group failed, GroupId is empty."))
+		}
+
+		groupId = *result.Response.GroupId
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// DescribeFwmEdgeAclRuleGroupById reads one internet border rule group by id.
+//
+// DescribeRuleGroups is a list API; GroupId is passed as an exact-match filter
+// and the returned items are matched again locally, so a caller never has to
+// trust position 0 of the list.
+func (me *FwmService) DescribeFwmEdgeAclRuleGroupById(ctx context.Context, groupId string) (ruleGroup *fwmv20250611.RuleGroupResp, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewDescribeRuleGroupsRequest()
+	request.Product = helper.String(EdgeAclRuleGroupProduct)
+	request.Filters = []*fwmv20250611.CommonFilter{
+		{
+			Name:         helper.String("GroupId"),
+			Values:       []*string{helper.String(groupId)},
+			OperatorType: helper.Int64(1),
+		},
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	var (
+		offset int64 = 0
+		limit  int64 = 100
+	)
+	for {
+		request.Offset = helper.Int64(offset)
+		request.Limit = helper.Int64(limit)
+
+		response := fwmv20250611.NewDescribeRuleGroupsResponse()
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+			ratelimit.Check(request.GetAction())
+			result, e := me.client.UseFwmV20250611Client().DescribeRuleGroupsWithContext(ctx, request)
+			if e != nil {
+				return tccommon.RetryError(e)
+			}
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+			if result == nil || result.Response == nil {
+				return resource.NonRetryableError(fmt.Errorf("Describe fwm rule groups failed, Response is nil."))
+			}
+
+			response = result
+			return nil
+		})
+
+		if err != nil {
+			errRet = err
+			return
+		}
+
+		for _, item := range response.Response.RuleGroups {
+			if item != nil && item.GroupId != nil && *item.GroupId == groupId {
+				ruleGroup = item
+				return
+			}
+		}
+
+		if len(response.Response.RuleGroups) < int(limit) {
+			break
+		}
+
+		offset += limit
+	}
+
+	return
+}
+
+// DescribeFwmEdgeAclRulesByGroupId reads every rule of one rule group.
+//
+// DescribeEdgeAclRules requires Direction, so both directions are queried and
+// merged; the direction filter is the only stable way to page through the
+// rules of a group.
+func (me *FwmService) DescribeFwmEdgeAclRulesByGroupId(ctx context.Context, groupId string) (rules []*fwmv20250611.EdgeAclRuleResp, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s describe fwm edge acl rules of group [%s] fail, reason[%s]\n", logId, groupId, errRet.Error())
+		}
+	}()
+
+	directions := []int64{0, 1}
+	for _, direction := range directions {
+		var (
+			offset int64 = 0
+			limit  int64 = 100
+		)
+		for {
+			request := fwmv20250611.NewDescribeEdgeAclRulesRequest()
+			request.GroupId = helper.String(groupId)
+			request.Direction = helper.Int64(direction)
+			request.Offset = helper.Int64(offset)
+			request.Limit = helper.Int64(limit)
+			request.Order = helper.String("asc")
+			request.By = helper.String("Sequence")
+
+			response := fwmv20250611.NewDescribeEdgeAclRulesResponse()
+			err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+				ratelimit.Check(request.GetAction())
+				result, e := me.client.UseFwmV20250611Client().DescribeEdgeAclRulesWithContext(ctx, request)
+				if e != nil {
+					return tccommon.RetryError(e)
+				}
+				log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+				if result == nil || result.Response == nil {
+					return resource.NonRetryableError(fmt.Errorf("Describe fwm edge acl rules failed, Response is nil."))
+				}
+
+				response = result
+				return nil
+			})
+
+			if err != nil {
+				errRet = err
+				return
+			}
+
+			rules = append(rules, response.Response.Rules...)
+			if len(response.Response.Rules) < int(limit) {
+				break
+			}
+
+			offset += limit
+		}
+	}
+
+	return
+}
+
+// ModifyFwmEdgeAclRuleGroup renames one rule group.
+//
+// ModifyRuleGroup only accepts GroupName; the rules of a group cannot be
+// edited through it, which is why the caller turns rule changes into a
+// replacement.
+func (me *FwmService) ModifyFwmEdgeAclRuleGroup(ctx context.Context, groupId, groupName string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewModifyRuleGroupRequest()
+	request.GroupId = helper.String(groupId)
+	request.GroupName = helper.String(groupName)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+
+	response, err := me.client.UseFwmV20250611Client().ModifyRuleGroupWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	return
+}
+
+// DeleteFwmEdgeAclRuleGroup deletes exactly one rule group.
+//
+// DeleteRuleGroup accepts a batch of ids; only the single managed id is ever
+// passed so a destroy can never remove a rule group that Terraform does not
+// own.
+func (me *FwmService) DeleteFwmEdgeAclRuleGroup(ctx context.Context, groupId string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewDeleteRuleGroupRequest()
+	request.GroupIds = []*string{helper.String(groupId)}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseFwmV20250611Client().DeleteRuleGroupWithContext(ctx, request)
+		if e != nil {
+			if ee, ok := e.(*sdkErrors.TencentCloudSDKError); ok {
+				if strings.Contains(ee.GetCode(), "ResourceNotFound") {
+					return nil
+				}
+			}
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Delete fwm edge acl rule group failed, Response is nil."))
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
