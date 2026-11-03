@@ -182,6 +182,7 @@ func resourceTencentCloudEniIpv6AddressCreate(d *schema.ResourceData, meta inter
 		return err
 	}
 
+	log.Printf("[DEBUG]%s api[%s] check ipv6 address set, networkInterfaceId: [%s]\n", logId, request.GetAction(), networkInterfaceId)
 	if response.Response.Ipv6AddressSet == nil || len(response.Response.Ipv6AddressSet) < 1 {
 		return fmt.Errorf("assign ipv6 addresses failed.")
 	}
@@ -218,8 +219,9 @@ func resourceTencentCloudEniIpv6AddressRead(d *schema.ResourceData, meta interfa
 	}
 
 	if len(enis) < 1 {
+		log.Printf("[CRUD] eni_ipv6_address id=%s", d.Id())
 		d.SetId("")
-		log.Printf("[WARN]%s resource `VpcIpv6EniAddress` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
+		log.Printf("[WARN]%s resource `VpcIpv6EniAddress` [%s] not found, please check if it has been deleted.\n", logId, networkInterfaceId)
 		return nil
 	}
 
@@ -261,8 +263,9 @@ func resourceTencentCloudEniIpv6AddressDelete(d *schema.ResourceData, meta inter
 	}
 
 	if len(enis) < 1 {
+		log.Printf("[CRUD] eni_ipv6_address id=%s", d.Id())
 		d.SetId("")
-		log.Printf("[WARN]%s resource `VpcIpv6EniAddress` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
+		log.Printf("[WARN]%s resource `VpcIpv6EniAddress` [%s] not found, please check if it has been deleted.\n", logId, networkInterfaceId)
 		return nil
 	}
 
