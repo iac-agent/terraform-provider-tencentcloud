@@ -1,4 +1,4 @@
-Provides a resource to create a FWM NAT ACL rule
+Provides a resource to create a FWM NAT boundary (NAT ACL) rule
 
 Example Usage
 
@@ -7,11 +7,12 @@ resource "tencentcloud_fwm_nat_acl_rule" "example" {
   group_id       = "fwmrg-in3q0qkq0n"
   direction      = 0
   source_content = "0.0.0.0/0"
-  source_type    = "net"
+  source_type    = "ip"
   target_content = "0.0.0.0/0"
-  target_type    = "net"
+  target_type    = "ip"
   protocol       = "ANY"
   rule_action    = "accept"
+  order_index    = 1
   scope          = "ALL"
   port           = "-1/-1"
   description    = "remark."
@@ -20,8 +21,11 @@ resource "tencentcloud_fwm_nat_acl_rule" "example" {
 
 Import
 
-FWM NAT ACL rule can be imported using the groupId#ruleId#direction, e.g.
+FWM NAT boundary rule can be imported using the `group_id#rule_id#direction` composite id, e.g.
 
 ```
 terraform import tencentcloud_fwm_nat_acl_rule.example fwmrg-in3q0qkq0n#7520b898-30ba-415d-ab27-ff4542071ea9#0
 ```
+
+~> **NOTE:** `group_id` has no dedicated field in the query response, so it is restored from the import id. The
+configured `order_index` is only verified through the rule priority (`sequence`) returned by the cloud API.
