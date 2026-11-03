@@ -163,6 +163,7 @@ func resourceTencentCloudTeoFunctionReplicaV2Read(d *schema.ResourceData, meta i
 		{
 			Name:   helper.String("replica-name"),
 			Values: []*string{helper.String(replicaName)},
+			Fuzzy:  helper.Bool(false),
 		},
 	}
 	request.Limit = helper.Int64(200)
