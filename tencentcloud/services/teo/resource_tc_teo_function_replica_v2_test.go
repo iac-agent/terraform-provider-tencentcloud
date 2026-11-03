@@ -113,6 +113,7 @@ func TestTeoFunctionReplicaV2_Read(t *testing.T) {
 		assert.Equal(t, 1, len(request.Filters))
 		assert.Equal(t, "replica-name", *request.Filters[0].Name)
 		assert.Equal(t, "test-replica", *request.Filters[0].Values[0])
+		assert.NotNil(t, request.Filters[0].Fuzzy)
 		assert.False(t, *request.Filters[0].Fuzzy)
 
 		resp := teov20220901.NewDescribeFunctionReplicasResponse()
