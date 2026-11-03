@@ -3668,3 +3668,168 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 
 	return
 }
+
+func (me *TeoService) CreateTeoFunctionReplica(ctx context.Context, zoneId, functionId, replicaName, content string, remark *string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teov20220901.NewCreateFunctionReplicaRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.FunctionId = helper.String(functionId)
+	request.ReplicaName = helper.String(replicaName)
+	request.Content = helper.String(content)
+	if remark != nil {
+		request.Remark = remark
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().CreateFunctionReplicaWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+	}
+
+	return
+}
+
+func (me *TeoService) DescribeTeoFunctionReplicaById(ctx context.Context, zoneId, functionId, replicaName string) (replica *teov20220901.FunctionReplica, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teov20220901.NewDescribeFunctionReplicasRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.FunctionId = helper.String(functionId)
+	request.Limit = helper.Int64(200)
+	request.Filters = []*teov20220901.AdvancedFilter{
+		{
+			Name:   helper.String("replica-name"),
+			Values: []*string{helper.String(replicaName)},
+		},
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	var response *teov20220901.DescribeFunctionReplicasResponse
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DescribeFunctionReplicasWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		response = result
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("DescribeFunctionReplicas returned empty response, functionId %s, replicaName %s", functionId, replicaName)
+		return
+	}
+
+	// The replica-name filter supports fuzzy matching, so the exact replica is
+	// matched client-side on the returned ReplicaName.
+	for _, item := range response.Response.FunctionReplicas {
+		if item.ReplicaName != nil && *item.ReplicaName == replicaName {
+			replica = item
+			return
+		}
+	}
+
+	return
+}
+
+func (me *TeoService) ModifyTeoFunctionReplica(ctx context.Context, zoneId, functionId, replicaName string, content, remark *string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teov20220901.NewModifyFunctionReplicaRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.FunctionId = helper.String(functionId)
+	request.ReplicaName = helper.String(replicaName)
+	if content != nil {
+		request.Content = content
+	}
+	if remark != nil {
+		request.Remark = remark
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().ModifyFunctionReplicaWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+	}
+
+	return
+}
+
+func (me *TeoService) DeleteTeoFunctionReplica(ctx context.Context, zoneId, functionId, replicaName string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teov20220901.NewDeleteFunctionReplicaRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.FunctionId = helper.String(functionId)
+	request.ReplicaNames = []*string{helper.String(replicaName)}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DeleteFunctionReplicaWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+	}
+
+	return
+}
