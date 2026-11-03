@@ -1,3 +1,3 @@
 ```release-note:enhancement
-resource/tencentcloud_eni_ipv6_address: add public_ip_address parameter support
+resource/tencentcloud_eni_ipv6_address: improve not-found and assign logging, and log the network interface id instead of the cleared resource id
 ```
