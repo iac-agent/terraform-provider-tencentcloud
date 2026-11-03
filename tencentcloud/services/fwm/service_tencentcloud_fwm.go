@@ -542,7 +542,17 @@ func (me *FwmService) DescribeFwmNatAclRuleById(ctx context.Context, groupId, ru
 			return nil
 		}
 
-		rule = response.Response.Rules[0]
+		// The RuleId filter is applied by the cloud side, but match locally as well so a
+		// mismatched rule can never be adopted as this resource.
+		for _, item := range response.Response.Rules {
+			if item == nil || item.RuleId == nil || *item.RuleId != ruleId {
+				continue
+			}
+
+			rule = item
+			break
+		}
+
 		return nil
 	})
 
