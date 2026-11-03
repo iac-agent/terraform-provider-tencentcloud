@@ -203,6 +203,7 @@ func resourceTencentCloudTeoDnsRecord50Create(d *schema.ResourceData, meta inter
 		}
 
 		if result == nil || result.Response == nil || result.Response.RecordId == nil || *result.Response.RecordId == "" {
+			log.Printf("[CRITAL]%s create teo dns_record_50 failed, logId=%s, d.Id()=%s, record id is empty, request body [%s]", logId, logId, d.Id(), request.ToJsonString())
 			return resource.NonRetryableError(fmt.Errorf("[CRITAL]%s create teo dns_record_50 failed, record id is empty, request body [%s]", logId, request.ToJsonString()))
 		}
 

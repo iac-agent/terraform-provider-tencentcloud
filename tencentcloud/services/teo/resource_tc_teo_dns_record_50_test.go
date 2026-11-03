@@ -528,6 +528,81 @@ func TestTeoDnsRecord50_Update_Success(t *testing.T) {
 	assert.Equal(t, "2024-01-02T00:00:00Z", d.Get("modified_on"))
 }
 
+// TestTeoDnsRecord50_Update_NoEntityChange tests Update does NOT call ModifyDnsRecords when only query params change
+func TestTeoDnsRecord50_Update_NoEntityChange(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaForDnsRecord50().client, "UseTeoV20220901Client", teoClient)
+
+	// ModifyDnsRecordsWithContext MUST NOT be called when only query params (filters/sort_by/sort_order/match) change.
+	patches.ApplyMethodFunc(teoClient, "ModifyDnsRecordsWithContext", func(_ context.Context, _ *teov20220901.ModifyDnsRecordsRequest) (*teov20220901.ModifyDnsRecordsResponse, error) {
+		t.Fatalf("ModifyDnsRecordsWithContext should not be called when only query params change")
+		return nil, nil
+	})
+
+	patches.ApplyMethodFunc(teoClient, "DescribeDnsRecordsWithContext", func(_ context.Context, request *teov20220901.DescribeDnsRecordsRequest) (*teov20220901.DescribeDnsRecordsResponse, error) {
+		resp := teov20220901.NewDescribeDnsRecordsResponse()
+		resp.Response = &teov20220901.DescribeDnsRecordsResponseParams{
+			TotalCount: ptrInt64DR50(1),
+			DnsRecords: []*teov20220901.DnsRecord{
+				{
+					ZoneId:   ptrStrDR50("zone-12345678"),
+					RecordId: ptrStrDR50("record-abcdefgh"),
+					Name:     ptrStrDR50("www.example.com"),
+					Type:     ptrStrDR50("A"),
+					Content:  ptrStrDR50("1.2.3.4"),
+					Status:   ptrStrDR50("enable"),
+				},
+			},
+			RequestId: ptrStrDR50("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaForDnsRecord50()
+	res := teo.ResourceTencentCloudTeoDnsRecord50()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id":    "zone-12345678",
+		"name":       "www.example.com",
+		"type":       "A",
+		"content":    "1.2.3.4",
+		"sort_by":    "name",
+		"sort_order": "asc",
+		"match":      "any",
+	})
+	d.SetId("zone-12345678#record-abcdefgh")
+
+	err := res.Update(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "zone-12345678#record-abcdefgh", d.Id())
+	assert.Equal(t, "www.example.com", d.Get("name"))
+}
+
+// TestTeoDnsRecord50_Update_BrokenId tests Update returns error on broken composite id
+func TestTeoDnsRecord50_Update_BrokenId(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaForDnsRecord50().client, "UseTeoV20220901Client", teoClient)
+
+	meta := newMockMetaForDnsRecord50()
+	res := teo.ResourceTencentCloudTeoDnsRecord50()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+		"name":    "www.example.com",
+		"type":    "A",
+		"content": "1.2.3.4",
+	})
+	d.SetId("broken-id-without-separator")
+
+	err := res.Update(d, meta)
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "id is broken")
+}
+
 // TestTeoDnsRecord50_Update_APIError tests Update handles API error
 func TestTeoDnsRecord50_Update_APIError(t *testing.T) {
 	patches := gomonkey.NewPatches()
