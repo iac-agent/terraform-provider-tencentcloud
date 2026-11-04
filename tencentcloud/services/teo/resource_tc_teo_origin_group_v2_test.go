@@ -75,11 +75,11 @@ func originGroupV2PlanAttrs(zoneId string) map[string]tftypes.Value {
 					"value": tftypes.String,
 				}}},
 			}}, map[string]tftypes.Value{
-				"record":            tftypes.NewValue(tftypes.String, "tf-teo.xyz"),
-				"type":              tftypes.NewValue(tftypes.String, "IP_DOMAIN"),
-				"record_id":         tftypes.NewValue(tftypes.String, nil),
-				"weight":            tftypes.NewValue(tftypes.Number, big.NewFloat(100)),
-				"private":           tftypes.NewValue(tftypes.Bool, false),
+				"record":    tftypes.NewValue(tftypes.String, "tf-teo.xyz"),
+				"type":      tftypes.NewValue(tftypes.String, "IP_DOMAIN"),
+				"record_id": tftypes.NewValue(tftypes.String, nil),
+				"weight":    tftypes.NewValue(tftypes.Number, big.NewFloat(100)),
+				"private":   tftypes.NewValue(tftypes.Bool, false),
 				"private_parameters": tftypes.NewValue(tftypes.List{ElementType: tftypes.Object{AttributeTypes: map[string]tftypes.Type{
 					"name":  tftypes.String,
 					"value": tftypes.String,
@@ -128,7 +128,7 @@ func originGroupV2ReadState(t *testing.T, id string) tfsdk.State {
 		"host_header": tftypes.NewValue(tftypes.String, nil),
 		"create_time": tftypes.NewValue(tftypes.String, nil),
 		"update_time": tftypes.NewValue(tftypes.String, nil),
-		"records":     tftypes.NewValue(tftypes.List{ElementType: tftypes.Object{AttributeTypes: map[string]tftypes.Type{
+		"records": tftypes.NewValue(tftypes.List{ElementType: tftypes.Object{AttributeTypes: map[string]tftypes.Type{
 			"record":    tftypes.String,
 			"type":      tftypes.String,
 			"record_id": tftypes.String,
@@ -210,14 +210,14 @@ func originGroupV2ReferencesFromState(t *testing.T, list types.List) []svcteo.Te
 // schema (mirrors the schema declaration in the resource file).
 func originGroupV2AttrTypes() map[string]tftypes.Type {
 	return map[string]tftypes.Type{
-		"id":           tftypes.String,
-		"zone_id":      tftypes.String,
-		"name":         tftypes.String,
-		"type":         tftypes.String,
-		"host_header":  tftypes.String,
-		"create_time":  tftypes.String,
-		"update_time":  tftypes.String,
-		"records":      tftypes.List{ElementType: tftypes.Object{AttributeTypes: map[string]tftypes.Type{
+		"id":          tftypes.String,
+		"zone_id":     tftypes.String,
+		"name":        tftypes.String,
+		"type":        tftypes.String,
+		"host_header": tftypes.String,
+		"create_time": tftypes.String,
+		"update_time": tftypes.String,
+		"records": tftypes.List{ElementType: tftypes.Object{AttributeTypes: map[string]tftypes.Type{
 			"record":    tftypes.String,
 			"type":      tftypes.String,
 			"record_id": tftypes.String,
@@ -276,17 +276,17 @@ func mockOriginGroupV2Response(group *teov20220901.OriginGroup) *teov20220901.De
 // originGroupV2Full builds a fully populated origin group for read assertions.
 func originGroupV2Full() *teov20220901.OriginGroup {
 	return &teov20220901.OriginGroup{
-		GroupId:     ptrStringOriginGroupV2("origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a"),
-		Name:        ptrStringOriginGroupV2("tf-test-origin-group"),
-		Type:        ptrStringOriginGroupV2("GENERAL"),
-		HostHeader:  ptrStringOriginGroupV2("origin.example.com"),
-		CreateTime:  ptrStringOriginGroupV2("2024-01-01T00:00:00Z"),
-		UpdateTime:  ptrStringOriginGroupV2("2024-01-02T00:00:00Z"),
+		GroupId:    ptrStringOriginGroupV2("origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a"),
+		Name:       ptrStringOriginGroupV2("tf-test-origin-group"),
+		Type:       ptrStringOriginGroupV2("GENERAL"),
+		HostHeader: ptrStringOriginGroupV2("origin.example.com"),
+		CreateTime: ptrStringOriginGroupV2("2024-01-01T00:00:00Z"),
+		UpdateTime: ptrStringOriginGroupV2("2024-01-02T00:00:00Z"),
 		Records: []*teov20220901.OriginRecord{
 			{
-				Record: ptrStringOriginGroupV2("1.1.1.1"),
-				Type:   ptrStringOriginGroupV2("IP_DOMAIN"),
-				Weight: ptrUint64OriginGroupV2(100),
+				Record:  ptrStringOriginGroupV2("1.1.1.1"),
+				Type:    ptrStringOriginGroupV2("IP_DOMAIN"),
+				Weight:  ptrUint64OriginGroupV2(100),
 				Private: new(bool),
 			},
 			{
@@ -294,7 +294,7 @@ func originGroupV2Full() *teov20220901.OriginGroup {
 				Type:     ptrStringOriginGroupV2("AWS_S3"),
 				RecordId: ptrStringOriginGroupV2("record-0001"),
 				Weight:   ptrUint64OriginGroupV2(0),
-				Private:   ptrBoolOriginGroupV2(true),
+				Private:  ptrBoolOriginGroupV2(true),
 				PrivateParameters: []*teov20220901.PrivateParameter{
 					{
 						Name:  ptrStringOriginGroupV2("AccessKeyId"),
@@ -424,7 +424,7 @@ func TestTeoOriginGroupV2Resource_Create(t *testing.T) {
 			resp := teov20220901.NewCreateOriginGroupResponse()
 			resp.Response = &teov20220901.CreateOriginGroupResponseParams{
 				OriginGroupId: ptrStringOriginGroupV2("origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a"),
-				RequestId:    ptrStringOriginGroupV2("fake-request-id"),
+				RequestId:     ptrStringOriginGroupV2("fake-request-id"),
 			}
 			return resp, nil
 		})

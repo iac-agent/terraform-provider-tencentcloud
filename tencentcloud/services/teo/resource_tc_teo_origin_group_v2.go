@@ -13,10 +13,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
+	teo "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901"
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/framework/fw"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/internal/helper"
-	teo "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901"
 )
 
 var (
@@ -38,25 +38,25 @@ type TeoOriginGroupV2Resource struct {
 
 // TeoOriginGroupV2ResourceModel maps the schema attributes.
 type TeoOriginGroupV2ResourceModel struct {
-	Id          types.String `tfsdk:"id"`
-	ZoneId      types.String `tfsdk:"zone_id"`
-	Name        types.String `tfsdk:"name"`
-	Type        types.String `tfsdk:"type"`
-	HostHeader  types.String `tfsdk:"host_header"`
-	Records     types.List   `tfsdk:"records"`
-	CreateTime  types.String `tfsdk:"create_time"`
-	UpdateTime  types.String `tfsdk:"update_time"`
-	References  types.List   `tfsdk:"references"`
+	Id         types.String `tfsdk:"id"`
+	ZoneId     types.String `tfsdk:"zone_id"`
+	Name       types.String `tfsdk:"name"`
+	Type       types.String `tfsdk:"type"`
+	HostHeader types.String `tfsdk:"host_header"`
+	Records    types.List   `tfsdk:"records"`
+	CreateTime types.String `tfsdk:"create_time"`
+	UpdateTime types.String `tfsdk:"update_time"`
+	References types.List   `tfsdk:"references"`
 }
 
 // TeoOriginGroupV2RecordModel maps one origin record of the records list.
 type TeoOriginGroupV2RecordModel struct {
-	Record           types.String `tfsdk:"record"`
-	Type             types.String `tfsdk:"type"`
-	RecordId         types.String `tfsdk:"record_id"`
-	Weight           types.Int64  `tfsdk:"weight"`
-	Private          types.Bool   `tfsdk:"private"`
-	PrivateParameters types.List  `tfsdk:"private_parameters"`
+	Record            types.String `tfsdk:"record"`
+	Type              types.String `tfsdk:"type"`
+	RecordId          types.String `tfsdk:"record_id"`
+	Weight            types.Int64  `tfsdk:"weight"`
+	Private           types.Bool   `tfsdk:"private"`
+	PrivateParameters types.List   `tfsdk:"private_parameters"`
 }
 
 // TeoOriginGroupV2PrivateParameterModel maps one private auth parameter.
@@ -78,11 +78,11 @@ type TeoOriginGroupV2ReferenceModel struct {
 // teoOriginGroupV2RecordAttrTypes returns the attribute types of one records element.
 func teoOriginGroupV2RecordAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"record":            types.StringType,
-		"type":              types.StringType,
-		"record_id":         types.StringType,
-		"weight":            types.Int64Type,
-		"private":           types.BoolType,
+		"record":    types.StringType,
+		"type":      types.StringType,
+		"record_id": types.StringType,
+		"weight":    types.Int64Type,
+		"private":   types.BoolType,
 		"private_parameters": types.ListType{ElemType: types.ObjectType{
 			AttrTypes: teoOriginGroupV2PrivateParameterAttrTypes(),
 		}},
@@ -127,7 +127,7 @@ func (r *TeoOriginGroupV2Resource) Schema(_ context.Context, _ resource.SchemaRe
 				},
 			},
 			"zone_id": schema.StringAttribute{
-				Required: true,
+				Required:    true,
 				Description: "Site ID.",
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.RequiresReplace(),
@@ -153,96 +153,96 @@ func (r *TeoOriginGroupV2Resource) Schema(_ context.Context, _ resource.SchemaRe
 				Description: "Back-to-origin Host Header, which only takes effect when type is HTTP. The rule engine Host Header " +
 					"configuration has a higher priority than the origin group Host Header.",
 			},
-		"records": schema.ListNestedAttribute{
-			Required: true,
-			Description: "Origin records of the origin group. The whole list is sent to the API on update, so a change " +
-				"replaces the whole record set.",
-			NestedObject: schema.NestedAttributeObject{
-				Attributes: map[string]schema.Attribute{
-					"record": schema.StringAttribute{
-						Required: true,
-						Description: "Origin record value without the port. It can be an IPv4, IPv6 or domain name.",
-					},
-					"type": schema.StringAttribute{
-						Optional: true,
-						Computed: true,
-						Description: "Origin type. Valid values: `IP_DOMAIN`: IPv4, IPv6 or domain name origin; `COS`: COS origin; " +
-							"`AWS_S3`: AWS S3 object storage origin.",
-					},
-					"record_id": schema.StringAttribute{
-						Optional: true,
-						Computed: true,
-						Description: "Origin record ID, which is server-assigned and back-filled by Read.",
-					},
-					"weight": schema.Int64Attribute{
-						Optional: true,
-						Computed: true,
-						Description: "Origin weight for traffic scheduling, ranging from 0 to 100 (integer). Leave it unset and the " +
-							"system schedules by the default policy; set it to 0 and no traffic is scheduled to this origin (at least " +
-							"one origin must have a weight greater than 0). A null value in the configuration means \"not set\".",
-					},
-					"private": schema.BoolAttribute{
-						Optional: true,
-						Computed: true,
-						Description: "Whether to use private authentication. It takes effect when the origin type is COS or AWS_S3. " +
-							"Valid values: `true`: use private authentication; `false`: not use.",
-					},
-					"private_parameters": schema.ListNestedAttribute{
-						Optional: true,
-						Description: "Private authentication parameters, which take effect only when private is true.",
-						NestedObject: schema.NestedAttributeObject{
-							Attributes: map[string]schema.Attribute{
-								"name": schema.StringAttribute{
-									Required: true,
-									Description: "Private authentication parameter name. Valid values: `AccessKeyId`: Access Key ID; " +
-										"`SecretAccessKey`: Secret Access Key; `SignatureVersion`: signature version, v2 or v4; `Region`: bucket region.",
-								},
-								"value": schema.StringAttribute{
-									Required: true,
-									Sensitive: true,
-									Description: "Private authentication parameter value.",
+			"records": schema.ListNestedAttribute{
+				Required: true,
+				Description: "Origin records of the origin group. The whole list is sent to the API on update, so a change " +
+					"replaces the whole record set.",
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"record": schema.StringAttribute{
+							Required:    true,
+							Description: "Origin record value without the port. It can be an IPv4, IPv6 or domain name.",
+						},
+						"type": schema.StringAttribute{
+							Optional: true,
+							Computed: true,
+							Description: "Origin type. Valid values: `IP_DOMAIN`: IPv4, IPv6 or domain name origin; `COS`: COS origin; " +
+								"`AWS_S3`: AWS S3 object storage origin.",
+						},
+						"record_id": schema.StringAttribute{
+							Optional:    true,
+							Computed:    true,
+							Description: "Origin record ID, which is server-assigned and back-filled by Read.",
+						},
+						"weight": schema.Int64Attribute{
+							Optional: true,
+							Computed: true,
+							Description: "Origin weight for traffic scheduling, ranging from 0 to 100 (integer). Leave it unset and the " +
+								"system schedules by the default policy; set it to 0 and no traffic is scheduled to this origin (at least " +
+								"one origin must have a weight greater than 0). A null value in the configuration means \"not set\".",
+						},
+						"private": schema.BoolAttribute{
+							Optional: true,
+							Computed: true,
+							Description: "Whether to use private authentication. It takes effect when the origin type is COS or AWS_S3. " +
+								"Valid values: `true`: use private authentication; `false`: not use.",
+						},
+						"private_parameters": schema.ListNestedAttribute{
+							Optional:    true,
+							Description: "Private authentication parameters, which take effect only when private is true.",
+							NestedObject: schema.NestedAttributeObject{
+								Attributes: map[string]schema.Attribute{
+									"name": schema.StringAttribute{
+										Required: true,
+										Description: "Private authentication parameter name. Valid values: `AccessKeyId`: Access Key ID; " +
+											"`SecretAccessKey`: Secret Access Key; `SignatureVersion`: signature version, v2 or v4; `Region`: bucket region.",
+									},
+									"value": schema.StringAttribute{
+										Required:    true,
+										Sensitive:   true,
+										Description: "Private authentication parameter value.",
+									},
 								},
 							},
 						},
 					},
 				},
 			},
-		},
 			"create_time": schema.StringAttribute{
-				Computed: true,
+				Computed:    true,
 				Description: "Origin group creation time.",
 			},
 			"update_time": schema.StringAttribute{
-				Computed: true,
+				Computed:    true,
 				Description: "Origin group update time.",
 			},
 			"references": schema.ListNestedAttribute{
-				Computed: true,
+				Computed:    true,
 				Description: "List of instances referencing the origin group.",
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"instance_type": schema.StringAttribute{
-							Computed: true,
+							Computed:    true,
 							Description: "Reference service type. Valid values: `acceleration-domain`; `rule-engine`; `load-balancer`; `application-proxy`.",
 						},
 						"instance_id": schema.StringAttribute{
-							Computed: true,
+							Computed:    true,
 							Description: "Instance ID of the reference type.",
 						},
 						"instance_name": schema.StringAttribute{
-							Computed: true,
+							Computed:    true,
 							Description: "Instance name of the reference type.",
 						},
 						"zone_id": schema.StringAttribute{
-							Computed: true,
+							Computed:    true,
 							Description: "Zone ID of the referenced instance.",
 						},
 						"zone_name": schema.StringAttribute{
-							Computed: true,
+							Computed:    true,
 							Description: "Zone name of the referenced instance.",
 						},
 						"alias_zone_name": schema.StringAttribute{
-							Computed: true,
+							Computed:    true,
 							Description: "Zone alias of the referenced instance.",
 						},
 					},
@@ -523,7 +523,7 @@ func (r *TeoOriginGroupV2Resource) refreshModel(ctx context.Context, m *TeoOrigi
 		references = append(references, TeoOriginGroupV2ReferenceModel{
 			InstanceType:  types.StringPointerValue(ref.InstanceType),
 			InstanceId:    types.StringPointerValue(ref.InstanceId),
-			InstanceName: types.StringPointerValue(ref.InstanceName),
+			InstanceName:  types.StringPointerValue(ref.InstanceName),
 			ZoneId:        types.StringPointerValue(ref.ZoneId),
 			ZoneName:      types.StringPointerValue(ref.ZoneName),
 			AliasZoneName: types.StringPointerValue(ref.AliasZoneName),
