@@ -34,7 +34,9 @@ var resourceFactories = []func() resource.Resource{
 }
 
 // dataSourceFactories lists every framework DataSource factory.
-var dataSourceFactories = []func() datasource.DataSource{}
+var dataSourceFactories = []func() datasource.DataSource{
+	teo.NewTeoInferenceDomainsV2DataSource,
+}
 
 // functionFactories lists every framework Function factory.
 var functionFactories = []func() function.Function{}
