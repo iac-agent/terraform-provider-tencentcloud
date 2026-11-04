@@ -1634,6 +1634,7 @@ Resource
 tencentcloud_teo_zone
 tencentcloud_teo_zone_setting
 tencentcloud_teo_origin_group
+tencentcloud_teo_origin_group_v2
 tencentcloud_teo_rule_engine
 tencentcloud_teo_application_proxy_rule
 tencentcloud_teo_ownership_verify

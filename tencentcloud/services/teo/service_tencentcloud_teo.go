@@ -9,6 +9,7 @@ import (
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 
+	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	teo "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901"
@@ -3666,5 +3667,151 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 		}
 	}
 
+	return
+}
+
+// teoOriginGroupV2RecordsFromPlan converts the records list of the framework
+// resource model into the SDK origin records.
+func teoOriginGroupV2RecordsFromPlan(ctx context.Context, list types.List) []*teo.OriginRecord {
+	records := make([]*teo.OriginRecord, 0, len(list.Elements()))
+	if list.IsNull() || list.IsUnknown() {
+		return records
+	}
+	var recordModels []TeoOriginGroupV2RecordModel
+	_ = list.ElementsAs(ctx, &recordModels, false)
+	for i := range recordModels {
+		record := &recordModels[i]
+		originRecord := &teo.OriginRecord{
+			Record: record.Record.ValueStringPointer(),
+		}
+		if !record.Type.IsNull() && !record.Type.IsUnknown() {
+			originRecord.Type = record.Type.ValueStringPointer()
+		}
+		if !record.RecordId.IsNull() && !record.RecordId.IsUnknown() {
+			originRecord.RecordId = record.RecordId.ValueStringPointer()
+		}
+		if !record.Weight.IsNull() && !record.Weight.IsUnknown() {
+			originRecord.Weight = helper.Uint64(uint64(record.Weight.ValueInt64()))
+		}
+		if !record.Private.IsNull() && !record.Private.IsUnknown() {
+			originRecord.Private = record.Private.ValueBoolPointer()
+		}
+		if !record.PrivateParameters.IsNull() && !record.PrivateParameters.IsUnknown() {
+			var privateParameters []TeoOriginGroupV2PrivateParameterModel
+			_ = record.PrivateParameters.ElementsAs(ctx, &privateParameters, false)
+			originRecord.PrivateParameters = make([]*teo.PrivateParameter, 0, len(privateParameters))
+			for j := range privateParameters {
+				pp := &privateParameters[j]
+				originRecord.PrivateParameters = append(originRecord.PrivateParameters, &teo.PrivateParameter{
+					Name:  pp.Name.ValueStringPointer(),
+					Value: pp.Value.ValueStringPointer(),
+				})
+			}
+		}
+		records = append(records, originRecord)
+	}
+	return records
+}
+
+// BuildCreateOriginGroupRequest converts the framework resource plan into a
+// CreateOriginGroup request. It returns nil when the plan cannot be converted.
+func (me *TeoService) BuildCreateOriginGroupRequest(ctx context.Context, plan *TeoOriginGroupV2ResourceModel) *teo.CreateOriginGroupRequest {
+	if plan == nil {
+		return nil
+	}
+	request := teo.NewCreateOriginGroupRequest()
+	request.ZoneId = plan.ZoneId.ValueStringPointer()
+	if !plan.Name.IsNull() && !plan.Name.IsUnknown() {
+		request.Name = plan.Name.ValueStringPointer()
+	}
+	if !plan.Type.IsNull() && !plan.Type.IsUnknown() {
+		request.Type = plan.Type.ValueStringPointer()
+	}
+	if !plan.HostHeader.IsNull() && !plan.HostHeader.IsUnknown() {
+		request.HostHeader = plan.HostHeader.ValueStringPointer()
+	}
+	request.Records = teoOriginGroupV2RecordsFromPlan(ctx, plan.Records)
+	return request
+}
+
+// CreateTeoOriginGroupV2 creates an origin group and returns the new group id.
+func (me *TeoService) CreateTeoOriginGroupV2(ctx context.Context, request *teo.CreateOriginGroupRequest) (originGroupId string, errRet error) {
+	if request == nil {
+		errRet = fmt.Errorf("request is nil")
+		return
+	}
+	logId := tccommon.GetLogId(ctx)
+
+	ratelimit.Check(request.GetAction())
+	response, err := me.client.UseTeoClient().CreateOriginGroupWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), err.Error())
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response == nil || response.Response == nil || response.Response.OriginGroupId == nil || *response.Response.OriginGroupId == "" {
+		errRet = fmt.Errorf("CreateOriginGroup returned an empty response or an empty origin group id")
+		return
+	}
+	originGroupId = *response.Response.OriginGroupId
+	return
+}
+
+// BuildModifyOriginGroupRequest converts the framework resource plan into a
+// ModifyOriginGroup request covering all the mutable attributes (name, type,
+// host_header, records). It returns nil when no mutable attribute is set, in
+// which case no Modify call is needed. The records list, when present, is
+// sent as the whole new record set (the API replaces the set); omitting it
+// keeps the existing cloud-side records.
+func (me *TeoService) BuildModifyOriginGroupRequest(ctx context.Context, plan *TeoOriginGroupV2ResourceModel) *teo.ModifyOriginGroupRequest {
+	if plan == nil {
+		return nil
+	}
+	request := teo.NewModifyOriginGroupRequest()
+	hasChange := false
+	if !plan.Type.IsNull() && !plan.Type.IsUnknown() {
+		request.Type = plan.Type.ValueStringPointer()
+		hasChange = true
+	}
+	if !plan.Name.IsNull() && !plan.Name.IsUnknown() {
+		request.Name = plan.Name.ValueStringPointer()
+		hasChange = true
+	}
+	if !plan.HostHeader.IsNull() && !plan.HostHeader.IsUnknown() {
+		request.HostHeader = plan.HostHeader.ValueStringPointer()
+		hasChange = true
+	}
+	if !plan.Records.IsNull() && !plan.Records.IsUnknown() {
+		request.Records = teoOriginGroupV2RecordsFromPlan(ctx, plan.Records)
+		hasChange = true
+	}
+	if !hasChange {
+		return nil
+	}
+	return request
+}
+
+// ModifyTeoOriginGroupV2 modifies an origin group in place.
+func (me *TeoService) ModifyTeoOriginGroupV2(ctx context.Context, request *teo.ModifyOriginGroupRequest) (errRet error) {
+	if request == nil {
+		errRet = fmt.Errorf("request is nil")
+		return
+	}
+	logId := tccommon.GetLogId(ctx)
+
+	ratelimit.Check(request.GetAction())
+	response, err := me.client.UseTeoClient().ModifyOriginGroupWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), err.Error())
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
 	return
 }
