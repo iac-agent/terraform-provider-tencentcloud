@@ -3668,3 +3668,73 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 
 	return
 }
+
+func (me *TeoService) DescribeTeoInferenceDomains(ctx context.Context, zoneId, serviceId, sortBy, sortOrder string) (domains []*teo.InferenceDomain,
+	errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = teo.NewDescribeInferenceDomainsRequest()
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, "query object", request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	request.ZoneId = &zoneId
+	request.ServiceId = &serviceId
+	if sortBy != "" {
+		request.SortBy = &sortBy
+	}
+	if sortOrder != "" {
+		request.SortOrder = &sortOrder
+	}
+
+	var offset int64 = 0
+	var pageSize int64 = 200
+	domains = make([]*teo.InferenceDomain, 0)
+
+	for {
+		request.Offset = &offset
+		request.Limit = &pageSize
+		ratelimit.Check(request.GetAction())
+		response := teo.NewDescribeInferenceDomainsResponse()
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+			result, e := me.client.UseTeoClient().DescribeInferenceDomainsWithContext(ctx, request)
+			if e != nil {
+				return tccommon.RetryError(e)
+			}
+			response = result
+			return nil
+		})
+		if err != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), err.Error())
+			errRet = err
+			return
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response == nil || response.Response == nil {
+			errRet = fmt.Errorf("DescribeInferenceDomains returned empty response")
+			return
+		}
+
+		if response.Response.Domains != nil {
+			domains = append(domains, response.Response.Domains...)
+		}
+
+		if response.Response.TotalCount == nil {
+			break
+		}
+		offset += int64(len(response.Response.Domains))
+		if offset >= *response.Response.TotalCount {
+			break
+		}
+	}
+
+	return
+}

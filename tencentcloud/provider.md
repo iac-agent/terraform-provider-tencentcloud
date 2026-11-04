@@ -1629,6 +1629,7 @@ tencentcloud_teo_security_ip_group_content
 tencentcloud_teo_web_security_templates
 tencentcloud_teo_content_quota
 tencentcloud_teo_billing_data
+tencentcloud_teo_inference_domains_v2
 
 Resource
 tencentcloud_teo_zone
