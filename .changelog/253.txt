@@ -1,3 +1,3 @@
 ```release-note:enhancement
-tencentcloud_fwm_account_group: strengthen CRUD validation, match the account group by id on read and cover it with mock unit tests
+tencentcloud_fwm_account_group: paginate the account group list when reading so the resource is matched by id, and cover it with mock unit tests
 ```
