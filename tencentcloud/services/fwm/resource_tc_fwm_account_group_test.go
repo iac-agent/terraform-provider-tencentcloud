@@ -649,3 +649,125 @@ func TestFwmAccountGroup_Read_MismatchedGroupId(t *testing.T) {
 	assert.Equal(t, "", d.Id())
 	assert.Equal(t, "", d.Get("group_id"))
 }
+
+func TestFwmAccountGroup_Read_Pagination(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	fwmClient := &fwmv20250611.Client{}
+	patches.ApplyMethodReturn(newMockMetaFwmAccountGroup().client, "UseFwmV20250611Client", fwmClient)
+
+	var offsets []int64
+	patches.ApplyMethodFunc(fwmClient, "DescribeAccountGroupsWithContext", func(_ context.Context, request *fwmv20250611.DescribeAccountGroupsRequest) (*fwmv20250611.DescribeAccountGroupsResponse, error) {
+		if request.Offset == nil || request.Limit == nil {
+			t.Fatalf("offset and limit must be set on the describe request")
+		}
+		offsets = append(offsets, *request.Offset)
+
+		resp := fwmv20250611.NewDescribeAccountGroupsResponse()
+		total := int64(21)
+		memberCount := int64(1)
+		canDelete := true
+
+		items := make([]*fwmv20250611.AccountGroup, 0, 20)
+		if *request.Offset == 0 {
+			for i := 0; i < 20; i++ {
+				items = append(items, &fwmv20250611.AccountGroup{
+					GroupId:     ptrStringFAG("acg-filler"),
+					GroupName:   ptrStringFAG("filler-account-group"),
+					MemberCount: &memberCount,
+					CanDelete:   &canDelete,
+					CreateTime:  ptrStringFAG("2026-10-20 10:00:00"),
+				})
+			}
+		} else {
+			items = append(items, &fwmv20250611.AccountGroup{
+				GroupId:     ptrStringFAG("acg-1a2b3c4d"),
+				GroupName:   ptrStringFAG("test-account-group"),
+				Description: ptrStringFAG("test account group"),
+				MemberCount: &memberCount,
+				CanDelete:   &canDelete,
+				CreateTime:  ptrStringFAG("2026-10-22 10:00:00"),
+			})
+		}
+
+		resp.Response = &fwmv20250611.DescribeAccountGroupsResponseParams{
+			RequestId:     ptrStringFAG("fake-request-id"),
+			TotalCount:    &total,
+			AccountGroups: items,
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaFwmAccountGroup()
+	res := fwm.ResourceTencentCloudFwmAccountGroup()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"group_name": "test-account-group",
+	})
+	d.SetId("acg-1a2b3c4d")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "acg-1a2b3c4d", d.Id())
+	assert.Equal(t, "acg-1a2b3c4d", d.Get("group_id"))
+	assert.Equal(t, "test-account-group", d.Get("group_name"))
+	assert.Equal(t, "test account group", d.Get("description"))
+	if len(offsets) != 2 {
+		t.Fatalf("expected 2 describe calls while paginating, got %d", len(offsets))
+	}
+	assert.Equal(t, int64(0), offsets[0])
+	assert.Equal(t, int64(20), offsets[1])
+}
+
+func TestFwmAccountGroup_Read_StopsOnTotalCount(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	fwmClient := &fwmv20250611.Client{}
+	patches.ApplyMethodReturn(newMockMetaFwmAccountGroup().client, "UseFwmV20250611Client", fwmClient)
+
+	calls := 0
+	patches.ApplyMethodFunc(fwmClient, "DescribeAccountGroupsWithContext", func(_ context.Context, request *fwmv20250611.DescribeAccountGroupsRequest) (*fwmv20250611.DescribeAccountGroupsResponse, error) {
+		calls++
+		if calls > 3 {
+			t.Fatalf("pagination did not stop, describe called %d times", calls)
+		}
+
+		resp := fwmv20250611.NewDescribeAccountGroupsResponse()
+		total := int64(20)
+		memberCount := int64(1)
+		canDelete := true
+
+		items := make([]*fwmv20250611.AccountGroup, 0, 20)
+		for i := 0; i < 20; i++ {
+			items = append(items, &fwmv20250611.AccountGroup{
+				GroupId:     ptrStringFAG("acg-filler"),
+				GroupName:   ptrStringFAG("filler-account-group"),
+				MemberCount: &memberCount,
+				CanDelete:   &canDelete,
+				CreateTime:  ptrStringFAG("2026-10-20 10:00:00"),
+			})
+		}
+
+		resp.Response = &fwmv20250611.DescribeAccountGroupsResponseParams{
+			RequestId:     ptrStringFAG("fake-request-id"),
+			TotalCount:    &total,
+			AccountGroups: items,
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaFwmAccountGroup()
+	res := fwm.ResourceTencentCloudFwmAccountGroup()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"group_name": "test-account-group",
+	})
+	d.SetId("acg-1a2b3c4d")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "", d.Id())
+	if calls != 1 {
+		t.Fatalf("expected pagination to stop after the first page when TotalCount is reached, got %d call(s)", calls)
+	}
+}
