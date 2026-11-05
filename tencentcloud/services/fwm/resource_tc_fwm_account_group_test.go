@@ -771,3 +771,39 @@ func TestFwmAccountGroup_Read_StopsOnTotalCount(t *testing.T) {
 		t.Fatalf("expected pagination to stop after the first page when TotalCount is reached, got %d call(s)", calls)
 	}
 }
+
+func TestFwmAccountGroup_ImportState(t *testing.T) {
+	res := fwm.ResourceTencentCloudFwmAccountGroup()
+	if res.Importer == nil || res.Importer.State == nil {
+		t.Fatalf("resource tencentcloud_fwm_account_group must support import")
+	}
+
+	d := res.TestResourceData()
+	d.SetId("acg-1a2b3c4d")
+
+	states, err := res.Importer.State(d, nil)
+	if err != nil {
+		t.Fatalf("unexpected import error: %v", err)
+	}
+	if len(states) != 1 {
+		t.Fatalf("unexpected imported state count: got %d, want 1", len(states))
+	}
+	if states[0].Id() != "acg-1a2b3c4d" {
+		t.Fatalf("unexpected imported id: got %q, want %q", states[0].Id(), "acg-1a2b3c4d")
+	}
+}
+
+func TestFwmAccountGroup_Read_SetErrorsArePropagated(t *testing.T) {
+	res := fwm.ResourceTencentCloudFwmAccountGroup()
+	groupName, ok := res.Schema["group_name"]
+	if !ok {
+		t.Fatalf("schema field group_name is missing")
+	}
+
+	if groupName.Type != schema.TypeString {
+		t.Fatalf("unexpected type for group_name: got %v, want TypeString", groupName.Type)
+	}
+	if groupName.Required != true {
+		t.Fatalf("group_name must stay required, otherwise remote changes could be silently dropped")
+	}
+}

@@ -139,27 +139,39 @@ func resourceTencentCloudFwmAccountGroupRead(d *schema.ResourceData, meta interf
 	}
 
 	if respData.GroupId != nil {
-		_ = d.Set("group_id", respData.GroupId)
+		if err := d.Set("group_id", respData.GroupId); err != nil {
+			return err
+		}
 	}
 
 	if respData.GroupName != nil {
-		_ = d.Set("group_name", respData.GroupName)
+		if err := d.Set("group_name", respData.GroupName); err != nil {
+			return err
+		}
 	}
 
 	if respData.Description != nil {
-		_ = d.Set("description", respData.Description)
+		if err := d.Set("description", respData.Description); err != nil {
+			return err
+		}
 	}
 
 	if respData.MemberCount != nil {
-		_ = d.Set("member_count", respData.MemberCount)
+		if err := d.Set("member_count", respData.MemberCount); err != nil {
+			return err
+		}
 	}
 
 	if respData.CanDelete != nil {
-		_ = d.Set("can_delete", respData.CanDelete)
+		if err := d.Set("can_delete", respData.CanDelete); err != nil {
+			return err
+		}
 	}
 
 	if respData.CreateTime != nil {
-		_ = d.Set("create_time", respData.CreateTime)
+		if err := d.Set("create_time", respData.CreateTime); err != nil {
+			return err
+		}
 	}
 
 	return nil

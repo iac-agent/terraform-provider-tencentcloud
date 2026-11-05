@@ -182,9 +182,6 @@ func (me *FwmService) DescribeFwmAccountGroupById(ctx context.Context, groupId s
 		}
 
 		if response.Response.AccountGroups == nil {
-			if offset == 0 {
-				scanned = 0
-			}
 			break
 		}
 
