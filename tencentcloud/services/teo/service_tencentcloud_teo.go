@@ -3668,3 +3668,53 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 
 	return
 }
+
+func (me *TeoService) DescribeTeoInferenceAPITokens(ctx context.Context, zoneId string) (tokens []*teo.InferenceAPIToken, errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = teo.NewDescribeInferenceAPITokensRequest()
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	request.ZoneId = &zoneId
+	limit := int64(100)
+	request.Limit = &limit
+
+	var offset int64
+	for {
+		request.Offset = &offset
+		response, e := me.client.UseTeoV20220901Client().DescribeInferenceAPITokensWithContext(ctx, request)
+		if e != nil {
+			ratelimit.Check(request.GetAction())
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), e.Error())
+			errRet = e
+			return
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response == nil || response.Response == nil {
+			errRet = fmt.Errorf("DescribeInferenceAPITokens response is nil")
+			return
+		}
+
+		if response.Response.Tokens != nil {
+			tokens = append(tokens, response.Response.Tokens...)
+		}
+
+		if len(response.Response.Tokens) < 1 ||
+			(response.Response.TotalCount != nil && int64(len(tokens)) >= *response.Response.TotalCount) {
+			break
+		}
+		offset += int64(len(response.Response.Tokens))
+	}
+
+	return
+}
