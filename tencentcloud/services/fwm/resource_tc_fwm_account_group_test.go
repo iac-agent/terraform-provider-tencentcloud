@@ -556,3 +556,96 @@ func TestFwmAccountGroup_Delete_NilResponse(t *testing.T) {
 	err := res.Delete(d, meta)
 	assert.Error(t, err)
 }
+
+func TestFwmAccountGroup_Read_PicksMatchingGroupId(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	fwmClient := &fwmv20250611.Client{}
+	patches.ApplyMethodReturn(newMockMetaFwmAccountGroup().client, "UseFwmV20250611Client", fwmClient)
+
+	patches.ApplyMethodFunc(fwmClient, "DescribeAccountGroupsWithContext", func(_ context.Context, request *fwmv20250611.DescribeAccountGroupsRequest) (*fwmv20250611.DescribeAccountGroupsResponse, error) {
+		resp := fwmv20250611.NewDescribeAccountGroupsResponse()
+		total := int64(2)
+		memberCount := int64(2)
+		canDelete := true
+		resp.Response = &fwmv20250611.DescribeAccountGroupsResponseParams{
+			RequestId:  ptrStringFAG("fake-request-id"),
+			TotalCount: &total,
+			AccountGroups: []*fwmv20250611.AccountGroup{
+				{
+					GroupId:     ptrStringFAG("acg-other"),
+					GroupName:   ptrStringFAG("other-account-group"),
+					Description: ptrStringFAG("other group description"),
+					MemberCount: &memberCount,
+					CanDelete:   &canDelete,
+					CreateTime:  ptrStringFAG("2026-10-20 10:00:00"),
+				},
+				{
+					GroupId:     ptrStringFAG("acg-1a2b3c4d"),
+					GroupName:   ptrStringFAG("test-account-group"),
+					Description: ptrStringFAG("test account group"),
+					MemberCount: &memberCount,
+					CanDelete:   &canDelete,
+					CreateTime:  ptrStringFAG("2026-10-22 10:00:00"),
+				},
+			},
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaFwmAccountGroup()
+	res := fwm.ResourceTencentCloudFwmAccountGroup()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"group_name": "test-account-group",
+	})
+	d.SetId("acg-1a2b3c4d")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "acg-1a2b3c4d", d.Id())
+	assert.Equal(t, "acg-1a2b3c4d", d.Get("group_id"))
+	assert.Equal(t, "test-account-group", d.Get("group_name"))
+	assert.Equal(t, "test account group", d.Get("description"))
+}
+
+func TestFwmAccountGroup_Read_MismatchedGroupId(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	fwmClient := &fwmv20250611.Client{}
+	patches.ApplyMethodReturn(newMockMetaFwmAccountGroup().client, "UseFwmV20250611Client", fwmClient)
+
+	patches.ApplyMethodFunc(fwmClient, "DescribeAccountGroupsWithContext", func(_ context.Context, request *fwmv20250611.DescribeAccountGroupsRequest) (*fwmv20250611.DescribeAccountGroupsResponse, error) {
+		resp := fwmv20250611.NewDescribeAccountGroupsResponse()
+		total := int64(1)
+		memberCount := int64(1)
+		canDelete := true
+		resp.Response = &fwmv20250611.DescribeAccountGroupsResponseParams{
+			RequestId:  ptrStringFAG("fake-request-id"),
+			TotalCount: &total,
+			AccountGroups: []*fwmv20250611.AccountGroup{
+				{
+					GroupId:     ptrStringFAG("acg-other"),
+					GroupName:   ptrStringFAG("other-account-group"),
+					MemberCount: &memberCount,
+					CanDelete:   &canDelete,
+					CreateTime:  ptrStringFAG("2026-10-20 10:00:00"),
+				},
+			},
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaFwmAccountGroup()
+	res := fwm.ResourceTencentCloudFwmAccountGroup()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"group_name": "test-account-group",
+	})
+	d.SetId("acg-1a2b3c4d")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+	assert.Equal(t, "", d.Id())
+	assert.Equal(t, "", d.Get("group_id"))
+}

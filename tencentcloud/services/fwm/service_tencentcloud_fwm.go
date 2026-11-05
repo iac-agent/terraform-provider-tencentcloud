@@ -180,7 +180,18 @@ func (me *FwmService) DescribeFwmAccountGroupById(ctx context.Context, groupId s
 		return
 	}
 
-	accountGroup = response.Response.AccountGroups[0]
+	for _, item := range response.Response.AccountGroups {
+		if item == nil || item.GroupId == nil {
+			continue
+		}
+		if *item.GroupId == groupId {
+			accountGroup = item
+			return
+		}
+	}
+
+	log.Printf("[WARN]%s api[%s] return no account group matching GroupId %s, returned %d item(s), skip it.",
+		logId, request.GetAction(), groupId, len(response.Response.AccountGroups))
 	return
 }
 
