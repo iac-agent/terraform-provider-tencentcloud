@@ -146,41 +146,71 @@ func (me *FwmService) DescribeFwmAccountGroupById(ctx context.Context, groupId s
 			OperatorType: helper.Int64(1),
 		},
 	}
-	request.Limit = helper.Int64(20)
-	request.Offset = helper.Int64(0)
-
 	defer func() {
 		if errRet != nil {
 			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
 		}
 	}()
 
-	response := fwmv20250611.NewDescribeAccountGroupsResponse()
-	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
-		ratelimit.Check(request.GetAction())
-		result, e := me.client.UseFwmV20250611Client().DescribeAccountGroupsWithContext(ctx, request)
-		if e != nil {
-			return tccommon.RetryError(e)
+	var (
+		offset  int64 = 0
+		limit   int64 = 20
+		scanned int64 = 0
+	)
+	for {
+		request.Limit = helper.Int64(limit)
+		request.Offset = helper.Int64(offset)
+
+		response := fwmv20250611.NewDescribeAccountGroupsResponse()
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+			ratelimit.Check(request.GetAction())
+			result, e := me.client.UseFwmV20250611Client().DescribeAccountGroupsWithContext(ctx, request)
+			if e != nil {
+				return tccommon.RetryError(e)
+			}
+
+			if result == nil || result.Response == nil {
+				return resource.NonRetryableError(fmt.Errorf("Describe fwm account group failed, Response is nil."))
+			}
+
+			response = result
+			return nil
+		})
+		if err != nil {
+			errRet = err
+			return
 		}
 
-		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("Describe fwm account group failed, Response is nil."))
+		if response.Response.AccountGroups == nil {
+			if offset == 0 {
+				scanned = 0
+			}
+			break
 		}
 
-		response = result
-		return nil
-	})
+		scanned += int64(len(response.Response.AccountGroups))
+		for _, item := range response.Response.AccountGroups {
+			if item == nil || item.GroupId == nil {
+				continue
+			}
+			if *item.GroupId == groupId {
+				accountGroup = item
+				return
+			}
+		}
 
-	if err != nil {
-		errRet = err
-		return
+		if int64(len(response.Response.AccountGroups)) < limit {
+			break
+		}
+		if response.Response.TotalCount != nil && scanned >= *response.Response.TotalCount {
+			break
+		}
+
+		offset += limit
 	}
 
-	if len(response.Response.AccountGroups) < 1 {
-		return
-	}
-
-	accountGroup = response.Response.AccountGroups[0]
+	log.Printf("[WARN]%s api[%s] return no account group matching GroupId %s, scanned %d item(s), treat it as not found.",
+		logId, request.GetAction(), groupId, scanned)
 	return
 }
 

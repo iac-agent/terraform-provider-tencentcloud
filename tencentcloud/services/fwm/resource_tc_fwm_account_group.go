@@ -103,9 +103,10 @@ func resourceTencentCloudFwmAccountGroupCreate(d *schema.ResourceData, meta inte
 		return reqErr
 	}
 
-	if response.Response.GroupId == nil {
-		log.Printf("[CRITAL]%s create fwm account group return empty GroupId, logId=%s, d.Id()=%s", logId, logId, d.Id())
-		return fmt.Errorf("GroupId is nil, create fwm account group failed.")
+	if response.Response.GroupId == nil || *response.Response.GroupId == "" {
+		log.Printf("[CRITAL]%s create fwm account group return empty GroupId, logId=%s, d.Id()=%s, response=%s",
+			logId, logId, d.Id(), response.ToJsonString())
+		return fmt.Errorf("create fwm account group failed, GroupId is empty.")
 	}
 
 	groupId := *response.Response.GroupId
@@ -131,6 +132,7 @@ func resourceTencentCloudFwmAccountGroupRead(d *schema.ResourceData, meta interf
 	}
 
 	if respData == nil {
+		log.Printf("[CRUD] fwm_account_group id=%s not found, remove it from state.", d.Id())
 		log.Printf("[WARN]%s resource `tencentcloud_fwm_account_group` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		d.SetId("")
 		return nil
@@ -183,11 +185,14 @@ func resourceTencentCloudFwmAccountGroupUpdate(d *schema.ResourceData, meta inte
 
 	if needChange {
 		groupId := d.Id()
+		groupName, ok := d.GetOk("group_name")
+		if !ok || groupName.(string) == "" {
+			return fmt.Errorf("update fwm account group failed, group_name is required and cannot be empty.")
+		}
+
 		request := fwmv20250611.NewModifyAccountGroupRequest()
 		request.GroupId = helper.String(groupId)
-		if v, ok := d.GetOk("group_name"); ok {
-			request.GroupName = helper.String(v.(string))
-		}
+		request.GroupName = helper.String(groupName.(string))
 
 		reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseFwmV20250611Client().ModifyAccountGroupWithContext(ctx, request)
