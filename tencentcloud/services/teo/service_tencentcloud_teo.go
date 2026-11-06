@@ -3627,3 +3627,43 @@ func (me *TeoService) DescribeTeoInferenceServiceById(ctx context.Context, zoneI
 
 	return
 }
+
+func (me *TeoService) DescribeTeoInferenceServiceAffinityConfigById(ctx context.Context, zoneId, serviceId string) (ret *teov20220901.InferenceAffinityConfig, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[DescribeInferenceServiceDeploymentRecords] fail, reason[%s]\n", logId, errRet.Error())
+		}
+	}()
+
+	request := teov20220901.NewDescribeInferenceServiceDeploymentRecordsRequest()
+	request.ZoneId = &zoneId
+	request.ServiceId = &serviceId
+	request.Limit = helper.Int64(100)
+	request.Offset = helper.Int64(0)
+
+	var records []*teov20220901.InferenceServiceDeploymentRecord
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DescribeInferenceServiceDeploymentRecords(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("DescribeInferenceServiceDeploymentRecords response is nil"))
+		}
+		records = result.Response.RecordSet
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	ret = inferAffinityConfigFromDeploymentRecords(records)
+	return
+}

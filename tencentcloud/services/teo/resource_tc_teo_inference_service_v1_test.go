@@ -40,6 +40,18 @@ func ptrInt64IS(i int64) *int64 {
 
 // go test ./tencentcloud/services/teo/ -run "TestInferenceServiceV1" -v -count=1 -gcflags="all=-l"
 
+func newEmptyDeploymentRecordsMock() func(request *teov20220901.DescribeInferenceServiceDeploymentRecordsRequest) (*teov20220901.DescribeInferenceServiceDeploymentRecordsResponse, error) {
+	return func(request *teov20220901.DescribeInferenceServiceDeploymentRecordsRequest) (*teov20220901.DescribeInferenceServiceDeploymentRecordsResponse, error) {
+		resp := teov20220901.NewDescribeInferenceServiceDeploymentRecordsResponse()
+		resp.Response = &teov20220901.DescribeInferenceServiceDeploymentRecordsResponseParams{
+			TotalCount: ptrInt64IS(0),
+			RecordSet:  []*teov20220901.InferenceServiceDeploymentRecord{},
+			RequestId:  ptrStrIS("fake-request-id"),
+		}
+		return resp, nil
+	}
+}
+
 // TestInferenceServiceV1_Create_Success tests Create calls API and sets composite ID
 func TestInferenceServiceV1_Create_Success(t *testing.T) {
 	patches := gomonkey.NewPatches()
@@ -59,6 +71,8 @@ func TestInferenceServiceV1_Create_Success(t *testing.T) {
 		}
 		return resp, nil
 	})
+
+	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServiceDeploymentRecords", newEmptyDeploymentRecordsMock())
 
 	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServices", func(request *teov20220901.DescribeInferenceServicesRequest) (*teov20220901.DescribeInferenceServicesResponse, error) {
 		resp := teov20220901.NewDescribeInferenceServicesResponse()
@@ -134,6 +148,8 @@ func TestInferenceServiceV1_Create_WithAffinityConfig(t *testing.T) {
 		}
 		return resp, nil
 	})
+
+	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServiceDeploymentRecords", newEmptyDeploymentRecordsMock())
 
 	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServices", func(request *teov20220901.DescribeInferenceServicesRequest) (*teov20220901.DescribeInferenceServicesResponse, error) {
 		resp := teov20220901.NewDescribeInferenceServicesResponse()
@@ -250,6 +266,30 @@ func TestInferenceServiceV1_Read_Success(t *testing.T) {
 	teoClient := &teov20220901.Client{}
 	patches.ApplyMethodReturn(newMockMetaForInferenceService().client, "UseTeoV20220901Client", teoClient)
 
+	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServiceDeploymentRecords", func(request *teov20220901.DescribeInferenceServiceDeploymentRecordsRequest) (*teov20220901.DescribeInferenceServiceDeploymentRecordsResponse, error) {
+		resp := teov20220901.NewDescribeInferenceServiceDeploymentRecordsResponse()
+		resp.Response = &teov20220901.DescribeInferenceServiceDeploymentRecordsResponseParams{
+			TotalCount: ptrInt64IS(1),
+			RecordSet: []*teov20220901.InferenceServiceDeploymentRecord{
+				{
+					ActiveStatus: ptrStrIS("active"),
+					InferenceServiceConfig: &teov20220901.InferenceServiceConfig{
+						AffinityConfig: &teov20220901.InferenceAffinityConfig{
+							Switch:       ptrStrIS("On"),
+							AffinityMode: ptrStrIS("SessionId"),
+							SessionIdAffinityConfig: &teov20220901.SessionIdAffinityConfig{
+								Source:     ptrStrIS("Header"),
+								HeaderName: ptrStrIS("EO-Infer-Session-Id"),
+							},
+						},
+					},
+				},
+			},
+			RequestId: ptrStrIS("fake-request-id"),
+		}
+		return resp, nil
+	})
+
 	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServices", func(request *teov20220901.DescribeInferenceServicesRequest) (*teov20220901.DescribeInferenceServicesResponse, error) {
 		assert.Equal(t, "zone-12345678", *request.ZoneId)
 		resp := teov20220901.NewDescribeInferenceServicesResponse()
@@ -286,6 +326,14 @@ func TestInferenceServiceV1_Read_Success(t *testing.T) {
 	assert.Equal(t, "test-inference-svc", d.Get("name"))
 	assert.Equal(t, "Running", d.Get("status"))
 	assert.Equal(t, "https://svc-abcdefgh.edgeone.com", d.Get("inference_url"))
+
+	affinity := d.Get("affinity_config").([]interface{})
+	assert.Len(t, affinity, 1)
+	affinityItem := affinity[0].(map[string]interface{})
+	assert.Equal(t, "On", affinityItem["switch"])
+	assert.Equal(t, "SessionId", affinityItem["affinity_mode"])
+	assert.Equal(t, "Header", affinityItem["source"])
+	assert.Equal(t, "EO-Infer-Session-Id", affinityItem["header_name"])
 }
 
 // TestInferenceServiceV1_Read_NotFound tests Read handles resource not found
@@ -295,6 +343,16 @@ func TestInferenceServiceV1_Read_NotFound(t *testing.T) {
 
 	teoClient := &teov20220901.Client{}
 	patches.ApplyMethodReturn(newMockMetaForInferenceService().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServiceDeploymentRecords", func(request *teov20220901.DescribeInferenceServiceDeploymentRecordsRequest) (*teov20220901.DescribeInferenceServiceDeploymentRecordsResponse, error) {
+		resp := teov20220901.NewDescribeInferenceServiceDeploymentRecordsResponse()
+		resp.Response = &teov20220901.DescribeInferenceServiceDeploymentRecordsResponseParams{
+			TotalCount: ptrInt64IS(0),
+			RecordSet:  []*teov20220901.InferenceServiceDeploymentRecord{},
+			RequestId:  ptrStrIS("fake-request-id"),
+		}
+		return resp, nil
+	})
 
 	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServices", func(request *teov20220901.DescribeInferenceServicesRequest) (*teov20220901.DescribeInferenceServicesResponse, error) {
 		resp := teov20220901.NewDescribeInferenceServicesResponse()
@@ -338,6 +396,8 @@ func TestInferenceServiceV1_Update_Success(t *testing.T) {
 		}
 		return resp, nil
 	})
+
+	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServiceDeploymentRecords", newEmptyDeploymentRecordsMock())
 
 	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServices", func(request *teov20220901.DescribeInferenceServicesRequest) (*teov20220901.DescribeInferenceServicesResponse, error) {
 		resp := teov20220901.NewDescribeInferenceServicesResponse()
@@ -408,6 +468,8 @@ func TestInferenceServiceV1_Update_AffinityConfig(t *testing.T) {
 		}
 		return resp, nil
 	})
+
+	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServiceDeploymentRecords", newEmptyDeploymentRecordsMock())
 
 	patches.ApplyMethodFunc(teoClient, "DescribeInferenceServices", func(request *teov20220901.DescribeInferenceServicesRequest) (*teov20220901.DescribeInferenceServicesResponse, error) {
 		resp := teov20220901.NewDescribeInferenceServicesResponse()

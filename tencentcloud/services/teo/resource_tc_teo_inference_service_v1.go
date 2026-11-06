@@ -474,8 +474,17 @@ func resourceTencentCloudTeoInferenceServiceV1Read(d *schema.ResourceData, meta 
 		_ = d.Set("resource_config", flattenInferenceResourceConfig(respData.ResourceConfig))
 	}
 
-	// InferenceService struct does not contain AffinityConfig directly,
-	// so we preserve the existing state value.
+	affinityConfig, err := service.DescribeTeoInferenceServiceAffinityConfigById(ctx, zoneId, serviceId)
+	if err != nil {
+		return err
+	}
+
+	if affinityConfig != nil {
+		if err := d.Set("affinity_config", flattenInferenceAffinityConfig(affinityConfig)); err != nil {
+			return fmt.Errorf("set affinity_config error: %s", err.Error())
+		}
+	}
+
 	if respData.RequestPaths != nil {
 		_ = d.Set("request_paths", helper.StringsInterfaces(respData.RequestPaths))
 	}
@@ -980,6 +989,56 @@ func buildInferenceAffinityConfig(acList []interface{}) *teov20220901.InferenceA
 	}
 
 	return config
+}
+
+// inferAffinityConfigFromDeploymentRecords returns the affinity config of the
+// active deployment record, the DescribeInferenceServices API does not return it.
+func inferAffinityConfigFromDeploymentRecords(records []*teov20220901.InferenceServiceDeploymentRecord) *teov20220901.InferenceAffinityConfig {
+	var fallback *teov20220901.InferenceAffinityConfig
+	for _, record := range records {
+		if record == nil || record.InferenceServiceConfig == nil {
+			continue
+		}
+		if record.InferenceServiceConfig.AffinityConfig == nil {
+			continue
+		}
+		if record.ActiveStatus != nil && *record.ActiveStatus == "active" {
+			return record.InferenceServiceConfig.AffinityConfig
+		}
+		if fallback == nil {
+			fallback = record.InferenceServiceConfig.AffinityConfig
+		}
+	}
+	return fallback
+}
+
+// flattenInferenceAffinityConfig converts InferenceAffinityConfig to map list
+func flattenInferenceAffinityConfig(config *teov20220901.InferenceAffinityConfig) []map[string]interface{} {
+	if config == nil {
+		return nil
+	}
+
+	item := make(map[string]interface{})
+
+	if config.Switch != nil {
+		item["switch"] = *config.Switch
+	}
+
+	if config.AffinityMode != nil {
+		item["affinity_mode"] = *config.AffinityMode
+	}
+
+	if config.SessionIdAffinityConfig != nil {
+		if config.SessionIdAffinityConfig.Source != nil {
+			item["source"] = *config.SessionIdAffinityConfig.Source
+		}
+
+		if config.SessionIdAffinityConfig.HeaderName != nil {
+			item["header_name"] = *config.SessionIdAffinityConfig.HeaderName
+		}
+	}
+
+	return []map[string]interface{}{item}
 }
 
 // flattenInferenceContainerConfigs converts InferenceContainerConfig list to map list
