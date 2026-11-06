@@ -23,6 +23,7 @@ import (
 	privatednsIntl "github.com/tencentcloud/tencentcloud-sdk-go-intl-en/tencentcloud/privatedns/v20201028"
 	advisorv20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	v20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
+	ags "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags/v20250920"
 	antiddos "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20200309"
 	antiddosv20250903 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20250903"
 	api "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/api/v20201106"
@@ -236,6 +237,7 @@ type TencentCloudClient struct {
 	cdwpgConn             *cdwpg.Client
 	csipConn              *csip.Client
 	regionConn            *region.Client
+	agsConn               *ags.Client
 	//internal version: replace client begin, please do not modify this annotation and refrain from inserting any code between the beginning and end lines of the annotation.
 	//internal version: replace client end, please do not modify this annotation and refrain from inserting any code between the beginning and end lines of the annotation.
 	tkev20220501Conn  *tkev20220501.Client
@@ -2382,4 +2384,17 @@ func (me *TencentCloudClient) UseDbdcV20201029Client() *dbdcv20201029.Client {
 	me.dbdcv20201029Conn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.dbdcv20201029Conn
+}
+
+// UseAgsClient returns ags client for service
+func (me *TencentCloudClient) UseAgsClient() *ags.Client {
+	if me.agsConn != nil {
+		return me.agsConn
+	}
+
+	cpf := me.NewClientProfile(300)
+	me.agsConn, _ = ags.NewClient(me.Credential, me.Region, cpf)
+	me.agsConn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.agsConn
 }
