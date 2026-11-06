@@ -793,8 +793,9 @@ func TestFwmAccountGroup_ImportState(t *testing.T) {
 	}
 }
 
-func TestFwmAccountGroup_Read_SetErrorsArePropagated(t *testing.T) {
+func TestFwmAccountGroup_GroupNameStaysRequired(t *testing.T) {
 	res := fwm.ResourceTencentCloudFwmAccountGroup()
+
 	groupName, ok := res.Schema["group_name"]
 	if !ok {
 		t.Fatalf("schema field group_name is missing")
@@ -803,7 +804,82 @@ func TestFwmAccountGroup_Read_SetErrorsArePropagated(t *testing.T) {
 	if groupName.Type != schema.TypeString {
 		t.Fatalf("unexpected type for group_name: got %v, want TypeString", groupName.Type)
 	}
-	if groupName.Required != true {
-		t.Fatalf("group_name must stay required, otherwise remote changes could be silently dropped")
+	if !groupName.Required {
+		t.Fatalf("group_name must stay required, otherwise a rename on the cloud side cannot be detected")
+	}
+	if groupName.Optional || groupName.Computed {
+		t.Fatalf("group_name must not be optional or computed, got optional=%v computed=%v", groupName.Optional, groupName.Computed)
+	}
+}
+
+func TestFwmAccountGroup_Read_ReturnsAllSchemaFields(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	fwmClient := &fwmv20250611.Client{}
+	patches.ApplyMethodReturn(newMockMetaFwmAccountGroup().client, "UseFwmV20250611Client", fwmClient)
+
+	describeCalls := 0
+	patches.ApplyMethodFunc(fwmClient, "DescribeAccountGroupsWithContext", func(_ context.Context, request *fwmv20250611.DescribeAccountGroupsRequest) (*fwmv20250611.DescribeAccountGroupsResponse, error) {
+		describeCalls++
+		resp := fwmv20250611.NewDescribeAccountGroupsResponse()
+		total := int64(1)
+		memberCount := int64(7)
+		canDelete := false
+		resp.Response = &fwmv20250611.DescribeAccountGroupsResponseParams{
+			RequestId:  ptrStringFAG("fake-request-id"),
+			TotalCount: &total,
+			AccountGroups: []*fwmv20250611.AccountGroup{
+				{
+					GroupId:     ptrStringFAG("acg-1a2b3c4d"),
+					GroupName:   ptrStringFAG("test-account-group"),
+					Description: ptrStringFAG("test account group"),
+					MemberCount: &memberCount,
+					CanDelete:   &canDelete,
+					CreateTime:  ptrStringFAG("2026-10-22 10:00:00"),
+				},
+			},
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaFwmAccountGroup()
+	res := fwm.ResourceTencentCloudFwmAccountGroup()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"group_name": "test-account-group",
+	})
+	d.SetId("acg-1a2b3c4d")
+
+	if err := res.Read(d, meta); err != nil {
+		t.Fatalf("unexpected read error: %v", err)
+	}
+
+	if describeCalls != 1 {
+		t.Fatalf("expected exactly 1 describe call, got %d", describeCalls)
+	}
+
+	for _, field := range []string{"group_id", "group_name", "description", "member_count", "can_delete", "create_time"} {
+		if _, ok := res.Schema[field]; !ok {
+			t.Fatalf("schema field %q is missing", field)
+		}
+	}
+
+	if got := d.Get("group_id").(string); got != "acg-1a2b3c4d" {
+		t.Errorf("group_id = %q, want %q", got, "acg-1a2b3c4d")
+	}
+	if got := d.Get("group_name").(string); got != "test-account-group" {
+		t.Errorf("group_name = %q, want %q", got, "test-account-group")
+	}
+	if got := d.Get("description").(string); got != "test account group" {
+		t.Errorf("description = %q, want %q", got, "test account group")
+	}
+	if got := d.Get("member_count").(int); got != 7 {
+		t.Errorf("member_count = %d, want %d", got, 7)
+	}
+	if got := d.Get("can_delete").(bool); got != false {
+		t.Errorf("can_delete = %v, want %v", got, false)
+	}
+	if got := d.Get("create_time").(string); got != "2026-10-22 10:00:00" {
+		t.Errorf("create_time = %q, want %q", got, "2026-10-22 10:00:00")
 	}
 }
