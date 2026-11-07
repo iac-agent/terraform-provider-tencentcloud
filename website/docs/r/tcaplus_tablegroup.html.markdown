@@ -4,17 +4,15 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_tcaplus_tablegroup"
 sidebar_current: "docs-tencentcloud-resource-tcaplus_tablegroup"
 description: |-
-  Use this resource to create TcaplusDB table group.
+  Provides a resource to create a TcaplusDB table group using the legacy `tablegroup` type name. This resource is kept for backward compatibility with existing configurations and state; new configurations should use `tencentcloud_tcaplus_table_group` instead.
 ---
 
 # tencentcloud_tcaplus_tablegroup
 
-Use this resource to create TcaplusDB table group.
+Provides a resource to create a TcaplusDB table group using the legacy `tablegroup` type name. This resource is kept for backward compatibility with existing configurations and state; new configurations should use `tencentcloud_tcaplus_table_group` instead.
 
 ## Example Usage
 
-### Create a tcaplusdb table group
-
 ```hcl
 resource "tencentcloud_tcaplus_cluster" "example" {
   idl_type                 = "PROTO"
@@ -28,29 +26,7 @@ resource "tencentcloud_tcaplus_cluster" "example" {
 resource "tencentcloud_tcaplus_tablegroup" "example" {
   cluster_id      = tencentcloud_tcaplus_cluster.example.id
   tablegroup_name = "tf_example_group_name"
-  resource_tags {
-    tag_key   = "CreatedBy"
-    tag_value = "Terraform"
-  }
-}
-```
 
-### Create a tcaplusdb table group with user-specified table group id
-
-```hcl
-resource "tencentcloud_tcaplus_cluster" "example" {
-  idl_type                 = "PROTO"
-  cluster_name             = "tf_example_tcaplus_cluster"
-  vpc_id                   = "vpc-i5yyodl9"
-  subnet_id                = "subnet-hhi88a58"
-  password                 = "Password@2026"
-  old_password_expire_last = 3600
-}
-
-resource "tencentcloud_tcaplus_tablegroup" "example" {
-  cluster_id      = tencentcloud_tcaplus_cluster.example.id
-  tablegroup_name = "tf_example_group_name"
-  table_group_id  = "109"
   resource_tags {
     tag_key   = "CreatedBy"
     tag_value = "Terraform"
@@ -63,9 +39,9 @@ resource "tencentcloud_tcaplus_tablegroup" "example" {
 The following arguments are supported:
 
 * `cluster_id` - (Required, String, ForceNew) ID of the TcaplusDB cluster to which the table group belongs.
-* `tablegroup_name` - (Required, String) Table group name; may consist of Chinese characters, English letters, or numeric characters, with a maximum length of 32 characters.
-* `resource_tags` - (Optional, Set) Set of table group tags.
-* `table_group_id` - (Optional, String, ForceNew) ID of the TcaplusDB table group, can be user-specified (must be unique within the cluster) or auto-incremented by the API when not set. Immutable after creation.
+* `table_group_name` - (Required, String) Table group name, which can consist of Chinese characters, English letters or digits, with a maximum length of 32 characters.
+* `resource_tags` - (Optional, Set) List of tags of the table group.
+* `table_group_id` - (Optional, String, ForceNew) Table group ID. It can be specified by the user but must be unique within the cluster. If not specified, the API assigns an auto-incremented value. Changing this forces a new resource to be created.
 
 The `resource_tags` object supports the following:
 
@@ -77,25 +53,14 @@ The `resource_tags` object supports the following:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-* `create_time` - Create time of the TcaplusDB table group.
-* `table_count` - Number of tables.
-* `total_size` - Total storage size (MB).
+* `created_time` - Creation time of the table group.
+* `enable_mysql` - Whether MySQL load balancing is enabled. 0: not enabled, 1: enabling, 2: enabled.
+* `mysql_conn_ip` - VIP of the MySQL load balancing.
+* `mysql_conn_port` - VPort of the MySQL load balancing.
+* `table_count` - Number of tables contained in the table group.
+* `total_size` - Total storage size of the tables contained in the table group, in MB.
+* `txh_backup_expire_day` - Number of days after which the Txh backup file of the tables expires and is deleted.
 
-## API Reference
-
-This resource interacts with the following TencentCloud APIs:
-
-* Create: [CreateTableGroup](https://www.tencentcloud.com/document/api/1016/35027)
-* Read:
-  - [DescribeTableGroupTags](https://www.tencentcloud.com/document/api/1016/36900)
-  - [DescribeTableGroups](https://www.tencentcloud.com/document/api/1016/35025)
-* Update:
-  - [DescribeTasks](https://www.tencentcloud.com/document/api/1016/35045)
-  - [ModifyTableGroupName](https://www.tencentcloud.com/document/api/1016/35024)
-  - [ModifyTableGroupTags](https://www.tencentcloud.com/document/api/1016/36899)
-* Delete:
-  - [DeleteTableGroup](https://www.tencentcloud.com/document/api/1016/35026)
-  - [DescribeTableGroups](https://www.tencentcloud.com/document/api/1016/35025)
 
 ## Import
 
