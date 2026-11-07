@@ -1850,6 +1850,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_tcaplus_tablegroup":                                                       tcaplusdb.ResourceTencentCloudTcaplusTableGroup(),
 			"tencentcloud_tcaplus_idl":                                                              tcaplusdb.ResourceTencentCloudTcaplusIdl(),
 			"tencentcloud_tcaplus_table":                                                            tcaplusdb.ResourceTencentCloudTcaplusTable(),
+			"tencentcloud_tcaplus_table_group":                                                      tcaplusdb.ResourceTencentCloudTcaplusTableGroup(),
 			"tencentcloud_cdn_domain":                                                               cdn.ResourceTencentCloudCdnDomain(),
 			"tencentcloud_cdn_url_push":                                                             cdn.ResourceTencentCloudUrlPush(),
 			"tencentcloud_cdn_url_purge":                                                            cdn.ResourceTencentCloudUrlPurge(),

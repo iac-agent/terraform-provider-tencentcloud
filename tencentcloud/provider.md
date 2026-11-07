@@ -1225,6 +1225,7 @@ tencentcloud_tcaplus_cluster
 tencentcloud_tcaplus_tablegroup
 tencentcloud_tcaplus_idl
 tencentcloud_tcaplus_table
+tencentcloud_tcaplus_table_group
 
 Tencent Container Registry(TCR)
 Data Source
