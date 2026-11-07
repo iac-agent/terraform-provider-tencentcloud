@@ -1,0 +1,3 @@
+```release-note:none
+Update openspec change task status for framework restructure.
+```
