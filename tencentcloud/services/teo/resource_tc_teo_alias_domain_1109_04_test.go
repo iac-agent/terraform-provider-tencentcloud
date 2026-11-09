@@ -8,8 +8,8 @@ import (
 	"github.com/agiledragon/gomonkey/v2"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	fwtypes "github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
+	fwtypes "github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-go/tftypes"
 	"github.com/stretchr/testify/assert"
 	teo "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901"
@@ -138,13 +138,13 @@ func emptyAliasDomain110904Response() *teo.DescribeAliasDomainsResponse {
 // sampleAliasDomain110904Active builds an active alias domain payload.
 func sampleAliasDomain110904Active() *teo.AliasDomain {
 	return &teo.AliasDomain{
-		AliasName:   ptrStringAliasDomain110904("alias.demo.com"),
-		ZoneId:      ptrStringAliasDomain110904("zone-3fkff38fyw8s"),
-		TargetName:  ptrStringAliasDomain110904("target.demo.com"),
-		Status:      ptrStringAliasDomain110904("active"),
-		ForbidMode:  ptrInt64AliasDomain110904(0),
-		CreatedOn:   ptrStringAliasDomain110904("2024-01-01T00:00:00Z"),
-		ModifiedOn:  ptrStringAliasDomain110904("2024-01-01T00:00:00Z"),
+		AliasName:  ptrStringAliasDomain110904("alias.demo.com"),
+		ZoneId:     ptrStringAliasDomain110904("zone-3fkff38fyw8s"),
+		TargetName: ptrStringAliasDomain110904("target.demo.com"),
+		Status:     ptrStringAliasDomain110904("active"),
+		ForbidMode: ptrInt64AliasDomain110904(0),
+		CreatedOn:  ptrStringAliasDomain110904("2024-01-01T00:00:00Z"),
+		ModifiedOn: ptrStringAliasDomain110904("2024-01-01T00:00:00Z"),
 	}
 }
 
@@ -324,7 +324,7 @@ func TestTeoAliasDomain110904Resource_Create_Success(t *testing.T) {
 
 	req := resource.CreateRequest{
 		Config: tfsdk.Config{Schema: s, Raw: planRaw},
-		Plan:  tfsdk.Plan{Schema: s, Raw: planRaw},
+		Plan:   tfsdk.Plan{Schema: s, Raw: planRaw},
 	}
 	resp := &resource.CreateResponse{
 		State: tftypesDataAliasDomain110904(s, aliasDomain110904RawObject(s, nil)),
@@ -394,7 +394,7 @@ func TestTeoAliasDomain110904Resource_Create_NullCert(t *testing.T) {
 
 	req := resource.CreateRequest{
 		Config: tfsdk.Config{Schema: s, Raw: planRaw},
-		Plan:  tfsdk.Plan{Schema: s, Raw: planRaw},
+		Plan:   tfsdk.Plan{Schema: s, Raw: planRaw},
 	}
 	resp := &resource.CreateResponse{
 		State: tftypesDataAliasDomain110904(s, aliasDomain110904RawObject(s, nil)),
@@ -439,7 +439,7 @@ func TestTeoAliasDomain110904Resource_Create_APIError(t *testing.T) {
 
 	req := resource.CreateRequest{
 		Config: tfsdk.Config{Schema: s, Raw: planRaw},
-		Plan:  tfsdk.Plan{Schema: s, Raw: planRaw},
+		Plan:   tfsdk.Plan{Schema: s, Raw: planRaw},
 	}
 	resp := &resource.CreateResponse{
 		State: tftypesDataAliasDomain110904(s, aliasDomain110904RawObject(s, nil)),
