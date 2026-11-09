@@ -155,6 +155,46 @@ func (me *TeoService) ConfirmOriginACLUpdate(ctx context.Context, zoneId string)
 	return
 }
 
+// DescribeTeoZoneCustomVariables queries zone-level custom variables of a TEO
+// zone, including variable definitions and variable operation rules. Both
+// lists are empty when nothing is configured for the zone.
+func (me *TeoService) DescribeTeoZoneCustomVariables(ctx context.Context, zoneId string) (customVariables []*teo.CustomVariable,
+	customVariableOperations []*teo.CustomVariableOperation, errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = teo.NewDescribeZoneCustomVariablesRequest()
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, "query object", request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	request.ZoneId = &zoneId
+	ratelimit.Check(request.GetAction())
+	response, err := me.client.UseTeoClient().DescribeZoneCustomVariablesWithContext(ctx, request)
+	if err != nil {
+		log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), err.Error())
+		errRet = err
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("DescribeZoneCustomVariables returned an empty response")
+		return
+	}
+
+	customVariables = response.Response.CustomVariables
+	customVariableOperations = response.Response.CustomVariableOperations
+
+	return
+}
+
 func (me *TeoService) DescribeTeoOriginGroup(ctx context.Context,
 	zoneId, originGroupId string) (originGroup *teo.OriginGroup, errRet error) {
 	var (
