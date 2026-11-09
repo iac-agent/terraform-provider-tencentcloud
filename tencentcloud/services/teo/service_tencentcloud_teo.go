@@ -3668,3 +3668,224 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 
 	return
 }
+
+// CreateTeoAliasDomain110904 creates a TEO alias domain via CreateAliasDomain.
+// An empty certType means "not configured", in which case the parameter is not
+// sent and the cloud side applies its own default (none).
+func (me *TeoService) CreateTeoAliasDomain110904(ctx context.Context, zoneId, aliasName, targetName string,
+	certType string, certId []*string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+	request := teo.NewCreateAliasDomainRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.AliasName = helper.String(aliasName)
+	request.TargetName = helper.String(targetName)
+	if certType != "" {
+		request.CertType = helper.String(certType)
+	}
+	request.CertId = certId
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().CreateAliasDomainWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// ModifyTeoAliasDomain110904 updates a TEO alias domain via ModifyAliasDomain.
+//
+// Clear semantics (confirmed contract): targetName is always re-sent because
+// the API marks it required; an omitted certType means "keep the previous
+// configuration"; clearing the certificate requires explicitly sending
+// cert_type = "none". Therefore:
+//   - certChanged=false -> the certificate configuration did not change: send
+//     neither CertType nor CertId, the cloud keeps the previous configuration;
+//   - certChanged=true -> send CertType (and CertId when non-empty) as given;
+//     the explicit "none" value is the documented clear path.
+func (me *TeoService) ModifyTeoAliasDomain110904(ctx context.Context, zoneId, aliasName, targetName string,
+	certChanged bool, certType string, certId []*string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+	request := teo.NewModifyAliasDomainRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.AliasName = helper.String(aliasName)
+	request.TargetName = helper.String(targetName)
+
+	if certChanged {
+		if certType != "" {
+			request.CertType = helper.String(certType)
+		}
+		request.CertId = certId
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().ModifyAliasDomainWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// DeleteTeoAliasDomain110904 deletes a single TEO alias domain via DeleteAliasDomain.
+// The API accepts a list of alias names; this resource always manages exactly
+// one alias domain, so a single-element list is sent.
+func (me *TeoService) DeleteTeoAliasDomain110904(ctx context.Context, zoneId, aliasName string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+	request := teo.NewDeleteAliasDomainRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.AliasNames = []*string{helper.String(aliasName)}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DeleteAliasDomainWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// WaitTeoAliasDomainActive110904 polls DescribeAliasDomains until the alias
+// domain exists and is active. Only the expected "not visible yet / deploying"
+// outcome is retried; any other API error fails immediately.
+func (me *TeoService) WaitTeoAliasDomainActive110904(ctx context.Context, zoneId, aliasName string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+	request := teo.NewDescribeAliasDomainsRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.Limit = helper.Int64(100)
+	request.Filters = []*teo.AdvancedFilter{
+		{
+			Name:   helper.String("alias-name"),
+			Values: []*string{helper.String(aliasName)},
+		},
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	errRet = resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DescribeAliasDomainsWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+		if result == nil || result.Response == nil {
+			// The alias domain may not be visible yet right after creation.
+			return resource.RetryableError(fmt.Errorf("DescribeAliasDomains response is nil"))
+		}
+		for _, item := range result.Response.AliasDomains {
+			if item.AliasName != nil && *item.AliasName == aliasName && item.ZoneId != nil && *item.ZoneId == zoneId {
+				if item.Status != nil && *item.Status == "active" {
+					return nil
+				}
+				return resource.RetryableError(fmt.Errorf("TEO alias domain %s status is %v", aliasName, item.Status))
+			}
+		}
+		return resource.RetryableError(fmt.Errorf("TEO alias domain %s not visible yet", aliasName))
+	})
+
+	return
+}
+
+// WaitTeoAliasDomainDeleted110904 polls DescribeAliasDomains until the alias
+// domain is no longer returned. Only the expected "still visible" outcome is
+// retried; any other API error fails immediately.
+func (me *TeoService) WaitTeoAliasDomainDeleted110904(ctx context.Context, zoneId, aliasName string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+	request := teo.NewDescribeAliasDomainsRequest()
+	request.ZoneId = helper.String(zoneId)
+	request.Limit = helper.Int64(100)
+	request.Filters = []*teo.AdvancedFilter{
+		{
+			Name:   helper.String("alias-name"),
+			Values: []*string{helper.String(aliasName)},
+		},
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	errRet = resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DescribeAliasDomainsWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("DescribeAliasDomains response is nil"))
+		}
+		for _, item := range result.Response.AliasDomains {
+			if item.AliasName != nil && *item.AliasName == aliasName && item.ZoneId != nil && *item.ZoneId == zoneId {
+				return resource.RetryableError(fmt.Errorf("TEO alias domain %s is still visible", aliasName))
+			}
+		}
+		return nil
+	})
+
+	return
+}
