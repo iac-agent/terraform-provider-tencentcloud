@@ -34,12 +34,12 @@ type TeoSharedCnameV2DataSource struct {
 
 // TeoSharedCnameV2DataSourceModel maps the schema attributes.
 type TeoSharedCnameV2DataSourceModel struct {
-	ZoneId           types.String `tfsdk:"zone_id"`
-	Filters          types.List   `tfsdk:"filters"`
-	Direction        types.String `tfsdk:"direction"`
-	Match            types.String `tfsdk:"match"`
-	Order            types.String `tfsdk:"order"`
-	SharedCnameInfo  types.List   `tfsdk:"shared_cname_info"`
+	ZoneId          types.String `tfsdk:"zone_id"`
+	Filters         types.List   `tfsdk:"filters"`
+	Direction       types.String `tfsdk:"direction"`
+	Match           types.String `tfsdk:"match"`
+	Order           types.String `tfsdk:"order"`
+	SharedCnameInfo types.List   `tfsdk:"shared_cname_info"`
 }
 
 // teoSharedCnameV2FilterModel is the element type of filters.
@@ -86,9 +86,9 @@ func teoSharedCnameV2IpsslConfigAttrTypes() map[string]attr.Type {
 // acceleration_domains elements.
 func teoSharedCnameV2AccelerationDomainAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"zone_id":   types.StringType,
-		"type":      types.StringType,
-		"instance":  types.StringType,
+		"zone_id":  types.StringType,
+		"type":     types.StringType,
+		"instance": types.StringType,
 	}
 }
 
@@ -96,11 +96,11 @@ func teoSharedCnameV2AccelerationDomainAttrTypes() map[string]attr.Type {
 // shared_cname_info elements.
 func teoSharedCnameV2InfoAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"type":              types.StringType,
-		"shared_cname":      types.StringType,
-		"description":       types.StringType,
-		"ipssl_config":      types.ObjectType{AttrTypes: teoSharedCnameV2IpsslConfigAttrTypes()},
-		"bind_domain_count": types.Int64Type,
+		"type":                 types.StringType,
+		"shared_cname":         types.StringType,
+		"description":          types.StringType,
+		"ipssl_config":         types.ObjectType{AttrTypes: teoSharedCnameV2IpsslConfigAttrTypes()},
+		"bind_domain_count":    types.Int64Type,
 		"acceleration_domains": types.ListType{ElemType: types.ObjectType{AttrTypes: teoSharedCnameV2AccelerationDomainAttrTypes()}},
 	}
 }

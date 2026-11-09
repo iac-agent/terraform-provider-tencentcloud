@@ -37,23 +37,23 @@ func teoSharedCnameV2RawInfoType() tftypes.Type {
 		AttributeTypes: map[string]tftypes.Type{
 			"zone_id":           tftypes.String,
 			"associated_domain": tftypes.String,
-			"status":             tftypes.String,
+			"status":            tftypes.String,
 		},
 	}
 	domainObjType := tftypes.Object{
 		AttributeTypes: map[string]tftypes.Type{
-			"zone_id":   tftypes.String,
-			"type":      tftypes.String,
-			"instance":  tftypes.String,
+			"zone_id":  tftypes.String,
+			"type":     tftypes.String,
+			"instance": tftypes.String,
 		},
 	}
 	infoObjType := tftypes.Object{
 		AttributeTypes: map[string]tftypes.Type{
-			"type":              tftypes.String,
-			"shared_cname":      tftypes.String,
-			"description":       tftypes.String,
-			"ipssl_config":      ipsslObjType,
-			"bind_domain_count": tftypes.Number,
+			"type":                 tftypes.String,
+			"shared_cname":         tftypes.String,
+			"description":          tftypes.String,
+			"ipssl_config":         ipsslObjType,
+			"bind_domain_count":    tftypes.Number,
 			"acceleration_domains": tftypes.List{ElementType: domainObjType},
 		},
 	}
@@ -286,9 +286,9 @@ func TestTeoSharedCnameV2DS_ReadWithFiltersAndSortParams(t *testing.T) {
 		gotRequest = request
 		resp := teov20220901.NewDescribeSharedCNAMEResponse()
 		resp.Response = &teov20220901.DescribeSharedCNAMEResponseParams{
-			TotalCount: ptrInt64TeoSharedCnameV2(0),
+			TotalCount:      ptrInt64TeoSharedCnameV2(0),
 			SharedCNAMEInfo: []*teov20220901.SharedCNAMEInfo{},
-			RequestId:        ptrStrTeoSharedCnameV2("fake-request-id"),
+			RequestId:       ptrStrTeoSharedCnameV2("fake-request-id"),
 		}
 		return resp, nil
 	})
