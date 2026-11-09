@@ -3668,3 +3668,93 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 
 	return
 }
+
+// CreateTeoAliasDomain creates a TEO alias domain.
+func (me *TeoService) CreateTeoAliasDomain(ctx context.Context, request *teo.CreateAliasDomainRequest) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().CreateAliasDomainWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// ModifyTeoAliasDomain modifies a TEO alias domain.
+func (me *TeoService) ModifyTeoAliasDomain(ctx context.Context, request *teo.ModifyAliasDomainRequest) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().ModifyAliasDomainWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// DeleteTeoAliasDomain deletes a TEO alias domain.
+func (me *TeoService) DeleteTeoAliasDomain(ctx context.Context, request *teo.DeleteAliasDomainRequest) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DeleteAliasDomainWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
