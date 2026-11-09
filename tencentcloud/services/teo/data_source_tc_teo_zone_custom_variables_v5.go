@@ -236,7 +236,7 @@ func (d *TeoZoneCustomVariablesV5DataSource) Schema(_ context.Context, _ datasou
 								"supported. The length cannot exceed 255 characters.",
 						},
 						"description": schema.StringAttribute{
-							Computed: true,
+							Computed:    true,
 							Description: "Variable description. The length cannot exceed 60 characters.",
 						},
 					},
