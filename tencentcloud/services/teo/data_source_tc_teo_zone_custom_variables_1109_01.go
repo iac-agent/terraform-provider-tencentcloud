@@ -52,13 +52,13 @@ type customVariableOperationItemModel struct {
 // customVariableOperationBranchModel is the element type of branches.
 type customVariableOperationBranchModel struct {
 	Condition types.String `tfsdk:"condition"`
-	Actions   types.List  `tfsdk:"actions"`
-	SubRules  types.List  `tfsdk:"sub_rules"`
+	Actions   types.List   `tfsdk:"actions"`
+	SubRules  types.List   `tfsdk:"sub_rules"`
 }
 
 // customVariableOperationActionModel is the element type of actions.
 type customVariableOperationActionModel struct {
-	Name          types.String                  `tfsdk:"name"`
+	Name          types.String                 `tfsdk:"name"`
 	SetParameters *customVariableSetParamModel `tfsdk:"set_parameters"`
 }
 
@@ -209,7 +209,7 @@ func (d *TeoZoneCustomVariablesDataSource) Schema(_ context.Context, _ datasourc
 																Computed:    true,
 																Description: "Match condition expression.",
 															},
-															"actions": deepBranchActionsAttr,
+															"actions":   deepBranchActionsAttr,
 															"sub_rules": deepSubRulesAttr,
 														},
 													},
