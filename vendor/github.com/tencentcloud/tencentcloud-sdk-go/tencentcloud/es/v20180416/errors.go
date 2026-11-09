@@ -32,8 +32,14 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 数据格式异常
+	FAILEDOPERATION_ABNORMALDATAFORMAT = "FailedOperation.AbnormalDataFormat"
+
 	// 更新ACL失败
 	FAILEDOPERATION_ACCESSCONTROLLIST = "FailedOperation.AccessControlList"
+
+	// 可用区资源包配额不足
+	FAILEDOPERATION_CDCQUOTAINSUFFICIENT = "FailedOperation.CdcQuotaInsufficient"
 
 	// 关闭数据层失败，至少要保留热层和温层其中一层。
 	FAILEDOPERATION_CLOSEDATATIER = "FailedOperation.CloseDataTier"
@@ -49,6 +55,9 @@ const (
 
 	// 集群状态错误。
 	FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+
+	// 集群索引没有副本存在。
+	FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
 
 	// 集群状态不健康。
 	FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
@@ -91,6 +100,9 @@ const (
 
 	// 请求超时。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
+
+	// 集群设置IP溯源失败
+	FAILEDOPERATION_SETTINGIPTRACEERROR = "FailedOperation.SettingIpTraceError"
 
 	// 变更space的kibana语言信息失败
 	FAILEDOPERATION_SPACELANGUAGE = "FailedOperation.SpaceLanguage"
@@ -269,6 +281,12 @@ const (
 	// 数据样例JSON SampleJson的取值和预期不符。
 	INVALIDPARAMETER_INVALIDSAMPLEJSON = "InvalidParameter.InvalidSampleJson"
 
+	// 磁盘缩容安全检查系数scale_disk_safe_factor配置有误
+	INVALIDPARAMETER_INVALIDSCALEDISKSAFEFACTOR = "InvalidParameter.InvalidScaleDiskSafeFactor"
+
+	// 场景化模版类型SceneType的取值和预期不符。
+	INVALIDPARAMETER_INVALIDSCENETYPE = "InvalidParameter.InvalidSceneType"
+
 	// 安全组id列表SecurityGroupIds的取值和预期不符。
 	INVALIDPARAMETER_INVALIDSECURITYGROUPIDS = "InvalidParameter.InvalidSecurityGroupIds"
 
@@ -425,6 +443,12 @@ const (
 	// 超出一个用户可以拥有的最大资源限制。
 	LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 
+	// 后端服务响应包大小超过配额限制
+	LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+
+	// 后端服务响应时间超过配额限制
+	LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
+
 	// 空间数超过配额。
 	LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
 
@@ -470,6 +494,9 @@ const (
 	// clb资源不足
 	RESOURCEINSUFFICIENT_CLB = "ResourceInsufficient.Clb"
 
+	// 磁盘资源不足。
+	RESOURCEINSUFFICIENT_DISK = "ResourceInsufficient.Disk"
+
 	// es资源不足
 	RESOURCEINSUFFICIENT_ES = "ResourceInsufficient.Es"
 
@@ -500,6 +527,9 @@ const (
 	// 负载均衡信息未找到。
 	RESOURCENOTFOUND_CLBNOTFOUND = "ResourceNotFound.CLBNotFound"
 
+	// 获取CVM信息失败。
+	RESOURCENOTFOUND_CVMINFONOTFOUND = "ResourceNotFound.CVMInfoNotFound"
+
 	// 集群资源获取失败。
 	RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 
@@ -521,8 +551,14 @@ const (
 	// 集群信息获取失败
 	RESOURCENOTFOUND_ESINFONOTFOUND = "ResourceNotFound.EsInfoNotFound"
 
+	// 索引信息不存在
+	RESOURCENOTFOUND_INDEXINFONOTFOUND = "ResourceNotFound.IndexInfoNotFound"
+
 	// 密钥管理系统资源获取失败。
 	RESOURCENOTFOUND_KMSNOTFOUND = "ResourceNotFound.KMSNotFound"
+
+	// 网络资源获取失败。
+	RESOURCENOTFOUND_NETWORKINFONOTFOUND = "ResourceNotFound.NetWorkInfoNotFound"
 
 	// 获取oss资源失败。
 	RESOURCENOTFOUND_OSSINFONOTFOUND = "ResourceNotFound.OssInfoNotFound"
@@ -566,6 +602,9 @@ const (
 	// 不支持变配节点或磁盘的配置。
 	UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
 
+	// 集群开启了saml登录，不能直接从https调整到http协议
+	UNSUPPORTEDOPERATION_CLOSEHTTPSWITHSAML = "UnsupportedOperation.CloseHttpsWithSaml"
+
 	// 不支持该操作，在集群中存在分配的分片。
 	UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
 
@@ -581,8 +620,14 @@ const (
 	// 该版本不支持cos备份。集群需要重启来允许cos备份。
 	UNSUPPORTEDOPERATION_COSBACKUP = "UnsupportedOperation.CosBackUp"
 
+	// cvm当前运行状态不支持
+	UNSUPPORTEDOPERATION_CVMSTATENOTSUPPORTED = "UnsupportedOperation.CvmStateNotSupported"
+
 	// 有关机的cvm
 	UNSUPPORTEDOPERATION_CVMSTATUSSTOPPED = "UnsupportedOperation.CvmStatusStopped"
+
+	// 调整后集群数据节点堆内存过小
+	UNSUPPORTEDOPERATION_DATANODEJVMHEAPTOOSMALL = "UnsupportedOperation.DataNodeJvmHeapTooSmall"
 
 	// 不支持该智能诊断任务。
 	UNSUPPORTEDOPERATION_DIAGNOSEJOB = "UnsupportedOperation.DiagnoseJob"
@@ -592,6 +637,15 @@ const (
 
 	// 节点磁盘可用空间不足
 	UNSUPPORTEDOPERATION_DISKFREESPACEINSUFFICIENT = "UnsupportedOperation.DiskFreeSpaceInsufficient"
+
+	// 该操作仅支持弹性云盘
+	UNSUPPORTEDOPERATION_DISKNOTPORTABLE = "UnsupportedOperation.DiskNotPortable"
+
+	// 当前磁盘状态不支持
+	UNSUPPORTEDOPERATION_DISKSTATENOTSUPPORTED = "UnsupportedOperation.DiskStateNotSupported"
+
+	// 磁盘类型变更路径不支持
+	UNSUPPORTEDOPERATION_DISKTYPECHANGEPATHNOTSUPPORTED = "UnsupportedOperation.DiskTypeChangePathNotSupported"
 
 	// 不支持的读硬盘配置。
 	UNSUPPORTEDOPERATION_DISKUSE = "UnsupportedOperation.DiskUse"
@@ -608,6 +662,12 @@ const (
 	// 不支持该操作，服务类型有误。
 	UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
 
+	// 内核版本不支持
+	UNSUPPORTEDOPERATION_KERNELNOTSUPPORT = "UnsupportedOperation.KernelNotSupport"
+
+	// 当前ES集群版本过低，不支持Gpu机器
+	UNSUPPORTEDOPERATION_KERNELNOTSUPPORTGPU = "UnsupportedOperation.KernelNotSupportGpu"
+
 	// 不支持该操作，license的类型有误。
 	UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 
@@ -622,6 +682,9 @@ const (
 
 	// 抱歉，您需要前往ES控制台购买页完成确认认证，我们才能为您提供所选的腾讯云服务。如果对于确认流程有任何疑问，可以联系我们：https://www.tencentcloud.com/zh/contact-us。
 	UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
+
+	// 该操作仅支持数据盘
+	UNSUPPORTEDOPERATION_NOTDATADISK = "UnsupportedOperation.NotDataDisk"
 
 	// 用户同步日志的配置passLogstashId为空，不支持该操作。
 	UNSUPPORTEDOPERATION_PASSLOGSTASHID = "UnsupportedOperation.PassLogstashId"
@@ -641,11 +704,23 @@ const (
 	// 纵向缩容太多资源。
 	UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
 
+	// 横向缩容过多节点。
+	UNSUPPORTEDOPERATION_SCALEINTOOMUCH = "UnsupportedOperation.ScaleInTooMuch"
+
+	// 单节点不支持该操作
+	UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
+
 	// 不支持该操作，当前实例运行状态不为正常。
 	UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 
 	// 不支持该操作，实例状态有误。
 	UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+
+	// 不支持切换PrivateLink架构。
+	UNSUPPORTEDOPERATION_SWITCHPRIVATELINK = "UnsupportedOperation.SwitchPrivateLink"
+
+	// 集群总的磁盘容量较小。
+	UNSUPPORTEDOPERATION_TOTALSTORAGE = "UnsupportedOperation.TotalStorage"
 
 	// 节点或磁盘数变更时不支持更新磁盘加密信息。
 	UNSUPPORTEDOPERATION_UPDATEDISKENCRYPT = "UnsupportedOperation.UpdateDiskEncrypt"

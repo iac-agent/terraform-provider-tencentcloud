@@ -61,7 +61,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts v1.3.198
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eb v1.1.30
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr v1.3.188
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es v1.1.13
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es v1.3.194
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gaap v1.0.970
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gs v1.3.58
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/keewidb v1.3.32
