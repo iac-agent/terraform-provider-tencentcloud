@@ -89,6 +89,284 @@ func (c *Client) CheckMigrateIndexMetaDataWithContext(ctx context.Context, reque
     return
 }
 
+func NewCheckUpdateInstanceRequest() (request *CheckUpdateInstanceRequest) {
+    request = &CheckUpdateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CheckUpdateInstance")
+    
+    
+    return
+}
+
+func NewCheckUpdateInstanceResponse() (response *CheckUpdateInstanceResponse) {
+    response = &CheckUpdateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckUpdateInstance
+// 检查实例变配操作是否可以发起
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  FAILEDOPERATION_UNSUPPORTEDLOCALDISKROLLUPSCALEUPORDOWN = "FailedOperation.UnsupportedLocalDiskRollUpScaleUpOrDown"
+//  FAILEDOPERATION_UNSUPPORTEDRESETNODETYPEANDSCALEOUTDISK = "FailedOperation.UnsupportedResetNodeTypeAndScaleOutDisk"
+//  FAILEDOPERATION_UNSUPPORTEDRESTSCALEDOWNANDMODIFYDISK = "FailedOperation.UnsupportedRestScaleDownAndModifyDisk"
+//  FAILEDOPERATION_UNSUPPORTEDREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportedReverseRegulationNodeTypeAndDisk"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCOSBACKUPINFO = "InvalidParameter.InvalidCosBackupInfo"
+//  INVALIDPARAMETER_INVALIDDISKCOUNT = "InvalidParameter.InvalidDiskCount"
+//  INVALIDPARAMETER_INVALIDDISKENCRYPT = "InvalidParameter.InvalidDiskEncrypt"
+//  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
+//  INVALIDPARAMETER_INVALIDDISKTYPE = "InvalidParameter.InvalidDiskType"
+//  INVALIDPARAMETER_INVALIDESACL = "InvalidParameter.InvalidEsACL"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDKIBANAPRIVATEPORT = "InvalidParameter.InvalidKibanaPrivatePort"
+//  INVALIDPARAMETER_INVALIDMULTIZONEINFO = "InvalidParameter.InvalidMultiZoneInfo"
+//  INVALIDPARAMETER_INVALIDNODENUM = "InvalidParameter.InvalidNodeNum"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDPRIVATEACCESS = "InvalidParameter.InvalidPrivateAccess"
+//  INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+//  INVALIDPARAMETER_INVALIDSCALEDISKSAFEFACTOR = "InvalidParameter.InvalidScaleDiskSafeFactor"
+//  INVALIDPARAMETER_INVALIDSCENETYPE = "InvalidParameter.InvalidSceneType"
+//  INVALIDPARAMETER_INVALIDSUBNETID = "InvalidParameter.InvalidSubnetId"
+//  INVALIDPARAMETER_INVALIDTYPE = "InvalidParameter.InvalidType"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  INVALIDPARAMETER_INVALIDUPDATETYPE = "InvalidParameter.InvalidUpdateType"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+//  INVALIDPARAMETERVALUE_ESCONFIGTYPE = "InvalidParameterValue.EsConfigType"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_INVALIDDEADLINE = "InvalidParameterValue.InvalidDeadline"
+//  INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
+//  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+//  LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_DISK = "ResourceInsufficient.Disk"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
+//  RESOURCEINSUFFICIENT_ZONE = "ResourceInsufficient.Zone"
+//  RESOURCENOTFOUND_CVMINFONOTFOUND = "ResourceNotFound.CVMInfoNotFound"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_DATANODENOTFOUND = "ResourceNotFound.DataNodeNotFound"
+//  RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+//  RESOURCENOTFOUND_NETWORKINFONOTFOUND = "ResourceNotFound.NetWorkInfoNotFound"
+//  RESOURCENOTFOUND_OSSINFONOTFOUND = "ResourceNotFound.OssInfoNotFound"
+//  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
+//  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
+//  UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+//  UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
+//  UNSUPPORTEDOPERATION_CVMSTATENOTSUPPORTED = "UnsupportedOperation.CvmStateNotSupported"
+//  UNSUPPORTEDOPERATION_DATANODEJVMHEAPTOOSMALL = "UnsupportedOperation.DataNodeJvmHeapTooSmall"
+//  UNSUPPORTEDOPERATION_DISKNOTPORTABLE = "UnsupportedOperation.DiskNotPortable"
+//  UNSUPPORTEDOPERATION_DISKSTATENOTSUPPORTED = "UnsupportedOperation.DiskStateNotSupported"
+//  UNSUPPORTEDOPERATION_DISKTYPECHANGEPATHNOTSUPPORTED = "UnsupportedOperation.DiskTypeChangePathNotSupported"
+//  UNSUPPORTEDOPERATION_HETEROSCALINGEXECUTING = "UnsupportedOperation.HeteroScalingExecuting"
+//  UNSUPPORTEDOPERATION_INDEXSETTINGSREQUIRESET = "UnsupportedOperation.IndexSettingsRequireSet"
+//  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+//  UNSUPPORTEDOPERATION_LOCALDISK = "UnsupportedOperation.LocalDisk"
+//  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
+//  UNSUPPORTEDOPERATION_NOTDATADISK = "UnsupportedOperation.NotDataDisk"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
+//  UNSUPPORTEDOPERATION_SCALEINTOOMUCH = "UnsupportedOperation.ScaleInTooMuch"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+//  UNSUPPORTEDOPERATION_SWITCHPRIVATELINK = "UnsupportedOperation.SwitchPrivateLink"
+//  UNSUPPORTEDOPERATION_TOTALSTORAGE = "UnsupportedOperation.TotalStorage"
+//  UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
+func (c *Client) CheckUpdateInstance(request *CheckUpdateInstanceRequest) (response *CheckUpdateInstanceResponse, err error) {
+    return c.CheckUpdateInstanceWithContext(context.Background(), request)
+}
+
+// CheckUpdateInstance
+// 检查实例变配操作是否可以发起
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  FAILEDOPERATION_UNSUPPORTEDLOCALDISKROLLUPSCALEUPORDOWN = "FailedOperation.UnsupportedLocalDiskRollUpScaleUpOrDown"
+//  FAILEDOPERATION_UNSUPPORTEDRESETNODETYPEANDSCALEOUTDISK = "FailedOperation.UnsupportedResetNodeTypeAndScaleOutDisk"
+//  FAILEDOPERATION_UNSUPPORTEDRESTSCALEDOWNANDMODIFYDISK = "FailedOperation.UnsupportedRestScaleDownAndModifyDisk"
+//  FAILEDOPERATION_UNSUPPORTEDREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportedReverseRegulationNodeTypeAndDisk"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCOSBACKUPINFO = "InvalidParameter.InvalidCosBackupInfo"
+//  INVALIDPARAMETER_INVALIDDISKCOUNT = "InvalidParameter.InvalidDiskCount"
+//  INVALIDPARAMETER_INVALIDDISKENCRYPT = "InvalidParameter.InvalidDiskEncrypt"
+//  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
+//  INVALIDPARAMETER_INVALIDDISKTYPE = "InvalidParameter.InvalidDiskType"
+//  INVALIDPARAMETER_INVALIDESACL = "InvalidParameter.InvalidEsACL"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDKIBANAPRIVATEPORT = "InvalidParameter.InvalidKibanaPrivatePort"
+//  INVALIDPARAMETER_INVALIDMULTIZONEINFO = "InvalidParameter.InvalidMultiZoneInfo"
+//  INVALIDPARAMETER_INVALIDNODENUM = "InvalidParameter.InvalidNodeNum"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDPRIVATEACCESS = "InvalidParameter.InvalidPrivateAccess"
+//  INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+//  INVALIDPARAMETER_INVALIDSCALEDISKSAFEFACTOR = "InvalidParameter.InvalidScaleDiskSafeFactor"
+//  INVALIDPARAMETER_INVALIDSCENETYPE = "InvalidParameter.InvalidSceneType"
+//  INVALIDPARAMETER_INVALIDSUBNETID = "InvalidParameter.InvalidSubnetId"
+//  INVALIDPARAMETER_INVALIDTYPE = "InvalidParameter.InvalidType"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  INVALIDPARAMETER_INVALIDUPDATETYPE = "InvalidParameter.InvalidUpdateType"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+//  INVALIDPARAMETERVALUE_ESCONFIGTYPE = "InvalidParameterValue.EsConfigType"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_INVALIDDEADLINE = "InvalidParameterValue.InvalidDeadline"
+//  INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
+//  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+//  LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_DISK = "ResourceInsufficient.Disk"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
+//  RESOURCEINSUFFICIENT_ZONE = "ResourceInsufficient.Zone"
+//  RESOURCENOTFOUND_CVMINFONOTFOUND = "ResourceNotFound.CVMInfoNotFound"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_DATANODENOTFOUND = "ResourceNotFound.DataNodeNotFound"
+//  RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+//  RESOURCENOTFOUND_NETWORKINFONOTFOUND = "ResourceNotFound.NetWorkInfoNotFound"
+//  RESOURCENOTFOUND_OSSINFONOTFOUND = "ResourceNotFound.OssInfoNotFound"
+//  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
+//  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
+//  UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+//  UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
+//  UNSUPPORTEDOPERATION_CVMSTATENOTSUPPORTED = "UnsupportedOperation.CvmStateNotSupported"
+//  UNSUPPORTEDOPERATION_DATANODEJVMHEAPTOOSMALL = "UnsupportedOperation.DataNodeJvmHeapTooSmall"
+//  UNSUPPORTEDOPERATION_DISKNOTPORTABLE = "UnsupportedOperation.DiskNotPortable"
+//  UNSUPPORTEDOPERATION_DISKSTATENOTSUPPORTED = "UnsupportedOperation.DiskStateNotSupported"
+//  UNSUPPORTEDOPERATION_DISKTYPECHANGEPATHNOTSUPPORTED = "UnsupportedOperation.DiskTypeChangePathNotSupported"
+//  UNSUPPORTEDOPERATION_HETEROSCALINGEXECUTING = "UnsupportedOperation.HeteroScalingExecuting"
+//  UNSUPPORTEDOPERATION_INDEXSETTINGSREQUIRESET = "UnsupportedOperation.IndexSettingsRequireSet"
+//  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+//  UNSUPPORTEDOPERATION_LOCALDISK = "UnsupportedOperation.LocalDisk"
+//  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
+//  UNSUPPORTEDOPERATION_NOTDATADISK = "UnsupportedOperation.NotDataDisk"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
+//  UNSUPPORTEDOPERATION_SCALEINTOOMUCH = "UnsupportedOperation.ScaleInTooMuch"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+//  UNSUPPORTEDOPERATION_SWITCHPRIVATELINK = "UnsupportedOperation.SwitchPrivateLink"
+//  UNSUPPORTEDOPERATION_TOTALSTORAGE = "UnsupportedOperation.TotalStorage"
+//  UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
+func (c *Client) CheckUpdateInstanceWithContext(ctx context.Context, request *CheckUpdateInstanceRequest) (response *CheckUpdateInstanceResponse, err error) {
+    if request == nil {
+        request = NewCheckUpdateInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CheckUpdateInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckUpdateInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckUpdateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAutoBackUpStrategyRequest() (request *CreateAutoBackUpStrategyRequest) {
+    request = &CreateAutoBackUpStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CreateAutoBackUpStrategy")
+    
+    
+    return
+}
+
+func NewCreateAutoBackUpStrategyResponse() (response *CreateAutoBackUpStrategyResponse) {
+    response = &CreateAutoBackUpStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAutoBackUpStrategy
+// 新建自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+func (c *Client) CreateAutoBackUpStrategy(request *CreateAutoBackUpStrategyRequest) (response *CreateAutoBackUpStrategyResponse, err error) {
+    return c.CreateAutoBackUpStrategyWithContext(context.Background(), request)
+}
+
+// CreateAutoBackUpStrategy
+// 新建自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+func (c *Client) CreateAutoBackUpStrategyWithContext(ctx context.Context, request *CreateAutoBackUpStrategyRequest) (response *CreateAutoBackUpStrategyResponse, err error) {
+    if request == nil {
+        request = NewCreateAutoBackUpStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateAutoBackUpStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAutoBackUpStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAutoBackUpStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterSnapshotRequest() (request *CreateClusterSnapshotRequest) {
     request = &CreateClusterSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -117,6 +395,8 @@ func NewCreateClusterSnapshotResponse() (response *CreateClusterSnapshotResponse
 //  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
 func (c *Client) CreateClusterSnapshot(request *CreateClusterSnapshotRequest) (response *CreateClusterSnapshotResponse, err error) {
     return c.CreateClusterSnapshotWithContext(context.Background(), request)
 }
@@ -130,6 +410,8 @@ func (c *Client) CreateClusterSnapshot(request *CreateClusterSnapshotRequest) (r
 //  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
 func (c *Client) CreateClusterSnapshotWithContext(ctx context.Context, request *CreateClusterSnapshotRequest) (response *CreateClusterSnapshotResponse, err error) {
     if request == nil {
         request = NewCreateClusterSnapshotRequest()
@@ -143,6 +425,70 @@ func (c *Client) CreateClusterSnapshotWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewCreateClusterSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCollectorRequest() (request *CreateCollectorRequest) {
+    request = &CreateCollectorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CreateCollector")
+    
+    
+    return
+}
+
+func NewCreateCollectorResponse() (response *CreateCollectorResponse) {
+    response = &CreateCollectorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCollector
+// 用于创建Beats采集器
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateCollector(request *CreateCollectorRequest) (response *CreateCollectorResponse, err error) {
+    return c.CreateCollectorWithContext(context.Background(), request)
+}
+
+// CreateCollector
+// 用于创建Beats采集器
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateCollectorWithContext(ctx context.Context, request *CreateCollectorRequest) (response *CreateCollectorResponse, err error) {
+    if request == nil {
+        request = NewCreateCollectorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateCollector")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCollector require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCollectorResponse()
     err = c.Send(request, response)
     return
 }
@@ -296,6 +642,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHCREATEINSTANCE = "AuthFailure.UnAuthCreateInstance"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CDCQUOTAINSUFFICIENT = "FailedOperation.CdcQuotaInsufficient"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
@@ -338,6 +685,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
 //  UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
 func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
     return c.CreateInstanceWithContext(context.Background(), request)
@@ -349,6 +697,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHCREATEINSTANCE = "AuthFailure.UnAuthCreateInstance"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CDCQUOTAINSUFFICIENT = "FailedOperation.CdcQuotaInsufficient"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
@@ -391,6 +740,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
 //  UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
 func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
     if request == nil {
@@ -863,6 +1213,64 @@ func (c *Client) CreateServerlessSpaceV2WithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteAutoBackUpStrategyRequest() (request *DeleteAutoBackUpStrategyRequest) {
+    request = &DeleteAutoBackUpStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DeleteAutoBackUpStrategy")
+    
+    
+    return
+}
+
+func NewDeleteAutoBackUpStrategyResponse() (response *DeleteAutoBackUpStrategyResponse) {
+    response = &DeleteAutoBackUpStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAutoBackUpStrategy
+// 删除自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAutoBackUpStrategy(request *DeleteAutoBackUpStrategyRequest) (response *DeleteAutoBackUpStrategyResponse, err error) {
+    return c.DeleteAutoBackUpStrategyWithContext(context.Background(), request)
+}
+
+// DeleteAutoBackUpStrategy
+// 删除自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAutoBackUpStrategyWithContext(ctx context.Context, request *DeleteAutoBackUpStrategyRequest) (response *DeleteAutoBackUpStrategyResponse, err error) {
+    if request == nil {
+        request = NewDeleteAutoBackUpStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DeleteAutoBackUpStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAutoBackUpStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAutoBackUpStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterSnapshotRequest() (request *DeleteClusterSnapshotRequest) {
     request = &DeleteClusterSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -886,29 +1294,11 @@ func NewDeleteClusterSnapshotResponse() (response *DeleteClusterSnapshotResponse
 // 删除快照仓库里备份的快照
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
-//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
-//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
-//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
-//  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
-//  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
-//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
-//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
-//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
-//  RESOURCEINSUFFICIENT_CLB = "ResourceInsufficient.Clb"
-//  RESOURCEINSUFFICIENT_ES = "ResourceInsufficient.Es"
-//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
-//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteClusterSnapshot(request *DeleteClusterSnapshotRequest) (response *DeleteClusterSnapshotResponse, err error) {
     return c.DeleteClusterSnapshotWithContext(context.Background(), request)
 }
@@ -917,29 +1307,11 @@ func (c *Client) DeleteClusterSnapshot(request *DeleteClusterSnapshotRequest) (r
 // 删除快照仓库里备份的快照
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
-//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
-//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
-//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
-//  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
-//  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
-//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
-//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
-//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
-//  RESOURCEINSUFFICIENT_CLB = "ResourceInsufficient.Clb"
-//  RESOURCEINSUFFICIENT_ES = "ResourceInsufficient.Es"
-//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
-//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteClusterSnapshotWithContext(ctx context.Context, request *DeleteClusterSnapshotRequest) (response *DeleteClusterSnapshotResponse, err error) {
     if request == nil {
         request = NewDeleteClusterSnapshotRequest()
@@ -1042,6 +1414,7 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 // 销毁集群实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_OPENDESTROYPROTECTION = "FailedOperation.OpenDestroyProtection"
 //  FAILEDOPERATION_REFUNDERROR = "FailedOperation.RefundError"
 //  INTERNALERROR = "InternalError"
@@ -1061,6 +1434,7 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
 // 销毁集群实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_OPENDESTROYPROTECTION = "FailedOperation.OpenDestroyProtection"
 //  FAILEDOPERATION_REFUNDERROR = "FailedOperation.RefundError"
 //  INTERNALERROR = "InternalError"
@@ -1361,6 +1735,174 @@ func (c *Client) DeleteServerlessSpaceUserWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeAutoBackUpStrategyRequest() (request *DescribeAutoBackUpStrategyRequest) {
+    request = &DescribeAutoBackUpStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeAutoBackUpStrategy")
+    
+    
+    return
+}
+
+func NewDescribeAutoBackUpStrategyResponse() (response *DescribeAutoBackUpStrategyResponse) {
+    response = &DescribeAutoBackUpStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAutoBackUpStrategy
+// 获取自动备份快照策略信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeAutoBackUpStrategy(request *DescribeAutoBackUpStrategyRequest) (response *DescribeAutoBackUpStrategyResponse, err error) {
+    return c.DescribeAutoBackUpStrategyWithContext(context.Background(), request)
+}
+
+// DescribeAutoBackUpStrategy
+// 获取自动备份快照策略信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeAutoBackUpStrategyWithContext(ctx context.Context, request *DescribeAutoBackUpStrategyRequest) (response *DescribeAutoBackUpStrategyResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoBackUpStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeAutoBackUpStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoBackUpStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoBackUpStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAutoScaleDiskInfoRequest() (request *DescribeAutoScaleDiskInfoRequest) {
+    request = &DescribeAutoScaleDiskInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeAutoScaleDiskInfo")
+    
+    
+    return
+}
+
+func NewDescribeAutoScaleDiskInfoResponse() (response *DescribeAutoScaleDiskInfoResponse) {
+    response = &DescribeAutoScaleDiskInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAutoScaleDiskInfo
+// 获取自动扩盘参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeAutoScaleDiskInfo(request *DescribeAutoScaleDiskInfoRequest) (response *DescribeAutoScaleDiskInfoResponse, err error) {
+    return c.DescribeAutoScaleDiskInfoWithContext(context.Background(), request)
+}
+
+// DescribeAutoScaleDiskInfo
+// 获取自动扩盘参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeAutoScaleDiskInfoWithContext(ctx context.Context, request *DescribeAutoScaleDiskInfoRequest) (response *DescribeAutoScaleDiskInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoScaleDiskInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeAutoScaleDiskInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoScaleDiskInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoScaleDiskInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterDiskRangeRequest() (request *DescribeClusterDiskRangeRequest) {
+    request = &DescribeClusterDiskRangeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeClusterDiskRange")
+    
+    
+    return
+}
+
+func NewDescribeClusterDiskRangeResponse() (response *DescribeClusterDiskRangeResponse) {
+    response = &DescribeClusterDiskRangeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterDiskRange
+// 获取集群节点磁盘大小上下限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeClusterDiskRange(request *DescribeClusterDiskRangeRequest) (response *DescribeClusterDiskRangeResponse, err error) {
+    return c.DescribeClusterDiskRangeWithContext(context.Background(), request)
+}
+
+// DescribeClusterDiskRange
+// 获取集群节点磁盘大小上下限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeClusterDiskRangeWithContext(ctx context.Context, request *DescribeClusterDiskRangeRequest) (response *DescribeClusterDiskRangeResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterDiskRangeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeClusterDiskRange")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterDiskRange require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterDiskRangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterSnapshotRequest() (request *DescribeClusterSnapshotRequest) {
     request = &DescribeClusterSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1384,6 +1926,8 @@ func NewDescribeClusterSnapshotResponse() (response *DescribeClusterSnapshotResp
 // 获取快照备份列表
 //
 // 可能返回的错误码:
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 //  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
 func (c *Client) DescribeClusterSnapshot(request *DescribeClusterSnapshotRequest) (response *DescribeClusterSnapshotResponse, err error) {
     return c.DescribeClusterSnapshotWithContext(context.Background(), request)
@@ -1393,6 +1937,8 @@ func (c *Client) DescribeClusterSnapshot(request *DescribeClusterSnapshotRequest
 // 获取快照备份列表
 //
 // 可能返回的错误码:
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 //  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
 func (c *Client) DescribeClusterSnapshotWithContext(ctx context.Context, request *DescribeClusterSnapshotRequest) (response *DescribeClusterSnapshotResponse, err error) {
     if request == nil {
@@ -1407,6 +1953,62 @@ func (c *Client) DescribeClusterSnapshotWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeClusterSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCosBackupStrategyViewsRequest() (request *DescribeCosBackupStrategyViewsRequest) {
+    request = &DescribeCosBackupStrategyViewsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeCosBackupStrategyViews")
+    
+    
+    return
+}
+
+func NewDescribeCosBackupStrategyViewsResponse() (response *DescribeCosBackupStrategyViewsResponse) {
+    response = &DescribeCosBackupStrategyViewsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCosBackupStrategyViews
+// 获取集群自动备份策略概览
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeCosBackupStrategyViews(request *DescribeCosBackupStrategyViewsRequest) (response *DescribeCosBackupStrategyViewsResponse, err error) {
+    return c.DescribeCosBackupStrategyViewsWithContext(context.Background(), request)
+}
+
+// DescribeCosBackupStrategyViews
+// 获取集群自动备份策略概览
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeCosBackupStrategyViewsWithContext(ctx context.Context, request *DescribeCosBackupStrategyViewsRequest) (response *DescribeCosBackupStrategyViewsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCosBackupStrategyViewsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeCosBackupStrategyViews")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCosBackupStrategyViews require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCosBackupStrategyViewsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1471,6 +2073,222 @@ func (c *Client) DescribeDiagnoseWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeDiagnoseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEsInstanceEventListsRequest() (request *DescribeEsInstanceEventListsRequest) {
+    request = &DescribeEsInstanceEventListsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeEsInstanceEventLists")
+    
+    
+    return
+}
+
+func NewDescribeEsInstanceEventListsResponse() (response *DescribeEsInstanceEventListsResponse) {
+    response = &DescribeEsInstanceEventListsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEsInstanceEventLists
+// 查询事件中心列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CAMINFONOTFOUND = "ResourceNotFound.CAMInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeEsInstanceEventLists(request *DescribeEsInstanceEventListsRequest) (response *DescribeEsInstanceEventListsResponse, err error) {
+    return c.DescribeEsInstanceEventListsWithContext(context.Background(), request)
+}
+
+// DescribeEsInstanceEventLists
+// 查询事件中心列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CAMINFONOTFOUND = "ResourceNotFound.CAMInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeEsInstanceEventListsWithContext(ctx context.Context, request *DescribeEsInstanceEventListsRequest) (response *DescribeEsInstanceEventListsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEsInstanceEventListsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeEsInstanceEventLists")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEsInstanceEventLists require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEsInstanceEventListsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEventDataDetailRequest() (request *DescribeEventDataDetailRequest) {
+    request = &DescribeEventDataDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeEventDataDetail")
+    
+    
+    return
+}
+
+func NewDescribeEventDataDetailResponse() (response *DescribeEventDataDetailResponse) {
+    response = &DescribeEventDataDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEventDataDetail
+// 查询事件详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeEventDataDetail(request *DescribeEventDataDetailRequest) (response *DescribeEventDataDetailResponse, err error) {
+    return c.DescribeEventDataDetailWithContext(context.Background(), request)
+}
+
+// DescribeEventDataDetail
+// 查询事件详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeEventDataDetailWithContext(ctx context.Context, request *DescribeEventDataDetailRequest) (response *DescribeEventDataDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeEventDataDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeEventDataDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEventDataDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEventDataDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEventInfoListRequest() (request *DescribeEventInfoListRequest) {
+    request = &DescribeEventInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeEventInfoList")
+    
+    
+    return
+}
+
+func NewDescribeEventInfoListResponse() (response *DescribeEventInfoListResponse) {
+    response = &DescribeEventInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEventInfoList
+// 查询事件类型列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEventInfoList(request *DescribeEventInfoListRequest) (response *DescribeEventInfoListResponse, err error) {
+    return c.DescribeEventInfoListWithContext(context.Background(), request)
+}
+
+// DescribeEventInfoList
+// 查询事件类型列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEventInfoListWithContext(ctx context.Context, request *DescribeEventInfoListRequest) (response *DescribeEventInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEventInfoListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeEventInfoList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEventInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEventInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeForceMergeTaskRequest() (request *DescribeForceMergeTaskRequest) {
+    request = &DescribeForceMergeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeForceMergeTask")
+    
+    
+    return
+}
+
+func NewDescribeForceMergeTaskResponse() (response *DescribeForceMergeTaskResponse) {
+    response = &DescribeForceMergeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeForceMergeTask
+// 查询新增的forcemerge任务列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeForceMergeTask(request *DescribeForceMergeTaskRequest) (response *DescribeForceMergeTaskResponse, err error) {
+    return c.DescribeForceMergeTaskWithContext(context.Background(), request)
+}
+
+// DescribeForceMergeTask
+// 查询新增的forcemerge任务列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeForceMergeTaskWithContext(ctx context.Context, request *DescribeForceMergeTaskRequest) (response *DescribeForceMergeTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeForceMergeTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeForceMergeTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeForceMergeTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeForceMergeTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -1637,6 +2455,8 @@ func NewDescribeInstanceLogsResponse() (response *DescribeInstanceLogsResponse) 
 //  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
 //  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (response *DescribeInstanceLogsResponse, err error) {
@@ -1658,6 +2478,8 @@ func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (res
 //  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
 //  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 func (c *Client) DescribeInstanceLogsWithContext(ctx context.Context, request *DescribeInstanceLogsRequest) (response *DescribeInstanceLogsResponse, err error) {
@@ -2019,6 +2841,8 @@ func NewDescribeLogstashInstancesResponse() (response *DescribeLogstashInstances
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 func (c *Client) DescribeLogstashInstances(request *DescribeLogstashInstancesRequest) (response *DescribeLogstashInstancesResponse, err error) {
     return c.DescribeLogstashInstancesWithContext(context.Background(), request)
 }
@@ -2030,6 +2854,8 @@ func (c *Client) DescribeLogstashInstances(request *DescribeLogstashInstancesReq
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 func (c *Client) DescribeLogstashInstancesWithContext(ctx context.Context, request *DescribeLogstashInstancesRequest) (response *DescribeLogstashInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeLogstashInstancesRequest()
@@ -2095,6 +2921,246 @@ func (c *Client) DescribeLogstashPipelinesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeLogstashPipelinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLogstashViewsRequest() (request *DescribeLogstashViewsRequest) {
+    request = &DescribeLogstashViewsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeLogstashViews")
+    
+    
+    return
+}
+
+func NewDescribeLogstashViewsResponse() (response *DescribeLogstashViewsResponse) {
+    response = &DescribeLogstashViewsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLogstashViews
+// 查询Logstash集群视图
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+func (c *Client) DescribeLogstashViews(request *DescribeLogstashViewsRequest) (response *DescribeLogstashViewsResponse, err error) {
+    return c.DescribeLogstashViewsWithContext(context.Background(), request)
+}
+
+// DescribeLogstashViews
+// 查询Logstash集群视图
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+func (c *Client) DescribeLogstashViewsWithContext(ctx context.Context, request *DescribeLogstashViewsRequest) (response *DescribeLogstashViewsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogstashViewsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeLogstashViews")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogstashViews require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogstashViewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
+    request = &DescribeRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeRegions")
+    
+    
+    return
+}
+
+func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
+    response = &DescribeRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRegions
+// 查询ES支持的地域列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+//  RESOURCENOTFOUND_ACCOUNTINFONOTFOUND = "ResourceNotFound.AccountInfoNotFound"
+func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
+    return c.DescribeRegionsWithContext(context.Background(), request)
+}
+
+// DescribeRegions
+// 查询ES支持的地域列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+//  RESOURCENOTFOUND_ACCOUNTINFONOTFOUND = "ResourceNotFound.AccountInfoNotFound"
+func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeRegions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRequestInstancePolicyRequest() (request *DescribeRequestInstancePolicyRequest) {
+    request = &DescribeRequestInstancePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeRequestInstancePolicy")
+    
+    
+    return
+}
+
+func NewDescribeRequestInstancePolicyResponse() (response *DescribeRequestInstancePolicyResponse) {
+    response = &DescribeRequestInstancePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRequestInstancePolicy
+// 集群可访问API展示
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHCREATEINSTANCE = "AuthFailure.UnAuthCreateInstance"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NODENUMANDZONEERROR = "FailedOperation.NodeNumAndZoneError"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAUTOVOUCHER = "InvalidParameter.InvalidAutoVoucher"
+//  INVALIDPARAMETER_INVALIDDEPLOYMODE = "InvalidParameter.InvalidDeployMode"
+//  INVALIDPARAMETER_INVALIDDISKCOUNT = "InvalidParameter.InvalidDiskCount"
+//  INVALIDPARAMETER_INVALIDDISKENCRYPT = "InvalidParameter.InvalidDiskEncrypt"
+//  INVALIDPARAMETER_INVALIDDISKENHANCE = "InvalidParameter.InvalidDiskEnhance"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDNODENUM = "InvalidParameter.InvalidNodeNum"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDOPTYPE = "InvalidParameter.InvalidOpType"
+//  INVALIDPARAMETER_INVALIDOPERATIONDURATION = "InvalidParameter.InvalidOperationDuration"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDTAGLIST = "InvalidParameter.InvalidTagList"
+//  INVALIDPARAMETER_INVALIDTYPE = "InvalidParameter.InvalidType"
+//  INVALIDPARAMETER_INVALIDVOUCHERIDS = "InvalidParameter.InvalidVoucherIds"
+//  INVALIDPARAMETERVALUE_CHARGETYPE = "InvalidParameterValue.ChargeType"
+//  INVALIDPARAMETERVALUE_RENEWFLAG = "InvalidParameterValue.RenewFlag"
+//  LIMITEXCEEDED_CLUSTERNUM = "LimitExceeded.ClusterNum"
+//  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ORDER = "ResourceInUse.Order"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  RESOURCEINSUFFICIENT_ZONE = "ResourceInsufficient.Zone"
+//  RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+//  RESOURCENOTFOUND_TRADECGWNOTFOUND = "ResourceNotFound.TradeCgwNotFound"
+//  RESOURCENOTFOUND_VPCINFONOTFOUND = "ResourceNotFound.VPCInfoNotFound"
+//  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
+//  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
+//  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
+//  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
+func (c *Client) DescribeRequestInstancePolicy(request *DescribeRequestInstancePolicyRequest) (response *DescribeRequestInstancePolicyResponse, err error) {
+    return c.DescribeRequestInstancePolicyWithContext(context.Background(), request)
+}
+
+// DescribeRequestInstancePolicy
+// 集群可访问API展示
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHCREATEINSTANCE = "AuthFailure.UnAuthCreateInstance"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NODENUMANDZONEERROR = "FailedOperation.NodeNumAndZoneError"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAUTOVOUCHER = "InvalidParameter.InvalidAutoVoucher"
+//  INVALIDPARAMETER_INVALIDDEPLOYMODE = "InvalidParameter.InvalidDeployMode"
+//  INVALIDPARAMETER_INVALIDDISKCOUNT = "InvalidParameter.InvalidDiskCount"
+//  INVALIDPARAMETER_INVALIDDISKENCRYPT = "InvalidParameter.InvalidDiskEncrypt"
+//  INVALIDPARAMETER_INVALIDDISKENHANCE = "InvalidParameter.InvalidDiskEnhance"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDNODENUM = "InvalidParameter.InvalidNodeNum"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDOPTYPE = "InvalidParameter.InvalidOpType"
+//  INVALIDPARAMETER_INVALIDOPERATIONDURATION = "InvalidParameter.InvalidOperationDuration"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDTAGLIST = "InvalidParameter.InvalidTagList"
+//  INVALIDPARAMETER_INVALIDTYPE = "InvalidParameter.InvalidType"
+//  INVALIDPARAMETER_INVALIDVOUCHERIDS = "InvalidParameter.InvalidVoucherIds"
+//  INVALIDPARAMETERVALUE_CHARGETYPE = "InvalidParameterValue.ChargeType"
+//  INVALIDPARAMETERVALUE_RENEWFLAG = "InvalidParameterValue.RenewFlag"
+//  LIMITEXCEEDED_CLUSTERNUM = "LimitExceeded.ClusterNum"
+//  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ORDER = "ResourceInUse.Order"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  RESOURCEINSUFFICIENT_ZONE = "ResourceInsufficient.Zone"
+//  RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+//  RESOURCENOTFOUND_TRADECGWNOTFOUND = "ResourceNotFound.TradeCgwNotFound"
+//  RESOURCENOTFOUND_VPCINFONOTFOUND = "ResourceNotFound.VPCInfoNotFound"
+//  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
+//  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
+//  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
+//  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
+func (c *Client) DescribeRequestInstancePolicyWithContext(ctx context.Context, request *DescribeRequestInstancePolicyRequest) (response *DescribeRequestInstancePolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeRequestInstancePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeRequestInstancePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRequestInstancePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRequestInstancePolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -2415,6 +3481,64 @@ func (c *Client) DescribeServerlessSpacesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSnapshotViewsRequest() (request *DescribeSnapshotViewsRequest) {
+    request = &DescribeSnapshotViewsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeSnapshotViews")
+    
+    
+    return
+}
+
+func NewDescribeSnapshotViewsResponse() (response *DescribeSnapshotViewsResponse) {
+    response = &DescribeSnapshotViewsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSnapshotViews
+// 获取集群快照列表概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeSnapshotViews(request *DescribeSnapshotViewsRequest) (response *DescribeSnapshotViewsResponse, err error) {
+    return c.DescribeSnapshotViewsWithContext(context.Background(), request)
+}
+
+// DescribeSnapshotViews
+// 获取集群快照列表概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeSnapshotViewsWithContext(ctx context.Context, request *DescribeSnapshotViewsRequest) (response *DescribeSnapshotViewsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotViewsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeSnapshotViews")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSnapshotViews require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSnapshotViewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSpaceKibanaToolsRequest() (request *DescribeSpaceKibanaToolsRequest) {
     request = &DescribeSpaceKibanaToolsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2461,6 +3585,68 @@ func (c *Client) DescribeSpaceKibanaToolsWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeSpaceKibanaToolsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUpgradeRequest() (request *DescribeUpgradeRequest) {
+    request = &DescribeUpgradeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeUpgrade")
+    
+    
+    return
+}
+
+func NewDescribeUpgradeResponse() (response *DescribeUpgradeResponse) {
+    response = &DescribeUpgradeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUpgrade
+// 获取实例可升级列表，包括可升级的大版本、商业特性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+func (c *Client) DescribeUpgrade(request *DescribeUpgradeRequest) (response *DescribeUpgradeResponse, err error) {
+    return c.DescribeUpgradeWithContext(context.Background(), request)
+}
+
+// DescribeUpgrade
+// 获取实例可升级列表，包括可升级的大版本、商业特性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+func (c *Client) DescribeUpgradeWithContext(ctx context.Context, request *DescribeUpgradeRequest) (response *DescribeUpgradeResponse, err error) {
+    if request == nil {
+        request = NewDescribeUpgradeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeUpgrade")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUpgrade require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUpgradeResponse()
     err = c.Send(request, response)
     return
 }
@@ -2653,6 +3839,74 @@ func (c *Client) DiagnoseInstanceWithContext(ctx context.Context, request *Diagn
     return
 }
 
+func NewExportIpTraceLogRequest() (request *ExportIpTraceLogRequest) {
+    request = &ExportIpTraceLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "ExportIpTraceLog")
+    
+    
+    return
+}
+
+func NewExportIpTraceLogResponse() (response *ExportIpTraceLogResponse) {
+    response = &ExportIpTraceLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportIpTraceLog
+// 查询IP溯源日志原始数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ABNORMALDATAFORMAT = "FailedOperation.AbnormalDataFormat"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_INDEXINFONOTFOUND = "ResourceNotFound.IndexInfoNotFound"
+func (c *Client) ExportIpTraceLog(request *ExportIpTraceLogRequest) (response *ExportIpTraceLogResponse, err error) {
+    return c.ExportIpTraceLogWithContext(context.Background(), request)
+}
+
+// ExportIpTraceLog
+// 查询IP溯源日志原始数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ABNORMALDATAFORMAT = "FailedOperation.AbnormalDataFormat"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_INDEXINFONOTFOUND = "ResourceNotFound.IndexInfoNotFound"
+func (c *Client) ExportIpTraceLogWithContext(ctx context.Context, request *ExportIpTraceLogRequest) (response *ExportIpTraceLogResponse, err error) {
+    if request == nil {
+        request = NewExportIpTraceLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ExportIpTraceLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportIpTraceLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportIpTraceLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDiagnoseSettingsRequest() (request *GetDiagnoseSettingsRequest) {
     request = &GetDiagnoseSettingsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2709,6 +3963,66 @@ func (c *Client) GetDiagnoseSettingsWithContext(ctx context.Context, request *Ge
     request.SetContext(ctx)
     
     response = NewGetDiagnoseSettingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetIpTraceStatusRequest() (request *GetIpTraceStatusRequest) {
+    request = &GetIpTraceStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "GetIpTraceStatus")
+    
+    
+    return
+}
+
+func NewGetIpTraceStatusResponse() (response *GetIpTraceStatusResponse) {
+    response = &GetIpTraceStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetIpTraceStatus
+// 查询IP溯源状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ABNORMALDATAFORMAT = "FailedOperation.AbnormalDataFormat"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) GetIpTraceStatus(request *GetIpTraceStatusRequest) (response *GetIpTraceStatusResponse, err error) {
+    return c.GetIpTraceStatusWithContext(context.Background(), request)
+}
+
+// GetIpTraceStatus
+// 查询IP溯源状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ABNORMALDATAFORMAT = "FailedOperation.AbnormalDataFormat"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) GetIpTraceStatusWithContext(ctx context.Context, request *GetIpTraceStatusRequest) (response *GetIpTraceStatusResponse, err error) {
+    if request == nil {
+        request = NewGetIpTraceStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "GetIpTraceStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetIpTraceStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetIpTraceStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -2889,6 +4203,196 @@ func (c *Client) InstallInstanceModelWithContext(ctx context.Context, request *I
     return
 }
 
+func NewModifyAutoBackUpCommonInfoRequest() (request *ModifyAutoBackUpCommonInfoRequest) {
+    request = &ModifyAutoBackUpCommonInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "ModifyAutoBackUpCommonInfo")
+    
+    
+    return
+}
+
+func NewModifyAutoBackUpCommonInfoResponse() (response *ModifyAutoBackUpCommonInfoResponse) {
+    response = &ModifyAutoBackUpCommonInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAutoBackUpCommonInfo
+// 修改自动备份快照策略公共信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAutoBackUpCommonInfo(request *ModifyAutoBackUpCommonInfoRequest) (response *ModifyAutoBackUpCommonInfoResponse, err error) {
+    return c.ModifyAutoBackUpCommonInfoWithContext(context.Background(), request)
+}
+
+// ModifyAutoBackUpCommonInfo
+// 修改自动备份快照策略公共信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAutoBackUpCommonInfoWithContext(ctx context.Context, request *ModifyAutoBackUpCommonInfoRequest) (response *ModifyAutoBackUpCommonInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoBackUpCommonInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ModifyAutoBackUpCommonInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoBackUpCommonInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAutoBackUpCommonInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAutoBackUpStrategyRequest() (request *ModifyAutoBackUpStrategyRequest) {
+    request = &ModifyAutoBackUpStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "ModifyAutoBackUpStrategy")
+    
+    
+    return
+}
+
+func NewModifyAutoBackUpStrategyResponse() (response *ModifyAutoBackUpStrategyResponse) {
+    response = &ModifyAutoBackUpStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAutoBackUpStrategy
+// 修改自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+func (c *Client) ModifyAutoBackUpStrategy(request *ModifyAutoBackUpStrategyRequest) (response *ModifyAutoBackUpStrategyResponse, err error) {
+    return c.ModifyAutoBackUpStrategyWithContext(context.Background(), request)
+}
+
+// ModifyAutoBackUpStrategy
+// 修改自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+func (c *Client) ModifyAutoBackUpStrategyWithContext(ctx context.Context, request *ModifyAutoBackUpStrategyRequest) (response *ModifyAutoBackUpStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoBackUpStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ModifyAutoBackUpStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoBackUpStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAutoBackUpStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAutoScaleDiskInfoRequest() (request *ModifyAutoScaleDiskInfoRequest) {
+    request = &ModifyAutoScaleDiskInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "ModifyAutoScaleDiskInfo")
+    
+    
+    return
+}
+
+func NewModifyAutoScaleDiskInfoResponse() (response *ModifyAutoScaleDiskInfoResponse) {
+    response = &ModifyAutoScaleDiskInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAutoScaleDiskInfo
+// 修改自动扩盘参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_LOCALDISK = "UnsupportedOperation.LocalDisk"
+func (c *Client) ModifyAutoScaleDiskInfo(request *ModifyAutoScaleDiskInfoRequest) (response *ModifyAutoScaleDiskInfoResponse, err error) {
+    return c.ModifyAutoScaleDiskInfoWithContext(context.Background(), request)
+}
+
+// ModifyAutoScaleDiskInfo
+// 修改自动扩盘参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_LOCALDISK = "UnsupportedOperation.LocalDisk"
+func (c *Client) ModifyAutoScaleDiskInfoWithContext(ctx context.Context, request *ModifyAutoScaleDiskInfoRequest) (response *ModifyAutoScaleDiskInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoScaleDiskInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ModifyAutoScaleDiskInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoScaleDiskInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAutoScaleDiskInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEsVipSecurityGroupRequest() (request *ModifyEsVipSecurityGroupRequest) {
     request = &ModifyEsVipSecurityGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2945,6 +4449,300 @@ func (c *Client) ModifyEsVipSecurityGroupWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyEsVipSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryIpTraceLogRequest() (request *QueryIpTraceLogRequest) {
+    request = &QueryIpTraceLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "QueryIpTraceLog")
+    
+    
+    return
+}
+
+func NewQueryIpTraceLogResponse() (response *QueryIpTraceLogResponse) {
+    response = &QueryIpTraceLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryIpTraceLog
+// 查询IP溯源日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) QueryIpTraceLog(request *QueryIpTraceLogRequest) (response *QueryIpTraceLogResponse, err error) {
+    return c.QueryIpTraceLogWithContext(context.Background(), request)
+}
+
+// QueryIpTraceLog
+// 查询IP溯源日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) QueryIpTraceLogWithContext(ctx context.Context, request *QueryIpTraceLogRequest) (response *QueryIpTraceLogResponse, err error) {
+    if request == nil {
+        request = NewQueryIpTraceLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "QueryIpTraceLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryIpTraceLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryIpTraceLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryZoneResourceRequest() (request *QueryZoneResourceRequest) {
+    request = &QueryZoneResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "QueryZoneResource")
+    
+    
+    return
+}
+
+func NewQueryZoneResourceResponse() (response *QueryZoneResourceResponse) {
+    response = &QueryZoneResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryZoneResource
+// 获取指定region下指定zone列表的资源情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDOPTYPE = "InvalidParameter.InvalidOpType"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETERVALUE_CHARGETYPE = "InvalidParameterValue.ChargeType"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+//  RESOURCENOTFOUND_OSSINFONOTFOUND = "ResourceNotFound.OssInfoNotFound"
+//  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
+//  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+func (c *Client) QueryZoneResource(request *QueryZoneResourceRequest) (response *QueryZoneResourceResponse, err error) {
+    return c.QueryZoneResourceWithContext(context.Background(), request)
+}
+
+// QueryZoneResource
+// 获取指定region下指定zone列表的资源情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDOPTYPE = "InvalidParameter.InvalidOpType"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETERVALUE_CHARGETYPE = "InvalidParameterValue.ChargeType"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+//  RESOURCENOTFOUND_OSSINFONOTFOUND = "ResourceNotFound.OssInfoNotFound"
+//  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
+//  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+func (c *Client) QueryZoneResourceWithContext(ctx context.Context, request *QueryZoneResourceRequest) (response *QueryZoneResourceResponse, err error) {
+    if request == nil {
+        request = NewQueryZoneResourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "QueryZoneResource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryZoneResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryZoneResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryZoneResourceForLogstashRequest() (request *QueryZoneResourceForLogstashRequest) {
+    request = &QueryZoneResourceForLogstashRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "QueryZoneResourceForLogstash")
+    
+    
+    return
+}
+
+func NewQueryZoneResourceForLogstashResponse() (response *QueryZoneResourceForLogstashResponse) {
+    response = &QueryZoneResourceForLogstashResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryZoneResourceForLogstash
+// 获取Logstash指定region下指定zone列表的资源情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) QueryZoneResourceForLogstash(request *QueryZoneResourceForLogstashRequest) (response *QueryZoneResourceForLogstashResponse, err error) {
+    return c.QueryZoneResourceForLogstashWithContext(context.Background(), request)
+}
+
+// QueryZoneResourceForLogstash
+// 获取Logstash指定region下指定zone列表的资源情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) QueryZoneResourceForLogstashWithContext(ctx context.Context, request *QueryZoneResourceForLogstashRequest) (response *QueryZoneResourceForLogstashResponse, err error) {
+    if request == nil {
+        request = NewQueryZoneResourceForLogstashRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "QueryZoneResourceForLogstash")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryZoneResourceForLogstash require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryZoneResourceForLogstashResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRequestInstancesRequest() (request *RequestInstancesRequest) {
+    request = &RequestInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "RequestInstances")
+    
+    
+    return
+}
+
+func NewRequestInstancesResponse() (response *RequestInstancesResponse) {
+    response = &RequestInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RequestInstances
+// 请求集群实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RequestInstances(request *RequestInstancesRequest) (response *RequestInstancesResponse, err error) {
+    return c.RequestInstancesWithContext(context.Background(), request)
+}
+
+// RequestInstances
+// 请求集群实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RequestInstancesWithContext(ctx context.Context, request *RequestInstancesRequest) (response *RequestInstancesResponse, err error) {
+    if request == nil {
+        request = NewRequestInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "RequestInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RequestInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRequestInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRequestInstancesByGetRequest() (request *RequestInstancesByGetRequest) {
+    request = &RequestInstancesByGetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "RequestInstancesByGet")
+    
+    
+    return
+}
+
+func NewRequestInstancesByGetResponse() (response *RequestInstancesByGetResponse) {
+    response = &RequestInstancesByGetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RequestInstancesByGet
+// GET请求集群实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RequestInstancesByGet(request *RequestInstancesByGetRequest) (response *RequestInstancesByGetResponse, err error) {
+    return c.RequestInstancesByGetWithContext(context.Background(), request)
+}
+
+// RequestInstancesByGet
+// GET请求集群实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RequestInstancesByGetWithContext(ctx context.Context, request *RequestInstancesByGetRequest) (response *RequestInstancesByGetResponse, err error) {
+    if request == nil {
+        request = NewRequestInstancesByGetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "RequestInstancesByGet")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RequestInstancesByGet require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRequestInstancesByGetResponse()
     err = c.Send(request, response)
     return
 }
@@ -3700,6 +5498,8 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 // 以上参数组合只能传递一种，多传或少传均会导致请求失败
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CDCQUOTAINSUFFICIENT = "FailedOperation.CdcQuotaInsufficient"
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ESDICTIONARYINFOERROR = "FailedOperation.EsDictionaryInfoError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
@@ -3756,17 +5556,25 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 //  UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+//  UNSUPPORTEDOPERATION_CLOSEHTTPSWITHSAML = "UnsupportedOperation.CloseHttpsWithSaml"
 //  UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
+//  UNSUPPORTEDOPERATION_CVMSTATENOTSUPPORTED = "UnsupportedOperation.CvmStateNotSupported"
 //  UNSUPPORTEDOPERATION_CVMSTATUSSTOPPED = "UnsupportedOperation.CvmStatusStopped"
+//  UNSUPPORTEDOPERATION_DISKNOTPORTABLE = "UnsupportedOperation.DiskNotPortable"
+//  UNSUPPORTEDOPERATION_DISKSTATENOTSUPPORTED = "UnsupportedOperation.DiskStateNotSupported"
+//  UNSUPPORTEDOPERATION_DISKTYPECHANGEPATHNOTSUPPORTED = "UnsupportedOperation.DiskTypeChangePathNotSupported"
 //  UNSUPPORTEDOPERATION_HETEROSCALINGEXECUTING = "UnsupportedOperation.HeteroScalingExecuting"
 //  UNSUPPORTEDOPERATION_INDEXSETTINGSREQUIRESET = "UnsupportedOperation.IndexSettingsRequireSet"
+//  UNSUPPORTEDOPERATION_KERNELNOTSUPPORTGPU = "UnsupportedOperation.KernelNotSupportGpu"
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
+//  UNSUPPORTEDOPERATION_NOTDATADISK = "UnsupportedOperation.NotDataDisk"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
 //  UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
 //  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 //  UNSUPPORTEDOPERATION_UPDATEDISKTYPE = "UnsupportedOperation.UpdateDiskType"
@@ -3793,6 +5601,8 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 // 以上参数组合只能传递一种，多传或少传均会导致请求失败
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CDCQUOTAINSUFFICIENT = "FailedOperation.CdcQuotaInsufficient"
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ESDICTIONARYINFOERROR = "FailedOperation.EsDictionaryInfoError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
@@ -3849,17 +5659,25 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 //  UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+//  UNSUPPORTEDOPERATION_CLOSEHTTPSWITHSAML = "UnsupportedOperation.CloseHttpsWithSaml"
 //  UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
+//  UNSUPPORTEDOPERATION_CVMSTATENOTSUPPORTED = "UnsupportedOperation.CvmStateNotSupported"
 //  UNSUPPORTEDOPERATION_CVMSTATUSSTOPPED = "UnsupportedOperation.CvmStatusStopped"
+//  UNSUPPORTEDOPERATION_DISKNOTPORTABLE = "UnsupportedOperation.DiskNotPortable"
+//  UNSUPPORTEDOPERATION_DISKSTATENOTSUPPORTED = "UnsupportedOperation.DiskStateNotSupported"
+//  UNSUPPORTEDOPERATION_DISKTYPECHANGEPATHNOTSUPPORTED = "UnsupportedOperation.DiskTypeChangePathNotSupported"
 //  UNSUPPORTEDOPERATION_HETEROSCALINGEXECUTING = "UnsupportedOperation.HeteroScalingExecuting"
 //  UNSUPPORTEDOPERATION_INDEXSETTINGSREQUIRESET = "UnsupportedOperation.IndexSettingsRequireSet"
+//  UNSUPPORTEDOPERATION_KERNELNOTSUPPORTGPU = "UnsupportedOperation.KernelNotSupportGpu"
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
+//  UNSUPPORTEDOPERATION_NOTDATADISK = "UnsupportedOperation.NotDataDisk"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
 //  UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
 //  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 //  UNSUPPORTEDOPERATION_UPDATEDISKTYPE = "UnsupportedOperation.UpdateDiskType"
@@ -3877,6 +5695,222 @@ func (c *Client) UpdateInstanceWithContext(ctx context.Context, request *UpdateI
     request.SetContext(ctx)
     
     response = NewUpdateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateInstancePublicAccessRequest() (request *UpdateInstancePublicAccessRequest) {
+    request = &UpdateInstancePublicAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "UpdateInstancePublicAccess")
+    
+    
+    return
+}
+
+func NewUpdateInstancePublicAccessResponse() (response *UpdateInstancePublicAccessResponse) {
+    response = &UpdateInstancePublicAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateInstancePublicAccess
+// 更新ES集群实例的Kibana、cerebro公网开关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ESDICTIONARYINFOERROR = "FailedOperation.EsDictionaryInfoError"
+//  FAILEDOPERATION_UNSUPPORTEDLOCALDISKROLLUPSCALEUPORDOWN = "FailedOperation.UnsupportedLocalDiskRollUpScaleUpOrDown"
+//  FAILEDOPERATION_UNSUPPORTEDRESETNODETYPEANDSCALEOUTDISK = "FailedOperation.UnsupportedResetNodeTypeAndScaleOutDisk"
+//  FAILEDOPERATION_UNSUPPORTEDRESTSCALEDOWNANDMODIFYDISK = "FailedOperation.UnsupportedRestScaleDownAndModifyDisk"
+//  FAILEDOPERATION_UNSUPPORTEDREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportedReverseRegulationNodeTypeAndDisk"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCOSBACKUPINFO = "InvalidParameter.InvalidCosBackupInfo"
+//  INVALIDPARAMETER_INVALIDDISKCOUNT = "InvalidParameter.InvalidDiskCount"
+//  INVALIDPARAMETER_INVALIDDISKENCRYPT = "InvalidParameter.InvalidDiskEncrypt"
+//  INVALIDPARAMETER_INVALIDDISKTYPE = "InvalidParameter.InvalidDiskType"
+//  INVALIDPARAMETER_INVALIDESACL = "InvalidParameter.InvalidEsACL"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDKIBANAPRIVATEPORT = "InvalidParameter.InvalidKibanaPrivatePort"
+//  INVALIDPARAMETER_INVALIDMULTIZONEINFO = "InvalidParameter.InvalidMultiZoneInfo"
+//  INVALIDPARAMETER_INVALIDNODENUM = "InvalidParameter.InvalidNodeNum"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDPRIVATEACCESS = "InvalidParameter.InvalidPrivateAccess"
+//  INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+//  INVALIDPARAMETER_INVALIDSCENETYPE = "InvalidParameter.InvalidSceneType"
+//  INVALIDPARAMETER_INVALIDTYPE = "InvalidParameter.InvalidType"
+//  INVALIDPARAMETER_INVALIDUPDATETYPE = "InvalidParameter.InvalidUpdateType"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETERVALUE_ESCONFIGTYPE = "InvalidParameterValue.EsConfigType"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_INVALIDDEADLINE = "InvalidParameterValue.InvalidDeadline"
+//  INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
+//  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+//  LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+//  RESOURCENOTFOUND_NETWORKINFONOTFOUND = "ResourceNotFound.NetWorkInfoNotFound"
+//  RESOURCENOTFOUND_VPCINFONOTFOUND = "ResourceNotFound.VPCInfoNotFound"
+//  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
+//  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
+//  UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+//  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+//  UNSUPPORTEDOPERATION_SWITCHPRIVATELINK = "UnsupportedOperation.SwitchPrivateLink"
+//  UNSUPPORTEDOPERATION_WEBSERVICETYPE = "UnsupportedOperation.WebServiceType"
+func (c *Client) UpdateInstancePublicAccess(request *UpdateInstancePublicAccessRequest) (response *UpdateInstancePublicAccessResponse, err error) {
+    return c.UpdateInstancePublicAccessWithContext(context.Background(), request)
+}
+
+// UpdateInstancePublicAccess
+// 更新ES集群实例的Kibana、cerebro公网开关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ESDICTIONARYINFOERROR = "FailedOperation.EsDictionaryInfoError"
+//  FAILEDOPERATION_UNSUPPORTEDLOCALDISKROLLUPSCALEUPORDOWN = "FailedOperation.UnsupportedLocalDiskRollUpScaleUpOrDown"
+//  FAILEDOPERATION_UNSUPPORTEDRESETNODETYPEANDSCALEOUTDISK = "FailedOperation.UnsupportedResetNodeTypeAndScaleOutDisk"
+//  FAILEDOPERATION_UNSUPPORTEDRESTSCALEDOWNANDMODIFYDISK = "FailedOperation.UnsupportedRestScaleDownAndModifyDisk"
+//  FAILEDOPERATION_UNSUPPORTEDREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportedReverseRegulationNodeTypeAndDisk"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCOSBACKUPINFO = "InvalidParameter.InvalidCosBackupInfo"
+//  INVALIDPARAMETER_INVALIDDISKCOUNT = "InvalidParameter.InvalidDiskCount"
+//  INVALIDPARAMETER_INVALIDDISKENCRYPT = "InvalidParameter.InvalidDiskEncrypt"
+//  INVALIDPARAMETER_INVALIDDISKTYPE = "InvalidParameter.InvalidDiskType"
+//  INVALIDPARAMETER_INVALIDESACL = "InvalidParameter.InvalidEsACL"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDKIBANAPRIVATEPORT = "InvalidParameter.InvalidKibanaPrivatePort"
+//  INVALIDPARAMETER_INVALIDMULTIZONEINFO = "InvalidParameter.InvalidMultiZoneInfo"
+//  INVALIDPARAMETER_INVALIDNODENUM = "InvalidParameter.InvalidNodeNum"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDPRIVATEACCESS = "InvalidParameter.InvalidPrivateAccess"
+//  INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+//  INVALIDPARAMETER_INVALIDSCENETYPE = "InvalidParameter.InvalidSceneType"
+//  INVALIDPARAMETER_INVALIDTYPE = "InvalidParameter.InvalidType"
+//  INVALIDPARAMETER_INVALIDUPDATETYPE = "InvalidParameter.InvalidUpdateType"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETERVALUE_ESCONFIGTYPE = "InvalidParameterValue.EsConfigType"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_INVALIDDEADLINE = "InvalidParameterValue.InvalidDeadline"
+//  INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
+//  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+//  LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+//  RESOURCENOTFOUND_NETWORKINFONOTFOUND = "ResourceNotFound.NetWorkInfoNotFound"
+//  RESOURCENOTFOUND_VPCINFONOTFOUND = "ResourceNotFound.VPCInfoNotFound"
+//  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
+//  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
+//  UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+//  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+//  UNSUPPORTEDOPERATION_SWITCHPRIVATELINK = "UnsupportedOperation.SwitchPrivateLink"
+//  UNSUPPORTEDOPERATION_WEBSERVICETYPE = "UnsupportedOperation.WebServiceType"
+func (c *Client) UpdateInstancePublicAccessWithContext(ctx context.Context, request *UpdateInstancePublicAccessRequest) (response *UpdateInstancePublicAccessResponse, err error) {
+    if request == nil {
+        request = NewUpdateInstancePublicAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateInstancePublicAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateInstancePublicAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateInstancePublicAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateIpTraceStatusRequest() (request *UpdateIpTraceStatusRequest) {
+    request = &UpdateIpTraceStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "UpdateIpTraceStatus")
+    
+    
+    return
+}
+
+func NewUpdateIpTraceStatusResponse() (response *UpdateIpTraceStatusResponse) {
+    response = &UpdateIpTraceStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateIpTraceStatus
+// 更新ES集群IP溯源状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SETTINGIPTRACEERROR = "FailedOperation.SettingIpTraceError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIp"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION_KERNELNOTSUPPORT = "UnsupportedOperation.KernelNotSupport"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+func (c *Client) UpdateIpTraceStatus(request *UpdateIpTraceStatusRequest) (response *UpdateIpTraceStatusResponse, err error) {
+    return c.UpdateIpTraceStatusWithContext(context.Background(), request)
+}
+
+// UpdateIpTraceStatus
+// 更新ES集群IP溯源状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SETTINGIPTRACEERROR = "FailedOperation.SettingIpTraceError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIp"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION_KERNELNOTSUPPORT = "UnsupportedOperation.KernelNotSupport"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+func (c *Client) UpdateIpTraceStatusWithContext(ctx context.Context, request *UpdateIpTraceStatusRequest) (response *UpdateIpTraceStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateIpTraceStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateIpTraceStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateIpTraceStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateIpTraceStatusResponse()
     err = c.Send(request, response)
     return
 }

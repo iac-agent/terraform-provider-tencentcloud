@@ -388,6 +388,13 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 				Computed:    true,
 				Description: "Instance creation time.",
 			},
+			"sub_product_code": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				ForceNew:    true,
+				Computed:    true,
+				Description: "Sub product ID of the instance. Valid values are `sp_es_io2` (open source edition), `sp_es_basic` (basic edition), `sp_es_platinum` (platinum edition), `sp_es_enterprise` (enterprise edition), `sp_es_cdc_platinum` (CDC platinum edition), `sp_es_enlogging` (log enhanced edition), `sp_tsearch_io2` (tsearch) and `sp_es_logstash` (logstash). If it is left empty, the value is mapped from `license_type` by the cloud API.",
+			},
 		},
 		CustomizeDiff: customdiff.All(
 			validateNodeInfoListUnique,
@@ -504,6 +511,9 @@ func resourceTencentCloudElasticsearchInstanceCreate(d *schema.ResourceData, met
 	}
 	if v, ok := d.GetOk("protocol"); ok {
 		request.Protocol = helper.String(v.(string))
+	}
+	if v, ok := d.GetOk("sub_product_code"); ok {
+		request.SubProductCode = helper.String(v.(string))
 	}
 	// tags - pass via CreateInstance.TagList directly instead of calling tag API afterwards.
 	if tags := helper.GetTags(d, "tags"); len(tags) > 0 {
@@ -873,6 +883,9 @@ func resourceTencentCloudElasticsearchInstanceRead(d *schema.ResourceData, meta 
 	_ = d.Set("kibana_public_access", instance.KibanaPublicAccess)
 	_ = d.Set("kibana_private_access", instance.KibanaPrivateAccess)
 	_ = d.Set("protocol", instance.Protocol)
+	if instance.SubProductCode != nil {
+		_ = d.Set("sub_product_code", instance.SubProductCode)
+	}
 
 	multiZoneInfos := make([]map[string]interface{}, 0, len(instance.MultiZoneInfo))
 	for _, item := range instance.MultiZoneInfo {
