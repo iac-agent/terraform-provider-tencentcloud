@@ -391,6 +391,7 @@ The following arguments are supported:
 * `public_access` - (Optional, String) ES cluster public network access status. Valid values are `OPEN` and `CLOSE`. Cannot be changed at the same time as `es_acl`.
 * `renew_flag` - (Optional, String, ForceNew) When enabled, the instance will be renew automatically when it reach the end of the prepaid tenancy. Valid values are `RENEW_FLAG_AUTO` and `RENEW_FLAG_MANUAL`. NOTE: it only works when charge_type is set to `PREPAID`.
 * `scene_type` - (Optional, Int) Scenario based template type. 0: Not enabled; 1: Universal; 2: Log; 3: Search.
+* `sub_product_code` - (Optional, String, ForceNew) Sub product ID of the instance. Valid values are `sp_es_io2` (open source edition), `sp_es_basic` (basic edition), `sp_es_platinum` (platinum edition), `sp_es_enterprise` (enterprise edition), `sp_es_cdc_platinum` (CDC platinum edition), `sp_es_enlogging` (log enhanced edition), `sp_tsearch_io2` (tsearch) and `sp_es_logstash` (logstash). If it is left empty, the value is mapped from `license_type` by the cloud API.
 * `subnet_id` - (Optional, String, ForceNew) The ID of a VPC subnetwork. When create multi-az es, this parameter must be the subnet in the primary availability zone.
 * `tags` - (Optional, Map) A mapping of tags to assign to the instance. For tag limits, please refer to [Use Limits](https://intl.cloud.tencent.com/document/product/651/13354).
 * `web_node_type_info` - (Optional, List) Visual node configuration.
