@@ -808,10 +808,10 @@ func TestTeoAliasDomain110901_ImportState(t *testing.T) {
 
 func TestTeoAliasDomain110901_SplitIdRoundTrip(t *testing.T) {
 	cases := []struct {
-		id      string
-		zone    string
-		alias   string
-		wantOk  bool
+		id     string
+		zone   string
+		alias  string
+		wantOk bool
 	}{
 		{"zone-1#alias.example.com", "zone-1", "alias.example.com", true},
 		{"zone-1", "", "", false},

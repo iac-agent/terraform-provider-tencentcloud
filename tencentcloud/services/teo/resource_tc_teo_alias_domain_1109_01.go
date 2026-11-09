@@ -37,7 +37,7 @@ type teoAliasDomain110901StateWriter interface {
 // performs the implicit compile-time check at the return statement. Only the
 // extended-interface assertions are kept here.
 var (
-	_ resource.ResourceWithConfigure     = &TeoAliasDomain110901Resource{}
+	_ resource.ResourceWithConfigure   = &TeoAliasDomain110901Resource{}
 	_ resource.ResourceWithImportState = &TeoAliasDomain110901Resource{}
 )
 
@@ -68,14 +68,14 @@ type TeoAliasDomain110901ResourceModel struct {
 // teoAliasDomain110901DomainModel maps one element of the computed
 // `domains` list, mirroring the DescribeInferenceDomains output.
 type teoAliasDomain110901DomainModel struct {
-	Domain                 types.String `tfsdk:"domain"`
-	Status                 types.String `tfsdk:"status"`
-	AuthSwitch             types.String `tfsdk:"auth_switch"`
-	Cname                  types.String `tfsdk:"cname"`
+	Domain                types.String `tfsdk:"domain"`
+	Status                types.String `tfsdk:"status"`
+	AuthSwitch            types.String `tfsdk:"auth_switch"`
+	Cname                 types.String `tfsdk:"cname"`
 	OwnershipVerification types.Object `tfsdk:"ownership_verification"`
-	Certificate            types.Object `tfsdk:"certificate"`
-	CreateTime             types.String `tfsdk:"create_time"`
-	UpdateTime             types.String `tfsdk:"update_time"`
+	Certificate           types.Object `tfsdk:"certificate"`
+	CreateTime            types.String `tfsdk:"create_time"`
+	UpdateTime            types.String `tfsdk:"update_time"`
 }
 
 // teoAliasDomain110901OwnershipVerificationModel mirrors the
@@ -607,14 +607,14 @@ func teoSplitAliasDomain110901Id(id string) (string, string, bool) {
 
 func teoAliasDomain110901DomainAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"domain":                  types.StringType,
-		"status":                  types.StringType,
-		"auth_switch":             types.StringType,
-		"cname":                   types.StringType,
-		"ownership_verification":  types.ObjectType{AttrTypes: teoAliasDomain110901OwnershipVerificationAttrTypes()},
-		"certificate":             types.ObjectType{AttrTypes: teoAliasDomain110901CertificateAttrTypes()},
-		"create_time":             types.StringType,
-		"update_time":             types.StringType,
+		"domain":                 types.StringType,
+		"status":                 types.StringType,
+		"auth_switch":            types.StringType,
+		"cname":                  types.StringType,
+		"ownership_verification": types.ObjectType{AttrTypes: teoAliasDomain110901OwnershipVerificationAttrTypes()},
+		"certificate":            types.ObjectType{AttrTypes: teoAliasDomain110901CertificateAttrTypes()},
+		"create_time":            types.StringType,
+		"update_time":            types.StringType,
 	}
 }
 
@@ -628,8 +628,8 @@ func teoAliasDomain110901OwnershipVerificationAttrTypes() map[string]attr.Type {
 
 func teoAliasDomain110901DnsVerificationAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"subdomain":   types.StringType,
-		"record_type": types.StringType,
+		"subdomain":    types.StringType,
+		"record_type":  types.StringType,
 		"record_value": types.StringType,
 	}
 }
@@ -649,10 +649,10 @@ func teoAliasDomain110901NsVerificationAttrTypes() map[string]attr.Type {
 
 func teoAliasDomain110901CertificateAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"host":          types.StringType,
-		"mode":          types.StringType,
+		"host":           types.StringType,
+		"mode":           types.StringType,
 		"host_cert_info": types.ListType{ElemType: types.ObjectType{AttrTypes: teoAliasDomain110901HostCertInfoAttrTypes()}},
-		"apply_type":    types.StringType,
+		"apply_type":     types.StringType,
 	}
 }
 
