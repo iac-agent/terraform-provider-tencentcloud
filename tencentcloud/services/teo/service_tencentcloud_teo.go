@@ -3720,7 +3720,8 @@ func (me *TeoService) DescribeTeoFunctionReplica(ctx context.Context, zoneId, fu
 	}()
 
 	ratelimit.Check(request.GetAction())
-	response, err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+	response := teov20220901.NewDescribeFunctionReplicasResponse()
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
 		result, e := me.client.UseTeoV20220901Client().DescribeFunctionReplicasWithContext(ctx, request)
 		if e != nil {
 			return tccommon.RetryError(e)
