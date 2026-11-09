@@ -50,26 +50,26 @@ type TeoZone110901Resource struct {
 //     Read keeps the previously stored value (drift detection for these two
 //     fields is limited; documented in the .md).
 type TeoZone110901ResourceModel struct {
-	Id                  types.String `tfsdk:"id"`
-	ZoneId              types.String `tfsdk:"zone_id"`
-	Type                types.String `tfsdk:"type"`
-	ZoneName            types.String `tfsdk:"zone_name"`
-	Area                types.String `tfsdk:"area"`
-	PlanId              types.String `tfsdk:"plan_id"`
-	AliasZoneName       types.String `tfsdk:"alias_zone_name"`
-	Tags                types.Set    `tfsdk:"tags"`
-	AllowDuplicates     types.Bool   `tfsdk:"allow_duplicates"`
-	JumpStart           types.Bool   `tfsdk:"jump_start"`
-	VanityNameServers   types.Object `tfsdk:"vanity_name_servers"`
-	Status              types.String `tfsdk:"status"`
-	CnameStatus         types.String `tfsdk:"cname_status"`
-	ActiveStatus        types.String `tfsdk:"active_status"`
-	LockStatus          types.String `tfsdk:"lock_status"`
-	Paused              types.Bool   `tfsdk:"paused"`
-	CreatedOn           types.String `tfsdk:"created_on"`
-	ModifiedOn          types.String `tfsdk:"modified_on"`
-	NameServers         types.Set    `tfsdk:"name_servers"`
-	OriginalNameServers types.Set    `tfsdk:"original_name_servers"`
+	Id                    types.String `tfsdk:"id"`
+	ZoneId                types.String `tfsdk:"zone_id"`
+	Type                  types.String `tfsdk:"type"`
+	ZoneName              types.String `tfsdk:"zone_name"`
+	Area                  types.String `tfsdk:"area"`
+	PlanId                types.String `tfsdk:"plan_id"`
+	AliasZoneName         types.String `tfsdk:"alias_zone_name"`
+	Tags                  types.Set    `tfsdk:"tags"`
+	AllowDuplicates       types.Bool   `tfsdk:"allow_duplicates"`
+	JumpStart             types.Bool   `tfsdk:"jump_start"`
+	VanityNameServers     types.Object `tfsdk:"vanity_name_servers"`
+	Status                types.String `tfsdk:"status"`
+	CnameStatus           types.String `tfsdk:"cname_status"`
+	ActiveStatus          types.String `tfsdk:"active_status"`
+	LockStatus            types.String `tfsdk:"lock_status"`
+	Paused                types.Bool   `tfsdk:"paused"`
+	CreatedOn             types.String `tfsdk:"created_on"`
+	ModifiedOn            types.String `tfsdk:"modified_on"`
+	NameServers           types.Set    `tfsdk:"name_servers"`
+	OriginalNameServers   types.Set    `tfsdk:"original_name_servers"`
 	OwnershipVerification types.Object `tfsdk:"ownership_verification"`
 }
 
@@ -198,27 +198,27 @@ func (r *TeoZone110901Resource) Schema(_ context.Context, _ resource.SchemaReque
 					"`initializing`.",
 			},
 			"cname_status": schema.StringAttribute{
-				Computed: true,
+				Computed:    true,
 				Description: "CNAME access status. Valid values: `finished`, `pending`.",
 			},
 			"active_status": schema.StringAttribute{
-				Computed: true,
+				Computed:    true,
 				Description: "Display status. Valid values: `active`, `inactive`, `paused`.",
 			},
 			"lock_status": schema.StringAttribute{
-				Computed: true,
+				Computed:    true,
 				Description: "Lock status. Valid values: `enable`, `disable`, `plan_migrate`.",
 			},
 			"paused": schema.BoolAttribute{
-				Computed: true,
+				Computed:    true,
 				Description: "Whether the zone is closed.",
 			},
 			"created_on": schema.StringAttribute{
-				Computed: true,
+				Computed:    true,
 				Description: "Creation time of the zone.",
 			},
 			"modified_on": schema.StringAttribute{
-				Computed: true,
+				Computed:    true,
 				Description: "Last modification time of the zone.",
 			},
 			"name_servers": schema.SetAttribute{
@@ -240,7 +240,7 @@ func (r *TeoZone110901Resource) Schema(_ context.Context, _ resource.SchemaReque
 					"switching NS servers; type `noDomainAccess` needs no operation.",
 				Attributes: map[string]schema.Attribute{
 					"dns_verification": schema.SingleNestedAttribute{
-						Computed: true,
+						Computed:    true,
 						Description: "DNS resolution verification information for CNAME and no-domain access.",
 						Attributes: map[string]schema.Attribute{
 							"subdomain": schema.StringAttribute{
@@ -258,7 +258,7 @@ func (r *TeoZone110901Resource) Schema(_ context.Context, _ resource.SchemaReque
 						},
 					},
 					"file_verification": schema.SingleNestedAttribute{
-						Computed: true,
+						Computed:    true,
 						Description: "File verification information for CNAME and no-domain access.",
 						Attributes: map[string]schema.Attribute{
 							"path": schema.StringAttribute{
@@ -267,13 +267,13 @@ func (r *TeoZone110901Resource) Schema(_ context.Context, _ resource.SchemaReque
 									"http://{Host}{URL Path} by the EdgeOne backend.",
 							},
 							"content": schema.StringAttribute{
-								Computed: true,
+								Computed:    true,
 								Description: "Content to put into the txt file at the path above.",
 							},
 						},
 					},
 					"ns_verification": schema.SingleNestedAttribute{
-						Computed: true,
+						Computed:    true,
 						Description: "NS switch verification information for NS access.",
 						Attributes: map[string]schema.Attribute{
 							"name_servers": schema.SetAttribute{

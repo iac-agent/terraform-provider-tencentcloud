@@ -93,13 +93,13 @@ func teoZone110901VanityObject(switchVal string, servers []string) tftypes.Value
 func teoZone110901FullValues(t *testing.T) map[string]tftypes.Value {
 	attrTypes := teoZone110901AttrTypes(t)
 	vals := map[string]tftypes.Value{
-		"id":                  tftypes.NewValue(tftypes.String, nil),
-		"zone_id":             tftypes.NewValue(tftypes.String, nil),
-		"type":                tftypes.NewValue(tftypes.String, "partial"),
-		"zone_name":           tftypes.NewValue(tftypes.String, "example.com"),
-		"area":                tftypes.NewValue(tftypes.String, "overseas"),
-		"plan_id":             tftypes.NewValue(tftypes.String, "edgeone-2kfv1h391n6w"),
-		"alias_zone_name":     tftypes.NewValue(tftypes.String, "my-alias"),
+		"id":               tftypes.NewValue(tftypes.String, nil),
+		"zone_id":          tftypes.NewValue(tftypes.String, nil),
+		"type":             tftypes.NewValue(tftypes.String, "partial"),
+		"zone_name":        tftypes.NewValue(tftypes.String, "example.com"),
+		"area":             tftypes.NewValue(tftypes.String, "overseas"),
+		"plan_id":          tftypes.NewValue(tftypes.String, "edgeone-2kfv1h391n6w"),
+		"alias_zone_name":  tftypes.NewValue(tftypes.String, "my-alias"),
 		"allow_duplicates": tftypes.NewValue(tftypes.Bool, true),
 		"jump_start":       tftypes.NewValue(tftypes.Bool, false),
 		"tags": tftypes.NewValue(tftypes.Set{
