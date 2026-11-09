@@ -3668,3 +3668,42 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 
 	return
 }
+
+// DescribeTeoInferenceDomains queries DescribeInferenceDomains and returns the
+// inference domain list of the given zoneId. An empty (or nil) result is a
+// valid business state and is returned as an empty slice.
+func (me *TeoService) DescribeTeoInferenceDomains(ctx context.Context, zoneId string) (domains []*teo.InferenceDomain, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teo.NewDescribeInferenceDomainsRequest()
+	request.ZoneId = helper.String(zoneId)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DescribeInferenceDomainsWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("DescribeInferenceDomains response is nil"))
+		}
+		domains = result.Response.Domains
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
