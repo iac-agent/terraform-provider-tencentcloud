@@ -3668,3 +3668,37 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 
 	return
 }
+
+func (me *TeoService) DescribeTeoZoneCustomVariables(ctx context.Context, zoneId string) (
+	response *teo.DescribeZoneCustomVariablesResponse, errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = teo.NewDescribeZoneCustomVariablesRequest()
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	request.ZoneId = &zoneId
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoClient().DescribeZoneCustomVariables(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		response = result
+		return nil
+	})
+	if err != nil {
+		errRet = err
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	return
+}
