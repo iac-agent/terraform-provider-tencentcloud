@@ -53,25 +53,25 @@ func TestAgsSandboxToolResource_Schema(t *testing.T) {
 		required, optional, computed bool
 	}
 	cases := map[string]expect{
-		"id":                    {computed: true},
-		"tool_id":               {computed: true},
-		"tool_name":             {required: true},
-		"tool_type":             {required: true},
-		"network_configuration": {required: true},
-		"description":           {optional: true},
-		"default_timeout":       {optional: true},
-		"tags":                  {optional: true},
-		"client_token":          {optional: true},
-		"role_arn":              {optional: true},
-		"storage_mounts":        {optional: true},
-		"custom_configuration":  {optional: true},
+		"id":                     {computed: true},
+		"tool_id":                {computed: true},
+		"tool_name":              {required: true},
+		"tool_type":              {required: true},
+		"network_configuration":  {required: true},
+		"description":            {optional: true},
+		"default_timeout":        {optional: true},
+		"tags":                   {optional: true},
+		"client_token":           {optional: true},
+		"role_arn":               {optional: true},
+		"storage_mounts":         {optional: true},
+		"custom_configuration":   {optional: true},
 		"computer_configuration": {optional: true},
-		"log_configuration":     {optional: true},
-		"persistent":            {optional: true},
-		"status":                {computed: true},
-		"status_reason":         {computed: true},
-		"create_time":           {computed: true},
-		"update_time":           {computed: true},
+		"log_configuration":      {optional: true},
+		"persistent":             {optional: true},
+		"status":                 {computed: true},
+		"status_reason":          {computed: true},
+		"create_time":            {computed: true},
+		"update_time":            {computed: true},
 	}
 
 	for name, want := range cases {
@@ -409,20 +409,20 @@ func agsSandboxToolAttrTypes() map[string]tftypes.Type {
 	emptyObj := tftypes.Object{AttributeTypes: map[string]tftypes.Type{}}
 	stringSet := tftypes.Set{ElementType: tftypes.String}
 	return map[string]tftypes.Type{
-		"id":                    tftypes.String,
-		"tool_id":               tftypes.String,
-		"tool_name":             tftypes.String,
-		"tool_type":             tftypes.String,
+		"id":        tftypes.String,
+		"tool_id":   tftypes.String,
+		"tool_name": tftypes.String,
+		"tool_type": tftypes.String,
 		"network_configuration": tftypes.List{ElementType: tftypes.Object{AttributeTypes: map[string]tftypes.Type{
 			"network_mode": tftypes.String,
-			"vpc_config":   tftypes.List{ElementType: tftypes.Object{AttributeTypes: map[string]tftypes.Type{
-				"subnet_ids":        stringSet,
+			"vpc_config": tftypes.List{ElementType: tftypes.Object{AttributeTypes: map[string]tftypes.Type{
+				"subnet_ids":         stringSet,
 				"security_group_ids": stringSet,
 			}}},
 		}}},
-		"description":           tftypes.String,
-		"default_timeout":       tftypes.String,
-		"tags":                  tftypes.List{ElementType: tftypes.Object{AttributeTypes: map[string]tftypes.Type{
+		"description":     tftypes.String,
+		"default_timeout": tftypes.String,
+		"tags": tftypes.List{ElementType: tftypes.Object{AttributeTypes: map[string]tftypes.Type{
 			"key":   tftypes.String,
 			"value": tftypes.String,
 		}}},

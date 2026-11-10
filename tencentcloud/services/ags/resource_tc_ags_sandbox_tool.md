@@ -1,19 +1,8 @@
----
-subcategory: ""
-layout: "tencentcloud"
-page_title: "TencentCloud: tencentcloud_ags_sandbox_tool"
-sidebar_current: "docs-tencentcloud-resource-ags_sandbox_tool"
-description: |-
-  Provides a resource to create a sandbox tool of AGS (Agent Development Platform)
----
-
-# Resource: tencentcloud_ags_sandbox_tool
-
-Provides a resource to create a sandbox tool of AGS (Agent Development Platform).
+Provides a resource to create a sandbox tool of AGS (Agent Development Platform)
 
 ~> **Note:** The `tool_name`, `tool_type`, `default_timeout`, `client_token`, `role_arn`, `storage_mounts`, `log_configuration` and `persistent` attributes are immutable: the `UpdateSandboxTool` API does not accept them, so changing any of them forces resource replacement.
 
-## Example Usage
+Example Usage
 
 ```hcl
 resource "tencentcloud_ags_sandbox_tool" "example" {
@@ -41,7 +30,7 @@ resource "tencentcloud_ags_sandbox_tool" "vpc_custom" {
     network_mode = "VPC"
 
     vpc_config {
-      subnet_ids        = ["subnet-xxxx"]
+      subnet_ids         = ["subnet-xxxx"]
       security_group_ids = ["sg-xxxx"]
     }
   }
@@ -71,10 +60,10 @@ resource "tencentcloud_ags_sandbox_tool" "vpc_custom" {
 }
 ```
 
-## Import
+Import
 
 AGS sandbox tools can be imported using the tool id, e.g.
 
-```hcl
+```
 terraform import tencentcloud_ags_sandbox_tool.example tool-1234567890abcdef
 ```

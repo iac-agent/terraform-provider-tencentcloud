@@ -43,25 +43,25 @@ type AgsSandboxToolResource struct {
 
 // AgsSandboxToolResourceModel maps the top-level schema attributes.
 type AgsSandboxToolResourceModel struct {
-	Id                   types.String `tfsdk:"id"`
-	ToolId               types.String `tfsdk:"tool_id"`
-	ToolName             types.String `tfsdk:"tool_name"`
-	ToolType             types.String `tfsdk:"tool_type"`
-	NetworkConfiguration types.List   `tfsdk:"network_configuration"`
-	Description          types.String `tfsdk:"description"`
-	DefaultTimeout       types.String `tfsdk:"default_timeout"`
-	Tags                 types.List   `tfsdk:"tags"`
-	ClientToken          types.String `tfsdk:"client_token"`
-	RoleArn              types.String `tfsdk:"role_arn"`
-	StorageMounts        types.List   `tfsdk:"storage_mounts"`
-	CustomConfiguration  types.List   `tfsdk:"custom_configuration"`
-	ComputerConfiguration types.List `tfsdk:"computer_configuration"`
-	LogConfiguration     types.List   `tfsdk:"log_configuration"`
-	Persistent           types.Bool   `tfsdk:"persistent"`
-	Status               types.String `tfsdk:"status"`
-	StatusReason         types.String `tfsdk:"status_reason"`
-	CreateTime           types.String `tfsdk:"create_time"`
-	UpdateTime           types.String `tfsdk:"update_time"`
+	Id                    types.String `tfsdk:"id"`
+	ToolId                types.String `tfsdk:"tool_id"`
+	ToolName              types.String `tfsdk:"tool_name"`
+	ToolType              types.String `tfsdk:"tool_type"`
+	NetworkConfiguration  types.List   `tfsdk:"network_configuration"`
+	Description           types.String `tfsdk:"description"`
+	DefaultTimeout        types.String `tfsdk:"default_timeout"`
+	Tags                  types.List   `tfsdk:"tags"`
+	ClientToken           types.String `tfsdk:"client_token"`
+	RoleArn               types.String `tfsdk:"role_arn"`
+	StorageMounts         types.List   `tfsdk:"storage_mounts"`
+	CustomConfiguration   types.List   `tfsdk:"custom_configuration"`
+	ComputerConfiguration types.List   `tfsdk:"computer_configuration"`
+	LogConfiguration      types.List   `tfsdk:"log_configuration"`
+	Persistent            types.Bool   `tfsdk:"persistent"`
+	Status                types.String `tfsdk:"status"`
+	StatusReason          types.String `tfsdk:"status_reason"`
+	CreateTime            types.String `tfsdk:"create_time"`
+	UpdateTime            types.String `tfsdk:"update_time"`
 }
 
 // agsNetworkConfigurationModel maps network_configuration.
@@ -213,7 +213,7 @@ type agsCapabilitiesModel struct {
 
 // agsComputerConfigurationModel maps computer_configuration.
 type agsComputerConfigurationModel struct {
-	WaaConfiguration    types.List `tfsdk:"waa_configuration"`
+	WaaConfiguration     types.List `tfsdk:"waa_configuration"`
 	OsWorldConfiguration types.List `tfsdk:"os_world_configuration"`
 }
 
@@ -718,7 +718,7 @@ func (r *AgsSandboxToolResource) Schema(_ context.Context, _ resource.SchemaRequ
 										Optional:    true,
 										ElementType: types.StringType,
 										Description: "Log file paths to collect, must be files under the `/logs/` directory, " +
-															"subdirectories are not supported, up to 10 files.",
+											"subdirectories are not supported, up to 10 files.",
 									},
 								},
 							},
@@ -2211,7 +2211,7 @@ func agsVpcConfigObjectType() attr.Type {
 
 func agsVpcConfigAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"subnet_ids":        types.SetType{ElemType: types.StringType},
+		"subnet_ids":         types.SetType{ElemType: types.StringType},
 		"security_group_ids": types.SetType{ElemType: types.StringType},
 	}
 }
@@ -2395,7 +2395,7 @@ func agsComputerConfigurationObjectType() attr.Type {
 
 func agsComputerConfigurationAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"waa_configuration":     types.ListType{ElemType: agsWaaConfigurationObjectType()},
+		"waa_configuration":      types.ListType{ElemType: agsWaaConfigurationObjectType()},
 		"os_world_configuration": types.ListType{ElemType: agsOsWorldConfigurationObjectType()},
 	}
 }
