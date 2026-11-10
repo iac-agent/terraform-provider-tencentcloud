@@ -45,16 +45,16 @@ func TestTeoZone1110_02Resource_Schema(t *testing.T) {
 		required, optional, computed bool
 	}
 	cases := map[string]flag{
-		"id":              {computed: true},
-		"type":            {optional: true, computed: true},
-		"zone_name":       {optional: true, computed: true},
-		"area":            {optional: true, computed: true},
-		"plan_id":         {optional: true},
-		"alias_zone_name": {optional: true, computed: true},
-		"tags":            {optional: true},
-		"allow_duplicates": {optional: true},
-		"jump_start":       {optional: true},
-		"vanity_name_servers": {optional: true, computed: true},
+		"id":                     {computed: true},
+		"type":                   {optional: true, computed: true},
+		"zone_name":              {optional: true, computed: true},
+		"area":                   {optional: true, computed: true},
+		"plan_id":                {optional: true},
+		"alias_zone_name":        {optional: true, computed: true},
+		"tags":                   {optional: true},
+		"allow_duplicates":       {optional: true},
+		"jump_start":             {optional: true},
+		"vanity_name_servers":    {optional: true, computed: true},
 		"ownership_verification": {computed: true},
 		"zones":                  {computed: true},
 	}
@@ -339,17 +339,17 @@ func TestRefreshTeoZone1110_02Model(t *testing.T) {
 		},
 		Resources: []*teov20220901.Resource{
 			{
-				Id:            teoZone1110_02Ptr("res-1"),
-				PayMode:       teoZone1110_02PtrInt64(0),
-				CreateTime:    teoZone1110_02Ptr("2024-01-01T00:00:00Z"),
-				EnableTime:    teoZone1110_02Ptr("2024-01-02T00:00:00Z"),
-				ExpireTime:    teoZone1110_02Ptr("2025-01-01T00:00:00Z"),
-				Status:        teoZone1110_02Ptr("normal"),
+				Id:         teoZone1110_02Ptr("res-1"),
+				PayMode:    teoZone1110_02PtrInt64(0),
+				CreateTime: teoZone1110_02Ptr("2024-01-01T00:00:00Z"),
+				EnableTime: teoZone1110_02Ptr("2024-01-02T00:00:00Z"),
+				ExpireTime: teoZone1110_02Ptr("2025-01-01T00:00:00Z"),
+				Status:     teoZone1110_02Ptr("normal"),
 				Sv: []*teov20220901.Sv{
 					{
-						Key:       teoZone1110_02Ptr("zone"),
-						Value:     teoZone1110_02Ptr("1"),
-						Pack:      teoZone1110_02Ptr("zone"),
+						Key:             teoZone1110_02Ptr("zone"),
+						Value:           teoZone1110_02Ptr("1"),
+						Pack:            teoZone1110_02Ptr("zone"),
 						ProtectionSpecs: teoZone1110_02Ptr("cm_30G"),
 					},
 				},
@@ -362,10 +362,10 @@ func TestRefreshTeoZone1110_02Model(t *testing.T) {
 			},
 		},
 		NSDetail: &teov20220901.NSDetail{
-			CnameSpeedUp:         teoZone1110_02Ptr("enabled"),
-			IsFake:               teoZone1110_02PtrInt64(0),
-			OriginalNameServers:  []*string{teoZone1110_02Ptr("ns1.old.com")},
-			NameServers:          []*string{teoZone1110_02Ptr("ns1.eo.com")},
+			CnameSpeedUp:        teoZone1110_02Ptr("enabled"),
+			IsFake:              teoZone1110_02PtrInt64(0),
+			OriginalNameServers: []*string{teoZone1110_02Ptr("ns1.old.com")},
+			NameServers:         []*string{teoZone1110_02Ptr("ns1.eo.com")},
 			VanityNameServers: &teov20220901.VanityNameServers{
 				Switch:  teoZone1110_02Ptr("on"),
 				Servers: []*string{teoZone1110_02Ptr("ns1.custom.com")},
@@ -607,5 +607,5 @@ func TestTeoZoneOwnershipObjectFromSdk_Nil(t *testing.T) {
 	assert.True(t, obj.IsNull())
 }
 
-func teoZone1110_02PtrInt64(i int64) *int64   { return &i }
-func teoZone1110_02PtrBool(b bool) *bool      { return &b }
+func teoZone1110_02PtrInt64(i int64) *int64 { return &i }
+func teoZone1110_02PtrBool(b bool) *bool    { return &b }

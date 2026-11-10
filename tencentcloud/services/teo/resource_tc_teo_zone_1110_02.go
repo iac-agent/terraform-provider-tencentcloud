@@ -187,9 +187,9 @@ var teoZone1110_02ResourceAttributes = map[string]schema.Attribute{
 		Description: "Plan status. Valid values: normal, isolated, destroyed.",
 	},
 	"sv": schema.ListNestedAttribute{
-		Computed:    true,
+		Computed:     true,
 		NestedObject: schema.NestedAttributeObject{Attributes: teoZone1110_02SvAttributes},
-		Description: "Inquiry parameters.",
+		Description:  "Inquiry parameters.",
 	},
 	"auto_renew_flag": schema.Int64Attribute{
 		Computed:    true,
@@ -247,9 +247,9 @@ var teoZone1110_02NSDetailAttributes = map[string]schema.Attribute{
 		Description: "Custom NS server information.",
 	},
 	"vanity_name_servers_ips": schema.ListNestedAttribute{
-		Computed:    true,
+		Computed:     true,
 		NestedObject: schema.NestedAttributeObject{Attributes: teoZone1110_02VanityIpAttributes},
-		Description: "IP address information of custom NS servers.",
+		Description:  "IP address information of custom NS servers.",
 	},
 }
 
@@ -428,7 +428,7 @@ func (r *TeoZone1110_02Resource) Schema(_ context.Context, _ resource.SchemaRequ
 				Description: "Acceleration area of layer-7 domains when Type is partial/full. Valid values: global, mainland, overseas (default). Leave empty for noDomainAccess access.",
 			},
 			"plan_id": schema.StringAttribute{
-				Optional: true,
+				Optional:    true,
 				Description: "ID of the plan to bind. If omitted, the zone is created in the `init` (inactive) state; bind a plan via BindZoneToPlan to activate it.",
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.RequiresReplace(),
@@ -483,18 +483,18 @@ func (r *TeoZone1110_02Resource) Schema(_ context.Context, _ resource.SchemaRequ
 
 // TeoZone1110_02ResourceModel maps the schema attributes.
 type TeoZone1110_02ResourceModel struct {
-	Id                    types.String         `tfsdk:"id"`
-	Type                  types.String         `tfsdk:"type"`
-	ZoneName              types.String         `tfsdk:"zone_name"`
-	Area                  types.String         `tfsdk:"area"`
-	PlanId                types.String         `tfsdk:"plan_id"`
-	AliasZoneName         types.String         `tfsdk:"alias_zone_name"`
-	Tags                  []teoZoneTagModel    `tfsdk:"tags"`
-	AllowDuplicates       types.Bool           `tfsdk:"allow_duplicates"`
-	JumpStart             types.Bool           `tfsdk:"jump_start"`
-	VanityNameServers     *teoZoneVanityModel  `tfsdk:"vanity_name_servers"`
-	OwnershipVerification types.Object         `tfsdk:"ownership_verification"`
-	Zones                 types.List           `tfsdk:"zones"`
+	Id                    types.String        `tfsdk:"id"`
+	Type                  types.String        `tfsdk:"type"`
+	ZoneName              types.String        `tfsdk:"zone_name"`
+	Area                  types.String        `tfsdk:"area"`
+	PlanId                types.String        `tfsdk:"plan_id"`
+	AliasZoneName         types.String        `tfsdk:"alias_zone_name"`
+	Tags                  []teoZoneTagModel   `tfsdk:"tags"`
+	AllowDuplicates       types.Bool          `tfsdk:"allow_duplicates"`
+	JumpStart             types.Bool          `tfsdk:"jump_start"`
+	VanityNameServers     *teoZoneVanityModel `tfsdk:"vanity_name_servers"`
+	OwnershipVerification types.Object        `tfsdk:"ownership_verification"`
+	Zones                 types.List          `tfsdk:"zones"`
 }
 
 // Nested model types. Attributes consumed from the cloud are expressed with
@@ -545,28 +545,28 @@ type teoZoneSvModel struct {
 }
 
 type teoZoneResourceModel struct {
-	Id            types.String      `tfsdk:"id"`
-	PayMode       types.Int64       `tfsdk:"pay_mode"`
-	CreateTime    types.String      `tfsdk:"create_time"`
-	EnableTime    types.String      `tfsdk:"enable_time"`
-	ExpireTime    types.String      `tfsdk:"expire_time"`
-	Status        types.String      `tfsdk:"status"`
-	Sv            []teoZoneSvModel  `tfsdk:"sv"`
-	AutoRenewFlag types.Int64       `tfsdk:"auto_renew_flag"`
-	PlanId        types.String      `tfsdk:"plan_id"`
-	Area          types.String      `tfsdk:"area"`
-	Group         types.String      `tfsdk:"group"`
-	ZoneNumber    types.Int64       `tfsdk:"zone_number"`
-	Type          types.String      `tfsdk:"type"`
+	Id            types.String     `tfsdk:"id"`
+	PayMode       types.Int64      `tfsdk:"pay_mode"`
+	CreateTime    types.String     `tfsdk:"create_time"`
+	EnableTime    types.String     `tfsdk:"enable_time"`
+	ExpireTime    types.String     `tfsdk:"expire_time"`
+	Status        types.String     `tfsdk:"status"`
+	Sv            []teoZoneSvModel `tfsdk:"sv"`
+	AutoRenewFlag types.Int64      `tfsdk:"auto_renew_flag"`
+	PlanId        types.String     `tfsdk:"plan_id"`
+	Area          types.String     `tfsdk:"area"`
+	Group         types.String     `tfsdk:"group"`
+	ZoneNumber    types.Int64      `tfsdk:"zone_number"`
+	Type          types.String     `tfsdk:"type"`
 }
 
 type teoZoneNSDetailModel struct {
-	CnameSpeedUp          types.String          `tfsdk:"cname_speed_up"`
-	IsFake                types.Int64           `tfsdk:"is_fake"`
-	OwnershipVerification types.Object          `tfsdk:"ownership_verification"`
-	OriginalNameServers   types.Set             `tfsdk:"original_name_servers"`
-	NameServers           types.Set             `tfsdk:"name_servers"`
-	VanityNameServers     types.Object          `tfsdk:"vanity_name_servers"`
+	CnameSpeedUp          types.String           `tfsdk:"cname_speed_up"`
+	IsFake                types.Int64            `tfsdk:"is_fake"`
+	OwnershipVerification types.Object           `tfsdk:"ownership_verification"`
+	OriginalNameServers   types.Set              `tfsdk:"original_name_servers"`
+	NameServers           types.Set              `tfsdk:"name_servers"`
+	VanityNameServers     types.Object           `tfsdk:"vanity_name_servers"`
 	VanityNameServersIps  []teoZoneVanityIpModel `tfsdk:"vanity_name_servers_ips"`
 }
 
@@ -585,30 +585,30 @@ type teoZoneWorkModeInfoModel struct {
 }
 
 type teoZoneDetailModel struct {
-	ZoneId                types.String             `tfsdk:"zone_id"`
-	ZoneName              types.String             `tfsdk:"zone_name"`
-	AliasZoneName         types.String             `tfsdk:"alias_zone_name"`
-	Area                  types.String             `tfsdk:"area"`
-	Type                  types.String             `tfsdk:"type"`
-	Tags                  []teoZoneTagModel        `tfsdk:"tags"`
-	Resources             []teoZoneResourceModel   `tfsdk:"resources"`
-	NSDetail              *teoZoneNSDetailModel    `tfsdk:"ns_detail"`
-	CNAMEDetail           *teoZoneCNAMEDetailModel `tfsdk:"cname_detail"`
-	DNSPodDetail          *teoZoneDNSPodDetailModel `tfsdk:"dns_pod_detail"`
-	CreatedOn             types.String             `tfsdk:"created_on"`
-	ModifiedOn            types.String             `tfsdk:"modified_on"`
-	Status                types.String             `tfsdk:"status"`
-	CnameStatus           types.String             `tfsdk:"cname_status"`
-	ActiveStatus          types.String             `tfsdk:"active_status"`
-	LockStatus            types.String             `tfsdk:"lock_status"`
-	Paused                types.Bool               `tfsdk:"paused"`
-	IsFake                types.Int64              `tfsdk:"is_fake"`
-	CnameSpeedUp          types.String             `tfsdk:"cname_speed_up"`
-	OwnershipVerification types.Object             `tfsdk:"ownership_verification"`
-	OriginalNameServers   types.Set                `tfsdk:"original_name_servers"`
-	NameServers           types.Set                `tfsdk:"name_servers"`
-	VanityNameServers     types.Object             `tfsdk:"vanity_name_servers"`
-	VanityNameServersIps  []teoZoneVanityIpModel   `tfsdk:"vanity_name_servers_ips"`
+	ZoneId                types.String               `tfsdk:"zone_id"`
+	ZoneName              types.String               `tfsdk:"zone_name"`
+	AliasZoneName         types.String               `tfsdk:"alias_zone_name"`
+	Area                  types.String               `tfsdk:"area"`
+	Type                  types.String               `tfsdk:"type"`
+	Tags                  []teoZoneTagModel          `tfsdk:"tags"`
+	Resources             []teoZoneResourceModel     `tfsdk:"resources"`
+	NSDetail              *teoZoneNSDetailModel      `tfsdk:"ns_detail"`
+	CNAMEDetail           *teoZoneCNAMEDetailModel   `tfsdk:"cname_detail"`
+	DNSPodDetail          *teoZoneDNSPodDetailModel  `tfsdk:"dns_pod_detail"`
+	CreatedOn             types.String               `tfsdk:"created_on"`
+	ModifiedOn            types.String               `tfsdk:"modified_on"`
+	Status                types.String               `tfsdk:"status"`
+	CnameStatus           types.String               `tfsdk:"cname_status"`
+	ActiveStatus          types.String               `tfsdk:"active_status"`
+	LockStatus            types.String               `tfsdk:"lock_status"`
+	Paused                types.Bool                 `tfsdk:"paused"`
+	IsFake                types.Int64                `tfsdk:"is_fake"`
+	CnameSpeedUp          types.String               `tfsdk:"cname_speed_up"`
+	OwnershipVerification types.Object               `tfsdk:"ownership_verification"`
+	OriginalNameServers   types.Set                  `tfsdk:"original_name_servers"`
+	NameServers           types.Set                  `tfsdk:"name_servers"`
+	VanityNameServers     types.Object               `tfsdk:"vanity_name_servers"`
+	VanityNameServersIps  []teoZoneVanityIpModel     `tfsdk:"vanity_name_servers_ips"`
 	WorkModeInfos         []teoZoneWorkModeInfoModel `tfsdk:"work_mode_infos"`
 }
 
@@ -900,9 +900,9 @@ func refreshTeoZone1110_02Model(ctx context.Context, m *TeoZone1110_02ResourceMo
 		return err
 	}
 	zonesElemType := types.ObjectType{AttrTypes: teoZoneAttrTypes(teoZone1110_02DetailAttributes)}
-	zones, err := types.ListValueFrom(ctx, zonesElemType, []teoZoneDetailModel{*detail})
-	if err != nil {
-		return err
+	zones, diags := types.ListValueFrom(ctx, zonesElemType, []teoZoneDetailModel{*detail})
+	if diags.HasError() {
+		return fmt.Errorf("building zones list failed: %s", diags.Errors()[0].Summary())
 	}
 	m.Zones = zones
 	return nil
@@ -942,7 +942,11 @@ func teoZoneStringSetFromSdk(ctx context.Context, values []*string) (types.Set, 
 		}
 		strs = append(strs, *v)
 	}
-	return types.SetValueFrom(ctx, types.StringType, strs)
+	set, diags := types.SetValueFrom(ctx, types.StringType, strs)
+	if diags.HasError() {
+		return types.SetNull(types.StringType), fmt.Errorf("setting string set failed: %s", diags.Errors()[0].Summary())
+	}
+	return set, nil
 }
 
 func teoZoneOwnershipObjectFromSdk(ctx context.Context, ov *teov20220901.OwnershipVerification) (types.Object, error) {
@@ -971,7 +975,11 @@ func teoZoneOwnershipObjectFromSdk(ctx context.Context, ov *teov20220901.Ownersh
 		}
 		model.NsVerification = &teoZoneNsVerificationModel{NameServers: servers}
 	}
-	return types.ObjectValueFrom(ctx, teoZoneAttrTypes(teoZone1110_02OwnershipVerificationAttributes), &model)
+	obj, diags := types.ObjectValueFrom(ctx, teoZoneAttrTypes(teoZone1110_02OwnershipVerificationAttributes), &model)
+	if diags.HasError() {
+		return types.ObjectNull(teoZoneAttrTypes(teoZone1110_02OwnershipVerificationAttributes)), fmt.Errorf("building ownership verification object failed: %s", diags.Errors()[0].Summary())
+	}
+	return obj, nil
 }
 
 func teoZoneVanityObjectFromSdk(ctx context.Context, vanity *teov20220901.VanityNameServers) (types.Object, error) {
@@ -986,7 +994,11 @@ func teoZoneVanityObjectFromSdk(ctx context.Context, vanity *teov20220901.Vanity
 		Switch:  types.StringPointerValue(vanity.Switch),
 		Servers: servers,
 	}
-	return types.ObjectValueFrom(ctx, teoZoneAttrTypes(teoZone1110_02VanityDetailAttributes), &model)
+	obj, diags := types.ObjectValueFrom(ctx, teoZoneAttrTypes(teoZone1110_02VanityDetailAttributes), &model)
+	if diags.HasError() {
+		return types.ObjectNull(teoZoneAttrTypes(teoZone1110_02VanityDetailAttributes)), fmt.Errorf("building vanity name servers object failed: %s", diags.Errors()[0].Summary())
+	}
+	return obj, nil
 }
 
 func teoZoneDetailModelFromSdk(ctx context.Context, zone *teov20220901.Zone) (*teoZoneDetailModel, error) {
