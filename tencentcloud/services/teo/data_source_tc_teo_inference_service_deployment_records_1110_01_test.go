@@ -8,9 +8,9 @@ import (
 	"github.com/agiledragon/gomonkey/v2"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	datasource_schema "github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
-	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-go/tftypes"
 	"github.com/stretchr/testify/assert"
 
@@ -22,11 +22,10 @@ import (
 )
 
 func ptrStringTeoDeploymentRecords(s string) *string { return &s }
-func ptrInt64TeoDeploymentRecords(i int64) *int64   { return &i }
+func ptrInt64TeoDeploymentRecords(i int64) *int64    { return &i }
 func ptrFloat64TeoDeploymentRecords(f float64) *float64 {
 	return &f
 }
-
 
 // Test-local structs mirroring the data source schema for asserting every
 // leaf field read back from state.
@@ -80,13 +79,13 @@ type teoResourceConfigTestModel struct {
 type teoHardwareConfigTestModel struct {
 	GPUNum   types.Float64 `tfsdk:"gpu_num"`
 	CPUNum   types.Float64 `tfsdk:"cpu_num"`
-	MemSize  types.Int64  `tfsdk:"mem_size"`
-	DiskSize types.Int64  `tfsdk:"disk_size"`
+	MemSize  types.Int64   `tfsdk:"mem_size"`
+	DiskSize types.Int64   `tfsdk:"disk_size"`
 }
 
 type teoAutoScalingConfigTestModel struct {
 	MinInstanceCount types.Int64 `tfsdk:"min_instance_count"`
-	ScalingPolicies  types.List `tfsdk:"scaling_policies"`
+	ScalingPolicies  types.List  `tfsdk:"scaling_policies"`
 }
 
 type teoScalingPolicyTestModel struct {

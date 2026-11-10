@@ -9,8 +9,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
-	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/framework/fw"
 	teo "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/framework/fw"
 )
 
 var _ datasource.DataSourceWithConfigure = &TeoInferenceServiceDeploymentRecords111001DataSource{}
@@ -95,14 +95,14 @@ type teoResourceConfigModel struct {
 type teoHardwareConfigModel struct {
 	GPUNum   types.Float64 `tfsdk:"gpu_num"`
 	CPUNum   types.Float64 `tfsdk:"cpu_num"`
-	MemSize  types.Int64  `tfsdk:"mem_size"`
-	DiskSize types.Int64  `tfsdk:"disk_size"`
+	MemSize  types.Int64   `tfsdk:"mem_size"`
+	DiskSize types.Int64   `tfsdk:"disk_size"`
 }
 
 // teoAutoScalingConfigModel maps the auto_scaling_config attribute.
 type teoAutoScalingConfigModel struct {
 	MinInstanceCount types.Int64 `tfsdk:"min_instance_count"`
-	ScalingPolicies   types.List `tfsdk:"scaling_policies"`
+	ScalingPolicies  types.List  `tfsdk:"scaling_policies"`
 }
 
 // teoScalingPolicyModel is the element type of scaling_policies.
@@ -274,7 +274,7 @@ func (d *TeoInferenceServiceDeploymentRecords111001DataSource) Schema(_ context.
 									Description: "Resource configuration of the inference service.",
 									Attributes: map[string]schema.Attribute{
 										"scaling_mode": schema.StringAttribute{
-											Computed: true,
+											Computed:    true,
 											Description: "Scaling mode. Valid values: `Auto`, `Manual`.",
 										},
 										"hardware_spec": schema.StringAttribute{
@@ -406,7 +406,7 @@ func (d *TeoInferenceServiceDeploymentRecords111001DataSource) Schema(_ context.
 									Description: "Affinity configuration of the inference service.",
 									Attributes: map[string]schema.Attribute{
 										"switch": schema.StringAttribute{
-											Computed: true,
+											Computed:    true,
 											Description: "Affinity switch. Valid values: `On`, `Off`.",
 										},
 										"affinity_mode": schema.StringAttribute{
@@ -418,7 +418,7 @@ func (d *TeoInferenceServiceDeploymentRecords111001DataSource) Schema(_ context.
 											Description: "Session ID affinity configuration.",
 											Attributes: map[string]schema.Attribute{
 												"source": schema.StringAttribute{
-													Computed:    true,
+													Computed: true,
 													Description: "Where the session ID is passed. Valid values: " +
 														"`Header`.",
 												},
@@ -561,10 +561,10 @@ func teoManualInstanceConfigAttrTypes() map[string]attr.Type {
 // attribute.
 func teoResourceConfigAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"scaling_mode":      types.StringType,
-		"hardware_spec":     types.StringType,
-		"hardware_spec_id":  types.StringType,
-		"hardware_config":   types.ObjectType{AttrTypes: teoHardwareConfigAttrTypes()},
+		"scaling_mode":        types.StringType,
+		"hardware_spec":       types.StringType,
+		"hardware_spec_id":    types.StringType,
+		"hardware_config":     types.ObjectType{AttrTypes: teoHardwareConfigAttrTypes()},
 		"auto_scaling_config": types.ObjectType{AttrTypes: teoAutoScalingConfigAttrTypes()},
 		"manual_instance_config": types.ObjectType{
 			AttrTypes: teoManualInstanceConfigAttrTypes(),
@@ -586,7 +586,7 @@ func teoSessionIdAffinityConfigAttrTypes() map[string]attr.Type {
 // attribute.
 func teoAffinityConfigAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"switch":       types.StringType,
+		"switch":        types.StringType,
 		"affinity_mode": types.StringType,
 		"session_id_affinity_config": types.ObjectType{
 			AttrTypes: teoSessionIdAffinityConfigAttrTypes(),
@@ -612,10 +612,10 @@ func teoInferenceServiceConfigAttrTypes() map[string]attr.Type {
 // element.
 func teoDeploymentRecordAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"record_id":  types.StringType,
-		"operation":  types.StringType,
-		"status":     types.StringType,
-		"duration":   types.Int64Type,
+		"record_id": types.StringType,
+		"operation": types.StringType,
+		"status":    types.StringType,
+		"duration":  types.Int64Type,
 		"inference_service_config": types.ObjectType{
 			AttrTypes: teoInferenceServiceConfigAttrTypes(),
 		},
@@ -686,10 +686,10 @@ func teoInferenceServiceConfigToObject(_ context.Context, config *teo.InferenceS
 
 	return types.ObjectValueMust(teoInferenceServiceConfigAttrTypes(), map[string]attr.Value{
 		"listen_port":     model.ListenPort,
-		"request_paths":    model.RequestPaths,
-		"containers":       model.Containers,
-		"resource_config":  model.ResourceConfig,
-		"affinity_config":  model.AffinityConfig,
+		"request_paths":   model.RequestPaths,
+		"containers":      model.Containers,
+		"resource_config": model.ResourceConfig,
+		"affinity_config": model.AffinityConfig,
 	})
 }
 
@@ -885,8 +885,8 @@ func teoAffinityConfigToObject(config *teo.InferenceAffinityConfig) types.Object
 	}
 
 	return types.ObjectValueMust(teoAffinityConfigAttrTypes(), map[string]attr.Value{
-		"switch":                   model.Switch,
-		"affinity_mode":            model.AffinityMode,
+		"switch":                     model.Switch,
+		"affinity_mode":              model.AffinityMode,
 		"session_id_affinity_config": model.SessionIdAffinityConfig,
 	})
 }
@@ -896,8 +896,8 @@ func containersToAttrValues(containers []teoContainerItemModel) []attr.Value {
 	values := make([]attr.Value, 0, len(containers))
 	for _, c := range containers {
 		values = append(values, types.ObjectValueMust(teoContainerAttrTypes(), map[string]attr.Value{
-			"image_type":             c.ImageType,
-			"tcr_repository_config":  c.TcrRepositoryConfig,
+			"image_type":            c.ImageType,
+			"tcr_repository_config": c.TcrRepositoryConfig,
 			"startup_command":       c.StartupCommand,
 			"environment_variables": c.EnvironmentVariables,
 		}))
