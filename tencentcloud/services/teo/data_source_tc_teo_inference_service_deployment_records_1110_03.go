@@ -163,10 +163,10 @@ var (
 	}
 
 	teoInferenceDeploymentRecordAttrTypes = map[string]attr.Type{
-		"record_id":  types.StringType,
-		"operation":  types.StringType,
-		"status":     types.StringType,
-		"duration":   types.Int64Type,
+		"record_id": types.StringType,
+		"operation": types.StringType,
+		"status":    types.StringType,
+		"duration":  types.Int64Type,
 		"inference_service_config": types.ListType{ElemType: types.ObjectType{
 			AttrTypes: teoInferenceServiceConfigAttrTypes,
 		}},
@@ -1008,8 +1008,8 @@ func flattenTeoInferenceAffinityConfig(ctx context.Context, config *teo.Inferenc
 	}
 
 	obj, d := types.ObjectValue(teoInferenceAffinityConfigAttrTypes, map[string]attr.Value{
-		"switch":        types.StringPointerValue(config.Switch),
-		"affinity_mode": types.StringPointerValue(config.AffinityMode),
+		"switch":                     types.StringPointerValue(config.Switch),
+		"affinity_mode":              types.StringPointerValue(config.AffinityMode),
 		"session_id_affinity_config": sessionIdConfig,
 	})
 	diags.Append(d...)
