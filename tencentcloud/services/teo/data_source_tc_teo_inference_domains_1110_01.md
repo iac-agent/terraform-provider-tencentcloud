@@ -1,8 +1,6 @@
-# data_source_tc_teo_inference_domains_1110_01
-
 Use this data source to query the list of TEO (EdgeOne) inference service domains.
 
-## Example Usage
+Example Usage
 
 ```hcl
 data "tencentcloud_teo_inference_domains_1110_01" "example" {

@@ -132,14 +132,14 @@ type TeoInferenceDomainsDomainModel struct {
 }
 
 var TeoInferenceDomainsDomainAttrTypes = map[string]attr.Type{
-	"domain":                  types.StringType,
-	"status":                  types.StringType,
-	"auth_switch":             types.StringType,
-	"cname":                   types.StringType,
-	"ownership_verification":  types.ListType{ElemType: types.ObjectType{AttrTypes: TeoInferenceDomainsOwnershipVerificationAttrTypes}},
-	"certificate":             types.ListType{ElemType: types.ObjectType{AttrTypes: TeoInferenceDomainsCertificateAttrTypes}},
-	"create_time":             types.StringType,
-	"update_time":             types.StringType,
+	"domain":                 types.StringType,
+	"status":                 types.StringType,
+	"auth_switch":            types.StringType,
+	"cname":                  types.StringType,
+	"ownership_verification": types.ListType{ElemType: types.ObjectType{AttrTypes: TeoInferenceDomainsOwnershipVerificationAttrTypes}},
+	"certificate":            types.ListType{ElemType: types.ObjectType{AttrTypes: TeoInferenceDomainsCertificateAttrTypes}},
+	"create_time":            types.StringType,
+	"update_time":            types.StringType,
 }
 
 func (d *TeoInferenceDomainsDataSource) Metadata(_ context.Context, _ datasource.MetadataRequest, resp *datasource.MetadataResponse) {

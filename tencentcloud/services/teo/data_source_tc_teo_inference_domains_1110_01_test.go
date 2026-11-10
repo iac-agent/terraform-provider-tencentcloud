@@ -48,14 +48,14 @@ func teoInferenceDomainsRootType() tftypes.Object {
 func teoInferenceDomainsDomainType() tftypes.Object {
 	return tftypes.Object{
 		AttributeTypes: map[string]tftypes.Type{
-			"domain":                  tftypes.String,
-			"status":                  tftypes.String,
-			"auth_switch":             tftypes.String,
-			"cname":                   tftypes.String,
-			"ownership_verification":  tftypes.List{ElementType: teoInferenceDomainsOwnershipVerificationType()},
-			"certificate":             tftypes.List{ElementType: teoInferenceDomainsCertificateType()},
-			"create_time":             tftypes.String,
-			"update_time":             tftypes.String,
+			"domain":                 tftypes.String,
+			"status":                 tftypes.String,
+			"auth_switch":            tftypes.String,
+			"cname":                  tftypes.String,
+			"ownership_verification": tftypes.List{ElementType: teoInferenceDomainsOwnershipVerificationType()},
+			"certificate":            tftypes.List{ElementType: teoInferenceDomainsCertificateType()},
+			"create_time":            tftypes.String,
+			"update_time":            tftypes.String,
 		},
 	}
 }
