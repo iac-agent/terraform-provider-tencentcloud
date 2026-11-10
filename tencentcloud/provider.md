@@ -1632,6 +1632,7 @@ tencentcloud_teo_billing_data
 
 Resource
 tencentcloud_teo_zone
+tencentcloud_teo_zone_1110_02
 tencentcloud_teo_zone_setting
 tencentcloud_teo_origin_group
 tencentcloud_teo_rule_engine
