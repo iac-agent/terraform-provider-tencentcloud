@@ -3668,3 +3668,120 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 
 	return
 }
+
+func (me *TeoService) CreateTeoZoneBy1110_01(ctx context.Context, request *teo.CreateZoneRequest) (response *teo.CreateZoneResponse, errRet error) {
+	var (
+		logId = tccommon.GetLogId(ctx)
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+	response, errRet = me.client.UseTeoClient().CreateZoneWithContext(ctx, request)
+	if errRet != nil {
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	return
+}
+
+func (me *TeoService) DescribeTeoZoneBy1110_01(ctx context.Context, zoneId string) (zone *teo.Zone, errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = teo.NewDescribeZonesRequest()
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, "query object", request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	request.Filters = []*teo.AdvancedFilter{
+		{
+			Name:   helper.String("zone-id"),
+			Values: []*string{helper.String(zoneId)},
+		},
+	}
+
+	ratelimit.Check(request.GetAction())
+	response, err := me.client.UseTeoClient().DescribeZonesWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		return
+	}
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("DescribeZones returned an empty response for zone %s", zoneId)
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	for _, item := range response.Response.Zones {
+		if item != nil && item.ZoneId != nil && *item.ZoneId == zoneId {
+			zone = item
+			return
+		}
+	}
+
+	return
+}
+
+func (me *TeoService) ModifyTeoZoneBy1110_01(ctx context.Context, request *teo.ModifyZoneRequest) (errRet error) {
+	var (
+		logId = tccommon.GetLogId(ctx)
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+	response, err := me.client.UseTeoClient().ModifyZoneWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	return
+}
+
+func (me *TeoService) DeleteTeoZoneBy1110_01(ctx context.Context, zoneId string) (errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = teo.NewDeleteZoneRequest()
+	)
+
+	request.ZoneId = helper.String(zoneId)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, "delete object", request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+	response, err := me.client.UseTeoClient().DeleteZoneWithContext(ctx, request)
+	if err != nil {
+		errRet = err
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	return
+}

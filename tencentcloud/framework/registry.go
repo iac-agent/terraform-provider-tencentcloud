@@ -31,6 +31,7 @@ import (
 // resourceFactories lists every framework Resource factory.
 var resourceFactories = []func() resource.Resource{
 	ssm.NewSsmSecretVersionV2Resource,
+	teo.NewTeoZone1110_01Resource,
 }
 
 // dataSourceFactories lists every framework DataSource factory.
