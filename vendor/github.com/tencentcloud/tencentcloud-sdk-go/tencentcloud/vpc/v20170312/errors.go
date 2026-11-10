@@ -1115,6 +1115,9 @@ const (
 	// 网卡类型不支持删除保护。
 	UNSUPPORTEDOPERATION_ENINOTSUPPORTTERMINATIONPROTECTION = "UnsupportedOperation.EniNotSupportTerminationProtection"
 
+	// 资源为托管弹性网卡，不可操作。
+	UNSUPPORTEDOPERATION_ENISERVICEMANAGED = "UnsupportedOperation.EniServiceManaged"
+
 	// 存在云联网自定义路由表不允许删除该云联网
 	UNSUPPORTEDOPERATION_EXISTCCNCUSTOMROUTETABLESNOTSUPPORTDELETECCN = "UnsupportedOperation.ExistCcnCustomRouteTablesNotSupportDeleteCcn"
 
@@ -1234,6 +1237,9 @@ const (
 
 	// 账户不支持修改公网IP的该属性。
 	UNSUPPORTEDOPERATION_MODIFYADDRESSATTRIBUTE = "UnsupportedOperation.ModifyAddressAttribute"
+
+	// 存在多个主IP地址。
+	UNSUPPORTEDOPERATION_MULTIPLEPRIMARYIPADDRESS = "UnsupportedOperation.MultiplePrimaryIpAddress"
 
 	// VPC实例内部有账号纬度的IPv6白名单，不支持关联多云联网。
 	UNSUPPORTEDOPERATION_MULTIPLEVPCNOTSUPPORTATTACHACCOUNTHASIPV6 = "UnsupportedOperation.MultipleVpcNotSupportAttachAccountHasIpv6"
@@ -1547,11 +1553,20 @@ const (
 	// 不支持使用系统预留的标签键。
 	UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
 
+	// 资源删除保护中。
+	UNSUPPORTEDOPERATION_TERMINATIONPROTECTION = "UnsupportedOperation.TerminationProtection"
+
+	// 删除保护不支持IPv6。
+	UNSUPPORTEDOPERATION_TERMINATIONPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TerminationProtectionNotSupportIPv6"
+
 	// 流量镜像不支持目标Clb。
 	UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTCLB = "UnsupportedOperation.TrafficMirrorNotSupportClb"
 
 	// 流量镜像源、目的不可同端。
 	UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+
+	// 资源流量保护中。
+	UNSUPPORTEDOPERATION_TRAFFICPROTECTION = "UnsupportedOperation.TrafficProtection"
 
 	// 流量保护不支持IPv6。
 	UNSUPPORTEDOPERATION_TRAFFICPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TrafficProtectionNotSupportIPv6"

@@ -401,114 +401,95 @@ func (r *AddTemplateMemberResponse) FromJsonString(s string) error {
 }
 
 type Address struct {
-	// `EIP`的`ID`，是`EIP`的唯一标识。
+	// <p><code>EIP</code>的<code>ID</code>，是<code>EIP</code>的唯一标识。</p>
 	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
 
-	// `EIP`名称。
+	// <p><code>EIP</code>名称。</p>
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
-	// `EIP`状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)
+	// <p><code>EIP</code>状态，包含&#39;CREATING&#39;(创建中),&#39;BINDING&#39;(绑定中),&#39;BIND&#39;(已绑定),&#39;UNBINDING&#39;(解绑中),&#39;UNBIND&#39;(已解绑),&#39;OFFLINING&#39;(释放中),&#39;BIND_ENI&#39;(绑定悬空弹性网卡)</p>
 	AddressStatus *string `json:"AddressStatus,omitnil,omitempty" name:"AddressStatus"`
 
-	// 外网IP地址
+	// <p>外网IP地址</p>
 	AddressIp *string `json:"AddressIp,omitnil,omitempty" name:"AddressIp"`
 
-	// 绑定的资源实例`ID`。可能是一个`CVM`，`NAT`。
+	// <p>绑定的资源实例<code>ID</code>。可能是一个<code>CVM</code>，<code>NAT</code>。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+	// <p>创建时间。按照<code>ISO8601</code>标准表示，并且使用<code>UTC</code>时间。格式为：<code>YYYY-MM-DDThh:mm:ssZ</code>。</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 绑定的弹性网卡ID，null表示没有绑定弹性网卡。
+	// <p>绑定的弹性网卡ID，null表示没有绑定弹性网卡。</p>
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
-	// 绑定的资源内网ip，null表示没有绑定资源内网ip。
+	// <p>绑定的资源内网ip，null表示没有绑定资源内网ip。</p>
 	PrivateAddressIp *string `json:"PrivateAddressIp,omitnil,omitempty" name:"PrivateAddressIp"`
 
-	// 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态
+	// <p>资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态</p>
 	IsArrears *bool `json:"IsArrears,omitnil,omitempty" name:"IsArrears"`
 
-	// 资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态
+	// <p>资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态</p>
 	IsBlocked *bool `json:"IsBlocked,omitnil,omitempty" name:"IsBlocked"`
 
-	// eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式
+	// <p>eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式</p>
 	IsEipDirectConnection *bool `json:"IsEipDirectConnection,omitnil,omitempty" name:"IsEipDirectConnection"`
 
-	// EIP 资源类型，包括CalcIP、WanIP、EIP和AnycastEIP、高防EIP。其中：`CalcIP` 表示设备 IP，`WanIP` 表示普通公网 IP，`EIP` 表示弹性公网 IP，`AnycastEIP` 表示加速 EIP，`AntiDDoSEIP`表示高防EIP。
+	// <p>EIP 资源类型，包括CalcIP、WanIP、EIP和AnycastEIP、高防EIP。其中：<code>CalcIP</code> 表示设备 IP，<code>WanIP</code> 表示普通公网 IP，<code>EIP</code> 表示弹性公网 IP，<code>AnycastEIP</code> 表示加速 EIP，<code>AntiDDoSEIP</code>表示高防EIP。</p>
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 
-	// eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放
+	// <p>eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放</p>
 	CascadeRelease *bool `json:"CascadeRelease,omitnil,omitempty" name:"CascadeRelease"`
 
-	// EIP ALG开启的协议类型。
+	// <p>EIP ALG开启的协议类型。</p>
 	EipAlgType *AlgType `json:"EipAlgType,omitnil,omitempty" name:"EipAlgType"`
 
-	// 弹性公网IP的运营商信息，当前可能返回值包括"CMCC"(移动),"CTCC"(电信),"CUCC"(联通),"BGP"(常规BGP)。
+	// <p>弹性公网IP的运营商信息，当前可能返回值包括&quot;CMCC&quot;(移动),&quot;CTCC&quot;(电信),&quot;CUCC&quot;(联通),&quot;BGP&quot;(常规BGP)。</p>
 	InternetServiceProvider *string `json:"InternetServiceProvider,omitnil,omitempty" name:"InternetServiceProvider"`
 
-	// 是否本地带宽EIP，可选值：
-	// <li>true：本地带宽EIP</li>
-	// <li>false：非本地带宽EIP</li>
+	// <p>是否本地带宽EIP，可选值：</p><li>true：本地带宽EIP</li><li>false：非本地带宽EIP</li>
 	LocalBgp *bool `json:"LocalBgp,omitnil,omitempty" name:"LocalBgp"`
 
-	// 弹性公网IP的带宽值。注意，传统账户类型账户的弹性公网IP没有带宽属性，值为空。
+	// <p>弹性公网IP的带宽值。注意，传统账户类型账户的弹性公网IP没有带宽属性，值为空。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 弹性公网IP的网络计费模式。注意，传统账户类型账户的弹性公网IP没有网络计费模式属性，值为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 包括：
-	// <li><strong>BANDWIDTH_PREPAID_BY_MONTH</strong></li>
-	// <p style="padding-left: 30px;">表示包月带宽预付费。</p>
-	// <li><strong>TRAFFIC_POSTPAID_BY_HOUR</strong></li>
-	// <p style="padding-left: 30px;">表示按小时流量后付费。</p>
-	// <li><strong>BANDWIDTH_POSTPAID_BY_HOUR</strong></li>
-	// <p style="padding-left: 30px;">表示按小时带宽后付费。</p>
-	// <li><strong>BANDWIDTH_PACKAGE</strong></li>
-	// <p style="padding-left: 30px;">表示共享带宽包。</p>
+	// <p>弹性公网IP的网络计费模式。注意，传统账户类型账户的弹性公网IP没有网络计费模式属性，值为空。<br>注意：此字段可能返回 null，表示取不到有效值。<br>包括：</p><li><strong>BANDWIDTH_PREPAID_BY_MONTH</strong></li><p style="padding-left: 30px;">表示包月带宽预付费。</p><li><strong>TRAFFIC_POSTPAID_BY_HOUR</strong></li><p style="padding-left: 30px;">表示按小时流量后付费。</p><li><strong>BANDWIDTH_POSTPAID_BY_HOUR</strong></li><p style="padding-left: 30px;">表示按小时带宽后付费。</p><li><strong>BANDWIDTH_PACKAGE</strong></li><p style="padding-left: 30px;">表示共享带宽包。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
-	// 弹性公网IP关联的标签列表。
+	// <p>弹性公网IP关联的标签列表。</p>
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// 预付费包月带宽IP到期时间。
-	// 时间格式：YYYY-MM-DDThh:mm:ssZ
+	// <p>预付费包月带宽IP到期时间。<br>时间格式：YYYY-MM-DDThh:mm:ssZ</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadlineDate *string `json:"DeadlineDate,omitnil,omitempty" name:"DeadlineDate"`
 
-	// EIP绑定的实例类型。可选值：
-	// <li>CVM：云服务器</li>
-	// <li>NAT：NAT 网关</li>
-	// <li>HAVIP：高可用虚拟IP</li>
-	// <li>ENI：弹性网卡</li>
-	// <li>CLB：内网CLB</li>
-	// <li>DHCPIP：弹性内网IP</li>
-	// 
-	// 
+	// <p>EIP绑定的实例类型。可选值：</p><li>CVM：云服务器</li><li>NAT：NAT 网关</li><li>HAVIP：高可用虚拟IP</li><li>ENI：弹性网卡</li><li>CLB：内网CLB</li><li>DHCPIP：弹性内网IP</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 静态单线IP网络出口
+	// <p>静态单线IP网络出口</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
-	// 高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.
+	// <p>高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.</p>
 	AntiDDoSPackageId *string `json:"AntiDDoSPackageId,omitnil,omitempty" name:"AntiDDoSPackageId"`
 
-	// 当前EIP是否自动续费，只有按月带宽预付费的EIP才会显示该字段，具体值示例如下:
-	// <li>NOTIFY_AND_MANUAL_RENEW:正常续费</li><li>NOTIFY_AND_AUTO_RENEW:自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW:到期不续费 </li>
+	// <p>当前EIP是否自动续费，只有按月带宽预付费的EIP才会显示该字段，具体值示例如下:</p><li>NOTIFY_AND_MANUAL_RENEW:正常续费</li><li>NOTIFY_AND_AUTO_RENEW:自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW:到期不续费 </li>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 当前公网IP所关联的带宽包ID，如果该公网IP未使用带宽包计费，则返回为空
+	// <p>当前公网IP所关联的带宽包ID，如果该公网IP未使用带宽包计费，则返回为空</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 传统弹性公网IPv6所属vpc唯一ID
+	// <p>传统弹性公网IPv6所属vpc唯一ID</p>
 	UnVpcId *string `json:"UnVpcId,omitnil,omitempty" name:"UnVpcId"`
 
-	// CDC唯一ID
+	// <p>CDC唯一ID</p>
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// <p>eip是否在网卡上可见。true表示支持，false表示不支持</p>
+	EipVisibleOnEni *bool `json:"EipVisibleOnEni,omitnil,omitempty" name:"EipVisibleOnEni"`
 }
 
 type AddressChargePrepaid struct {
@@ -2924,12 +2905,6 @@ type CcnPolicyBasedRoutingRule struct {
 	// <p>策略路由下一跳ID</p>
 	PolicyBasedRoutingNextHopId *string `json:"PolicyBasedRoutingNextHopId,omitnil,omitempty" name:"PolicyBasedRoutingNextHopId"`
 
-	// <p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
-	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
-
-	// <p>实例ID</p>
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
 	// <p>源地址CIDR</p>
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitnil,omitempty" name:"SourceCidrBlock"`
 
@@ -2938,6 +2913,15 @@ type CcnPolicyBasedRoutingRule struct {
 
 	// <p>优先级</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例所在地域</p>
+	InstanceRegion *string `json:"InstanceRegion,omitnil,omitempty" name:"InstanceRegion"`
 
 	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -10556,15 +10540,21 @@ func (r *DeleteGlobalRoutesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteHaVipRequestParams struct {
-	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+	// <p><code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</p>
 	HaVipId *string `json:"HaVipId,omitnil,omitempty" name:"HaVipId"`
+
+	// <p>忽略删除保护。</p>
+	SkipTerminationProtection *bool `json:"SkipTerminationProtection,omitnil,omitempty" name:"SkipTerminationProtection"`
 }
 
 type DeleteHaVipRequest struct {
 	*tchttp.BaseRequest
 	
-	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+	// <p><code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</p>
 	HaVipId *string `json:"HaVipId,omitnil,omitempty" name:"HaVipId"`
+
+	// <p>忽略删除保护。</p>
+	SkipTerminationProtection *bool `json:"SkipTerminationProtection,omitnil,omitempty" name:"SkipTerminationProtection"`
 }
 
 func (r *DeleteHaVipRequest) ToJsonString() string {
@@ -10580,6 +10570,7 @@ func (r *DeleteHaVipRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "HaVipId")
+	delete(f, "SkipTerminationProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteHaVipRequest has unknown keys!", "")
 	}
@@ -27243,29 +27234,33 @@ func (r *MigratePrivateIpAddressResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAddressAttributeRequestParams struct {
-	// 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
+	// <p>标识 EIP 的唯一 ID。EIP 唯一 ID 形如：<code>eip-11112222</code>。可以使用<a href="https://cloud.tencent.com/document/product/215/16702">DescribeAddresses</a>接口获取AddressId。</p>
 	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
 
-	// 修改后的 EIP 名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"\_"，不能包含空格。
+	// <p>修改后的 EIP 名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符&quot;-&quot;和下划线&quot;_&quot;，不能包含空格。</p>
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
-	// 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。
-	// 注意：该参数仅对 EIP 直通功能可见的用户可以设定，EIP 必须为绑定状态，绑定的对象为 CVM 。
+	// <p>设定EIP是否直通，&quot;TRUE&quot;表示直通，&quot;FALSE&quot;表示非直通。<br>注意：该参数仅对 EIP 直通功能可见的用户可以设定，EIP 必须为绑定状态，绑定的对象为 CVM 。</p>
 	EipDirectConnection *string `json:"EipDirectConnection,omitnil,omitempty" name:"EipDirectConnection"`
+
+	// <p>设定EIP是否在网卡可见</p>
+	EipVisibleOnEni *bool `json:"EipVisibleOnEni,omitnil,omitempty" name:"EipVisibleOnEni"`
 }
 
 type ModifyAddressAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
+	// <p>标识 EIP 的唯一 ID。EIP 唯一 ID 形如：<code>eip-11112222</code>。可以使用<a href="https://cloud.tencent.com/document/product/215/16702">DescribeAddresses</a>接口获取AddressId。</p>
 	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
 
-	// 修改后的 EIP 名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"\_"，不能包含空格。
+	// <p>修改后的 EIP 名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符&quot;-&quot;和下划线&quot;_&quot;，不能包含空格。</p>
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
-	// 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。
-	// 注意：该参数仅对 EIP 直通功能可见的用户可以设定，EIP 必须为绑定状态，绑定的对象为 CVM 。
+	// <p>设定EIP是否直通，&quot;TRUE&quot;表示直通，&quot;FALSE&quot;表示非直通。<br>注意：该参数仅对 EIP 直通功能可见的用户可以设定，EIP 必须为绑定状态，绑定的对象为 CVM 。</p>
 	EipDirectConnection *string `json:"EipDirectConnection,omitnil,omitempty" name:"EipDirectConnection"`
+
+	// <p>设定EIP是否在网卡可见</p>
+	EipVisibleOnEni *bool `json:"EipVisibleOnEni,omitnil,omitempty" name:"EipVisibleOnEni"`
 }
 
 func (r *ModifyAddressAttributeRequest) ToJsonString() string {
@@ -27283,6 +27278,7 @@ func (r *ModifyAddressAttributeRequest) FromJsonString(s string) error {
 	delete(f, "AddressId")
 	delete(f, "AddressName")
 	delete(f, "EipDirectConnection")
+	delete(f, "EipVisibleOnEni")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAddressAttributeRequest has unknown keys!", "")
 	}
@@ -28948,21 +28944,33 @@ func (r *ModifyGlobalRoutesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyHaVipAttributeRequestParams struct {
-	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+	// <p><code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</p>
 	HaVipId *string `json:"HaVipId,omitnil,omitempty" name:"HaVipId"`
 
-	// `HAVIP`名称，可任意命名，但不得超过60个字符。
+	// <p><code>HAVIP</code>名称，可任意命名，但不得超过60个字符。</p>
 	HaVipName *string `json:"HaVipName,omitnil,omitempty" name:"HaVipName"`
+
+	// <p>删除保护。</p>
+	TerminationProtection *bool `json:"TerminationProtection,omitnil,omitempty" name:"TerminationProtection"`
+
+	// <p>流量保护。</p>
+	TrafficProtection *bool `json:"TrafficProtection,omitnil,omitempty" name:"TrafficProtection"`
 }
 
 type ModifyHaVipAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+	// <p><code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</p>
 	HaVipId *string `json:"HaVipId,omitnil,omitempty" name:"HaVipId"`
 
-	// `HAVIP`名称，可任意命名，但不得超过60个字符。
+	// <p><code>HAVIP</code>名称，可任意命名，但不得超过60个字符。</p>
 	HaVipName *string `json:"HaVipName,omitnil,omitempty" name:"HaVipName"`
+
+	// <p>删除保护。</p>
+	TerminationProtection *bool `json:"TerminationProtection,omitnil,omitempty" name:"TerminationProtection"`
+
+	// <p>流量保护。</p>
+	TrafficProtection *bool `json:"TrafficProtection,omitnil,omitempty" name:"TrafficProtection"`
 }
 
 func (r *ModifyHaVipAttributeRequest) ToJsonString() string {
@@ -28979,6 +28987,8 @@ func (r *ModifyHaVipAttributeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "HaVipId")
 	delete(f, "HaVipName")
+	delete(f, "TerminationProtection")
+	delete(f, "TrafficProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyHaVipAttributeRequest has unknown keys!", "")
 	}
@@ -29192,21 +29202,27 @@ func (r *ModifyHighPriorityRouteTableAttributeResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type ModifyIPv6AddressesAttributesRequestParams struct {
-	// 弹性公网IPv6唯一ID列表。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressIds。
+	// <p>弹性公网IPv6唯一ID列表。可以使用<a href="https://cloud.tencent.com/document/api/215/113677">DescribeIPv6Addresses</a>接口获取IPv6AddressIds。</p>
 	IPv6AddressIds []*string `json:"IPv6AddressIds,omitnil,omitempty" name:"IPv6AddressIds"`
 
-	// 弹性公网IPv6地址名称，长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"_"，不能包含空格。
+	// <p>弹性公网IPv6地址名称，长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符&quot;-&quot;和下划线&quot;_&quot;，不能包含空格。</p>
 	IPv6AddressName *string `json:"IPv6AddressName,omitnil,omitempty" name:"IPv6AddressName"`
+
+	// <p>是否开启弹性公网IPv6地址网卡可见</p>
+	EipVisibleOnEni *bool `json:"EipVisibleOnEni,omitnil,omitempty" name:"EipVisibleOnEni"`
 }
 
 type ModifyIPv6AddressesAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性公网IPv6唯一ID列表。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressIds。
+	// <p>弹性公网IPv6唯一ID列表。可以使用<a href="https://cloud.tencent.com/document/api/215/113677">DescribeIPv6Addresses</a>接口获取IPv6AddressIds。</p>
 	IPv6AddressIds []*string `json:"IPv6AddressIds,omitnil,omitempty" name:"IPv6AddressIds"`
 
-	// 弹性公网IPv6地址名称，长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"_"，不能包含空格。
+	// <p>弹性公网IPv6地址名称，长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符&quot;-&quot;和下划线&quot;_&quot;，不能包含空格。</p>
 	IPv6AddressName *string `json:"IPv6AddressName,omitnil,omitempty" name:"IPv6AddressName"`
+
+	// <p>是否开启弹性公网IPv6地址网卡可见</p>
+	EipVisibleOnEni *bool `json:"EipVisibleOnEni,omitnil,omitempty" name:"EipVisibleOnEni"`
 }
 
 func (r *ModifyIPv6AddressesAttributesRequest) ToJsonString() string {
@@ -29223,6 +29239,7 @@ func (r *ModifyIPv6AddressesAttributesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "IPv6AddressIds")
 	delete(f, "IPv6AddressName")
+	delete(f, "EipVisibleOnEni")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIPv6AddressesAttributesRequest has unknown keys!", "")
 	}
@@ -36225,41 +36242,40 @@ type SecurityGroupLimitSet struct {
 }
 
 type SecurityGroupPolicy struct {
-	// 安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用`DescribeSecurityGroupPolicies`获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。
+	// <p>安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用<code>DescribeSecurityGroupPolicies</code>获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。</p>
 	PolicyIndex *int64 `json:"PolicyIndex,omitnil,omitempty" name:"PolicyIndex"`
 
-	// 协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
+	// <p>协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 端口(all, 离散port,  range)。
-	// 说明：如果Protocol设置为ALL，则Port也需要设置为all。
+	// <p>端口(all, 离散port,  range)。<br>说明：如果Protocol设置为ALL，则Port也需要设置为all。</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
+	// <p>协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。</p>
 	ServiceTemplate *ServiceTemplateSpecification `json:"ServiceTemplate,omitnil,omitempty" name:"ServiceTemplate"`
 
-	// 网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IP地址。
+	// <p>网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。作为入参时，可使用字符串<code>MY_PUBLIC_IP</code>指代发起请求的公网IP地址。</p>
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
-	// 网段或IPv6(互斥)。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IPv6地址。
+	// <p>网段或IPv6(互斥)。作为入参时，可使用字符串<code>MY_PUBLIC_IP</code>指代发起请求的公网IPv6地址。</p>
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitnil,omitempty" name:"Ipv6CidrBlock"`
 
-	// 安全组实例ID，例如：sg-ohuuioma。
+	// <p>安全组实例ID，例如：sg-ohuuioma。</p>
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
-	// IP地址ID或者IP地址组ID。
+	// <p>IP地址ID或者IP地址组ID。</p>
 	AddressTemplate *AddressTemplateSpecification `json:"AddressTemplate,omitnil,omitempty" name:"AddressTemplate"`
 
-	// ACCEPT 或 DROP。
+	// <p>ACCEPT 或 DROP。</p>
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。
+	// <p>安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。</p>
 	PolicyDescription *string `json:"PolicyDescription,omitnil,omitempty" name:"PolicyDescription"`
 
-	// 安全组最近修改时间。
+	// <p>安全组最近修改时间。</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 安全组规则优先级，值会随着安全组规则的变更动态变化。使用Priority时，请先调用`DescribeSecurityGroupPolicies`获取到规则的Priority，并且结合返回值中的Version一起使用处理规则。
+	// <p>安全组规则优先级，值会随着安全组规则的变更动态变化。使用Priority时，请先调用<code>DescribeSecurityGroupPolicies</code>获取到规则的Priority，并且结合返回值中的Version一起使用处理规则。</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 

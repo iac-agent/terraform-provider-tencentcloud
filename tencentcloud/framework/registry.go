@@ -26,6 +26,7 @@ import (
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ssm"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/tco"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/teo"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/vpc"
 )
 
 // resourceFactories lists every framework Resource factory.
@@ -34,7 +35,9 @@ var resourceFactories = []func() resource.Resource{
 }
 
 // dataSourceFactories lists every framework DataSource factory.
-var dataSourceFactories = []func() datasource.DataSource{}
+var dataSourceFactories = []func() datasource.DataSource{
+	vpc.NewVpcSecurityGroupLimits111001DataSource,
+}
 
 // functionFactories lists every framework Function factory.
 var functionFactories = []func() function.Function{}
