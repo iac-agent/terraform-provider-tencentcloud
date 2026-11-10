@@ -844,6 +844,7 @@ func NewAssignIpv6AddressesResponse() (response *AssignIpv6AddressesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+//  UNSUPPORTEDOPERATION_MULTIPLEPRIMARYIPADDRESS = "UnsupportedOperation.MultiplePrimaryIpAddress"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 //  UNSUPPORTEDOPERATION_UNASSIGNCIDRBLOCK = "UnsupportedOperation.UnassignCidrBlock"
 func (c *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (response *AssignIpv6AddressesResponse, err error) {
@@ -878,6 +879,7 @@ func (c *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (respo
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+//  UNSUPPORTEDOPERATION_MULTIPLEPRIMARYIPADDRESS = "UnsupportedOperation.MultiplePrimaryIpAddress"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 //  UNSUPPORTEDOPERATION_UNASSIGNCIDRBLOCK = "UnsupportedOperation.UnassignCidrBlock"
 func (c *Client) AssignIpv6AddressesWithContext(ctx context.Context, request *AssignIpv6AddressesRequest) (response *AssignIpv6AddressesResponse, err error) {
@@ -9185,6 +9187,9 @@ func NewDeleteHaVipResponse() (response *DeleteHaVipResponse) {
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_TERMINATIONPROTECTION = "UnsupportedOperation.TerminationProtection"
+//  UNSUPPORTEDOPERATION_TERMINATIONPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TerminationProtectionNotSupportIPv6"
+//  UNSUPPORTEDOPERATION_TRAFFICPROTECTION = "UnsupportedOperation.TrafficProtection"
 func (c *Client) DeleteHaVip(request *DeleteHaVipRequest) (response *DeleteHaVipResponse, err error) {
     return c.DeleteHaVipWithContext(context.Background(), request)
 }
@@ -9200,6 +9205,9 @@ func (c *Client) DeleteHaVip(request *DeleteHaVipRequest) (response *DeleteHaVip
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_TERMINATIONPROTECTION = "UnsupportedOperation.TerminationProtection"
+//  UNSUPPORTEDOPERATION_TERMINATIONPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TerminationProtectionNotSupportIPv6"
+//  UNSUPPORTEDOPERATION_TRAFFICPROTECTION = "UnsupportedOperation.TrafficProtection"
 func (c *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVipRequest) (response *DeleteHaVipResponse, err error) {
     if request == nil {
         request = NewDeleteHaVipRequest()
@@ -23842,6 +23850,7 @@ func NewModifyHaVipAttributeResponse() (response *ModifyHaVipAttributeResponse) 
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_TRAFFICPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TrafficProtectionNotSupportIPv6"
 func (c *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (response *ModifyHaVipAttributeResponse, err error) {
     return c.ModifyHaVipAttributeWithContext(context.Background(), request)
 }
@@ -23856,6 +23865,7 @@ func (c *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (res
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_TRAFFICPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TrafficProtectionNotSupportIPv6"
 func (c *Client) ModifyHaVipAttributeWithContext(ctx context.Context, request *ModifyHaVipAttributeRequest) (response *ModifyHaVipAttributeResponse, err error) {
     if request == nil {
         request = NewModifyHaVipAttributeRequest()
@@ -25053,6 +25063,7 @@ func NewModifyNetworkInterfaceAttributeResponse() (response *ModifyNetworkInterf
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_ENINOTSUPPORTTERMINATIONPROTECTION = "UnsupportedOperation.EniNotSupportTerminationProtection"
+//  UNSUPPORTEDOPERATION_ENISERVICEMANAGED = "UnsupportedOperation.EniServiceManaged"
 //  UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = "UnsupportedOperation.SubEniNotSupportTrunking"
 func (c *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInterfaceAttributeRequest) (response *ModifyNetworkInterfaceAttributeResponse, err error) {
     return c.ModifyNetworkInterfaceAttributeWithContext(context.Background(), request)
@@ -25069,6 +25080,7 @@ func (c *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInterface
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_ENINOTSUPPORTTERMINATIONPROTECTION = "UnsupportedOperation.EniNotSupportTerminationProtection"
+//  UNSUPPORTEDOPERATION_ENISERVICEMANAGED = "UnsupportedOperation.EniServiceManaged"
 //  UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = "UnsupportedOperation.SubEniNotSupportTrunking"
 func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, request *ModifyNetworkInterfaceAttributeRequest) (response *ModifyNetworkInterfaceAttributeResponse, err error) {
     if request == nil {
