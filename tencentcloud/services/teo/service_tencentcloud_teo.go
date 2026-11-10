@@ -3668,3 +3668,84 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 
 	return
 }
+
+// DescribeTeoInferenceServiceDeploymentRecordsByFilter queries the deployment
+// history of an inference service. The whole history is returned: the pages are
+// walked until TotalCount is reached. An empty result is a valid business state,
+// while a nil response means the API call failed.
+func (me *TeoService) DescribeTeoInferenceServiceDeploymentRecordsByFilter(ctx context.Context, param map[string]interface{}) (ret []*teo.InferenceServiceDeploymentRecord, totalCount int64, errRet error) {
+	var (
+		logId = tccommon.GetLogId(ctx)
+		// Local page cursor, the request below is rebuilt per page.
+		offset int64 = 0
+		// Hard stop against an endless loop if the cloud keeps returning records.
+		pages int64 = 0
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, "DescribeInferenceServiceDeploymentRecords", param, errRet.Error())
+		}
+	}()
+
+	for {
+		// A fresh request per page: the SDK request carries BaseRequest state,
+		// reusing one instance across calls would keep appending to it.
+		request := teo.NewDescribeInferenceServiceDeploymentRecordsRequest()
+		zoneId, _ := param["ZoneId"].(string)
+		serviceId, _ := param["ServiceId"].(string)
+		request.ZoneId = helper.String(zoneId)
+		request.ServiceId = helper.String(serviceId)
+
+		if v, ok := param["SortBy"].(string); ok && v != "" {
+			request.SortBy = helper.String(v)
+		}
+		if v, ok := param["SortOrder"].(string); ok && v != "" {
+			request.SortOrder = helper.String(v)
+		}
+		request.Offset = helper.Int64(offset)
+		request.Limit = helper.Int64(100)
+
+		ratelimit.Check(request.GetAction())
+		response, e := me.client.UseTeoV20220901Client().DescribeInferenceServiceDeploymentRecordsWithContext(ctx, request)
+		if e != nil {
+			errRet = e
+			return
+		}
+		if response == nil || response.Response == nil {
+			errRet = fmt.Errorf("DescribeInferenceServiceDeploymentRecords returned an empty response")
+			return
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response.Response.TotalCount != nil {
+			totalCount = *response.Response.TotalCount
+		}
+
+		recordSet := response.Response.RecordSet
+		ret = append(ret, recordSet...)
+
+		pageCount := len(recordSet)
+		if pageCount == 0 {
+			return
+		}
+		offset += int64(pageCount)
+		pages++
+
+		// TotalCount is optional in the API description; when it is absent fall
+		// back to "a short page means the last page".
+		if response.Response.TotalCount != nil {
+			if offset >= *response.Response.TotalCount {
+				return
+			}
+		} else if pageCount < 100 {
+			return
+		}
+		if pages >= 1000 {
+			// Hard stop: the service history is not expected to be this long.
+			return
+		}
+	}
+}
