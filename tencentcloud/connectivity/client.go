@@ -117,6 +117,7 @@ import (
 	tkev20220501 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tke/v20220501"
 	trocket "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trocket/v20230308"
 	tse "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tse/v20201207"
+	agsv20250920 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags/v20250920"
 	tsf "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsf/v20180326"
 	vcubev20220410 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vcube/v20220410"
 	vdbv20230616 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vdb/v20230616"
@@ -167,6 +168,7 @@ type TencentCloudClient struct {
 	stsConn               *sts.Client
 	gaapConn              *gaap.Client
 	sslConn               *ssl.Client
+	agsV20250920Conn      *agsv20250920.Client
 	cfsConn               *cfs.Client
 	scfConn               *scf.Client
 	tcaplusConn           *tcaplusdb.Client
@@ -786,6 +788,19 @@ func (me *TencentCloudClient) UseSslClient() *ssl.Client {
 	me.sslConn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.sslConn
+}
+
+// UseAgsV20250920Client returns ags client for service
+func (me *TencentCloudClient) UseAgsV20250920Client() *agsv20250920.Client {
+	if me.agsV20250920Conn != nil {
+		return me.agsV20250920Conn
+	}
+
+	cpf := me.NewClientProfile(300)
+	me.agsV20250920Conn, _ = agsv20250920.NewClient(me.Credential, me.Region, cpf)
+	me.agsV20250920Conn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.agsV20250920Conn
 }
 
 // UseCamClient returns cam client for service
