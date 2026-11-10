@@ -3668,3 +3668,77 @@ func (me *TeoService) DescribeTeoEdgeKvListByFilter(ctx context.Context, param m
 
 	return
 }
+
+func (me *TeoService) DescribeInferenceServiceDeploymentRecords(ctx context.Context, zoneId, serviceId, sortBy, sortOrder string) (records []*teo.InferenceServiceDeploymentRecord, totalCount int64, errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = teo.NewDescribeInferenceServiceDeploymentRecordsRequest()
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, "query objects", request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	if zoneId != "" {
+		request.ZoneId = helper.String(zoneId)
+	}
+	if serviceId != "" {
+		request.ServiceId = helper.String(serviceId)
+	}
+	if sortBy != "" {
+		request.SortBy = helper.String(sortBy)
+	}
+	if sortOrder != "" {
+		request.SortOrder = helper.String(sortOrder)
+	}
+
+	ratelimit.Check(request.GetAction())
+	var iacExtInfo connectivity.IacExtInfo
+	iacExtInfo.InstanceId = serviceId
+
+	var offset int64 = 0
+	var pageSize int64 = 100
+	records = make([]*teo.InferenceServiceDeploymentRecord, 0)
+
+	for {
+		request.Offset = &offset
+		request.Limit = &pageSize
+		response := teo.NewDescribeInferenceServiceDeploymentRecordsResponse()
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+			result, e := me.client.UseTeoClient(iacExtInfo).DescribeInferenceServiceDeploymentRecords(request)
+			if e != nil {
+				return tccommon.RetryError(e)
+			}
+			response = result
+			return nil
+		})
+		if err != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), err.Error())
+			errRet = err
+			return
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response == nil || response.Response == nil {
+			errRet = fmt.Errorf("DescribeInferenceServiceDeploymentRecords returned an empty response")
+			return
+		}
+		if response.Response.RecordSet != nil {
+			records = append(records, response.Response.RecordSet...)
+		}
+		if response.Response.TotalCount != nil {
+			totalCount = *response.Response.TotalCount
+		}
+		if len(response.Response.RecordSet) < int(pageSize) {
+			break
+		}
+		offset += pageSize
+	}
+
+	return
+}
