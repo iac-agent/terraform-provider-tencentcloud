@@ -317,6 +317,34 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				},
 			},
 
+			"filters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Description: "Filter conditions for querying realtime log delivery tasks. Available filter names: `task-id`, `task-name`, `entity-list`, `task-type`.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"name": {
+							Type:        schema.TypeString,
+							Required:    true,
+							Description: "The filter field name. Available values: `task-id`, `task-name`, `entity-list`, `task-type`.",
+						},
+						"values": {
+							Type:        schema.TypeList,
+							Required:    true,
+							Description: "The filter values. Maximum 20 values per filter.",
+							Elem: &schema.Schema{
+								Type: schema.TypeString,
+							},
+						},
+						"fuzzy": {
+							Type:        schema.TypeBool,
+							Optional:    true,
+							Description: "Whether to enable fuzzy query.",
+						},
+					},
+				},
+			},
+
 			"delivery_status": {
 				Type:        schema.TypeString,
 				Optional:    true,
@@ -328,6 +356,297 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Description: "Real-time log delivery task ID.",
+			},
+
+			"realtime_log_delivery_tasks": {
+				Type:        schema.TypeList,
+				Computed:    true,
+				Description: "A list of realtime log delivery tasks returned by the API.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"task_id": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Real-time log delivery task ID.",
+						},
+						"task_name": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "The name of the real-time log delivery task.",
+						},
+						"delivery_status": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "The status of the real-time log delivery task.",
+						},
+						"task_type": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "The real-time log delivery task type.",
+						},
+						"entity_list": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "List of entities corresponding to real-time log delivery tasks.",
+							Elem: &schema.Schema{
+								Type: schema.TypeString,
+							},
+						},
+						"log_type": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Data delivery type.",
+						},
+						"area": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Data delivery area.",
+						},
+						"fields": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "A list of preset fields for delivery.",
+							Elem: &schema.Schema{
+								Type: schema.TypeString,
+							},
+						},
+						"custom_fields": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "The list of custom fields delivered.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"name": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Extract data from the specified location in the HTTP request and response.",
+									},
+									"value": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The name of the parameter whose value needs to be extracted.",
+									},
+									"enabled": {
+										Type:        schema.TypeBool,
+										Computed:    true,
+										Description: "Whether to deliver this field.",
+									},
+								},
+							},
+						},
+						"delivery_conditions": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "The filter condition for log delivery.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"conditions": {
+										Type:        schema.TypeList,
+										Computed:    true,
+										Description: "Log filtering conditions.",
+										Elem: &schema.Resource{
+											Schema: map[string]*schema.Schema{
+												"key": {
+													Type:        schema.TypeString,
+													Computed:    true,
+													Description: "The key of the filter condition.",
+												},
+												"operator": {
+													Type:        schema.TypeString,
+													Computed:    true,
+													Description: "Query condition operator.",
+												},
+												"value": {
+													Type:        schema.TypeList,
+													Computed:    true,
+													Description: "The value of the filter condition.",
+													Elem: &schema.Schema{
+														Type: schema.TypeString,
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+						"sample": {
+							Type:        schema.TypeInt,
+							Computed:    true,
+							Description: "The sampling ratio.",
+						},
+						"log_format": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "The output format of log delivery.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"format_type": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The default output format type for log delivery.",
+									},
+									"batch_prefix": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "A string to be added before each log delivery batch.",
+									},
+									"batch_suffix": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "A string to append after each log delivery batch.",
+									},
+									"record_prefix": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "A string to prepend to each log record.",
+									},
+									"record_suffix": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "A string to append to each log record.",
+									},
+									"record_delimiter": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The string inserted between log records as a separator.",
+									},
+									"field_delimiter": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "In a single log record, a string is inserted between fields as a separator.",
+									},
+								},
+							},
+						},
+						"cls": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "CLS configuration information.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"log_set_id": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Tencent Cloud CLS log set ID.",
+									},
+									"topic_id": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Tencent Cloud CLS log topic ID.",
+									},
+									"log_set_region": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The region where the Tencent Cloud CLS log set is located.",
+									},
+								},
+							},
+						},
+						"custom_endpoint": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "Customize the configuration information of the HTTP service.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"url": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The custom HTTP interface address for real-time log delivery.",
+									},
+									"access_id": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "A custom SecretId to generate an encrypted signature.",
+									},
+									"access_key": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The custom SecretKey to generate the encrypted signature.",
+									},
+									"compress_type": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Data compression type.",
+									},
+									"protocol": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The application layer protocol type used when sending logs via POST request.",
+									},
+									"headers": {
+										Type:        schema.TypeList,
+										Computed:    true,
+										Description: "The custom request header carried when delivering logs.",
+										Elem: &schema.Resource{
+											Schema: map[string]*schema.Schema{
+												"name": {
+													Type:        schema.TypeString,
+													Computed:    true,
+													Description: "HTTP header name.",
+												},
+												"value": {
+													Type:        schema.TypeString,
+													Computed:    true,
+													Description: "HTTP header value.",
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+						"s3": {
+							Type:        schema.TypeList,
+							Computed:    true,
+							Description: "Configuration information of AWS S3 compatible storage bucket.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"endpoint": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "URLs that do not include bucket names or paths.",
+									},
+									"region": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The region where the bucket is located.",
+									},
+									"bucket": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Bucket name and log storage directory.",
+									},
+									"access_id": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The Access Key ID used to access the bucket.",
+									},
+									"access_key": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The secret key used to access the bucket.",
+									},
+									"compress_type": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Data compression type.",
+									},
+								},
+							},
+						},
+						"create_time": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Creation time.",
+						},
+						"update_time": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Update time.",
+						},
+					},
+				},
 			},
 		},
 	}
@@ -572,9 +891,49 @@ func resourceTencentCloudTeoRealtimeLogDeliveryRead(d *schema.ResourceData, meta
 
 	_ = d.Set("zone_id", zoneId)
 
-	respData, err := service.DescribeTeoRealtimeLogDeliveryById(ctx, zoneId, taskId)
-	if err != nil {
-		return err
+	var respData *teo.RealtimeLogDeliveryTask
+	var allTasks []*teo.RealtimeLogDeliveryTask
+
+	if v, ok := d.GetOk("filters"); ok {
+		// When filters is specified, use the new service method with custom filters
+		var filters []*teo.AdvancedFilter
+		for _, item := range v.([]interface{}) {
+			filterMap := item.(map[string]interface{})
+			advancedFilter := &teo.AdvancedFilter{}
+			if name, ok := filterMap["name"]; ok {
+				advancedFilter.Name = helper.String(name.(string))
+			}
+			if values, ok := filterMap["values"]; ok {
+				for _, val := range values.([]interface{}) {
+					advancedFilter.Values = append(advancedFilter.Values, helper.String(val.(string)))
+				}
+			}
+			if fuzzy, ok := filterMap["fuzzy"]; ok {
+				advancedFilter.Fuzzy = helper.Bool(fuzzy.(bool))
+			}
+			filters = append(filters, advancedFilter)
+		}
+
+		tasks, err := service.DescribeTeoRealtimeLogDeliveryTasksByFilters(ctx, zoneId, filters)
+		if err != nil {
+			return err
+		}
+		allTasks = tasks
+
+		// Find the specific task by taskId for the primary resource data
+		for _, task := range allTasks {
+			if task.TaskId != nil && *task.TaskId == taskId {
+				respData = task
+				break
+			}
+		}
+	} else {
+		// When filters is not specified, preserve existing behavior
+		var err error
+		respData, err = service.DescribeTeoRealtimeLogDeliveryById(ctx, zoneId, taskId)
+		if err != nil {
+			return err
+		}
 	}
 
 	if respData == nil {
@@ -593,10 +952,6 @@ func resourceTencentCloudTeoRealtimeLogDeliveryRead(d *schema.ResourceData, meta
 
 	if respData.DeliveryStatus != nil {
 		_ = d.Set("delivery_status", respData.DeliveryStatus)
-	}
-
-	if respData.TaskType != nil {
-		_ = d.Set("task_type", respData.TaskType)
 	}
 
 	if respData.TaskType != nil {
@@ -804,6 +1159,203 @@ func resourceTencentCloudTeoRealtimeLogDeliveryRead(d *schema.ResourceData, meta
 
 		_ = d.Set("s3", []interface{}{s3Map})
 	}
+
+	// Populate realtime_log_delivery_tasks computed output
+	realtimeLogDeliveryTasksList := make([]map[string]interface{}, 0)
+	if len(allTasks) > 0 {
+		for _, task := range allTasks {
+			taskMap := map[string]interface{}{}
+
+			if task.TaskId != nil {
+				taskMap["task_id"] = task.TaskId
+			}
+			if task.TaskName != nil {
+				taskMap["task_name"] = task.TaskName
+			}
+			if task.DeliveryStatus != nil {
+				taskMap["delivery_status"] = task.DeliveryStatus
+			}
+			if task.TaskType != nil {
+				taskMap["task_type"] = task.TaskType
+			}
+			if task.EntityList != nil {
+				taskMap["entity_list"] = task.EntityList
+			}
+			if task.LogType != nil {
+				taskMap["log_type"] = task.LogType
+			}
+			if task.Area != nil {
+				taskMap["area"] = task.Area
+			}
+			if task.Fields != nil {
+				taskMap["fields"] = task.Fields
+			}
+
+			taskCustomFieldsList := make([]map[string]interface{}, 0, len(task.CustomFields))
+			if task.CustomFields != nil {
+				for _, cf := range task.CustomFields {
+					cfMap := map[string]interface{}{}
+					if cf.Name != nil {
+						cfMap["name"] = cf.Name
+					}
+					if cf.Value != nil {
+						cfMap["value"] = cf.Value
+					}
+					if cf.Enabled != nil {
+						cfMap["enabled"] = cf.Enabled
+					}
+					taskCustomFieldsList = append(taskCustomFieldsList, cfMap)
+				}
+			}
+			taskMap["custom_fields"] = taskCustomFieldsList
+
+			taskDeliveryConditionsList := make([]map[string]interface{}, 0, len(task.DeliveryConditions))
+			if task.DeliveryConditions != nil {
+				for _, dc := range task.DeliveryConditions {
+					dcMap := map[string]interface{}{}
+					dcConditionsList := make([]map[string]interface{}, 0, len(dc.Conditions))
+					if dc.Conditions != nil {
+						for _, cond := range dc.Conditions {
+							condMap := map[string]interface{}{}
+							if cond.Key != nil {
+								condMap["key"] = cond.Key
+							}
+							if cond.Operator != nil {
+								condMap["operator"] = cond.Operator
+							}
+							if cond.Value != nil {
+								condMap["value"] = cond.Value
+							}
+							dcConditionsList = append(dcConditionsList, condMap)
+						}
+					}
+					dcMap["conditions"] = dcConditionsList
+					taskDeliveryConditionsList = append(taskDeliveryConditionsList, dcMap)
+				}
+			}
+			taskMap["delivery_conditions"] = taskDeliveryConditionsList
+
+			if task.Sample != nil {
+				taskMap["sample"] = task.Sample
+			}
+
+			taskLogFormatList := make([]map[string]interface{}, 0)
+			if task.LogFormat != nil {
+				lfMap := map[string]interface{}{}
+				if task.LogFormat.FormatType != nil {
+					lfMap["format_type"] = task.LogFormat.FormatType
+				}
+				if task.LogFormat.BatchPrefix != nil {
+					lfMap["batch_prefix"] = task.LogFormat.BatchPrefix
+				}
+				if task.LogFormat.BatchSuffix != nil {
+					lfMap["batch_suffix"] = task.LogFormat.BatchSuffix
+				}
+				if task.LogFormat.RecordPrefix != nil {
+					lfMap["record_prefix"] = task.LogFormat.RecordPrefix
+				}
+				if task.LogFormat.RecordSuffix != nil {
+					lfMap["record_suffix"] = task.LogFormat.RecordSuffix
+				}
+				if task.LogFormat.RecordDelimiter != nil {
+					lfMap["record_delimiter"] = task.LogFormat.RecordDelimiter
+				}
+				if task.LogFormat.FieldDelimiter != nil {
+					lfMap["field_delimiter"] = task.LogFormat.FieldDelimiter
+				}
+				taskLogFormatList = append(taskLogFormatList, lfMap)
+			}
+			taskMap["log_format"] = taskLogFormatList
+
+			taskCLSList := make([]map[string]interface{}, 0)
+			if task.CLS != nil {
+				clsMap := map[string]interface{}{}
+				if task.CLS.LogSetId != nil {
+					clsMap["log_set_id"] = task.CLS.LogSetId
+				}
+				if task.CLS.TopicId != nil {
+					clsMap["topic_id"] = task.CLS.TopicId
+				}
+				if task.CLS.LogSetRegion != nil {
+					clsMap["log_set_region"] = task.CLS.LogSetRegion
+				}
+				taskCLSList = append(taskCLSList, clsMap)
+			}
+			taskMap["cls"] = taskCLSList
+
+			taskCustomEndpointList := make([]map[string]interface{}, 0)
+			if task.CustomEndpoint != nil {
+				ceMap := map[string]interface{}{}
+				if task.CustomEndpoint.Url != nil {
+					ceMap["url"] = task.CustomEndpoint.Url
+				}
+				if task.CustomEndpoint.AccessId != nil {
+					ceMap["access_id"] = task.CustomEndpoint.AccessId
+				}
+				if task.CustomEndpoint.AccessKey != nil {
+					ceMap["access_key"] = task.CustomEndpoint.AccessKey
+				}
+				if task.CustomEndpoint.CompressType != nil {
+					ceMap["compress_type"] = task.CustomEndpoint.CompressType
+				}
+				if task.CustomEndpoint.Protocol != nil {
+					ceMap["protocol"] = task.CustomEndpoint.Protocol
+				}
+				ceHeadersList := make([]map[string]interface{}, 0, len(task.CustomEndpoint.Headers))
+				if task.CustomEndpoint.Headers != nil {
+					for _, h := range task.CustomEndpoint.Headers {
+						hMap := map[string]interface{}{}
+						if h.Name != nil {
+							hMap["name"] = h.Name
+						}
+						if h.Value != nil {
+							hMap["value"] = h.Value
+						}
+						ceHeadersList = append(ceHeadersList, hMap)
+					}
+				}
+				ceMap["headers"] = ceHeadersList
+				taskCustomEndpointList = append(taskCustomEndpointList, ceMap)
+			}
+			taskMap["custom_endpoint"] = taskCustomEndpointList
+
+			taskS3List := make([]map[string]interface{}, 0)
+			if task.S3 != nil {
+				s3MapInner := map[string]interface{}{}
+				if task.S3.Endpoint != nil {
+					s3MapInner["endpoint"] = task.S3.Endpoint
+				}
+				if task.S3.Region != nil {
+					s3MapInner["region"] = task.S3.Region
+				}
+				if task.S3.Bucket != nil {
+					s3MapInner["bucket"] = task.S3.Bucket
+				}
+				if task.S3.AccessId != nil {
+					s3MapInner["access_id"] = task.S3.AccessId
+				}
+				if task.S3.AccessKey != nil {
+					s3MapInner["access_key"] = task.S3.AccessKey
+				}
+				if task.S3.CompressType != nil {
+					s3MapInner["compress_type"] = task.S3.CompressType
+				}
+				taskS3List = append(taskS3List, s3MapInner)
+			}
+			taskMap["s3"] = taskS3List
+
+			if task.CreateTime != nil {
+				taskMap["create_time"] = task.CreateTime
+			}
+			if task.UpdateTime != nil {
+				taskMap["update_time"] = task.UpdateTime
+			}
+
+			realtimeLogDeliveryTasksList = append(realtimeLogDeliveryTasksList, taskMap)
+		}
+	}
+
+	_ = d.Set("realtime_log_delivery_tasks", realtimeLogDeliveryTasksList)
 
 	return nil
 }

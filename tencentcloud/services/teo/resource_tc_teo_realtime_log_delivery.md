@@ -1,57 +1,66 @@
-Provides a resource to create a teo teo_realtime_log_delivery
+Provides a resource to create a TEO realtime log delivery task.
 
 Example Usage
 
 ```hcl
-resource "tencentcloud_teo_realtime_log_delivery" "teo_realtime_log_delivery" {
-    area            = "overseas"
-    delivery_status = "disabled"
-    entity_list     = [
-        "sid-2yvhjw98uaco",
-    ]
-    fields          = [
-        "ServiceID",
-        "ConnectTimeStamp",
-        "DisconnetTimeStamp",
-        "DisconnetReason",
-        "ClientRealIP",
-        "ClientRegion",
-        "EdgeIP",
-        "ForwardProtocol",
-        "ForwardPort",
-        "SentBytes",
-        "ReceivedBytes",
-        "LogTimeStamp",
-    ]
-    log_type        = "application"
-    sample          = 0
-    task_name       = "test"
-    task_type       = "s3"
-    zone_id         = "zone-2qtuhspy7cr6"
+resource "tencentcloud_teo_realtime_log_delivery" "example" {
+  zone_id    = "zone-2qtuhspy7cr6"
+  task_name  = "test-task"
+  task_type  = "cls"
+  entity_list = [
+    "domain.example.com",
+  ]
+  log_type = "domain"
+  area     = "mainland"
+  fields   = [
+    "ServiceID",
+    "ConnectTimeStamp",
+  ]
+  sample = 1000
 
-    log_format {
-        field_delimiter  = ","
-        format_type      = "json"
-        record_delimiter = "\n"
-        record_prefix    = "{"
-        record_suffix    = "}"
-    }
+  cls {
+    log_set_id     = "cls-logset-id"
+    topic_id       = "cls-topic-id"
+    log_set_region = "ap-guangzhou"
+  }
+}
+```
 
-    s3 {
-        access_id     = "xxxxxxxxxx"
-        access_key    = "xxxxxxxxxx"
-        bucket        = "test-1253833068"
-        compress_type = "gzip"
-        endpoint      = "https://test-1253833068.cos.ap-nanjing.myqcloud.com"
-        region        = "ap-nanjing"
-    }
+Query with filters
+
+```hcl
+resource "tencentcloud_teo_realtime_log_delivery" "example" {
+  zone_id    = "zone-2qtuhspy7cr6"
+  task_name  = "test-task"
+  task_type  = "cls"
+  entity_list = [
+    "domain.example.com",
+  ]
+  log_type = "domain"
+  area     = "mainland"
+  fields   = [
+    "ServiceID",
+    "ConnectTimeStamp",
+  ]
+  sample = 1000
+
+  cls {
+    log_set_id     = "cls-logset-id"
+    topic_id       = "cls-topic-id"
+    log_set_region = "ap-guangzhou"
+  }
+
+  filters {
+    name   = "task-type"
+    values = ["cls"]
+  }
 }
 ```
 
 Import
 
-teo teo_realtime_log_delivery can be imported using the id, e.g.
+TEO realtime log delivery can be imported using the id, e.g.
 
 ```
-terraform import tencentcloud_teo_realtime_log_delivery.teo_realtime_log_delivery zoneId#taskId
+terraform import tencentcloud_teo_realtime_log_delivery.example zoneId#taskId
 ```
