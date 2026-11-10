@@ -21,7 +21,7 @@ func ResourceTencentCloudTeoL7AccRulePriorityOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id.",
+				Description: "Zone id, required and cannot be null or empty.",
 			},
 			"rule_ids": {
 				Type:        schema.TypeList,
