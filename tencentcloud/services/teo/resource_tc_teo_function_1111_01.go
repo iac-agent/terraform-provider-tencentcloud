@@ -114,8 +114,8 @@ func (r *TeoFunction111101Resource) Schema(_ context.Context, _ resource.SchemaR
 				Description: "Function content. Only JavaScript code is supported, up to 5MB.",
 			},
 			"remark": schema.StringAttribute{
-				Optional:    true,
-				Computed:    true,
+				Optional: true,
+				Computed: true,
 				Description: "Function description, up to 60 characters. The cloud keeps the existing remark when the " +
 					"field is not sent to ModifyFunction, so removing it from configuration does not clear the remote value.",
 			},

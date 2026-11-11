@@ -1,12 +1,3 @@
-subcategory: "TencentCloud EdgeOne (TEO)"
-layout: "tencentcloud"
-page_title: "TencentCloud: tencentcloud_teo_function_1111_01"
-description: |-
-  Provides a resource to create and manage an edge function of TEO (Tencent Cloud EdgeOne).
----
-
-# tencentcloud_teo_function_1111_01
-
 Provides a resource to create and manage an edge function of TEO (Tencent Cloud EdgeOne).
 
 The resource wraps the `CreateFunction`, `DescribeFunctions`, `ModifyFunction` and `DeleteFunction`
@@ -18,7 +9,7 @@ the remote value.
 Deleting the function only removes the edge function itself; other zone-level configurations are
 not affected.
 
-## Example Usage
+Example Usage
 
 ```hcl
 resource "tencentcloud_teo_function_1111_01" "example" {
@@ -29,7 +20,7 @@ resource "tencentcloud_teo_function_1111_01" "example" {
 }
 ```
 
-## Import
+Import
 
 TEO edge functions can be imported using the `<zone_id>#<function_id>` format, e.g.
 
