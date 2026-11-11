@@ -54,6 +54,10 @@ tencentcloud_projects
 Resource
 tencentcloud_project
 
+AGS(ags)
+Resource
+tencentcloud_ags_sandbox_snapshot
+
 Anti-DDoS(antiddos)
 Data Source
 tencentcloud_antiddos_basic_device_status
