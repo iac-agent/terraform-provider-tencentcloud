@@ -1,16 +1,6 @@
----
-subcategory: ""
-layout: "tencentcloud"
-page_title: "TencentCloud: tencentcloud_ags_registry_record"
-description: |-
-  Provides a resource to create a record in an AGS (Agent Governance Service) registry.
----
-
-# tencentcloud_ags_registry_record
-
 Provides a resource to create a record in an AGS (Agent Governance Service) registry.
 
-## Example Usage
+Example Usage
 
 ```hcl
 resource "tencentcloud_ags_registry_record" "example" {
@@ -31,10 +21,10 @@ resource "tencentcloud_ags_registry_record" "example" {
 }
 ```
 
-## Import
+Import
 
 ags registry record can be imported using the id, e.g.
 
-```shell
+```
 terraform import tencentcloud_ags_registry_record.example reg-abcdef01#rec-12345678
 ```

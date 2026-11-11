@@ -13,6 +13,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
 
 	sdk "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags/v20250920"
 
@@ -89,30 +90,30 @@ type AgsRegistryRecordResourceModel struct {
 
 // Attribute type maps used to build the computed nested object values.
 var agsRecordAttrTypes = map[string]attr.Type{
-	"record_id":              types.StringType,
-	"registry_id":            types.StringType,
-	"name":                   types.StringType,
-	"description":            types.StringType,
-	"descriptor_type":        types.StringType,
-	"lifecycle_status":       types.StringType,
-	"app_id":                 types.Int64Type,
-	"creator_uin":            types.StringType,
+	"record_id":               types.StringType,
+	"registry_id":             types.StringType,
+	"name":                    types.StringType,
+	"description":             types.StringType,
+	"descriptor_type":         types.StringType,
+	"lifecycle_status":        types.StringType,
+	"app_id":                  types.Int64Type,
+	"creator_uin":             types.StringType,
 	"creator_sub_account_uin": types.StringType,
-	"create_time":            types.StringType,
-	"update_time":            types.StringType,
-	"version_count":          types.Int64Type,
-	"label_set":              types.SetType{ElemType: types.StringType},
+	"create_time":             types.StringType,
+	"update_time":             types.StringType,
+	"version_count":           types.Int64Type,
+	"label_set":               types.SetType{ElemType: types.StringType},
 }
 
 var agsApprovalActionAttrTypes = map[string]attr.Type{
-	"action_id":              types.StringType,
-	"action_type":            types.StringType,
-	"actor_type":             types.StringType,
-	"actor_uin":              types.StringType,
-	"actor_sub_account_uin":  types.StringType,
-	"comment":                types.StringType,
-	"create_time":            types.StringType,
-	"request_id":             types.StringType,
+	"action_id":             types.StringType,
+	"action_type":           types.StringType,
+	"actor_type":            types.StringType,
+	"actor_uin":             types.StringType,
+	"actor_sub_account_uin": types.StringType,
+	"comment":               types.StringType,
+	"create_time":           types.StringType,
+	"request_id":            types.StringType,
 }
 
 var agsHarnessVersionAttrTypes = map[string]attr.Type{
@@ -572,7 +573,7 @@ func (r *AgsRegistryRecordResource) Create(ctx context.Context, req resource.Cre
 
 	if !plan.MCPSource.IsNull() && !plan.MCPSource.IsUnknown() {
 		var m agsMCPSource
-		resp.Diagnostics.Append(plan.MCPSource.As(ctx, &m, types.ObjectAsOptions{})...)
+		resp.Diagnostics.Append(plan.MCPSource.As(ctx, &m, basetypes.ObjectAsOptions{})...)
 		if resp.Diagnostics.HasError() {
 			return
 		}
@@ -585,7 +586,7 @@ func (r *AgsRegistryRecordResource) Create(ctx context.Context, req resource.Cre
 
 	if !plan.AgentSource.IsNull() && !plan.AgentSource.IsUnknown() {
 		var a agsAgentSource
-		resp.Diagnostics.Append(plan.AgentSource.As(ctx, &a, types.ObjectAsOptions{})...)
+		resp.Diagnostics.Append(plan.AgentSource.As(ctx, &a, basetypes.ObjectAsOptions{})...)
 		if resp.Diagnostics.HasError() {
 			return
 		}
@@ -598,7 +599,7 @@ func (r *AgsRegistryRecordResource) Create(ctx context.Context, req resource.Cre
 
 	if !plan.SkillSource.IsNull() && !plan.SkillSource.IsUnknown() {
 		var s agsSkillSource
-		resp.Diagnostics.Append(plan.SkillSource.As(ctx, &s, types.ObjectAsOptions{})...)
+		resp.Diagnostics.Append(plan.SkillSource.As(ctx, &s, basetypes.ObjectAsOptions{})...)
 		if resp.Diagnostics.HasError() {
 			return
 		}
@@ -726,7 +727,7 @@ func (r *AgsRegistryRecordResource) Update(ctx context.Context, req resource.Upd
 				return
 			}
 			var m agsLabelMutation
-			resp.Diagnostics.Append(obj.As(ctx, &m, types.ObjectAsOptions{})...)
+			resp.Diagnostics.Append(obj.As(ctx, &m, basetypes.ObjectAsOptions{})...)
 			if resp.Diagnostics.HasError() {
 				return
 			}

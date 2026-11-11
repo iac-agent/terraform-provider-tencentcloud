@@ -107,10 +107,10 @@ var agsSkillSourceTfType = tftypes.Object{AttributeTypes: map[string]tftypes.Typ
 }}
 
 var agsLabelMutationTfType = tftypes.Object{AttributeTypes: map[string]tftypes.Type{
-	"operation": tftypes.String,
-	"name":      tftypes.String,
+	"operation":  tftypes.String,
+	"name":       tftypes.String,
 	"version_id": tftypes.String,
-	"reason":    tftypes.String,
+	"reason":     tftypes.String,
 }}
 
 func agsRegistryRecordTfType() tftypes.Type {
@@ -218,34 +218,34 @@ func agsMockDescribeResponse() *agsv20250920.DescribeRegistryRecordResponse {
 			LabelSet:             []*string{agsPtrString("stable"), agsPtrString("latest")},
 		},
 		Version: &agsv20250920.CloudRecordVersion{
-			VersionId:           agsPtrString("rv-87654321"),
-			RecordId:            agsPtrString("rec-12345678"),
-			Revision:            agsPtrInt64(1),
-			Status:              agsPtrString("READY"),
-			ApprovalMode:        agsPtrString("AUTO"),
-			AppId:               agsPtrInt64(1250000000),
-			CreatorUin:          agsPtrString("100000000001"),
-			CreateTime:          agsPtrString("2025-01-01T00:00:00Z"),
-			UpdateTime:          agsPtrString("2025-01-02T00:00:00Z"),
-			VersionName:         agsPtrString("v1"),
-			Descriptors:         agsPtrString("{\"name\":\"mcp-server\"}"),
-			SourceType:          agsPtrString("MANUAL"),
-			SourceConfig:        agsPtrString("{}"),
-			ContentStatus:       agsPtrString("READY"),
-			ContentSHA256:       agsPtrString("abc123"),
-			ContentSizeBytes:    agsPtrInt64(1024),
-			ConfigSHA256:        agsPtrString("def456"),
+			VersionId:            agsPtrString("rv-87654321"),
+			RecordId:             agsPtrString("rec-12345678"),
+			Revision:             agsPtrInt64(1),
+			Status:               agsPtrString("READY"),
+			ApprovalMode:         agsPtrString("AUTO"),
+			AppId:                agsPtrInt64(1250000000),
+			CreatorUin:           agsPtrString("100000000001"),
+			CreateTime:           agsPtrString("2025-01-01T00:00:00Z"),
+			UpdateTime:           agsPtrString("2025-01-02T00:00:00Z"),
+			VersionName:          agsPtrString("v1"),
+			Descriptors:          agsPtrString("{\"name\":\"mcp-server\"}"),
+			SourceType:           agsPtrString("MANUAL"),
+			SourceConfig:         agsPtrString("{}"),
+			ContentStatus:        agsPtrString("READY"),
+			ContentSHA256:        agsPtrString("abc123"),
+			ContentSizeBytes:     agsPtrInt64(1024),
+			ConfigSHA256:         agsPtrString("def456"),
 			CreatorSubAccountUin: agsPtrString(""),
 			ApprovalActions: []*agsv20250920.CloudVersionApprovalAction{
 				{
-					ActionId:             agsPtrString("act-1"),
-					ActionType:           agsPtrString("APPROVE"),
-					ActorType:            agsPtrString("SYSTEM"),
-					ActorUin:             agsPtrString("100000000001"),
-					ActorSubAccountUin:   agsPtrString(""),
-					Comment:              agsPtrString("auto approved"),
-					CreateTime:           agsPtrString("2025-01-01T00:00:00Z"),
-					RequestId:            agsPtrString("req-1"),
+					ActionId:           agsPtrString("act-1"),
+					ActionType:         agsPtrString("APPROVE"),
+					ActorType:          agsPtrString("SYSTEM"),
+					ActorUin:           agsPtrString("100000000001"),
+					ActorSubAccountUin: agsPtrString(""),
+					Comment:            agsPtrString("auto approved"),
+					CreateTime:         agsPtrString("2025-01-01T00:00:00Z"),
+					RequestId:          agsPtrString("req-1"),
 				},
 			},
 			ContentReadyTime: agsPtrString("2025-01-01T00:00:00Z"),
@@ -253,8 +253,8 @@ func agsMockDescribeResponse() *agsv20250920.DescribeRegistryRecordResponse {
 			LabelSet:         []*string{agsPtrString("stable")},
 			SupportedHarnessVersions: []*agsv20250920.HarnessVersionReference{
 				{
-					HarnessEngine:         agsPtrString("pi"),
-					HarnessEngineVersion:  agsPtrString("1.3.0"),
+					HarnessEngine:        agsPtrString("pi"),
+					HarnessEngineVersion: agsPtrString("1.3.0"),
 				},
 			},
 			Metadata: []*agsv20250920.MetadataEntry{
@@ -452,17 +452,17 @@ func TestAgsRegistryRecordResource_Read_Success(t *testing.T) {
 
 	s := agsResourceSchema(t)
 	raw := agsRawWith(map[string]tftypes.Value{
-		"id":               tftypes.NewValue(tftypes.String, "reg-abcdef01#rec-12345678"),
-		"registry_id":      tftypes.NewValue(tftypes.String, "reg-abcdef01"),
-		"record_id":        tftypes.NewValue(tftypes.String, "rec-12345678"),
-		"name":             tftypes.NewValue(tftypes.String, "my-record"),
-		"descriptor_type":  tftypes.NewValue(tftypes.String, "MCP"),
+		"id":              tftypes.NewValue(tftypes.String, "reg-abcdef01#rec-12345678"),
+		"registry_id":     tftypes.NewValue(tftypes.String, "reg-abcdef01"),
+		"record_id":       tftypes.NewValue(tftypes.String, "rec-12345678"),
+		"name":            tftypes.NewValue(tftypes.String, "my-record"),
+		"descriptor_type": tftypes.NewValue(tftypes.String, "MCP"),
 		"mcp_source": tftypes.NewValue(agsMCPSourceTfType, map[string]tftypes.Value{
 			"type":         tftypes.NewValue(tftypes.String, "MANUAL"),
 			"descriptors":  tftypes.NewValue(tftypes.String, "{\"name\":\"mcp-server\"}"),
 			"endpoint_url": agsNullValue(tftypes.String),
 		}),
-		"version_name":     tftypes.NewValue(tftypes.String, "v1"),
+		"version_name": tftypes.NewValue(tftypes.String, "v1"),
 	})
 
 	readReq := resource.ReadRequest{State: tfsdk.State{Schema: s, Raw: raw}}
@@ -503,19 +503,19 @@ func TestAgsRegistryRecordResource_Update_Success(t *testing.T) {
 
 	s := agsResourceSchema(t)
 	common := map[string]tftypes.Value{
-		"id":          tftypes.NewValue(tftypes.String, "reg-abcdef01#rec-12345678"),
-		"registry_id": tftypes.NewValue(tftypes.String, "reg-abcdef01"),
-		"record_id":   tftypes.NewValue(tftypes.String, "rec-12345678"),
-		"name":        tftypes.NewValue(tftypes.String, "my-record"),
+		"id":              tftypes.NewValue(tftypes.String, "reg-abcdef01#rec-12345678"),
+		"registry_id":     tftypes.NewValue(tftypes.String, "reg-abcdef01"),
+		"record_id":       tftypes.NewValue(tftypes.String, "rec-12345678"),
+		"name":            tftypes.NewValue(tftypes.String, "my-record"),
 		"descriptor_type": tftypes.NewValue(tftypes.String, "MCP"),
 	}
 	planRaw := agsRawWith(map[string]tftypes.Value{
-		"id":               common["id"],
-		"registry_id":      common["registry_id"],
-		"record_id":        common["record_id"],
-		"name":             common["name"],
-		"descriptor_type":  common["descriptor_type"],
-		"description":      tftypes.NewValue(tftypes.String, "new description"),
+		"id":              common["id"],
+		"registry_id":     common["registry_id"],
+		"record_id":       common["record_id"],
+		"name":            common["name"],
+		"descriptor_type": common["descriptor_type"],
+		"description":     tftypes.NewValue(tftypes.String, "new description"),
 		"label_mutations": tftypes.NewValue(tftypes.List{ElementType: agsLabelMutationTfType}, []tftypes.Value{
 			tftypes.NewValue(agsLabelMutationTfType, map[string]tftypes.Value{
 				"operation":  tftypes.NewValue(tftypes.String, "SET"),
@@ -526,12 +526,12 @@ func TestAgsRegistryRecordResource_Update_Success(t *testing.T) {
 		}),
 	})
 	stateRaw := agsRawWith(map[string]tftypes.Value{
-		"id":          common["id"],
-		"registry_id": common["registry_id"],
-		"record_id":   common["record_id"],
-		"name":        common["name"],
+		"id":              common["id"],
+		"registry_id":     common["registry_id"],
+		"record_id":       common["record_id"],
+		"name":            common["name"],
 		"descriptor_type": common["descriptor_type"],
-		"description": tftypes.NewValue(tftypes.String, "record description"),
+		"description":     tftypes.NewValue(tftypes.String, "record description"),
 	})
 
 	updateReq := resource.UpdateRequest{
