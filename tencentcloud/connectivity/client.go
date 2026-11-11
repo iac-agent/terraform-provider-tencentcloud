@@ -23,6 +23,7 @@ import (
 	mdl "github.com/tencentcloud/tencentcloud-sdk-go-intl-en/tencentcloud/mdl/v20200326"
 	privatednsIntl "github.com/tencentcloud/tencentcloud-sdk-go-intl-en/tencentcloud/privatedns/v20201028"
 	advisorv20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
+	ags "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags/v20250920"
 	v20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	antiddos "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20200309"
 	antiddosv20250903 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20250903"
@@ -147,6 +148,7 @@ type TencentCloudClient struct {
 	CosDomain  string
 
 	cosConn               *s3.S3
+	agsConn               *ags.Client
 	tencentCosConn        *cos.Client
 	mysqlConn             *cdb.Client
 	redisConn             *redis.Client
@@ -1121,6 +1123,19 @@ func (me *TencentCloudClient) UseKmsClient() *kms.Client {
 	me.kmsConn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.kmsConn
+}
+
+// UseAgsClient returns AGS client for service
+func (me *TencentCloudClient) UseAgsClient() *ags.Client {
+	if me.agsConn != nil {
+		return me.agsConn
+	}
+
+	cpf := me.NewClientProfile(300)
+	me.agsConn, _ = ags.NewClient(me.Credential, me.Region, cpf)
+	me.agsConn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.agsConn
 }
 
 // UseSsmClient returns SSM client for service

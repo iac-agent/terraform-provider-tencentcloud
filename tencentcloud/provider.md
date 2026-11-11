@@ -114,6 +114,10 @@ tencentcloud_dayu_ddos_policy_case
 tencentcloud_dayu_l4_rule
 tencentcloud_dayu_l7_rule
 
+AGS(ags)
+Resource
+tencentcloud_ags_registry_record
+
 API GateWay(apigateway)
 Data Source
 tencentcloud_api_gateway_apis
