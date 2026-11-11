@@ -19,7 +19,7 @@ creates a new one.
 be mapped back to `instance_id`, `memory` or `client_token` with confirmed
 semantics, so those values are kept in state and never refreshed.
 
-## Example Usage
+Example Usage
 
 ```hcl
 resource "tencentcloud_ags_sandbox_snapshot" "example" {

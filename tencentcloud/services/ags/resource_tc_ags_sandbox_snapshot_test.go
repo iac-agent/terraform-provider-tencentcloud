@@ -290,12 +290,12 @@ func TestAgsSandboxSnapshotRefreshModel(t *testing.T) {
 		ClientToken:  types.StringValue("token-1"),
 	}
 	item := &ags.SandboxSnapshot{
-		SnapshotId:     sdkcommon.StringPtr("snap-1"),
-		SnapshotName:   sdkcommon.StringPtr("demo"),
+		SnapshotId:       sdkcommon.StringPtr("snap-1"),
+		SnapshotName:     sdkcommon.StringPtr("demo"),
 		SourceInstanceId: sdkcommon.StringPtr("inst-1"),
-		MemoryIncluded: sdkcommon.BoolPtr(true),
-		Status:         sdkcommon.StringPtr("ACTIVE"),
-		StatusReason:   sdkcommon.StringPtr("ok"),
+		MemoryIncluded:   sdkcommon.BoolPtr(true),
+		Status:           sdkcommon.StringPtr("ACTIVE"),
+		StatusReason:     sdkcommon.StringPtr("ok"),
 		Tags: []*ags.Tag{
 			{Key: sdkcommon.StringPtr("k1"), Value: sdkcommon.StringPtr("v1")},
 		},
