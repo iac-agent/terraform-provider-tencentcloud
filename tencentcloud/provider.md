@@ -56,6 +56,7 @@ tencentcloud_project
 
 Agent Sandbox(ags)
 Resource
+tencentcloud_ags_pre_cache_image_task
 tencentcloud_ags_sandbox_tool
 
 Anti-DDoS(antiddos)
