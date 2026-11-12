@@ -758,3 +758,58 @@ func (me *FwmService) WaitFwmStrategyDispatchComplete(ctx context.Context, produ
 		time.Sleep(pollInterval)
 	}
 }
+
+func (me *FwmService) DescribeFwmEdgeAclRulesByFilter(ctx context.Context, groupId string, direction int64, filters []*fwmv20250611.CommonFilter, limit, offset int64, order, by string) (rules []*fwmv20250611.EdgeAclRuleResp, totalCount int64, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := fwmv20250611.NewDescribeEdgeAclRulesRequest()
+	response := fwmv20250611.NewDescribeEdgeAclRulesResponse()
+
+	request.GroupId = helper.String(groupId)
+	if direction >= 0 {
+		request.Direction = helper.Int64(direction)
+	}
+	if len(filters) > 0 {
+		request.Filters = filters
+	}
+	request.Limit = helper.Int64(limit)
+	request.Offset = helper.Int64(offset)
+	if order != "" {
+		request.Order = helper.String(order)
+	}
+	if by != "" {
+		request.By = helper.String(by)
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseFwmV20250611Client().DescribeEdgeAclRulesWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Describe fwm edge acl rules failed, Response is nil."))
+		}
+
+		response = result
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	if response.Response.TotalCount != nil {
+		totalCount = *response.Response.TotalCount
+	}
+	rules = response.Response.Rules
+	return
+}

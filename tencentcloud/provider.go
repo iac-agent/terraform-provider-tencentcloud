@@ -1315,6 +1315,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_cfw_nat_fw_switches":                                    cfw.DataSourceTencentCloudCfwNatFwSwitches(),
 			"tencentcloud_cfw_vpc_fw_switches":                                    cfw.DataSourceTencentCloudCfwVpcFwSwitches(),
 			"tencentcloud_cfw_edge_fw_switches":                                   cfw.DataSourceTencentCloudCfwEdgeFwSwitches(),
+			"tencentcloud_fwm_edge_acl_rules":                                     fwm.DataSourceTencentCloudFwmEdgeAclRules(),
 			"tencentcloud_cfw_ccn_instance_region_status":                         cfw.DataSourceTencentCloudCfwCcnInstanceRegionStatus(),
 			"tencentcloud_cfw_ccn_associated_instances":                           cfw.DataSourceTencentCloudCfwCcnAssociatedInstances(),
 			"tencentcloud_cfw_ccn_vpc_fw_switch":                                  cfw.DataSourceTencentCloudCfwCcnVpcFwSwitch(),
