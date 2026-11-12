@@ -54,6 +54,10 @@ tencentcloud_projects
 Resource
 tencentcloud_project
 
+Agent Gateway Service(AGS)
+Resource
+tencentcloud_ags_registry
+
 Anti-DDoS(antiddos)
 Data Source
 tencentcloud_antiddos_basic_device_status
