@@ -1,0 +1,3 @@
+```release-note:new-resource
+tencentcloud_ags_pre_cache_image_task
+```
