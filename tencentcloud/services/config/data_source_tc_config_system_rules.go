@@ -18,7 +18,7 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 			"keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search keyword. Supports fuzzy (substring, LIKE) matching against identifier/name/label/description.",,
+				Description: "Search keyword. Supports fuzzy (substring, LIKE) matching against identifier/name/label/description.",
 			},
 
 			"risk_level": {
