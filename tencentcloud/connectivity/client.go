@@ -102,6 +102,7 @@ import (
 	sqlserver "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sqlserver/v20180328"
 	sslCertificate "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ssl/v20191205"
 	ssm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ssm/v20190923"
+	ags "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags/v20250920"
 	sts "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sts/v20180813"
 	tag "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tag/v20180813"
 	tat "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tat/v20201028"
@@ -185,6 +186,7 @@ type TencentCloudClient struct {
 	sslCertificateConn    *sslCertificate.Client
 	kmsConn               *kms.Client
 	ssmConn               *ssm.Client
+	agsConn               *ags.Client
 	apiConn               *api.Client
 	emrConn               *emr.Client
 	clsConn               *cls.Client
@@ -1134,6 +1136,19 @@ func (me *TencentCloudClient) UseSsmClient() *ssm.Client {
 	me.ssmConn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.ssmConn
+}
+
+// UseAgsClient returns AGS client for service
+func (me *TencentCloudClient) UseAgsClient() *ags.Client {
+	if me.agsConn != nil {
+		return me.agsConn
+	}
+
+	cpf := me.NewClientProfile(300)
+	me.agsConn, _ = ags.NewClient(me.Credential, me.Region, cpf)
+	me.agsConn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.agsConn
 }
 
 // UseApiClient return API client for service
