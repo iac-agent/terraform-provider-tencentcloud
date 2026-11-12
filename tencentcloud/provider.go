@@ -1426,6 +1426,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_config_compliance_packs":                                config.DataSourceTencentCloudConfigCompliancePacks(),
 			"tencentcloud_system_config_compliance_packs":                         config.DataSourceTencentCloudSystemConfigCompliancePacks(),
 			"tencentcloud_config_system_rules":                                    config.DataSourceTencentCloudConfigSystemRules(),
+			"tencentcloud_config_system_rule":                                     config.DataSourceTencentCloudConfigSystemRule(),
 			"tencentcloud_config_rule_evaluation_results":                         config.DataSourceTencentCloudConfigRuleEvaluationResults(),
 			"tencentcloud_config_rules":                                           config.DataSourceTencentCloudConfigRules(),
 			"tencentcloud_config_discovered_resources":                            config.DataSourceTencentCloudConfigDiscoveredResources(),
