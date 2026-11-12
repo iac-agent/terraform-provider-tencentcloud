@@ -17,7 +17,7 @@ func DataSourceTencentCloudTeoPlans() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "<li>Filter conditions, the upper limit of Filters.Values is 20. The detailed filtering conditions are as follows: plan-type filter by plan type (plan-trial, plan-personal, plan-basic, plan-standard, plan-enterprise); plan-id filter by plan ID (form: edgeone-268z103ob0sx); area filter by plan acceleration region (mainland, overseas, global); status filter by plan status (normal, expiring-soon, expired, isolated). </li>",
+				Description: "Filter conditions, the upper limit of Filters.Values is 20. The detailed filtering conditions are as follows: plan-type filter by plan type (plan-trial, plan-personal, plan-basic, plan-standard, plan-enterprise); plan-id filter by plan ID (form: edgeone-268z103ob0sx); area filter by plan acceleration region (mainland, overseas, global); status filter by plan status (normal, expiring-soon, expired, isolated).",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
