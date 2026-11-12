@@ -2,6 +2,7 @@ package config
 
 import (
 	"context"
+	"strings"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
@@ -17,7 +18,7 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 			"keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search keyword. Supports identifier/name/label/description search.",
+				Description: "Search keyword. Supports fuzzy (substring, LIKE) matching against identifier/name/label/description.",
 			},
 
 			"risk_level": {
@@ -131,6 +132,8 @@ func dataSourceTencentCloudConfigSystemRulesRead(d *schema.ResourceData, meta in
 		return reqErr
 	}
 
+	respData = filterSystemConfigRules(respData, paramMap)
+
 	ruleList := flattenSystemConfigRuleList(respData)
 	_ = d.Set("rule_list", ruleList)
 
@@ -238,4 +241,46 @@ func flattenSystemConfigRuleList(items []*configv20220802.SystemConfigRule) []ma
 	}
 
 	return ruleList
+}
+
+// filterSystemConfigRules filters rules by keyword with substring (LIKE) fuzzy
+// matching against identifier/name/label/description, and by exact risk level.
+func filterSystemConfigRules(items []*configv20220802.SystemConfigRule, paramMap map[string]interface{}) []*configv20220802.SystemConfigRule {
+	keyword, hasKeyword := paramMap["Keyword"]
+	riskLevel, hasRiskLevel := paramMap["RiskLevel"]
+
+	result := make([]*configv20220802.SystemConfigRule, 0, len(items))
+	for _, rule := range items {
+		if hasRiskLevel && (rule.RiskLevel == nil || int(*rule.RiskLevel) != riskLevel.(int)) {
+			continue
+		}
+
+		if hasKeyword && !systemRuleMatchKeyword(rule, keyword.(string)) {
+			continue
+		}
+
+		result = append(result, rule)
+	}
+
+	return result
+}
+
+func systemRuleMatchKeyword(rule *configv20220802.SystemConfigRule, keyword string) bool {
+	lowerKeyword := strings.ToLower(keyword)
+
+	match := func(s *string) bool {
+		return s != nil && strings.Contains(strings.ToLower(*s), lowerKeyword)
+	}
+
+	if match(rule.Identifier) || match(rule.RuleName) || match(rule.Description) {
+		return true
+	}
+
+	for _, label := range rule.Label {
+		if match(label) {
+			return true
+		}
+	}
+
+	return false
 }

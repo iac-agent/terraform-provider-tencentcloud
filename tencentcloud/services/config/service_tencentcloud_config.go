@@ -341,6 +341,37 @@ func (me *ConfigService) DescribeConfigSystemRulesByFilter(ctx context.Context, 
 	return
 }
 
+func (me *ConfigService) DescribeConfigSystemRuleById(ctx context.Context, identifier string) (rule *configv20220802.SystemConfigRule, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := configv20220802.NewDescribeSystemRuleRequest()
+	request.Identifier = helper.String(identifier)
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseConfigV20220802Client().DescribeSystemRuleWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("describe config system rule failed, Response is nil"))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+		rule = result.Response.SystemConfigRule
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
 func (me *ConfigService) DescribeConfigRuleEvaluationResultsByFilter(ctx context.Context, paramMap map[string]interface{}) (items []*configv20220802.EvaluationResult, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 

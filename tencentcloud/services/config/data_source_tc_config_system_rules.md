@@ -8,7 +8,7 @@ Query all system preset rules
 data "tencentcloud_config_system_rules" "example" {}
 ```
 
-Query system rules by keyword
+Query system rules by keyword (fuzzy substring match against identifier/name/label/description)
 
 ```hcl
 data "tencentcloud_config_system_rules" "example" {
