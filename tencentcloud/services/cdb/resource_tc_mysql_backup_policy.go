@@ -61,6 +61,13 @@ func ResourceTencentCloudMysqlBackupPolicy() *schema.Resource {
 				Description: "Whether to enable the log backup standard storage policy, `off` - close, `on` - open, the default is off.",
 			},
 
+			"EnableBackupPeriodSave": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Default:     "off",
+				Description: "Whether to enable the periodic retention policy for backup files, `off` - close, `on` - open, the default is off.",
+			},
+
 			"binlog_standby_days": {
 				Type:        schema.TypeInt,
 				Optional:    true,
@@ -116,6 +123,10 @@ func resourceTencentCloudMysqlBackupPolicyRead(d *schema.ResourceData, meta inte
 			_ = d.Set("enable_binlog_standby", desResponse.Response.EnableBinlogStandby)
 		}
 
+		if desResponse.Response.EnableBackupPeriodSave != nil {
+			_ = d.Set("EnableBackupPeriodSave", desResponse.Response.EnableBackupPeriodSave)
+		}
+
 		if desResponse.Response.BinlogStandbyDays != nil {
 			_ = d.Set("binlog_standby_days", desResponse.Response.BinlogStandbyDays)
 		}
@@ -144,6 +155,7 @@ func resourceTencentCloudMysqlBackupPolicyUpdate(d *schema.ResourceData, meta in
 		binlogExpireDays    int64
 		enableBinlogStandby string
 		binlogStandbyDays   int64
+		enableBackupPeriodSave string
 	)
 
 	if v, ok := d.GetOkExists("binlog_period"); ok {
@@ -158,9 +170,14 @@ func resourceTencentCloudMysqlBackupPolicyUpdate(d *schema.ResourceData, meta in
 		binlogStandbyDays = int64(v.(int))
 	}
 
+	if v, ok := d.GetOk("EnableBackupPeriodSave"); ok {
+		enableBackupPeriodSave = v.(string)
+	}
+
 	if d.HasChange("retention_period") || d.HasChange("backup_model") || d.HasChange("backup_time") ||
-		d.HasChange("binlog_period") || d.HasChange("enable_binlog_standby") || d.HasChange("binlog_standby_days") {
-		err := mysqlService.ModifyBackupConfigByMysqlId(ctx, mysqlId, retentionPeriod, backupModel, backupTime, binlogExpireDays, enableBinlogStandby, binlogStandbyDays)
+		d.HasChange("binlog_period") || d.HasChange("enable_binlog_standby") || d.HasChange("binlog_standby_days") ||
+		d.HasChange("EnableBackupPeriodSave") {
+		err := mysqlService.ModifyBackupConfigByMysqlId(ctx, mysqlId, retentionPeriod, backupModel, backupTime, binlogExpireDays, enableBinlogStandby, binlogStandbyDays, enableBackupPeriodSave)
 		if err != nil {
 			return err
 		}
@@ -185,8 +202,9 @@ func resourceTencentCloudMysqlBackupPolicyDelete(d *schema.ResourceData, meta in
 		binlogExpireDays    int64 = 7
 		enableBinlogStandby       = "off"
 		binlogStandbyDays   int64 = 180
+		enableBackupPeriodSave    = "off"
 	)
-	err := mysqlService.ModifyBackupConfigByMysqlId(ctx, d.Id(), retentionPeriod, backupModel, backupTime, binlogExpireDays, enableBinlogStandby, binlogStandbyDays)
+	err := mysqlService.ModifyBackupConfigByMysqlId(ctx, d.Id(), retentionPeriod, backupModel, backupTime, binlogExpireDays, enableBinlogStandby, binlogStandbyDays, enableBackupPeriodSave)
 	if err != nil {
 		return err
 	}

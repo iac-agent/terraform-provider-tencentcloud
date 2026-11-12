@@ -33,6 +33,7 @@ func TestAccTencentCloudMysqlBackupPolicyResource_basic(t *testing.T) {
 					resource.TestCheckResourceAttr("tencentcloud_mysql_backup_policy.mysql_backup_policy", "binlog_period", "35"),
 					resource.TestCheckResourceAttr("tencentcloud_mysql_backup_policy.mysql_backup_policy", "enable_binlog_standby", "on"),
 					resource.TestCheckResourceAttr("tencentcloud_mysql_backup_policy.mysql_backup_policy", "binlog_standby_days", "33"),
+					resource.TestCheckResourceAttr("tencentcloud_mysql_backup_policy.mysql_backup_policy", "EnableBackupPeriodSave", "on"),
 				),
 			},
 			{
@@ -46,6 +47,7 @@ func TestAccTencentCloudMysqlBackupPolicyResource_basic(t *testing.T) {
 					resource.TestCheckResourceAttr("tencentcloud_mysql_backup_policy.mysql_backup_policy", "binlog_period", "32"),
 					resource.TestCheckResourceAttr("tencentcloud_mysql_backup_policy.mysql_backup_policy", "enable_binlog_standby", "off"),
 					resource.TestCheckResourceAttr("tencentcloud_mysql_backup_policy.mysql_backup_policy", "binlog_standby_days", "31"),
+					resource.TestCheckResourceAttr("tencentcloud_mysql_backup_policy.mysql_backup_policy", "EnableBackupPeriodSave", "off"),
 				),
 			},
 		},
@@ -125,6 +127,7 @@ resource "tencentcloud_mysql_backup_policy" "mysql_backup_policy" {
   binlog_period         = 35
   enable_binlog_standby = "on"
   binlog_standby_days   = 33
+  EnableBackupPeriodSave = "on"
 }`, tcacctest.CommonPresetMysql)
 }
 
@@ -138,5 +141,6 @@ resource "tencentcloud_mysql_backup_policy" "mysql_backup_policy" {
   binlog_period         = 32
   enable_binlog_standby = "off"
   binlog_standby_days   = 31
+  EnableBackupPeriodSave = "off"
 }`, tcacctest.CommonPresetMysql)
 }

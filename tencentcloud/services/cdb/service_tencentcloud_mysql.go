@@ -222,7 +222,8 @@ func (me *MysqlService) DescribeBackupConfigByMysqlId(ctx context.Context, mysql
 }
 
 func (me *MysqlService) ModifyBackupConfigByMysqlId(ctx context.Context, mysqlId string, retentionPeriod int64, backupModel,
-	backupTime string, binlogExpireDays int64, enableBinlogStandby string, binlogStandbyDays int64) (errRet error) {
+	backupTime string, binlogExpireDays int64, enableBinlogStandby string, binlogStandbyDays int64,
+	enableBackupPeriodSave string) (errRet error) {
 
 	logId := tccommon.GetLogId(ctx)
 	request := cdb.NewModifyBackupConfigRequest()
@@ -241,6 +242,10 @@ func (me *MysqlService) ModifyBackupConfigByMysqlId(ctx context.Context, mysqlId
 
 	if binlogStandbyDays > 0 {
 		request.BinlogStandbyDays = &binlogStandbyDays
+	}
+
+	if enableBackupPeriodSave != "" {
+		request.EnableBackupPeriodSave = &enableBackupPeriodSave
 	}
 
 	defer func() {
