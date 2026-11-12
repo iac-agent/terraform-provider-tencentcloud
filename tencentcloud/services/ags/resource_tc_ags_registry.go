@@ -52,31 +52,31 @@ type AgsRegistryTagModel struct {
 
 // AgsRegistryInfoModel maps the computed registry single-nested attribute.
 type AgsRegistryInfoModel struct {
-	RegistryId            types.String `tfsdk:"registry_id"`
-	Name                  types.String `tfsdk:"name"`
-	Description           types.String `tfsdk:"description"`
-	ApprovalMode          types.String `tfsdk:"approval_mode"`
-	Region                types.String `tfsdk:"region"`
-	Status                types.String `tfsdk:"status"`
-	CreateTime            types.String `tfsdk:"create_time"`
-	UpdateTime            types.String `tfsdk:"update_time"`
-	RecordCount           types.Int64  `tfsdk:"record_count"`
-	PublishedRecordCount  types.Int64  `tfsdk:"published_record_count"`
-	AppId                 types.Int64  `tfsdk:"app_id"`
-	CreatorUin            types.String `tfsdk:"creator_uin"`
-	CreatorSubAccountUin  types.String `tfsdk:"creator_sub_account_uin"`
-	Tags                  types.List   `tfsdk:"tags"`
+	RegistryId           types.String `tfsdk:"registry_id"`
+	Name                 types.String `tfsdk:"name"`
+	Description          types.String `tfsdk:"description"`
+	ApprovalMode         types.String `tfsdk:"approval_mode"`
+	Region               types.String `tfsdk:"region"`
+	Status               types.String `tfsdk:"status"`
+	CreateTime           types.String `tfsdk:"create_time"`
+	UpdateTime           types.String `tfsdk:"update_time"`
+	RecordCount          types.Int64  `tfsdk:"record_count"`
+	PublishedRecordCount types.Int64  `tfsdk:"published_record_count"`
+	AppId                types.Int64  `tfsdk:"app_id"`
+	CreatorUin           types.String `tfsdk:"creator_uin"`
+	CreatorSubAccountUin types.String `tfsdk:"creator_sub_account_uin"`
+	Tags                 types.List   `tfsdk:"tags"`
 }
 
 // AgsRegistryResourceModel maps the schema attributes of the resource.
 type AgsRegistryResourceModel struct {
-	Id          types.String `tfsdk:"id"`
-	RegistryId  types.String `tfsdk:"registry_id"`
-	Name        types.String `tfsdk:"name"`
-	Description types.String `tfsdk:"description"`
+	Id           types.String `tfsdk:"id"`
+	RegistryId   types.String `tfsdk:"registry_id"`
+	Name         types.String `tfsdk:"name"`
+	Description  types.String `tfsdk:"description"`
 	ApprovalMode types.String `tfsdk:"approval_mode"`
-	Tags        types.List   `tfsdk:"tags"`
-	Registry    types.Object `tfsdk:"registry"`
+	Tags         types.List   `tfsdk:"tags"`
+	Registry     types.Object `tfsdk:"registry"`
 }
 
 func (r *AgsRegistryResource) Metadata(_ context.Context, _ resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -84,8 +84,8 @@ func (r *AgsRegistryResource) Metadata(_ context.Context, _ resource.MetadataReq
 }
 
 // tagsAttrTypes returns the attribute types of one tags element object.
-func tagsAttrTypes() map[string]basetypes.AttrType {
-	return map[string]basetypes.AttrType{
+func tagsAttrTypes() map[string]attr.Type {
+	return map[string]attr.Type{
 		"key":   basetypes.StringType{},
 		"value": basetypes.StringType{},
 	}
@@ -97,22 +97,22 @@ func tagsObjectType() basetypes.ObjectType {
 }
 
 // registryAttrTypes returns the attribute types of the computed registry object.
-func registryAttrTypes() map[string]basetypes.AttrType {
-	return map[string]basetypes.AttrType{
-		"registry_id":              basetypes.StringType{},
-		"name":                     basetypes.StringType{},
-		"description":              basetypes.StringType{},
-		"approval_mode":            basetypes.StringType{},
-		"region":                   basetypes.StringType{},
-		"status":                   basetypes.StringType{},
-		"create_time":              basetypes.StringType{},
-		"update_time":              basetypes.StringType{},
-		"record_count":             basetypes.Int64Type{},
-		"published_record_count":   basetypes.Int64Type{},
-		"app_id":                   basetypes.Int64Type{},
-		"creator_uin":              basetypes.StringType{},
-		"creator_sub_account_uin":  basetypes.StringType{},
-		"tags":                     basetypes.ListType{ElemType: tagsObjectType()},
+func registryAttrTypes() map[string]attr.Type {
+	return map[string]attr.Type{
+		"registry_id":             basetypes.StringType{},
+		"name":                    basetypes.StringType{},
+		"description":             basetypes.StringType{},
+		"approval_mode":           basetypes.StringType{},
+		"region":                  basetypes.StringType{},
+		"status":                  basetypes.StringType{},
+		"create_time":             basetypes.StringType{},
+		"update_time":             basetypes.StringType{},
+		"record_count":            basetypes.Int64Type{},
+		"published_record_count":  basetypes.Int64Type{},
+		"app_id":                  basetypes.Int64Type{},
+		"creator_uin":             basetypes.StringType{},
+		"creator_sub_account_uin": basetypes.StringType{},
+		"tags":                    basetypes.ListType{ElemType: tagsObjectType()},
 	}
 }
 

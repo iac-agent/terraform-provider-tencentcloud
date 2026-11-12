@@ -30,8 +30,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/list"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 
-	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/antiddos"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ags"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/antiddos"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/bdrc"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/cam"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/config"
