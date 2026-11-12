@@ -148,13 +148,13 @@ func resourceTencentCloudMysqlBackupPolicyUpdate(d *schema.ResourceData, meta in
 	mysqlService := MysqlService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
 
 	var (
-		mysqlId             = d.Get("mysql_id").(string)
-		retentionPeriod     = int64(d.Get("retention_period").(int))
-		backupModel         = d.Get("backup_model").(string)
-		backupTime          = d.Get("backup_time").(string)
-		binlogExpireDays    int64
-		enableBinlogStandby string
-		binlogStandbyDays   int64
+		mysqlId                = d.Get("mysql_id").(string)
+		retentionPeriod        = int64(d.Get("retention_period").(int))
+		backupModel            = d.Get("backup_model").(string)
+		backupTime             = d.Get("backup_time").(string)
+		binlogExpireDays       int64
+		enableBinlogStandby    string
+		binlogStandbyDays      int64
 		enableBackupPeriodSave string
 	)
 
@@ -196,13 +196,13 @@ func resourceTencentCloudMysqlBackupPolicyDelete(d *schema.ResourceData, meta in
 	mysqlService := MysqlService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
 
 	var (
-		retentionPeriod     int64 = 7
-		backupModel               = MYSQL_ALLOW_BACKUP_MODEL[1]
-		backupTime                = MYSQL_ALLOW_BACKUP_TIME[0]
-		binlogExpireDays    int64 = 7
-		enableBinlogStandby       = "off"
-		binlogStandbyDays   int64 = 180
-		enableBackupPeriodSave    = "off"
+		retentionPeriod        int64 = 7
+		backupModel                  = MYSQL_ALLOW_BACKUP_MODEL[1]
+		backupTime                   = MYSQL_ALLOW_BACKUP_TIME[0]
+		binlogExpireDays       int64 = 7
+		enableBinlogStandby          = "off"
+		binlogStandbyDays      int64 = 180
+		enableBackupPeriodSave       = "off"
 	)
 	err := mysqlService.ModifyBackupConfigByMysqlId(ctx, d.Id(), retentionPeriod, backupModel, backupTime, binlogExpireDays, enableBinlogStandby, binlogStandbyDays, enableBackupPeriodSave)
 	if err != nil {

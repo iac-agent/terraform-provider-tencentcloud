@@ -80,6 +80,7 @@ resource "tencentcloud_mysql_backup_policy" "example" {
 The following arguments are supported:
 
 * `mysql_id` - (Required, String, ForceNew) Instance ID to which policies will be applied.
+* `EnableBackupPeriodSave` - (Optional, String) Whether to enable the periodic retention policy for backup files, `off` - close, `on` - open, the default is off.
 * `backup_model` - (Optional, String) Backup method. Supported values include: `physical` - physical backup; `snapshot` - snapshot backup. Multi node only support `physical`, Single node only support `snapshot`.
 * `backup_time` - (Optional, String) Instance backup time, in the format of 'HH:mm-HH:mm'. Time setting interval is four hours. Default to `02:00-06:00`. The following value can be supported: `02:00-06:00`, `06:00-10:00`, `10:00-14:00`, `14:00-18:00`, `18:00-22:00`, and `22:00-02:00`.
 * `binlog_period` - (Optional, Int) Binlog retention time, in days. The minimum value is 7 days and the maximum value is 1830 days. This value cannot be set greater than the backup file retention time.
