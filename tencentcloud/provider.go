@@ -485,6 +485,7 @@ func Provider() *schema.Provider {
 		},
 
 		DataSourcesMap: map[string]*schema.Resource{
+			"tencentcloud_fwm_edge_acl_rules":                                     fwm.DataSourceTencentCloudFwmEdgeAclRules(),
 			"tencentcloud_availability_regions":                                   common.DataSourceTencentCloudAvailabilityRegions(),
 			"tencentcloud_emr":                                                    emr.DataSourceTencentCloudEmr(),
 			"tencentcloud_emr_nodes":                                              emr.DataSourceTencentCloudEmrNodes(),
