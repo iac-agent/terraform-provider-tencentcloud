@@ -1082,3 +1082,221 @@ func (me *ConfigService) DescribeConfigAggregatorById(ctx context.Context, accou
 	ret = response.Response
 	return
 }
+
+func (me *ConfigService) AddAggregateConfigRule(ctx context.Context, request *configv20220802.AddAggregateConfigRuleRequest) (ruleId string, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseConfigV20220802Client().AddAggregateConfigRuleWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("add aggregate config rule failed, Response is nil"))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	// AddAggregateConfigRule only reports a RequestId, so the new rule id is
+	// discovered by listing the account group rules and correlating by the
+	// unique rule name. Listing is retried, because the rule may not be
+	// visible to List immediately after the Add call returns.
+	err = resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		items, e := me.ListAggregateConfigRulesByAccountGroupId(ctx, *request.AccountGroupId)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		for _, item := range items {
+			if item == nil || item.RuleName == nil || item.ConfigRuleId == nil {
+				continue
+			}
+			if request.RuleName != nil && *item.RuleName == *request.RuleName {
+				ruleId = *item.ConfigRuleId
+				return nil
+			}
+		}
+		return resource.RetryableError(fmt.Errorf("add aggregate config rule succeeded, but the created rule with name %q is not listable yet", *request.RuleName))
+	})
+
+	if err != nil {
+		errRet = err
+	}
+
+	return
+}
+
+// ListAggregateConfigRulesByAccountGroupId pages through every rule of an
+// account group, so a freshly created rule can be correlated by name.
+func (me *ConfigService) ListAggregateConfigRulesByAccountGroupId(ctx context.Context, accountGroupId string) (items []*configv20220802.ConfigRule, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := configv20220802.NewListAggregateConfigRulesRequest()
+	request.AccountGroupId = helper.String(accountGroupId)
+	request.Limit = helper.Int64(100)
+	request.Offset = helper.Int64(0)
+
+	items = make([]*configv20220802.ConfigRule, 0)
+
+	for {
+		var (
+			total     uint64
+			pageItems []*configv20220802.ConfigRule
+		)
+
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+			ratelimit.Check(request.GetAction())
+			result, e := me.client.UseConfigV20220802Client().ListAggregateConfigRulesWithContext(ctx, request)
+			if e != nil {
+				return tccommon.RetryError(e)
+			}
+
+			if result == nil || result.Response == nil {
+				return resource.NonRetryableError(fmt.Errorf("list aggregate config rules failed, Response is nil"))
+			}
+
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+			if result.Response.Total != nil {
+				total = *result.Response.Total
+			}
+
+			pageItems = result.Response.Items
+			return nil
+		})
+
+		if err != nil {
+			errRet = err
+			return
+		}
+
+		items = append(items, pageItems...)
+
+		if uint64(len(items)) >= total || len(pageItems) == 0 {
+			break
+		}
+
+		*request.Offset += *request.Limit
+	}
+
+	return
+}
+
+func (me *ConfigService) DescribeAggregateConfigRuleById(ctx context.Context, accountGroupId, ruleId string) (ret *configv20220802.ConfigRule, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := configv20220802.NewDescribeAggregateConfigRuleRequest()
+	response := configv20220802.NewDescribeAggregateConfigRuleResponse()
+	request.AccountGroupId = helper.String(accountGroupId)
+	request.RuleId = helper.String(ruleId)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseConfigV20220802Client().DescribeAggregateConfigRuleWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("describe aggregate config rule failed, Response is nil"))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+		response = result
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	ret = response.Response.ConfigRule
+	return
+}
+
+func (me *ConfigService) UpdateAggregateConfigRule(ctx context.Context, request *configv20220802.UpdateAggregateConfigRuleRequest) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseConfigV20220802Client().UpdateAggregateConfigRuleWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("update aggregate config rule failed, Response is nil"))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+func (me *ConfigService) DeleteAggregateConfigRule(ctx context.Context, request *configv20220802.DeleteAggregateConfigRuleRequest) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseConfigV20220802Client().DeleteAggregateConfigRuleWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("delete aggregate config rule failed, Response is nil"))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
