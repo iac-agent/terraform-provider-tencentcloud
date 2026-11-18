@@ -276,13 +276,8 @@ func resourceTencentCloudConfigAggregatorUpdate(d *schema.ResourceData, meta int
 		request.AccountGroupId = &accountGroupId
 		request.OwnerUin = helper.StrToUint64Point(ownerUin)
 
-		if v, ok := d.GetOk("name"); ok {
-			request.Name = helper.String(v.(string))
-		}
-
-		if v, ok := d.GetOk("description"); ok {
-			request.Description = helper.String(v.(string))
-		}
+		request.Name = helper.String(d.Get("name").(string))
+		request.Description = helper.String(d.Get("description").(string))
 
 		if v, ok := d.GetOk("aggregator_accounts"); ok {
 			for _, item := range v.([]interface{}) {
