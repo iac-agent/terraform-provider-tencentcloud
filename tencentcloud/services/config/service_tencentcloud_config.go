@@ -1082,3 +1082,102 @@ func (me *ConfigService) DescribeConfigAggregatorById(ctx context.Context, accou
 	ret = response.Response
 	return
 }
+
+func (me *ConfigService) DescribeAggregateConfigRuleById(ctx context.Context, accountGroupId, ruleId string) (ret *configv20220802.ConfigRule, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := configv20220802.NewDescribeAggregateConfigRuleRequest()
+	response := configv20220802.NewDescribeAggregateConfigRuleResponse()
+	request.RuleId = &ruleId
+	request.AccountGroupId = &accountGroupId
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		result, e := me.client.UseConfigV20220802Client().DescribeAggregateConfigRule(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("describe aggregate config rule failed, Response is nil"))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+		response = result
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	ret = response.Response.ConfigRule
+	return
+}
+
+func (me *ConfigService) WaitAggregateConfigRuleCreated(ctx context.Context, accountGroupId string, request *configv20220802.AddAggregateConfigRuleRequest) (ruleId string, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	listRequest := configv20220802.NewListAggregateConfigRulesRequest()
+	listRequest.AccountGroupId = &accountGroupId
+	listRequest.Limit = helper.Int64(100)
+	listRequest.Offset = helper.Int64(0)
+	listRequest.RuleName = request.RuleName
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		for {
+			result, e := me.client.UseConfigV20220802Client().ListAggregateConfigRules(listRequest)
+			if e != nil {
+				return tccommon.RetryError(e)
+			}
+
+			if result == nil || result.Response == nil {
+				return resource.NonRetryableError(fmt.Errorf("list aggregate config rules failed, Response is nil"))
+			}
+
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, listRequest.GetAction(), listRequest.ToJsonString(), result.ToJsonString())
+
+			for _, item := range result.Response.Items {
+				if item == nil || item.RuleName == nil || item.ConfigRuleId == nil {
+					continue
+				}
+
+				if *item.RuleName == *request.RuleName && item.Identifier != nil && request.Identifier != nil && *item.Identifier == *request.Identifier {
+					ruleId = *item.ConfigRuleId
+					return nil
+				}
+			}
+
+			total := uint64(0)
+			if result.Response.Total != nil {
+				total = *result.Response.Total
+			}
+
+			if uint64(*listRequest.Offset)+uint64(len(result.Response.Items)) >= total {
+				break
+			}
+
+			*listRequest.Offset += *listRequest.Limit
+		}
+
+		return resource.RetryableError(fmt.Errorf("aggregate config rule %s not created yet", *request.RuleName))
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	if ruleId == "" {
+		errRet = fmt.Errorf("aggregate config rule %s not found after create", *request.RuleName)
+	}
+
+	return
+}
