@@ -41,8 +41,8 @@ resource "tencentcloud_config_recorder_config" "example" {
 
 The following arguments are supported:
 
-* `status` - (Required, Bool) Whether to enable resource monitoring. true: enable (OpenConfigRecorder), false: disable (CloseConfigRecorder).
-* `resource_types` - (Optional, List: [`String`]) Resource type list to monitor (e.g. QCS::CAM::Group, QCS::CVM::Instance).
+* `status` - (Required, Bool) Monitoring switch status of the Config recorder. true: enabled (calls OpenConfigRecorder), false: disabled (calls CloseConfigRecorder).
+* `resource_types` - (Optional, List: [`String`]) List of resource types to be monitored, such as QCS::CAM::Group, QCS::CAM::Role, QCS::CAM::Policy, QCS::CVM::Instance.
 
 ## Attributes Reference
 
