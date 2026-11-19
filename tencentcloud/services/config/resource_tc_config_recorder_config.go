@@ -25,13 +25,13 @@ func ResourceTencentCloudConfigRecorderConfig() *schema.Resource {
 			"status": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to enable resource monitoring. true: enable (OpenConfigRecorder), false: disable (CloseConfigRecorder).",
+				Description: "Monitoring switch status of the Config recorder. true: enabled (calls OpenConfigRecorder), false: disabled (calls CloseConfigRecorder).",
 			},
 
 			"resource_types": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Resource type list to monitor (e.g. QCS::CAM::Group, QCS::CVM::Instance).",
+				Description: "List of resource types to be monitored, such as QCS::CAM::Group, QCS::CAM::Role, QCS::CAM::Policy, QCS::CVM::Instance.",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
