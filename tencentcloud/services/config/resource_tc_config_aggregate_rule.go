@@ -156,7 +156,6 @@ func ResourceTencentCloudConfigAggregateRule() *schema.Resource {
 				},
 			},
 
-			// Computed
 			"config_rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,

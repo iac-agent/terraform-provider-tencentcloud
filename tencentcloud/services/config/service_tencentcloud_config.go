@@ -1129,32 +1129,42 @@ func (me *ConfigService) WaitAggregateConfigRuleCreated(ctx context.Context, acc
 	listRequest.AccountGroupId = &accountGroupId
 	listRequest.Limit = helper.Int64(100)
 	listRequest.Offset = helper.Int64(0)
+	listRequest.RuleName = request.RuleName
 
 	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
-		result, e := me.client.UseConfigV20220802Client().ListAggregateConfigRules(listRequest)
-		if e != nil {
-			return tccommon.RetryError(e)
-		}
-
-		if result == nil || result.Response == nil {
-			return resource.NonRetryableError(fmt.Errorf("list aggregate config rules failed, Response is nil"))
-		}
-
-		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, listRequest.GetAction(), listRequest.ToJsonString(), result.ToJsonString())
-
-		if result.Response.Items == nil {
-			return resource.RetryableError(fmt.Errorf("aggregate config rule %s not created yet", *request.RuleName))
-		}
-
-		for _, item := range result.Response.Items {
-			if item == nil || item.RuleName == nil || item.ConfigRuleId == nil {
-				continue
+		for {
+			result, e := me.client.UseConfigV20220802Client().ListAggregateConfigRules(listRequest)
+			if e != nil {
+				return tccommon.RetryError(e)
 			}
 
-			if *item.RuleName == *request.RuleName && item.Identifier != nil && request.Identifier != nil && *item.Identifier == *request.Identifier {
-				ruleId = *item.ConfigRuleId
-				return nil
+			if result == nil || result.Response == nil {
+				return resource.NonRetryableError(fmt.Errorf("list aggregate config rules failed, Response is nil"))
 			}
+
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, listRequest.GetAction(), listRequest.ToJsonString(), result.ToJsonString())
+
+			for _, item := range result.Response.Items {
+				if item == nil || item.RuleName == nil || item.ConfigRuleId == nil {
+					continue
+				}
+
+				if *item.RuleName == *request.RuleName && item.Identifier != nil && request.Identifier != nil && *item.Identifier == *request.Identifier {
+					ruleId = *item.ConfigRuleId
+					return nil
+				}
+			}
+
+			total := uint64(0)
+			if result.Response.Total != nil {
+				total = *result.Response.Total
+			}
+
+			if uint64(*listRequest.Offset)+uint64(len(result.Response.Items)) >= total {
+				break
+			}
+
+			*listRequest.Offset += *listRequest.Limit
 		}
 
 		return resource.RetryableError(fmt.Errorf("aggregate config rule %s not created yet", *request.RuleName))
@@ -1162,6 +1172,11 @@ func (me *ConfigService) WaitAggregateConfigRuleCreated(ctx context.Context, acc
 
 	if err != nil {
 		errRet = err
+		return
+	}
+
+	if ruleId == "" {
+		errRet = fmt.Errorf("aggregate config rule %s not found after create", *request.RuleName)
 	}
 
 	return

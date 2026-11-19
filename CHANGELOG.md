@@ -2,7 +2,7 @@
 
 FEATURES:
 
-* **New Resource:** `tencentcloud_config_aggregate_rule` ([#N](https://github.com/iac-agent/terraform-provider-tencentcloud/pull/N))
+* **New Resource:** `tencentcloud_config_aggregate_rule` ([#301](https://github.com/iac-agent/terraform-provider-tencentcloud/pull/301))
 * **New Resource:** `tencentcloud_fwm_vpc_acl_rule` ([#4583](https://github.com/tencentcloudstack/terraform-provider-tencentcloud/pull/4583))
 
 ENHANCEMENTS:
