@@ -1,0 +1,3 @@
+```release-note:new-resource-field
+recorder_config: 新增字段 from_mode
+```
