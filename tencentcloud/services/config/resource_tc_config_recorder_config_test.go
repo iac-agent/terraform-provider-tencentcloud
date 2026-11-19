@@ -49,6 +49,37 @@ resource "tencentcloud_config_recorder_config" "example" {
 }
 `
 
+func TestAccTencentCloudConfigRecorderConfigResource_from_mode(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck: func() {
+			tcacctest.AccPreCheck(t)
+		},
+		Providers: tcacctest.AccProviders,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccConfigRecorderConfigFromMode,
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttrSet("tencentcloud_config_recorder_config.example", "id"),
+					resource.TestCheckResourceAttr("tencentcloud_config_recorder_config.example", "status", "true"),
+					resource.TestCheckResourceAttr("tencentcloud_config_recorder_config.example", "from_mode", "2"),
+				),
+			},
+		},
+	})
+}
+
+const testAccConfigRecorderConfigFromMode = `
+resource "tencentcloud_config_recorder_config" "example" {
+  status    = true
+  from_mode = 2
+  resource_types = [
+    "QCS::CAM::Group",
+    "QCS::CAM::Role",
+  ]
+}
+`
+
 const testAccConfigRecorderConfigUpdate = `
 resource "tencentcloud_config_recorder_config" "example" {
   status = false
