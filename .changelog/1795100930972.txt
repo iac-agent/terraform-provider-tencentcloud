@@ -1,0 +1,3 @@
+```release-note:new-resource
+resource/tencentcloud_ags_gpu_resource_group: new resource for renaming and reading AGS GPU resource groups (import only)
+```
