@@ -40,7 +40,8 @@ func TestAccTencentCloudConfigRecorderConfigResource_basic(t *testing.T) {
 
 const testAccConfigRecorderConfig = `
 resource "tencentcloud_config_recorder_config" "example" {
-  status = true
+  status    = true
+  from_mode = 1
   resource_types = [
     "QCS::CAM::Group",
     "QCS::CAM::Role",

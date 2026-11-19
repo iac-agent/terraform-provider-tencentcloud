@@ -37,6 +37,12 @@ func ResourceTencentCloudConfigRecorderConfig() *schema.Resource {
 				},
 			},
 
+			"from_mode": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "1: called from the control center.",
+			},
+
 			// Computed
 			"create_time": {
 				Type:        schema.TypeString,
@@ -142,6 +148,10 @@ func resourceTencentCloudConfigRecorderConfigUpdate(d *schema.ResourceData, meta
 		enable := d.Get("status").(bool)
 		if enable {
 			request := configv20220802.NewOpenConfigRecorderRequest()
+			if v, ok := d.GetOkExists("from_mode"); ok {
+				request.FromMode = helper.IntUint64(v.(int))
+			}
+
 			reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 				result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseConfigV20220802Client().OpenConfigRecorderWithContext(ctx, request)
 				if e != nil {
