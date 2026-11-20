@@ -42,7 +42,7 @@ resource "tencentcloud_config_recorder_config" "example" {
 The following arguments are supported:
 
 * `status` - (Required, Bool) Whether to enable resource monitoring. true: enable (OpenConfigRecorder), false: disable (CloseConfigRecorder).
-* `from_mode` - (Optional, Int) <p>1:从控制中心调用</p>.
+* `from_mode` - (Optional, Int) <p>1:&#x4ECE;&#x63A7;&#x5236;&#x4E2D;&#x5FC3;&#x8C03;&#x7528;</p>.
 * `resource_types` - (Optional, List: [`String`]) Resource type list to monitor (e.g. QCS::CAM::Group, QCS::CVM::Instance).
 
 ## Attributes Reference

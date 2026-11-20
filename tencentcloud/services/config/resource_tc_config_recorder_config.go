@@ -40,7 +40,7 @@ func ResourceTencentCloudConfigRecorderConfig() *schema.Resource {
 			"from_mode": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "<p>1:从控制中心调用</p>",
+				Description: "<p>1:&#x4ECE;&#x63A7;&#x5236;&#x4E2D;&#x5FC3;&#x8C03;&#x7528;</p>.",
 			},
 
 			// Computed
