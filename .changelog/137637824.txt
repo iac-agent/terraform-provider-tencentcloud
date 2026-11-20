@@ -1,0 +1,3 @@
+```release-note:new-resource
+resource/tencentcloud_alb_listener: add support for ALB listener (CreateListener/DescribeListeners/ModifyListenerAttributes/DeleteListener)
+```
