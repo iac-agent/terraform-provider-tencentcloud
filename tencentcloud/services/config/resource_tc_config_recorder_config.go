@@ -40,7 +40,7 @@ func ResourceTencentCloudConfigRecorderConfig() *schema.Resource {
 			"from_mode": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Call source. 1: called from the control center.",
+				Description: "<p>1:从控制中心调用</p>",
 			},
 
 			// Computed
