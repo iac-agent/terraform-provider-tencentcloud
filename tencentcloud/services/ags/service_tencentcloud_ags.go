@@ -201,3 +201,46 @@ func (me *AgsService) DeleteSandboxTool(ctx context.Context, toolId string) (err
 
 	return
 }
+
+// DescribeGPUResourceSpecs queries the sellable GPU resource specs and the
+// available quota of the current tenant in the current region.
+//
+// The request returns one page as specified by Offset/Limit in the request;
+// TotalCount is the number of filtered items before pagination.
+func (me *AgsService) DescribeGPUResourceSpecs(ctx context.Context, request *agsv20250920.DescribeGPUResourceSpecsRequest) (items []*agsv20250920.GPUResourceSpec, total int64, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	var response *agsv20250920.DescribeGPUResourceSpecsResponse
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, err := me.client.UseAgsClient().DescribeGPUResourceSpecsWithContext(ctx, request)
+		if err != nil {
+			return tccommon.RetryError(err)
+		}
+		response = result
+		return nil
+	})
+	if err != nil {
+		errRet = err
+		return
+	}
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("DescribeGPUResourceSpecs returned an empty response")
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response.Response.TotalCount != nil {
+		total = *response.Response.TotalCount
+	}
+	items = response.Response.GPUResourceSpecSet
+	return
+}
