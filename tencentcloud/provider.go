@@ -23,6 +23,7 @@ import (
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/internal/sharedmeta"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/ratelimit"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/advisor"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/alb"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/antiddos"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/apigateway"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/apm"
@@ -2812,6 +2813,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_bdrc_disaster_recovery_protect_group":                                     bdrc.ResourceTencentCloudBdrcDisasterRecoveryProtectGroup(),
 			"tencentcloud_bdrc_disaster_recovery_vpc_mapping":                                       bdrc.ResourceTencentCloudBdrcDisasterRecoveryVpcMapping(),
 			"tencentcloud_bdrc_security_group_mapping":                                              bdrc.ResourceTencentCloudBdrcSecurityGroupMapping(),
+			"tencentcloud_alb_listener":                                                             alb.ResourceTencentCloudAlbListener(),
 			"tencentcloud_bdrc_instance_copy_pair":                                                  bdrc.ResourceTencentCloudBdrcInstanceCopyPair(),
 		},
 
