@@ -15,6 +15,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
+	alb "github.com/tencentcloud/tencentcloud-sdk-go-intl-en/tencentcloud/alb/v20251030"
 	captchaintl "github.com/tencentcloud/tencentcloud-sdk-go-intl-en/tencentcloud/captcha/v20190722"
 	clbintl "github.com/tencentcloud/tencentcloud-sdk-go-intl-en/tencentcloud/clb/v20180317"
 	intlProfile "github.com/tencentcloud/tencentcloud-sdk-go-intl-en/tencentcloud/common/profile"
@@ -228,6 +229,7 @@ type TencentCloudClient struct {
 	cdwchConn             *cdwch.Client
 	ebConn                *eb.Client
 	dlcConn               *dlc.Client
+	albConn               *alb.Client
 	captchaConn           *captchaintl.Client
 	wedataConn            *wedata.Client
 	wedatav20250806Conn   *wedatav20250806.Client
@@ -1746,6 +1748,19 @@ func (me *TencentCloudClient) UseDlcClient() *dlc.Client {
 	me.dlcConn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.dlcConn
+}
+
+// UseAlbClient returns ALB intl client for service
+func (me *TencentCloudClient) UseAlbClient() *alb.Client {
+	if me.albConn != nil {
+		return me.albConn
+	}
+
+	cpf := me.NewClientIntlProfile(300)
+	me.albConn, _ = alb.NewClient(me.Credential, me.Region, cpf)
+	me.albConn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.albConn
 }
 
 // UseCaptchaClient returns captcha client for service
