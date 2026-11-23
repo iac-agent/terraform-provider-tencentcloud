@@ -23,6 +23,7 @@ import (
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/internal/sharedmeta"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/ratelimit"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/advisor"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/alb"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/antiddos"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/apigateway"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/apm"
@@ -1589,6 +1590,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_vpn_gateway_ccn_routes":                                                   vpn.ResourceTencentCloudVpnGatewayCcnRoutes(),
 			"tencentcloud_lb":                                                                       clb.ResourceTencentCloudLB(),
 			"tencentcloud_alb_server_attachment":                                                    clb.ResourceTencentCloudAlbServerAttachment(),
+			"tencentcloud_alb_listener":                                                             alb.ResourceTencentCloudAlbListener(),
 			"tencentcloud_clb_instance":                                                             clb.ResourceTencentCloudClbInstance(),
 			"tencentcloud_clb_listener":                                                             clb.ResourceTencentCloudClbListener(),
 			"tencentcloud_clb_listener_rule":                                                        clb.ResourceTencentCloudClbListenerRule(),
