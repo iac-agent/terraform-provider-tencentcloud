@@ -50,6 +50,7 @@ import (
 	ciam "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ciam/v20220331"
 	ckafka "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ckafka/v20190819"
 	clb "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/clb/v20180317"
+	albv20251030 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb/v20251030"
 	audit "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit/v20190319"
 	cls "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls/v20201016"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
@@ -158,6 +159,7 @@ type TencentCloudClient struct {
 	cvmv20170312Conn      *cvmv20170312.Client
 	cvmIntlConn           *cvmintl.Client
 	clbConn               *clb.Client
+	albv20251030Conn      *albv20251030.Client
 	clbIntlConn           *clbintl.Client
 	dayuConn              *dayu.Client
 	dcConn                *dc.Client
@@ -1151,6 +1153,19 @@ func (me *TencentCloudClient) UseAgsClient() *agsv20250920.Client {
 	me.agsConn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.agsConn
+}
+
+// UseAlbV20251030Client returns ALB v20251030 client for service
+func (me *TencentCloudClient) UseAlbV20251030Client() *albv20251030.Client {
+	if me.albv20251030Conn != nil {
+		return me.albv20251030Conn
+	}
+
+	cpf := me.NewClientProfile(300)
+	me.albv20251030Conn, _ = albv20251030.NewClient(me.Credential, me.Region, cpf)
+	me.albv20251030Conn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.albv20251030Conn
 }
 
 // UseApiClient return API client for service
