@@ -25,6 +25,7 @@ import (
 	advisorv20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	v20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	agsv20250920 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags/v20250920"
+	alb "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb/v20251030"
 	antiddos "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20200309"
 	antiddosv20250903 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20250903"
 	api "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/api/v20201106"
@@ -269,6 +270,7 @@ type TencentCloudClient struct {
 	mqttv20240516Conn           *mqtt.Client
 	cdwpgv20201230Conn          *cdwpg.Client
 	gwlbv20240906Conn           *gwlb.Client
+	albv20251030Conn            *alb.Client
 	billingv20180709Conn        *billing.Client
 	bdrcv20260330Conn           *bdrcv20260330.Client
 	igtmv20231024Conn           *igtmv20231024.Client
@@ -2296,6 +2298,18 @@ func (me *TencentCloudClient) UseGwlbV20240906Client() *gwlb.Client {
 	me.gwlbv20240906Conn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.gwlbv20240906Conn
+}
+
+// UseAlbV20251030Client return ALB client for service
+func (me *TencentCloudClient) UseAlbV20251030Client() *alb.Client {
+	if me.albv20251030Conn != nil {
+		return me.albv20251030Conn
+	}
+	cpf := me.NewClientProfile(300)
+	me.albv20251030Conn, _ = alb.NewClient(me.Credential, me.Region, cpf)
+	me.albv20251030Conn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.albv20251030Conn
 }
 
 // UseBillingV20180709Client return BILLING client for service
