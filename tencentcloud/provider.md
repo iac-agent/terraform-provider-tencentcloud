@@ -384,6 +384,10 @@ Resource
 tencentcloud_container_cluster
 tencentcloud_container_cluster_instance
 
+Application Load Balancer(ALB)
+Resource
+tencentcloud_alb_listener
+
 Gateway Load Balancer(GWLB)
 Resource
 tencentcloud_gwlb_instance
