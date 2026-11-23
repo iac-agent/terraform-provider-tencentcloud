@@ -48,6 +48,7 @@ import (
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/chdfs"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ci"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ciam"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/alb"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ckafka"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/clb"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/cloudaudit"
@@ -1588,6 +1589,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_vpn_gateway_ssl_client_cert":                                              vpn.ResourceTencentCloudVpnGatewaySslClientCert(),
 			"tencentcloud_vpn_gateway_ccn_routes":                                                   vpn.ResourceTencentCloudVpnGatewayCcnRoutes(),
 			"tencentcloud_lb":                                                                       clb.ResourceTencentCloudLB(),
+			"tencentcloud_alb_listener":                                                            alb.ResourceTencentCloudAlbListener(),
 			"tencentcloud_alb_server_attachment":                                                    clb.ResourceTencentCloudAlbServerAttachment(),
 			"tencentcloud_clb_instance":                                                             clb.ResourceTencentCloudClbInstance(),
 			"tencentcloud_clb_listener":                                                             clb.ResourceTencentCloudClbListener(),

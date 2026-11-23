@@ -55,6 +55,7 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	configv20220802 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config/v20220802"
+	alb "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb/v20251030"
 	controlcenter "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter/v20230110"
 	csip "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csip/v20221121"
 	cvmv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
@@ -221,6 +222,7 @@ type TencentCloudClient struct {
 	cwpConn               *cwp.Client
 	chdfsConn             *chdfs.Client
 	configv20220802Conn   *configv20220802.Client
+	albConn               *alb.Client
 	mdlConn               *mdl.Client
 	apmConn               *apm.Client
 	ciamConn              *ciam.Client
@@ -2067,6 +2069,18 @@ func (me *TencentCloudClient) UseEmrV20190103Client() *emr.Client {
 	me.emrv20190103Conn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.emrv20190103Conn
+}
+
+// UseAlbClient return ALB client for service
+func (me *TencentCloudClient) UseAlbClient() *alb.Client {
+	if me.albConn != nil {
+		return me.albConn
+	}
+	cpf := me.NewClientProfile(300)
+	me.albConn, _ = alb.NewClient(me.Credential, me.Region, cpf)
+	me.albConn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.albConn
 }
 
 // UseTeoV20220901Client return TEO client for service
