@@ -23,6 +23,7 @@ import (
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/internal/sharedmeta"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/ratelimit"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/advisor"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/alb"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/antiddos"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/apigateway"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/apm"
@@ -1611,6 +1612,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_clb_security_group_attachment":                                            clb.ResourceTencentCloudClbSecurityGroupAttachment(),
 			"tencentcloud_clb_target_group_attachments":                                             clb.ResourceTencentCloudClbTargetGroupAttachments(),
 			"tencentcloud_clb_cls_log_attachment":                                                   clb.ResourceTencentCloudClbClsLogAttachment(),
+			"tencentcloud_alb_listener":                                                             alb.ResourceTencentCloudAlbListener(),
 			"tencentcloud_gwlb_instance":                                                            gwlb.ResourceTencentCloudGwlbInstance(),
 			"tencentcloud_gwlb_target_group":                                                        gwlb.ResourceTencentCloudGwlbTargetGroup(),
 			"tencentcloud_gwlb_instance_associate_target_group":                                     gwlb.ResourceTencentCloudGwlbInstanceAssociateTargetGroup(),
