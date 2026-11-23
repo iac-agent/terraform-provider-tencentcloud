@@ -25,6 +25,7 @@ import (
 	advisorv20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	v20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	agsv20250920 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags/v20250920"
+	alb "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb/v20251030"
 	antiddos "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20200309"
 	antiddosv20250903 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20250903"
 	api "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/api/v20201106"
@@ -281,6 +282,7 @@ type TencentCloudClient struct {
 	vcubev20220410Conn          *vcubev20220410.Client
 	advisorv20200721Conn        *advisorv20200721.Client
 	tdmysqlv20211122Conn        *tdmysqlv20211122.Client
+	albv20251030Conn            *alb.Client
 }
 
 // NewClientProfile returns a new ClientProfile
@@ -2428,4 +2430,16 @@ func (me *TencentCloudClient) UseTdmysqlV20211122Client() *tdmysqlv20211122.Clie
 	me.tdmysqlv20211122Conn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.tdmysqlv20211122Conn
+}
+
+// UseAlbV20251030Client return ALB client for service
+func (me *TencentCloudClient) UseAlbV20251030Client() *alb.Client {
+	if me.albv20251030Conn != nil {
+		return me.albv20251030Conn
+	}
+	cpf := me.NewClientProfile(300)
+	me.albv20251030Conn, _ = alb.NewClient(me.Credential, me.Region, cpf)
+	me.albv20251030Conn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.albv20251030Conn
 }
