@@ -46,7 +46,7 @@ func ResourceTencentCloudFwmStrategy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of receive account group IDs.",
+				Description: "List of receive group IDs.",
 			},
 
 			"pre_strategy": {
