@@ -1299,6 +1299,7 @@ tencentcloud_oceanus_job_events
 tencentcloud_oceanus_meta_table
 
 Resource
+tencentcloud_oceanus_cluster
 tencentcloud_oceanus_folder
 tencentcloud_oceanus_job
 tencentcloud_oceanus_job_config
