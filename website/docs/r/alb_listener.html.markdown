@@ -20,16 +20,28 @@ resource "tencentcloud_alb_listener" "example" {
   listener_port     = 80
   listener_protocol = "HTTP"
 
-  default_actions {
-    type = "TargetGroup"
+  default_actions = [
+    {
+      type = "TargetGroup"
 
-    target_group_config {
-      target_groups {
-        target_group_id = "lbtg-12345678"
-        weight          = 10
-      }
-    }
-  }
+      target_group_config = [
+        {
+          target_groups = [
+            {
+              target_group_id = "lbtg-12345678"
+              weight          = 10
+            },
+          ]
+        },
+      ]
+    },
+  ]
+
+  x_forwarded_for_config = [
+    {
+      x_forwarded_for_mode = "append"
+    },
+  ]
 
   gzip_enabled    = true
   idle_timeout    = 15
@@ -112,9 +124,13 @@ This resource interacts with the following TencentCloud APIs:
 
 * Create:
   - [CreateListener](https://www.tencentcloud.com/document/api/1311/84262)
+  - [DescribeListenerDetail](https://www.tencentcloud.com/document/api/1311/84259)
   - [DescribeListeners](https://www.tencentcloud.com/document/api/1311/84257)
-* Read: [DescribeListeners](https://www.tencentcloud.com/document/api/1311/84257)
+* Read:
+  - [DescribeListenerDetail](https://www.tencentcloud.com/document/api/1311/84259)
+  - [DescribeListeners](https://www.tencentcloud.com/document/api/1311/84257)
 * Update:
+  - [DescribeListenerDetail](https://www.tencentcloud.com/document/api/1311/84259)
   - [DescribeListeners](https://www.tencentcloud.com/document/api/1311/84257)
   - [ModifyListenerAttributes](https://www.tencentcloud.com/document/api/1311/84255)
 * Delete: [DeleteListener](https://www.tencentcloud.com/document/api/1311/84261)

@@ -9,19 +9,31 @@ resource "tencentcloud_alb_listener" "example" {
   listener_port     = 80
   listener_protocol = "HTTP"
 
-  default_actions {
-    type = "TargetGroup"
+  default_actions = [
+    {
+      type = "TargetGroup"
 
-    target_group_config {
-      target_groups {
-        target_group_id = "lbtg-12345678"
-        weight          = 10
-      }
-    }
-  }
+      target_group_config = [
+        {
+          target_groups = [
+            {
+              target_group_id = "lbtg-12345678"
+              weight          = 10
+            },
+          ]
+        },
+      ]
+    },
+  ]
 
-  gzip_enabled   = true
-  idle_timeout   = 15
+  x_forwarded_for_config = [
+    {
+      x_forwarded_for_mode = "append"
+    },
+  ]
+
+  gzip_enabled    = true
+  idle_timeout    = 15
   request_timeout = 60
 }
 ```

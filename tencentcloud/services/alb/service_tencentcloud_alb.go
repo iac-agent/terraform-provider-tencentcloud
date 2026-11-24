@@ -136,6 +136,66 @@ func (me *AlbService) DescribeListeners(ctx context.Context, request *albv202510
 	return
 }
 
+// DescribeListenerDetailById returns the full detail of one listener.
+//
+// DescribeListeners does not echo back several configured attributes
+// (DefaultActions, CaCertificateIds and CertificateIds); this call is the only
+// read path that reports them. A nil detail with a nil error means the listener
+// does not exist (any more).
+func (me *AlbService) DescribeListenerDetailById(ctx context.Context, loadBalancerId, listenerId string) (detail *albv20251030.DescribeListenerDetailResponseParams, errRet error) {
+	request := albv20251030.NewDescribeListenerDetailRequest()
+	request.LoadBalancerId = helper.String(loadBalancerId)
+	request.ListenerId = helper.String(listenerId)
+
+	detail, err := me.DescribeListenerDetail(ctx, request)
+	if err != nil {
+		if tccommon.IsExpectError(err, []string{"ResourceNotFound.Listener", "ResourceNotFound"}) {
+			return nil, nil
+		}
+		errRet = err
+	}
+
+	return
+}
+
+// DescribeListenerDetail returns the full detail of a single listener.
+//
+// DescribeListeners does not echo back several configured attributes
+// (DefaultActions, CaCertificateIds and CertificateIds); this call is the only
+// read path that reports them, so callers use it to refresh those attributes
+// instead of trusting the value they wrote.
+func (me *AlbService) DescribeListenerDetail(ctx context.Context, request *albv20251030.DescribeListenerDetailRequest) (detail *albv20251030.DescribeListenerDetailResponseParams, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, err := me.client.UseAlbV20251030Client().DescribeListenerDetailWithContext(ctx, request)
+		if err != nil {
+			return tccommon.RetryError(err)
+		}
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("DescribeListenerDetail returned an empty response"))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+		detail = result.Response
+		return nil
+	})
+	if err != nil {
+		errRet = err
+	}
+
+	return
+}
+
 // ModifyListenerAttributes modifies the mutable attributes of a listener.
 func (me *AlbService) ModifyListenerAttributes(ctx context.Context, request *albv20251030.ModifyListenerAttributesRequest) (errRet error) {
 	logId := tccommon.GetLogId(ctx)

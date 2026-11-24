@@ -11,6 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-go/tftypes"
 	albv20251030 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb/v20251030"
+	sdkerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/connectivity"
@@ -236,6 +237,37 @@ func describeAlbListenersResponse(listeners ...*albv20251030.ListenerOutput) *al
 			TotalCount: helper.Uint64(uint64(len(listeners))),
 		},
 	}
+}
+
+// sampleAlbListenerDetail returns the listener detail, which is the only read
+// API that echoes back default_actions, ca_certificate_ids and
+// certificate_ids.
+func sampleAlbListenerDetail() *albv20251030.DescribeListenerDetailResponseParams {
+	return &albv20251030.DescribeListenerDetailResponseParams{
+		ListenerId:       helper.String(albTestListenerId),
+		LoadBalancerId:   helper.String(albTestLoadBalancerId),
+		CaEnabled:        helper.Bool(true),
+		CaCertificateIds: []*string{helper.String("ca-cert-1")},
+		CertificateIds:   []*string{helper.String("cert-1")},
+		DefaultActions: []*albv20251030.DefaultAction{
+			{
+				Type: helper.String("TargetGroup"),
+				TargetGroupConfig: &albv20251030.TargetGroupConfig{
+					TargetGroups: []*albv20251030.TargetGroupTuple{
+						{TargetGroupId: helper.String(albTestTargetGroupId), Weight: helper.Int64(10)},
+					},
+					TargetGroupStickySession: &albv20251030.TargetGroupStickySession{
+						Enabled: helper.Bool(true),
+						Timeout: helper.Int64(1000),
+					},
+				},
+			},
+		},
+	}
+}
+
+func describeAlbListenerDetailResponse() *albv20251030.DescribeListenerDetailResponse {
+	return &albv20251030.DescribeListenerDetailResponse{Response: sampleAlbListenerDetail()}
 }
 
 // nullStateRaw builds the empty (null) state value the framework hands to
@@ -600,6 +632,13 @@ func TestAlbListenerCreate(t *testing.T) {
 			return describeAlbListenersResponse(sampleAlbListenerOutput()), nil
 		},
 	)
+	patches.ApplyMethodFunc(
+		testContext.client,
+		"DescribeListenerDetailWithContext",
+		func(_ context.Context, _ *albv20251030.DescribeListenerDetailRequest) (*albv20251030.DescribeListenerDetailResponse, error) {
+			return describeAlbListenerDetailResponse(), nil
+		},
+	)
 
 	createResp := &resource.CreateResponse{State: tfsdk.State{Schema: testContext.schema}}
 	testContext.resource.Create(context.Background(), resource.CreateRequest{Plan: testContext.plan(t, sampleAlbListenerModel(context.Background(), t))}, createResp)
@@ -739,6 +778,13 @@ func TestAlbListenerUpdate(t *testing.T) {
 			return describeAlbListenersResponse(sampleAlbListenerOutput()), nil
 		},
 	)
+	patches.ApplyMethodFunc(
+		testContext.client,
+		"DescribeListenerDetailWithContext",
+		func(_ context.Context, _ *albv20251030.DescribeListenerDetailRequest) (*albv20251030.DescribeListenerDetailResponse, error) {
+			return describeAlbListenerDetailResponse(), nil
+		},
+	)
 
 	stateModel := sampleAlbListenerModel(context.Background(), t)
 	planModel := sampleAlbListenerModel(context.Background(), t)
@@ -858,5 +904,317 @@ func TestAlbListenerImportState(t *testing.T) {
 	importer.ImportState(context.Background(), resource.ImportStateRequest{ID: albTestListenerId}, invalidResp)
 	if !invalidResp.Diagnostics.HasError() {
 		t.Fatal("ImportState accepted a malformed import id")
+	}
+}
+
+// TestAlbListenerReadAfterImport covers the state terraform import produces: the
+// import id is the only populated attribute, so the Read that follows must fill
+// the required attributes from the cloud instead of rejecting the empty state.
+func TestAlbListenerReadAfterImport(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	testContext := newAlbListenerTestContext(t, patches)
+	patches.ApplyMethodFunc(
+		testContext.client,
+		"DescribeListenersWithContext",
+		func(_ context.Context, _ *albv20251030.DescribeListenersRequest) (*albv20251030.DescribeListenersResponse, error) {
+			return describeAlbListenersResponse(sampleAlbListenerOutput()), nil
+		},
+	)
+	patches.ApplyMethodFunc(
+		testContext.client,
+		"DescribeListenerDetailWithContext",
+		func(_ context.Context, _ *albv20251030.DescribeListenerDetailRequest) (*albv20251030.DescribeListenerDetailResponse, error) {
+			return describeAlbListenerDetailResponse(), nil
+		},
+	)
+
+	importResp := &resource.ImportStateResponse{State: tfsdk.State{Schema: testContext.schema, Raw: nullStateRaw(t, testContext.schema)}}
+	importer, ok := testContext.resource.(resource.ResourceWithImportState)
+	if !ok {
+		t.Fatal("resource does not implement resource.ResourceWithImportState")
+	}
+	importer.ImportState(
+		context.Background(),
+		resource.ImportStateRequest{ID: albTestLoadBalancerId + tccommon.FILED_SP + albTestListenerId},
+		importResp,
+	)
+	if importResp.Diagnostics.HasError() {
+		t.Fatalf("ImportState returned diagnostics: %v", importResp.Diagnostics.Errors())
+	}
+
+	readResp := &resource.ReadResponse{State: importResp.State}
+	testContext.resource.Read(context.Background(), resource.ReadRequest{State: importResp.State}, readResp)
+	if readResp.Diagnostics.HasError() {
+		t.Fatalf("Read after import returned diagnostics: %v", readResp.Diagnostics.Errors())
+	}
+
+	var state AlbListenerResourceModel
+	if diags := readResp.State.Get(context.Background(), &state); diags.HasError() {
+		t.Fatalf("failed to read state: %v", diags.Errors())
+	}
+	if state.ListenerPort.ValueInt64() != 80 {
+		t.Errorf("state listener_port = %v, want 80", state.ListenerPort)
+	}
+	if state.ListenerProtocol.ValueString() != "HTTP" {
+		t.Errorf("state listener_protocol = %q, want HTTP", state.ListenerProtocol.ValueString())
+	}
+	// default_actions is only reported by DescribeListenerDetail, so it has to
+	// be filled from there rather than left null.
+	if state.DefaultActions.IsNull() || len(state.DefaultActions.Elements()) != 1 {
+		t.Fatalf("state default_actions was not filled from the listener detail")
+	}
+	if len(state.CaCertificateIds.Elements()) != 1 || len(state.CertificateIds.Elements()) != 1 {
+		t.Errorf("state ca_certificate_ids / certificate_ids were not filled from the listener detail")
+	}
+}
+
+// TestAlbListenerCreateKeepsSettledValues verifies a plan holding unknown values
+// for unconfigured Optional+Computed attributes ends up with a fully known
+// state: the framework rejects unknown values written back to state.
+func TestAlbListenerCreateKeepsSettledValues(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	testContext := newAlbListenerTestContext(t, patches)
+	patches.ApplyMethodFunc(
+		testContext.client,
+		"CreateListenerWithContext",
+		func(_ context.Context, _ *albv20251030.CreateListenerRequest) (*albv20251030.CreateListenerResponse, error) {
+			return &albv20251030.CreateListenerResponse{
+				Response: &albv20251030.CreateListenerResponseParams{ListenerId: helper.String(albTestListenerId)},
+			}, nil
+		},
+	)
+	patches.ApplyMethodFunc(
+		testContext.client,
+		"DescribeListenersWithContext",
+		func(_ context.Context, _ *albv20251030.DescribeListenersRequest) (*albv20251030.DescribeListenersResponse, error) {
+			return describeAlbListenersResponse(sampleAlbListenerOutput()), nil
+		},
+	)
+	patches.ApplyMethodFunc(
+		testContext.client,
+		"DescribeListenerDetailWithContext",
+		func(_ context.Context, _ *albv20251030.DescribeListenerDetailRequest) (*albv20251030.DescribeListenerDetailResponse, error) {
+			// The cloud reports the action but omits the optional nested
+			// attributes, the shape that used to leak unknowns into state.
+			return &albv20251030.DescribeListenerDetailResponse{
+				Response: &albv20251030.DescribeListenerDetailResponseParams{
+					ListenerId: helper.String(albTestListenerId),
+					DefaultActions: []*albv20251030.DefaultAction{
+						{
+							Type: helper.String("TargetGroup"),
+							TargetGroupConfig: &albv20251030.TargetGroupConfig{
+								TargetGroups: []*albv20251030.TargetGroupTuple{
+									{TargetGroupId: helper.String(albTestTargetGroupId)},
+								},
+							},
+						},
+					},
+				},
+			}, nil
+		},
+	)
+
+	ctx := context.Background()
+	model := sampleAlbListenerModel(ctx, t)
+	model.Tags = types.ListUnknown(albTagObjectType)
+	model.CaCertificateIds = types.SetUnknown(types.StringType)
+	model.CertificateIds = types.SetUnknown(types.StringType)
+
+	createResp := &resource.CreateResponse{State: tfsdk.State{Schema: testContext.schema}}
+	testContext.resource.Create(ctx, resource.CreateRequest{Plan: testContext.plan(t, model)}, createResp)
+	if createResp.Diagnostics.HasError() {
+		t.Fatalf("Create returned diagnostics: %v", createResp.Diagnostics.Errors())
+	}
+
+	var state AlbListenerResourceModel
+	if diags := createResp.State.Get(ctx, &state); diags.HasError() {
+		t.Fatalf("failed to read state: %v", diags.Errors())
+	}
+
+	var actions []albDefaultActionModel
+	if diags := state.DefaultActions.ElementsAs(ctx, &actions, false); diags.HasError() {
+		t.Fatalf("default_actions has unknown elements: %v", diags.Errors())
+	}
+	if len(actions) != 1 {
+		t.Fatalf("expected 1 action, got %d", len(actions))
+	}
+	var configs []albTargetGroupConfigModel
+	if diags := actions[0].TargetGroupConfig.ElementsAs(ctx, &configs, false); diags.HasError() {
+		t.Fatalf("target_group_config has unknown elements: %v", diags.Errors())
+	}
+	var groups []albTargetGroupModel
+	if diags := configs[0].TargetGroups.ElementsAs(ctx, &groups, false); diags.HasError() {
+		t.Fatalf("target_groups has unknown elements: %v", diags.Errors())
+	}
+	if groups[0].Weight.IsUnknown() {
+		t.Error("state weight is still unknown after apply")
+	}
+	// weight and target_group_sticky_session are Optional+Computed nested
+	// attributes the cloud may omit: the configured values must survive so
+	// Terraform does not report an inconsistent result after apply.
+	if groups[0].Weight.ValueInt64() != 10 {
+		t.Errorf("state weight = %v, want the configured 10", groups[0].Weight)
+	}
+	var sessions []albTargetGroupStickySessionModel
+	if diags := configs[0].TargetGroupStickySession.ElementsAs(ctx, &sessions, false); diags.HasError() {
+		t.Fatalf("target_group_sticky_session has unknown elements: %v", diags.Errors())
+	}
+	if len(sessions) != 1 || !sessions[0].Enabled.ValueBool() || sessions[0].Timeout.ValueInt64() != 1000 {
+		t.Errorf("state target_group_sticky_session = %v, want the configured enabled=true timeout=1000", sessions[0])
+	}
+	if state.CaCertificateIds.IsUnknown() || state.CertificateIds.IsUnknown() || state.Tags.IsUnknown() {
+		t.Error("state still holds unknown values after apply")
+	}
+}
+
+// TestFlattenAlbDefaultActions verifies the detail action list is mapped onto
+// the schema and that an empty response keeps the previous value.
+func TestFlattenAlbDefaultActions(t *testing.T) {
+	ctx := context.Background()
+
+	list, diags := flattenAlbDefaultActions(ctx, []*albv20251030.DefaultAction{
+		{
+			Type: helper.String("TargetGroup"),
+			TargetGroupConfig: &albv20251030.TargetGroupConfig{
+				TargetGroups: []*albv20251030.TargetGroupTuple{
+					{TargetGroupId: helper.String(albTestTargetGroupId), Weight: helper.Int64(20)},
+				},
+			},
+		},
+	}, types.ListNull(albDefaultActionObjectType))
+	if diags.HasError() {
+		t.Fatalf("flattenAlbDefaultActions returned diagnostics: %v", diags)
+	}
+
+	var actions []albDefaultActionModel
+	if diags := list.ElementsAs(ctx, &actions, false); diags.HasError() {
+		t.Fatalf("elements as failed: %v", diags)
+	}
+	if len(actions) != 1 || actions[0].Type.ValueString() != "TargetGroup" {
+		t.Fatalf("unexpected actions: %v", actions)
+	}
+
+	prev := buildDefaultActionsList(ctx, t)
+	kept, diags := flattenAlbDefaultActions(ctx, nil, prev)
+	if diags.HasError() {
+		t.Fatalf("unexpected diagnostics: %v", diags)
+	}
+	if !kept.Equal(prev) {
+		t.Error("flattenAlbDefaultActions dropped the configured actions")
+	}
+
+	nullList, diags := flattenAlbDefaultActions(ctx, nil, types.ListNull(albDefaultActionObjectType))
+	if diags.HasError() {
+		t.Fatalf("unexpected diagnostics: %v", diags)
+	}
+	if !nullList.IsNull() {
+		t.Errorf("expected a null list, got %v", nullList)
+	}
+}
+
+// TestFlattenAlbStringSet verifies the certificate id sets are read back and
+// that an empty response keeps the configured value.
+func TestFlattenAlbStringSet(t *testing.T) {
+	ctx := context.Background()
+
+	set, diags := flattenAlbStringSet(ctx, []*string{helper.String("cert-1"), nil}, types.SetNull(types.StringType))
+	if diags.HasError() {
+		t.Fatalf("flattenAlbStringSet returned diagnostics: %v", diags)
+	}
+	if len(set.Elements()) != 1 {
+		t.Errorf("expected 1 element, got %d", len(set.Elements()))
+	}
+
+	prev, diags := types.SetValueFrom(ctx, types.StringType, []string{"cert-1"})
+	if diags.HasError() {
+		t.Fatalf("build set failed: %v", diags)
+	}
+	kept, diags := flattenAlbStringSet(ctx, nil, prev)
+	if diags.HasError() {
+		t.Fatalf("unexpected diagnostics: %v", diags)
+	}
+	if !kept.Equal(prev) {
+		t.Error("flattenAlbStringSet dropped the configured value")
+	}
+
+	nullSet, diags := flattenAlbStringSet(ctx, nil, types.SetNull(types.StringType))
+	if diags.HasError() {
+		t.Fatalf("unexpected diagnostics: %v", diags)
+	}
+	if !nullSet.IsNull() {
+		t.Errorf("expected a null set, got %v", nullSet)
+	}
+}
+
+// TestAlbListenerDescribeDetailByIdNotFound verifies a removed listener is
+// reported as "no detail, no error" so the caller keeps the state it has.
+func TestAlbListenerDescribeDetailByIdNotFound(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	testContext := newAlbListenerTestContext(t, patches)
+	patches.ApplyMethodFunc(
+		testContext.client,
+		"DescribeListenerDetailWithContext",
+		func(_ context.Context, _ *albv20251030.DescribeListenerDetailRequest) (*albv20251030.DescribeListenerDetailResponse, error) {
+			return nil, sdkerr.NewTencentCloudSDKError("ResourceNotFound.Listener", "listener not found", "req-1")
+		},
+	)
+
+	service := NewAlbService(&connectivity.TencentCloudClient{})
+	patches.ApplyMethodReturn(
+		(*connectivity.TencentCloudClient)(nil),
+		"UseAlbV20251030Client",
+		testContext.client,
+	)
+
+	detail, err := service.DescribeListenerDetailById(context.Background(), albTestLoadBalancerId, albTestListenerId)
+	if err != nil {
+		t.Fatalf("DescribeListenerDetailById returned an error for a NotFound answer: %v", err)
+	}
+	if detail != nil {
+		t.Errorf("expected a nil detail for a removed listener, got %v", detail)
+	}
+}
+
+// TestAlbListenerReadDetailUntouchedWhenMissing verifies Read keeps the
+// configured attributes when the detail call reports the listener as gone.
+func TestAlbListenerReadDetailUntouchedWhenMissing(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	testContext := newAlbListenerTestContext(t, patches)
+	patches.ApplyMethodFunc(
+		testContext.client,
+		"DescribeListenersWithContext",
+		func(_ context.Context, _ *albv20251030.DescribeListenersRequest) (*albv20251030.DescribeListenersResponse, error) {
+			return describeAlbListenersResponse(sampleAlbListenerOutput()), nil
+		},
+	)
+	patches.ApplyMethodFunc(
+		testContext.client,
+		"DescribeListenerDetailWithContext",
+		func(_ context.Context, _ *albv20251030.DescribeListenerDetailRequest) (*albv20251030.DescribeListenerDetailResponse, error) {
+			return nil, sdkerr.NewTencentCloudSDKError("ResourceNotFound.Listener", "listener not found", "req-1")
+		},
+	)
+
+	model := sampleAlbListenerModel(context.Background(), t)
+	readResp := &resource.ReadResponse{State: testContext.state(t, model)}
+	testContext.resource.Read(context.Background(), resource.ReadRequest{State: testContext.state(t, model)}, readResp)
+	if readResp.Diagnostics.HasError() {
+		t.Fatalf("Read returned diagnostics: %v", readResp.Diagnostics.Errors())
+	}
+
+	var state AlbListenerResourceModel
+	if diags := readResp.State.Get(context.Background(), &state); diags.HasError() {
+		t.Fatalf("failed to read state: %v", diags.Errors())
+	}
+	if state.DefaultActions.IsNull() || len(state.DefaultActions.Elements()) != 1 {
+		t.Error("Read dropped default_actions when the detail call reported the listener as gone")
 	}
 }

@@ -587,7 +587,20 @@ func (r *AlbListenerResource) Create(ctx context.Context, req resource.CreateReq
 		return
 	}
 
-	resp.Diagnostics.Append(refreshAlbListenerModel(ctx, &plan, loadBalancerId, item)...)
+	// DescribeListeners does not report default_actions, ca_certificate_ids or
+	// certificate_ids; DescribeListenerDetail is the only read path that does.
+	// A nil detail means the listener is already gone, which the caller handles
+	// as "keep what is already in state".
+	detail, err := service.DescribeListenerDetailById(ctx, loadBalancerId, listenerId)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error reading ALB listener detail",
+			fmt.Sprintf("DescribeListenerDetail failed (%s): %s", albListenerScope(loadBalancerId, listenerId), err),
+		)
+		return
+	}
+
+	resp.Diagnostics.Append(refreshAlbListenerModel(ctx, &plan, loadBalancerId, item, detail)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
@@ -637,7 +650,20 @@ func (r *AlbListenerResource) Read(ctx context.Context, req resource.ReadRequest
 		return
 	}
 
-	resp.Diagnostics.Append(refreshAlbListenerModel(ctx, &state, loadBalancerId, item)...)
+	// DescribeListeners does not report default_actions, ca_certificate_ids or
+	// certificate_ids; DescribeListenerDetail is the only read path that does.
+	// A nil detail means the listener is already gone, which the caller handles
+	// as "keep what is already in state".
+	detail, err := service.DescribeListenerDetailById(ctx, loadBalancerId, listenerId)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error reading ALB listener detail",
+			fmt.Sprintf("DescribeListenerDetail failed (%s): %s", albListenerScope(loadBalancerId, listenerId), err),
+		)
+		return
+	}
+
+	resp.Diagnostics.Append(refreshAlbListenerModel(ctx, &state, loadBalancerId, item, detail)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
@@ -748,8 +774,21 @@ func (r *AlbListenerResource) Update(ctx context.Context, req resource.UpdateReq
 		return
 	}
 
+	// DescribeListeners does not report default_actions, ca_certificate_ids or
+	// certificate_ids; DescribeListenerDetail is the only read path that does.
+	// A nil detail means the listener is already gone, which the caller handles
+	// as "keep what is already in state".
+	detail, err := service.DescribeListenerDetailById(ctx, loadBalancerId, listenerId)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error reading ALB listener detail",
+			fmt.Sprintf("DescribeListenerDetail failed (%s): %s", albListenerScope(loadBalancerId, listenerId), err),
+		)
+		return
+	}
+
 	plan.Id = state.Id
-	resp.Diagnostics.Append(refreshAlbListenerModel(ctx, &plan, loadBalancerId, item)...)
+	resp.Diagnostics.Append(refreshAlbListenerModel(ctx, &plan, loadBalancerId, item, detail)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
@@ -874,11 +913,11 @@ func albListenerScope(loadBalancerId, listenerId string) string {
 
 // refreshAlbListenerModel copies the cloud state into the model.
 //
-// Several configured attributes are not echoed back by DescribeListeners
-// (default_actions, ca_certificate_ids and certificate_ids), so their
-// plan/state values are kept as they are; fields the API omits keep their
-// previous value so a configured value is never nulled out after apply.
-func refreshAlbListenerModel(ctx context.Context, m *AlbListenerResourceModel, loadBalancerId string, item *albv20251030.ListenerOutput) diag.Diagnostics {
+// DescribeListeners does not echo back default_actions, ca_certificate_ids and
+// certificate_ids, so those are taken from the listener detail response when it
+// is available. Fields the API omits keep their previous value so a configured
+// value is never nulled out after apply.
+func refreshAlbListenerModel(ctx context.Context, m *AlbListenerResourceModel, loadBalancerId string, item *albv20251030.ListenerOutput, detail *albv20251030.DescribeListenerDetailResponseParams) diag.Diagnostics {
 	var diags diag.Diagnostics
 
 	if item == nil {
@@ -914,15 +953,30 @@ func refreshAlbListenerModel(ctx context.Context, m *AlbListenerResourceModel, l
 	diags.Append(xffDiags...)
 	m.XForwardedForConfig = xForwardedForConfig
 
-	// ca_certificate_ids and certificate_ids are not echoed back by
-	// DescribeListeners, so they keep their plan value. A plan may hold an
-	// unknown value for an unconfigured Optional+Computed attribute and state
-	// must never hold unknowns, so those are normalized to null here.
-	if m.CaCertificateIds.IsUnknown() {
-		m.CaCertificateIds = types.SetNull(types.StringType)
-	}
-	if m.CertificateIds.IsUnknown() {
-		m.CertificateIds = types.SetNull(types.StringType)
+	// default_actions, ca_certificate_ids and certificate_ids are only
+	// reported by DescribeListenerDetail. A plan may hold an unknown value for
+	// an unconfigured Optional+Computed attribute and state must never hold
+	// unknowns, so those are normalized to null when the cloud does not report
+	// them.
+	if detail != nil {
+		defaultActions, defaultActionDiags := flattenAlbDefaultActions(ctx, detail.DefaultActions, m.DefaultActions)
+		diags.Append(defaultActionDiags...)
+		m.DefaultActions = defaultActions
+
+		caCertificateIds, caDiags := flattenAlbStringSet(ctx, detail.CaCertificateIds, m.CaCertificateIds)
+		diags.Append(caDiags...)
+		m.CaCertificateIds = caCertificateIds
+
+		certificateIds, certificateDiags := flattenAlbStringSet(ctx, detail.CertificateIds, m.CertificateIds)
+		diags.Append(certificateDiags...)
+		m.CertificateIds = certificateIds
+	} else {
+		if m.CaCertificateIds.IsUnknown() {
+			m.CaCertificateIds = types.SetNull(types.StringType)
+		}
+		if m.CertificateIds.IsUnknown() {
+			m.CertificateIds = types.SetNull(types.StringType)
+		}
 	}
 
 	if diags.HasError() {
@@ -934,12 +988,219 @@ func refreshAlbListenerModel(ctx context.Context, m *AlbListenerResourceModel, l
 	if m.ListenerPort.IsNull() || m.ListenerProtocol.IsNull() || m.DefaultActions.IsNull() {
 		diags.AddError(
 			"Malformed ALB listener response",
-			fmt.Sprintf("DescribeListeners returned no listener_port or listener_protocol (%s).",
+			fmt.Sprintf("DescribeListeners returned no listener_port, listener_protocol or default_actions (%s).",
 				albListenerScope(loadBalancerId, m.ListenerId.ValueString())),
 		)
 	}
 
 	return diags
+}
+
+// flattenAlbDefaultActions converts the cloud action list into the
+// default_actions list value.
+//
+// weight, target_group_sticky_session and timeout are Optional+Computed, so a
+// value the practitioner configured is restored from prevList when the cloud
+// omits it: writing null for a configured value makes Terraform report
+// "provider produced inconsistent result after apply".
+func flattenAlbDefaultActions(ctx context.Context, items []*albv20251030.DefaultAction, prevList types.List) (types.List, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	if len(items) == 0 {
+		if !prevList.IsNull() && !prevList.IsUnknown() {
+			return prevList, diags
+		}
+		return types.ListNull(albDefaultActionObjectType), diags
+	}
+
+	var prevActions []albDefaultActionModel
+	if !prevList.IsNull() && !prevList.IsUnknown() {
+		diags.Append(prevList.ElementsAs(ctx, &prevActions, false)...)
+		if diags.HasError() {
+			return types.ListNull(albDefaultActionObjectType), diags
+		}
+	}
+
+	models := make([]albDefaultActionModel, 0, len(items))
+	for index, item := range items {
+		if item == nil {
+			continue
+		}
+
+		var prev albDefaultActionModel
+		if index < len(prevActions) {
+			prev = prevActions[index]
+		}
+
+		targetGroupConfigs, configDiags := flattenAlbTargetGroupConfigs(ctx, item.TargetGroupConfig, prev.TargetGroupConfig)
+		diags.Append(configDiags...)
+		if diags.HasError() {
+			return types.ListNull(albDefaultActionObjectType), diags
+		}
+
+		models = append(models, albDefaultActionModel{
+			TargetGroupConfig: targetGroupConfigs,
+			Type:              fwhelper.StringValueOrPrev(item.Type, prev.Type),
+		})
+	}
+
+	if len(models) == 0 {
+		return types.ListNull(albDefaultActionObjectType), diags
+	}
+
+	list, listDiags := types.ListValueFrom(ctx, albDefaultActionObjectType, models)
+	diags.Append(listDiags...)
+	return list, diags
+}
+
+// flattenAlbTargetGroupConfigs converts the cloud target group configuration
+// into the target_group_config list value.
+func flattenAlbTargetGroupConfigs(ctx context.Context, config *albv20251030.TargetGroupConfig, prevList types.List) (types.List, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	if config == nil {
+		return types.ListNull(albTargetGroupConfigObjectType), diags
+	}
+
+	var prevConfigs []albTargetGroupConfigModel
+	if !prevList.IsNull() && !prevList.IsUnknown() {
+		diags.Append(prevList.ElementsAs(ctx, &prevConfigs, false)...)
+		if diags.HasError() {
+			return types.ListNull(albTargetGroupConfigObjectType), diags
+		}
+	}
+
+	var prev albTargetGroupConfigModel
+	if len(prevConfigs) > 0 {
+		prev = prevConfigs[0]
+	}
+
+	targetGroups, targetGroupDiags := flattenAlbTargetGroups(ctx, config.TargetGroups, prev.TargetGroups)
+	diags.Append(targetGroupDiags...)
+	if diags.HasError() {
+		return types.ListNull(albTargetGroupConfigObjectType), diags
+	}
+
+	stickySessions, stickyDiags := flattenAlbTargetGroupStickySessions(ctx, config.TargetGroupStickySession, prev.TargetGroupStickySession)
+	diags.Append(stickyDiags...)
+	if diags.HasError() {
+		return types.ListNull(albTargetGroupConfigObjectType), diags
+	}
+
+	list, listDiags := types.ListValueFrom(ctx, albTargetGroupConfigObjectType, []albTargetGroupConfigModel{
+		{
+			TargetGroups:             targetGroups,
+			TargetGroupStickySession: stickySessions,
+		},
+	})
+	diags.Append(listDiags...)
+	return list, diags
+}
+
+// flattenAlbTargetGroups converts the cloud target group list into the
+// target_groups list value. An element the cloud omits keeps the configured
+// weight from the previous value and, when the cloud reports no element at
+// all, the whole previous list is kept.
+func flattenAlbTargetGroups(ctx context.Context, items []*albv20251030.TargetGroupTuple, prevList types.List) (types.List, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	var prevGroups []albTargetGroupModel
+	if !prevList.IsNull() && !prevList.IsUnknown() {
+		diags.Append(prevList.ElementsAs(ctx, &prevGroups, false)...)
+		if diags.HasError() {
+			return types.ListNull(albTargetGroupObjectType), diags
+		}
+	}
+
+	models := make([]albTargetGroupModel, 0, len(items))
+	for index, item := range items {
+		if item == nil {
+			continue
+		}
+
+		var prev albTargetGroupModel
+		if index < len(prevGroups) {
+			prev = prevGroups[index]
+		}
+
+		models = append(models, albTargetGroupModel{
+			TargetGroupId: fwhelper.StringPointerValueOrNull(item.TargetGroupId),
+			Weight:        int64ValueOrPrev(item.Weight, prev.Weight),
+		})
+	}
+
+	if len(models) == 0 {
+		if !prevList.IsNull() && !prevList.IsUnknown() {
+			return prevList, diags
+		}
+		return types.ListNull(albTargetGroupObjectType), diags
+	}
+
+	list, listDiags := types.ListValueFrom(ctx, albTargetGroupObjectType, models)
+	diags.Append(listDiags...)
+	return list, diags
+}
+
+// flattenAlbTargetGroupStickySessions converts the cloud sticky session
+// configuration into the target_group_sticky_session list value. When the cloud
+// omits the object, the configured value is kept.
+func flattenAlbTargetGroupStickySessions(ctx context.Context, session *albv20251030.TargetGroupStickySession, prevList types.List) (types.List, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	if session == nil {
+		if !prevList.IsNull() && !prevList.IsUnknown() {
+			return prevList, diags
+		}
+		return types.ListNull(albTargetGroupStickySessionObjectType), diags
+	}
+
+	var prevSessions []albTargetGroupStickySessionModel
+	if !prevList.IsNull() && !prevList.IsUnknown() {
+		diags.Append(prevList.ElementsAs(ctx, &prevSessions, false)...)
+		if diags.HasError() {
+			return types.ListNull(albTargetGroupStickySessionObjectType), diags
+		}
+	}
+
+	var prev albTargetGroupStickySessionModel
+	if len(prevSessions) > 0 {
+		prev = prevSessions[0]
+	}
+
+	list, listDiags := types.ListValueFrom(ctx, albTargetGroupStickySessionObjectType, []albTargetGroupStickySessionModel{
+		{
+			Enabled: boolValueOrPrev(session.Enabled, prev.Enabled),
+			Timeout: int64ValueOrPrev(session.Timeout, prev.Timeout),
+		},
+	})
+	diags.Append(listDiags...)
+	return list, diags
+}
+
+// flattenAlbStringSet converts a cloud string list into a set value. When the
+// cloud reports no element at all, the previous set is kept so a configured
+// value is not nulled out.
+func flattenAlbStringSet(_ context.Context, items []*string, prevSet types.Set) (types.Set, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	values := make([]attr.Value, 0, len(items))
+	for _, item := range items {
+		if item == nil {
+			continue
+		}
+		values = append(values, types.StringValue(*item))
+	}
+
+	if len(values) == 0 {
+		if !prevSet.IsNull() && !prevSet.IsUnknown() {
+			return prevSet, diags
+		}
+		return types.SetNull(types.StringType), diags
+	}
+
+	set, setDiags := types.SetValue(types.StringType, values)
+	diags.Append(setDiags...)
+	return set, diags
 }
 
 // expandAlbDefaultActions converts the planned default_actions list into the
@@ -1229,6 +1490,20 @@ func flattenAlbXForwardedForConfig(ctx context.Context, item *albv20251030.XForw
 	list, listDiags := types.ListValueFrom(ctx, albXForwardedForConfigObjectType, []albXForwardedForConfigModel{model})
 	diags.Append(listDiags...)
 	return list, diags
+}
+
+// int64ValueOrPrev returns the value reported by the cloud and, when the API
+// omitted it, falls back to the previous plan/state value. It is the *int64
+// counterpart of fwhelper.Int64ValueOrPrev, which only handles *uint64.
+func int64ValueOrPrev(cloud *int64, prev types.Int64) types.Int64 {
+	switch {
+	case cloud != nil:
+		return types.Int64Value(*cloud)
+	case !prev.IsNull() && !prev.IsUnknown():
+		return prev
+	default:
+		return types.Int64Null()
+	}
 }
 
 // boolValueOrPrev returns the value reported by the cloud and, when the API
