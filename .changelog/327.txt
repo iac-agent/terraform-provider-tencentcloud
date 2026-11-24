@@ -1,0 +1,3 @@
+```release-note:feature
+alb: support new resource for creating ALB forwarding rules
+```
