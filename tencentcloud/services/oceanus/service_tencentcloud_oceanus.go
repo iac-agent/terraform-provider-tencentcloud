@@ -949,3 +949,58 @@ func (me *OceanusService) DescribeOceanusMetaTableByFilter(ctx context.Context, 
 	MetaTable = response.Response
 	return
 }
+
+func (me *OceanusService) DescribeOceanusClusterById(ctx context.Context, clusterId string) (cluster *oceanus.Cluster, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := oceanus.NewDescribeClustersRequest()
+	request.ClusterIds = common.StringPtrs([]string{clusterId})
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+
+	response, err := me.client.UseOceanusClient().DescribeClusters(request)
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response == nil || response.Response == nil || len(response.Response.ClusterSet) < 1 {
+		return
+	}
+
+	cluster = response.Response.ClusterSet[0]
+	return
+}
+
+func (me *OceanusService) DeleteOceanusOceanusClusterById(ctx context.Context, clusterId string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := oceanus.NewDeleteOceanusClusterRequest()
+	request.ClusterId = common.StringPtrs([]string{clusterId})[0]
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+
+	response, err := me.client.UseOceanusClient().DeleteOceanusCluster(request)
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	return
+}
