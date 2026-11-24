@@ -1222,6 +1222,9 @@ github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721
 # github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags v1.3.209
 ## explicit; go 1.14
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags/v20250920
+# github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb v1.3.194
+## explicit; go 1.14
+github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb/v20251030
 # github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos v1.3.131
 ## explicit; go 1.14
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20200309
