@@ -1,1 +1,3 @@
-tencentcloud_alb_rules
+```release-note:new-resource
+resource/tencentcloud_alb_rules: ALB forwarding rule management
+```
