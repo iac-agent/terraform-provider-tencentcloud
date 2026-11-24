@@ -1309,8 +1309,7 @@ tencentcloud_oceanus_trigger_job_savepoint
 tencentcloud_oceanus_resource
 tencentcloud_oceanus_resource_config
 tencentcloud_oceanus_work_space
-
-Virtual Private Cloud(VPC)
+tencentcloud_oceanus_oceanus_cluster
 Data Source
 tencentcloud_route_table
 tencentcloud_security_group

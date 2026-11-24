@@ -1,0 +1,3 @@
+```release-note:new-resource
+resource/tencentcloud_oceanus_oceanus_cluster: new resource for creating Oceanus cluster
+```
