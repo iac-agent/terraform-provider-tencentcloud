@@ -46,7 +46,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/clb v1.3.173
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit v1.3.40
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls v1.3.186
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.211
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.218
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v1.3.176
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v1.3.183
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cwp v1.3.30
@@ -337,6 +337,7 @@ require (
 	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/t-yuki/gocover-cobertura v0.0.0-20180217150009-aaee18c8195c // indirect
 	github.com/tdakkota/asciicheck v0.2.0 // indirect
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb v1.3.218 // indirect
 	github.com/tetafro/godot v1.4.11 // indirect
 	github.com/tidwall/gjson v1.17.0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
