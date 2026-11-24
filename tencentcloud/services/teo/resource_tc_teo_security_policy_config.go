@@ -1352,6 +1352,11 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 													Optional:    true,
 													Description: "The specific content of the precise rate limit must conform to the expression syntax. For detailed specifications, see the product documentation.",
 												},
+												"mode": {
+													Type:        schema.TypeString,
+													Optional:    true,
+													Description: "Rate limiting method. Within the statistics time window CountingPeriod, for requests matching the feature CountBy, the following rate limiting methods are supported: <li>Block: block access source. When the number of statistics exceeds the threshold MaxRequestThreshold, within the ActionDuration duration, execute Action handling for all subsequent requests matching the feature; </li><li>Throttle: only handle over-limit requests. When the number of statistics exceeds the threshold MaxRequestThreshold, only requests exceeding the threshold are handled, and handling stops after the window ends. At this time, the ActionDuration parameter will be ignored. </li><br>Default value is Block.",
+												},
 												"count_by": {
 													Type:        schema.TypeSet,
 													Optional:    true,
@@ -3849,6 +3854,10 @@ func resourceTencentCloudTeoSecurityPolicyConfigRead(d *schema.ResourceData, met
 					rulesMap["condition"] = rules.Condition
 				}
 
+				if rules.Mode != nil {
+					rulesMap["mode"] = rules.Mode
+				}
+
 				if rules.CountBy != nil {
 					rulesMap["count_by"] = rules.CountBy
 				}
@@ -5248,8 +5257,8 @@ func resourceTencentCloudTeoSecurityPolicyConfigUpdate(d *schema.ResourceData, m
 				for _, item := range v.([]interface{}) {
 					rulesMap := item.(map[string]interface{})
 					rateLimitingRule := teov20220901.RateLimitingRule{}
-					if v, ok := rulesMap["id"]; ok {
-						rateLimitingRule.Id = helper.String(v.(string))
+					if v, ok := rulesMap["id"].(string); ok && v != "" {
+						rateLimitingRule.Id = helper.String(v)
 					}
 
 					if v, ok := rulesMap["name"]; ok {
@@ -5258,6 +5267,10 @@ func resourceTencentCloudTeoSecurityPolicyConfigUpdate(d *schema.ResourceData, m
 
 					if v, ok := rulesMap["condition"]; ok {
 						rateLimitingRule.Condition = helper.String(v.(string))
+					}
+
+					if v, ok := rulesMap["mode"]; ok {
+						rateLimitingRule.Mode = helper.String(v.(string))
 					}
 
 					if v, ok := rulesMap["count_by"]; ok {
