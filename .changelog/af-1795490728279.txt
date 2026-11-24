@@ -1,0 +1,3 @@
+```release-note
+add fields to 接入参数 Mode
+```

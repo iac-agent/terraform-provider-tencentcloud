@@ -1706,3 +1706,134 @@ func TestFrequentScanningProtection_UpdateExpand(t *testing.T) {
 	// The output-only Id field MUST NOT be sent in the expand/update request.
 	assert.Nil(t, fsp.Id)
 }
+
+// TestRateLimitingRule_Mode_ReadFlatten tests Read flattens RateLimitingRule.Mode into "mode"
+func TestRateLimitingRule_Mode_ReadFlatten(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaSecurityPolicy().client, "UseTeoV20220901Client", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeSecurityPolicyWithContext", func(ctx context.Context, request *teov20220901.DescribeSecurityPolicyRequest) (*teov20220901.DescribeSecurityPolicyResponse, error) {
+		resp := teov20220901.NewDescribeSecurityPolicyResponse()
+		resp.Response = &teov20220901.DescribeSecurityPolicyResponseParams{
+			SecurityPolicy: &teov20220901.SecurityPolicy{
+				RateLimitingRules: &teov20220901.RateLimitingRules{
+					Rules: []*teov20220901.RateLimitingRule{
+						{
+							Id:        ptrStringSecurityPolicy("rule-001"),
+							Name:      ptrStringSecurityPolicy("rate-limit-1"),
+							Condition: ptrStringSecurityPolicy("${http.request.uri.path} eq '/login'"),
+							Mode:      ptrStringSecurityPolicy("Throttle"),
+						},
+					},
+				},
+			},
+			RequestId: ptrStringSecurityPolicy("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaSecurityPolicy()
+	res := teo.ResourceTencentCloudTeoSecurityPolicyConfig()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+		"entity":  "ZoneDefaultPolicy",
+	})
+	d.SetId("zone-12345678#ZoneDefaultPolicy")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+
+	securityPolicy := d.Get("security_policy").([]interface{})
+	assert.Len(t, securityPolicy, 1)
+	spMap := securityPolicy[0].(map[string]interface{})
+
+	rateLimitingRules := spMap["rate_limiting_rules"].([]interface{})
+	assert.Len(t, rateLimitingRules, 1)
+	rlrMap := rateLimitingRules[0].(map[string]interface{})
+
+	rules := rlrMap["rules"].([]interface{})
+	assert.Len(t, rules, 1)
+	ruleMap := rules[0].(map[string]interface{})
+	assert.Equal(t, "rule-001", ruleMap["id"])
+	assert.Equal(t, "rate-limit-1", ruleMap["name"])
+	assert.Equal(t, "Throttle", ruleMap["mode"])
+}
+
+// TestRateLimitingRule_Mode_UpdateExpand tests Update expands "mode" into RateLimitingRule.Mode
+func TestRateLimitingRule_Mode_UpdateExpand(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(newMockMetaSecurityPolicy().client, "UseTeoV20220901Client", teoClient)
+
+	var capturedRequest *teov20220901.ModifySecurityPolicyRequest
+	patches.ApplyMethodFunc(teoClient, "ModifySecurityPolicyWithContext", func(_ context.Context, request *teov20220901.ModifySecurityPolicyRequest) (*teov20220901.ModifySecurityPolicyResponse, error) {
+		capturedRequest = request
+		resp := teov20220901.NewModifySecurityPolicyResponse()
+		resp.Response = &teov20220901.ModifySecurityPolicyResponseParams{
+			RequestId: ptrStringSecurityPolicy("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	patches.ApplyMethodFunc(teoClient, "DescribeSecurityPolicyWithContext", func(ctx context.Context, request *teov20220901.DescribeSecurityPolicyRequest) (*teov20220901.DescribeSecurityPolicyResponse, error) {
+		resp := teov20220901.NewDescribeSecurityPolicyResponse()
+		resp.Response = &teov20220901.DescribeSecurityPolicyResponseParams{
+			SecurityPolicy: &teov20220901.SecurityPolicy{
+				RateLimitingRules: &teov20220901.RateLimitingRules{
+					Rules: []*teov20220901.RateLimitingRule{
+						{
+							Id:        ptrStringSecurityPolicy("rule-001"),
+							Name:      ptrStringSecurityPolicy("rate-limit-1"),
+							Condition: ptrStringSecurityPolicy("${http.request.uri.path} eq '/login'"),
+							Mode:      ptrStringSecurityPolicy("Throttle"),
+						},
+					},
+				},
+			},
+			RequestId: ptrStringSecurityPolicy("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMetaSecurityPolicy()
+	res := teo.ResourceTencentCloudTeoSecurityPolicyConfig()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+		"entity":  "ZoneDefaultPolicy",
+		"security_policy": []interface{}{
+			map[string]interface{}{
+				"rate_limiting_rules": []interface{}{
+					map[string]interface{}{
+						"rules": []interface{}{
+							map[string]interface{}{
+								"name":      "rate-limit-1",
+								"condition": "${http.request.uri.path} eq '/login'",
+								"mode":      "Throttle",
+							},
+						},
+					},
+				},
+			},
+		},
+	})
+	d.SetId("zone-12345678#ZoneDefaultPolicy")
+
+	err := res.Update(d, meta)
+	assert.NoError(t, err)
+	assert.NotNil(t, capturedRequest)
+	assert.NotNil(t, capturedRequest.SecurityPolicy)
+	assert.NotNil(t, capturedRequest.SecurityPolicy.RateLimitingRules)
+	assert.Len(t, capturedRequest.SecurityPolicy.RateLimitingRules.Rules, 1)
+
+	rule := capturedRequest.SecurityPolicy.RateLimitingRules.Rules[0]
+	assert.Equal(t, "rate-limit-1", *rule.Name)
+	assert.Equal(t, "Throttle", *rule.Mode)
+
+	// The output-only Id field MUST NOT be sent in the expand/update request.
+	assert.Nil(t, rule.Id)
+}
