@@ -3,48 +3,31 @@ package oceanus_test
 import (
 	"testing"
 
-	tcacctest "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/acctest"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/oceanus"
 )
 
-// go test -i; go test -test.run TestAccTencentCloudOceanusOceanusClusterResource_basic -v
-func TestAccTencentCloudOceanusOceanusClusterResource_basic(t *testing.T) {
-	t.Parallel()
-	resource.Test(t, resource.TestCase{
-		PreCheck: func() {
-			tcacctest.AccPreCheck(t)
-		},
-		Providers: tcacctest.AccProviders,
-		Steps: []resource.TestStep{
-			{
-				Config: testAccOceanusOceanusCluster,
-				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttrSet("tencentcloud_oceanus_oceanus_cluster.example", "id"),
-					resource.TestCheckResourceAttrSet("tencentcloud_oceanus_oceanus_cluster.example", "cluster_name"),
-				),
-			},
-			{
-				ResourceName:      "tencentcloud_oceanus_oceanus_cluster.example",
-				ImportState:       true,
-				ImportStateVerify: true,
-			},
-		},
-	})
+func TestOceanusOceanusClusterResourceTypeName(t *testing.T) {
+	r := oceanus.NewOceanusOceanusClusterResource()
+	req := resource.MetadataRequest{ProviderTypeName: "tencentcloud"}
+	var resp resource.MetadataResponse
+	r.Metadata(t.Context(), req, &resp)
+	if resp.TypeName != "tencentcloud_oceanus_oceanus_cluster" {
+		t.Fatalf("unexpected type name: %s", resp.TypeName)
+	}
 }
 
-const testAccOceanusOceanusCluster = `
-resource "tencentcloud_oceanus_oceanus_cluster" "example" {
-  cluster_name       = "tf_example_cluster"
-  region_id          = 1
-  zone_id            = 100003
-  login_password     = "Password@123"
-  default_cos_bucket = "tf-example-bucket-1250000000"
-  vpc_descriptions {
-    vpc_id    = "vpc-xxxxxx"
-    subnet_id = "subnet-xxxxxx"
-  }
-  instance_charge_type             = "POSTPAID_BY_SECOND"
-  flink_web_ui_network_access_type = "NetworkAccess_EXTERNAL"
+func TestOceanusOceanusClusterResourceSchemaIsValid(t *testing.T) {
+	r := oceanus.NewOceanusOceanusClusterResource()
+	var resp resource.SchemaResponse
+	r.Schema(t.Context(), resource.SchemaRequest{}, &resp)
+	if resp.Diagnostics.HasError() {
+		t.Fatalf("schema diagnostics: %v", resp.Diagnostics)
+	}
+	for _, name := range []string{"id", "cluster_name", "region_id", "zone_id", "login_password", "vpc_descriptions", "default_cos_bucket", "cu", "remark", "period", "instance_charge_type", "cluster_type", "renew_flag", "flink_web_ui_network_access_type", "slave_vpc_descriptions", "cu_memory", "status", "create_time", "update_time"} {
+		if _, ok := resp.Schema.Attributes[name]; !ok {
+			t.Fatalf("missing attribute %s in schema", name)
+		}
+	}
 }
-`

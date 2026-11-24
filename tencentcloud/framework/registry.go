@@ -38,6 +38,7 @@ import (
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/dlc"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/kms"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/mongodb"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/oceanus"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ssl"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ssm"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/tco"
@@ -50,6 +51,7 @@ var resourcesMap = map[string]func() resource.Resource{
 	"tencentcloud_cam_update_password_rule_config":  cam.NewCamUpdatePasswordRuleConfigResource,
 	"tencentcloud_config_aggregate_compliance_pack": config.NewConfigAggregateCompliancePackResource,
 	"tencentcloud_ssm_secret_version_v2":            ssm.NewSsmSecretVersionV2Resource,
+	"tencentcloud_oceanus_oceanus_cluster":          oceanus.NewOceanusOceanusClusterResource,
 }
 
 // dataSourcesMap maps every framework data source type name to its factory.

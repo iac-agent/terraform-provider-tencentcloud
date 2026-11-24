@@ -5,423 +5,457 @@ import (
 	"fmt"
 	"log"
 
-	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
+	"github.com/hashicorp/terraform-plugin-framework/attr"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	common "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	oceanus "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/oceanus/v20190422"
 
-	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/internal/helper"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/framework/fw"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/ratelimit"
 )
 
-func ResourceTencentCloudOceanusOceanusCluster() *schema.Resource {
-	return &schema.Resource{
-		Create: resourceTencentCloudOceanusOceanusClusterCreate,
-		Read:   resourceTencentCloudOceanusOceanusClusterRead,
-		Update: resourceTencentCloudOceanusOceanusClusterUpdate,
-		Delete: resourceTencentCloudOceanusOceanusClusterDelete,
-		Importer: &schema.ResourceImporter{
-			State: schema.ImportStatePassthrough,
-		},
-		Schema: map[string]*schema.Schema{
-			"cluster_name": {
+var (
+	_ resource.ResourceWithConfigure   = &OceanusOceanusClusterResource{}
+	_ resource.ResourceWithImportState = &OceanusOceanusClusterResource{}
+)
+
+func NewOceanusOceanusClusterResource() resource.Resource {
+	return &OceanusOceanusClusterResource{}
+}
+
+type OceanusOceanusClusterResource struct {
+	fw.ResourceWithConfigure
+	fw.WithNoUpdate
+	fw.WithImportByID
+}
+
+type OceanusOceanusClusterVpcModel struct {
+	VpcId    types.String `tfsdk:"vpc_id"`
+	SubnetId types.String `tfsdk:"subnet_id"`
+	AppId    types.Int64  `tfsdk:"app_id"`
+	OwnerUin types.String `tfsdk:"owner_uin"`
+}
+
+type OceanusOceanusClusterResourceModel struct {
+	Id                          types.String `tfsdk:"id"`
+	ClusterName                 types.String `tfsdk:"cluster_name"`
+	RegionId                    types.Int64  `tfsdk:"region_id"`
+	ZoneId                      types.Int64  `tfsdk:"zone_id"`
+	LoginPassword               types.String `tfsdk:"login_password"`
+	VpcDescriptions             types.List   `tfsdk:"vpc_descriptions"`
+	DefaultCOSBucket            types.String `tfsdk:"default_cos_bucket"`
+	Cu                          types.Int64  `tfsdk:"cu"`
+	Remark                      types.String `tfsdk:"remark"`
+	Period                      types.Int64  `tfsdk:"period"`
+	InstanceChargeType          types.String `tfsdk:"instance_charge_type"`
+	ClusterType                 types.String `tfsdk:"cluster_type"`
+	RenewFlag                   types.String `tfsdk:"renew_flag"`
+	FlinkWebUINetworkAccessType types.String `tfsdk:"flink_web_ui_network_access_type"`
+	SlaveVpcDescriptions        types.List   `tfsdk:"slave_vpc_descriptions"`
+	CuMemory                    types.Int64  `tfsdk:"cu_memory"`
+	Status                      types.Int64  `tfsdk:"status"`
+	CreateTime                  types.String `tfsdk:"create_time"`
+	UpdateTime                  types.String `tfsdk:"update_time"`
+}
+
+func vpcDescriptionsAttrTypes() map[string]attr.Type {
+	return map[string]attr.Type{
+		"vpc_id":    types.StringType,
+		"subnet_id": types.StringType,
+		"app_id":    types.Int64Type,
+		"owner_uin": types.StringType,
+	}
+}
+
+func (r *OceanusOceanusClusterResource) Metadata(_ context.Context, _ resource.MetadataRequest, resp *resource.MetadataResponse) {
+	resp.TypeName = "tencentcloud_oceanus_oceanus_cluster"
+}
+
+func (r *OceanusOceanusClusterResource) Schema(_ context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	resp.Schema = schema.Schema{
+		Description: "Provides a resource to create an Oceanus cluster.",
+		Attributes: map[string]schema.Attribute{
+			"id": schema.StringAttribute{
+				Computed:    true,
+				Description: "Cluster ID in the format `cluster-xxx`.",
+			},
+			"cluster_name": schema.StringAttribute{
 				Required:    true,
-				Type:        schema.TypeString,
 				Description: "Cluster name. Supports 1-50 English letters, Chinese characters, digits, hyphens or underscores.",
 			},
-			"region_id": {
+			"region_id": schema.Int64Attribute{
 				Required:    true,
-				ForceNew:    true,
-				Type:        schema.TypeInt,
 				Description: "Region ID, which can be queried via DescribeRegions with Product set to oceanus.",
 			},
-			"zone_id": {
+			"zone_id": schema.Int64Attribute{
 				Required:    true,
-				ForceNew:    true,
-				Type:        schema.TypeInt,
 				Description: "Zone ID, which can be queried via DescribeZones with Product set to oceanus.",
 			},
-			"login_password": {
+			"login_password": schema.StringAttribute{
 				Required:    true,
-				Type:        schema.TypeString,
 				Sensitive:   true,
-				Description: "Flink UI access password. The cluster username is admin.",
+				Description: "Flink UI access password. The cluster username is `admin`.",
 			},
-			"vpc_descriptions": {
+			"vpc_descriptions": schema.ListNestedAttribute{
 				Required:    true,
-				ForceNew:    true,
-				Type:        schema.TypeList,
-				MaxItems:    1,
 				Description: "VPC descriptions. The stream computing cluster accesses other cloud resources in the same region via VPC and ENI, which occupies subnet IPs.",
-				Elem: &schema.Resource{
-					Schema: map[string]*schema.Schema{
-						"vpc_id": {
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"vpc_id": schema.StringAttribute{
 							Required:    true,
-							Type:        schema.TypeString,
 							Description: "VPC ID.",
 						},
-						"subnet_id": {
+						"subnet_id": schema.StringAttribute{
 							Required:    true,
-							Type:        schema.TypeString,
 							Description: "Subnet ID.",
 						},
-						"app_id": {
+						"app_id": schema.Int64Attribute{
 							Optional:    true,
 							Computed:    true,
-							Type:        schema.TypeInt,
 							Description: "User AppId.",
 						},
-						"owner_uin": {
+						"owner_uin": schema.StringAttribute{
 							Optional:    true,
 							Computed:    true,
-							Type:        schema.TypeString,
 							Description: "User UIN.",
 						},
 					},
 				},
 			},
-			"default_cos_bucket": {
+			"default_cos_bucket": schema.StringAttribute{
 				Required:    true,
-				ForceNew:    true,
-				Type:        schema.TypeString,
 				Description: "Default COS bucket used by the cluster to save checkpoints, jar packages, or delivery logs.",
 			},
-			"cu": {
+			"cu": schema.Int64Attribute{
 				Optional:    true,
 				Computed:    true,
-				Type:        schema.TypeInt,
 				Description: "Number of cluster CUs. 12 CU is the minimum computing resource and billing unit. 1 CU contains 1 CPU and 4GB memory. Management node fee is waived when CU is greater than or equal to 48.",
 			},
-			"remark": {
+			"remark": schema.StringAttribute{
 				Optional:    true,
-				Type:        schema.TypeString,
+				Computed:    true,
 				Description: "Cluster description. Supports 1-50 English letters, Chinese characters, digits, hyphens or underscores.",
 			},
-			"period": {
+			"period": schema.Int64Attribute{
 				Optional:    true,
-				Type:        schema.TypeInt,
 				Description: "Purchase duration in months. Valid range: [1, 48]. Required when instance_charge_type is PREPAID.",
 			},
-			"instance_charge_type": {
+			"instance_charge_type": schema.StringAttribute{
 				Optional:    true,
 				Computed:    true,
-				Type:        schema.TypeString,
-				Description: "Cluster billing type. Valid values: PREPAID, POSTPAID_BY_SECOND. Default value: POSTPAID_BY_SECOND.",
+				Description: "Cluster billing type. Valid values: `PREPAID`, `POSTPAID_BY_SECOND`. Default value: `POSTPAID_BY_SECOND`.",
 			},
-			"cluster_type": {
+			"cluster_type": schema.StringAttribute{
 				Optional:    true,
 				Computed:    true,
-				Type:        schema.TypeString,
-				Description: "Cluster type. Valid value: MULTI_AZ_CLUSTER.",
+				Description: "Cluster type. Valid value: `MULTI_AZ_CLUSTER`.",
 			},
-			"renew_flag": {
+			"renew_flag": schema.StringAttribute{
 				Optional:    true,
 				Computed:    true,
-				Type:        schema.TypeString,
-				Description: "Auto renewal flag. Valid values: NOTIFY_AND_MANUAL_RENEW, NOTIFY_AND_AUTO_RENEW, DISABLE_NOTIFY_AND_MANUAL_RENEW. Default value: NOTIFY_AND_MANUAL_RENEW. Required for PREPAID clusters.",
+				Description: "Auto renewal flag. Valid values: `NOTIFY_AND_MANUAL_RENEW`, `NOTIFY_AND_AUTO_RENEW`, `DISABLE_NOTIFY_AND_MANUAL_RENEW`. Default value: `NOTIFY_AND_MANUAL_RENEW`. Required for PREPAID clusters.",
 			},
-			"flink_web_ui_network_access_type": {
+			"flink_web_ui_network_access_type": schema.StringAttribute{
 				Optional:    true,
 				Computed:    true,
-				Type:        schema.TypeString,
-				Description: "Flink UI access type. Valid values: NetworkAccess_INTERNAL, NetworkAccess_EXTERNAL. Default value: NetworkAccess_EXTERNAL.",
+				Description: "Flink UI access type. Valid values: `NetworkAccess_INTERNAL`, `NetworkAccess_EXTERNAL`. Default value: `NetworkAccess_EXTERNAL`.",
 			},
-			"slave_vpc_descriptions": {
+			"slave_vpc_descriptions": schema.ListNestedAttribute{
 				Optional:    true,
-				ForceNew:    true,
-				Type:        schema.TypeList,
-				MaxItems:    1,
 				Description: "Multi-AZ VPC descriptions.",
-				Elem: &schema.Resource{
-					Schema: map[string]*schema.Schema{
-						"vpc_id": {
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"vpc_id": schema.StringAttribute{
 							Required:    true,
-							Type:        schema.TypeString,
 							Description: "VPC ID.",
 						},
-						"subnet_id": {
+						"subnet_id": schema.StringAttribute{
 							Required:    true,
-							Type:        schema.TypeString,
 							Description: "Subnet ID.",
 						},
-						"app_id": {
+						"app_id": schema.Int64Attribute{
 							Optional:    true,
 							Computed:    true,
-							Type:        schema.TypeInt,
 							Description: "User AppId.",
 						},
-						"owner_uin": {
+						"owner_uin": schema.StringAttribute{
 							Optional:    true,
 							Computed:    true,
-							Type:        schema.TypeString,
 							Description: "User UIN.",
 						},
 					},
 				},
 			},
-			"cu_memory": {
+			"cu_memory": schema.Int64Attribute{
 				Optional:    true,
 				Computed:    true,
-				Type:        schema.TypeInt,
 				Description: "Core memory ratio. Only supports [0, 2, 4, 8].",
 			},
-			// computed
-			"cluster_id": {
+			"status": schema.Int64Attribute{
 				Computed:    true,
-				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "Cluster status. `1`: uninitialized, `3`: initializing, `2`: running.",
 			},
-			"status": {
+			"create_time": schema.StringAttribute{
 				Computed:    true,
-				Type:        schema.TypeInt,
-				Description: "Cluster status. 1: uninitialized, 3: initializing, 2: running.",
-			},
-			"create_time": {
-				Computed:    true,
-				Type:        schema.TypeString,
 				Description: "Cluster creation time.",
 			},
-			"update_time": {
+			"update_time": schema.StringAttribute{
 				Computed:    true,
-				Type:        schema.TypeString,
 				Description: "Time of the last operation on the cluster.",
 			},
 		},
 	}
 }
 
-func resourceTencentCloudOceanusOceanusClusterCreate(d *schema.ResourceData, meta interface{}) error {
-	defer tccommon.LogElapsed("resource.tencentcloud_oceanus_oceanus_cluster.create")()
-	defer tccommon.InconsistentCheck(d, meta)()
-
-	var (
-		logId     = tccommon.GetLogId(tccommon.ContextNil)
-		request   = oceanus.NewCreateOceanusClusterRequest()
-		response  = oceanus.NewCreateOceanusClusterResponse()
-		clusterId string
-	)
-
-	if v, ok := d.GetOk("cluster_name"); ok {
-		request.ClusterName = helper.String(v.(string))
+func (r *OceanusOceanusClusterResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
+	var plan OceanusOceanusClusterResourceModel
+	resp.Diagnostics.Append(req.Plan.Get(ctx, &plan)...)
+	if resp.Diagnostics.HasError() {
+		return
 	}
 
-	if v, ok := d.GetOkExists("region_id"); ok {
-		request.RegionId = helper.IntInt64(v.(int))
+	if r.Client() == nil {
+		resp.Diagnostics.AddError("Provider not configured", "The provider client is not available. This is unexpected; please report it.")
+		return
 	}
 
-	if v, ok := d.GetOkExists("zone_id"); ok {
-		request.ZoneId = helper.IntInt64(v.(int))
-	}
+	request := oceanus.NewCreateOceanusClusterRequest()
+	request.ClusterName = plan.ClusterName.ValueStringPointer()
+	request.RegionId = int64Pointer(plan.RegionId.ValueInt64())
+	request.ZoneId = int64Pointer(plan.ZoneId.ValueInt64())
+	request.LoginPassword = plan.LoginPassword.ValueStringPointer()
+	request.DefaultCOSBucket = plan.DefaultCOSBucket.ValueStringPointer()
 
-	if v, ok := d.GetOk("login_password"); ok {
-		request.LoginPassword = helper.String(v.(string))
-	}
-
-	if v, ok := d.GetOk("vpc_descriptions"); ok {
-		vpcDescriptions := v.([]interface{})
-		tmpSet := make([]*oceanus.VPCDescription, 0, len(vpcDescriptions))
-		for _, item := range vpcDescriptions {
-			vpcDescription := oceanus.VPCDescription{}
-			vpcMap := item.(map[string]interface{})
-			if vpcId, ok := vpcMap["vpc_id"]; ok {
-				vpcDescription.VpcId = helper.String(vpcId.(string))
-			}
-			if subnetId, ok := vpcMap["subnet_id"]; ok {
-				vpcDescription.SubnetId = helper.String(subnetId.(string))
-			}
-			if appId, ok := vpcMap["app_id"]; ok {
-				vpcDescription.AppId = helper.IntInt64(appId.(int))
-			}
-			if ownerUin, ok := vpcMap["owner_uin"]; ok {
-				vpcDescription.OwnerUin = helper.String(ownerUin.(string))
-			}
-			tmpSet = append(tmpSet, &vpcDescription)
+	if !plan.VpcDescriptions.IsNull() && !plan.VpcDescriptions.IsUnknown() {
+		request.VpcDescriptions = expandVpcDescriptions(ctx, plan.VpcDescriptions, &resp.Diagnostics)
+		if resp.Diagnostics.HasError() {
+			return
 		}
-		request.VpcDescriptions = tmpSet
 	}
 
-	if v, ok := d.GetOk("default_cos_bucket"); ok {
-		request.DefaultCOSBucket = helper.String(v.(string))
+	if !plan.Cu.IsNull() && !plan.Cu.IsUnknown() {
+		request.CU = int64Pointer(plan.Cu.ValueInt64())
 	}
-
-	if v, ok := d.GetOkExists("cu"); ok {
-		request.CU = helper.IntInt64(v.(int))
+	if !plan.Remark.IsNull() && !plan.Remark.IsUnknown() {
+		request.Remark = plan.Remark.ValueStringPointer()
 	}
-
-	if v, ok := d.GetOk("remark"); ok {
-		request.Remark = helper.String(v.(string))
+	if !plan.Period.IsNull() && !plan.Period.IsUnknown() {
+		request.Period = int64Pointer(plan.Period.ValueInt64())
 	}
-
-	if v, ok := d.GetOkExists("period"); ok {
-		request.Period = helper.IntInt64(v.(int))
+	if !plan.InstanceChargeType.IsNull() && !plan.InstanceChargeType.IsUnknown() {
+		request.InstanceChargeType = plan.InstanceChargeType.ValueStringPointer()
 	}
-
-	if v, ok := d.GetOk("instance_charge_type"); ok {
-		request.InstanceChargeType = helper.String(v.(string))
+	if !plan.ClusterType.IsNull() && !plan.ClusterType.IsUnknown() {
+		request.ClusterType = plan.ClusterType.ValueStringPointer()
 	}
-
-	if v, ok := d.GetOk("cluster_type"); ok {
-		request.ClusterType = helper.String(v.(string))
+	if !plan.RenewFlag.IsNull() && !plan.RenewFlag.IsUnknown() {
+		request.RenewFlag = plan.RenewFlag.ValueStringPointer()
 	}
-
-	if v, ok := d.GetOk("renew_flag"); ok {
-		request.RenewFlag = helper.String(v.(string))
+	if !plan.FlinkWebUINetworkAccessType.IsNull() && !plan.FlinkWebUINetworkAccessType.IsUnknown() {
+		request.FlinkWebUINetworkAccessType = plan.FlinkWebUINetworkAccessType.ValueStringPointer()
 	}
-
-	if v, ok := d.GetOk("flink_web_ui_network_access_type"); ok {
-		request.FlinkWebUINetworkAccessType = helper.String(v.(string))
-	}
-
-	if v, ok := d.GetOk("slave_vpc_descriptions"); ok {
-		slaveVpcDescriptions := v.([]interface{})
-		tmpSet := make([]*oceanus.SlaveVpcDescriptions, 0, len(slaveVpcDescriptions))
-		for _, item := range slaveVpcDescriptions {
-			slaveVpcDescription := oceanus.SlaveVpcDescriptions{}
-			vpcMap := item.(map[string]interface{})
-			if vpcId, ok := vpcMap["vpc_id"]; ok {
-				slaveVpcDescription.VpcId = helper.String(vpcId.(string))
-			}
-			if subnetId, ok := vpcMap["subnet_id"]; ok {
-				slaveVpcDescription.SubnetId = helper.String(subnetId.(string))
-			}
-			if appId, ok := vpcMap["app_id"]; ok {
-				slaveVpcDescription.AppId = helper.IntInt64(appId.(int))
-			}
-			if ownerUin, ok := vpcMap["owner_uin"]; ok {
-				slaveVpcDescription.OwnerUin = helper.String(ownerUin.(string))
-			}
-			tmpSet = append(tmpSet, &slaveVpcDescription)
+	if !plan.SlaveVpcDescriptions.IsNull() && !plan.SlaveVpcDescriptions.IsUnknown() {
+		request.SlaveVpcDescriptions = expandSlaveVpcDescriptions(ctx, plan.SlaveVpcDescriptions, &resp.Diagnostics)
+		if resp.Diagnostics.HasError() {
+			return
 		}
-		request.SlaveVpcDescriptions = tmpSet
+	}
+	if !plan.CuMemory.IsNull() && !plan.CuMemory.IsUnknown() {
+		request.CUMemory = int64Pointer(plan.CuMemory.ValueInt64())
 	}
 
-	if v, ok := d.GetOkExists("cu_memory"); ok {
-		request.CUMemory = helper.IntInt64(v.(int))
-	}
+	ratelimit.Check(request.GetAction())
 
-	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
-		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseOceanusClient().CreateOceanusCluster(request)
-		if e != nil {
-			return tccommon.RetryError(e)
-		} else {
-			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
-		}
-
-		if result == nil || result.Response == nil || result.Response.ClusterId == nil {
-			e = fmt.Errorf("oceanus cluster id not returned")
-			return resource.NonRetryableError(e)
-		}
-
-		response = result
-		return nil
-	})
-
+	response, err := r.Client().UseOceanusClient().CreateOceanusCluster(request)
 	if err != nil {
-		log.Printf("[CRITAL]%s create oceanus OceanusCluster failed, reason:%+v", logId, err)
-		return err
+		log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", "codegen", request.GetAction(), request.ToJsonString(), err.Error())
+		resp.Diagnostics.AddError("Error creating Oceanus cluster", err.Error())
+		return
+	}
+	log.Printf("[DEBUG] api[%s] success, request body [%s], response body [%s]\n", request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response == nil || response.Response == nil || response.Response.ClusterId == nil {
+		resp.Diagnostics.AddError("Error creating Oceanus cluster", "the cloud API did not return a cluster id")
+		return
 	}
 
-	clusterId = *response.Response.ClusterId
-	d.SetId(clusterId)
+	plan.Id = types.StringValue(*response.Response.ClusterId)
+	plan.Read(ctx, r.Client(), &resp.Diagnostics)
+	if resp.Diagnostics.HasError() {
+		return
+	}
 
-	return resourceTencentCloudOceanusOceanusClusterRead(d, meta)
+	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)
 }
 
-func resourceTencentCloudOceanusOceanusClusterRead(d *schema.ResourceData, meta interface{}) error {
-	defer tccommon.LogElapsed("resource.tencentcloud_oceanus_oceanus_cluster.read")()
-	defer tccommon.InconsistentCheck(d, meta)()
-
-	var (
-		logId   = tccommon.GetLogId(tccommon.ContextNil)
-		ctx     = context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
-		service = OceanusService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
-	)
-
-	cluster, err := service.DescribeOceanusClusterById(ctx, d.Id())
-	if err != nil {
-		return err
+func (r *OceanusOceanusClusterResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
+	var state OceanusOceanusClusterResourceModel
+	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
+	if resp.Diagnostics.HasError() {
+		return
 	}
 
-	if cluster == nil {
-		d.SetId("")
-		log.Printf("[WARN]%s resource `OceanusOceanusCluster` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
+	if r.Client() == nil {
+		resp.Diagnostics.AddError("Provider not configured", "The provider client is not available. This is unexpected; please report it.")
+		return
+	}
+
+	found := state.Read(ctx, r.Client(), &resp.Diagnostics)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+	if !found {
+		resp.Diagnostics.AddWarning("Oceanus cluster not found", fmt.Sprintf("the Oceanus cluster %s no longer exists and will be removed from state", state.Id.ValueString()))
+		resp.State.RemoveResource(ctx)
+		return
+	}
+
+	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
+}
+
+func (r *OceanusOceanusClusterResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+	var state OceanusOceanusClusterResourceModel
+	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	if r.Client() == nil {
+		resp.Diagnostics.AddError("Provider not configured", "The provider client is not available. This is unexpected; please report it.")
+		return
+	}
+
+	request := oceanus.NewDeleteOceanusClusterRequest()
+	request.ClusterId = state.Id.ValueStringPointer()
+
+	ratelimit.Check(request.GetAction())
+
+	response, err := r.Client().UseOceanusClient().DeleteOceanusCluster(request)
+	if err != nil {
+		log.Printf("[CRITAL] api[%s] fail, request body [%s], reason[%s]\n", request.GetAction(), request.ToJsonString(), err.Error())
+		resp.Diagnostics.AddError("Error deleting Oceanus cluster", err.Error())
+		return
+	}
+	log.Printf("[DEBUG] api[%s] success, request body [%s], response body [%s]\n", request.GetAction(), request.ToJsonString(), response.ToJsonString())
+}
+
+func expandVpcDescriptions(ctx context.Context, list types.List, diags *diag.Diagnostics) []*oceanus.VPCDescription {
+	var models []OceanusOceanusClusterVpcModel
+	diags.Append(list.ElementsAs(ctx, &models, false)...)
+	if diags.HasError() {
 		return nil
 	}
+	result := make([]*oceanus.VPCDescription, 0, len(models))
+	for _, m := range models {
+		item := &oceanus.VPCDescription{
+			VpcId:    m.VpcId.ValueStringPointer(),
+			SubnetId: m.SubnetId.ValueStringPointer(),
+		}
+		if !m.AppId.IsNull() && !m.AppId.IsUnknown() {
+			item.AppId = int64Pointer(m.AppId.ValueInt64())
+		}
+		if !m.OwnerUin.IsNull() && !m.OwnerUin.IsUnknown() {
+			item.OwnerUin = m.OwnerUin.ValueStringPointer()
+		}
+		result = append(result, item)
+	}
+	return result
+}
 
-	if cluster.ClusterId != nil {
-		_ = d.Set("cluster_id", *cluster.ClusterId)
+func expandSlaveVpcDescriptions(ctx context.Context, list types.List, diags *diag.Diagnostics) []*oceanus.SlaveVpcDescriptions {
+	var models []OceanusOceanusClusterVpcModel
+	diags.Append(list.ElementsAs(ctx, &models, false)...)
+	if diags.HasError() {
+		return nil
+	}
+	result := make([]*oceanus.SlaveVpcDescriptions, 0, len(models))
+	for _, m := range models {
+		item := &oceanus.SlaveVpcDescriptions{
+			VpcId:    m.VpcId.ValueStringPointer(),
+			SubnetId: m.SubnetId.ValueStringPointer(),
+		}
+		if !m.AppId.IsNull() && !m.AppId.IsUnknown() {
+			item.AppId = int64Pointer(m.AppId.ValueInt64())
+		}
+		if !m.OwnerUin.IsNull() && !m.OwnerUin.IsUnknown() {
+			item.OwnerUin = m.OwnerUin.ValueStringPointer()
+		}
+		result = append(result, item)
+	}
+	return result
+}
+
+func (m *OceanusOceanusClusterResourceModel) Read(ctx context.Context, client interface{ UseOceanusClient() *oceanus.Client }, diags *diag.Diagnostics) bool {
+	request := oceanus.NewDescribeClustersRequest()
+	request.ClusterIds = common.StringPtrs([]string{m.Id.ValueString()})
+
+	ratelimit.Check(request.GetAction())
+
+	response, err := client.UseOceanusClient().DescribeClusters(request)
+	if err != nil {
+		diags.AddError("Error reading Oceanus cluster", err.Error())
+		return false
 	}
 
-	if cluster.Name != nil {
-		_ = d.Set("cluster_name", *cluster.Name)
+	if response == nil || response.Response == nil || len(response.Response.ClusterSet) != 1 {
+		return false
 	}
+	cluster := response.Response.ClusterSet[0]
 
-	if cluster.Remark != nil {
-		_ = d.Set("remark", *cluster.Remark)
-	}
-
-	if cluster.DefaultCOSBucket != nil {
-		_ = d.Set("default_cos_bucket", *cluster.DefaultCOSBucket)
-	}
-
-	if cluster.CuNum != nil {
-		_ = d.Set("cu", int(*cluster.CuNum))
-	}
-
-	if cluster.CuMem != nil {
-		_ = d.Set("cu_memory", int(*cluster.CuMem))
-	}
-
-	if cluster.Status != nil {
-		_ = d.Set("status", int(*cluster.Status))
-	}
+	m.Id = stringPointerValue(cluster.ClusterId)
+	m.ClusterName = stringPointerValue(cluster.Name)
+	m.Remark = stringPointerValue(cluster.Remark)
+	m.DefaultCOSBucket = stringPointerValue(cluster.DefaultCOSBucket)
+	m.Cu = uint64PointerValue(cluster.CuNum)
+	m.CuMemory = uint64PointerValue(cluster.CuMem)
+	m.Status = int64PointerValue(cluster.Status)
+	m.CreateTime = stringPointerValue(cluster.CreateTime)
+	m.UpdateTime = stringPointerValue(cluster.UpdateTime)
 
 	if len(cluster.CCNs) > 0 {
-		vpcDescriptions := make([]interface{}, 0, len(cluster.CCNs))
+		vpcModels := make([]OceanusOceanusClusterVpcModel, 0, len(cluster.CCNs))
 		for _, ccn := range cluster.CCNs {
-			vpcMap := make(map[string]interface{})
-			if ccn.VpcId != nil {
-				vpcMap["vpc_id"] = *ccn.VpcId
-			}
-			if ccn.SubnetId != nil {
-				vpcMap["subnet_id"] = *ccn.SubnetId
-			}
-			vpcDescriptions = append(vpcDescriptions, vpcMap)
+			vpcModels = append(vpcModels, OceanusOceanusClusterVpcModel{
+				VpcId:    stringPointerValue(ccn.VpcId),
+				SubnetId: stringPointerValue(ccn.SubnetId),
+			})
 		}
-		_ = d.Set("vpc_descriptions", vpcDescriptions)
+		vpcList, listDiags := types.ListValueFrom(ctx, types.ObjectType{AttrTypes: vpcDescriptionsAttrTypes()}, vpcModels)
+		diags.Append(listDiags...)
+		if diags.HasError() {
+			return false
+		}
+		m.VpcDescriptions = vpcList
 	}
 
-	if cluster.CreateTime != nil {
-		_ = d.Set("create_time", *cluster.CreateTime)
-	}
-
-	if cluster.UpdateTime != nil {
-		_ = d.Set("update_time", *cluster.UpdateTime)
-	}
-
-	return nil
+	return true
 }
 
-func resourceTencentCloudOceanusOceanusClusterUpdate(d *schema.ResourceData, meta interface{}) error {
-	defer tccommon.LogElapsed("resource.tencentcloud_oceanus_oceanus_cluster.update")()
-	defer tccommon.InconsistentCheck(d, meta)()
-
-	return resourceTencentCloudOceanusOceanusClusterRead(d, meta)
+func int64Pointer(v int64) *int64 {
+	return &v
 }
 
-func resourceTencentCloudOceanusOceanusClusterDelete(d *schema.ResourceData, meta interface{}) error {
-	defer tccommon.LogElapsed("resource.tencentcloud_oceanus_oceanus_cluster.delete")()
-	defer tccommon.InconsistentCheck(d, meta)()
-
-	var (
-		logId   = tccommon.GetLogId(tccommon.ContextNil)
-		ctx     = context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
-		service = OceanusService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
-	)
-
-	if err := service.DeleteOceanusClusterById(ctx, d.Id()); err != nil {
-		return err
+func int64PointerValue(v *int64) types.Int64 {
+	if v == nil {
+		return types.Int64Null()
 	}
+	return types.Int64Value(*v)
+}
 
-	return nil
+func uint64PointerValue(v *uint64) types.Int64 {
+	if v == nil {
+		return types.Int64Null()
+	}
+	return types.Int64Value(int64(*v))
+}
+
+func stringPointerValue(v *string) types.String {
+	if v == nil {
+		return types.StringNull()
+	}
+	return types.StringValue(*v)
 }
