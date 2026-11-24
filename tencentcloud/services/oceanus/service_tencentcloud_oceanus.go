@@ -2,17 +2,37 @@ package oceanus
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"strconv"
+	"time"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	oceanus "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/oceanus/v20190422"
 
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/connectivity"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/ratelimit"
 )
+
+// Oceanus cluster status values documented by DescribeClusters: 1 not
+// initialized, 3 initializing, 2 running.
+const (
+	OCEANUS_CLUSTER_STATUS_UNINITIALIZED = 1
+	OCEANUS_CLUSTER_STATUS_RUNNING       = 2
+	OCEANUS_CLUSTER_STATUS_INITIALIZING  = 3
+
+	// OCEANUS_CLUSTER_DESCRIBE_LIMIT is the maximum page size accepted by
+	// DescribeClusters.
+	OCEANUS_CLUSTER_DESCRIBE_LIMIT = 100
+)
+
+// NewOceanusService returns the Oceanus service bound to the shared client.
+func NewOceanusService(client *connectivity.TencentCloudClient) OceanusService {
+	return OceanusService{client: client}
+}
 
 type OceanusService struct {
 	client *connectivity.TencentCloudClient
@@ -947,5 +967,234 @@ func (me *OceanusService) DescribeOceanusMetaTableByFilter(ctx context.Context, 
 	}
 
 	MetaTable = response.Response
+	return
+}
+
+// CreateOceanusCluster creates an Oceanus cluster and returns the id assigned
+// by the cloud side. RequestId is only a request trace id and is never used as
+// an identity. The API reports no task id: the cluster state is polled through
+// WaitOceanusClusterReady.
+func (me *OceanusService) CreateOceanusCluster(ctx context.Context, request *oceanus.CreateOceanusClusterRequest) (clusterId string, errRet error) {
+	var (
+		logId    = tccommon.GetLogId(ctx)
+		response *oceanus.CreateOceanusClusterResponse
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseOceanusClient().CreateOceanusCluster(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("create oceanus cluster failed, Response is nil"))
+		}
+
+		response = result
+		return nil
+	})
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	if response.Response.ClusterId == nil || *response.Response.ClusterId == "" {
+		errRet = fmt.Errorf("api %s returns empty cluster id", request.GetAction())
+		return
+	}
+
+	clusterId = *response.Response.ClusterId
+	return
+}
+
+// DescribeOceanusClusters returns the full cluster list matching the request.
+// The paging loop is built in: a unique-id filter terminates after the first
+// round while a data-source style filter keeps paging until the set is fully
+// fetched. TotalCount is an internal paging detail and is never returned.
+func (me *OceanusService) DescribeOceanusClusters(ctx context.Context, request *oceanus.DescribeClustersRequest) (clusters []*oceanus.Cluster, errRet error) {
+	var (
+		logId    = tccommon.GetLogId(ctx)
+		response *oceanus.DescribeClustersResponse
+		offset   int64 = 0
+		limit    int64 = OCEANUS_CLUSTER_DESCRIBE_LIMIT
+	)
+
+	clusters = make([]*oceanus.Cluster, 0)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	for {
+		request.Offset = &offset
+		request.Limit = &limit
+
+		err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+			ratelimit.Check(request.GetAction())
+			result, e := me.client.UseOceanusClient().DescribeClusters(request)
+			if e != nil {
+				return tccommon.RetryError(e)
+			} else {
+				log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+			}
+
+			if result == nil || result.Response == nil {
+				return resource.NonRetryableError(fmt.Errorf("describe oceanus clusters failed, Response is nil"))
+			}
+
+			response = result
+			return nil
+		})
+		if err != nil {
+			errRet = err
+			return
+		}
+
+		if len(response.Response.ClusterSet) < 1 {
+			break
+		}
+
+		clusters = append(clusters, response.Response.ClusterSet...)
+
+		if len(response.Response.ClusterSet) < int(limit) {
+			break
+		}
+
+		offset += limit
+	}
+
+	return
+}
+
+// ScaleOceanusCluster changes the CU number of an existing cluster.
+func (me *OceanusService) ScaleOceanusCluster(ctx context.Context, request *oceanus.ScaleOceanusClusterRequest) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseOceanusClient().ScaleOceanusCluster(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("scale oceanus cluster failed, Response is nil"))
+		}
+
+		return nil
+	})
+	if err != nil {
+		errRet = err
+	}
+
+	return
+}
+
+// DeleteOceanusCluster destroys an existing cluster.
+func (me *OceanusService) DeleteOceanusCluster(ctx context.Context, request *oceanus.DeleteOceanusClusterRequest) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseOceanusClient().DeleteOceanusCluster(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("delete oceanus cluster failed, Response is nil"))
+		}
+
+		return nil
+	})
+	if err != nil {
+		errRet = err
+	}
+
+	return
+}
+
+// WaitOceanusClusterReady polls the cluster state until it reports running.
+//
+// This is the INSTANCE-STATUS wait shape: CreateOceanusCluster returns no task
+// id, so the polling request is addressed by the cluster id and the cluster
+// status itself is the terminal condition. A cluster that is not visible in
+// DescribeClusters yet is still being provisioned and keeps the loop going.
+func (me *OceanusService) WaitOceanusClusterReady(ctx context.Context, clusterId string, timeout time.Duration) (errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = oceanus.NewDescribeClustersRequest()
+	)
+
+	request.ClusterIds = []*string{&clusterId}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, cluster[%s], reason[%s]\n", logId, request.GetAction(), clusterId, errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(timeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		response, e := me.client.UseOceanusClient().DescribeClusters(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if response == nil || response.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("DescribeClusters returns an empty response for cluster %s", clusterId))
+		}
+
+		var status *int64
+		for _, cluster := range response.Response.ClusterSet {
+			if cluster != nil && cluster.ClusterId != nil && *cluster.ClusterId == clusterId {
+				status = cluster.Status
+				break
+			}
+		}
+
+		if status == nil {
+			return resource.RetryableError(fmt.Errorf("cluster %s is not visible yet, waiting for initialization", clusterId))
+		}
+
+		// TODO(human): DescribeClusters documents only status 1 (not initialized),
+		// 2 (running) and 3 (initializing); confirm whether a provisioning failure
+		// state exists and short-circuit the wait on it instead of polling to the
+		// timeout.
+		if *status == OCEANUS_CLUSTER_STATUS_RUNNING {
+			return nil
+		}
+
+		return resource.RetryableError(fmt.Errorf("cluster %s status is %d, waiting for %d", clusterId, *status, OCEANUS_CLUSTER_STATUS_RUNNING))
+	})
+
+	errRet = err
 	return
 }
