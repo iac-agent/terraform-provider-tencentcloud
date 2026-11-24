@@ -163,6 +163,133 @@ func (me *AgsService) UpdateSandboxTool(ctx context.Context, request *agsv202509
 	return
 }
 
+func (me *AgsService) StartSandboxInstance(ctx context.Context, request *agsv20250920.StartSandboxInstanceRequest) (instance *agsv20250920.SandboxInstance, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	var response *agsv20250920.StartSandboxInstanceResponse
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, err := me.client.UseAgsClient().StartSandboxInstanceWithContext(ctx, request)
+		if err != nil {
+			return tccommon.RetryError(err)
+		}
+		response = result
+		return nil
+	})
+	if err != nil {
+		errRet = err
+		return
+	}
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("StartSandboxInstance returned an empty response")
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response.Response.Instance == nil || response.Response.Instance.InstanceId == nil || *response.Response.Instance.InstanceId == "" {
+		errRet = fmt.Errorf("StartSandboxInstance returned an empty instance id")
+		return
+	}
+
+	return response.Response.Instance, nil
+}
+
+// DescribeSandboxInstanceById returns the sandbox instance with the given id.
+//
+// A nil result with a nil error means "queried successfully, no such instance";
+// an API failure is always reported as an error so the caller never confuses a
+// failed request with a deleted resource.
+func (me *AgsService) DescribeSandboxInstanceById(ctx context.Context, instanceId string) (sandboxInstance *agsv20250920.SandboxInstance, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := agsv20250920.NewDescribeSandboxInstancesRequest()
+	request.InstanceIds = []*string{helper.String(instanceId)}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	var response *agsv20250920.DescribeSandboxInstancesResponse
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, err := me.client.UseAgsClient().DescribeSandboxInstancesWithContext(ctx, request)
+		if err != nil {
+			return tccommon.RetryError(err)
+		}
+		response = result
+		return nil
+	})
+	if err != nil {
+		errRet = err
+		return
+	}
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("DescribeSandboxInstances returned an empty response for sandbox instance %s", instanceId)
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	for _, instance := range response.Response.InstanceSet {
+		if instance != nil && instance.InstanceId != nil && *instance.InstanceId == instanceId {
+			return instance, nil
+		}
+	}
+
+	return
+}
+
+// StopSandboxInstance stops the sandbox instance identified by instanceId.
+func (me *AgsService) StopSandboxInstance(ctx context.Context, instanceId string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := agsv20250920.NewStopSandboxInstanceRequest()
+	request.InstanceId = helper.String(instanceId)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	var response *agsv20250920.StopSandboxInstanceResponse
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, err := me.client.UseAgsClient().StopSandboxInstanceWithContext(ctx, request)
+		if err != nil {
+			return tccommon.RetryError(err)
+		}
+		response = result
+		return nil
+	})
+	if err != nil {
+		errRet = err
+		return
+	}
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("StopSandboxInstance returned an empty response for sandbox instance %s", instanceId)
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	return
+}
+
 // DeleteSandboxTool deletes the sandbox tool itself, identified by toolId.
 func (me *AgsService) DeleteSandboxTool(ctx context.Context, toolId string) (errRet error) {
 	logId := tccommon.GetLogId(ctx)
