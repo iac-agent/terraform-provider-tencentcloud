@@ -413,6 +413,7 @@ tencentcloud_clb_target_health
 
 Resource
 tencentcloud_clb_instance
+tencentcloud_alb_rules
 tencentcloud_clb_listener
 tencentcloud_clb_listener_rule
 tencentcloud_clb_listener_default_domain
