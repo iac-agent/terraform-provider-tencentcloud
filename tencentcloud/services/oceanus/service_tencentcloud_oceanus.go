@@ -2,17 +2,24 @@ package oceanus
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"strconv"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	oceanus "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/oceanus/v20190422"
 
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/connectivity"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/ratelimit"
 )
+
+// NewOceanusService returns a service wrapper around the given client.
+func NewOceanusService(client *connectivity.TencentCloudClient) OceanusService {
+	return OceanusService{client: client}
+}
 
 type OceanusService struct {
 	client *connectivity.TencentCloudClient
@@ -947,5 +954,153 @@ func (me *OceanusService) DescribeOceanusMetaTableByFilter(ctx context.Context, 
 	}
 
 	MetaTable = response.Response
+	return
+}
+
+// CreateOceanusCluster creates an Oceanus cluster and returns its id.
+func (me *OceanusService) CreateOceanusCluster(ctx context.Context, request *oceanus.CreateOceanusClusterRequest) (clusterId string, err error) {
+	var (
+		logId    = tccommon.GetLogId(ctx)
+		response *oceanus.CreateOceanusClusterResponse
+	)
+
+	err = resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseOceanusClient().CreateOceanusCluster(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("create oceanus cluster failed, Response is nil."))
+		}
+
+		response = result
+		return nil
+	})
+
+	if err != nil {
+		log.Printf("[CRITAL]%s create oceanus cluster failed, reason:%+v", logId, err)
+		return
+	}
+
+	if response.Response.ClusterId == nil {
+		err = fmt.Errorf("api %s returns empty cluster id", request.GetAction())
+		return
+	}
+
+	clusterId = *response.Response.ClusterId
+	return
+}
+
+// DescribeOceanusClusters returns the full cluster list matching the given
+// request. The describe API is paginated, so the paging loop is built in: a
+// unique-id filter terminates after the first round, an unfiltered query keeps
+// paging until the whole set is fetched.
+func (me *OceanusService) DescribeOceanusClusters(ctx context.Context, request *oceanus.DescribeClustersRequest) (clusters []*oceanus.Cluster, err error) {
+	var (
+		logId    = tccommon.GetLogId(ctx)
+		response *oceanus.DescribeClustersResponse
+		offset   = int64(0)
+		limit    = int64(100)
+	)
+
+	clusters = make([]*oceanus.Cluster, 0)
+
+	for {
+		request.Offset = &offset
+		request.Limit = &limit
+
+		errRet := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+			ratelimit.Check(request.GetAction())
+			result, e := me.client.UseOceanusClient().DescribeClusters(request)
+			if e != nil {
+				return tccommon.RetryError(e)
+			} else {
+				log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+			}
+
+			if result == nil || result.Response == nil {
+				return resource.NonRetryableError(fmt.Errorf("describe oceanus clusters failed, Response is nil."))
+			}
+
+			response = result
+			return nil
+		})
+
+		if errRet != nil {
+			log.Printf("[CRITAL]%s describe oceanus clusters failed, reason:%+v", logId, errRet)
+			return nil, errRet
+		}
+
+		if len(response.Response.ClusterSet) < 1 {
+			break
+		}
+
+		clusters = append(clusters, response.Response.ClusterSet...)
+
+		if len(response.Response.ClusterSet) < int(limit) {
+			break
+		}
+
+		offset += limit
+	}
+
+	return
+}
+
+// ScaleOceanusCluster scales the CU count of an Oceanus cluster.
+func (me *OceanusService) ScaleOceanusCluster(ctx context.Context, request *oceanus.ScaleOceanusClusterRequest) (err error) {
+	logId := tccommon.GetLogId(ctx)
+
+	err = resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseOceanusClient().ScaleOceanusCluster(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("scale oceanus cluster failed, Response is nil."))
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		log.Printf("[CRITAL]%s scale oceanus cluster failed, reason:%+v", logId, err)
+	}
+
+	return
+}
+
+// DeleteOceanusCluster destroys an Oceanus cluster.
+func (me *OceanusService) DeleteOceanusCluster(ctx context.Context, request *oceanus.DeleteOceanusClusterRequest) (err error) {
+	logId := tccommon.GetLogId(ctx)
+
+	err = resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseOceanusClient().DeleteOceanusCluster(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("delete oceanus cluster failed, Response is nil."))
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		log.Printf("[CRITAL]%s delete oceanus cluster failed, reason:%+v", logId, err)
+	}
+
 	return
 }
