@@ -398,6 +398,10 @@ tencentcloud_gwlb_target_group
 tencentcloud_gwlb_instance_associate_target_group
 tencentcloud_gwlb_target_group_register_instances
 
+Application Load Balancer(ALB)
+Resource
+tencentcloud_alb_rules
+
 Cloud Load Balancer(CLB)
 Data Source
 tencentcloud_clb_attachments
