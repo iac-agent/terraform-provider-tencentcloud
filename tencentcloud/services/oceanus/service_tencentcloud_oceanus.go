@@ -2,11 +2,14 @@ package oceanus
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"strconv"
+	"time"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	oceanus "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/oceanus/v20190422"
 
@@ -947,5 +950,279 @@ func (me *OceanusService) DescribeOceanusMetaTableByFilter(ctx context.Context, 
 	}
 
 	MetaTable = response.Response
+	return
+}
+
+// CreateOceanusClusterFramework creates an Oceanus cluster and returns the
+// created cluster id (framework reference implementation; the SDKv2-style
+// filter methods above share the same service struct).
+func (me *OceanusService) CreateOceanusCluster(ctx context.Context, request *oceanus.CreateOceanusClusterRequest) (clusterId string, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseOceanusClient().CreateOceanusCluster(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("create oceanus cluster failed, Response is nil"))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+		if result.Response.ClusterId == nil || *result.Response.ClusterId == "" {
+			return resource.NonRetryableError(fmt.Errorf("create oceanus cluster failed, ClusterId is empty"))
+		}
+
+		clusterId = *result.Response.ClusterId
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// DescribeClustersFramework lists Oceanus clusters with built-in paging. A
+// unique ClusterIds filter terminates after the first round; a broad query
+// keeps paging until the full set is fetched. The response TotalCount is a
+// paging detail and is never part of the return value.
+func (me *OceanusService) DescribeClustersFramework(ctx context.Context, request *oceanus.DescribeClustersRequest) (Clusters []*oceanus.Cluster, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	Clusters = make([]*oceanus.Cluster, 0)
+
+	var (
+		offset int64 = 0
+		limit  int64 = 100
+	)
+
+	for {
+		request.Offset = &offset
+		request.Limit = &limit
+
+		pageClusters, err := func() ([]*oceanus.Cluster, error) {
+			var page []*oceanus.Cluster
+			err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+				ratelimit.Check(request.GetAction())
+				result, e := me.client.UseOceanusClient().DescribeClusters(request)
+				if e != nil {
+					return tccommon.RetryError(e)
+				}
+
+				if result == nil || result.Response == nil {
+					return resource.NonRetryableError(fmt.Errorf("describe oceanus clusters failed, Response is nil"))
+				}
+
+				log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+
+				page = result.Response.ClusterSet
+				return nil
+			})
+			return page, err
+		}()
+		if err != nil {
+			log.Printf("[CRITAL]%s describe oceanus clusters failed, reason:%+v", logId, err)
+			errRet = err
+			return
+		}
+
+		Clusters = append(Clusters, pageClusters...)
+
+		if len(pageClusters) < 1 {
+			break
+		}
+
+		if len(pageClusters) < int(limit) {
+			break
+		}
+
+		offset += limit
+	}
+
+	return
+}
+
+// ScaleOceanusClusterFramework resizes an Oceanus cluster (framework reference
+// implementation). ScaleOceanusCluster is synchronous from the API's point of
+// view: the cluster CU change is applied asynchronously on the cloud side and
+// is observed through DescribeClusters, so no task id is returned here.
+func (me *OceanusService) ScaleOceanusClusterFramework(ctx context.Context, request *oceanus.ScaleOceanusClusterRequest) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseOceanusClient().ScaleOceanusCluster(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("scale oceanus cluster failed, Response is nil"))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// DeleteOceanusClusterFramework destroys an Oceanus cluster (framework
+// reference implementation).
+func (me *OceanusService) DeleteOceanusClusterFramework(ctx context.Context, request *oceanus.DeleteOceanusClusterRequest) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseOceanusClient().DeleteOceanusCluster(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("delete oceanus cluster failed, Response is nil"))
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}
+
+// WaitOceanusClusterDestroyed polls DescribeClusters until the cluster is no
+// longer returned: an empty describe answer for the tracked cluster id is the
+// terminal "destroyed" state. The helper talks to the SDK client directly, so
+// an EMPTY answer is judged explicitly here.
+func (me *OceanusService) WaitOceanusClusterDestroyed(ctx context.Context, clusterId string, timeout time.Duration) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := oceanus.NewDescribeClustersRequest()
+	request.ClusterIds = []*string{&clusterId}
+
+	err := resource.Retry(timeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		response, e := me.client.UseOceanusClient().DescribeClusters(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if response == nil || response.Response == nil || len(response.Response.ClusterSet) == 0 {
+			return nil
+		}
+
+		return resource.RetryableError(fmt.Errorf("oceanus cluster %s still exists, waiting for destroyed", clusterId))
+	})
+
+	if err != nil {
+		log.Printf("[CRITAL]%s api[%s] fail, cluster[%s], reason[%s]\n", logId, request.GetAction(), clusterId, err.Error())
+		errRet = err
+	}
+
+	return
+}
+
+// WaitOceanusClusterCreated polls DescribeClusters until the cluster created by
+// CreateOceanusCluster becomes visible (initially the cluster may not yet be
+// returned by the describe API). A "cluster visible" signal is judged
+// structurally; no SDK error code is special-cased here.
+func (me *OceanusService) WaitOceanusClusterCreated(ctx context.Context, clusterId string, timeout time.Duration) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := oceanus.NewDescribeClustersRequest()
+	request.ClusterIds = []*string{&clusterId}
+
+	err := resource.Retry(timeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		response, e := me.client.UseOceanusClient().DescribeClusters(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if response == nil || response.Response == nil || len(response.Response.ClusterSet) == 0 {
+			return resource.RetryableError(fmt.Errorf("oceanus cluster %s not visible yet, waiting for created", clusterId))
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		log.Printf("[CRITAL]%s api[%s] fail, cluster[%s], reason[%s]\n", logId, request.GetAction(), clusterId, err.Error())
+		errRet = err
+	}
+
+	return
+}
+
+// WaitOceanusClusterScaled polls DescribeClusters until the cluster CU count
+// differs from the pre-scale value. The SDK exposes no terminal state signal
+// for ScaleOceanusCluster beyond the describe answer itself.
+// TODO(human): confirm the cloud-side terminal semantics of a CU resize; the
+// current signal ("CuNum changed") cannot detect a resize that lands on the
+// same value and keeps polling until the timeout.
+func (me *OceanusService) WaitOceanusClusterScaled(ctx context.Context, clusterId string, previousCU int64, timeout time.Duration) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := oceanus.NewDescribeClustersRequest()
+	request.ClusterIds = []*string{&clusterId}
+
+	err := resource.Retry(timeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		response, e := me.client.UseOceanusClient().DescribeClusters(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+
+		if response == nil || response.Response == nil || len(response.Response.ClusterSet) == 0 {
+			return resource.RetryableError(fmt.Errorf("oceanus cluster %s not visible during scaling, waiting for scale", clusterId))
+		}
+
+		cluster := response.Response.ClusterSet[0]
+		if cluster != nil && cluster.CuNum != nil && *cluster.CuNum != uint64(previousCU) {
+			return nil
+		}
+
+		return resource.RetryableError(fmt.Errorf("oceanus cluster %s still reports %d CUs, waiting for scale", clusterId, previousCU))
+	})
+
+	if err != nil {
+		log.Printf("[CRITAL]%s api[%s] fail, cluster[%s], reason[%s]\n", logId, request.GetAction(), clusterId, err.Error())
+		errRet = err
+	}
+
 	return
 }
