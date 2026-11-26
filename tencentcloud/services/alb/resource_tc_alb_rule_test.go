@@ -191,7 +191,7 @@ func albRuleTestFullRule(t *testing.T) types.Object {
 		"timeout": types.Int64Value(1000),
 	})
 	targetGroupConfig := albRuleTestObject(t, albRuleTargetGroupConfigAttrTypes(), map[string]attr.Value{
-		"target_groups":              albRuleTestList(t, albRuleTargetGroupAttrTypes(), targetGroup),
+		"target_groups":               albRuleTestList(t, albRuleTargetGroupAttrTypes(), targetGroup),
 		"target_group_sticky_session": stickySession,
 	})
 	action := albRuleTestObject(t, albRuleActionAttrTypes(), map[string]attr.Value{

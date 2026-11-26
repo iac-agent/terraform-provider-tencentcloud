@@ -127,7 +127,7 @@ type albRuleRewriteModel struct {
 }
 
 type albRuleTargetGroupConfigModel struct {
-	TargetGroups            types.List   `tfsdk:"target_groups"`
+	TargetGroups             types.List   `tfsdk:"target_groups"`
 	TargetGroupStickySession types.Object `tfsdk:"target_group_sticky_session"`
 }
 
@@ -1087,7 +1087,7 @@ func albRuleExpandActions(ctx context.Context, list types.List, diags *diag.Diag
 		}
 		if target := albRuleDecodeObject[albRuleTargetGroupConfigModel](ctx, model.TargetGroupConfig, diags); target != nil {
 			action.TargetGroupConfig = &alb.TargetGroupConfig{
-				TargetGroups:            albRuleExpandTargetGroups(ctx, target.TargetGroups, diags),
+				TargetGroups:             albRuleExpandTargetGroups(ctx, target.TargetGroups, diags),
 				TargetGroupStickySession: albRuleExpandStickySession(ctx, target.TargetGroupStickySession, diags),
 			}
 		}
@@ -1405,7 +1405,7 @@ func albRuleFlattenTargetGroupConfig(ctx context.Context, cloud *alb.TargetGroup
 	}
 	prior := albRuleDecodeObjectPrior[albRuleTargetGroupConfigModel](ctx, prev, diags)
 	model := albRuleTargetGroupConfigModel{
-		TargetGroups:            albRuleFlattenTargetGroups(ctx, cloud.TargetGroups, prior.TargetGroups, diags),
+		TargetGroups:             albRuleFlattenTargetGroups(ctx, cloud.TargetGroups, prior.TargetGroups, diags),
 		TargetGroupStickySession: albRuleFlattenStickySession(ctx, cloud.TargetGroupStickySession, prior.TargetGroupStickySession, diags),
 	}
 	return albRuleMakeObject(ctx, attrTypes, model, diags)
@@ -1807,8 +1807,8 @@ func albRuleValuePresent(value attr.Value) bool {
 
 func albRuleUpdateClearedFields(state, plan AlbRuleResourceModel) []string {
 	pairs := []struct {
-		name           string
-		before, after  attr.Value
+		name          string
+		before, after attr.Value
 	}{
 		{"load_balancer_id", state.LoadBalancerId, plan.LoadBalancerId},
 		{"listener_id", state.ListenerId, plan.ListenerId},
@@ -1890,7 +1890,7 @@ func albRuleRewriteAttrTypes() map[string]attr.Type {
 
 func albRuleTargetGroupConfigAttrTypes() map[string]attr.Type {
 	return map[string]attr.Type{
-		"target_groups":             types.ListType{ElemType: types.ObjectType{AttrTypes: albRuleTargetGroupAttrTypes()}},
+		"target_groups":               types.ListType{ElemType: types.ObjectType{AttrTypes: albRuleTargetGroupAttrTypes()}},
 		"target_group_sticky_session": types.ObjectType{AttrTypes: albRuleStickySessionAttrTypes()},
 	}
 }
