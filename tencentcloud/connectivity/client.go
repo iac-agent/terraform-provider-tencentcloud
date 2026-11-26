@@ -24,6 +24,7 @@ import (
 	privatednsIntl "github.com/tencentcloud/tencentcloud-sdk-go-intl-en/tencentcloud/privatedns/v20201028"
 	advisorv20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	v20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
+	albv20251030 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb/v20251030"
 	agsv20250920 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags/v20250920"
 	antiddos "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20200309"
 	antiddosv20250903 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20250903"
@@ -151,6 +152,7 @@ type TencentCloudClient struct {
 	CosDomain  string
 
 	cosConn               *s3.S3
+	albv20251030Conn      *albv20251030.Client
 	tencentCosConn        *cos.Client
 	mysqlConn             *cdb.Client
 	redisConn             *redis.Client
@@ -1788,6 +1790,18 @@ func (me *TencentCloudClient) UseWedataClient() *wedata.Client {
 	me.wedataConn.WithHttpTransport(&LogRoundTripper{})
 
 	return me.wedataConn
+}
+
+// UseAlbV20251030Client returns ALB client for service
+func (me *TencentCloudClient) UseAlbV20251030Client() *albv20251030.Client {
+	if me.albv20251030Conn != nil {
+		return me.albv20251030Conn
+	}
+	cpf := me.NewClientProfile(300)
+	me.albv20251030Conn, _ = albv20251030.NewClient(me.Credential, me.Region, cpf)
+	me.albv20251030Conn.WithHttpTransport(&LogRoundTripper{})
+
+	return me.albv20251030Conn
 }
 
 // UseWedataV20250806Client return WEDATA client for service
