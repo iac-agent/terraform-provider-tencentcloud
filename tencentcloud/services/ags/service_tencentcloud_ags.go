@@ -201,3 +201,45 @@ func (me *AgsService) DeleteSandboxTool(ctx context.Context, toolId string) (err
 
 	return
 }
+
+// DescribeSandboxInstances queries sandbox instances with the filter carried
+// by the request. The API takes no pagination fields, so a single retried
+// call returns the full list; an empty list is a legitimate result and is
+// returned as is.
+func (me *AgsService) DescribeSandboxInstances(ctx context.Context, request *agsv20250920.DescribeSandboxInstancesRequest) (instances []*agsv20250920.SandboxInstance, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	var response *agsv20250920.DescribeSandboxInstancesResponse
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, err := me.client.UseAgsClient().DescribeSandboxInstancesWithContext(ctx, request)
+		if err != nil {
+			return tccommon.RetryError(err)
+		}
+		response = result
+		return nil
+	})
+	if err != nil {
+		errRet = err
+		return
+	}
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("DescribeSandboxInstances returned an empty response")
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	instances = make([]*agsv20250920.SandboxInstance, 0, len(response.Response.InstanceSet))
+	instances = append(instances, response.Response.InstanceSet...)
+
+	return
+}
