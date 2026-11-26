@@ -58,6 +58,9 @@ Agent Sandbox(ags)
 Resource
 tencentcloud_ags_sandbox_tool
 
+Data Source
+tencentcloud_ags_sandbox_instances
+
 Anti-DDoS(antiddos)
 Data Source
 tencentcloud_antiddos_basic_device_status
