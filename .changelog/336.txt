@@ -1,0 +1,3 @@
+```release-note: enhancement
+data-source/ags: support new data source tencentcloud_ags_sandbox_instances
+```
