@@ -2950,3 +2950,7 @@ Resource
 tencentcloud_makers_project
 tencentcloud_makers_project_envs
 tencentcloud_makers_zone_custom_domain
+
+Application Load Balancer(ALB)
+Resource
+tencentcloud_alb_rule
