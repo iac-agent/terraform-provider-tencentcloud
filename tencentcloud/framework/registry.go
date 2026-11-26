@@ -31,6 +31,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/ags"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/alb"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/antiddos"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/bdrc"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/cam"
@@ -67,6 +68,7 @@ var resourcesMap = map[string]func() resource.Resource{
 // dataSourcesMap maps every framework data source type name to its factory.
 var dataSourcesMap = map[string]func() datasource.DataSource{
 	"tencentcloud_config_list_aggregate_compliance_packs": config.NewConfigListAggregateCompliancePacksDataSource,
+	"tencentcloud_alb_listener_certificates":              alb.NewAlbListenerCertificatesDataSource,
 	"tencentcloud_monitor_ext_metric":                     monitor.NewMonitorExtMetricDataSource,
 	"tencentcloud_monitor_ext_namespace":                  monitor.NewMonitorExtNamespaceDataSource,
 	"tencentcloud_monitor_dispense_region":                monitor.NewMonitorDispenseRegionDataSource,
