@@ -66,6 +66,7 @@ var resourcesMap = map[string]func() resource.Resource{
 
 // dataSourcesMap maps every framework data source type name to its factory.
 var dataSourcesMap = map[string]func() datasource.DataSource{
+	"tencentcloud_ags_sandbox_instances":                  ags.NewAgsSandboxInstancesDataSource,
 	"tencentcloud_config_list_aggregate_compliance_packs": config.NewConfigListAggregateCompliancePacksDataSource,
 	"tencentcloud_monitor_ext_metric":                     monitor.NewMonitorExtMetricDataSource,
 	"tencentcloud_monitor_ext_namespace":                  monitor.NewMonitorExtNamespaceDataSource,

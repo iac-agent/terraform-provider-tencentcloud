@@ -24,6 +24,11 @@ const (
 	AGS_SANDBOX_TOOL_STATUS_FAILED   = "FAILED"
 	AGS_SANDBOX_TOOL_STATUS_CREATING = "CREATING"
 	AGS_SANDBOX_TOOL_STATUS_DELETING = "DELETING"
+
+	// AGS_SANDBOX_INSTANCES_PAGE_SIZE is the page size used by
+	// DescribeSandboxInstances. The API accepts at most 100 instance ids per
+	// request, so the page size must not exceed 100.
+	AGS_SANDBOX_INSTANCES_PAGE_SIZE = int64(100)
 )
 
 func NewAgsService(client *connectivity.TencentCloudClient) AgsService {
@@ -164,6 +169,51 @@ func (me *AgsService) UpdateSandboxTool(ctx context.Context, request *agsv202509
 }
 
 // DeleteSandboxTool deletes the sandbox tool itself, identified by toolId.
+// DescribeSandboxInstances returns the full list of sandbox instances for
+// the given filter request.
+//
+// A nil InstanceIds filter (no filter configured) queries ALL sandbox
+// instances. The request struct carries no pagination fields, so the API is
+// called exactly once per invocation and the method performs no paging loop.
+// An empty instance set is a legitimate answer (no instances match) and is
+// returned as an empty list, never as an error.
+func (me *AgsService) DescribeSandboxInstances(ctx context.Context, request *agsv20250920.DescribeSandboxInstancesRequest) (instanceSet []*agsv20250920.SandboxInstance, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	var response *agsv20250920.DescribeSandboxInstancesResponse
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, err := me.client.UseAgsClient().DescribeSandboxInstancesWithContext(ctx, request)
+		if err != nil {
+			return tccommon.RetryError(err)
+		}
+		response = result
+		return nil
+	})
+	if err != nil {
+		errRet = err
+		return
+	}
+	if response == nil || response.Response == nil {
+		errRet = fmt.Errorf("DescribeSandboxInstances returned an empty response")
+		return
+	}
+
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+		logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	instanceSet = response.Response.InstanceSet
+
+	return
+}
+
 func (me *AgsService) DeleteSandboxTool(ctx context.Context, toolId string) (errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
